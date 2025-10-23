@@ -1,0 +1,769 @@
+{
+  "agent_id": "",
+  "channel": "voice",
+  "last_modification_timestamp": 1761126811668,
+  "agent_name": "LAURA - Centro Médico",
+  "response_engine": {
+    "type": "conversation-flow",
+    "version": 1,
+    "conversation_flow_id": "conversation_flow_e349e07961c6"
+  },
+  "language": "es-ES",
+  "opt_out_sensitive_data_storage": false,
+  "data_storage_setting": "everything",
+  "version": 1,
+  "is_published": false,
+  "version_title": "V1",
+  "voice_id": "cartesia-Elena",
+  "enable_backchannel": true,
+  "backchannel_frequency": 0.7,
+  "backchannel_words": [
+    "ya",
+    "ajá",
+    "entiendo",
+    "sí",
+    "vale",
+    "okay"
+  ],
+  "max_call_duration_ms": 3600000,
+  "interruption_sensitivity": 0.9,
+  "ambient_sound": "call-center",
+  "pronunciation_dictionary": [
+    {
+      "word": "Dígame⤴",
+      "alphabet": "ipa",
+      "phoneme": "di.ɣaˈme↗"
+    }
+  ],
+  "normalize_for_speech": true,
+  "user_dtmf_options": {},
+  "retellLlmData": null,
+  "conversationFlow": {
+    "conversation_flow_id": "conversation_flow_e349e07961c6",
+    "version": 1,
+    "global_prompt": "Identity:\nYou are Laura, the virtual assistant of Centro Médico Tu Salud Es Lo Primero. You are **NOT a real person**, but you speak like a kind, friendly, and professional team member. Your role is to help patients and web visitors with queries about the centre, its services (general medicine, dental, physiotherapy, etc), appointments, directions, billing, and to showcase how the system works — because this is a demo for potential clients. You care deeply about patients and have a warm retro-futuristic “AetherLabs” spirit: you speak with clarity, optimism and efficiency.\n\nStyle Guideline:\n- Be concise: answer one topic at a time.\n- Be conversational: use everyday language, but keep professional. Address the person by first name if they give it.\n- Ask only one question at a time when you need to gather info.\n- Adapt to possible transcription/typing errors: e.g., if the user writes “dentis” you may ask “Do you mean dental service?” without saying “transcription error”.\n- At the end of each conversation (or when appropriate), include a gentle call-to-action: “Recuerda que esto es una demostración de Laura. Si quieres que tu centro médico tenga su propia versión personalizada, podemos configurarla juntos. ¿Te gustaría que formemos parte de tu proyecto?”\n\nPurpose & Scope:\n- You help visitors/patients of Centro Médico Tu Salud Es Lo Primero to:  \n   • find out what services we offer (general medicine, dental, physiotherapy, etc)  \n   • check our location & opening hours  \n   • schedule, reschedule or cancel appointments (demo mode)  \n   • answer basic questions about billing, insurance, complaints, who to contact  \n   • gently showcase to clients how such a virtual assistant could work for their centre (since they are watching a demo)  \n- If the user requests something outside the scope (e.g., medical diagnosis, urgent emergency), you politely redirect them to human staff or emergency services: “Para esta cuestión lo mejor es que hable con uno de nuestros profesionales / contacta al 112 en caso de urgencia”.\n\nExample Conversation Starters:\n- “Hola, soy Laura del Centro Médico Tu Salud Es Lo Primero. ¿En qué puedo ayudarte hoy?”  \n- After user says “Quiero pedir cita”: “Perfecto, ¿podrías decirme tu nombre y el servicio para el que quieres cita?”  \n- If user says “¿Qué servicios tenéis?”: “Ofrecemos medicina general, odontología, fisioterapia, análisis clínicos, etc. ¿Cuál te interesa?”  \n- At end: “Recuerda que esto es una demostración de Laura. Si quieres que tu centro tenga la versión personalizada, encantados de ayudarte.”\n\nEscalation / fallback:\n- If you do not understand: “Perdona, no lo he entendido del todo. ¿Podrías reformular o decirme qué servicio necesitas?”  \n- If user demands human: “Claro — en un momento te paso con uno de nuestros compañeros humanos / te llamaré cuando esté disponible.”\n\nTone:\nFriendly, warm, slightly retro-futuristic in spirit (pero sin exagerar), conveying “te acompaño al futuro de tu centro médico”.  \n",
+    "nodes": [
+      {
+        "instruction": {
+          "type": "static_text",
+          "text": "¡Hola! Centro médico tu salud es lo primero,, le atiende Laura ¿En qué puedo ayudarle?"
+        },
+        "edges": [
+          {
+            "condition": "User needs to reschedule an appointment",
+            "id": "edge-1",
+            "transition_condition": {
+              "type": "prompt",
+              "prompt": "User needs to reschedule an appointment"
+            },
+            "destination_node_id": "node-1735699983139"
+          },
+          {
+            "condition": "User is about to have a surgery, and is asking about preparations",
+            "id": "edge-2",
+            "transition_condition": {
+              "type": "prompt",
+              "prompt": "User is about to have a surgery, and is asking about preparations"
+            },
+            "destination_node_id": "node-1735713180175"
+          },
+          {
+            "condition": "user asks to be transferred to an agent",
+            "id": "edge-1735698160303",
+            "transition_condition": {
+              "type": "prompt",
+              "prompt": "user asks to be transferred to an agent"
+            },
+            "destination_node_id": "node-1735698283340"
+          },
+          {
+            "condition": "User is having a medical condition",
+            "id": "edge-1735699592443",
+            "transition_condition": {
+              "type": "prompt",
+              "prompt": "User is having a medical condition"
+            },
+            "destination_node_id": "node-1735699636733"
+          }
+        ],
+        "name": "Welcome Node",
+        "start_speaker": "agent",
+        "id": "start-node-1735258608795",
+        "type": "conversation",
+        "display_position": {
+          "x": 273,
+          "y": 1716
+        },
+        "knowledge_base_ids": []
+      },
+      {
+        "edge": {
+          "condition": "Transfer failed",
+          "id": "edge-1735697098325",
+          "transition_condition": {
+            "type": "prompt",
+            "prompt": "Transfer failed"
+          }
+        },
+        "transfer_destination": {
+          "type": "predefined",
+          "number": "+12134447777"
+        },
+        "instruction": {
+          "type": "prompt",
+          "text": "Transferring your call now."
+        },
+        "global_node_setting": {
+          "condition": "When user is a doctor or is returning a call"
+        },
+        "name": "Transfer Call",
+        "id": "node-1735697098325",
+        "transfer_option": {
+          "type": "cold_transfer",
+          "show_transferee_as_caller": false
+        },
+        "type": "transfer_call",
+        "display_position": {
+          "x": 1773,
+          "y": 1190
+        }
+      },
+      {
+        "edges": [
+          {
+            "condition": "If it's a medical question",
+            "id": "edge-1735698283340",
+            "transition_condition": {
+              "type": "prompt",
+              "prompt": "If it's a medical question"
+            },
+            "destination_node_id": "node-1735699763121"
+          },
+          {
+            "condition": "If it's about reschedule or cancel existing appointment",
+            "id": "edge-1735698328735",
+            "transition_condition": {
+              "type": "prompt",
+              "prompt": "If it's about reschedule or cancel existing appointment"
+            },
+            "destination_node_id": "node-1735699983139"
+          },
+          {
+            "condition": "If they insist on talking to agent",
+            "id": "edge-1735715530021",
+            "transition_condition": {
+              "type": "prompt",
+              "prompt": "If they insist on talking to agent"
+            },
+            "destination_node_id": "node-1735715564198"
+          }
+        ],
+        "name": "Conversation",
+        "id": "node-1735698283340",
+        "type": "conversation",
+        "display_position": {
+          "x": 773,
+          "y": 1092
+        },
+        "instruction": {
+          "type": "prompt",
+          "text": "Ask user why they need to speak to a representative, why they are calling"
+        },
+        "knowledge_base_ids": []
+      },
+      {
+        "edges": [
+          {
+            "condition": "If this is an emergency",
+            "id": "edge-1735699636733",
+            "transition_condition": {
+              "type": "prompt",
+              "prompt": "If this is an emergency"
+            },
+            "destination_node_id": "node-1735699698057"
+          },
+          {
+            "condition": "If this is not an emergency",
+            "id": "edge-1735699684327",
+            "transition_condition": {
+              "type": "prompt",
+              "prompt": "If this is not an emergency"
+            },
+            "destination_node_id": "node-1735699763121"
+          }
+        ],
+        "name": "Conversation",
+        "id": "node-1735699636733",
+        "type": "conversation",
+        "display_position": {
+          "x": 773,
+          "y": 362
+        },
+        "instruction": {
+          "type": "prompt",
+          "text": "Ask user if this is an emergency."
+        },
+        "knowledge_base_ids": []
+      },
+      {
+        "edges": [
+          {
+            "condition": "User acknowledges",
+            "id": "edge-1735699698057",
+            "transition_condition": {
+              "type": "prompt",
+              "prompt": "User acknowledges"
+            },
+            "destination_node_id": "node-1735699753639"
+          }
+        ],
+        "name": "Conversation",
+        "id": "node-1735699698057",
+        "type": "conversation",
+        "display_position": {
+          "x": 1273,
+          "y": 0
+        },
+        "instruction": {
+          "type": "static_text",
+          "text": "Please hang up dial 911 immediately."
+        },
+        "knowledge_base_ids": []
+      },
+      {
+        "name": "End Call",
+        "id": "node-1735699753639",
+        "type": "end",
+        "display_position": {
+          "x": 1773,
+          "y": 110
+        },
+        "instruction": {
+          "type": "prompt",
+          "text": "Politely end the call"
+        }
+      },
+      {
+        "edges": [
+          {
+            "condition": "User does not have any questions.",
+            "id": "edge-1735699763121",
+            "transition_condition": {
+              "type": "prompt",
+              "prompt": "User does not have any questions."
+            },
+            "destination_node_id": "node-1735711562449"
+          }
+        ],
+        "name": "Conversation",
+        "id": "node-1735699763121",
+        "type": "conversation",
+        "display_position": {
+          "x": 1468.5263845663394,
+          "y": 450.0630244569468
+        },
+        "instruction": {
+          "type": "prompt",
+          "text": "Ask user to describe their medical condition and ask what questions they have, and use your expertise to provide answers to them. Ask if they have any additional questions."
+        },
+        "knowledge_base_ids": []
+      },
+      {
+        "edges": [
+          {
+            "condition": "got the user name and date of birth",
+            "id": "edge-1735699983139",
+            "transition_condition": {
+              "type": "prompt",
+              "prompt": "got the user name and date of birth"
+            },
+            "destination_node_id": "node-1735708029315"
+          }
+        ],
+        "name": "Conversation",
+        "id": "node-1735699983139",
+        "type": "conversation",
+        "display_position": {
+          "x": 1273,
+          "y": 1826
+        },
+        "instruction": {
+          "type": "prompt",
+          "text": "Ask user's name and date of birth"
+        },
+        "knowledge_base_ids": []
+      },
+      {
+        "tool_id": "tool-1735708026985",
+        "edges": [
+          {
+            "condition": "Got the appointment details",
+            "id": "edge-1735708062170",
+            "transition_condition": {
+              "type": "prompt",
+              "prompt": "Got the appointment details"
+            },
+            "destination_node_id": "node-1735708193770"
+          },
+          {
+            "condition": "Failed to get appointment details",
+            "id": "edge-1735708123337",
+            "transition_condition": {
+              "type": "prompt",
+              "prompt": "Failed to get appointment details"
+            },
+            "destination_node_id": "node-1735708215366"
+          }
+        ],
+        "name": "Check Appt Detail",
+        "id": "node-1735708029315",
+        "type": "function",
+        "display_position": {
+          "x": 1773,
+          "y": 1873
+        },
+        "speak_during_execution": false,
+        "tool_type": "local",
+        "wait_for_result": true
+      },
+      {
+        "edges": [
+          {
+            "condition": "Got the change details from user",
+            "id": "edge-1735708193770",
+            "transition_condition": {
+              "type": "prompt",
+              "prompt": "Got the change details from user"
+            },
+            "destination_node_id": "node-1735710607855"
+          }
+        ],
+        "name": "Conversation",
+        "id": "node-1735708193770",
+        "type": "conversation",
+        "display_position": {
+          "x": 2235.9684877715267,
+          "y": 1685.539064408507
+        },
+        "instruction": {
+          "type": "prompt",
+          "text": "Tell user the retrieved appointment details, and ask what they need to change"
+        },
+        "knowledge_base_ids": []
+      },
+      {
+        "edges": [
+          {
+            "condition": "Got the change details from user",
+            "id": "edge-1735708215366",
+            "transition_condition": {
+              "type": "prompt",
+              "prompt": "Got the change details from user"
+            },
+            "destination_node_id": "node-1735710607855"
+          }
+        ],
+        "name": "Conversation",
+        "id": "node-1735708215366",
+        "type": "conversation",
+        "display_position": {
+          "x": 2317.285714285714,
+          "y": 2084
+        },
+        "instruction": {
+          "type": "prompt",
+          "text": "Tell user that you're not able to retrieve the appt detail, and ask what's the change they need to make for the appt "
+        },
+        "knowledge_base_ids": []
+      },
+      {
+        "edges": [
+          {
+            "condition": "User don't have any questions",
+            "id": "edge-1735709222057",
+            "transition_condition": {
+              "type": "prompt",
+              "prompt": "User don't have any questions"
+            },
+            "destination_node_id": "node-1735711562449"
+          }
+        ],
+        "name": "Conversation",
+        "id": "node-1735709222057",
+        "type": "conversation",
+        "display_position": {
+          "x": 3273,
+          "y": 1834
+        },
+        "instruction": {
+          "type": "prompt",
+          "text": "Tell user that the appointment has been updated. Ask if they have any additional questions. Answer them with your expertise."
+        },
+        "knowledge_base_ids": []
+      },
+      {
+        "tool_id": "tool-1735710605973",
+        "instruction": {
+          "type": "static_text",
+          "text": "Alright, updating the appointment for you now."
+        },
+        "edges": [
+          {
+            "condition": "Got result for the function",
+            "id": "edge-1735710665245",
+            "transition_condition": {
+              "type": "prompt",
+              "prompt": "Got result for the function"
+            },
+            "destination_node_id": "node-1735709222057"
+          }
+        ],
+        "name": "Update Appt Detail",
+        "id": "node-1735710607855",
+        "type": "function",
+        "display_position": {
+          "x": 2773,
+          "y": 1895
+        },
+        "speak_during_execution": true,
+        "tool_type": "local",
+        "wait_for_result": true
+      },
+      {
+        "instruction": {
+          "type": "static_text",
+          "text": "Hope you have a great day, take care!"
+        },
+        "edges": [
+          {
+            "condition": "Describe the transition condition",
+            "id": "edge-1735711562449",
+            "transition_condition": {
+              "type": "prompt",
+              "prompt": "Describe the transition condition"
+            }
+          }
+        ],
+        "name": "Conversation",
+        "id": "node-1735711562449",
+        "type": "conversation",
+        "display_position": {
+          "x": 3657.0913667248783,
+          "y": 1460.722356736988
+        },
+        "skip_response_edge": {
+          "condition": "Skip response",
+          "id": "edge-1735711577124",
+          "transition_condition": {
+            "type": "prompt",
+            "prompt": "Skip response"
+          },
+          "destination_node_id": "node-1735711605640"
+        },
+        "knowledge_base_ids": []
+      },
+      {
+        "name": "End Call",
+        "id": "node-1735711605640",
+        "type": "end",
+        "display_position": {
+          "x": 4273,
+          "y": 1944
+        },
+        "instruction": {
+          "type": "prompt",
+          "text": "Politely end the call"
+        }
+      },
+      {
+        "edges": [
+          {
+            "condition": "If within 72 hours",
+            "id": "edge-1735713180175",
+            "transition_condition": {
+              "type": "prompt",
+              "prompt": "If within 72 hours"
+            },
+            "destination_node_id": "node-1735713269736"
+          },
+          {
+            "condition": "If not within 72 hours",
+            "id": "edge-1735713260080",
+            "transition_condition": {
+              "type": "prompt",
+              "prompt": "If not within 72 hours"
+            },
+            "destination_node_id": "node-1735715032122"
+          }
+        ],
+        "name": "Conversation",
+        "id": "node-1735713180175",
+        "type": "conversation",
+        "display_position": {
+          "x": 773,
+          "y": 1614.857142857143
+        },
+        "instruction": {
+          "type": "prompt",
+          "text": "Ask user if their surgery is within 72 hours"
+        },
+        "knowledge_base_ids": []
+      },
+      {
+        "instruction": {
+          "type": "prompt",
+          "text": "Let me transfer you to the office to make sure you got the right instruction"
+        },
+        "edges": [
+          {
+            "condition": "Describe the transition condition",
+            "id": "edge-1735713269736",
+            "transition_condition": {
+              "type": "prompt",
+              "prompt": "Describe the transition condition"
+            }
+          }
+        ],
+        "name": "Conversation",
+        "id": "node-1735713269736",
+        "type": "conversation",
+        "display_position": {
+          "x": 1367.2857142857144,
+          "y": 866.5714285714287
+        },
+        "skip_response_edge": {
+          "condition": "Skip response",
+          "id": "edge-1735714946516",
+          "transition_condition": {
+            "type": "prompt",
+            "prompt": "Skip response"
+          },
+          "destination_node_id": "node-1735697098325"
+        },
+        "knowledge_base_ids": []
+      },
+      {
+        "edges": [
+          {
+            "condition": "User has no more questions",
+            "id": "edge-1735715032122",
+            "transition_condition": {
+              "type": "prompt",
+              "prompt": "User has no more questions"
+            },
+            "destination_node_id": "node-1735715176035"
+          }
+        ],
+        "name": "Conversation",
+        "id": "node-1735715032122",
+        "type": "conversation",
+        "display_position": {
+          "x": 1273,
+          "y": 2218
+        },
+        "instruction": {
+          "type": "prompt",
+          "text": "Ask user what surgery they are going through, and use your expertise to provide some preparation tips. Ask if they have any questions."
+        },
+        "knowledge_base_ids": []
+      },
+      {
+        "instruction": {
+          "type": "prompt",
+          "text": "Tell user to call the office again within 72 hours of the surgery to speak to the doctor. Politely end the call."
+        },
+        "edges": [
+          {
+            "condition": "Describe the transition condition",
+            "id": "edge-1735715176035",
+            "transition_condition": {
+              "type": "prompt",
+              "prompt": "Describe the transition condition"
+            }
+          }
+        ],
+        "name": "Conversation",
+        "id": "node-1735715176035",
+        "type": "conversation",
+        "display_position": {
+          "x": 1798.714285714286,
+          "y": 2220.8571428571427
+        },
+        "skip_response_edge": {
+          "condition": "Skip response",
+          "id": "edge-1735715226636",
+          "transition_condition": {
+            "type": "prompt",
+            "prompt": "Skip response"
+          },
+          "destination_node_id": "node-1735715229645"
+        },
+        "knowledge_base_ids": []
+      },
+      {
+        "name": "End Call",
+        "id": "node-1735715229645",
+        "type": "end",
+        "display_position": {
+          "x": 2168.714285714286,
+          "y": 2435.142857142858
+        },
+        "instruction": {
+          "type": "prompt",
+          "text": "Politely end the call"
+        }
+      },
+      {
+        "instruction": {
+          "type": "static_text",
+          "text": "Transferring you to the office now."
+        },
+        "edges": [
+          {
+            "condition": "Describe the transition condition",
+            "id": "edge-1735715564198",
+            "transition_condition": {
+              "type": "prompt",
+              "prompt": "Describe the transition condition"
+            }
+          }
+        ],
+        "name": "Conversation",
+        "id": "node-1735715564198",
+        "type": "conversation",
+        "display_position": {
+          "x": 1402.6469301656152,
+          "y": 1327.1590027274474
+        },
+        "skip_response_edge": {
+          "condition": "Skip response",
+          "id": "edge-1735715583400",
+          "transition_condition": {
+            "type": "prompt",
+            "prompt": "Skip response"
+          },
+          "destination_node_id": "node-1735697098325"
+        },
+        "knowledge_base_ids": []
+      },
+      {
+        "instruction": {
+          "type": "prompt",
+          "text": "Ask user when is a good time to call back."
+        },
+        "edges": [
+          {
+            "condition": "User specified a call back time.",
+            "id": "edge-1736517211146",
+            "transition_condition": {
+              "type": "prompt",
+              "prompt": "User specified a call back time."
+            },
+            "destination_node_id": "node-1736517256130"
+          }
+        ],
+        "global_node_setting": {
+          "condition": "When user indicates this is not a good time to talk"
+        },
+        "name": "Objection Handle",
+        "id": "node-1736517211146",
+        "type": "conversation",
+        "display_position": {
+          "x": 2257.142857142857,
+          "y": -107.85714285714286
+        },
+        "knowledge_base_ids": []
+      },
+      {
+        "instruction": {
+          "type": "prompt",
+          "text": "Tell user you will call them back in the provided time frame."
+        },
+        "edges": [
+          {
+            "condition": "Describe the transition condition",
+            "id": "edge-1736517256130",
+            "transition_condition": {
+              "type": "prompt",
+              "prompt": "Describe the transition condition"
+            }
+          }
+        ],
+        "name": "Conversation",
+        "id": "node-1736517256130",
+        "type": "conversation",
+        "display_position": {
+          "x": 2702.8571428571427,
+          "y": -112.14285714285714
+        },
+        "skip_response_edge": {
+          "condition": "Skip response",
+          "id": "edge-1736517277237",
+          "transition_condition": {
+            "type": "prompt",
+            "prompt": "Skip response"
+          },
+          "destination_node_id": "node-1736517281355"
+        },
+        "knowledge_base_ids": []
+      },
+      {
+        "name": "End Call",
+        "id": "node-1736517281355",
+        "type": "end",
+        "display_position": {
+          "x": 3143.75,
+          "y": -30.714285714285722
+        },
+        "instruction": {
+          "type": "prompt",
+          "text": "Politely end the call"
+        }
+      }
+    ],
+    "start_node_id": "start-node-1735258608795",
+    "start_speaker": "agent",
+    "tools": [
+      {
+        "name": "check_appt_detail",
+        "description": "Check the detail of the appointment based on user's name and DOB.",
+        "tool_id": "tool-1735708026985",
+        "type": "custom",
+        "url": "https://api.retellai.com/var_test",
+        "timeout_ms": 4000
+      },
+      {
+        "tool_id": "tool-1735710605973",
+        "timeout_ms": 4000,
+        "name": "update_appt_detail",
+        "description": "Update the appointment",
+        "type": "custom",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "appointment_new_time": {
+              "type": "string",
+              "description": "The timestamp of the new appointment."
+            }
+          },
+          "required": [
+            "appointment_new_time"
+          ]
+        },
+        "url": "https://api.retellai.com/random_status"
+      }
+    ],
+    "model_choice": {
+      "type": "cascading",
+      "model": "claude-4.5-haiku",
+      "high_priority": false
+    },
+    "knowledge_base_ids": [],
+    "begin_tag_display_position": {
+      "x": 0,
+      "y": 1939
+    },
+    "is_published": false
+  },
+  "llmURL": null
+}

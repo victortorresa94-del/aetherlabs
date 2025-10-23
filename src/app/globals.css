@@ -1,26 +1,46 @@
+/* Tailwind v4: una sola importación */
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+/* ========== GLOBAL BASE ========== */
+html { scroll-behavior: smooth; }
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: #fff;
+  color: #111;
+  font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
+  font-feature-settings: "ss01" on, "cv10" on;
 }
+
+/* Playfair Display para palabras destacadas en títulos */
+.font-playfair {
+  font-family: var(--font-playfair-display), var(--font-inter), serif;
+  font-weight: 600;
+  font-style: italic;
+}
+button:disabled { opacity: 0.5; cursor: not-allowed; }
+a { transition: all 0.2s ease-in-out; }
+a:hover { opacity: 0.8; }
+
+/* Utilidades de layout usadas en la landing */
+.section { padding-top: 5rem; padding-bottom: 5rem; padding-left: 1rem; padding-right: 1rem; }
+@media (min-width: 768px) { .section { padding-left: 2rem; padding-right: 2rem; } }
+.container { max-width: 72rem; margin-left: auto; margin-right: auto; }
+
+.btn { display: inline-flex; align-items: center; justify-content: center; border-radius: 0.5rem; padding: 0.75rem 1.25rem; font-weight: 600; transition: transform .15s; }
+.btn-primary { background: #75c4af; color: #000; }
+.btn-primary:hover { transform: scale(1.02); }
+.btn-primary:active { transform: scale(0.98); }
+.btn-outline { border: 1px solid rgba(0,0,0,.1); }
+.link { transition: opacity .2s; }
+.link:hover { opacity: .7; }
+
+/* Hover glow */
+.hover-glow { box-shadow: 0 0 0px rgba(130,255,31,0); transition: box-shadow 0.3s ease; }
+.hover-glow:hover { box-shadow: 0 0 16px rgba(117,196,175,0.6); }
+
+/* Logo glow */
+.logo-glow { position: relative; }
+.logo-glow::after { content: ''; position: absolute; inset: 0; border-radius: 12px; box-shadow: 0 0 10px rgba(117,196,175,0.3); opacity: 0; transition: opacity 0.3s ease; }
+.logo-glow:hover::after { opacity: 1; }
+
+/* Loader de entrada */
+.loader-screen { position: fixed; inset: 0; background: #000; z-index: 9999; display: flex; align-items: center; justify-content: center; }

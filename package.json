@@ -1,27 +1,30 @@
 {
   "name": "aether-labs-landing",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
-    "build": "next build --turbopack",
+    "dev": "next dev --turbo",
+    "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "next lint"
   },
   "dependencies": {
-    "react": "19.1.0",
-    "react-dom": "19.1.0",
-    "next": "15.5.6"
+    "@google/genai": "^1.26.0",
+    "clsx": "^2.1.1",
+    "framer-motion": "11.3.24",
+    "next": "15.5.6",
+    "react": "19.2.0",
+    "react-dom": "19.2.0"
   },
   "devDependencies": {
-    "typescript": "^5",
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "@tailwindcss/postcss": "^4",
-    "tailwindcss": "^4",
-    "eslint": "^9",
-    "eslint-config-next": "15.5.6",
-    "@eslint/eslintrc": "^3"
+    "@tailwindcss/postcss": "^4.1.15",
+    "@types/node": "24.9.1",
+    "@types/react": "19.2.2",
+    "autoprefixer": "10.4.19",
+    "eslint": "8.57.0",
+    "eslint-config-next": "14.2.14",
+    "postcss": "8.4.47",
+    "tailwindcss": "4.1.15",
+    "typescript": "5.6.3"
   }
 }
