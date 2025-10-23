@@ -13,6 +13,7 @@ import GlobalCTA from "@/components/GlobalCTA";
 import Ecosistema from "@/components/Ecosistema";
 import Consulting from "@/components/Consulting"; 
 import Jason from "@/components/Jason"
+import CasosExito from "@/components/CasosExito"
 
 export default function Page() {
   return (
@@ -39,7 +40,7 @@ export default function Page() {
       
 
       {/* CASOS REALES */}
-      <CaseStudies />
+      <CasosExito />
       <Jason />
 
       {/* CONTACTO */}
