@@ -196,26 +196,24 @@ export async function POST(req: NextRequest) {
     const b64 = Buffer.from(await file.arrayBuffer()).toString("base64");
     const prompt = getPromptForPreset(preset);
 
-    // Prompt + imagen en la MISMA interacción + systemInstruction fuerte
+    /** ======== Llamada a Gemini 2.5 (SDK @google/genai) ========
+     * En este SDK, `generateContent` acepta `contents` como array de partes directas:
+     * [{ text }, { inlineData: { mimeType, data } }]
+     * No usar `role`, ni `parts`, ni `systemInstruction` aquí.
+     */
     const response = await ai.models.generateContent({
       model: "gemini-2.5-flash-image-preview",
-      systemInstruction: {
-        role: "system",
-        parts: [{ text: "You are a top-tier commercial photographer and art director. Always build a NEW scene and a DIFFERENT camera than the user photo while preserving product identity." }],
-      },
-      contents: [{
-        role: "user",
-        parts: [
-          { text: prompt },
-          { inlineData: { mimeType: mime, data: b64 } },
-        ],
-      }],
-      generationConfig: {
-        temperature: 1.0, // un poco más creativo para que se mueva de ángulo
-      },
-      config: { responseModalities: ["Image"] },
+      contents: [
+        { text: "You are a top-tier commercial photographer and art director. Always build a NEW scene and a DIFFERENT camera than the user photo while preserving product identity." },
+        { text: prompt },
+        { inlineData: { mimeType: mime, data: b64 } },
+      ],
+      // Si tu versión tipada no acepta generationConfig/config, quítalos.
+      // generationConfig: { temperature: 1.0 },
+      // config: { responseModalities: ["Image"] },
     });
 
+    // Parseo de respuesta
     const parts = response?.candidates?.[0]?.content?.parts || [];
     const imgPart = parts.find((p: any) => p?.inlineData?.data);
     if (!imgPart) {
