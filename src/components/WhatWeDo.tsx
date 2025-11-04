@@ -4,19 +4,21 @@
 import { motion } from "framer-motion";
 import { staggerContainer, fadeUp } from "@/utils/animations";
 import Button from "./Button";
+import Link from "next/link";
+
 
 export default function WhatWeDo() {
   const cards = [
     {
       title: "Agents Lab",
       desc: "Agentes IA que atienden llamadas, responden WhatsApp y automatizan tu negocio 24/7",
-      href: "#ai-agents-lab",
+      href: "/agents-lab",
       img: "/images/ai-agents-lab.png"
     },
     {
       title: "Creative Lab",
       desc: "Anuncios, imágenes y vídeos generados con IA, listos para publicar en 48h",
-      href: "#creative-lab",
+      href: "/creative-lab",
       img: "/images/creative-lab.png"
     },
     {

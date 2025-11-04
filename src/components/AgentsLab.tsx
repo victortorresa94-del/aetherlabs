@@ -141,7 +141,7 @@ export default function AgentsLab() {
               </div>
             </div>
             <div className="flex justify-end">
-              <Button label="Crear mi agente" href="#crea-tu-ia" variant="primary" className="w-48" />
+              <Button label="Crear mi agente" href="/agents-lab" variant="primary" className="w-48" />
             </div>
           </motion.div>
         </div>

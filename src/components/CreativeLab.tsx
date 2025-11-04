@@ -4,6 +4,8 @@
 import { motion } from "framer-motion";
 import { fadeRight, fadeUp, staggerContainer } from "@/utils/animations";
 import Button from "./Button";
+import Link from "next/link";
+
 
 export default function CreativeLab() {
   // TUS 8 IMÁGENES - NOMBRES FÁCILES
@@ -92,9 +94,25 @@ export default function CreativeLab() {
           <Button label="Quiero mis mockups" href="#contacto" variant="primary" />
         </motion.div>
       </div>
+
+       {/* CTA FINAL: Creative Lab */}
+       <div className="container mt-16">
+        <div className="flex justify-center">
+          <Link
+            href="/labs/creative"
+            aria-label="Explorar Creative Lab"
+            className="inline-flex items-center gap-2 rounded-lg bg-black text-white px-6 py-3 text-sm md:text-base font-semibold shadow-md hover:shadow-lg hover:opacity-90 transition"
+          >
+            Explorar Creative Lab <span aria-hidden>→</span>
+          </Link>
+        </div>
+      </div>
+      
       {/* ESPACIO ABAJO - DOBLE */}
 <div className="h-48"></div>
     </section>
+    
+
     
   );
 }

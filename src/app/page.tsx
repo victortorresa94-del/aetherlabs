@@ -14,6 +14,8 @@ import Ecosistema from "@/components/Ecosistema";
 import Consulting from "@/components/Consulting"; 
 import Jason from "@/components/Jason"
 import CasosExito from "@/components/CasosExito"
+import Link from "next/link";
+
 
 export default function Page() {
   return (
@@ -46,8 +48,7 @@ export default function Page() {
       {/* CONTACTO */}
       <Contact />
 
-      {/* CTA global fija (WhatsApp) */}
-      <GlobalCTA />
+  
 
       {/* FOOTER */}
       
