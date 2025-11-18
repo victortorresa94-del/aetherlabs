@@ -30,7 +30,7 @@ export default function Hero() {
             Crea tu propia inteligencia artificial en 1 minuto.
           </p>
           <p className="mt-2 text-base text-black/60">
-            Automatiza llamadas, mensajes y tareas sin saber de tecnología.
+            Automatiza tu negocio y libera tu tiempo para las tareas que realmente necesitas.
           </p>
 
           <div className="mt-8 flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-start justify-center">
