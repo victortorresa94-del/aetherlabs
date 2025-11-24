@@ -47,18 +47,19 @@ export default function PersonalTrainingPage() {
         <main className="min-h-screen bg-black text-white">
             <HeaderNavigation />
 
-            {/* 1. Hero Principal - AJUSTE 8 */}
+            {/* 1. Hero Principal */}
             <section className="pt-40 pb-20 bg-gradient-to-b from-black to-[#0a0a0a]">
                 <div className="container px-6 md:px-12 lg:px-24">
                     <div className="max-w-4xl mx-auto text-center">
                         <h1 className="text-5xl md:text-7xl font-light text-white mb-8 leading-tight tracking-tight">
-                            Iniciación a la <br />
+                            Formación en <br />
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-[#a0a0a0]">
                                 Inteligencia Artificial
                             </span>
                         </h1>
                         <p className="text-xl md:text-2xl text-[#c8c8c8] font-light leading-relaxed mb-10 max-w-3xl mx-auto">
-                            Aprende a usar la IA desde cero con un plan totalmente adaptado a tu nivel, tus objetivos y tu ritmo.
+                            Aprende a utilizar la IA de verdad, sin humo ni cursos genéricos.
+                            Formación personalizada para personas.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
                             <a
@@ -120,7 +121,9 @@ export default function PersonalTrainingPage() {
 
                                 <div className="flex flex-col sm:flex-row gap-4">
                                     <a
-                                        href="/reserva"
+                                        href="https://calendly.com/aetherlabs"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
                                         className="inline-flex items-center justify-center bg-white text-black font-semibold text-base py-3 px-8 rounded-full transition-all hover:scale-105"
                                     >
                                         Reserva tu formación
@@ -163,35 +166,58 @@ export default function PersonalTrainingPage() {
                 </div>
             </section>
 
-            {/* 3. Curso: Iniciación a la IA */}
+            {/* 3. Curso: Iniciación a la IA (Personalizado) */}
             <section className="py-24 bg-[#050505]">
                 <div className="container px-6 md:px-12 lg:px-24">
+                    <div className="text-center max-w-4xl mx-auto mb-20">
+                        <h2 className="text-4xl md:text-6xl font-light text-white mb-6">
+                            Iniciación a la IA <br />
+                            <span className="text-[#808080]">(Curso Personalizado)</span>
+                        </h2>
+                        <p className="text-xl text-[#c8c8c8] font-light max-w-2xl mx-auto">
+                            Aprende inteligencia artificial desde cero con un plan totalmente adaptado a tu nivel, tus objetivos y tu ritmo.
+                        </p>
+                    </div>
 
-                    {/* Bloque 1: Esta formación es para ti si... - AJUSTE 1 */}
+                    {/* Bloque 1: Contexto */}
                     <div className="mb-24 max-w-4xl mx-auto">
                         <div className="bg-[#0a0a0a] border border-[#2a2a2a] rounded-2xl p-8 md:p-12">
-                            <h3 className="text-3xl font-light text-white mb-10 text-center">
-                                Esta formación es para ti si…
+                            <h3 className="text-2xl font-light text-white mb-8">
+                                La mayoría de personas quieren aprender IA, pero no saben por dónde empezar.
                             </h3>
-                            <ul className="space-y-4 mb-8">
-                                {[
-                                    "Ves que la IA avanza cada semana y sientes que te estás quedando atrás.",
-                                    "Te interesa crear imágenes y vídeos profesionales con IA, pero no sabes qué herramientas usar ni cómo promptear.",
-                                    "Has probado IA alguna vez, pero te abruma la cantidad de funciones y no sabes por dónde empezar.",
-                                    "Quieres aprender a tu ritmo, sin teorías inútiles, solo lo que realmente vas a usar.",
-                                    "Te gustaría automatizar tareas básicas, pero todo te suena demasiado técnico.",
-                                    "Quieres mejorar tu perfil profesional y aprovechar la IA, pero no tienes claridad sobre qué aprender primero.",
-                                    "Buscas a alguien que te acompañe paso a paso y adapte la formación a tu nivel y objetivos."
-                                ].map((item, i) => (
-                                    <li key={i} className="flex items-start gap-4 text-[#c8c8c8] text-lg">
-                                        <div className="mt-2 w-1.5 h-1.5 rounded-full bg-[#666] flex-shrink-0" />
-                                        <span>{item}</span>
-                                    </li>
-                                ))}
-                            </ul>
-                            <p className="text-center text-white text-lg font-light pt-6 border-t border-[#2a2a2a]">
-                                Si te has identificado con una sola de estas frases, esta formación te va a cambiar el juego.
-                            </p>
+                            <div className="grid md:grid-cols-2 gap-6 mb-10">
+                                <ul className="space-y-4">
+                                    {[
+                                        "Quiero aprender a hacer imágenes profesionales pero no sé prompting",
+                                        "Quiero usar NanoBanana pero nunca me sale lo que quiero",
+                                        "Quiero aprender a usar NotebookLM pero no sé ni por dónde empezar",
+                                        "No sé qué herramientas existen ni para qué sirve cada una"
+                                    ].map((item, i) => (
+                                        <li key={i} className="flex items-start gap-3 text-[#a0a0a0]">
+                                            <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-[#444] flex-shrink-0" />
+                                            {item}
+                                        </li>
+                                    ))}
+                                </ul>
+                                <ul className="space-y-4">
+                                    {[
+                                        "Me gustaría generar vídeos con IA, pero no sé qué herramientas usar",
+                                        "Quiero crear automatizaciones, pero me pierdo antes de empezar",
+                                        "Quiero aprender IA porque quiero cambiar de trabajo"
+                                    ].map((item, i) => (
+                                        <li key={i} className="flex items-start gap-3 text-[#a0a0a0]">
+                                            <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-[#444] flex-shrink-0" />
+                                            {item}
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                            <div className="p-6 bg-[#111] rounded-xl border border-[#333] text-center">
+                                <p className="text-white text-lg font-medium">
+                                    Este curso soluciona exactamente eso. <br />
+                                    <span className="text-[#a0a0a0] font-normal">Vas a aprender justo lo que necesitas, sin perder tiempo, sin teoría basura y sin humo.</span>
+                                </p>
+                            </div>
                         </div>
                     </div>
 
@@ -257,17 +283,10 @@ export default function PersonalTrainingPage() {
                         </div>
                     </div>
 
-                    {/* Banner: Tú decides cuánto aprendes - AJUSTE 4 */}
-                    <div className="mb-24 py-20">
-                        <h3 className="text-5xl md:text-6xl font-light text-white text-left max-w-5xl">
-                            Tú decides cuánto aprendes, tú decides cuánto pagas.
-                        </h3>
-                    </div>
-
-                    {/* Bloque 3: Lo que incluye este curso - AJUSTE 7 (BLOCKS) */}
+                    {/* Bloque 3: Lo que incluye este curso (MOVED UP & GREEN ICONS) */}
                     <div className="mb-24">
                         <h3 className="text-3xl font-light text-white mb-16 text-center">Lo que incluye este curso</h3>
-                        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-12">
                             {[
                                 { icon: Users, title: "1 a 1 conmigo", text: "Formación directa, sin grabaciones ni intermediarios." },
                                 { icon: Fingerprint, title: "100% Personalizado", text: "No hay temario fijo: se adapta a tus metas y ritmo." },
@@ -279,9 +298,9 @@ export default function PersonalTrainingPage() {
                                 { icon: HelpCircle, title: "Soporte continuo", text: "Resolución de dudas y acompañamiento durante el proceso." },
                                 { icon: TrendingUp, title: "Asesoría profesional", text: "Cómo monetizar tus nuevas habilidades." }
                             ].map((item, i) => (
-                                <div key={i} className="bg-[#0a0a0a] border border-[#2a2a2a] p-8 rounded-2xl hover:border-[#82ff1f]/50 transition-colors group">
-                                    <div className="w-14 h-14 bg-[#111] rounded-xl flex items-center justify-center mb-6 border border-[#333] group-hover:border-[#82ff1f]/50 transition-colors">
-                                        <item.icon className="h-7 w-7 text-[#82ff1f]" />
+                                <div key={i} className="text-center group">
+                                    <div className="w-16 h-16 mx-auto bg-[#0a0a0a] rounded-2xl flex items-center justify-center mb-6 border border-[#2a2a2a] group-hover:border-[#82ff1f]/50 transition-colors">
+                                        <item.icon className="h-8 w-8 text-[#82ff1f]" />
                                     </div>
                                     <h4 className="text-xl text-white font-medium mb-3">{item.title}</h4>
                                     <p className="text-[#a0a0a0] leading-relaxed">{item.text}</p>
@@ -290,7 +309,7 @@ export default function PersonalTrainingPage() {
                         </div>
                     </div>
 
-                    {/* Bloque 4: Por qué es personalizado */}
+                    {/* Bloque 4: Por qué es personalizado (MOVED DOWN & HIGHLIGHT) */}
                     <div className="mb-24">
                         <div className="bg-[#0a0a0a] border border-[#2a2a2a] p-10 md:p-14 rounded-3xl">
                             <h3 className="text-3xl font-light text-white mb-12 text-center">¿Por qué es <span className="text-[#82ff1f]">personalizado</span>?</h3>
@@ -330,7 +349,9 @@ export default function PersonalTrainingPage() {
                                 Quiero empezar
                             </a>
                             <a
-                                href="/reserva"
+                                href="https://calendly.com/aetherlabs"
+                                target="_blank"
+                                rel="noopener noreferrer"
                                 className="inline-flex items-center justify-center bg-transparent text-white border border-[#333] font-medium text-lg py-4 px-10 rounded-full transition-all hover:bg-[#1a1a1a]"
                             >
                                 Hablar contigo
@@ -344,37 +365,22 @@ export default function PersonalTrainingPage() {
             <section className="py-24 bg-[#050505]">
                 <div className="container px-6 md:px-12 lg:px-24">
 
-                    {/* Storytelling - AJUSTE 9 */}
+                    {/* Storytelling */}
                     <div className="grid lg:grid-cols-2 gap-16 items-center mb-32">
                         <div>
                             <h2 className="text-3xl font-light text-white mb-8">Por qué formarte conmigo</h2>
-                            <div className="prose prose-invert text-[#a0a0a0] leading-relaxed mb-8 space-y-4">
-                                <p className="text-lg text-white font-medium">
-                                    Soy Víctor Torres, consultor y desarrollador de soluciones de IA para empresas y particulares.
+                            <div className="prose prose-invert text-[#a0a0a0] leading-relaxed mb-8">
+                                <p className="text-lg text-white font-medium mb-4">
+                                    Soy Víctor Torres, consultor y desarrollador de soluciones de IA para empresas reales.
+                                </p>
+                                <p className="mb-4">
+                                    No enseño teoría. Enseño lo que uso cada día con negocios de verdad: automatizaciones, agentes IA, generación de contenido, workflows y modelos personalizados.
+                                </p>
+                                <p className="mb-4">
+                                    Durante los últimos años he trabajado con clínicas, restaurantes, academias, inmobiliarias, e-commerce y profesionales independientes.
                                 </p>
                                 <p>
-                                    Llevo más de 10 años en marketing y ventas, 5 liderando proyectos y equipos y 3 con Inteligencia artificial. No soy el mayor experto del mundo, no voy a venderte humo, pero si he aprendido mucho estos años y trabajado con la IA.
-                                </p>
-                                <p>
-                                    Durante estos últimos años he trabajado con starups de IA ayudándoles a crecer, y también he implementado servicios de IA a negocios locales como clínicas o academias.
-                                </p>
-                                <p>
-                                    Nunca me he llevado bien con los profesores. Me aburrían, siempre me han enseñado lo que ellos querían, no lo que yo necesitaba. Así que aquí no vas a tomar apuntes. Aquí vas a aprender a hacer cosas desde el minuto 1, mediante la práctica y los resultados reales.
-                                </p>
-                                <p className="text-white font-medium">
-                                    Y totalmente adaptado a tí.
-                                </p>
-                                <p>
-                                    Enseño lo que uso cada día con negocios de verdad: automatizaciones, agentes IA, generación de contenido, workflows y modelos personalizados, pero también te enseñaré lo que más me gusta de la IA, que es pasarmelo bien creando vídeos, imágenes y apps.
-                                </p>
-                                <p>
-                                    Lo que enseño es exactamente lo que aplico, y lo que pretendo es que sepas usar la IA para tú mismo decidir por qué camino optar, porque es un mundo gigante.
-                                </p>
-                                <p className="text-xl text-white font-medium">
-                                    Literalmente la mayor oportunidad del siglo.
-                                </p>
-                                <p className="text-xl text-white font-medium">
-                                    La aprovechamos?
+                                    Lo que enseño es exactamente lo que aplico para ellos… y lo que tú también aprenderás a hacer. Mi objetivo no es que aprendas “IA futurista”, sino que la adoptes de forma práctica y rentable desde el primer día.
                                 </p>
                             </div>
                             <div className="flex flex-wrap gap-3">
@@ -423,12 +429,13 @@ export default function PersonalTrainingPage() {
                         </div>
                     </div>
 
-                    {/* Timeline Proceso */}
+                    {/* Timeline Proceso (NEW VERTICAL DESIGN) */}
                     <section className="py-12 bg-black">
                         <div className="container px-6">
                             <h2 className="text-3xl md:text-4xl font-light mb-20 text-center">Cómo funciona el proceso</h2>
 
                             <div className="relative max-w-4xl mx-auto">
+                                {/* Line */}
                                 <div className="absolute left-[15px] top-0 bottom-0 w-0.5 bg-white/10 md:left-1/2 md:-translate-x-1/2" />
 
                                 {[
@@ -439,13 +446,16 @@ export default function PersonalTrainingPage() {
                                     { step: "05", title: "Roadmap final", desc: "Guía para que sigas creciendo solo." }
                                 ].map((item, i) => (
                                     <div key={i} className={`relative flex items-center gap-8 mb-12 md:mb-24 ${i % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
+                                        {/* Dot */}
                                         <div className="absolute left-0 md:left-1/2 md:-translate-x-1/2 w-8 h-8 rounded-full bg-black border-4 border-[#1a1a1a] z-10" />
 
+                                        {/* Content */}
                                         <div className={`ml-12 md:ml-0 md:w-1/2 ${i % 2 === 0 ? 'md:pr-16 md:text-right' : 'md:pl-16 md:text-left'}`}>
                                             <span className="text-xs font-bold text-[#82ff1f] tracking-widest mb-2 block">PASO {item.step}</span>
                                             <h3 className="text-2xl font-light text-white mb-2">{item.title}</h3>
                                             <p className="text-[#808080]">{item.desc}</p>
                                         </div>
+                                        {/* Empty half for desktop layout balance */}
                                         <div className="hidden md:block md:w-1/2" />
                                     </div>
                                 ))}
@@ -471,7 +481,9 @@ export default function PersonalTrainingPage() {
                                 Quiero formarme
                             </a>
                             <a
-                                href="/reserva"
+                                href="https://calendly.com/aetherlabs"
+                                target="_blank"
+                                rel="noopener noreferrer"
                                 className="inline-flex items-center justify-center bg-transparent text-white border border-[#333] font-medium text-lg py-4 px-12 rounded-full transition-all hover:bg-[#1a1a1a]"
                             >
                                 Dudas
@@ -485,7 +497,7 @@ export default function PersonalTrainingPage() {
                 </div>
             </section>
 
-            {/* 6. FAQ */}
+            {/* 6. FAQ (Opcional) */}
             <section className="py-24 bg-black border-t border-[#1a1a1a]">
                 <div className="container px-6 md:px-12 lg:px-24">
                     <h3 className="text-2xl font-light text-white mb-12 text-center">Preguntas Frecuentes</h3>
