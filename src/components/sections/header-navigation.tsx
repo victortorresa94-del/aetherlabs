@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import Image from "next/image";
 
 interface NavItem {
@@ -11,32 +11,42 @@ interface NavItem {
   subItems?: NavItem[];
 }
 
-const navItems: NavItem[] = [
-  { label: "Inicio", href: "/" },
-  { 
-    label: "Servicios", 
-    href: "/servicios",
-    subItems: [
-      { label: "IA Generativa", href: "/servicios/ia-generativa" },
-      { label: "Automatización", href: "/servicios/automatizacion" }
-    ]
-  },
-  { 
-    label: "Labs", 
-    href: "/labs",
-    subItems: [
-      { label: "Creative Lab", href: "/labs/creative" },
-      { label: "Agents Lab", href: "/labs/agents" }
-    ]
-  },
-  { label: "Proyectos", href: "/proyectos" },
-  { label: "Sobre&nbsp;nosotros", href: "/sobre-nosotros" },
-];
-
 const HeaderNavigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+
+  const navItems: NavItem[] = [
+    { label: "Inicio", href: "/" },
+    {
+      label: "Servicios",
+      href: "/servicios",
+      subItems: [
+        { label: "IA Generativa", href: "/servicios/ia-generativa" },
+        { label: "Automatización", href: "/servicios/automatizacion" },
+        { label: "IA a Medida", href: "/servicios/ia-a-medida" }
+      ]
+    },
+    {
+      label: "Labs",
+      href: "/labs",
+      subItems: [
+        { label: "Creative Lab", href: "/labs/creative" },
+        { label: "Agents Lab", href: "/labs/agents" },
+        { label: "LLM Lab", href: "/labs/llm-lab" }
+      ]
+    },
+    {
+      label: "Learn",
+      href: "/learn/personal",
+      subItems: [
+        { label: "Para Personas", href: "/learn/personal" },
+        { label: "Para Empresas", href: "/learn/corporate" }
+      ]
+    },
+    { label: "Proyectos", href: "/proyectos" },
+    { label: "Sobre&nbsp;nosotros", href: "/sobre-nosotros" },
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -97,7 +107,7 @@ const HeaderNavigation = () => {
       </li>
     );
   };
-   
+
   const renderMobileNavItem = (item: NavItem) => (
     <div key={item.label} className="py-3 border-b border-[#2a2a2a] last:border-b-0">
       {item.subItems ? (
@@ -130,9 +140,8 @@ const HeaderNavigation = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${
-        isScrolled || isMobileMenuOpen ? "bg-black" : "bg-transparent"
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${isScrolled || isMobileMenuOpen ? "bg-black" : "bg-transparent"
+        }`}
     >
       <div className="container h-[90px] flex items-center justify-between">
         <div className="flex-1 flex justify-start">

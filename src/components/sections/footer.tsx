@@ -3,31 +3,32 @@ import Image from 'next/image';
 
 const Footer = () => {
   return (
-    <footer className="bg-white text-black py-20">
+    <footer className="bg-white text-black py-12 border-t border-gray-100">
       <div className="container">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-16 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           {/* Logo y descripción */}
           <div>
-            <div className="flex items-center mb-6">
-              <Image
-                src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/LOGO-OK-1763511624593.png"
-                alt="Aether Labs"
-                width={200}
-                height={60}
-                className="h-12 w-auto brightness-0"
-              />
+            <div className="flex items-center mb-4">
+              <div className="relative h-16 w-80">
+                <Image
+                  src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/LOGO-OK-1763511624593.png"
+                  alt="Aether Labs"
+                  fill
+                  className="object-contain object-left invert"
+                />
+              </div>
             </div>
-            <p className="text-base text-gray-600 leading-relaxed">
+            <p className="text-sm text-gray-600 leading-relaxed max-w-xs">
               Transformando lo complejo en simple con inteligencia artificial.
             </p>
           </div>
 
           {/* Contacto */}
           <div>
-            <h3 className="text-uppercase-label text-black mb-6 tracking-wider">
+            <h3 className="text-xs font-semibold uppercase tracking-wider text-black mb-4">
               Contacto
             </h3>
-            <div className="space-y-3 text-base">
+            <div className="space-y-2 text-sm">
               <p>
                 <a href="mailto:hola@aetherlabs.es" className="hover:text-gray-600 transition-colors duration-200">
                   hola@aetherlabs.es
@@ -41,30 +42,30 @@ const Footer = () => {
 
           {/* Enlaces */}
           <div>
-            <h3 className="text-uppercase-label text-black mb-6 tracking-wider">
+            <h3 className="text-xs font-semibold uppercase tracking-wider text-black mb-4">
               Empresa
             </h3>
-            <nav className="flex flex-col space-y-3 text-base">
-              <Link href="/" className="hover:text-gray-600 transition-colors duration-200 ease-out">
+            <nav className="flex flex-col space-y-2 text-sm">
+              <Link href="/" className="hover:text-gray-600 transition-colors duration-200 ease-out w-fit">
                 Inicio
               </Link>
-              <Link href="/servicios" className="hover:text-gray-600 transition-colors duration-200 ease-out">
+              <Link href="/servicios" className="hover:text-gray-600 transition-colors duration-200 ease-out w-fit">
                 Servicios
               </Link>
-              <Link href="/labs" className="hover:text-gray-600 transition-colors duration-200 ease-out">
+              <Link href="/labs" className="hover:text-gray-600 transition-colors duration-200 ease-out w-fit">
                 Labs
               </Link>
-              <Link href="/proyectos" className="hover:text-gray-600 transition-colors duration-200 ease-out">
+              <Link href="/proyectos" className="hover:text-gray-600 transition-colors duration-200 ease-out w-fit">
                 Proyectos
               </Link>
-              <Link href="/sobre-nosotros" className="hover:text-gray-600 transition-colors duration-200 ease-out">
+              <Link href="/sobre-nosotros" className="hover:text-gray-600 transition-colors duration-200 ease-out w-fit">
                 Sobre Nosotros
               </Link>
             </nav>
           </div>
         </div>
 
-        <div className="pt-10 border-t border-gray-200 text-center text-sm text-gray-600">
+        <div className="pt-8 border-t border-gray-100 text-center text-xs text-gray-500">
           <p>&copy; {new Date().getFullYear()} Aether Labs. Todos los derechos reservados.</p>
         </div>
       </div>

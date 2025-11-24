@@ -14,6 +14,7 @@ interface ProjectDetailProps {
   results: string[];
   heroImage: string;
   gallery: string[];
+  projectLink?: string;
 }
 
 export default function ProjectDetail({
@@ -28,19 +29,20 @@ export default function ProjectDetail({
   results,
   heroImage,
   gallery,
+  projectLink,
 }: ProjectDetailProps) {
   return (
     <main className="bg-black text-white min-h-screen pt-32">
       {/* Header del Proyecto - Alineado con el estilo Hero de Orchids */}
       <section className="container px-6 md:px-12 lg:px-24 pb-16">
-        <Link 
-          href="/proyectos" 
+        <Link
+          href="/proyectos"
           className="inline-flex items-center text-sm text-[#a0a0a0] hover:text-white transition-colors mb-12 group"
         >
           <ArrowLeft className="w-4 h-4 mr-2 transition-transform group-hover:-translate-x-1" />
           Volver a proyectos
         </Link>
-        
+
         <div className="max-w-5xl">
           <p className="text-xs uppercase tracking-[0.2em] text-[#808080] mb-6">
             {category}
@@ -55,28 +57,26 @@ export default function ProjectDetail({
         </div>
       </section>
 
-      {/* Hero Image - Sin efectos raros, borde sutil */}
-      <section className="container px-6 md:px-12 lg:px-24 mb-24">
-        <div className="relative aspect-video w-full overflow-hidden rounded-2xl border border-[#2a2a2a]">
-          <Image 
-            src={heroImage} 
-            alt={title}
-            fill
-            className="object-cover"
-            priority
-          />
-        </div>
-      </section>
-
       {/* Detalles y Narrativa */}
       <section className="container px-6 md:px-12 lg:px-24 mb-32">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
-          
+
           {/* Sidebar con datos - Estilo tarjeta oscura */}
           <div className="lg:col-span-4">
             <div className="p-8 rounded-2xl bg-[#0a0a0a] border border-[#2a2a2a] sticky top-32">
+              {/* Imagen movida al sidebar */}
+              <div className="relative aspect-video w-full overflow-hidden rounded-xl border border-[#2a2a2a] mb-8">
+                <Image
+                  src={heroImage}
+                  alt={title}
+                  fill
+                  className="object-cover"
+                  priority
+                />
+              </div>
+
               <h3 className="text-lg font-medium text-white mb-8">Ficha Técnica</h3>
-              
+
               <div className="space-y-8">
                 <div>
                   <p className="text-xs text-[#808080] uppercase tracking-wider mb-2">Cliente</p>
@@ -98,13 +98,28 @@ export default function ProjectDetail({
                     ))}
                   </div>
                 </div>
+                {projectLink && (
+                  <>
+                    <div className="w-full h-px bg-[#2a2a2a]" />
+                    <div className="pt-2">
+                      <a
+                        href={projectLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block w-full text-center bg-white text-black font-semibold text-sm py-3 rounded-full transition-all hover:scale-105 hover:shadow-[0_0_15px_rgba(255,255,255,0.1)]"
+                      >
+                        Ver solución
+                      </a>
+                    </div>
+                  </>
+                )}
               </div>
             </div>
           </div>
 
           {/* Contenido Principal - Limpio, sin iconos de colores */}
           <div className="lg:col-span-8 space-y-20">
-            
+
             {/* El Reto */}
             <div>
               <div className="flex items-center gap-4 mb-6">
@@ -147,23 +162,6 @@ export default function ProjectDetail({
         </div>
       </section>
 
-      {/* Galería Visual Extra */}
-      <section className="container px-6 md:px-12 lg:px-24 mb-32">
-        <p className="text-xs uppercase tracking-wider text-[#808080] mb-8">Galería del proceso</p>
-        <div className="grid md:grid-cols-2 gap-4">
-          {gallery.map((img, i) => (
-            <div key={i} className="relative aspect-[4/3] rounded-xl overflow-hidden border border-[#2a2a2a] group">
-              <Image 
-                src={img} 
-                alt={`Gallery ${i}`} 
-                fill 
-                className="object-cover transition-transform duration-700 ease-out group-hover:scale-105 opacity-90 group-hover:opacity-100"
-              />
-            </div>
-          ))}
-        </div>
-      </section>
-
       {/* CTA Final - Minimalista */}
       <section className="py-32 bg-[#0a0a0a] border-t border-[#2a2a2a]">
         <div className="container text-center">
@@ -173,7 +171,7 @@ export default function ProjectDetail({
           <p className="text-lg text-[#a0a0a0] mb-12 max-w-2xl mx-auto font-light">
             Hablemos de cómo podemos aplicar esta misma tecnología a tu negocio hoy mismo.
           </p>
-          <Link 
+          <Link
             href="/contacto"
             className="inline-block bg-white text-black font-semibold text-sm tracking-wide py-4 px-10 rounded-full transition-all duration-200 hover:scale-105 hover:shadow-[0_0_20px_rgba(255,255,255,0.15)]"
           >

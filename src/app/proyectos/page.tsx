@@ -49,7 +49,7 @@ export default function ProyectosPage() {
     {
       title: 'Suma Salut',
       category: 'Automatización',
-      description: 'Sistema de automatización para clínica de salud. Agente de atención telefónica, bot de WhatsApp y organización interna con ClickUp.',
+      description: 'Asistente web de reservas y consultas frecuentes conectado al CRM. Libera al equipo y mejora tiempos de respuesta.',
       technologies: ['Agentes IA', 'Automatización', 'Integraciones'],
       deliverables: [
         'Agente de voz',
@@ -69,7 +69,7 @@ export default function ProyectosPage() {
     {
       title: 'Nova Burger',
       category: 'IA Generativa',
-      description: 'Anuncio televisivo para cadena de hamburguesas. Producto hero shots, ambientación y secuencias animadas generadas con IA.',
+      description: 'Sistema IA que genera cartelería profesional, contenido social y fotos de producto desde una sola imagen. Ideal para franquicias con lanzamientos constantes.',
       technologies: ['IA Generativa', 'Food Photography', 'Motion'],
       deliverables: [
         'Spot TV 30s',
@@ -79,7 +79,7 @@ export default function ProyectosPage() {
       ],
       // Imagen de hamburguesa gourmet
       image: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=1000&auto=format&fit=crop',
-      link: '/contacto', // Placeholder hasta crear carpeta
+      link: '/proyectos/nova-burger',
       stats: {
         timeframe: '2 semanas',
         deliverables: '25',
@@ -89,7 +89,7 @@ export default function ProyectosPage() {
     {
       title: 'LuxHome Real Estate',
       category: 'IA Generativa',
-      description: 'Tours virtuales y virtual staging para agencia inmobiliaria de lujo. Transformación de espacios vacíos en hogares amueblados.',
+      description: 'Virtual staging y tours generados con IA para inmobiliarias de lujo. Reduce costes y acelera ventas.',
       technologies: ['Virtual Staging', 'Tours 360', 'Fotografía'],
       deliverables: [
         '5 tours 360°',
@@ -99,7 +99,7 @@ export default function ProyectosPage() {
       ],
       // Imagen de interior de lujo
       image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=1000&auto=format&fit=crop',
-      link: '/contacto', // Placeholder hasta crear carpeta
+      link: '/proyectos/luxhome',
       stats: {
         timeframe: '3 semanas',
         properties: '5',
@@ -109,7 +109,7 @@ export default function ProyectosPage() {
     {
       title: 'FitPro Academy',
       category: 'Automatización',
-      description: 'Sistema de gestión automatizada para academia de fitness. Agente de ventas, onboarding automático y seguimiento personalizado.',
+      description: 'Plataforma automatizada para gimnasios: ventas, onboarding y seguimiento. Incrementa conversión y retención.',
       technologies: ['Agentes IA', 'CRM Automation', 'Email Marketing'],
       deliverables: [
         'Agente ventas',
@@ -119,7 +119,7 @@ export default function ProyectosPage() {
       ],
       // Imagen de fitness/tecnología
       image: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1000&auto=format&fit=crop',
-      link: '/contacto', // Placeholder hasta crear carpeta
+      link: '/proyectos/fitpro-academy',
       stats: {
         timeframe: '5 semanas',
         conversion: '+45%',
@@ -131,7 +131,7 @@ export default function ProyectosPage() {
   return (
     <main className="min-h-screen bg-black">
       <HeaderNavigation />
-      
+
       <section className="pt-32 pb-20 bg-black">
         <div className="container">
           <div className="max-w-4xl mx-auto text-center">
