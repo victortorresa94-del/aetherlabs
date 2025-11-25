@@ -62,9 +62,7 @@ export default function PersonalTrainingPage() {
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
                             <a
-                                href="https://wa.me/34627281459"
-                                target="_blank"
-                                rel="noopener noreferrer"
+                                href="/reserva"
                                 className="inline-flex items-center justify-center bg-white text-black font-semibold text-lg py-4 px-8 rounded-full transition-all duration-200 hover:scale-105 hover:shadow-[0_0_20px_rgba(255,255,255,0.2)]"
                             >
                                 Quiero formarme
@@ -75,11 +73,25 @@ export default function PersonalTrainingPage() {
                 </div>
             </section>
 
+            {/* 1.5 Video Section */}
+            <section className="w-full bg-[#0a0a0a] border-b border-[#1a1a1a]">
+                <div className="w-full max-w-[1920px] mx-auto">
+                    <div className="relative aspect-video w-full max-h-[80vh] overflow-hidden bg-black">
+                        <video
+                            src="/videos/landing-intro.mp4"
+                            controls
+                            playsInline
+                            className="w-full h-full object-cover"
+                        />
+                    </div>
+                </div>
+            </section>
+
             {/* 2. Formación personalizada 1:1 para personas */}
             <section className="py-24 bg-black border-t border-[#1a1a1a]">
                 <div className="container px-6 md:px-12 lg:px-24">
-                    <div className="bg-[#0a0a0a] rounded-3xl p-8 md:p-16 border border-[#2a2a2a]">
-                        <div className="grid lg:grid-cols-2 gap-16 items-center">
+                    <div className="bg-[#0a0a0a] rounded-3xl p-6 md:p-16 border border-[#2a2a2a]">
+                        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
                             <div>
                                 <div className="inline-block px-4 py-1.5 rounded-full border border-[#333] bg-[#111] text-xs font-medium tracking-wider text-[#a0a0a0] mb-6 uppercase">
                                     Mentoria 1 a 1
@@ -138,7 +150,7 @@ export default function PersonalTrainingPage() {
 
                             <div className="relative">
                                 <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-500/10 blur-3xl rounded-full" />
-                                <div className="relative bg-[#111] rounded-2xl p-8 border border-[#2a2a2a]">
+                                <div className="relative bg-[#111] rounded-2xl p-6 md:p-8 border border-[#2a2a2a]">
                                     <h3 className="text-xl font-semibold text-white mb-6">
                                         Plan 100% personalizado
                                     </h3>
@@ -167,34 +179,6 @@ export default function PersonalTrainingPage() {
             <section className="py-24 bg-[#050505]">
                 <div className="container px-6 md:px-12 lg:px-24">
 
-                    {/* Bloque 1: Esta formación es para ti si... - AJUSTE 1 */}
-                    <div className="mb-24 max-w-4xl mx-auto">
-                        <div className="bg-[#0a0a0a] border border-[#2a2a2a] rounded-2xl p-8 md:p-12">
-                            <h3 className="text-3xl font-light text-white mb-10 text-center">
-                                Esta formación es para ti si…
-                            </h3>
-                            <ul className="space-y-4 mb-8">
-                                {[
-                                    "Ves que la IA avanza cada semana y sientes que te estás quedando atrás.",
-                                    "Te interesa crear imágenes y vídeos profesionales con IA, pero no sabes qué herramientas usar ni cómo promptear.",
-                                    "Has probado IA alguna vez, pero te abruma la cantidad de funciones y no sabes por dónde empezar.",
-                                    "Quieres aprender a tu ritmo, sin teorías inútiles, solo lo que realmente vas a usar.",
-                                    "Te gustaría automatizar tareas básicas, pero todo te suena demasiado técnico.",
-                                    "Quieres mejorar tu perfil profesional y aprovechar la IA, pero no tienes claridad sobre qué aprender primero.",
-                                    "Buscas a alguien que te acompañe paso a paso y adapte la formación a tu nivel y objetivos."
-                                ].map((item, i) => (
-                                    <li key={i} className="flex items-start gap-4 text-[#c8c8c8] text-lg">
-                                        <div className="mt-2 w-1.5 h-1.5 rounded-full bg-[#666] flex-shrink-0" />
-                                        <span>{item}</span>
-                                    </li>
-                                ))}
-                            </ul>
-                            <p className="text-center text-white text-lg font-light pt-6 border-t border-[#2a2a2a]">
-                                Si te has identificado con una sola de estas frases, esta formación te va a cambiar el juego.
-                            </p>
-                        </div>
-                    </div>
-
                     {/* Bloque 2: Qué aprenderás */}
                     <div className="mb-24">
                         <h3 className="text-3xl font-light text-white mb-12 text-center">¿Qué aprenderás exactamente?</h3>
@@ -203,55 +187,89 @@ export default function PersonalTrainingPage() {
                                 {
                                     icon: Brain,
                                     title: "Fundamentos de IA",
-                                    items: ["Modelos modernos", "Qué es un LLM", "Razonamiento", "Expectativas vs Realidad"]
+                                    items: ["Modelos modernos", "Qué es un LLM", "Razonamiento", "Expectativas vs Realidad"],
+                                    image: "/images/learn/fundamentos.jpg"
                                 },
                                 {
                                     icon: MessageSquare,
                                     title: "Prompting PRO",
-                                    items: ["Pedir correctamente", "Alta precisión", "Texto, imagen y vídeo", "Estructuras avanzadas"]
+                                    items: ["Pedir correctamente", "Alta precisión", "Texto, imagen y vídeo", "Estructuras avanzadas"],
+                                    image: "/images/learn/prompting.jpg"
                                 },
                                 {
                                     icon: ImageIcon,
                                     title: "Imágenes (NanoBanana)",
-                                    items: ["Fotorealismo", "Fijar estilos", "Evitar errores", "Sets de marca"]
+                                    items: ["Fotorealismo", "Fijar estilos", "Evitar errores", "Sets de marca"],
+                                    image: "/images/learn/nano-banana-user.jpg"
                                 },
                                 {
                                     icon: Video,
                                     title: "Video con IA",
-                                    items: ["Generar desde cero", "Herramientas top", "Ads / Lifestyle", "Consistencia"]
+                                    items: ["Generar desde cero", "Herramientas top", "Ads / Lifestyle", "Consistencia"],
+                                    image: "",
+                                    video: "/videos/hero.mp4"
                                 },
                                 {
-                                    icon: BookOpen,
-                                    title: "NotebookLM",
-                                    items: ["Tu IA personal", "Extraer info", "Estudiar rápido", "Proyectos y análisis"]
+                                    icon: Laptop,
+                                    title: "Hacer tu web con IA",
+                                    items: ["Crear estructura", "Generar copy", "Imágenes y assets", "Publicar en minutos"],
+                                    image: "/images/learn/web.jpg"
                                 },
                                 {
                                     icon: Zap,
                                     title: "Tu primer Chatbot",
-                                    items: ["Arquitectura simple", "Chatbot operativo", "Uso personal/negocio", "Integración básica"]
+                                    items: ["Arquitectura simple", "Chatbot operativo", "Uso personal/negocio", "Integración básica"],
+                                    image: "/images/learn/chatbot-lifestyle.png"
                                 },
                                 {
                                     icon: Settings,
                                     title: "Automatización",
-                                    items: ["Tareas reales", "n8n, Make, Zapier", "Tu primera auto", "Ahorro de tiempo"]
+                                    items: ["Tareas reales", "n8n, Make, Zapier", "Tu primera auto", "Ahorro de tiempo"],
+                                    image: "/images/learn/automatizacion.jpg"
                                 },
                                 {
                                     icon: Briefcase,
                                     title: "Salidas laborales",
-                                    items: ["Nuevos trabajos", "Cómo entrar al sector", "Habilidades cotizadas", "Futuro profesional"]
+                                    items: ["Nuevos trabajos", "Cómo entrar al sector", "Habilidades cotizadas", "Futuro profesional"],
+                                    image: "/images/learn/trabajo.jpg"
                                 }
                             ].map((card, i) => (
-                                <div key={i} className="bg-[#0a0a0a] border border-[#2a2a2a] p-6 rounded-2xl hover:border-[#444] transition-colors group">
-                                    <card.icon className="h-8 w-8 text-white mb-6 group-hover:scale-110 transition-transform" />
-                                    <h4 className="text-lg font-semibold text-white mb-4">{card.title}</h4>
-                                    <ul className="space-y-2">
-                                        {card.items.map((item, j) => (
-                                            <li key={j} className="text-sm text-[#808080] flex items-center gap-2">
-                                                <div className="w-1 h-1 rounded-full bg-[#444]" />
-                                                {item}
-                                            </li>
-                                        ))}
-                                    </ul>
+                                <div key={i} className="bg-[#0a0a0a] border border-[#2a2a2a] rounded-2xl overflow-hidden hover:border-[#444] transition-colors group flex flex-col">
+                                    <div className="h-40 relative overflow-hidden">
+                                        <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] to-transparent z-10" />
+                                        {/* @ts-ignore */}
+                                        {card.video ? (
+                                            <video
+                                                src={card.video}
+                                                autoPlay
+                                                loop
+                                                muted
+                                                playsInline
+                                                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                            />
+                                        ) : (
+                                            <Image
+                                                src={card.image}
+                                                alt={card.title}
+                                                fill
+                                                className="object-cover group-hover:scale-105 transition-transform duration-500"
+                                            />
+                                        )}
+                                        <div className="absolute bottom-4 left-6 z-20 bg-black/50 backdrop-blur-md p-2 rounded-lg border border-white/10">
+                                            <card.icon className="h-6 w-6 text-white" />
+                                        </div>
+                                    </div>
+                                    <div className="p-6 pt-2 flex-1 flex flex-col">
+                                        <h4 className="text-lg font-semibold text-white mb-4">{card.title}</h4>
+                                        <ul className="space-y-2 mt-auto">
+                                            {card.items.map((item, j) => (
+                                                <li key={j} className="text-sm text-[#808080] flex items-center gap-2">
+                                                    <div className="w-1 h-1 rounded-full bg-[#444]" />
+                                                    {item}
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
                                 </div>
                             ))}
                         </div>
@@ -264,7 +282,52 @@ export default function PersonalTrainingPage() {
                         </h3>
                     </div>
 
-                    {/* Bloque 3: Lo que incluye este curso - AJUSTE 7 (BLOCKS) */}
+                    {/* Bloque 1: Esta formación es para ti si... */}
+                    <div className="mb-24 w-full">
+                        <div className="bg-[#0a0a0a] border border-[#2a2a2a] rounded-3xl overflow-hidden">
+                            <div className="grid lg:grid-cols-[40%_60%]">
+                                {/* Columna Imagen */}
+                                <div className="relative min-h-[300px] lg:h-full border-b lg:border-b-0 lg:border-r border-[#2a2a2a]">
+                                    <Image
+                                        src="/images/learn/learning-session-elegant.png"
+                                        alt="Sesión de formación IA"
+                                        fill
+                                        className="object-cover"
+                                    />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent lg:bg-gradient-to-r lg:from-transparent lg:to-black/20" />
+                                </div>
+
+                                {/* Columna Texto */}
+                                <div className="p-6 md:p-12 lg:p-16 flex flex-col justify-center">
+                                    <h3 className="text-3xl font-light text-white mb-8">
+                                        Esta formación es para ti si…
+                                    </h3>
+                                    <ul className="space-y-6 mb-8">
+                                        {[
+                                            { prefix: "Ves que la IA avanza cada semana", suffix: " y sientes que te estás quedando atrás." },
+                                            { prefix: "Te interesa crear imágenes y vídeos", suffix: " profesionales con IA, pero no sabes qué herramientas usar ni cómo promptear." },
+                                            { prefix: "Has probado IA alguna vez", suffix: ", pero te abruma la cantidad de funciones y no sabes por dónde empezar." },
+                                            { prefix: "Quieres aprender a tu ritmo", suffix: ", sin teorías inútiles, solo lo que realmente vas a usar." },
+                                            { prefix: "Te gustaría automatizar tareas básicas", suffix: ", pero todo te suena demasiado técnico." },
+                                            { prefix: "Quieres mejorar tu perfil profesional", suffix: " y aprovechar la IA, pero no tienes claridad sobre qué aprender primero." },
+                                            { prefix: "Buscas a alguien que te acompañe", suffix: " paso a paso y adapte la formación a tu nivel y objetivos." }
+                                        ].map((item, i) => (
+                                            <li key={i} className="flex items-start gap-4 text-[#c8c8c8] text-base md:text-lg leading-relaxed">
+                                                <div className="mt-2 w-1.5 h-1.5 rounded-full bg-white flex-shrink-0 shadow-[0_0_8px_rgba(255,255,255,0.5)]" />
+                                                <span>
+                                                    <span className="text-white font-bold">{item.prefix}</span>
+                                                    {item.suffix}
+                                                </span>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                    <p className="text-white text-lg font-light pt-8 border-t border-[#2a2a2a]">
+                                        Si te has identificado con una sola de estas frases, esta formación te va a cambiar el juego.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div className="mb-24">
                         <h3 className="text-3xl font-light text-white mb-16 text-center">Lo que incluye este curso</h3>
                         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -313,30 +376,6 @@ export default function PersonalTrainingPage() {
                             </ul>
                         </div>
                     </div>
-
-                    {/* Bloque 5: CTA Premium */}
-                    <div className="text-center bg-[#111] border border-[#2a2a2a] rounded-3xl p-12 md:p-20 relative overflow-hidden">
-                        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-white to-transparent opacity-20" />
-                        <h3 className="text-3xl md:text-5xl font-light text-white mb-8">
-                            ¿Quieres aprender IA de verdad, <br /> sin humo y adaptado a ti?
-                        </h3>
-                        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                            <a
-                                href="https://wa.me/34627281459"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="inline-flex items-center justify-center bg-white text-black font-semibold text-lg py-4 px-10 rounded-full transition-all hover:scale-105"
-                            >
-                                Quiero empezar
-                            </a>
-                            <a
-                                href="/reserva"
-                                className="inline-flex items-center justify-center bg-transparent text-white border border-[#333] font-medium text-lg py-4 px-10 rounded-full transition-all hover:bg-[#1a1a1a]"
-                            >
-                                Hablar contigo
-                            </a>
-                        </div>
-                    </div>
                 </div>
             </section>
 
@@ -345,7 +384,7 @@ export default function PersonalTrainingPage() {
                 <div className="container px-6 md:px-12 lg:px-24">
 
                     {/* Storytelling - AJUSTE 9 */}
-                    <div className="grid lg:grid-cols-2 gap-16 items-center mb-32">
+                    <div className="flex flex-col-reverse lg:grid lg:grid-cols-2 gap-8 lg:gap-16 items-center mb-32">
                         <div>
                             <h2 className="text-3xl font-light text-white mb-8">Por qué formarte conmigo</h2>
                             <div className="prose prose-invert text-[#a0a0a0] leading-relaxed mb-8 space-y-4">
@@ -400,26 +439,27 @@ export default function PersonalTrainingPage() {
                         </div>
                     </div>
 
-                    {/* Testimonios */}
-                    <div className="mb-32">
-                        <h3 className="text-2xl font-light text-white mb-12 text-center">Resultados de quienes ya se están formando</h3>
-                        <div className="grid md:grid-cols-3 gap-6">
-                            {[
-                                { name: "Elena Martín", role: "Diseñadora Freelance", text: "En dos sesiones aprendí a usar IA para todo mi contenido. Ahora tardo 4 horas menos por proyecto." },
-                                { name: "Carlos Suárez", role: "Dueño de restaurante", text: "Víctor nos enseñó a automatizar reservas. Hemos reducido llamadas y mejorado el servicio al cliente." },
-                                { name: "Laura Díaz", role: "Estudiante de Marketing", text: "No sabía nada de IA. Ahora hago imágenes profesionales, vídeos y automatizaciones básicas." }
-                            ].map((testimonio, i) => (
-                                <div key={i} className="bg-[#111] p-8 rounded-2xl border border-[#2a2a2a]">
-                                    <div className="flex items-center gap-4 mb-6">
-                                        <div className="w-10 h-10 rounded-full bg-[#333]" />
-                                        <div>
-                                            <p className="text-white font-medium">{testimonio.name}</p>
-                                            <p className="text-xs text-[#808080]">{testimonio.role}</p>
-                                        </div>
-                                    </div>
-                                    <p className="text-[#c8c8c8] italic">"{testimonio.text}"</p>
-                                </div>
-                            ))}
+                    {/* Bloque 5: CTA Premium (MOVED) */}
+                    <div className="mb-32 text-center bg-[#111] border border-[#2a2a2a] rounded-3xl p-12 md:p-20 relative overflow-hidden">
+                        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-white to-transparent opacity-20" />
+                        <h3 className="text-3xl md:text-5xl font-light text-white mb-8">
+                            ¿Quieres aprender IA de verdad, <br /> sin humo y adaptado a ti?
+                        </h3>
+                        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                            <a
+                                href="https://wa.me/34627281459"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center justify-center bg-white text-black font-semibold text-lg py-4 px-10 rounded-full transition-all hover:scale-105"
+                            >
+                                Quiero empezar
+                            </a>
+                            <a
+                                href="/reserva"
+                                className="inline-flex items-center justify-center bg-transparent text-white border border-[#333] font-medium text-lg py-4 px-10 rounded-full transition-all hover:bg-[#1a1a1a]"
+                            >
+                                Hablar contigo
+                            </a>
                         </div>
                     </div>
 
@@ -452,6 +492,51 @@ export default function PersonalTrainingPage() {
                             </div>
                         </div>
                     </section>
+
+                    {/* Testimonios */}
+                    <div className="mb-32">
+                        <h3 className="text-2xl font-light text-white mb-12 text-center">Resultados de quienes ya se están formando</h3>
+                        <div className="grid md:grid-cols-3 gap-6">
+                            {[
+                                {
+                                    name: "Elena Martín",
+                                    role: "Diseñadora Freelance",
+                                    text: "En dos sesiones aprendí a usar IA para todo mi contenido. Ahora tardo 4 horas menos por proyecto.",
+                                    image: "/images/testimonials/elena.png"
+                                },
+                                {
+                                    name: "Carlos Suárez",
+                                    role: "Dueño de restaurante",
+                                    text: "Víctor nos enseñó a automatizar reservas. Hemos reducido llamadas y mejorado el servicio al cliente.",
+                                    image: "/images/testimonials/carlos.png"
+                                },
+                                {
+                                    name: "Laura Díaz",
+                                    role: "Estudiante de Marketing",
+                                    text: "No sabía nada de IA. Ahora hago imágenes profesionales, vídeos y automatizaciones básicas.",
+                                    image: "/images/testimonials/laura.png"
+                                }
+                            ].map((testimonio, i) => (
+                                <div key={i} className="bg-[#111] p-8 rounded-2xl border border-[#2a2a2a]">
+                                    <div className="flex items-center gap-4 mb-6">
+                                        <div className="relative w-12 h-12 rounded-full overflow-hidden border border-[#333]">
+                                            <Image
+                                                src={testimonio.image}
+                                                alt={testimonio.name}
+                                                fill
+                                                className="object-cover"
+                                            />
+                                        </div>
+                                        <div>
+                                            <p className="text-white font-medium">{testimonio.name}</p>
+                                            <p className="text-xs text-[#808080]">{testimonio.role}</p>
+                                        </div>
+                                    </div>
+                                    <p className="text-[#c8c8c8] italic">"{testimonio.text}"</p>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
 
                     {/* CTA Final Gigante */}
                     <div className="text-center max-w-4xl mx-auto mt-24">
