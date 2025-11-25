@@ -18,6 +18,16 @@ import {
     TrendingUp,
     ShieldCheck,
     Building,
+    BarChart3,
+    Map,
+    MousePointerClick,
+    Filter,
+    HelpCircle,
+    MessageCircle,
+    Layers,
+    Phone,
+    Mic,
+    Play,
     Laptop,
     RefreshCw,
     Calendar,
@@ -25,17 +35,10 @@ import {
     MapPin,
     Clock,
     Award,
-    HelpCircle,
     ChevronDown,
     ChevronUp,
-    BarChart3,
-    Map,
-    MousePointerClick,
-    Filter,
-    MessageCircle,
     Fingerprint,
     ListOrdered,
-    Layers,
     PenTool,
     Download
 } from 'lucide-react';
@@ -257,6 +260,7 @@ export default function PersonalTrainingPage() {
                                             />
                                         )}
                                         <div className="absolute bottom-4 left-6 z-20 bg-black/50 backdrop-blur-md p-2 rounded-lg border border-white/10">
+                                            {/* @ts-ignore */}
                                             <card.icon className="h-6 w-6 text-white" />
                                         </div>
                                     </div>
@@ -440,6 +444,103 @@ export default function PersonalTrainingPage() {
                         </div>
                     </div>
 
+
+                    {/* Herramientas IA - NUEVO */}
+                    <div className="mb-32">
+                        <h3 className="text-2xl font-light text-white mb-4 text-center">Herramientas que he creado</h3>
+                        <p className="text-[#a0a0a0] text-center mb-12">Estas herramientas algunas están en fase de desarrollo.</p>
+
+                        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                            {[
+                                {
+                                    icon: ImageIcon,
+                                    title: "Generador de fotos de producto",
+                                    desc: "Sube una foto de tu producto y la IA genera un entorno profesional y realista para marketing.",
+                                    tag: "Imagen Generativa",
+                                    link: "https://generador-de-fotos-de-productos-159705655877.us-west1.run.app"
+                                },
+                                {
+                                    icon: Users,
+                                    title: "Generador de influencers",
+                                    desc: "Crea modelos e influencers virtuales consistentes para campañas de publicidad y redes sociales.",
+                                    tag: "IA Generativa",
+                                    link: "https://creador-de-influencers-v1-159705655877.us-west1.run.app"
+                                },
+                                {
+                                    icon: Video,
+                                    title: "RestaurAI",
+                                    desc: "LLM personalizado para restaurantes con múltiples capacidades: gestión, marketing y operaciones.",
+                                    tag: "LLM Personalizado",
+                                    link: "https://restaur-ai-159705655877.us-west1.run.app"
+                                },
+                                {
+                                    icon: BookOpen,
+                                    title: "Chleopatra",
+                                    desc: "Web app educativa que narra historias históricas con vídeos generados por IA y voz en off.",
+                                    tag: "Storytelling",
+                                    link: "https://chleopatra-history-reimagined-159705655877.us-west1.run.app"
+                                },
+                                {
+                                    icon: MessageSquare,
+                                    title: "Jason",
+                                    desc: "El asistente inteligente que vive en esta web. Responde dudas sobre mis servicios y agenda reuniones.",
+                                    tag: "Chatbot",
+                                    link: "/"
+                                },
+                                {
+                                    icon: ShieldCheck,
+                                    title: "Numa (Suma Salut)",
+                                    desc: "Asistente de salud y bienestar implementado en clínica médica para triaje y atención al paciente.",
+                                    tag: "Chatbot Salud",
+                                    link: "http://sumasalut.cat"
+                                },
+                                {
+                                    icon: Fingerprint,
+                                    title: "Skinflow",
+                                    desc: "Analizador facial en tiempo real que recomienda rutinas de skincare y maquillaje personalizadas.",
+                                    tag: "Visión + E-commerce",
+                                    link: "#"
+                                },
+                                {
+                                    icon: Phone,
+                                    title: "Atención al cliente Rostisseria",
+                                    desc: "Agente de voz (Nuria) que gestiona pedidos telefónicos, stock y dudas en una Rostisseria.",
+                                    tag: "Agente de Voz",
+                                    link: "https://vapi.ai?demo=true&shareKey=a3a9c14d-7879-4110-8d47-cd8c13fe516b&assistantId=cbf28b5e-d819-465c-8a4c-7bf8228b4aeb"
+                                },
+                                {
+                                    icon: Mic,
+                                    title: "Project Manager ClickUp",
+                                    desc: "Agente conectado a Telegram y ClickUp para gestionar tareas y proyectos mediante notas de voz.",
+                                    tag: "Productividad",
+                                    link: "#"
+                                }
+                            ].map((project, i) => (
+                                <a
+                                    key={i}
+                                    href={project.link}
+                                    target={project.link === "#" || project.link === "/" ? "_self" : "_blank"}
+                                    rel="noopener noreferrer"
+                                    className={`bg-[#111] p-6 rounded-2xl border border-[#2a2a2a] transition-all group block ${project.link !== "#" ? "hover:border-[#82ff1f]/50 hover:bg-[#161616]" : "opacity-80 cursor-not-allowed"}`}
+                                >
+                                    <div className="flex justify-between items-start mb-4">
+                                        <div className="w-10 h-10 bg-[#1a1a1a] rounded-lg flex items-center justify-center border border-[#333] group-hover:border-[#82ff1f]/30 transition-colors">
+                                            {/* @ts-ignore */}
+                                            <project.icon className="h-5 w-5 text-white" />
+                                        </div>
+                                        <span className="text-[10px] uppercase tracking-wider bg-[#1a1a1a] text-[#808080] px-2 py-1 rounded-md border border-[#333]">
+                                            {project.tag}
+                                        </span>
+                                    </div>
+                                    <h4 className="text-lg font-medium text-white mb-2 group-hover:text-[#82ff1f] transition-colors">{project.title}</h4>
+                                    <p className="text-sm text-[#a0a0a0] leading-relaxed">{project.desc}</p>
+                                </a>
+                            ))}
+                        </div>
+                    </div>
+
+
+
                     {/* Bloque 5: CTA Premium (MOVED) */}
                     <div className="mb-32 text-center bg-[#111] border border-[#2a2a2a] rounded-3xl p-12 md:p-20 relative overflow-hidden">
                         <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-white to-transparent opacity-20" />
@@ -598,6 +699,6 @@ export default function PersonalTrainingPage() {
             </section>
 
             <Footer />
-        </main>
+        </main >
     );
 }
