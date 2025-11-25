@@ -77,11 +77,12 @@ export default function PersonalTrainingPage() {
             <section className="w-full bg-[#0a0a0a] border-b border-[#1a1a1a]">
                 <div className="w-full max-w-[1920px] mx-auto">
                     <div className="relative aspect-video w-full max-h-[80vh] overflow-hidden bg-black">
-                        <video
-                            src="/videos/landing-intro.mp4"
-                            controls
-                            playsInline
-                            className="w-full h-full object-cover"
+                        <iframe
+                            src="https://play.gumlet.io/embed/692606fc3c7ed780e07e4936"
+                            className="w-full h-full absolute inset-0"
+                            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+                            allowFullScreen
+                            title="Gumlet Video"
                         />
                     </div>
                 </div>
