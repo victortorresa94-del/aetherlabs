@@ -243,30 +243,71 @@ export default function CreativeLabPage() {
             </div>
 
             <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-              {tutorials.map((tutorial, index) => (
-                <div
-                  key={index}
-                  className="bg-black rounded-2xl p-6 border border-[#2a2a2a] transition-all duration-300 hover:border-[#4a4a4a]"
-                >
-                  <div className="w-12 h-12 rounded-xl bg-[#1a1a1a] flex items-center justify-center mb-4">
+              <Link href="/labs/creative/tutorials/skyflex" className="group">
+                <div className="bg-black rounded-2xl p-6 border border-[#2a2a2a] transition-all duration-300 group-hover:border-[#4a4a4a] h-full flex flex-col">
+                  <div className="w-12 h-12 rounded-xl bg-[#1a1a1a] flex items-center justify-center mb-4 group-hover:bg-[#222] transition-colors">
                     <Sparkles className="h-6 w-6 text-white" />
                   </div>
                   <h3 className="text-xl font-semibold text-white mb-2">
-                    {tutorial.title}
+                    Cómo creamos Skyflex Shoes
                   </h3>
-                  <p className="text-[#a0a0a0] text-sm mb-4">
-                    {tutorial.description}
+                  <p className="text-[#a0a0a0] text-sm mb-4 flex-grow">
+                    El proceso completo desde el concepto hasta la campaña final.
                   </p>
-                  <div className="flex items-center justify-between">
+                  <div className="flex items-center justify-between mt-auto">
                     <span className="text-xs text-[#808080]">
-                      {tutorial.duration} lectura
+                      5 min lectura
                     </span>
-                    <button className="text-white text-sm font-medium hover:text-[#c8c8c8] transition-colors">
+                    <span className="text-white text-sm font-medium group-hover:text-[#82ff1f] transition-colors">
                       Leer →
-                    </button>
+                    </span>
                   </div>
                 </div>
-              ))}
+              </Link>
+
+              <Link href="/labs/creative/tutorials/virtual-staging" className="group">
+                <div className="bg-black rounded-2xl p-6 border border-[#2a2a2a] transition-all duration-300 group-hover:border-[#4a4a4a] h-full flex flex-col">
+                  <div className="w-12 h-12 rounded-xl bg-[#1a1a1a] flex items-center justify-center mb-4 group-hover:bg-[#222] transition-colors">
+                    <Sparkles className="h-6 w-6 text-white" />
+                  </div>
+                  <h3 className="text-xl font-semibold text-white mb-2">
+                    Virtual Staging en 10 minutos
+                  </h3>
+                  <p className="text-[#a0a0a0] text-sm mb-4 flex-grow">
+                    Transforma espacios vacíos en hogares amueblados.
+                  </p>
+                  <div className="flex items-center justify-between mt-auto">
+                    <span className="text-xs text-[#808080]">
+                      10 min lectura
+                    </span>
+                    <span className="text-white text-sm font-medium group-hover:text-[#82ff1f] transition-colors">
+                      Leer →
+                    </span>
+                  </div>
+                </div>
+              </Link>
+
+              <Link href="/labs/creative/tutorials/avatares" className="group">
+                <div className="bg-black rounded-2xl p-6 border border-[#2a2a2a] transition-all duration-300 group-hover:border-[#4a4a4a] h-full flex flex-col">
+                  <div className="w-12 h-12 rounded-xl bg-[#1a1a1a] flex items-center justify-center mb-4 group-hover:bg-[#222] transition-colors">
+                    <Sparkles className="h-6 w-6 text-white" />
+                  </div>
+                  <h3 className="text-xl font-semibold text-white mb-2">
+                    Avatares realistas paso a paso
+                  </h3>
+                  <p className="text-[#a0a0a0] text-sm mb-4 flex-grow">
+                    Crea portavoces digitales que parecen reales.
+                  </p>
+                  <div className="flex items-center justify-between mt-auto">
+                    <span className="text-xs text-[#808080]">
+                      8 min lectura
+                    </span>
+                    <span className="text-white text-sm font-medium group-hover:text-[#82ff1f] transition-colors">
+                      Leer →
+                    </span>
+                  </div>
+                </div>
+              </Link>
             </div>
           </div>
         </section>
