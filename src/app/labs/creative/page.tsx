@@ -28,7 +28,7 @@ const demos: Demo[] = [
     category: 'Producto',
     description: 'Zapatillas deportivas en entorno urbano nocturno con efectos de neón.',
     prompt: 'Athletic sneakers floating in neon-lit urban night scene, dramatic lighting, product photography',
-    image: '/images/creative/skyflex.jpg',
+    image: '/images/creative/skyflex.png',
   },
   {
     type: 'image',
@@ -36,7 +36,7 @@ const demos: Demo[] = [
     category: 'Producto',
     description: 'Producto de skincare con elementos naturales y iluminación suave.',
     prompt: 'Luxury skincare product with natural elements, soft studio lighting, elegant composition',
-    image: '/images/creative/cosmetica.jpg',
+    image: '/images/creative/cosmetica.png',
   },
   {
     type: 'video',
@@ -44,7 +44,7 @@ const demos: Demo[] = [
     category: 'Moda',
     description: 'Spot de joyería con modelos digitales en estética minimalista.',
     prompt: 'Fashion jewelry commercial, minimalist aesthetic, elegant models, slow motion',
-    image: '/images/creative/twojeys.jpg',
+    image: '/images/creative/twojeys.png',
   },
   {
     type: 'video',
@@ -52,7 +52,7 @@ const demos: Demo[] = [
     category: 'Inmobiliario',
     description: 'Tour virtual de propiedad con staging digital.',
     prompt: 'Virtual property tour, modern interior, natural lighting, smooth camera movement',
-    image: '/images/creative/real-estate.jpg',
+    image: '/images/creative/real-estate.png',
   },
   {
     type: 'image',

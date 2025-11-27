@@ -33,14 +33,14 @@ export default function VirtualStagingTutorialPage() {
 
                     <div className="relative aspect-video w-full mb-16 rounded-2xl overflow-hidden border border-[#2a2a2a]">
                         <Image
-                            src="/images/creative/real-estate.jpg"
+                            src="/images/creative/real-estate.png"
                             alt="Virtual Staging Result"
                             fill
                             className="object-cover"
                         />
                     </div>
 
-                    <div className="grid md:grid-cols-[1fr_300px] gap-12">
+                    <div className="grid lg:grid-cols-[1fr_300px] gap-12 items-start">
                         <div className="space-y-12">
                             <section>
                                 <h2 className="text-2xl font-semibold mb-4 flex items-center gap-3">

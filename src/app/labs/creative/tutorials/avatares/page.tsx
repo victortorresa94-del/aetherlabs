@@ -41,7 +41,7 @@ export default function AvataresTutorialPage() {
                         />
                     </div>
 
-                    <div className="grid md:grid-cols-[1fr_300px] gap-12">
+                    <div className="grid lg:grid-cols-[1fr_300px] gap-12 items-start">
                         <div className="space-y-12">
                             <section>
                                 <h2 className="text-2xl font-semibold mb-4 flex items-center gap-3">
