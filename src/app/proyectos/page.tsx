@@ -18,7 +18,7 @@ export default function ProyectosPage() {
         'Guía visual',
       ],
       // Imagen de zapatillas futuristas
-      image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=1000&auto=format&fit=crop',
+      image: '/images/skyflex/main.jpg',
       link: '/proyectos/skyflex', // Carpeta 'skyflex'
       stats: {
         timeframe: '2 semanas',
@@ -38,7 +38,7 @@ export default function ProyectosPage() {
         'Assets digitales',
       ],
       // Imagen de estilo moda/joyería
-      image: 'https://images.unsplash.com/photo-1611591437281-460bfbe1220a?q=80&w=1000&auto=format&fit=crop',
+      image: '/images/twojeys/main.jpg',
       link: '/proyectos/anillos', // Carpeta 'anillos'
       stats: {
         timeframe: '3 semanas',

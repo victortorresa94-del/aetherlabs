@@ -45,7 +45,8 @@ const HeaderNavigation = () => {
       ]
     },
     { label: "Proyectos", href: "/proyectos" },
-    { label: "Sobre&nbsp;nosotros", href: "/sobre-nosotros" },
+    { label: "Nosotros", href: "/sobre-nosotros" },
+    { label: "Contacto", href: "/contacto" },
   ];
 
   useEffect(() => {
@@ -166,10 +167,10 @@ const HeaderNavigation = () => {
         <div className="flex-1 flex justify-end">
           <div className="flex items-center gap-6">
             <Link
-              href="/contacto"
+              href="/crea-tu-ia"
               className="hidden lg:block text-sm font-semibold tracking-wider text-black bg-white rounded-full px-7 py-2.5 transition-all hover:scale-105 ease-out duration-200"
             >
-              Crea tu AI
+              Crea tu IA
             </Link>
             <button
               className="lg:hidden text-white"
@@ -189,11 +190,11 @@ const HeaderNavigation = () => {
               {navItems.map(renderMobileNavItem)}
             </ul>
             <Link
-              href="/contacto"
+              href="/crea-tu-ia"
               className="mt-10 block text-center text-base font-semibold tracking-wider text-black bg-white rounded-full px-8 py-3 transition-all hover:scale-105"
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              Crea tu AI
+              Crea tu IA
             </Link>
           </nav>
         </div>

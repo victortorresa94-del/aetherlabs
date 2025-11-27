@@ -98,51 +98,48 @@ export default function ContactoPage() {
                       Ubicación
                     </p>
                     <p className="text-white text-lg">
-                      Torrelavega, Cantabria
-                    </p>
-                    <p className="text-[#a0a0a0] text-sm mt-1">
-                      España
+                      Barcelona, Cataluña
                     </p>
                   </div>
                 </div>
-              </div>
 
-              <div className="bg-black rounded-2xl p-8 border border-[#2a2a2a] space-y-6">
-                <div>
-                  <h3 className="text-xl font-semibold text-white mb-4">
-                    ¿Prefieres una llamada?
-                  </h3>
-                  <p className="text-[#a0a0a0] mb-6">
-                    Reserva una llamada gratuita de 30 minutos para hablar de tu proyecto.
-                  </p>
-                  <a
-                    href="https://calendly.com/aetherlabs"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-block w-full text-center bg-white text-black font-semibold text-base py-3 px-6 rounded-full transition-all duration-200 hover:scale-105"
-                  >
-                    Reservar llamada en Calendly
-                  </a>
-                </div>
+                <div className="bg-black rounded-2xl p-8 border border-[#2a2a2a] space-y-6">
+                  <div>
+                    <h3 className="text-xl font-semibold text-white mb-4">
+                      ¿Prefieres una llamada?
+                    </h3>
+                    <p className="text-[#a0a0a0] mb-6">
+                      Reserva una llamada gratuita de 30 minutos para hablar de tu proyecto.
+                    </p>
+                    <a
+                      href="https://calendly.com/aetherlabs"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-block w-full text-center bg-white text-black font-semibold text-base py-3 px-6 rounded-full transition-all duration-200 hover:scale-105"
+                    >
+                      Reservar llamada en Calendly
+                    </a>
+                  </div>
 
-                <div className="w-full h-px bg-[#2a2a2a]" />
+                  <div className="w-full h-px bg-[#2a2a2a]" />
 
-                <div>
-                  <h3 className="text-xl font-semibold text-white mb-4">
-                    Hablar por WhatsApp
-                  </h3>
-                  <p className="text-[#a0a0a0] mb-6">
-                    Escríbenos directamente y te contestamos al momento.
-                  </p>
-                  <a
-                    href="https://wa.me/34627281459"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex w-full items-center justify-center gap-2 bg-[#25D366] text-white font-semibold text-base py-3 px-6 rounded-full transition-all duration-200 hover:scale-105 hover:bg-[#20bd5a]"
-                  >
-                    <MessageCircle className="h-5 w-5" />
-                    Chat en WhatsApp
-                  </a>
+                  <div>
+                    <h3 className="text-xl font-semibold text-white mb-4">
+                      Hablar por WhatsApp
+                    </h3>
+                    <p className="text-[#a0a0a0] mb-6">
+                      Escríbenos directamente y te contestamos al momento.
+                    </p>
+                    <a
+                      href="https://wa.me/34627281459"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex w-full items-center justify-center gap-2 bg-[#25D366] text-white font-semibold text-base py-3 px-6 rounded-full transition-all duration-200 hover:scale-105 hover:bg-[#20bd5a]"
+                    >
+                      <MessageCircle className="h-5 w-5" />
+                      Chat en WhatsApp
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
