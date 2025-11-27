@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Script from "next/script";
+import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
   title: "Aether Labs - IA clara y útil para tu negocio",
@@ -50,6 +51,7 @@ export default function RootLayout({
         {/* End Google Tag Manager (noscript) */}
 
         {children}
+        <Analytics />
       </body>
     </html>
   );
