@@ -78,7 +78,7 @@ export default function ProyectosPage() {
         'Contenido delivery',
       ],
       // Imagen de hamburguesa gourmet
-      image: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=1000&auto=format&fit=crop',
+      image: '/images/nova/main.jpg',
       link: '/proyectos/nova-burger',
       stats: {
         timeframe: '2 semanas',

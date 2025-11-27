@@ -28,7 +28,7 @@ const demos: Demo[] = [
     category: 'Producto',
     description: 'Zapatillas deportivas en entorno urbano nocturno con efectos de neón.',
     prompt: 'Athletic sneakers floating in neon-lit urban night scene, dramatic lighting, product photography',
-    image: 'https://placehold.co/800x600/1a1a1a/ffffff?text=Skyflex+Shoes',
+    image: '/images/creative/skyflex.jpg',
   },
   {
     type: 'image',
@@ -36,7 +36,7 @@ const demos: Demo[] = [
     category: 'Producto',
     description: 'Producto de skincare con elementos naturales y iluminación suave.',
     prompt: 'Luxury skincare product with natural elements, soft studio lighting, elegant composition',
-    image: 'https://placehold.co/800x600/1a1a1a/ffffff?text=Cosmetica+Premium',
+    image: '/images/creative/cosmetica.jpg',
   },
   {
     type: 'video',
@@ -44,7 +44,7 @@ const demos: Demo[] = [
     category: 'Moda',
     description: 'Spot de joyería con modelos digitales en estética minimalista.',
     prompt: 'Fashion jewelry commercial, minimalist aesthetic, elegant models, slow motion',
-    image: 'https://placehold.co/800x600/1a1a1a/ffffff?text=Fashion+Spot',
+    image: '/images/creative/twojeys.jpg',
   },
   {
     type: 'video',
@@ -52,7 +52,7 @@ const demos: Demo[] = [
     category: 'Inmobiliario',
     description: 'Tour virtual de propiedad con staging digital.',
     prompt: 'Virtual property tour, modern interior, natural lighting, smooth camera movement',
-    image: 'https://placehold.co/800x600/1a1a1a/ffffff?text=Real+Estate',
+    image: '/images/creative/real-estate.jpg',
   },
   {
     type: 'image',
