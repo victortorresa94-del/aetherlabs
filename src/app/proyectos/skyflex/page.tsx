@@ -16,11 +16,13 @@ export default function SkyflexPage() {
         'Generación de 50 assets visuales en 72 horas.',
         'Validación de diseño de producto antes de fabricación.'
       ]}
-      // Sustituye estas URLs por tus imágenes reales en cuanto las tengas
-      heroImage="https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=2070&auto=format&fit=crop"
+      heroImage="/images/skyflex/gallery-1.jpg"
       gallery={[
-        'https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?q=80&w=1000&auto=format&fit=crop',
-        'https://images.unsplash.com/photo-1605296867304-6f0380055052?q=80&w=1000&auto=format&fit=crop'
+        '/images/skyflex/gallery-1.jpg',
+        '/images/skyflex/gallery-2.jpg',
+        '/images/skyflex/gallery-3.jpg',
+        '/images/skyflex/gallery-4.jpg',
+        '/images/skyflex/gallery-5.jpg'
       ]}
     />
   );
