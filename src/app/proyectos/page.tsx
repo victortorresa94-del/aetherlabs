@@ -18,7 +18,7 @@ export default function ProyectosPage() {
         'Guía visual',
       ],
       // Imagen de zapatillas futuristas
-      image: '/images/skyflex/gallery-1.jpg',
+      image: '/images/skyflex/car-scene.jpg',
       link: '/proyectos/skyflex', // Carpeta 'skyflex'
       stats: {
         timeframe: '2 semanas',

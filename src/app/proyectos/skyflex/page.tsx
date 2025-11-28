@@ -16,8 +16,13 @@ export default function SkyflexPage() {
         'Generación de 50 assets visuales en 72 horas.',
         'Validación de diseño de producto antes de fabricación.'
       ]}
-      heroImage="/images/skyflex/gallery-1.jpg"
+      heroImage="/images/skyflex/car-scene.jpg"
       gallery={[
+        '/images/skyflex/car-scene.jpg',
+        '/images/skyflex/vending-machine.jpg',
+        '/images/skyflex/friends-laughing.jpg',
+        '/images/skyflex/picnic.jpg',
+        '/images/skyflex/stairs.jpg',
         '/images/skyflex/gallery-1.jpg',
         '/images/skyflex/gallery-2.jpg',
         '/images/skyflex/gallery-3.jpg',

@@ -7,7 +7,7 @@ const UseCasesSection = () => {
     {
       title: 'Skyflex Shoes',
       description: 'Campaña completa de producto con fotos, vídeo y anuncios generados con IA.',
-      image: '/images/skyflex/gallery-1.jpg',
+      image: '/images/skyflex/car-scene.jpg',
       tags: ['IA Generativa', 'Producto', 'Campaña'],
       link: '/proyectos/skyflex',
     },
