@@ -8,7 +8,7 @@ const HeroVideoSection = () => {
                 <video
                     className="w-full h-full object-cover"
                     // IMPORTANTE: La ruta empieza con / porque apunta a la carpeta public
-                    src="/videos/hero.mp4" 
+                    src="/videos/hero.mp4"
                     autoPlay
                     loop
                     muted
@@ -25,10 +25,10 @@ const HeroVideoSection = () => {
             <div className="relative z-10 text-white px-4 sm:px-6 lg:px-8 container">
                 <div className="max-w-4xl">
                     <h1 className="font-light text-5xl sm:text-6xl md:text-7xl lg:text-[5rem] leading-[1.05] tracking-[-0.02em] mb-6">
-                        El futuro es hoy.
+                        Donde las ideas se convierten en realidad.
                     </h1>
                     <p className="text-lg md:text-xl font-normal max-w-2xl text-[#c8c8c8] leading-relaxed">
-                        La IA es compleja, pero nosotros la volvemos fácil y accesible, creando soluciones y contenidos que realmenten cambien tu presente.
+                        Combinamos la creatividad y la tecnología para crear soluciones personalizadas mediante la Inteligencia Artificial para que ésta sea entendible, segura y accesible para cualquier negocio.
                     </p>
                     <Link
                         href="#servicios"
