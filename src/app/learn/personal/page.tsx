@@ -703,7 +703,7 @@ export default function PersonalTrainingPage() {
                             variants={fadeInUp}
                             className="text-[#a0a0a0] text-center mb-12"
                         >
-                            Estas herramientas algunas están en fase de desarrollo.
+                            Algunas de estas soluciones IA están en fase de desarrollo.
                         </motion.p>
 
                         <motion.div

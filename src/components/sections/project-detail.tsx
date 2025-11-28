@@ -162,6 +162,25 @@ export default function ProjectDetail({
         </div>
       </section>
 
+      {/* Galería de Imágenes */}
+      {gallery && gallery.length > 0 && (
+        <section className="container px-6 md:px-12 lg:px-24 mb-32">
+          <h2 className="text-3xl font-light text-white mb-12">Galería del Proyecto</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {gallery.map((img, index) => (
+              <div key={index} className={`relative rounded-xl overflow-hidden border border-[#2a2a2a] ${index === 0 ? 'md:col-span-2 aspect-[21/9]' : 'aspect-video'}`}>
+                <Image
+                  src={img}
+                  alt={`Gallery image ${index + 1}`}
+                  fill
+                  className="object-cover hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
       {/* CTA Final - Minimalista */}
       <section className="py-32 bg-[#0a0a0a] border-t border-[#2a2a2a]">
         <div className="container text-center">

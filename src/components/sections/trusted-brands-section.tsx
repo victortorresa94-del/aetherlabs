@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 
 const TrustedBrandsSection = () => {
   return (
@@ -7,12 +8,46 @@ const TrustedBrandsSection = () => {
         <h2 className="text-center text-uppercase-label text-[#6b7280] mb-10">
           Empresas que confían en nosotros
         </h2>
-        <div className="flex flex-wrap items-center justify-center gap-16 md:gap-20 lg:gap-24 opacity-50 hover:opacity-70 transition-opacity duration-300">
-          <div className="text-white text-xl font-medium tracking-wide hover:opacity-100 transition-opacity duration-200">SONY</div>
-          <div className="text-white text-xl font-medium tracking-wide hover:opacity-100 transition-opacity duration-200">NFL</div>
-          <div className="text-white text-xl font-medium tracking-wide hover:opacity-100 transition-opacity duration-200">MODUS</div>
-          <div className="text-white text-xl font-medium tracking-wide hover:opacity-100 transition-opacity duration-200">Kayo</div>
-          <div className="text-white text-xl font-medium tracking-wide hover:opacity-100 transition-opacity duration-200">OPTUS</div>
+        <div className="flex flex-wrap items-center justify-center gap-12 md:gap-16 lg:gap-20">
+          {/* 94 Music */}
+          <div className="relative w-44 h-24 md:w-56 md:h-28 opacity-50 hover:opacity-100 transition-opacity duration-300">
+            <Image
+              src="/images/customers/94 Blanco sin fondo.PNG"
+              alt="94 Music"
+              fill
+              className="object-contain"
+            />
+          </div>
+
+          {/* Sky Flex */}
+          <div className="relative w-44 h-24 md:w-56 md:h-28 opacity-50 hover:opacity-100 transition-opacity duration-300">
+            <Image
+              src="/images/customers/SF.png"
+              alt="Sky Flex"
+              fill
+              className="object-contain"
+            />
+          </div>
+
+          {/* Suma Salut - Inverted to white */}
+          <div className="relative w-44 h-24 md:w-56 md:h-28 opacity-50 hover:opacity-100 transition-opacity duration-300">
+            <Image
+              src="/images/customers/suma-salut.png"
+              alt="Suma Salut"
+              fill
+              className="object-contain brightness-0 invert"
+            />
+          </div>
+
+          {/* Munch's Burger Club */}
+          <div className="relative w-44 h-24 md:w-56 md:h-28 opacity-50 hover:opacity-100 transition-opacity duration-300">
+            <Image
+              src="/images/customers/munchs-burger-club.png"
+              alt="Munch's Burger Club"
+              fill
+              className="object-contain"
+            />
+          </div>
         </div>
       </div>
     </section>
