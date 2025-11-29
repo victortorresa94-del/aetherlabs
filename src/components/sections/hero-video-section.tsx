@@ -23,12 +23,12 @@ const HeroVideoSection = () => {
 
             {/* Contenido */}
             <div className="relative z-10 text-white px-4 sm:px-6 lg:px-8 container">
-                <div className="max-w-4xl">
+                <div className="max-w-5xl">
                     <h1 className="font-light text-5xl sm:text-6xl md:text-7xl lg:text-[5rem] leading-[1.05] tracking-[-0.02em] mb-6">
-                        Donde las ideas se convierten en realidad.
+                        Donde las ideas se hacen realidad.
                     </h1>
                     <p className="text-lg md:text-xl font-normal max-w-2xl text-[#c8c8c8] leading-relaxed">
-                        Combinamos la creatividad y la tecnología para crear soluciones personalizadas mediante la Inteligencia Artificial para que ésta sea entendible, segura y accesible para cualquier negocio.
+                        Combinamos la creatividad y la tecnología para crear soluciones con IA, para que ésta sea entendible, segura y accesible para cualquier negocio.
                     </p>
                     <Link
                         href="#servicios"
