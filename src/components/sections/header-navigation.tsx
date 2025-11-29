@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronRight, ChevronDown } from "lucide-react";
 import Image from "next/image";
 
 interface NavItem {
@@ -15,6 +15,7 @@ const HeaderNavigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [activeSubDropdown, setActiveSubDropdown] = useState<string | null>(null);
 
   const navItems: NavItem[] = [
     { label: "Inicio", href: "/" },
@@ -22,7 +23,21 @@ const HeaderNavigation = () => {
       label: "Servicios",
       href: "/servicios",
       subItems: [
-        { label: "IA Generativa", href: "/servicios/ia-generativa" },
+        {
+          label: "IA Generativa",
+          href: "/servicios/ia-generativa",
+          subItems: [
+            { label: "Fotos de producto", href: "/servicios/ia-generativa/fotos-producto" },
+            { label: "Avatares y portavoces", href: "/servicios/ia-generativa/avatares" },
+            { label: "Anuncios y vídeos", href: "/servicios/ia-generativa/anuncios-videos" },
+            { label: "Virtual staging", href: "/servicios/ia-generativa/virtual-staging" },
+            { label: "Contenido UGC", href: "/servicios/ia-generativa/ugc" },
+            { label: "Campañas 360", href: "/servicios/ia-generativa/campanas-360" },
+            { label: "Web con IA", href: "/servicios/ia-generativa/web" },
+            { label: "Reels con IA", href: "/servicios/ia-generativa/reels" },
+            { label: "Branding con IA", href: "/servicios/ia-generativa/branding" },
+          ]
+        },
         { label: "Automatización", href: "/servicios/automatizacion" },
         { label: "IA a Medida", href: "/servicios/ia-a-medida" }
       ]
@@ -68,27 +83,65 @@ const HeaderNavigation = () => {
       return (
         <li
           key={item.label}
-          className="relative"
+          className="relative group"
           onMouseEnter={() => setActiveDropdown(item.label)}
-          onMouseLeave={() => setActiveDropdown(null)}
+          onMouseLeave={() => {
+            setActiveDropdown(null);
+            setActiveSubDropdown(null);
+          }}
         >
           <button
-            className="flex items-center px-4 py-2 text-sm text-white transition-colors hover:text-gray-300 whitespace-nowrap"
+            className="flex items-center px-4 py-2 text-sm text-white transition-colors hover:text-gray-300 whitespace-nowrap gap-1"
             aria-expanded={isDropdownOpen}
             aria-haspopup="true"
-            dangerouslySetInnerHTML={{ __html: item.label }}
-          />
+          >
+            <span dangerouslySetInnerHTML={{ __html: item.label }} />
+            <ChevronDown size={14} className={`transition-transform duration-200 ${isDropdownOpen ? 'rotate-180' : ''}`} />
+          </button>
+
           {isDropdownOpen && (
-            <div className="absolute top-full left-1/2 -translate-x-1/2 mt-1 w-48 bg-black border border-[#2a2a2a] rounded-lg shadow-lg z-20">
+            <div className="absolute top-full left-0 mt-1 w-56 bg-black border border-[#2a2a2a] rounded-lg shadow-lg z-20">
               <ul className="py-1">
                 {item.subItems.map((subItem) => (
-                  <li key={subItem.label}>
-                    <Link
-                      href={subItem.href}
-                      className="block w-full text-left px-4 py-3 text-sm text-white hover:bg-[#1a1a1a] transition-colors"
-                    >
-                      {subItem.label}
-                    </Link>
+                  <li
+                    key={subItem.label}
+                    className="relative group/sub"
+                    onMouseEnter={() => setActiveSubDropdown(subItem.label)}
+                    onMouseLeave={() => setActiveSubDropdown(null)}
+                  >
+                    {subItem.subItems ? (
+                      <>
+                        <Link
+                          href={subItem.href}
+                          className="flex items-center justify-between w-full text-left px-4 py-3 text-sm text-white hover:bg-[#1a1a1a] transition-colors"
+                        >
+                          {subItem.label}
+                          <ChevronRight size={14} />
+                        </Link>
+                        {/* Nested Dropdown */}
+                        <div className="absolute top-0 left-full ml-1 w-56 bg-black border border-[#2a2a2a] rounded-lg shadow-lg z-30 hidden group-hover/sub:block">
+                          <ul className="py-1">
+                            {subItem.subItems.map((nestedItem) => (
+                              <li key={nestedItem.label}>
+                                <Link
+                                  href={nestedItem.href}
+                                  className="block w-full text-left px-4 py-3 text-sm text-white hover:bg-[#1a1a1a] transition-colors"
+                                >
+                                  {nestedItem.label}
+                                </Link>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      </>
+                    ) : (
+                      <Link
+                        href={subItem.href}
+                        className="block w-full text-left px-4 py-3 text-sm text-white hover:bg-[#1a1a1a] transition-colors"
+                      >
+                        {subItem.label}
+                      </Link>
+                    )}
                   </li>
                 ))}
               </ul>
@@ -113,17 +166,44 @@ const HeaderNavigation = () => {
     <div key={item.label} className="py-3 border-b border-[#2a2a2a] last:border-b-0">
       {item.subItems ? (
         <div>
-          <h3 className="text-xl text-white font-medium" dangerouslySetInnerHTML={{ __html: item.label }} />
+          <div className="flex items-center justify-between">
+            <h3 className="text-xl text-white font-medium" dangerouslySetInnerHTML={{ __html: item.label }} />
+          </div>
           <ul className="pl-4 mt-3 space-y-3">
             {item.subItems.map(subItem => (
               <li key={subItem.label}>
-                <Link
-                  href={subItem.href}
-                  className="text-lg text-[#a0a0a0] hover:text-white transition-colors"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  {subItem.label}
-                </Link>
+                {subItem.subItems ? (
+                  <div className="space-y-2">
+                    <Link
+                      href={subItem.href}
+                      className="text-lg text-[#a0a0a0] hover:text-white transition-colors block font-medium"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      {subItem.label}
+                    </Link>
+                    <ul className="pl-4 space-y-2 border-l border-[#2a2a2a] ml-1">
+                      {subItem.subItems.map(nestedItem => (
+                        <li key={nestedItem.label}>
+                          <Link
+                            href={nestedItem.href}
+                            className="text-base text-[#808080] hover:text-white transition-colors block"
+                            onClick={() => setIsMobileMenuOpen(false)}
+                          >
+                            {nestedItem.label}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ) : (
+                  <Link
+                    href={subItem.href}
+                    className="text-lg text-[#a0a0a0] hover:text-white transition-colors block"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    {subItem.label}
+                  </Link>
+                )}
               </li>
             ))}
           </ul>
@@ -184,7 +264,7 @@ const HeaderNavigation = () => {
       </div>
 
       {isMobileMenuOpen && (
-        <div className="fixed inset-0 top-[90px] bg-black lg:hidden p-8 overflow-y-auto">
+        <div className="fixed inset-0 top-[90px] bg-black lg:hidden p-8 overflow-y-auto pb-20">
           <nav className="flex flex-col h-full">
             <ul className="space-y-4">
               {navItems.map(renderMobileNavItem)}
