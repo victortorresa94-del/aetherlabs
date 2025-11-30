@@ -3,7 +3,7 @@
 import HeaderNavigation from '@/components/sections/header-navigation';
 import Footer from '@/components/sections/footer';
 import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Sparkles } from 'lucide-react';
 import Image from 'next/image';
 
 export default function IAGenerativaPage() {
@@ -16,10 +16,10 @@ export default function IAGenerativaPage() {
       href: '/servicios/ia-generativa/fotos-producto'
     },
     {
-      image: 'https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/59f0faf1-8d44-4d77-bb9f-9909b2e2fd57/generated_images/professional-portrait-of-digital-avatar--c1693b5c-20251119011116.jpg',
+      image: '/images/avatars/man-hoodie.jpg',
       title: 'Avatares y portavoces IA',
-      description: 'Crea portavoces digitales realistas que hablan por tu marca en cualquier idioma.',
-      examples: ['Presentadores', 'Embajadores', 'Tutoriales'],
+      description: 'Pack completo: Creamos tu avatar digital hiperrealista (como Daniel) y te formamos para que generes tu propio contenido sin límites.',
+      examples: ['Avatar Personal', 'Formación', 'Autonomía'],
       href: '/servicios/ia-generativa/avatares'
     },
     {
@@ -37,10 +37,10 @@ export default function IAGenerativaPage() {
       href: '/servicios/ia-generativa/virtual-staging'
     },
     {
-      image: 'https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/59f0faf1-8d44-4d77-bb9f-9909b2e2fd57/generated_images/content-creator-filming-with-smartphone--143bb571-20251119011116.jpg',
+      image: '/images/avatars/woman-mic.jpg',
       title: 'Contenido UGC con IA',
-      description: 'Genera contenido estilo usuario sin necesidad de creadores reales.',
-      examples: ['Reviews', 'Unboxing', 'Testimonios'],
+      description: 'Servicio "Done-for-you": Creamos tus vídeos de principio a fin. Elige entre usar tu avatar, influencers IA (como Melissa) o perfiles anónimos.',
+      examples: ['Gestión Total', 'Guionización', 'Edición Viral'],
       href: '/servicios/ia-generativa/ugc'
     },
     {
@@ -137,6 +137,87 @@ export default function IAGenerativaPage() {
                 </div>
               </Link>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-24 bg-black border-t border-[#1a1a1a]">
+        <div className="container">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-light text-white mb-4">
+              Aprende cómo lo hacemos
+            </h2>
+            <p className="text-[#a0a0a0] max-w-2xl mx-auto">
+              Tutoriales rápidos sobre nuestro proceso creativo
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+            <Link href="/labs/creative/tutorials/skyflex" className="group">
+              <div className="bg-[#0a0a0a] rounded-2xl p-6 border border-[#2a2a2a] transition-all duration-300 group-hover:border-[#4a4a4a] h-full flex flex-col">
+                <div className="w-12 h-12 rounded-xl bg-[#1a1a1a] flex items-center justify-center mb-4 group-hover:bg-[#222] transition-colors">
+                  <Sparkles className="h-6 w-6 text-white" />
+                </div>
+                <h3 className="text-xl font-semibold text-white mb-2">
+                  Cómo creamos Skyflex Shoes
+                </h3>
+                <p className="text-[#a0a0a0] text-sm mb-4 flex-grow">
+                  El proceso completo desde el concepto hasta la campaña final.
+                </p>
+                <div className="flex items-center justify-between mt-auto">
+                  <span className="text-xs text-[#808080]">
+                    5 min lectura
+                  </span>
+                  <span className="text-white text-sm font-medium group-hover:text-[#82ff1f] transition-colors">
+                    Leer →
+                  </span>
+                </div>
+              </div>
+            </Link>
+
+            <Link href="/labs/creative/tutorials/virtual-staging" className="group">
+              <div className="bg-[#0a0a0a] rounded-2xl p-6 border border-[#2a2a2a] transition-all duration-300 group-hover:border-[#4a4a4a] h-full flex flex-col">
+                <div className="w-12 h-12 rounded-xl bg-[#1a1a1a] flex items-center justify-center mb-4 group-hover:bg-[#222] transition-colors">
+                  <Sparkles className="h-6 w-6 text-white" />
+                </div>
+                <h3 className="text-xl font-semibold text-white mb-2">
+                  Virtual Staging en 10 minutos
+                </h3>
+                <p className="text-[#a0a0a0] text-sm mb-4 flex-grow">
+                  Transforma espacios vacíos en hogares amueblados.
+                </p>
+                <div className="flex items-center justify-between mt-auto">
+                  <span className="text-xs text-[#808080]">
+                    10 min lectura
+                  </span>
+                  <span className="text-white text-sm font-medium group-hover:text-[#82ff1f] transition-colors">
+                    Leer →
+                  </span>
+                </div>
+              </div>
+            </Link>
+
+            <Link href="/labs/creative/tutorials/avatares" className="group">
+              <div className="bg-[#0a0a0a] rounded-2xl p-6 border border-[#2a2a2a] transition-all duration-300 group-hover:border-[#4a4a4a] h-full flex flex-col">
+                <div className="w-12 h-12 rounded-xl bg-[#1a1a1a] flex items-center justify-center mb-4 group-hover:bg-[#222] transition-colors">
+                  <Sparkles className="h-6 w-6 text-white" />
+                </div>
+                <h3 className="text-xl font-semibold text-white mb-2">
+                  Avatares realistas paso a paso
+                </h3>
+                <p className="text-[#a0a0a0] text-sm mb-4 flex-grow">
+                  Crea portavoces digitales que parecen reales.
+                </p>
+                <div className="flex items-center justify-between mt-auto">
+                  <span className="text-xs text-[#808080]">
+                    8 min lectura
+                  </span>
+                  <span className="text-white text-sm font-medium group-hover:text-[#82ff1f] transition-colors">
+                    Leer →
+                  </span>
+                </div>
+              </div>
+            </Link>
           </div>
         </div>
       </section>

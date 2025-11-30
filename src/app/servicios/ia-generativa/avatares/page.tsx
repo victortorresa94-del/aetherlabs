@@ -4,30 +4,30 @@ export default function AvataresPage() {
     return (
         <ServiceDetail
             title="Avatares y Portavoces IA"
-            subtitle="Rostros digitales que comunican tu mensaje 24/7."
-            description="Creamos presentadores y embajadores de marca virtuales indistinguibles de humanos reales. Pueden hablar cualquier idioma y estar disponibles instantáneamente para crear contenido educativo, corporativo o promocional. Elimina la necesidad de contratar actores, estudios de grabación y equipos de rodaje para tus comunicaciones corporativas."
+            subtitle="Tu propio clon digital para crear contenido sin límites."
+            description="Creamos tu avatar digital hiperrealista (como Daniel, en la imagen) y te entregamos las llaves para que lo uses. Este es un servicio de 'Pack Completo': clonamos tu imagen y voz, y te formamos para que tú mismo puedas generar cientos de vídeos en minutos, sin cámaras, sin micros y sin perder tiempo grabando."
             benefits={[
-                "Disponibilidad 24/7 para generar contenido",
-                "Capacidad multilingüe nativa instantánea",
-                "Sin costes recurrentes de talento o rodaje",
-                "Consistencia de marca perfecta",
-                "Actualización rápida de guiones y mensajes"
+                "Clonación profesional de imagen y voz",
+                "Formación completa para uso autónomo",
+                "Generación de contenido ilimitado",
+                "Ahorro masivo de tiempo de grabación",
+                "Consistencia de marca personal"
             ]}
             process={[
                 {
-                    title: "Creación del Avatar",
-                    description: "Diseñamos un avatar único o clonamos digitalmente a un portavoz existente."
+                    title: "Grabación del Dataset",
+                    description: "Te guiamos para grabar un vídeo corto de 2 minutos que servirá de base."
                 },
                 {
-                    title: "Clonación de Voz",
-                    description: "Sintetizamos una voz natural o clonamos tu propia voz para que suene auténtica."
+                    title: "Entrenamiento y Clonación",
+                    description: "Procesamos tu imagen y voz para crear un avatar idéntico a ti."
                 },
                 {
-                    title: "Generación de Vídeo",
-                    description: "Introducimos el texto y generamos el vídeo con sincronización labial perfecta."
+                    title: "Entrega y Formación",
+                    description: "Te entregamos tu avatar y te enseñamos a usar la plataforma para crear vídeos."
                 }
             ]}
-            heroImage="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/59f0faf1-8d44-4d77-bb9f-9909b2e2fd57/generated_images/professional-portrait-of-digital-avatar--c1693b5c-20251119011116.jpg"
+            heroImage="/images/avatars/man-hoodie.jpg"
         />
     );
 }

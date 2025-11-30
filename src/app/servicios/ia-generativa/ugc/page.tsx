@@ -4,30 +4,30 @@ export default function UGCPage() {
     return (
         <ServiceDetail
             title="Contenido UGC con IA"
-            subtitle="Testimonios y reviews auténticos generados artificialmente."
-            description="Generamos contenido estilo 'User Generated Content' (UGC) que parece grabado por usuarios reales con sus móviles. Ideal para anuncios de TikTok, Reels y Facebook Ads donde la autenticidad (o la apariencia de ella) es clave para la conversión. Obtén cientos de variaciones de testimonios sin lidiar con creadores."
+            subtitle="Vídeos virales 'Done-for-you' sin que tengas que grabar nada."
+            description="Nos encargamos de todo el proceso de creación de contenido. Tú nos das el tema o el guion, y nosotros producimos el vídeo completo utilizando avatares IA (como Melissa, en la imagen), influencers generados o perfiles anónimos. Es la solución perfecta para marcas que necesitan volumen de contenido UGC sin gestionar creadores reales."
             benefits={[
-                "Escalabilidad masiva de creatividades",
-                "Control total del mensaje y guion",
-                "Sin gestión de influencers ni envíos de producto",
-                "Apariencia 100% nativa de redes sociales",
-                "Test A/B rápido de diferentes ganchos"
+                "Servicio 100% 'Done-for-you'",
+                "Sin necesidad de grabar ni editar",
+                "Variedad de perfiles y estilos (como Melissa)",
+                "Escalabilidad para campañas de Ads",
+                "Entrega rápida de creatividades listas para publicar"
             ]}
             process={[
                 {
-                    title: "Definición de Avatares",
-                    description: "Seleccionamos los perfiles demográficos que encajan con tu audiencia."
+                    title: "Briefing y Guion",
+                    description: "Definimos el objetivo del vídeo y preparamos los guiones optimizados para retención."
                 },
                 {
-                    title: "Guionización Persuasiva",
-                    description: "Creamos guiones enfocados en puntos de dolor y beneficios."
+                    title: "Selección de Avatar",
+                    description: "Elegimos el perfil de IA (propio o stock) que mejor encaje con tu marca."
                 },
                 {
-                    title: "Generación y Montaje",
-                    description: "Generamos los vídeos y los editamos con estilo nativo de TikTok/Reels."
+                    title: "Producción y Edición",
+                    description: "Generamos el vídeo y añadimos edición dinámica estilo TikTok/Reels."
                 }
             ]}
-            heroImage="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/59f0faf1-8d44-4d77-bb9f-9909b2e2fd57/generated_images/content-creator-filming-with-smartphone--143bb571-20251119011116.jpg"
+            heroImage="/images/avatars/woman-mic.jpg"
         />
     );
 }

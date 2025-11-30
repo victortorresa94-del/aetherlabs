@@ -1,114 +1,76 @@
-'use client';
+"use client";
 
 import React from 'react';
 import HeaderNavigation from '@/components/sections/header-navigation';
 import Footer from '@/components/sections/footer';
 import Link from 'next/link';
-import { Image as ImageIcon, Video, Sparkles, Download, Eye, Wand2, Users } from 'lucide-react';
-
-interface Demo {
-  type: 'image' | 'video';
-  title: string;
-  category: string;
-  description: string;
-  prompt: string;
-  image: string;
-}
-
-interface Tutorial {
-  title: string;
-  description: string;
-  duration: string;
-}
-
-const demos: Demo[] = [
-  {
-    type: 'image',
-    title: 'Skyflex Shoes - Campaña',
-    category: 'Producto',
-    description: 'Zapatillas deportivas en entorno urbano nocturno con efectos de neón.',
-    prompt: 'Athletic sneakers floating in neon-lit urban night scene, dramatic lighting, product photography',
-    image: '/images/creative/skyflex.png',
-  },
-  {
-    type: 'image',
-    title: 'Cosmética Premium',
-    category: 'Producto',
-    description: 'Producto de skincare con elementos naturales y iluminación suave.',
-    prompt: 'Luxury skincare product with natural elements, soft studio lighting, elegant composition',
-    image: '/images/creative/cosmetica.png',
-  },
-  {
-    type: 'video',
-    title: 'TwoJeys Fashion Spot',
-    category: 'Moda',
-    description: 'Spot de joyería con modelos digitales en estética minimalista.',
-    prompt: 'Fashion jewelry commercial, minimalist aesthetic, elegant models, slow motion',
-    image: '/images/creative/twojeys.png',
-  },
-  {
-    type: 'video',
-    title: 'Real Estate Tour',
-    category: 'Inmobiliario',
-    description: 'Tour virtual de propiedad con staging digital.',
-    prompt: 'Virtual property tour, modern interior, natural lighting, smooth camera movement',
-    image: '/images/creative/real-estate.png',
-  },
-  {
-    type: 'image',
-    title: 'Gastronomía Gourmet',
-    category: 'Food',
-    description: 'Plato gourmet con presentación editorial.',
-    prompt: 'Gourmet dish food photography, editorial style, dramatic lighting, shallow depth of field',
-    image: 'https://placehold.co/800x600/1a1a1a/ffffff?text=Gastronomia',
-  },
-  {
-    type: 'image',
-    title: 'Tech Product',
-    category: 'Electrónica',
-    description: 'Dispositivo electrónico en ambiente futurista.',
-    prompt: 'Tech device in futuristic environment, sleek design, blue accent lighting',
-    image: 'https://placehold.co/800x600/1a1a1a/ffffff?text=Tech+Product',
-  },
-];
-
-const tutorials: Tutorial[] = [
-  {
-    title: 'Cómo creamos Skyflex Shoes',
-    description: 'El proceso completo desde el concepto hasta la campaña final.',
-    duration: '5 min',
-  },
-  {
-    title: 'Virtual Staging en 10 minutos',
-    description: 'Transforma espacios vacíos en hogares amueblados.',
-    duration: '10 min',
-  },
-  {
-    title: 'Avatares realistas paso a paso',
-    description: 'Crea portavoces digitales que parecen reales.',
-    duration: '8 min',
-  },
-];
+import Image from 'next/image';
+import { Image as ImageIcon, Users, Fingerprint, BookOpen, ArrowRight, ExternalLink, Wand2 } from 'lucide-react';
 
 export default function CreativeLabPage() {
-  console.log('Rendering CreativeLabPage');
+  const tools = [
+    {
+      title: 'Generador de Fotos de Producto',
+      description: 'Sube una imagen de tu producto y mira cómo la transformamos en contenido profesional.',
+      image: '/images/creative/skyflex-fence.jpg',
+      icon: ImageIcon,
+      link: 'https://generador-de-fotos-de-productos-159705655877.us-west1.run.app',
+      tag: 'Imagen Generativa'
+    },
+    {
+      title: 'Nano Banana Studio',
+      description: 'Editor de fotos con IA. Retoca, mejora y transforma tus imágenes con herramientas de última generación.',
+      image: '/images/learn/nano-banana-user.jpg',
+      icon: Wand2,
+      link: 'https://nano-banana-studio-159705655877.us-west1.run.app',
+      tag: 'Editor IA'
+    },
+    {
+      title: 'Generador de Influencers IA',
+      description: 'Crea modelos totalmente realistas según estilo, sector o estética de tu marca.',
+      image: '/images/avatars/woman-mic.jpg',
+      icon: Users,
+      link: 'https://ugc-avatar-studio-159705655877.us-west1.run.app',
+      tag: 'Avatar & Video'
+    },
+    {
+      title: 'Skinflow',
+      description: 'Analizador facial en tiempo real que recomienda rutinas de skincare y maquillaje personalizadas.',
+      image: '/images/creative/cosmetica.png',
+      icon: Fingerprint,
+      link: '#',
+      tag: 'Computer Vision'
+    },
+    {
+      title: 'Chleopatra',
+      description: 'Web app educativa que narra historias históricas con vídeos generados por IA y voz en off.',
+      image: '/images/creative/chleopatra-egypt.png',
+      icon: BookOpen,
+      link: 'https://chleopatra-history-reimagined-159705655877.us-west1.run.app',
+      tag: 'Storytelling'
+    }
+  ];
+
   return (
     <div className="min-h-screen bg-black">
       <HeaderNavigation />
 
       <main>
-        <section className="pt-32 pb-20 bg-black">
-          <div className="container">
+        <section className="pt-32 pb-20 bg-black relative overflow-hidden">
+          {/* Background Elements */}
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-purple-900/20 blur-[120px] rounded-full pointer-events-none" />
+
+          <div className="container relative z-10">
             <div className="max-w-4xl mx-auto text-center">
               <p className="text-xs uppercase tracking-wider text-[#a0a0a0] mb-4">
-                Labs / Creative Lab
+                Labs / Creative Playground
               </p>
-              <h1 className="text-5xl md:text-[4rem] font-light text-white mb-6 leading-tight">
-                Explora la creatividad IA
+              <h1 className="text-5xl md:text-[5rem] font-light text-white mb-6 leading-tight">
+                Creative Lab
               </h1>
               <p className="text-xl text-[#c8c8c8] max-w-2xl mx-auto">
-                Prueba la IA generativa antes de contratarla.
-                Ejemplos reales de lo que podemos crear juntos.
+                Un espacio experimental donde probamos los límites de la IA generativa.
+                Juega, explora y descubre nuestras herramientas.
               </p>
             </div>
           </div>
@@ -116,198 +78,55 @@ export default function CreativeLabPage() {
 
         <section className="py-20 bg-[#0a0a0a]">
           <div className="container">
-            <div className="max-w-5xl mx-auto">
-              <div className="bg-gradient-to-br from-[#1a1a1a] to-[#0a0a0a] rounded-3xl border-2 border-[#2a2a2a] p-8 md:p-12 mb-20">
-                <div className="flex items-start gap-6">
-                  <div className="w-16 h-16 rounded-2xl bg-white/10 flex items-center justify-center flex-shrink-0">
-                    <Wand2 className="h-8 w-8 text-white" />
-                  </div>
-                  <div className="flex-1">
-                    <h2 className="text-3xl md:text-4xl font-light text-white mb-4">
-                      Generador de Fotos de Producto
-                    </h2>
-                    <p className="text-[#a0a0a0] text-lg mb-6">
-                      Prueba nuestra tecnología de IA generativa. Sube una imagen de tu producto
-                      y mira cómo la transformamos en contenido profesional.
-                    </p>
-                    <Link
-                      href="https://generador-de-fotos-de-productos-159705655877.us-west1.run.app"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center text-white font-semibold text-lg hover:text-[#82ff1f] transition-colors"
-                    >
-                      Probar <span className="ml-2">→</span>
-                    </Link>
-                  </div>
-                </div>
-              </div>
-
-              <div className="bg-gradient-to-br from-[#1a1a1a] to-[#0a0a0a] rounded-3xl border-2 border-[#2a2a2a] p-8 md:p-12 mb-20">
-                <div className="flex items-start gap-6">
-                  <div className="w-16 h-16 rounded-2xl bg-white/10 flex items-center justify-center flex-shrink-0">
-                    <Users className="h-8 w-8 text-white" />
-                  </div>
-                  <div className="flex-1">
-                    <h2 className="text-3xl md:text-4xl font-light text-white mb-4">
-                      Creador de Influencers IA
-                    </h2>
-                    <p className="text-[#a0a0a0] text-lg mb-6">
-                      Genera modelos totalmente realistas según estilo, sector o estética de tu marca.
-                    </p>
-                    <Link
-                      href="/labs/creative/influencer"
-                      className="inline-flex items-center text-white font-semibold text-lg hover:text-[#82ff1f] transition-colors"
-                    >
-                      Probar <span className="ml-2">→</span>
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="py-20 bg-black">
-          <div className="container">
-            <div className="flex items-center justify-between mb-12">
-              <div>
-                <h2 className="text-3xl md:text-4xl font-light text-white mb-2">
-                  Galería de demos
-                </h2>
-                <p className="text-[#a0a0a0]">
-                  Ejemplos reales generados con IA
-                </p>
-              </div>
-            </div>
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {demos.map((demo, index) => (
-                <div
+            <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+              {tools.map((tool, index) => (
+                <Link
                   key={index}
-                  className="group bg-[#0a0a0a] rounded-2xl overflow-hidden border border-[#2a2a2a] transition-all duration-300 hover:border-[#4a4a4a] hover:translate-y-[-4px]"
+                  href={tool.link}
+                  target={tool.link === '#' ? '_self' : '_blank'}
+                  rel="noopener noreferrer"
+                  className="group relative bg-[#111] rounded-3xl overflow-hidden border border-[#2a2a2a] transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl hover:shadow-purple-900/20 hover:border-[#82ff1f]/50 flex flex-col h-full"
                 >
-                  <div className="aspect-[4/3] bg-[#1a1a1a] relative overflow-hidden">
-                    <div className="absolute inset-0 bg-gradient-to-br from-[#2a2a2a] via-[#1a1a1a] to-[#0a0a0a]" />
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      {demo.type === 'video' ? (
-                        <Video className="h-12 w-12 text-[#4a4a4a]" />
-                      ) : (
-                        <ImageIcon className="h-12 w-12 text-[#4a4a4a]" />
-                      )}
-                    </div>
-                    <div className="absolute top-4 left-4">
-                      <span className="text-xs px-3 py-1 bg-black/80 text-white rounded-full backdrop-blur-sm">
-                        {demo.category}
+                  {/* Image Container with 3D-like effect */}
+                  <div className="aspect-video relative overflow-hidden">
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#111] via-transparent to-transparent z-10" />
+                    <Image
+                      src={tool.image}
+                      alt={tool.title}
+                      fill
+                      className="object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+                    <div className="absolute top-4 left-4 z-20">
+                      <span className="px-3 py-1 bg-black/60 backdrop-blur-md border border-white/10 rounded-full text-xs text-white font-medium">
+                        {tool.tag}
                       </span>
                     </div>
-                    <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-3">
-                      <button className="p-3 bg-white text-black rounded-full hover:scale-110 transition-transform">
-                        <Eye className="h-5 w-5" />
-                      </button>
-                      <button className="p-3 bg-white text-black rounded-full hover:scale-110 transition-transform">
-                        <Download className="h-5 w-5" />
-                      </button>
-                    </div>
                   </div>
-                  <div className="p-6">
-                    <h3 className="text-xl font-semibold text-white mb-2">
-                      {demo.title}
+
+                  {/* Content */}
+                  <div className="p-8 relative z-20 flex flex-col flex-grow">
+                    <div className="w-12 h-12 bg-[#1a1a1a] rounded-xl flex items-center justify-center mb-6 border border-[#333] group-hover:bg-[#82ff1f] group-hover:text-black transition-all duration-300 shadow-lg">
+                      <tool.icon className="h-6 w-6 text-white group-hover:text-black transition-colors" />
+                    </div>
+
+                    <h3 className="text-2xl font-light text-white mb-3 group-hover:text-[#82ff1f] transition-colors">
+                      {tool.title}
                     </h3>
-                    <p className="text-[#a0a0a0] text-sm mb-4">
-                      {demo.description}
+                    <p className="text-[#a0a0a0] leading-relaxed mb-6 flex-grow">
+                      {tool.description}
                     </p>
-                    <div className="bg-[#1a1a1a] rounded-lg p-3 border border-[#2a2a2a]">
-                      <p className="text-xs text-[#808080] mb-1 uppercase tracking-wider">
-                        Prompt usado
-                      </p>
-                      <p className="text-sm text-[#a0a0a0] italic">
-                        &quot;{demo.prompt}&quot;
-                      </p>
+
+                    <div className="flex items-center text-sm font-medium text-white group-hover:translate-x-2 transition-transform duration-300">
+                      Probar herramienta
+                      {tool.link.startsWith('http') ? (
+                        <ExternalLink className="ml-2 h-4 w-4" />
+                      ) : (
+                        <ArrowRight className="ml-2 h-4 w-4" />
+                      )}
                     </div>
                   </div>
-                </div>
+                </Link>
               ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="py-24 bg-[#0a0a0a]">
-          <div className="container">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-light text-white mb-4">
-                Aprende cómo lo hacemos
-              </h2>
-              <p className="text-[#a0a0a0] max-w-2xl mx-auto">
-                Tutoriales rápidos sobre nuestro proceso creativo
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-              <Link href="/labs/creative/tutorials/skyflex" className="group">
-                <div className="bg-black rounded-2xl p-6 border border-[#2a2a2a] transition-all duration-300 group-hover:border-[#4a4a4a] h-full flex flex-col">
-                  <div className="w-12 h-12 rounded-xl bg-[#1a1a1a] flex items-center justify-center mb-4 group-hover:bg-[#222] transition-colors">
-                    <Sparkles className="h-6 w-6 text-white" />
-                  </div>
-                  <h3 className="text-xl font-semibold text-white mb-2">
-                    Cómo creamos Skyflex Shoes
-                  </h3>
-                  <p className="text-[#a0a0a0] text-sm mb-4 flex-grow">
-                    El proceso completo desde el concepto hasta la campaña final.
-                  </p>
-                  <div className="flex items-center justify-between mt-auto">
-                    <span className="text-xs text-[#808080]">
-                      5 min lectura
-                    </span>
-                    <span className="text-white text-sm font-medium group-hover:text-[#82ff1f] transition-colors">
-                      Leer →
-                    </span>
-                  </div>
-                </div>
-              </Link>
-
-              <Link href="/labs/creative/tutorials/virtual-staging" className="group">
-                <div className="bg-black rounded-2xl p-6 border border-[#2a2a2a] transition-all duration-300 group-hover:border-[#4a4a4a] h-full flex flex-col">
-                  <div className="w-12 h-12 rounded-xl bg-[#1a1a1a] flex items-center justify-center mb-4 group-hover:bg-[#222] transition-colors">
-                    <Sparkles className="h-6 w-6 text-white" />
-                  </div>
-                  <h3 className="text-xl font-semibold text-white mb-2">
-                    Virtual Staging en 10 minutos
-                  </h3>
-                  <p className="text-[#a0a0a0] text-sm mb-4 flex-grow">
-                    Transforma espacios vacíos en hogares amueblados.
-                  </p>
-                  <div className="flex items-center justify-between mt-auto">
-                    <span className="text-xs text-[#808080]">
-                      10 min lectura
-                    </span>
-                    <span className="text-white text-sm font-medium group-hover:text-[#82ff1f] transition-colors">
-                      Leer →
-                    </span>
-                  </div>
-                </div>
-              </Link>
-
-              <Link href="/labs/creative/tutorials/avatares" className="group">
-                <div className="bg-black rounded-2xl p-6 border border-[#2a2a2a] transition-all duration-300 group-hover:border-[#4a4a4a] h-full flex flex-col">
-                  <div className="w-12 h-12 rounded-xl bg-[#1a1a1a] flex items-center justify-center mb-4 group-hover:bg-[#222] transition-colors">
-                    <Sparkles className="h-6 w-6 text-white" />
-                  </div>
-                  <h3 className="text-xl font-semibold text-white mb-2">
-                    Avatares realistas paso a paso
-                  </h3>
-                  <p className="text-[#a0a0a0] text-sm mb-4 flex-grow">
-                    Crea portavoces digitales que parecen reales.
-                  </p>
-                  <div className="flex items-center justify-between mt-auto">
-                    <span className="text-xs text-[#808080]">
-                      8 min lectura
-                    </span>
-                    <span className="text-white text-sm font-medium group-hover:text-[#82ff1f] transition-colors">
-                      Leer →
-                    </span>
-                  </div>
-                </div>
-              </Link>
             </div>
           </div>
         </section>
@@ -316,23 +135,18 @@ export default function CreativeLabPage() {
           <div className="container">
             <div className="max-w-3xl mx-auto text-center">
               <h2 className="text-4xl md:text-5xl font-light text-white mb-8">
-                ¿Listo para crear tu proyecto?
+                ¿Tienes una idea loca?
               </h2>
               <p className="text-lg text-[#a0a0a0] mb-10">
-                Si algo de lo que has visto te inspira, hablemos de tu idea.
+                Podemos crear herramientas personalizadas como estas para tu marca.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link
                   href="/contacto"
-                  className="inline-block bg-white text-black font-semibold text-base py-4 px-8 rounded-full transition-all duration-200 hover:scale-105"
+                  className="inline-flex items-center justify-center bg-white text-black font-semibold text-base py-4 px-8 rounded-full transition-all duration-200 hover:scale-105"
                 >
-                  Empezar mi proyecto
-                </Link>
-                <Link
-                  href="/servicios/ia-generativa"
-                  className="inline-block bg-transparent text-white font-semibold text-base py-4 px-8 rounded-full border-2 border-white transition-all duration-200 hover:bg-white hover:text-black"
-                >
-                  Ver servicios
+                  Hablemos
+                  <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
               </div>
             </div>
