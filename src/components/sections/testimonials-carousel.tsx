@@ -20,7 +20,7 @@ const testimonials = [
       { text: "Realmente capturaron la esencia que buscábamos de forma perfecta.", highlighted: true },
     ],
     author: "Laura Martínez, Directora Creativa",
-    image: "https://static.wixstatic.com/media/fedd60_1e7bc8bb71c2438883b27b508f658399~mv2.jpg/v1/fill/w_480,h_480,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/Album%20art%20for%20L2%20Diaspora%20by%20Absolutely%20Ai.jpg",
+    image: "/images/testimonials/laura.png",
     alt: "Cliente satisfecho de Aether Labs",
   },
   {
@@ -29,7 +29,7 @@ const testimonials = [
       { text: "superó nuestras expectativas creativas y de marca.", highlighted: true },
     ],
     author: "Carlos González, Director de Marketing",
-    image: "https://static.wixstatic.com/media/fedd60_f8546b41d00c436b9991a0210f922765~mv2.jpg/v1/fill/w_480,h_480,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/fedd60_f8546b41d00c436b9991a0210f922765~mv2.jpg",
+    image: "/images/testimonials/carlos.png",
     alt: "Testimonio de cliente satisfecho"
   },
   {
@@ -38,7 +38,7 @@ const testimonials = [
       { text: "resultados extraordinarios en tiempo récord.", highlighted: true },
     ],
     author: "Ana Rodríguez, CEO",
-    image: "https://static.wixstatic.com/media/fedd60_2b7f7e2a9b1341c5991873172cbac77d~mv2.jpg/v1/fill/w_480,h_480,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/fedd60_2b7f7e2a9b1341c5991873172cbac77d~mv2.jpg",
+    image: "/images/testimonials/elena.png",
     alt: "Testimonio de cliente"
   },
   {
@@ -47,7 +47,7 @@ const testimonials = [
       { text: "los resultados han sido notables con un engagement impresionante.", highlighted: true },
     ],
     author: "David Fernández, Social Media Manager",
-    image: "https://static.wixstatic.com/media/fedd60_34c142c67c524021966a0862024b8d74~mv2.png/v1/fill/w_480,h_480,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/fedd60_34c142c67c524021966a0862024b8d74~mv2.png",
+    image: "/images/testimonials/david.png",
     alt: "Testimonio cliente redes sociales"
   },
 ];

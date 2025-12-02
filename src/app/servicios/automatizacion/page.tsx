@@ -1,176 +1,426 @@
 import HeaderNavigation from '@/components/sections/header-navigation';
 import Footer from '@/components/sections/footer';
 import Link from 'next/link';
-import { Phone, MessageSquare, FileText, ListTodo, Workflow, BarChart, ArrowRight, CheckCircle2 } from 'lucide-react';
+import {
+  Phone, MessageSquare, FileText, ListTodo, Workflow, BarChart,
+  ArrowRight, CheckCircle2, Mic, Bot, Users, Brain,
+  ShoppingBag, Calculator, Briefcase, Globe, Shield, Zap, Network,
+  Mail, MessageCircle, Cloud, FileSpreadsheet, CreditCard, Layout
+} from 'lucide-react';
 
 export default function AutomatizacionPage() {
-  const services = [
+  const featuredAgents = [
     {
-      icon: Phone,
-      title: 'Agente telefónico',
-      description: 'Atiende pedidos y reservas automáticamente con integración a Excel, Sheets o tu CRM.',
-      examples: ['Pedidos', 'Reservas', 'Consultas'],
-    },
-    {
-      icon: MessageSquare,
-      title: 'Bots de WhatsApp y chat',
-      description: 'Atención al cliente 24/7 en WhatsApp, web o redes sociales.',
-      examples: ['Soporte', 'Ventas', 'FAQ'],
-    },
-    {
-      icon: FileText,
-      title: 'Automatización de presupuestos',
-      description: 'Genera presupuestos automáticos desde formularios o conversaciones.',
-      examples: ['Cotizaciones', 'Propuestas', 'Facturas'],
+      icon: Mic,
+      title: 'Agentes de Voz Hiperrealistas',
+      description: 'Capaces de mantener conversaciones telefónicas fluidas, agendar citas, cualificar leads y realizar encuestas con una latencia mínima y entonación humana.',
+      highlight: true,
+      flow: ["Voz Entrante", "Speech-to-Text", "LLM Cerebro", "Text-to-Speech", "Audio Saliente"]
     },
     {
       icon: ListTodo,
-      title: 'Agentes internos tipo Jason',
-      description: 'Crean tareas y organizan proyectos automáticamente en ClickUp, Notion o Asana.',
-      examples: ['Gestión', 'Proyectos', 'Tareas'],
+      title: 'Asistente de Project Manager',
+      description: 'Organiza tareas en Notion, ClickUp o Asana. Persigue deadlines, asigna responsables, actualiza estados y genera reportes de progreso automáticamente.',
+      highlight: false,
+      flow: ["Update Diario", "Análisis Estado", "Detectar Retrasos", "Notificar Slack", "Actualizar Tablero"]
     },
     {
-      icon: Workflow,
-      title: 'Flujos con n8n/Make/Zapier',
-      description: 'Conecta todas tus herramientas y automatiza procesos sin código.',
-      examples: ['Integraciones', 'Workflows', 'Conectores'],
+      icon: MessageSquare,
+      title: 'Soporte Omnicanal 24/7',
+      description: 'Atención al cliente en WhatsApp, Instagram, Web y Email. Resuelve dudas, gestiona incidencias y escala casos complejos a humanos.',
+      highlight: false,
+      flow: ["Mensaje Usuario", "Base de Conocimiento", "Generar Respuesta", "Acción (Ticket/Reserva)", "Respuesta"]
+    }
+  ];
+
+  const agentCategories = [
+    {
+      title: "Ventas & Marketing",
+      icon: ShoppingBag,
+      agents: [
+        {
+          title: "Cualificador de Leads",
+          desc: "Filtra y puntúa prospectos automáticamente antes de pasarlos a ventas.",
+          flow: ["Form Web", "CRM", "Scoring AI", "Notificación Ventas"]
+        },
+        {
+          title: "Agendador Automático",
+          desc: "Coordina calendarios y cierra reuniones sin intercambio de emails.",
+          flow: ["Email/Chat", "Calendar API", "Verificar Huecos", "Enviar Invite"]
+        },
+        {
+          title: "Generador de Contenido",
+          desc: "Crea posts, blogs y copy adaptado a tu voz de marca.",
+          flow: ["Tendencia", "Redactor LLM", "Gen Imagen", "Programar Post"]
+        },
+        {
+          title: "Respondedor Social",
+          desc: "Interactúa con comentarios y DMs para aumentar el engagement.",
+          flow: ["Comentario", "Análisis Tono", "Borrador Respuesta", "Publicar"]
+        },
+        {
+          title: "Buscador de Prospectos",
+          desc: "Scrapea y encuentra clientes potenciales que encajan con tu ICP.",
+          flow: ["LinkedIn/Web", "Scraper", "Enriquecer Datos", "Email Frío"]
+        },
+        {
+          title: "Analista de Marca",
+          desc: "Monitoriza menciones y sentimiento en tiempo real.",
+          flow: ["Social Listening", "Base Datos", "Análisis Sentimiento", "Alerta"]
+        }
+      ]
     },
     {
-      icon: BarChart,
-      title: 'Reporting automático',
-      description: 'Informes y análisis generados automáticamente y enviados cuando los necesites.',
-      examples: ['Dashboards', 'Métricas', 'KPIs'],
+      title: "Operaciones & Gestión",
+      icon: Briefcase,
+      agents: [
+        {
+          title: "Triaje de Email",
+          desc: "Clasifica, etiqueta y redacta borradores de respuesta en tu bandeja.",
+          flow: ["Inbox", "Clasificador AI", "Redactar Borrador", "Etiquetar"]
+        },
+        {
+          title: "Resumidor de Reuniones",
+          desc: "Transcribe llamadas y extrae puntos de acción automáticamente.",
+          flow: ["Grabación", "Whisper (Audio)", "Resumen", "Crear Tareas"]
+        },
+        {
+          title: "Gestor de Inventario",
+          desc: "Predice roturas de stock y genera órdenes de compra.",
+          flow: ["Datos Ventas", "Modelo Predicción", "Alerta Stock", "Orden Compra"]
+        },
+        {
+          title: "Coordinador Logístico",
+          desc: "Optimiza rutas y comunica estados de envío a clientes.",
+          flow: ["Pedido", "Algoritmo Ruta", "App Conductor", "SMS Cliente"]
+        },
+        {
+          title: "Asistente Onboarding",
+          desc: "Guía a nuevos empleados por todo el proceso de alta.",
+          flow: ["Alta RRHH", "Email Bienvenida", "Crear Accesos", "Agendar Formación"]
+        },
+        {
+          title: "Filtrado de CVs",
+          desc: "Analiza cientos de currículums y destaca los mejores candidatos.",
+          flow: ["PDF CV", "Parser", "Score Match", "Dashboard RRHH"]
+        }
+      ]
     },
+    {
+      title: "Finanzas & Legal",
+      icon: Calculator,
+      agents: [
+        {
+          title: "Procesador de Facturas",
+          desc: "Extrae datos de PDFs y los introduce en tu software contable.",
+          flow: ["PDF Factura", "OCR Vision", "Validación", "Entrada ERP"]
+        },
+        {
+          title: "Agente de Cobros",
+          desc: "Realiza seguimiento amistoso de facturas impagadas.",
+          flow: ["Lista Impagos", "Estrategia Tono", "Email/SMS", "Link Pago"]
+        },
+        {
+          title: "Generador de Presupuestos",
+          desc: "Crea cotizaciones detalladas basadas en requerimientos.",
+          flow: ["Datos Cliente", "Base Precios", "Generar PDF", "Enviar Email"]
+        },
+        {
+          title: "Revisor de Contratos",
+          desc: "Detecta cláusulas de riesgo en documentos legales estándar.",
+          flow: ["Documento", "Legal AI", "Check Riesgos", "Informe"]
+        },
+        {
+          title: "Auditor de Cumplimiento",
+          desc: "Verifica que los procesos sigan las normativas vigentes.",
+          flow: ["Logs Proceso", "Base Normativa", "Cruce Datos", "Reporte"]
+        },
+        {
+          title: "Reportero Financiero",
+          desc: "Consolida datos y genera informes de pérdidas y ganancias.",
+          flow: ["APIs Bancos", "Libro Mayor", "Análisis", "Dashboard CEO"]
+        }
+      ]
+    },
+    {
+      title: "Especializados",
+      icon: Brain,
+      agents: [
+        {
+          title: "Virtual Staging",
+          desc: "Amuebla digitalmente propiedades vacías para inmobiliarias.",
+          flow: ["Foto Vacía", "Prompt Estilo", "Stable Diffusion", "Render Final"]
+        },
+        {
+          title: "Gestor de Reservas",
+          desc: "Administra mesas y turnos en restaurantes automáticamente.",
+          flow: ["Llamada/Chat", "Check Disponibilidad", "Bloquear Mesa", "Confirmación"]
+        },
+        {
+          title: "Tutor Personalizado",
+          desc: "Crea planes de estudio y resuelve dudas a alumnos 24/7.",
+          flow: ["Pregunta Alumno", "Base Conocimiento", "Explicación", "Quiz"]
+        },
+        {
+          title: "Traductor Real-Time",
+          desc: "Facilita la comunicación entre equipos internacionales.",
+          flow: ["Audio Entrada", "Transcipción", "Traducción", "Audio Salida"]
+        },
+        {
+          title: "Analista de Mercado",
+          desc: "Detecta tendencias emergentes analizando grandes volúmenes de datos.",
+          flow: ["Feed Noticias", "Detección Patrones", "Insight", "Estrategia"]
+        },
+        {
+          title: "Entrenador de Ventas",
+          desc: "Simula clientes difíciles para practicar objeciones.",
+          flow: ["Escenario", "Bot Voz", "Interacción", "Feedback"]
+        }
+      ]
+    }
+  ];
+
+  const tools = [
+    { name: "Gmail", icon: Mail, category: "Email" },
+    { name: "Outlook", icon: Mail, category: "Email" },
+    { name: "WhatsApp", icon: MessageCircle, category: "Mensajería" },
+    { name: "Slack", icon: MessageSquare, category: "Mensajería" },
+    { name: "HubSpot", icon: Network, category: "CRM" },
+    { name: "Salesforce", icon: Cloud, category: "CRM" },
+    { name: "Notion", icon: FileText, category: "Productividad" },
+    { name: "Airtable", icon: Layout, category: "Base de Datos" },
+    { name: "Excel", icon: FileSpreadsheet, category: "Hojas de Cálculo" },
+    { name: "Google Sheets", icon: FileSpreadsheet, category: "Hojas de Cálculo" },
+    { name: "Stripe", icon: CreditCard, category: "Pagos" },
+    { name: "Shopify", icon: ShoppingBag, category: "E-commerce" }
   ];
 
   const process = [
     {
       number: '01',
-      title: 'Briefing y detección',
-      description: 'Conversamos para entender tu negocio y detectar qué se puede automatizar.',
+      title: 'Auditoría de Flujos',
+      description: 'Analizamos tus procesos actuales para identificar cuellos de botella y tareas repetitivas de alto valor.',
     },
     {
       number: '02',
-      title: 'Selección de herramientas',
-      description: 'Elegimos las APIs y plataformas adecuadas para tu caso.',
+      title: 'Diseño de la Arquitectura',
+      description: 'Definimos qué agentes necesitas, qué herramientas usarán y cómo se comunicarán entre sí.',
     },
     {
       number: '03',
-      title: 'Diseño e integración',
-      description: 'Creamos los flujos y los conectamos con tus sistemas actuales.',
+      title: 'Desarrollo e Integración',
+      description: 'Construimos los agentes usando LLMs avanzados y los conectamos a tu stack tecnológico (CRM, ERP, etc.).',
     },
     {
       number: '04',
-      title: 'Pruebas y despliegue',
-      description: 'Testeamos todo hasta que funcione perfectamente y lo ponemos en marcha.',
+      title: 'Entrenamiento y Ajuste',
+      description: 'Refinamos las respuestas y comportamientos del agente para que se alineen con tu voz de marca.',
     },
     {
       number: '05',
-      title: 'Mantenimiento y soporte',
-      description: 'Te acompañamos después del lanzamiento para ajustes y mejoras.',
+      title: 'Despliegue y Monitorización',
+      description: 'Lanzamos los agentes y supervisamos su rendimiento para asegurar una mejora continua.',
     },
   ];
 
   return (
-    <main className="min-h-screen bg-black">
+    <main className="min-h-screen bg-black text-white">
       <HeaderNavigation />
-      
-      <section className="pt-32 pb-20 bg-black">
-        <div className="container">
+
+      {/* Hero Section */}
+      <section className="pt-40 pb-20 relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-900/20 via-black to-black pointer-events-none" />
+        <div className="container relative z-10">
           <div className="max-w-4xl mx-auto text-center">
-            <p className="text-xs uppercase tracking-wider text-[#a0a0a0] mb-4">
-              Servicios / Automatización
-            </p>
-            <h1 className="text-5xl md:text-[4rem] font-light text-white mb-6 leading-tight">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-8">
+              <Bot className="w-4 h-4 text-[#82ff1f]" />
+              <span className="text-sm font-medium text-white/80">Fuerza Laboral Digital</span>
+            </div>
+            <h1 className="text-5xl md:text-7xl font-light mb-8 leading-tight">
               Automatiza tu negocio
             </h1>
-            <p className="text-xl text-[#c8c8c8] max-w-2xl mx-auto">
-              Agentes y flujos que trabajan por ti 24/7.
-              Ahorra tiempo y dinero sin complicaciones.
+            <p className="text-xl text-zinc-400 max-w-2xl mx-auto mb-10 leading-relaxed">
+              Implementamos trabajadores digitales que ejecutan tareas, toman decisiones y usan tus herramientas de software. Desde atender llamadas hasta gestionar proyectos enteros.
             </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link
+                href="/contacto"
+                className="inline-flex items-center justify-center bg-white text-black font-medium text-lg py-4 px-8 rounded-full transition-all duration-300 hover:bg-[#82ff1f] hover:scale-105"
+              >
+                Solicitar Demo
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Link>
+            </div>
           </div>
         </div>
       </section>
 
-      <section className="py-20 bg-[#0a0a0a]">
+      {/* What is an AI Agent Block */}
+      <section className="py-20 bg-[#050505] border-t border-white/5">
         <div className="container">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-light text-white mb-4">
-              Servicios de automatización
-            </h2>
-            <p className="text-[#a0a0a0] max-w-2xl mx-auto">
-              Soluciones prácticas para que tu negocio funcione solo
-            </p>
-          </div>
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div className="relative">
+              <div className="absolute inset-0 bg-gradient-to-r from-[#82ff1f]/10 to-blue-500/10 rounded-full blur-3xl" />
+              <div className="relative bg-zinc-900/50 border border-white/10 rounded-3xl p-8 backdrop-blur-sm">
+                {/* Visual representation of Nodes */}
+                <div className="relative h-64 w-full mb-6 bg-black/50 rounded-xl border border-white/5 overflow-hidden flex items-center justify-center">
+                  <div className="absolute inset-0 opacity-20" style={{ backgroundImage: 'radial-gradient(#444 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map((service, index) => {
-              const Icon = service.icon;
-              return (
-                <div
-                  key={index}
-                  className="bg-black rounded-2xl p-8 border border-[#2a2a2a] transition-all duration-300 hover:border-[#4a4a4a] hover:translate-y-[-4px]"
-                >
-                  <div className="w-14 h-14 rounded-xl bg-[#1a1a1a] flex items-center justify-center mb-6">
-                    <Icon className="h-7 w-7 text-white" />
+                  {/* Central Node */}
+                  <div className="relative z-10 flex flex-col items-center">
+                    <div className="w-16 h-16 bg-[#82ff1f]/20 rounded-full flex items-center justify-center border border-[#82ff1f] shadow-[0_0_20px_rgba(130,255,31,0.3)] mb-2">
+                      <Brain className="w-8 h-8 text-[#82ff1f]" />
+                    </div>
+                    <span className="text-xs font-mono text-[#82ff1f]">AGENTE CORE</span>
                   </div>
-                  <h3 className="text-2xl font-semibold text-white mb-3">
-                    {service.title}
-                  </h3>
-                  <p className="text-[#a0a0a0] mb-4 leading-relaxed">
-                    {service.description}
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    {service.examples.map((example, i) => (
-                      <span
-                        key={i}
-                        className="text-xs px-3 py-1 bg-[#1a1a1a] text-[#808080] rounded-full"
-                      >
-                        {example}
-                      </span>
-                    ))}
+
+                  {/* Satellite Nodes */}
+                  <div className="absolute top-1/4 left-1/4 animate-pulse">
+                    <div className="w-10 h-10 bg-blue-500/20 rounded-full flex items-center justify-center border border-blue-500">
+                      <MessageSquare className="w-4 h-4 text-blue-500" />
+                    </div>
+                  </div>
+                  <div className="absolute bottom-1/4 right-1/4 animate-pulse delay-75">
+                    <div className="w-10 h-10 bg-purple-500/20 rounded-full flex items-center justify-center border border-purple-500">
+                      <Database className="w-4 h-4 text-purple-500" />
+                    </div>
+                  </div>
+                  <div className="absolute top-1/3 right-1/3 animate-pulse delay-150">
+                    <div className="w-8 h-8 bg-orange-500/20 rounded-full flex items-center justify-center border border-orange-500">
+                      <Zap className="w-3 h-3 text-orange-500" />
+                    </div>
+                  </div>
+
+                  {/* Connection Lines (SVG) */}
+                  <svg className="absolute inset-0 w-full h-full pointer-events-none">
+                    <line x1="50%" y1="50%" x2="25%" y2="25%" stroke="rgba(255,255,255,0.1)" strokeWidth="1" />
+                    <line x1="50%" y1="50%" x2="75%" y2="75%" stroke="rgba(255,255,255,0.1)" strokeWidth="1" />
+                    <line x1="50%" y1="50%" x2="66%" y2="33%" stroke="rgba(255,255,255,0.1)" strokeWidth="1" />
+                  </svg>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <Network className="w-6 h-6 text-[#82ff1f] mt-1" />
+                  <div>
+                    <h3 className="text-lg font-medium text-white mb-2">Arquitectura de Nodos</h3>
+                    <p className="text-sm text-zinc-400">
+                      A diferencia de una automatización lineal (A entonces B), un agente es un sistema dinámico. El "cerebro" (LLM) decide qué herramienta usar (Email, CRM, Buscador) basándose en el objetivo que le des.
+                    </p>
                   </div>
                 </div>
-              );
-            })}
+              </div>
+            </div>
+
+            <div>
+              <h2 className="text-3xl md:text-4xl font-light mb-6">¿Qué es realmente un Agente IA?</h2>
+              <p className="text-lg text-zinc-300 mb-6 leading-relaxed">
+                Imagina un empleado digital que no solo sigue instrucciones, sino que <strong className="text-white">razona</strong>.
+              </p>
+              <p className="text-zinc-400 mb-8 leading-relaxed">
+                Un Agente IA es un software autónomo que percibe su entorno, razona sobre cómo resolver un problema y actúa utilizando herramientas digitales. No es un simple script; es un sistema capaz de:
+              </p>
+              <ul className="space-y-4">
+                <li className="flex items-center gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-[#82ff1f]" />
+                  <span className="text-zinc-300">Planificar secuencias de tareas complejas.</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-[#82ff1f]" />
+                  <span className="text-zinc-300">Corregirse a sí mismo si encuentra un error.</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-[#82ff1f]" />
+                  <span className="text-zinc-300">Aprender del contexto de la empresa.</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-[#82ff1f]" />
+                  <span className="text-zinc-300">Interactuar con otros agentes o humanos.</span>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </section>
 
-      <section className="py-24 bg-black">
+      {/* Featured Agents */}
+      <section className="py-20 bg-black border-y border-white/5">
         <div className="container">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-light text-white mb-4">
-              Cómo trabajamos
-            </h2>
-            <p className="text-[#a0a0a0] max-w-2xl mx-auto">
-              Un proceso claro para automatizar sin dolor de cabeza
+            <h2 className="text-3xl md:text-4xl font-light mb-6">Agentes Destacados</h2>
+            <p className="text-zinc-400 max-w-2xl mx-auto">
+              Las soluciones más demandadas para escalar operaciones sin aumentar plantilla.
             </p>
           </div>
 
-          <div className="max-w-4xl mx-auto space-y-6">
-            {process.map((step, index) => (
+          <div className="grid md:grid-cols-3 gap-8">
+            {featuredAgents.map((agent, index) => (
               <div
                 key={index}
-                className="flex gap-6 p-6 bg-[#0a0a0a] rounded-2xl border border-[#2a2a2a] transition-all duration-300 hover:border-[#4a4a4a]"
+                className={`relative p-8 rounded-3xl border transition-all duration-300 group hover:-translate-y-2 ${agent.highlight
+                    ? 'bg-zinc-900/50 border-[#82ff1f]/50 shadow-[0_0_30px_rgba(130,255,31,0.1)]'
+                    : 'bg-zinc-900/30 border-white/10 hover:border-white/20'
+                  }`}
               >
-                <div className="flex-shrink-0">
-                  <div className="w-14 h-14 rounded-full bg-[#1a1a1a] flex items-center justify-center">
-                    <span className="text-white font-semibold text-lg">
-                      {step.number}
-                    </span>
+                <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-6 ${agent.highlight ? 'bg-[#82ff1f]/10 text-[#82ff1f]' : 'bg-white/5 text-white'
+                  }`}>
+                  <agent.icon className="w-7 h-7" />
+                </div>
+                <h3 className="text-2xl font-light mb-4">{agent.title}</h3>
+                <p className="text-zinc-400 leading-relaxed mb-8">
+                  {agent.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* The 20+ Agents List - Redesigned */}
+      <section className="py-24 relative bg-[#050505]">
+        <div className="container">
+          <div className="text-center mb-20">
+            <span className="text-[#82ff1f] font-medium tracking-wider uppercase text-sm">Catálogo de Posibilidades</span>
+            <h2 className="text-4xl md:text-5xl font-light mt-4 mb-6">
+              Ecosistema de Agentes
+            </h2>
+            <p className="text-zinc-400 max-w-2xl mx-auto text-lg">
+              Explora las capacidades de nuestra fuerza laboral digital por departamento.
+            </p>
+          </div>
+
+          <div className="space-y-16">
+            {agentCategories.map((category, idx) => (
+              <div key={idx} className="relative">
+                <div className="flex items-center gap-4 mb-8">
+                  <div className="w-12 h-12 rounded-xl bg-[#82ff1f]/10 flex items-center justify-center border border-[#82ff1f]/20">
+                    <category.icon className="w-6 h-6 text-[#82ff1f]" />
                   </div>
+                  <h3 className="text-3xl font-light text-white">{category.title}</h3>
                 </div>
-                <div className="flex-1">
-                  <h3 className="text-xl font-semibold text-white mb-2">
-                    {step.title}
-                  </h3>
-                  <p className="text-[#a0a0a0]">
-                    {step.description}
-                  </p>
-                </div>
-                <div className="flex-shrink-0 flex items-center">
-                  <CheckCircle2 className="h-6 w-6 text-[#4a4a4a]" />
+
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {category.agents.map((agent, i) => (
+                    <div key={i} className="bg-zinc-900/20 border border-white/5 rounded-2xl p-6 hover:bg-zinc-900/40 hover:border-white/10 transition-all duration-300 group flex flex-col h-full">
+                      <h4 className="text-lg font-medium text-white mb-2 group-hover:text-[#82ff1f] transition-colors">{agent.title}</h4>
+                      <p className="text-sm text-zinc-400 leading-relaxed mb-6 flex-grow">{agent.desc}</p>
+
+                      {/* Flow Diagram for List Agents */}
+                      <div className="pt-4 border-t border-white/5 mt-auto">
+                        <div className="flex flex-wrap items-center gap-y-2 gap-x-1">
+                          {agent.flow.map((step, stepIdx) => (
+                            <div key={stepIdx} className="flex items-center gap-1">
+                              <span className="text-[9px] uppercase tracking-wider font-medium px-1.5 py-0.5 rounded bg-white/5 text-zinc-500 border border-white/5 whitespace-nowrap">
+                                {step}
+                              </span>
+                              {stepIdx < agent.flow.length - 1 && (
+                                <ArrowRight className="w-2.5 h-2.5 text-zinc-700" />
+                              )}
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
             ))}
@@ -178,30 +428,89 @@ export default function AutomatizacionPage() {
         </div>
       </section>
 
-      <section className="py-24 bg-[#0a0a0a]">
+      {/* Integrations Section */}
+      <section className="py-24 bg-black border-t border-white/5">
         <div className="container">
-          <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-4xl md:text-5xl font-light text-white mb-8">
-              ¿Listo para automatizar?
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-light mb-6">
+              Conectamos con tu Stack
             </h2>
-            <p className="text-lg text-[#a0a0a0] mb-10">
-              Cuéntanos qué procesos te quitan tiempo y te mostramos cómo solucionarlo.
+            <p className="text-zinc-400 max-w-2xl mx-auto">
+              Nuestros agentes se integran nativamente con las herramientas que ya utilizas.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                href="/contacto"
-                className="inline-flex items-center justify-center bg-white text-black font-semibold text-base py-4 px-8 rounded-full transition-all duration-200 hover:scale-105"
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+            {tools.map((tool, index) => (
+              <div key={index} className="flex flex-col items-center justify-center p-6 bg-zinc-900/30 border border-white/5 rounded-2xl hover:bg-zinc-900/50 hover:border-white/10 transition-all duration-300 group">
+                <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300">
+                  <tool.icon className="w-6 h-6 text-zinc-400 group-hover:text-[#82ff1f] transition-colors" />
+                </div>
+                <span className="text-sm font-medium text-zinc-300 group-hover:text-white transition-colors">{tool.name}</span>
+                <span className="text-xs text-zinc-500 mt-1">{tool.category}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Process Section */}
+      <section className="py-24 bg-[#050505] border-t border-white/5">
+        <div className="container">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-light mb-6">
+              Cómo trabajamos
+            </h2>
+            <p className="text-zinc-400 max-w-2xl mx-auto">
+              Un proceso estructurado para garantizar resultados predecibles.
+            </p>
+          </div>
+
+          <div className="max-w-4xl mx-auto space-y-6">
+            {process.map((step, index) => (
+              <div
+                key={index}
+                className="flex gap-6 p-8 bg-zinc-900/30 rounded-3xl border border-white/5 transition-all duration-300 hover:border-white/10 hover:bg-zinc-900/50"
               >
-                Automatiza tu negocio
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Link>
-              <Link
-                href="/labs/agents"
-                className="inline-flex items-center justify-center bg-transparent text-white font-semibold text-base py-4 px-8 rounded-full border-2 border-white transition-all duration-200 hover:bg-white hover:text-black"
-              >
-                Probar agentes
-              </Link>
-            </div>
+                <div className="flex-shrink-0">
+                  <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center border border-white/10">
+                    <span className="text-[#82ff1f] font-mono font-bold">
+                      {step.number}
+                    </span>
+                  </div>
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-medium text-white mb-2">
+                    {step.title}
+                  </h3>
+                  <p className="text-zinc-400 leading-relaxed">
+                    {step.description}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-24 relative overflow-hidden">
+        <div className="absolute inset-0 bg-[#82ff1f]/5" />
+        <div className="container relative z-10 text-center">
+          <h2 className="text-4xl md:text-6xl font-light mb-8">
+            ¿Listo para automatizar?
+          </h2>
+          <p className="text-xl text-zinc-400 max-w-2xl mx-auto mb-12">
+            Cuéntanos qué procesos te quitan tiempo y diseñaremos el agente perfecto para ti.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              href="/contacto"
+              className="inline-flex items-center justify-center bg-white text-black font-bold text-lg py-5 px-10 rounded-full transition-all duration-300 hover:bg-[#82ff1f] hover:scale-105"
+            >
+              Empezar ahora
+              <ArrowRight className="ml-2 h-6 w-6" />
+            </Link>
           </div>
         </div>
       </section>
@@ -209,4 +518,25 @@ export default function AutomatizacionPage() {
       <Footer />
     </main>
   );
+}
+
+function Database(props: any) {
+  return (
+    <svg
+      {...props}
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <ellipse cx="12" cy="5" rx="9" ry="3" />
+      <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3" />
+      <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" />
+    </svg>
+  )
 }

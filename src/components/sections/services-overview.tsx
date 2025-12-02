@@ -1,54 +1,98 @@
 import React from 'react';
-import { Zap, Sparkles, Rocket } from 'lucide-react';
+import { Bot, Palette, MessageSquareCode, GraduationCap, ArrowRight } from 'lucide-react';
+import Link from 'next/link';
 
 interface Service {
   icon: React.ElementType;
   title: string;
   description: string;
+  link: string;
 }
 
 const services: Service[] = [
   {
-    icon: Zap,
-    title: "Automatizadores con IA",
-    description: "Creamos asistentes inteligentes que hacen el trabajo por ti. Desde responder mensajes hasta procesar documentos, sin complicaciones técnicas.",
+    icon: Palette,
+    title: "IA Generativa",
+    description: "Transformamos tu identidad visual con contenido generado por IA. Desde fotografía de producto hasta campañas publicitarias completas.",
+    link: "/servicios/ia-generativa"
   },
   {
-    icon: Sparkles,
-    title: "Contenido Visual Impactante",
-    description: "Generamos imágenes, videos y diseños que captan la atención. Tu marca destacará con contenido único creado con inteligencia artificial.",
+    icon: Bot,
+    title: "Agentes IA",
+    description: "Automatiza tareas repetitivas y optimiza flujos de trabajo. Nuestros agentes trabajan 24/7 para que tú te enfoques en lo importante.",
+    link: "/servicios/automatizacion"
   },
   {
-    icon: Rocket,
-    title: "Soluciones a Medida",
-    description: "Cada negocio es diferente. Desarrollamos herramientas personalizadas que se adaptan a tus necesidades específicas.",
+    icon: MessageSquareCode,
+    title: "Chatbots Inteligentes",
+    description: "Asistentes personalizados entrenados con tus datos. Mejora la atención al cliente y la gestión interna con el poder de los LLMs.",
+    link: "/servicios/chatbots"
+  },
+  {
+    icon: GraduationCap,
+    title: "Consultoría & Formación",
+    description: "Te acompañamos en la adopción de la IA. Formación para equipos y estrategia personalizada para integrar estas tecnologías.",
+    link: "/servicios/consultoria"
   }
 ];
 
 const ServicesOverview: React.FC = () => {
   return (
-    <section className="bg-black text-foreground py-32">
+    <section className="bg-black text-white py-32 border-b border-white/5">
       <div className="container">
-        <div className="flex flex-col items-center mb-20">
-            <h2 className="text-center text-3xl md:text-4xl lg:text-5xl font-light leading-tight tracking-tight mb-6 max-w-3xl">
-                Nuestros Servicios
+        <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
+          <div className="max-w-2xl">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-light leading-tight tracking-tight mb-6">
+              Nuestros Servicios
             </h2>
-            <p className="text-center text-muted-foreground text-lg leading-relaxed max-w-2xl">
-                Tecnología avanzada explicada de forma simple
+            <p className="text-zinc-400 text-lg leading-relaxed max-w-xl">
+              Soluciones integrales de Inteligencia Artificial diseñadas para escalar tu negocio.
+              Desde la creatividad visual hasta la automatización operativa.
             </p>
+          </div>
+          <Link
+            href="/servicios"
+            className="hidden md:flex items-center gap-2 text-sm font-medium text-white hover:text-[#82ff1f] transition-colors pb-2"
+          >
+            Explorar todo
+            <ArrowRight className="w-4 h-4" />
+          </Link>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-x-16 gap-y-20">
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {services.map((service, index) => (
-            <div key={index} className="flex flex-col items-center text-center px-6 transition-all duration-200 ease-out hover:translate-y-[-4px]">
-              <service.icon className="w-12 h-12 mb-8 text-muted-foreground transition-transform duration-200 ease-out hover:scale-110" strokeWidth={1.5} aria-hidden="true" />
-              <h3 className="text-xl font-medium mb-4 leading-snug">
+            <div
+              key={index}
+              className="group p-8 rounded-3xl bg-zinc-900/50 border border-white/5 hover:border-white/10 hover:bg-zinc-900 transition-all duration-300 ease-out"
+            >
+              <div className="w-12 h-12 mb-8 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-white/10 transition-colors">
+                <service.icon className="w-6 h-6 text-white group-hover:text-[#82ff1f] transition-colors" strokeWidth={1.5} />
+              </div>
+
+              <h3 className="text-xl font-medium mb-4 text-white group-hover:text-[#82ff1f] transition-colors">
                 {service.title}
               </h3>
-              <p className="text-muted-foreground text-base leading-relaxed">
+
+              <p className="text-zinc-400 text-sm leading-relaxed mb-8">
                 {service.description}
               </p>
+
+              <div className="flex items-center gap-2 text-xs font-medium text-white/50 group-hover:text-white transition-colors">
+                <span>Saber más</span>
+                <ArrowRight className="w-3 h-3 transform group-hover:translate-x-1 transition-transform" />
+              </div>
             </div>
           ))}
+        </div>
+
+        <div className="mt-12 text-center md:hidden">
+          <Link
+            href="/servicios"
+            className="inline-flex items-center gap-2 text-sm font-medium text-white hover:text-[#82ff1f] transition-colors"
+          >
+            Explorar todos los servicios
+            <ArrowRight className="w-4 h-4" />
+          </Link>
         </div>
       </div>
     </section>

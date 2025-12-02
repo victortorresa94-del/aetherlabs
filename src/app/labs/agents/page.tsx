@@ -72,12 +72,12 @@ export default function AgentsLabPage() {
   return (
     <main className="min-h-screen bg-black">
       <HeaderNavigation />
-      
+
       <section className="pt-32 pb-20 bg-black">
         <div className="container">
           <div className="max-w-4xl mx-auto text-center">
             <p className="text-xs uppercase tracking-wider text-[#a0a0a0] mb-4">
-              Labs / Agents Lab
+              Labs / AI Agents Lab
             </p>
             <h1 className="text-5xl md:text-[4rem] font-light text-white mb-6 leading-tight">
               Agentes que trabajan por ti

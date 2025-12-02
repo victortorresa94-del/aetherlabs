@@ -38,8 +38,9 @@ const HeaderNavigation = () => {
             { label: "Branding con IA", href: "/servicios/ia-generativa/branding" },
           ]
         },
-        { label: "Automatización", href: "/servicios/automatizacion" },
-        { label: "IA a Medida", href: "/servicios/ia-a-medida" }
+        { label: "Agentes IA", href: "/servicios/automatizacion" },
+        { label: "IA a Medida", href: "/servicios/ia-a-medida" },
+        { label: "Formación & Consultoría", href: "/servicios/consultoria" }
       ]
     },
     {
@@ -47,7 +48,7 @@ const HeaderNavigation = () => {
       href: "/labs",
       subItems: [
         { label: "Creative Lab", href: "/labs/creative" },
-        { label: "Agents Lab", href: "/labs/agents" },
+        { label: "AI Agents Lab", href: "/labs/agents" },
         { label: "LLM Lab", href: "/labs/llm-lab" }
       ]
     },
@@ -90,14 +91,15 @@ const HeaderNavigation = () => {
             setActiveSubDropdown(null);
           }}
         >
-          <button
+          <Link
+            href={item.href}
             className="flex items-center px-4 py-2 text-sm text-white transition-colors hover:text-gray-300 whitespace-nowrap gap-1"
             aria-expanded={isDropdownOpen}
             aria-haspopup="true"
           >
             <span dangerouslySetInnerHTML={{ __html: item.label }} />
             <ChevronDown size={14} className={`transition-transform duration-200 ${isDropdownOpen ? 'rotate-180' : ''}`} />
-          </button>
+          </Link>
 
           {isDropdownOpen && (
             <div className="absolute top-full left-0 mt-1 w-56 bg-black border border-[#2a2a2a] rounded-lg shadow-lg z-20">
