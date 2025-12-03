@@ -1,6 +1,6 @@
 import HeaderNavigation from "@/components/sections/header-navigation";
 import Footer from "@/components/sections/footer";
-import { Bot, Palette, MessageSquareCode, GraduationCap, ArrowRight, CheckCircle2, Sparkles, Zap, Brain } from 'lucide-react';
+import { Bot, Palette, MessageSquareCode, GraduationCap, ArrowRight, CheckCircle2, Sparkles, Zap, Brain, LayoutGrid } from 'lucide-react';
 import Link from 'next/link';
 
 export default function ServicesPage() {
@@ -11,6 +11,13 @@ export default function ServicesPage() {
             description: "Revoluciona tu marca con contenido visual generado por Inteligencia Artificial. Creamos desde la identidad visual hasta campañas publicitarias completas con una velocidad y calidad imposibles de igualar tradicionalmente.",
             link: "/servicios/ia-generativa",
             features: ["Fotografía de Producto IA", "Avatares Virtuales", "Videos Publicitarios (Ads)", "Virtual Staging Inmobiliario"]
+        },
+        {
+            icon: LayoutGrid,
+            title: "AI Hub",
+            description: "Implementación, configuración y formación en los principales ecosistemas de IA del mercado. Te ayudamos a adoptar herramientas como Copilot, Gemini o Dapta de forma rápida y efectiva.",
+            link: "/servicios/ai-hub",
+            features: ["Instalación y Configuración", "Formación de Equipos", "Personalización de Workflows", "Soporte Continuo"]
         },
         {
             icon: Bot,

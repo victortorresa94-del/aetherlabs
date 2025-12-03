@@ -1,5 +1,5 @@
 import React from 'react';
-import { Bot, Palette, MessageSquareCode, GraduationCap, ArrowRight } from 'lucide-react';
+import { Bot, Palette, MessageSquareCode, GraduationCap, ArrowRight, LayoutGrid } from 'lucide-react';
 import Link from 'next/link';
 
 interface Service {
@@ -15,6 +15,12 @@ const services: Service[] = [
     title: "IA Generativa",
     description: "Transformamos tu identidad visual con contenido generado por IA. Desde fotografía de producto hasta campañas publicitarias completas.",
     link: "/servicios/ia-generativa"
+  },
+  {
+    icon: LayoutGrid,
+    title: "AI Hub",
+    description: "Implementación y formación en las mejores herramientas de IA del mercado (Copilot, Gemini, Dapta).",
+    link: "/servicios/ai-hub"
   },
   {
     icon: Bot,

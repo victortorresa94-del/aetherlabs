@@ -38,6 +38,7 @@ const HeaderNavigation = () => {
             { label: "Branding con IA", href: "/servicios/ia-generativa/branding" },
           ]
         },
+        { label: "AI Hub", href: "/servicios/ai-hub" },
         { label: "Agentes IA", href: "/servicios/automatizacion" },
         { label: "IA a Medida", href: "/servicios/ia-a-medida" },
         { label: "Computer Vision", href: "/servicios/computer-vision" },
@@ -50,7 +51,8 @@ const HeaderNavigation = () => {
       subItems: [
         { label: "Creative Lab", href: "/labs/creative" },
         { label: "AI Agents Lab", href: "/labs/agents" },
-        { label: "LLM Lab", href: "/labs/llm-lab" }
+        { label: "LLM Lab", href: "/labs/llm-lab" },
+        { label: "Experimental Lab", href: "/labs/experimental" }
       ]
     },
     {

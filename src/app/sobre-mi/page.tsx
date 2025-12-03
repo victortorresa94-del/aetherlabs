@@ -76,8 +76,8 @@ export default function SobreMiPage() {
           <div className="grid lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
             <div className="aspect-[3/4] bg-[#1a1a1a] rounded-2xl relative overflow-hidden border-2 border-[#2a2a2a]">
               <Image
-                src="/images/victor-profile-new.jpg"
-                alt="Víctor Torres"
+                src="/images/aether-office.jpg"
+                alt="Oficinas Aether Labs"
                 fill
                 className="object-cover"
               />
