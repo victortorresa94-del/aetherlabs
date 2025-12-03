@@ -18,7 +18,7 @@ export default function CreativeLabPage() {
       tag: 'Imagen Generativa'
     },
     {
-      title: 'Nano Banana Studio',
+      title: 'Editor de fotos con IA',
       description: 'Editor de fotos con IA. Retoca, mejora y transforma tus imágenes con herramientas de última generación.',
       image: '/images/learn/nano-banana-user.jpg',
       icon: Wand2,
@@ -34,7 +34,7 @@ export default function CreativeLabPage() {
       tag: 'Avatar & Video'
     },
     {
-      title: 'Skinflow',
+      title: 'Analizador de skin care en directo',
       description: 'Analizador facial en tiempo real que recomienda rutinas de skincare y maquillaje personalizadas.',
       image: '/images/creative/cosmetica.png',
       icon: Fingerprint,
@@ -42,7 +42,7 @@ export default function CreativeLabPage() {
       tag: 'Computer Vision'
     },
     {
-      title: 'Chleopatra',
+      title: 'Generador de cuentos e historias',
       description: 'Web app educativa que narra historias históricas con vídeos generados por IA y voz en off.',
       image: '/images/creative/chleopatra-egypt.png',
       icon: BookOpen,
