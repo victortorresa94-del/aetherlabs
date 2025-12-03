@@ -1,6 +1,7 @@
 import HeaderNavigation from '@/components/sections/header-navigation';
 import Footer from '@/components/sections/footer';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Award, Briefcase, Lightbulb, Target, ArrowRight } from 'lucide-react';
 
 export default function SobreMiPage() {
@@ -53,7 +54,7 @@ export default function SobreMiPage() {
   return (
     <main className="min-h-screen bg-black">
       <HeaderNavigation />
-      
+
       <section className="pt-32 pb-20 bg-black">
         <div className="container">
           <div className="max-w-4xl mx-auto text-center">
@@ -73,11 +74,13 @@ export default function SobreMiPage() {
       <section className="py-20 bg-[#0a0a0a]">
         <div className="container">
           <div className="grid lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
-            <div className="aspect-[3/4] bg-[#1a1a1a] rounded-2xl relative overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-[#2a2a2a] via-[#1a1a1a] to-[#0a0a0a]" />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-32 h-32 rounded-full bg-[#2a2a2a] border-2 border-[#4a4a4a]" />
-              </div>
+            <div className="aspect-[3/4] bg-[#1a1a1a] rounded-2xl relative overflow-hidden border-2 border-[#2a2a2a]">
+              <Image
+                src="/images/victor-profile-new.jpg"
+                alt="Víctor Torres"
+                fill
+                className="object-cover"
+              />
             </div>
 
             <div>
@@ -86,22 +89,22 @@ export default function SobreMiPage() {
               </h2>
               <div className="space-y-4 text-[#c8c8c8] leading-relaxed">
                 <p>
-                  Llevo más de una década trabajando en marketing digital y automatización. 
-                  He visto cómo las herramientas evolucionaban, pero también cómo muchas 
+                  Llevo más de una década trabajando en marketing digital y automatización.
+                  He visto cómo las herramientas evolucionaban, pero también cómo muchas
                   empresas se quedaban atrás por culpa de la complejidad técnica.
                 </p>
                 <p>
-                  En 2022 empecé a experimentar con IA generativa y me di cuenta de algo: 
-                  la tecnología era increíble, pero nadie la explicaba de forma que un 
+                  En 2022 empecé a experimentar con IA generativa y me di cuenta de algo:
+                  la tecnología era increíble, pero nadie la explicaba de forma que un
                   negocio normal pudiera usarla.
                 </p>
                 <p>
-                  Así nació <span className="text-white font-semibold">Aether Labs</span>: 
-                  un lugar donde bajamos lo etéreo (la IA) a lo real (tu negocio). Sin humo. 
+                  Así nació <span className="text-white font-semibold">Aether Labs</span>:
+                  un lugar donde bajamos lo etéreo (la IA) a lo real (tu negocio). Sin humo.
                   Sin complicaciones. Solo resultados.
                 </p>
                 <p>
-                  Mi trabajo es hacer que tú no tengas que convertirte en un experto en IA 
+                  Mi trabajo es hacer que tú no tengas que convertirte en un experto en IA
                   para aprovecharla. Yo me encargo de lo difícil. Tú te encargas de tu negocio.
                 </p>
               </div>
@@ -133,7 +136,7 @@ export default function SobreMiPage() {
           <div className="max-w-4xl mx-auto">
             <div className="relative">
               <div className="absolute left-8 top-0 bottom-0 w-px bg-[#2a2a2a]" />
-              
+
               <div className="space-y-12">
                 {experience.map((item, index) => (
                   <div key={index} className="relative flex gap-8 items-start">
@@ -209,7 +212,7 @@ export default function SobreMiPage() {
                     Trabajo con clientes de toda España y Latinoamérica.
                   </p>
                   <p>
-                    <a 
+                    <a
                       href="mailto:hola@aetherlabs.es"
                       className="text-white hover:text-[#c8c8c8] transition-colors font-semibold"
                     >
@@ -230,7 +233,7 @@ export default function SobreMiPage() {
               ¿Hablamos de tu proyecto?
             </h2>
             <p className="text-lg text-[#a0a0a0] mb-10">
-              Si buscas alguien que entienda tu negocio y te ayude con IA de verdad, 
+              Si buscas alguien que entienda tu negocio y te ayude con IA de verdad,
               sin rollos técnicos, estás en el lugar correcto.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

@@ -40,6 +40,7 @@ const HeaderNavigation = () => {
         },
         { label: "Agentes IA", href: "/servicios/automatizacion" },
         { label: "IA a Medida", href: "/servicios/ia-a-medida" },
+        { label: "Computer Vision", href: "/servicios/computer-vision" },
         { label: "Formación & Consultoría", href: "/servicios/consultoria" }
       ]
     },
@@ -102,51 +103,55 @@ const HeaderNavigation = () => {
           </Link>
 
           {isDropdownOpen && (
-            <div className="absolute top-full left-0 mt-1 w-56 bg-black border border-[#2a2a2a] rounded-lg shadow-lg z-20">
-              <ul className="py-1">
-                {item.subItems.map((subItem) => (
-                  <li
-                    key={subItem.label}
-                    className="relative group/sub"
-                    onMouseEnter={() => setActiveSubDropdown(subItem.label)}
-                    onMouseLeave={() => setActiveSubDropdown(null)}
-                  >
-                    {subItem.subItems ? (
-                      <>
+            <div className="absolute top-full left-0 pt-2 w-56 z-20">
+              <div className="bg-black border border-[#2a2a2a] rounded-lg shadow-lg">
+                <ul className="py-1">
+                  {item.subItems.map((subItem) => (
+                    <li
+                      key={subItem.label}
+                      className="relative group/sub"
+                      onMouseEnter={() => setActiveSubDropdown(subItem.label)}
+                      onMouseLeave={() => setActiveSubDropdown(null)}
+                    >
+                      {subItem.subItems ? (
+                        <>
+                          <Link
+                            href={subItem.href}
+                            className="flex items-center justify-between w-full text-left px-4 py-3 text-sm text-white hover:bg-[#1a1a1a] transition-colors"
+                          >
+                            {subItem.label}
+                            <ChevronRight size={14} />
+                          </Link>
+                          {/* Nested Dropdown */}
+                          <div className="absolute top-0 left-full pl-2 w-56 z-30 hidden group-hover/sub:block">
+                            <div className="bg-black border border-[#2a2a2a] rounded-lg shadow-lg">
+                              <ul className="py-1">
+                                {subItem.subItems.map((nestedItem) => (
+                                  <li key={nestedItem.label}>
+                                    <Link
+                                      href={nestedItem.href}
+                                      className="block w-full text-left px-4 py-3 text-sm text-white hover:bg-[#1a1a1a] transition-colors"
+                                    >
+                                      {nestedItem.label}
+                                    </Link>
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                          </div>
+                        </>
+                      ) : (
                         <Link
                           href={subItem.href}
-                          className="flex items-center justify-between w-full text-left px-4 py-3 text-sm text-white hover:bg-[#1a1a1a] transition-colors"
+                          className="block w-full text-left px-4 py-3 text-sm text-white hover:bg-[#1a1a1a] transition-colors"
                         >
                           {subItem.label}
-                          <ChevronRight size={14} />
                         </Link>
-                        {/* Nested Dropdown */}
-                        <div className="absolute top-0 left-full ml-1 w-56 bg-black border border-[#2a2a2a] rounded-lg shadow-lg z-30 hidden group-hover/sub:block">
-                          <ul className="py-1">
-                            {subItem.subItems.map((nestedItem) => (
-                              <li key={nestedItem.label}>
-                                <Link
-                                  href={nestedItem.href}
-                                  className="block w-full text-left px-4 py-3 text-sm text-white hover:bg-[#1a1a1a] transition-colors"
-                                >
-                                  {nestedItem.label}
-                                </Link>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      </>
-                    ) : (
-                      <Link
-                        href={subItem.href}
-                        className="block w-full text-left px-4 py-3 text-sm text-white hover:bg-[#1a1a1a] transition-colors"
-                      >
-                        {subItem.label}
-                      </Link>
-                    )}
-                  </li>
-                ))}
-              </ul>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           )}
         </li>

@@ -28,7 +28,7 @@ const HeroVideoSection = () => {
                         Donde las ideas se hacen realidad.
                     </h1>
                     <p className="text-lg md:text-xl font-normal max-w-2xl text-[#c8c8c8] leading-relaxed">
-                        Combinamos la creatividad y la tecnología para crear soluciones con IA, para que ésta sea entendible, segura y accesible para cualquier negocio.
+                        Combinamos la creatividad y la tecnología para crear soluciones IA entendibles, seguras y accesibles para cualquier negocio.
                     </p>
                     <Link
                         href="#servicios"

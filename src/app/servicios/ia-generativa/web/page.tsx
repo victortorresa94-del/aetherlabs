@@ -27,7 +27,7 @@ export default function WebIAPage() {
                     description: "Construimos el sitio con las mejores prácticas y lo optimizamos para velocidad y conversión."
                 }
             ]}
-            heroImage="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/59f0faf1-8d44-4d77-bb9f-9909b2e2fd57/generated_images/modern-web-design-interface-layout-clean-minimal-3f21a8b9-20251119011116.jpg"
+            heroImage="/images/services/ia-generativa/web-ia.png"
         />
     );
 }

@@ -261,7 +261,7 @@ export default function CorporateTrainingPage() {
                         </div>
                         <div className="relative aspect-[4/5] w-full max-w-md mx-auto lg:ml-auto rounded-3xl overflow-hidden border border-[#2a2a2a]">
                             <Image
-                                src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/IMG_0031-1763512728087.JPG"
+                                src="/images/victor-profile-new.jpg"
                                 alt="Víctor Torres"
                                 fill
                                 className="object-cover"

@@ -27,7 +27,7 @@ export default function ReelsIAPage() {
                     description: "Editamos con ritmo rápido, efectos y subtítulos para maximizar el 'watch time'."
                 }
             ]}
-            heroImage="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/59f0faf1-8d44-4d77-bb9f-9909b2e2fd57/generated_images/creative-instagram-reels-tiktok-video-editing-mo-7d31c9e0-20251119011116.jpg"
+            heroImage="/images/services/ia-generativa/reels-ia.png"
         />
     );
 }
