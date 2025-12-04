@@ -32,8 +32,8 @@ const experiments: Experiment[] = [
         image: '/images/avatars/woman-mic.jpg',
         icon: Users,
         link: 'https://ugc-avatar-studio-159705655877.us-west1.run.app',
-        tag: 'BIO-PRINTER',
-        position: { x: 18, y: 45 }
+        tag: 'BIO-CHAMBER',
+        position: { x: 20, y: 40 } // Left Bio-chamber (Avatar)
     },
     {
         id: 'product',
@@ -45,7 +45,7 @@ const experiments: Experiment[] = [
         icon: ImageIcon,
         link: 'https://generador-de-fotos-de-productos-159705655877.us-west1.run.app',
         tag: 'HOLO-TABLE',
-        position: { x: 50, y: 75 }
+        position: { x: 50, y: 55 } // Center Holo-table (Shoe)
     },
     {
         id: 'editor',
@@ -55,9 +55,9 @@ const experiments: Experiment[] = [
         features: ['Inpainting avanzado', 'Upscaling 4K', 'Eliminación de fondo', 'Filtros de estilo'],
         image: '/images/learn/nano-banana-user.jpg',
         icon: Wand2,
-        link: 'https://nano-banana-studio-159705655877.us-west1.run.app',
-        tag: 'MAIN CONSOLE',
-        position: { x: 82, y: 45 }
+        link: 'https://ai-image-edition-159705655877.us-west1.run.app',
+        tag: 'CONTROL STATION',
+        position: { x: 80, y: 45 } // Right Screens (Main)
     },
     {
         id: 'storytelling',
@@ -68,8 +68,8 @@ const experiments: Experiment[] = [
         image: '/images/creative/chleopatra-egypt.png',
         icon: BookOpen,
         link: 'https://chleopatra-history-reimagined-159705655877.us-west1.run.app',
-        tag: 'ARCHIVE',
-        position: { x: 62, y: 28 }
+        tag: 'ARCHIVE DISPLAY',
+        position: { x: 68, y: 25 } // Top Right Screens (Archive)
     },
     {
         id: 'vision',
@@ -80,8 +80,8 @@ const experiments: Experiment[] = [
         image: '/images/creative/cosmetica.png',
         icon: Fingerprint,
         link: '#',
-        tag: 'DIAGNOSTIC SCREEN',
-        position: { x: 88, y: 35 }
+        tag: 'DIAGNOSTIC UNIT',
+        position: { x: 35, y: 65 } // Small console/unit near table
     }
 ];
 
@@ -150,7 +150,7 @@ export default function InteractiveLab() {
 
     // Configuration
     // We use a slightly wider container to allow for subtle movement without excessive zooming/pixelation
-    const CONTAINER_WIDTH_VW = 110;
+    const CONTAINER_WIDTH_VW = 100;
 
     const handleMouseDown = (e: React.MouseEvent) => {
         setIsDragging(true);
@@ -243,7 +243,7 @@ export default function InteractiveLab() {
                 {/* Background Image */}
                 <div className="absolute inset-0 w-full h-full">
                     <Image
-                        src="/images/experimental-lab-bg-final.jpg"
+                        src="/images/experimental-lab-bg-v6.jpg"
                         alt="Lab Background"
                         fill
                         className="object-cover"

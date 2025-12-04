@@ -40,6 +40,7 @@ const HeaderNavigation = () => {
         },
         { label: "AI Hub", href: "/servicios/ai-hub" },
         { label: "Agentes IA", href: "/servicios/automatizacion" },
+        { label: "Chatbots IA", href: "/servicios/chatbots" },
         { label: "IA a Medida", href: "/servicios/ia-a-medida" },
         { label: "Computer Vision", href: "/servicios/computer-vision" },
         { label: "Formación & Consultoría", href: "/servicios/consultoria" }

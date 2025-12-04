@@ -29,12 +29,6 @@ const services: Service[] = [
     link: "/servicios/automatizacion"
   },
   {
-    icon: MessageSquareCode,
-    title: "Chatbots Inteligentes",
-    description: "Asistentes personalizados entrenados con tus datos. Mejora la atención al cliente y la gestión interna con el poder de los LLMs.",
-    link: "/servicios/chatbots"
-  },
-  {
     icon: GraduationCap,
     title: "Consultoría & Formación",
     description: "Te acompañamos en la adopción de la IA. Formación para equipos y estrategia personalizada para integrar estas tecnologías.",

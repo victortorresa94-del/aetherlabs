@@ -22,7 +22,7 @@ export default function CreativeLabPage() {
       description: 'Editor de fotos con IA. Retoca, mejora y transforma tus imágenes con herramientas de última generación.',
       image: '/images/learn/nano-banana-user.jpg',
       icon: Wand2,
-      link: 'https://nano-banana-studio-159705655877.us-west1.run.app',
+      link: 'https://ai-image-edition-159705655877.us-west1.run.app',
       tag: 'Editor IA'
     },
     {

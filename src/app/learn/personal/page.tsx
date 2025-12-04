@@ -40,7 +40,8 @@ import {
     Fingerprint,
     ListOrdered,
     PenTool,
-    Download
+    Download,
+    Wand2
 } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -720,6 +721,13 @@ export default function PersonalTrainingPage() {
                                     desc: "Sube una foto de tu producto y la IA genera un entorno profesional y realista para marketing.",
                                     tag: "Imagen Generativa",
                                     link: "https://generador-de-fotos-de-productos-159705655877.us-west1.run.app"
+                                },
+                                {
+                                    icon: Wand2,
+                                    title: "Editor de fotos con IA",
+                                    desc: "Retoca, mejora y transforma tus imágenes con herramientas de última generación.",
+                                    tag: "Editor IA",
+                                    link: "https://ai-image-edition-159705655877.us-west1.run.app"
                                 },
                                 {
                                     icon: Users,
