@@ -338,13 +338,13 @@ export default function InteractiveLab() {
                             {/* Close Button */}
                             <button
                                 onClick={() => setSelectedExperiment(null)}
-                                className="absolute top-6 right-6 p-2 bg-black/50 rounded-full text-white/70 hover:text-white transition-colors z-20 hover:rotate-90 duration-300 border border-white/10"
+                                className="absolute top-4 right-4 lg:top-6 lg:right-6 p-2 bg-black/50 rounded-full text-white/70 hover:text-white transition-colors z-20 hover:rotate-90 duration-300 border border-white/10"
                             >
                                 <X size={20} />
                             </button>
 
                             {/* Hero Image */}
-                            <div className="relative w-full h-48 md:h-64 shrink-0">
+                            <div className="relative w-full h-32 sm:h-40 lg:h-64 shrink-0">
                                 <Image
                                     src={selectedExperiment.image}
                                     alt={selectedExperiment.title}
@@ -353,29 +353,29 @@ export default function InteractiveLab() {
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/20 to-transparent" />
 
-                                <div className="absolute bottom-6 left-6 right-6 md:left-8 md:right-8">
-                                    <div className="flex items-center gap-3 mb-3">
+                                <div className="absolute bottom-4 left-6 right-6 lg:bottom-6 lg:left-8 lg:right-8">
+                                    <div className="flex items-center gap-3 mb-2 lg:mb-3">
                                         <span className="px-2 py-1 bg-[#82ff1f]/10 border border-[#82ff1f]/30 text-[#82ff1f] text-[10px] font-mono tracking-widest uppercase rounded">
                                             {selectedExperiment.tag}
                                         </span>
                                     </div>
-                                    <h2 className="text-2xl md:text-4xl font-light text-white leading-tight flex items-center gap-3">
-                                        <selectedExperiment.icon className="w-6 h-6 md:w-8 md:h-8 text-[#82ff1f]" />
+                                    <h2 className="text-xl sm:text-2xl lg:text-4xl font-light text-white leading-tight flex items-center gap-3">
+                                        <selectedExperiment.icon className="w-5 h-5 lg:w-8 lg:h-8 text-[#82ff1f]" />
                                         {selectedExperiment.title}
                                     </h2>
                                 </div>
                             </div>
 
                             {/* Content */}
-                            <div className="flex-1 overflow-y-auto p-6 md:p-10 flex flex-col">
-                                <div className="mb-8">
-                                    <p className="text-zinc-300 text-base md:text-lg leading-relaxed mb-8 font-light">
+                            <div className="flex-1 overflow-y-auto p-6 lg:p-10 flex flex-col">
+                                <div className="mb-6 lg:mb-8">
+                                    <p className="text-zinc-300 text-sm sm:text-base lg:text-lg leading-relaxed mb-6 lg:mb-8 font-light">
                                         {selectedExperiment.longDescription}
                                     </p>
 
-                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div className="grid grid-cols-1 gap-3 lg:gap-4">
                                         {selectedExperiment.features.map((feature, idx) => (
-                                            <div key={idx} className="flex items-center gap-3 text-sm text-zinc-400">
+                                            <div key={idx} className="flex items-center gap-3 text-xs sm:text-sm text-zinc-400">
                                                 <div className="w-5 h-5 rounded-full bg-zinc-900 border border-zinc-800 flex items-center justify-center shrink-0">
                                                     <Check size={12} className="text-[#82ff1f]" />
                                                 </div>
@@ -385,13 +385,13 @@ export default function InteractiveLab() {
                                     </div>
                                 </div>
 
-                                <div className="mt-auto pt-8 border-t border-zinc-900">
-                                    <div className="p-6 bg-zinc-900/30 border border-zinc-800 rounded-xl mb-6">
+                                <div className="mt-auto pt-6 lg:pt-8 border-t border-zinc-900">
+                                    <div className="p-4 lg:p-6 bg-zinc-900/30 border border-zinc-800 rounded-xl mb-4 lg:mb-6">
                                         <div className="flex justify-between items-center mb-2">
-                                            <span className="text-xs text-zinc-500 uppercase tracking-wider">System Status</span>
-                                            <div className={`w-2 h-2 rounded-full ${selectedExperiment.link === '#' ? 'bg-yellow-500' : 'bg-green-500'}`} />
+                                            <span className="text-[10px] lg:text-xs text-zinc-500 uppercase tracking-wider">System Status</span>
+                                            <div className={`w-1.5 h-1.5 lg:w-2 lg:h-2 rounded-full ${selectedExperiment.link === '#' ? 'bg-yellow-500' : 'bg-green-500'}`} />
                                         </div>
-                                        <div className="text-white font-mono text-sm">
+                                        <div className="text-white font-mono text-xs lg:text-sm">
                                             {selectedExperiment.link === '#' ? 'UNDER_CONSTRUCTION' : 'SYSTEM_ONLINE'}
                                         </div>
                                     </div>
@@ -399,16 +399,16 @@ export default function InteractiveLab() {
                                     <Link
                                         href={selectedExperiment.link}
                                         target={selectedExperiment.link === '#' ? '_self' : '_blank'}
-                                        className={`group flex items-center justify-between w-full p-6 rounded-xl transition-all duration-300 ${selectedExperiment.link === '#'
-                                                ? 'bg-zinc-900 text-zinc-500 cursor-not-allowed border border-zinc-800'
-                                                : 'bg-white text-black hover:bg-[#82ff1f] hover:shadow-[0_0_30px_rgba(130,255,31,0.3)]'
+                                        className={`group flex items-center justify-between w-full p-4 lg:p-6 rounded-xl transition-all duration-300 ${selectedExperiment.link === '#'
+                                            ? 'bg-zinc-900 text-zinc-500 cursor-not-allowed border border-zinc-800'
+                                            : 'bg-white text-black hover:bg-[#82ff1f] hover:shadow-[0_0_30px_rgba(130,255,31,0.3)]'
                                             }`}
                                     >
-                                        <span className="font-bold tracking-widest text-sm uppercase">
+                                        <span className="font-bold tracking-widest text-xs lg:text-sm uppercase">
                                             {selectedExperiment.link === '#' ? 'Próximamente' : 'Probar Experimento'}
                                         </span>
                                         {selectedExperiment.link !== '#' && (
-                                            <ChevronRight size={20} className="group-hover:translate-x-1 transition-transform" />
+                                            <ChevronRight size={16} className="group-hover:translate-x-1 transition-transform lg:w-5 lg:h-5" />
                                         )}
                                     </Link>
                                 </div>
