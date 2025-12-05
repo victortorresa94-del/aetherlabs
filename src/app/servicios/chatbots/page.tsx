@@ -5,7 +5,9 @@ import HeaderNavigation from '@/components/sections/header-navigation';
 import Footer from '@/components/sections/footer';
 import { MessageSquare, Mic, Zap, BarChart3, CheckCircle2, ArrowRight, Bot, Smartphone, Globe, Database, BrainCircuit, Server, Calculator, Users, ShoppingBag, Stethoscope, Briefcase } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
+import ChatbotBuilder from '@/components/features/chatbot-builder';
 
 export default function ChatbotsPage() {
     // Calculator State
@@ -177,15 +179,15 @@ export default function ChatbotsPage() {
                         <h2 className="text-3xl md:text-4xl font-light mb-16 text-center">¿Dónde se pueden integrar?</h2>
                         <div className="flex flex-wrap justify-center gap-4 md:gap-8">
                             {[
-                                { icon: Globe, label: "Web" },
-                                { icon: MessageSquare, label: "WhatsApp API" },
-                                { icon: Smartphone, label: "Instagram DM" },
-                                { icon: MessageSquare, label: "Telegram" },
-                                { icon: Database, label: "ERP / CRM" },
-                                { icon: Mic, label: "Teléfono (Voz)" },
+                                { icon: "https://img.icons8.com/color/96/chrome.png", label: "Web" },
+                                { icon: "https://img.icons8.com/color/96/whatsapp--v1.png", label: "WhatsApp API" },
+                                { icon: "https://img.icons8.com/fluency/96/instagram-new.png", label: "Instagram DM" },
+                                { icon: "https://img.icons8.com/color/96/telegram-app.png", label: "Telegram" },
+                                { icon: "https://img.icons8.com/color/96/hubspot.png", label: "ERP / CRM" },
+                                { icon: "https://img.icons8.com/color/96/phone.png", label: "Teléfono (Voz)" },
                             ].map((channel, idx) => (
                                 <div key={idx} className="flex flex-col items-center gap-3 p-6 rounded-2xl bg-zinc-900/40 border border-white/5 w-32 md:w-40 hover:border-[#82ff1f]/50 transition-colors">
-                                    <channel.icon size={32} className="text-zinc-400" />
+                                    <Image src={channel.icon} alt={channel.label} width={48} height={48} className="object-contain" />
                                     <span className="text-sm text-zinc-300 font-medium">{channel.label}</span>
                                 </div>
                             ))}
@@ -425,28 +427,18 @@ export default function ChatbotsPage() {
                     </div>
                 </section>
 
-                {/* 10. FINAL CTA */}
-                <section className="py-32 bg-[#82ff1f] text-black">
-                    <div className="container text-center">
-                        <h2 className="text-4xl md:text-6xl font-bold mb-8 tracking-tight">¿Hablamos?</h2>
-                        <p className="text-xl md:text-2xl font-medium mb-12 max-w-2xl mx-auto opacity-80">
-                            Descubre cómo un asistente inteligente puede transformar tu negocio hoy mismo.
-                        </p>
-                        <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-                            <Link
-                                href="/contacto"
-                                className="bg-black text-white px-10 py-5 rounded-full font-bold text-lg hover:scale-105 transition-transform shadow-2xl"
-                            >
-                                Habla con un experto
-                            </Link>
-                            <Link
-                                href="https://wa.me/34600000000"
-                                target="_blank"
-                                className="flex items-center gap-2 font-bold text-black hover:underline underline-offset-4"
-                            >
-                                <MessageSquare size={20} />
-                                Contactar por WhatsApp
-                            </Link>
+                {/* 10. BUILD YOUR CHATBOT WIZARD */}
+                <section className="py-32 bg-white text-black">
+                    <div className="container">
+                        <div className="max-w-4xl mx-auto">
+                            <div className="text-center mb-16">
+                                <h2 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight">Construye tu Chatbot</h2>
+                                <p className="text-xl text-zinc-600 max-w-2xl mx-auto">
+                                    Diseña tu asistente ideal y obtén un presupuesto estimado al instante.
+                                </p>
+                            </div>
+
+                            <ChatbotBuilder />
                         </div>
                     </div>
                 </section>

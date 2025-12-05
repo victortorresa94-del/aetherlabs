@@ -34,14 +34,6 @@ export default function CreativeLabPage() {
       tag: 'Avatar & Video'
     },
     {
-      title: 'Analizador de skin care en directo',
-      description: 'Analizador facial en tiempo real que recomienda rutinas de skincare y maquillaje personalizadas.',
-      image: '/images/creative/cosmetica.png',
-      icon: Fingerprint,
-      link: '#',
-      tag: 'Computer Vision'
-    },
-    {
       title: 'Generador de cuentos e historias',
       description: 'Web app educativa que narra historias históricas con vídeos generados por IA y voz en off.',
       image: '/images/creative/chleopatra-egypt.png',

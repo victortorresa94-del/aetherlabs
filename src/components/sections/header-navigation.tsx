@@ -16,6 +16,15 @@ const HeaderNavigation = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [activeSubDropdown, setActiveSubDropdown] = useState<string | null>(null);
+  const [expandedMobileItems, setExpandedMobileItems] = useState<string[]>([]);
+
+  const toggleMobileItem = (label: string) => {
+    setExpandedMobileItems(prev =>
+      prev.includes(label)
+        ? prev.filter(item => item !== label)
+        : [...prev, label]
+    );
+  };
 
   const navItems: NavItem[] = [
     { label: "Inicio", href: "/" },
@@ -53,7 +62,7 @@ const HeaderNavigation = () => {
         { label: "Creative Lab", href: "/labs/creative" },
         { label: "AI Agents Lab", href: "/labs/agents" },
         { label: "LLM Lab", href: "/labs/llm-lab" },
-        { label: "Experimental Lab", href: "/labs/experimental" }
+        { label: "Vision Lab", href: "/labs/vision" }
       ]
     },
     {
@@ -176,47 +185,66 @@ const HeaderNavigation = () => {
     <div key={item.label} className="py-3 border-b border-[#2a2a2a] last:border-b-0">
       {item.subItems ? (
         <div>
-          <div className="flex items-center justify-between">
+          <div
+            className="flex items-center justify-between cursor-pointer"
+            onClick={() => toggleMobileItem(item.label)}
+          >
             <h3 className="text-xl text-white font-medium" dangerouslySetInnerHTML={{ __html: item.label }} />
+            <ChevronDown
+              size={20}
+              className={`text-white transition-transform duration-200 ${expandedMobileItems.includes(item.label) ? 'rotate-180' : ''}`}
+            />
           </div>
-          <ul className="pl-4 mt-3 space-y-3">
-            {item.subItems.map(subItem => (
-              <li key={subItem.label}>
-                {subItem.subItems ? (
-                  <div className="space-y-2">
+          <div className={`overflow-hidden transition-all duration-300 ease-in-out ${expandedMobileItems.includes(item.label) ? 'max-h-[1000px] opacity-100 mt-3' : 'max-h-0 opacity-0'}`}>
+            <ul className="pl-4 space-y-3">
+              {item.subItems.map(subItem => (
+                <li key={subItem.label}>
+                  {subItem.subItems ? (
+                    <div className="space-y-2">
+                      <div
+                        className="flex items-center justify-between cursor-pointer"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          toggleMobileItem(subItem.label);
+                        }}
+                      >
+                        <span className="text-lg text-[#a0a0a0] hover:text-white transition-colors block font-medium">
+                          {subItem.label}
+                        </span>
+                        <ChevronDown
+                          size={16}
+                          className={`text-[#a0a0a0] transition-transform duration-200 ${expandedMobileItems.includes(subItem.label) ? 'rotate-180' : ''}`}
+                        />
+                      </div>
+                      <div className={`overflow-hidden transition-all duration-300 ease-in-out ${expandedMobileItems.includes(subItem.label) ? 'max-h-[500px] opacity-100 mt-2' : 'max-h-0 opacity-0'}`}>
+                        <ul className="pl-4 space-y-2 border-l border-[#2a2a2a] ml-1">
+                          {subItem.subItems.map(nestedItem => (
+                            <li key={nestedItem.label}>
+                              <Link
+                                href={nestedItem.href}
+                                className="text-base text-[#808080] hover:text-white transition-colors block"
+                                onClick={() => setIsMobileMenuOpen(false)}
+                              >
+                                {nestedItem.label}
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                  ) : (
                     <Link
                       href={subItem.href}
-                      className="text-lg text-[#a0a0a0] hover:text-white transition-colors block font-medium"
+                      className="text-lg text-[#a0a0a0] hover:text-white transition-colors block"
                       onClick={() => setIsMobileMenuOpen(false)}
                     >
                       {subItem.label}
                     </Link>
-                    <ul className="pl-4 space-y-2 border-l border-[#2a2a2a] ml-1">
-                      {subItem.subItems.map(nestedItem => (
-                        <li key={nestedItem.label}>
-                          <Link
-                            href={nestedItem.href}
-                            className="text-base text-[#808080] hover:text-white transition-colors block"
-                            onClick={() => setIsMobileMenuOpen(false)}
-                          >
-                            {nestedItem.label}
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                ) : (
-                  <Link
-                    href={subItem.href}
-                    className="text-lg text-[#a0a0a0] hover:text-white transition-colors block"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    {subItem.label}
-                  </Link>
-                )}
-              </li>
-            ))}
-          </ul>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       ) : (
         <Link
@@ -267,28 +295,33 @@ const HeaderNavigation = () => {
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               aria-label="Toggle menu"
             >
-              {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
         </div>
       </div>
 
-      {isMobileMenuOpen && (
-        <div className="fixed inset-0 top-[90px] bg-black lg:hidden p-8 overflow-y-auto pb-20">
-          <nav className="flex flex-col h-full">
-            <ul className="space-y-4">
-              {navItems.map(renderMobileNavItem)}
-            </ul>
-            <Link
-              href="/crea-tu-ia"
-              className="mt-10 block text-center text-base font-semibold tracking-wider text-black bg-white rounded-full px-8 py-3 transition-all hover:scale-105"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              Crea tu IA
-            </Link>
+      {/* Mobile Menu */}
+      <div
+        className={`fixed inset-0 bg-black z-40 transition-transform duration-300 lg:hidden ${isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
+          }`}
+        style={{ top: "90px" }}
+      >
+        <div className="container h-full overflow-y-auto pb-20 pt-4">
+          <nav className="flex flex-col space-y-2">
+            {navItems.map(renderMobileNavItem)}
+            <div className="pt-6 mt-6 border-t border-[#2a2a2a]">
+              <Link
+                href="/crea-tu-ia"
+                className="block w-full text-center text-sm font-semibold tracking-wider text-black bg-white rounded-full px-7 py-4 transition-all hover:scale-105 ease-out duration-200"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Crea tu IA
+              </Link>
+            </div>
           </nav>
         </div>
-      )}
+      </div>
     </header>
   );
 };

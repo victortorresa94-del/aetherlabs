@@ -5,6 +5,7 @@ import Footer from '@/components/sections/footer';
 import Link from 'next/link';
 import { ArrowRight, Sparkles } from 'lucide-react';
 import Image from 'next/image';
+import IdeaFormSection from '@/components/sections/idea-form-section';
 
 export default function IAGenerativaPage() {
   const services = [
@@ -51,14 +52,14 @@ export default function IAGenerativaPage() {
       href: '/servicios/ia-generativa/campanas-360'
     },
     {
-      image: 'https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/59f0faf1-8d44-4d77-bb9f-9909b2e2fd57/generated_images/modern-web-design-interface-layout-clean-minimal-3f21a8b9-20251119011116.jpg',
+      image: '/images/services/ia-generativa/web-ia.png',
       title: 'Webs',
       description: 'Diseño y desarrollo web potenciado por IA para crear experiencias únicas y optimizadas.',
       examples: ['Landing Pages', 'E-commerce', 'Portfolios'],
       href: '/servicios/ia-generativa/web'
     },
     {
-      image: 'https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/59f0faf1-8d44-4d77-bb9f-9909b2e2fd57/generated_images/creative-instagram-reels-tiktok-video-editing-mo-7d31c9e0-20251119011116.jpg',
+      image: '/images/services/ia-generativa/reels-ia.png',
       title: 'Reels',
       description: 'Creación de contenido vertical dinámico y viral utilizando las últimas herramientas de vídeo IA.',
       examples: ['Viral Content', 'Trends', 'Shorts'],
@@ -222,33 +223,7 @@ export default function IAGenerativaPage() {
         </div>
       </section>
 
-      <section className="py-24 bg-black">
-        <div className="container">
-          <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-4xl md:text-5xl font-light text-white mb-8">
-              ¿Listo para crear contenido profesional?
-            </h2>
-            <p className="text-lg text-[#a0a0a0] mb-10">
-              Cuéntanos qué necesitas y te mostramos cómo la IA puede ayudarte.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                href="/contacto"
-                className="inline-flex items-center justify-center bg-white text-black font-semibold text-base py-4 px-8 rounded-full transition-all duration-200 hover:scale-105"
-              >
-                Quiero este servicio
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Link>
-              <Link
-                href="/labs/creative"
-                className="inline-flex items-center justify-center bg-transparent text-white font-semibold text-base py-4 px-8 rounded-full border-2 border-white transition-all duration-200 hover:bg-white hover:text-black"
-              >
-                Ver ejemplos en el Lab
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+      <IdeaFormSection />
 
       <Footer />
     </main>

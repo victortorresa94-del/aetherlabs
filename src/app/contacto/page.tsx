@@ -3,7 +3,8 @@
 import { useState } from 'react';
 import HeaderNavigation from '@/components/sections/header-navigation';
 import Footer from '@/components/sections/footer';
-import { Mail, MapPin, Send, MessageCircle } from 'lucide-react';
+import { Mail, MapPin, Send } from 'lucide-react';
+import Image from 'next/image';
 
 export default function ContactoPage() {
   const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success'>('idle');
@@ -134,9 +135,9 @@ export default function ContactoPage() {
                       href="https://wa.me/34627281459"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex w-full items-center justify-center gap-2 bg-[#25D366] text-white font-semibold text-base py-3 px-6 rounded-full transition-all duration-200 hover:scale-105 hover:bg-[#20bd5a]"
+                      className="inline-flex w-full items-center justify-center gap-2 bg-white text-black font-semibold text-base py-3 px-6 rounded-full transition-all duration-200 hover:scale-105 hover:bg-zinc-100"
                     >
-                      <MessageCircle className="h-5 w-5" />
+                      <Image src="https://img.icons8.com/color/96/whatsapp--v1.png" alt="WhatsApp" width={24} height={24} />
                       Chat en WhatsApp
                     </a>
                   </div>

@@ -26,7 +26,7 @@ const ProjectsSection = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Featured Project: Munch's Burger Club - Large Card */}
-          <Link href="/proyectos/munchs" className="group relative block lg:col-span-2 aspect-[21/9] overflow-hidden rounded-3xl bg-zinc-900">
+          <Link href="/proyectos/munchs" className="group relative block lg:col-span-2 aspect-[4/3] lg:aspect-[21/9] overflow-hidden rounded-3xl bg-zinc-900">
             <Image
               src="/images/munchs/gallery-2.jpg"
               alt="Munch's Burger Club - Cocina"

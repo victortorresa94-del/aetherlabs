@@ -1,118 +1,120 @@
 "use client";
 
-import * as React from "react";
-import Image from "next/image";
-import Autoplay from "embla-carousel-autoplay";
-
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
-import { type CarouselApi } from "@/components/ui/carousel";
+import React from 'react';
+import { motion } from 'framer-motion';
+import { Quote, Star } from 'lucide-react';
+import Image from 'next/image';
 
 const testimonials = [
   {
-    quote: [
-      { text: "Aether Labs hizo un trabajo increíble diseñando el contenido visual para nuestro proyecto. ", highlighted: false },
-      { text: "Realmente capturaron la esencia que buscábamos de forma perfecta.", highlighted: true },
-    ],
-    author: "Laura Martínez, Directora Creativa",
-    image: "/images/testimonials/laura.png",
-    alt: "Cliente satisfecho de Aether Labs",
-  },
-  {
-    quote: [
-      { text: "Lo primero que nos impresionó fue lo bien adaptadas que estaban las imágenes a nuestras necesidades específicas. El servicio no solo cumplió, sino que ", highlighted: false },
-      { text: "superó nuestras expectativas creativas y de marca.", highlighted: true },
-    ],
-    author: "Carlos González, Director de Marketing",
+    quote: "La implementación de agentes IA ha reducido nuestra carga administrativa un 40%.",
+    highlight: "agentes IA",
+    author: "Carlos Méndez",
+    role: "CEO, TechFlow",
     image: "/images/testimonials/carlos.png",
-    alt: "Testimonio de cliente satisfecho"
+    type: "Automatización"
   },
   {
-    quote: [
-      { text: "Aether Labs nos ayudó a revolucionar nuestro sector creando contenido completamente con IA. Incluso crearon vídeos promocionales que nos ayudaron a conseguir ", highlighted: false },
-      { text: "resultados extraordinarios en tiempo récord.", highlighted: true },
-    ],
-    author: "Ana Rodríguez, CEO",
+    quote: "Gracias a la formación personalizada, nuestro equipo de marketing ahora crea campañas en horas, no semanas.",
+    highlight: "formación personalizada",
+    author: "Laura García",
+    role: "CMO, CreativeStudio",
+    image: "/images/testimonials/laura.png",
+    type: "Formación"
+  },
+  {
+    quote: "El chatbot que desarrollaron no solo atiende clientes, cierra ventas automáticamente.",
+    highlight: "cierra ventas",
+    author: "Marc Soler",
+    role: "Fundador, E-Shop",
+    image: "/images/testimonials/marc.png",
+    type: "Chatbots"
+  },
+  {
+    quote: "Increíble cómo el LLM a medida entiende nuestra jerga técnica y nos ayuda a redactar informes.",
+    highlight: "LLM a medida",
+    author: "Sofía Martínez",
+    role: "Directora Legal, LexCorp",
+    image: "/images/testimonials/sofia.png",
+    type: "Automatización"
+  },
+  {
+    quote: "La calidad de los avatares generados para nuestros videos corporativos es indistinguible de la realidad.",
+    highlight: "avatares generados",
+    author: "Elena Torres",
+    role: "Directora de Comunicación, GlobalCorp",
     image: "/images/testimonials/elena.png",
-    alt: "Testimonio de cliente"
+    type: "IA Generativa"
   },
   {
-    quote: [
-      { text: "Recurrimos a Aether Labs para crear contenido visual para nuestras redes sociales, y ", highlighted: false },
-      { text: "los resultados han sido notables con un engagement impresionante.", highlighted: true },
-    ],
-    author: "David Fernández, Social Media Manager",
-    image: "/images/testimonials/david.png",
-    alt: "Testimonio cliente redes sociales"
-  },
+    quote: "Implementar agentes autónomos para la gestión de inventario ha optimizado nuestra logística un 200%.",
+    highlight: "agentes autónomos",
+    author: "Javier Ruiz",
+    role: "COO, LogisticsPro",
+    image: "/images/testimonials/javier.png",
+    type: "Agentes IA"
+  }
 ];
 
-export default function TestimonialsCarousel() {
-  const [api, setApi] = React.useState<CarouselApi>();
-  const plugin = React.useRef(Autoplay({ delay: 5000, stopOnInteraction: true }));
-
-  React.useEffect(() => {
-    if (!api) return;
-  }, [api]);
-
+const TestimonialsCarousel = () => {
   return (
-    <section className="relative w-full bg-black text-white py-24 overflow-hidden">
-      <Carousel
-        setApi={setApi}
-        plugins={[plugin.current]}
-        onMouseEnter={plugin.current.stop}
-        onMouseLeave={plugin.current.reset}
-        opts={{
-          loop: true,
-          align: "center",
-        }}
-        className="w-full"
-      >
-        <CarouselContent>
-          {testimonials.map(({ quote, author, image, alt }, index) => (
-            <CarouselItem key={index} className="flex justify-center">
-              <div className="container">
-                <div className="flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-16">
-                  <div className="lg:w-3/5 relative text-center lg:text-left">
-                    <p className="absolute -top-16 lg:-top-12 -left-4 lg:-left-12 text-[120px] font-serif text-zinc-800" aria-hidden="true">
-                      "
-                    </p>
-                    <div className="relative z-10">
-                      <p className="text-xl md:text-2xl leading-relaxed font-light">
-                        {quote.map((part, i) => (
-                          <span key={i} className={part.highlighted ? `text-purple-400` : ""}>
-                            {part.text}
-                          </span>
-                        ))}
-                      </p>
-                      <p className="mt-8 text-sm text-[#9ca3af]">
-                        {author}
-                      </p>
-                    </div>
-                  </div>
-                  <div className="lg:w-2/5 w-full max-w-xs sm:max-w-sm lg:max-w-none flex-shrink-0">
-                    <Image
-                      src={image}
-                      alt={alt}
-                      width={480}
-                      height={480}
-                      className="rounded-2xl shadow-2xl"
-                      priority={index === 0}
-                    />
-                  </div>
+    <section className="py-24 bg-black text-white border-t border-white/5">
+      <div className="container">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-light mb-6">
+            Lo que dicen nuestros clientes
+          </h2>
+        </div>
+
+        <div className="flex overflow-x-auto pb-8 gap-6 snap-x snap-mandatory scrollbar-hide -mx-6 px-6 md:mx-0 md:px-0 md:grid md:grid-cols-2 lg:grid-cols-3 md:overflow-visible">
+          {testimonials.map((item, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+              className="min-w-[300px] md:min-w-0 bg-zinc-900/30 border border-white/5 p-8 rounded-3xl relative group hover:border-[#82ff1f]/30 transition-colors snap-center flex flex-col"
+            >
+              <Quote className="w-8 h-8 text-[#82ff1f]/20 mb-6 group-hover:text-[#82ff1f]/40 transition-colors" />
+
+              <div className="mb-4">
+                <span className="text-xs font-bold text-zinc-500 uppercase tracking-wider border border-white/10 px-2 py-1 rounded-full">
+                  {item.type}
+                </span>
+              </div>
+
+              <p className="text-lg text-zinc-300 leading-relaxed mb-8 flex-grow">
+                {item.quote.split(item.highlight).map((part, index, array) => (
+                  <React.Fragment key={index}>
+                    {part}
+                    {index < array.length - 1 && (
+                      <span className="text-[#82ff1f] font-medium">{item.highlight}</span>
+                    )}
+                  </React.Fragment>
+                ))}
+              </p>
+
+              <div className="flex items-center gap-4 mt-auto pt-6 border-t border-white/5">
+                <div className="relative w-12 h-12 rounded-full overflow-hidden border border-white/10">
+                  <Image
+                    src={item.image}
+                    alt={item.author}
+                    fill
+                    className="object-cover grayscale group-hover:grayscale-0 transition-all"
+                  />
+                </div>
+                <div>
+                  <h4 className="text-white font-medium">{item.author}</h4>
+                  <p className="text-sm text-zinc-500">{item.role}</p>
                 </div>
               </div>
-            </CarouselItem>
+            </motion.div>
           ))}
-        </CarouselContent>
-        <CarouselPrevious className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-10 h-10 w-10 bg-white/10 text-white border-none hover:bg-white/20 transition-all duration-200" />
-        <CarouselNext className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-10 h-10 w-10 bg-white/10 text-white border-none hover:bg-white/20 transition-all duration-200" />
-      </Carousel>
+        </div>
+      </div>
     </section>
   );
-}
+};
+
+export default TestimonialsCarousel;

@@ -5,7 +5,7 @@ import HeaderNavigation from '@/components/sections/header-navigation';
 import Footer from '@/components/sections/footer';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowRight, FlaskConical, Bot, BrainCircuit, Sparkles } from 'lucide-react';
+import { ArrowRight, FlaskConical, Bot, BrainCircuit, Sparkles, ScanEye } from 'lucide-react';
 
 export default function LabsPage() {
     const labs = [
@@ -18,6 +18,16 @@ export default function LabsPage() {
             color: 'text-[#82ff1f]',
             borderColor: 'group-hover:border-[#82ff1f]',
             bgGradient: 'group-hover:shadow-[#82ff1f]/20'
+        },
+        {
+            title: 'Computer Vision Lab',
+            description: 'Sistemas de partículas interactivos controlados por gestos en tiempo real. La fusión entre el mundo físico y digital.',
+            image: '/images/labs/computer-vision-card.png',
+            icon: ScanEye,
+            link: 'https://gesture-particles-3d-159705655877.us-west1.run.app/',
+            color: 'text-emerald-400',
+            borderColor: 'group-hover:border-emerald-400',
+            bgGradient: 'group-hover:shadow-emerald-400/20'
         },
         {
             title: 'Creative Lab',

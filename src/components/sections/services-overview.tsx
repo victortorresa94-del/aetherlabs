@@ -1,5 +1,5 @@
 import React from 'react';
-import { Bot, Palette, MessageSquareCode, GraduationCap, ArrowRight, LayoutGrid } from 'lucide-react';
+import { Bot, Palette, GraduationCap, ArrowRight, LayoutGrid, Globe, ScanEye, Database, MessageSquare } from 'lucide-react';
 import Link from 'next/link';
 
 interface Service {
@@ -13,26 +13,50 @@ const services: Service[] = [
   {
     icon: Palette,
     title: "IA Generativa",
-    description: "Transformamos tu identidad visual con contenido generado por IA. Desde fotografía de producto hasta campañas publicitarias completas.",
+    description: "Creación de contenido visual y audiovisual hiperrealista para campañas de impacto.",
     link: "/servicios/ia-generativa"
   },
   {
     icon: LayoutGrid,
     title: "AI Hub",
-    description: "Implementación y formación en las mejores herramientas de IA del mercado (Copilot, Gemini, Dapta).",
+    description: "Implementación y formación en las mejores herramientas de IA del mercado.",
     link: "/servicios/ai-hub"
   },
   {
     icon: Bot,
     title: "Agentes IA",
-    description: "Automatiza tareas repetitivas y optimiza flujos de trabajo. Nuestros agentes trabajan 24/7 para que tú te enfoques en lo importante.",
+    description: "Empleados digitales autónomos que ejecutan tareas complejas 24/7.",
     link: "/servicios/automatizacion"
   },
   {
     icon: GraduationCap,
-    title: "Consultoría & Formación",
-    description: "Te acompañamos en la adopción de la IA. Formación para equipos y estrategia personalizada para integrar estas tecnologías.",
+    title: "Consultoría",
+    description: "Estrategia y acompañamiento para integrar la IA en tu modelo de negocio.",
     link: "/servicios/consultoria"
+  },
+  {
+    icon: Globe,
+    title: "Webs con IA",
+    description: "Desarrollo web acelerado y potenciado por inteligencia artificial.",
+    link: "/servicios/ia-generativa/web"
+  },
+  {
+    icon: MessageSquare,
+    title: "Chatbots IA",
+    description: "Asistentes conversacionales inteligentes para atención al cliente y ventas.",
+    link: "/servicios/chatbots"
+  },
+  {
+    icon: ScanEye,
+    title: "Computer Vision",
+    description: "Sistemas que ven y entienden el mundo real para retail, seguridad y más.",
+    link: "/servicios/computer-vision"
+  },
+  {
+    icon: Database,
+    title: "LLM a Medida",
+    description: "Modelos de lenguaje entrenados con tus propios datos corporativos.",
+    link: "/servicios/ia-a-medida"
   }
 ];
 
