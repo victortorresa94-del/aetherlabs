@@ -58,13 +58,13 @@ const LabsSection = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+        <div className="flex overflow-x-auto pb-8 gap-6 snap-x snap-mandatory scrollbar-hide -mx-6 px-6 md:mx-0 md:px-0 md:grid md:grid-cols-2 lg:grid-cols-4 md:overflow-visible">
           {labs.map((lab, index) => (
             <Link
               key={index}
               href={lab.link}
               target={lab.link.startsWith('http') ? '_blank' : '_self'}
-              className="group relative flex flex-col justify-end p-8 h-[400px] rounded-3xl overflow-hidden border border-white/10 hover:border-white/30 transition-all duration-500 ease-out hover:shadow-2xl hover:-translate-y-2"
+              className="min-w-[280px] md:min-w-0 group relative flex flex-col justify-end p-8 h-[400px] rounded-3xl overflow-hidden border border-white/10 hover:border-white/30 transition-all duration-500 ease-out hover:shadow-2xl hover:-translate-y-2 snap-center"
             >
               {/* Background Image */}
               <Image

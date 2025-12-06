@@ -1,11 +1,16 @@
 import HeaderNavigation from '@/components/sections/header-navigation';
 import Footer from '@/components/sections/footer';
 import Link from 'next/link';
+import Image from 'next/image';
 import {
   Phone, MessageSquare, FileText, ListTodo, Workflow, BarChart,
   ArrowRight, CheckCircle2, Mic, Bot, Users, Brain,
   ShoppingBag, Calculator, Briefcase, Globe, Shield, Zap, Network,
-  Mail, MessageCircle, Cloud, FileSpreadsheet, CreditCard, Layout
+  Mail, MessageCircle, Cloud, FileSpreadsheet, CreditCard, Layout,
+  Filter, Calendar, PenTool, Search, BarChart2, FileAudio, Package,
+  Truck, UserPlus, FileSearch, Receipt, Wallet, ShieldCheck,
+  ClipboardCheck, PieChart, Home, Utensils, GraduationCap, Languages,
+  TrendingUp
 } from 'lucide-react';
 
 export default function AutomatizacionPage() {
@@ -15,6 +20,7 @@ export default function AutomatizacionPage() {
       title: 'Agentes de Voz Hiperrealistas',
       description: 'Capaces de mantener conversaciones telefónicas fluidas, agendar citas, cualificar leads y realizar encuestas con una latencia mínima y entonación humana.',
       highlight: true,
+      image: '/images/agents/voice-interface.png',
       flow: ["Voz Entrante", "Speech-to-Text", "LLM Cerebro", "Text-to-Speech", "Audio Saliente"]
     },
     {
@@ -22,6 +28,7 @@ export default function AutomatizacionPage() {
       title: 'Asistente de Project Manager',
       description: 'Organiza tareas en Notion, ClickUp o Asana. Persigue deadlines, asigna responsables, actualiza estados y genera reportes de progreso automáticamente.',
       highlight: false,
+      image: '/images/agents/pm-dashboard.png',
       flow: ["Update Diario", "Análisis Estado", "Detectar Retrasos", "Notificar Slack", "Actualizar Tablero"]
     },
     {
@@ -29,6 +36,7 @@ export default function AutomatizacionPage() {
       title: 'Soporte Omnicanal 24/7',
       description: 'Atención al cliente en WhatsApp, Instagram, Web y Email. Resuelve dudas, gestiona incidencias y escala casos complejos a humanos.',
       highlight: false,
+      image: '/images/learn/chatbot.jpg',
       flow: ["Mensaje Usuario", "Base de Conocimiento", "Generar Respuesta", "Acción (Ticket/Reserva)", "Respuesta"]
     }
   ];
@@ -41,31 +49,43 @@ export default function AutomatizacionPage() {
         {
           title: "Cualificador de Leads",
           desc: "Filtra y puntúa prospectos automáticamente antes de pasarlos a ventas.",
+          icon: Filter,
+          image: '/images/agents/sales-analytics.png',
           flow: ["Form Web", "CRM", "Scoring AI", "Notificación Ventas"]
         },
         {
           title: "Agendador Automático",
           desc: "Coordina calendarios y cierra reuniones sin intercambio de emails.",
+          icon: Calendar,
+          image: '/images/agents/calendar-scheduler.png',
           flow: ["Email/Chat", "Calendar API", "Verificar Huecos", "Enviar Invite"]
         },
         {
           title: "Generador de Contenido",
           desc: "Crea posts, blogs y copy adaptado a tu voz de marca.",
+          icon: PenTool,
+          image: '/images/creative/skyflex.jpg',
           flow: ["Tendencia", "Redactor LLM", "Gen Imagen", "Programar Post"]
         },
         {
           title: "Respondedor Social",
           desc: "Interactúa con comentarios y DMs para aumentar el engagement.",
+          icon: MessageCircle,
+          image: '/images/learn/chatbot-lifestyle.png',
           flow: ["Comentario", "Análisis Tono", "Borrador Respuesta", "Publicar"]
         },
         {
           title: "Buscador de Prospectos",
           desc: "Scrapea y encuentra clientes potenciales que encajan con tu ICP.",
+          icon: Search,
+          image: '/images/services/ai-hub-real.png',
           flow: ["LinkedIn/Web", "Scraper", "Enriquecer Datos", "Email Frío"]
         },
         {
           title: "Analista de Marca",
           desc: "Monitoriza menciones y sentimiento en tiempo real.",
+          icon: BarChart2,
+          image: '/images/creative/twojeys.jpg',
           flow: ["Social Listening", "Base Datos", "Análisis Sentimiento", "Alerta"]
         }
       ]
@@ -77,31 +97,43 @@ export default function AutomatizacionPage() {
         {
           title: "Triaje de Email",
           desc: "Clasifica, etiqueta y redacta borradores de respuesta en tu bandeja.",
+          icon: Mail,
+          image: '/images/agents/email-triage.png',
           flow: ["Inbox", "Clasificador AI", "Redactar Borrador", "Etiquetar"]
         },
         {
           title: "Resumidor de Reuniones",
           desc: "Transcribe llamadas y extrae puntos de acción automáticamente.",
+          icon: FileAudio,
+          image: '/images/learn/learning-session-elegant.png',
           flow: ["Grabación", "Whisper (Audio)", "Resumen", "Crear Tareas"]
         },
         {
           title: "Gestor de Inventario",
           desc: "Predice roturas de stock y genera órdenes de compra.",
+          icon: Package,
+          image: '/images/agents/inventory-manager.png',
           flow: ["Datos Ventas", "Modelo Predicción", "Alerta Stock", "Orden Compra"]
         },
         {
           title: "Coordinador Logístico",
           desc: "Optimiza rutas y comunica estados de envío a clientes.",
+          icon: Truck,
+          image: '/images/agents/logistics.png',
           flow: ["Pedido", "Algoritmo Ruta", "App Conductor", "SMS Cliente"]
         },
         {
           title: "Asistente Onboarding",
           desc: "Guía a nuevos empleados por todo el proceso de alta.",
+          icon: UserPlus,
+          image: '/images/learn/tech-guy-natural.png',
           flow: ["Alta RRHH", "Email Bienvenida", "Crear Accesos", "Agendar Formación"]
         },
         {
           title: "Filtrado de CVs",
           desc: "Analiza cientos de currículums y destaca los mejores candidatos.",
+          icon: FileSearch,
+          image: '/images/agents/hr-cv.png',
           flow: ["PDF CV", "Parser", "Score Match", "Dashboard RRHH"]
         }
       ]
@@ -113,31 +145,43 @@ export default function AutomatizacionPage() {
         {
           title: "Procesador de Facturas",
           desc: "Extrae datos de PDFs y los introduce en tu software contable.",
+          icon: Receipt,
+          image: '/images/agents/finance-security.png',
           flow: ["PDF Factura", "OCR Vision", "Validación", "Entrada ERP"]
         },
         {
           title: "Agente de Cobros",
           desc: "Realiza seguimiento amistoso de facturas impagadas.",
+          icon: Wallet,
+          image: '/images/learn/trabajo.jpg',
           flow: ["Lista Impagos", "Estrategia Tono", "Email/SMS", "Link Pago"]
         },
         {
           title: "Generador de Presupuestos",
           desc: "Crea cotizaciones detalladas basadas en requerimientos.",
+          icon: FileText,
+          image: '/images/services/ai-hub-tech-elegant.png',
           flow: ["Datos Cliente", "Base Precios", "Generar PDF", "Enviar Email"]
         },
         {
           title: "Revisor de Contratos",
           desc: "Detecta cláusulas de riesgo en documentos legales estándar.",
+          icon: ShieldCheck,
+          image: '/images/agents/legal-contract.png',
           flow: ["Documento", "Legal AI", "Check Riesgos", "Informe"]
         },
         {
           title: "Auditor de Cumplimiento",
           desc: "Verifica que los procesos sigan las normativas vigentes.",
+          icon: ClipboardCheck,
+          image: '/images/services/ai-hub-real.png',
           flow: ["Logs Proceso", "Base Normativa", "Cruce Datos", "Reporte"]
         },
         {
           title: "Reportero Financiero",
           desc: "Consolida datos y genera informes de pérdidas y ganancias.",
+          icon: PieChart,
+          image: '/images/learn/web.jpg',
           flow: ["APIs Bancos", "Libro Mayor", "Análisis", "Dashboard CEO"]
         }
       ]
@@ -149,31 +193,43 @@ export default function AutomatizacionPage() {
         {
           title: "Virtual Staging",
           desc: "Amuebla digitalmente propiedades vacías para inmobiliarias.",
+          icon: Home,
+          image: '/images/creative/real-estate.jpg',
           flow: ["Foto Vacía", "Prompt Estilo", "Stable Diffusion", "Render Final"]
         },
         {
           title: "Gestor de Reservas",
           desc: "Administra mesas y turnos en restaurantes automáticamente.",
+          icon: Utensils,
+          image: '/images/learn/chatbot-lifestyle.png',
           flow: ["Llamada/Chat", "Check Disponibilidad", "Bloquear Mesa", "Confirmación"]
         },
         {
           title: "Tutor Personalizado",
           desc: "Crea planes de estudio y resuelve dudas a alumnos 24/7.",
+          icon: GraduationCap,
+          image: '/images/learn/learning-session.png',
           flow: ["Pregunta Alumno", "Base Conocimiento", "Explicación", "Quiz"]
         },
         {
           title: "Traductor Real-Time",
           desc: "Facilita la comunicación entre equipos internacionales.",
+          icon: Languages,
+          image: '/images/learn/chatbot.jpg',
           flow: ["Audio Entrada", "Transcipción", "Traducción", "Audio Salida"]
         },
         {
           title: "Analista de Mercado",
           desc: "Detecta tendencias emergentes analizando grandes volúmenes de datos.",
+          icon: TrendingUp,
+          image: '/images/services/ai-hub-warm.png',
           flow: ["Feed Noticias", "Detección Patrones", "Insight", "Estrategia"]
         },
         {
           title: "Entrenador de Ventas",
           desc: "Simula clientes difíciles para practicar objeciones.",
+          icon: Users,
+          image: '/images/learn/tech-guy-ai.png',
           flow: ["Escenario", "Bot Voz", "Interacción", "Feedback"]
         }
       ]
@@ -181,18 +237,18 @@ export default function AutomatizacionPage() {
   ];
 
   const tools = [
-    { name: "Gmail", icon: Mail, category: "Email" },
-    { name: "Outlook", icon: Mail, category: "Email" },
-    { name: "WhatsApp", icon: MessageCircle, category: "Mensajería" },
-    { name: "Slack", icon: MessageSquare, category: "Mensajería" },
-    { name: "HubSpot", icon: Network, category: "CRM" },
-    { name: "Salesforce", icon: Cloud, category: "CRM" },
-    { name: "Notion", icon: FileText, category: "Productividad" },
-    { name: "Airtable", icon: Layout, category: "Base de Datos" },
-    { name: "Excel", icon: FileSpreadsheet, category: "Hojas de Cálculo" },
-    { name: "Google Sheets", icon: FileSpreadsheet, category: "Hojas de Cálculo" },
-    { name: "Stripe", icon: CreditCard, category: "Pagos" },
-    { name: "Shopify", icon: ShoppingBag, category: "E-commerce" }
+    { name: "Gmail", icon: "https://img.icons8.com/color/48/gmail-new.png", category: "Email" },
+    { name: "Outlook", icon: "https://img.icons8.com/color/48/microsoft-outlook-2019--v1.png", category: "Email" },
+    { name: "WhatsApp", icon: "https://img.icons8.com/color/48/whatsapp--v1.png", category: "Mensajería" },
+    { name: "Slack", icon: "https://img.icons8.com/color/48/slack-new.png", category: "Mensajería" },
+    { name: "HubSpot", icon: "https://img.icons8.com/color/48/hubspot.png", category: "CRM" },
+    { name: "Salesforce", icon: "https://img.icons8.com/color/48/salesforce.png", category: "CRM" },
+    { name: "Notion", icon: "https://img.icons8.com/color/48/notion--v1.png", category: "Productividad" },
+    { name: "Airtable", icon: "https://img.icons8.com/color/48/airtable.png", category: "Base de Datos" },
+    { name: "Excel", icon: "https://img.icons8.com/color/48/microsoft-excel-2019--v1.png", category: "Hojas de Cálculo" },
+    { name: "Google Sheets", icon: "https://img.icons8.com/color/48/google-sheets.png", category: "Hojas de Cálculo" },
+    { name: "Stripe", icon: "https://img.icons8.com/color/48/stripe.png", category: "Pagos" },
+    { name: "Shopify", icon: "https://img.icons8.com/color/48/shopify.png", category: "E-commerce" }
   ];
 
   const process = [
@@ -356,19 +412,32 @@ export default function AutomatizacionPage() {
             {featuredAgents.map((agent, index) => (
               <div
                 key={index}
-                className={`relative p-8 rounded-3xl border transition-all duration-300 group hover:-translate-y-2 ${agent.highlight
-                    ? 'bg-zinc-900/50 border-[#82ff1f]/50 shadow-[0_0_30px_rgba(130,255,31,0.1)]'
-                    : 'bg-zinc-900/30 border-white/10 hover:border-white/20'
+                className={`relative p-8 rounded-3xl border transition-all duration-300 group hover:-translate-y-2 overflow-hidden flex flex-col ${agent.highlight
+                  ? 'bg-zinc-900/50 border-[#82ff1f]/50 shadow-[0_0_30px_rgba(130,255,31,0.1)]'
+                  : 'bg-zinc-900/30 border-white/10 hover:border-white/20'
                   }`}
               >
-                <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-6 ${agent.highlight ? 'bg-[#82ff1f]/10 text-[#82ff1f]' : 'bg-white/5 text-white'
-                  }`}>
-                  <agent.icon className="w-7 h-7" />
+                {/* Background Image with Overlay */}
+                <div className="absolute inset-0 z-0 opacity-20 group-hover:opacity-30 transition-opacity duration-500">
+                  <Image
+                    src={agent.image}
+                    alt={agent.title}
+                    fill
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent" />
                 </div>
-                <h3 className="text-2xl font-light mb-4">{agent.title}</h3>
-                <p className="text-zinc-400 leading-relaxed mb-8">
-                  {agent.description}
-                </p>
+
+                <div className="relative z-10 flex flex-col h-full">
+                  <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-6 ${agent.highlight ? 'bg-[#82ff1f]/10 text-[#82ff1f]' : 'bg-white/5 text-white'
+                    }`}>
+                    <agent.icon className="w-7 h-7" />
+                  </div>
+                  <h3 className="text-2xl font-light mb-4">{agent.title}</h3>
+                  <p className="text-zinc-400 leading-relaxed mb-8 flex-grow">
+                    {agent.description}
+                  </p>
+                </div>
               </div>
             ))}
           </div>
@@ -400,23 +469,41 @@ export default function AutomatizacionPage() {
 
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                   {category.agents.map((agent, i) => (
-                    <div key={i} className="bg-zinc-900/20 border border-white/5 rounded-2xl p-6 hover:bg-zinc-900/40 hover:border-white/10 transition-all duration-300 group flex flex-col h-full">
-                      <h4 className="text-lg font-medium text-white mb-2 group-hover:text-[#82ff1f] transition-colors">{agent.title}</h4>
-                      <p className="text-sm text-zinc-400 leading-relaxed mb-6 flex-grow">{agent.desc}</p>
+                    <div key={i} className="bg-zinc-900/20 border border-white/5 rounded-2xl overflow-hidden hover:bg-zinc-900/40 hover:border-white/10 transition-all duration-300 group flex flex-col h-full">
+                      {/* Agent Image */}
+                      <div className="relative h-48 w-full overflow-hidden">
+                        <div className="absolute inset-0 bg-gradient-to-t from-zinc-900 via-transparent to-transparent z-10" />
+                        <Image
+                          src={agent.image}
+                          alt={agent.title}
+                          fill
+                          className="object-cover transition-transform duration-700 group-hover:scale-110"
+                        />
+                        <div className="absolute top-4 left-4 z-20">
+                          <div className="w-8 h-8 rounded-lg bg-black/60 backdrop-blur-md flex items-center justify-center border border-white/10">
+                            <agent.icon className="w-4 h-4 text-[#82ff1f]" />
+                          </div>
+                        </div>
+                      </div>
 
-                      {/* Flow Diagram for List Agents */}
-                      <div className="pt-4 border-t border-white/5 mt-auto">
-                        <div className="flex flex-wrap items-center gap-y-2 gap-x-1">
-                          {agent.flow.map((step, stepIdx) => (
-                            <div key={stepIdx} className="flex items-center gap-1">
-                              <span className="text-[9px] uppercase tracking-wider font-medium px-1.5 py-0.5 rounded bg-white/5 text-zinc-500 border border-white/5 whitespace-nowrap">
-                                {step}
-                              </span>
-                              {stepIdx < agent.flow.length - 1 && (
-                                <ArrowRight className="w-2.5 h-2.5 text-zinc-700" />
-                              )}
-                            </div>
-                          ))}
+                      <div className="p-6 flex flex-col flex-grow">
+                        <h4 className="text-lg font-medium text-white mb-2 group-hover:text-[#82ff1f] transition-colors">{agent.title}</h4>
+                        <p className="text-sm text-zinc-400 leading-relaxed mb-6 flex-grow">{agent.desc}</p>
+
+                        {/* Flow Diagram for List Agents */}
+                        <div className="pt-4 border-t border-white/5 mt-auto">
+                          <div className="flex flex-wrap items-center gap-y-2 gap-x-1">
+                            {agent.flow.map((step, stepIdx) => (
+                              <div key={stepIdx} className="flex items-center gap-1">
+                                <span className="text-[9px] uppercase tracking-wider font-medium px-1.5 py-0.5 rounded bg-white/5 text-zinc-500 border border-white/5 whitespace-nowrap">
+                                  {step}
+                                </span>
+                                {stepIdx < agent.flow.length - 1 && (
+                                  <ArrowRight className="w-2.5 h-2.5 text-zinc-700" />
+                                )}
+                              </div>
+                            ))}
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -443,8 +530,14 @@ export default function AutomatizacionPage() {
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
             {tools.map((tool, index) => (
               <div key={index} className="flex flex-col items-center justify-center p-6 bg-zinc-900/30 border border-white/5 rounded-2xl hover:bg-zinc-900/50 hover:border-white/10 transition-all duration-300 group">
-                <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300">
-                  <tool.icon className="w-6 h-6 text-zinc-400 group-hover:text-[#82ff1f] transition-colors" />
+                <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300 overflow-hidden relative">
+                  <Image
+                    src={tool.icon}
+                    alt={tool.name}
+                    width={32}
+                    height={32}
+                    className="object-contain"
+                  />
                 </div>
                 <span className="text-sm font-medium text-zinc-300 group-hover:text-white transition-colors">{tool.name}</span>
                 <span className="text-xs text-zinc-500 mt-1">{tool.category}</span>

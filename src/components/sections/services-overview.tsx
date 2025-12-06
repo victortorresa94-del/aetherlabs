@@ -62,7 +62,7 @@ const services: Service[] = [
 
 const ServicesOverview: React.FC = () => {
   return (
-    <section className="bg-black text-white py-32 border-b border-white/5">
+    <section id="servicios" className="bg-black text-white py-32 border-b border-white/5">
       <div className="container">
         <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
           <div className="max-w-2xl">
@@ -83,11 +83,11 @@ const ServicesOverview: React.FC = () => {
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="flex overflow-x-auto pb-8 gap-6 snap-x snap-mandatory scrollbar-hide -mx-6 px-6 md:mx-0 md:px-0 md:grid md:grid-cols-2 lg:grid-cols-4 md:overflow-visible">
           {services.map((service, index) => (
             <div
               key={index}
-              className="group p-8 rounded-3xl bg-zinc-900/50 border border-white/5 hover:border-white/10 hover:bg-zinc-900 transition-all duration-300 ease-out"
+              className="min-w-[280px] md:min-w-0 group p-8 rounded-3xl bg-zinc-900/50 border border-white/5 hover:border-white/10 hover:bg-zinc-900 transition-all duration-300 ease-out snap-center"
             >
               <div className="w-12 h-12 mb-8 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-white/10 transition-colors">
                 <service.icon className="w-6 h-6 text-white group-hover:text-[#82ff1f] transition-colors" strokeWidth={1.5} />
