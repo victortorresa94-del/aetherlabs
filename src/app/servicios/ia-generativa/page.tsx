@@ -6,6 +6,7 @@ import Link from 'next/link';
 
 import Image from 'next/image';
 import IdeaFormSection from '@/components/sections/idea-form-section';
+import { ArrowRight, Sparkles } from 'lucide-react';
 
 export default function IAGenerativaPage() {
   const services = [

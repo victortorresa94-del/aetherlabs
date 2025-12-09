@@ -6,9 +6,6 @@ import { Analytics } from "@vercel/analytics/next";
 export const metadata: Metadata = {
   title: "Aether Labs - IA clara y útil para tu negocio",
   description: "Automatización e IA para negocios reales. Sin tecnicismos. Sin complicaciones.",
-  icons: {
-    icon: '/logo-v2.png',
-  },
 };
 
 export default function RootLayout({

@@ -5,6 +5,7 @@ import Footer from '@/components/sections/footer';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion, useScroll, useTransform, useInView } from 'framer-motion';
+import { ArrowRight } from 'lucide-react';
 
 import { useRef, useState, useEffect } from 'react';
 
