@@ -14,30 +14,9 @@ import {
     Download,
     ChevronRight,
     TrendingUp,
-    AlertCircle
+    AlertCircle,
+    Loader2
 } from "lucide-react";
-
-// --- Design Tokens & Assets ---
-const THEME = {
-    colors: {
-        bg: "#000000",
-        accent: "#00ff88",
-        accentDim: "rgba(0, 255, 136, 0.1)",
-        text: "#ffffff",
-        textMuted: "#a1a1aa",
-        cardBg: "#0a0a0a",
-        border: "#27272a"
-    }
-};
-
-const ICONS = {
-    Search: ({ className }: { className?: string }) => <Search className={className} />,
-    Reviews: ({ className }: { className?: string }) => <Star className={className} />,
-    Instagram: ({ className }: { className?: string }) => <Instagram className={className} />,
-    Automation: ({ className }: { className?: string }) => <Zap className={className} />,
-    Chatbot: ({ className }: { className?: string }) => <MessageSquare className={className} />,
-    Voicebot: ({ className }: { className?: string }) => <Mic className={className} />
-};
 
 // --- Types ---
 type ScreenState = "form" | "loading" | "results" | "report";
@@ -50,43 +29,70 @@ interface FormData {
     email: string;
 }
 
-// --- Components ---
+// --- Logic Helpers ---
 
-const ProgressBar = ({ progress }: { progress: number }) => (
-    <div className="w-full h-1 bg-white/10 rounded-full overflow-hidden">
-        <motion.div
-            initial={{ width: 0 }}
-            animate={{ width: `${progress}%` }}
-            transition={{ duration: 0.5 }}
-            className="h-full bg-[#00ff88] shadow-[0_0_10px_#00ff88]"
-        />
-    </div>
-);
+const SECTOR_OPPORTUNITIES: any = {
+    ecommerce: [
+        { title: "Recuperación de Carritos IA", icon: Zap, impact: "Alto", desc: "Emails hiper-personalizados que recuperan el 15% de ventas perdidas." },
+        { title: "Descripción de Productos", icon: MessageSquare, impact: "Medio", desc: "Generación automática de fichas SEO-friendly en segundos." },
+        { title: "Soporte Post-Venta 24/7", icon: MessageSquare, impact: "Muy Alto", desc: "Chatbot que resuelve incidencias de envíos sin humanos." }
+    ],
+    realestate: [
+        { title: "Cualificación de Leads 24/7", icon: MessageSquare, impact: "Muy Alto", desc: "Agente que agenda visitas solo con clientes cualificados." },
+        { title: "Virtual Staging", icon: Search, impact: "Alto", desc: "Decora propiedades vacías virtualmente para vender más rápido." },
+        { title: "Generador de Fichas", icon: Zap, impact: "Medio", desc: "Crea descripciones atractivas de pisos automáticamente." }
+    ],
+    hospitality: [
+        { title: "Reservas por Voz (Phone)", icon: Mic, impact: "Alto", desc: "IA que contesta el teléfono y anota reservas en el libro." },
+        { title: "Gestión de Reseñas", icon: Star, impact: "Alto", desc: "Responde a cada review en Google/TripAdvisor automáticamente." },
+        { title: "Menú Multilenguaje", icon: Search, impact: "Bajo", desc: "Traducción y adaptación de carta para turistas en tiempo real." }
+    ],
+    services: [
+        { title: "Onboarding de Clientes", icon: CheckCircle2, impact: "Alto", desc: "Automatiza la recogida de documentación y contratos." },
+        { title: "Agendamiento Inteligente", icon: Zap, impact: "Medio", desc: "Evita huecos en la agenda optimizando citas automáticamente." },
+        { title: "Resúmenes de Reuniones", icon: Mic, impact: "Medio", desc: "Graba y resume videollamadas con planes de acción." }
+    ],
+    retail: [
+        { title: "Predicción de Stock", icon: TrendingUp, impact: "Alto", desc: "Anticipa qué productos se venderán la próxima semana." },
+        { title: "Fidelización WhatsApp", icon: MessageSquare, impact: "Alto", desc: "Envía ofertas personalizadas según historial de compra." },
+        { title: "Turnos de Personal", icon: Zap, impact: "Medio", desc: "Optimiza horarios según afluencia prevista por IA." }
+    ]
+};
+
+const DEFAULT_OPPS = [
+    { title: "Chatbot de Atención", icon: MessageSquare, impact: "Medio", desc: "Responde dudas frecuentes en web 24/7." },
+    { title: "Automatización de Facturas", icon: Zap, impact: "Alto", desc: "Escanea y procesa facturas sin intervención manual." },
+    { title: "Content Creation", icon: Instagram, impact: "Medio", desc: "Ideas y copy para redes sociales automático." }
+];
+
+// --- Components ---
 
 const Card = ({ children, className = "", onClick }: { children: React.ReactNode; className?: string; onClick?: () => void }) => (
     <motion.div
-        whileHover={{ scale: 1.02, borderColor: "#00ff88", boxShadow: "0 0 20px rgba(0, 255, 136, 0.1)" }}
+        whileHover={{ scale: 1.02 }}
         onClick={onClick}
-        className={`bg-[#0a0a0a] border border-[#27272a] p-6 rounded-xl transition-colors cursor-pointer group ${className}`}
+        className={`bg-[#0a0a0a] border border-white/10 p-6 rounded-xl transition-all cursor-pointer group hover:border-[#82ff1f]/50 hover:shadow-[0_0_20px_rgba(130,255,31,0.1)] ${className}`}
     >
         {children}
     </motion.div>
 );
 
-const NeonButton = ({ children, onClick, className = "", secondary = false }: { children: React.ReactNode; onClick?: () => void; className?: string; secondary?: boolean }) => (
+const PrimaryButton = ({ children, onClick, className = "", secondary = false, disabled = false }: any) => (
     <button
         onClick={onClick}
+        disabled={disabled}
         className={`
-      relative px-6 py-3 rounded-lg font-medium tracking-wide transition-all duration-300
-      flex items-center justify-center gap-2 group overflow-hidden
+      px-6 py-3 rounded-full font-medium tracking-wide transition-all duration-300
+      flex items-center justify-center gap-2
       ${secondary
-                ? "bg-transparent border border-white/20 text-white hover:border-[#00ff88] hover:text-[#00ff88]"
-                : "bg-[#00ff88] text-black hover:bg-[#00cc6a] hover:shadow-[0_0_20px_rgba(0,255,136,0.4)]"
+                ? "bg-transparent border border-white/20 text-white hover:bg-white/10"
+                : "bg-[#82ff1f] text-black hover:bg-[#6bcf1a] hover:scale-105 shadow-[0_0_15px_rgba(130,255,31,0.3)]"
             }
+      disabled:opacity-50 disabled:cursor-not-allowed
       ${className}
     `}
     >
-        <span className="relative z-10 flex items-center gap-2">{children}</span>
+        {children}
     </button>
 );
 
@@ -97,288 +103,232 @@ const FormScreen = ({ onSubmit }: { onSubmit: (data: FormData) => void }) => {
     return (
         <motion.div
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }}
-            className="w-full max-w-lg mx-auto space-y-8"
+            className="w-full max-w-2xl mx-auto"
         >
-            <div className="text-center space-y-4">
-                <h2 className="text-4xl md:text-5xl font-bold tracking-tighter text-white">
-                    Aether <span className="text-[#00ff88]">Consultant</span>
-                </h2>
-                <p className="text-white/60 text-lg">
-                    Descubre oportunidades ocultas de IA en tu negocio en segundos.
-                </p>
-            </div>
+            <div className="bg-[#0a0a0a] border border-white/10 rounded-3xl p-8 md:p-12 shadow-2xl relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-64 h-64 bg-[#82ff1f]/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
 
-            <div className="space-y-4 bg-white/5 p-8 rounded-2xl border border-white/10 backdrop-blur-sm">
-                <div className="space-y-2">
-                    <label className="text-xs uppercase tracking-widest text-[#00ff88] font-semibold">Empresa</label>
-                    <input
-                        type="text"
-                        placeholder="Nombre de tu empresa"
-                        className="w-full bg-black/50 border border-white/10 rounded-lg p-3 text-white focus:border-[#00ff88] focus:outline-none focus:ring-1 focus:ring-[#00ff88] transition-all placeholder:text-white/20"
-                        value={data.company} onChange={e => setData({ ...data, company: e.target.value })}
-                    />
-                </div>
-                <div className="grid grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                        <label className="text-xs uppercase tracking-widest text-[#00ff88] font-semibold">Web</label>
-                        <input
-                            type="text"
-                            placeholder="tusitio.com"
-                            className="w-full bg-black/50 border border-white/10 rounded-lg p-3 text-white focus:border-[#00ff88] focus:outline-none transition-all placeholder:text-white/20"
-                            value={data.website} onChange={e => setData({ ...data, website: e.target.value })}
-                        />
-                    </div>
-                    <div className="space-y-2">
-                        <label className="text-xs uppercase tracking-widest text-[#00ff88] font-semibold">Instagram</label>
-                        <input
-                            type="text"
-                            placeholder="@usuario"
-                            className="w-full bg-black/50 border border-white/10 rounded-lg p-3 text-white focus:border-[#00ff88] focus:outline-none transition-all placeholder:text-white/20"
-                            value={data.instagram} onChange={e => setData({ ...data, instagram: e.target.value })}
-                        />
-                    </div>
-                </div>
-                <div className="space-y-2">
-                    <label className="text-xs uppercase tracking-widest text-[#00ff88] font-semibold">Sector</label>
-                    <select
-                        className="w-full bg-black/50 border border-white/10 rounded-lg p-3 text-white focus:border-[#00ff88] focus:outline-none transition-all"
-                        value={data.sector} onChange={e => setData({ ...data, sector: e.target.value })}
-                    >
-                        <option value="">Selecciona tu sector...</option>
-                        <option value="ecommerce">E-Commerce</option>
-                        <option value="realestate">Inmobiliaria</option>
-                        <option value="services">Servicios Profesionales</option>
-                        <option value="retail">Retail / Tienda Física</option>
-                        <option value="hospitality">Restauración / Hotelería</option>
-                    </select>
-                </div>
-                <div className="space-y-2">
-                    <label className="text-xs uppercase tracking-widest text-[#00ff88] font-semibold">Email</label>
-                    <input
-                        type="email"
-                        placeholder="tu@email.com"
-                        className="w-full bg-black/50 border border-white/10 rounded-lg p-3 text-white focus:border-[#00ff88] focus:outline-none transition-all placeholder:text-white/20"
-                        value={data.email} onChange={e => setData({ ...data, email: e.target.value })}
-                    />
+                <div className="text-center mb-10 relative z-10">
+                    <h2 className="text-3xl md:text-4xl font-light text-white mb-2">
+                        Auditoría IA Express
+                    </h2>
+                    <p className="text-zinc-400">
+                        Analizamos tu huella digital y encontramos oportunidades de automatización en tiempo real.
+                    </p>
                 </div>
 
-                <NeonButton className="w-full mt-6" onClick={() => onSubmit(data)}>
-                    Analizar mi Negocio <ArrowRight className="w-4 h-4" />
-                </NeonButton>
+                <div className="space-y-6 relative z-10">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div className="space-y-2">
+                            <label className="text-xs uppercase tracking-widest text-[#82ff1f] font-semibold ml-1">Empresa</label>
+                            <input
+                                type="text"
+                                placeholder="Nombre de tu negocio"
+                                className="w-full bg-black/50 border border-white/10 rounded-xl p-4 text-white focus:border-[#82ff1f] focus:outline-none focus:ring-1 focus:ring-[#82ff1f] transition-all placeholder:text-zinc-600"
+                                value={data.company} onChange={e => setData({ ...data, company: e.target.value })}
+                            />
+                        </div>
+                        <div className="space-y-2">
+                            <label className="text-xs uppercase tracking-widest text-[#82ff1f] font-semibold ml-1">Sector</label>
+                            <select
+                                className="w-full bg-black/50 border border-white/10 rounded-xl p-4 text-white focus:border-[#82ff1f] focus:outline-none transition-all appearance-none cursor-pointer"
+                                value={data.sector} onChange={e => setData({ ...data, sector: e.target.value })}
+                            >
+                                <option value="">Selecciona actividad...</option>
+                                <option value="ecommerce">Tienda Online / E-Commerce</option>
+                                <option value="realestate">Inmobiliaria</option>
+                                <option value="services">Servicios Profesionales / Agencia</option>
+                                <option value="retail">Comercio Físico / Retail</option>
+                                <option value="hospitality">Restaurante / Hotel</option>
+                                <option value="other">Otro</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div className="space-y-2">
+                            <label className="text-xs uppercase tracking-widest text-[#82ff1f] font-semibold ml-1">Web (Opcional)</label>
+                            <input
+                                type="text"
+                                placeholder="www.tuweb.com"
+                                className="w-full bg-black/50 border border-white/10 rounded-xl p-4 text-white focus:border-[#82ff1f] focus:outline-none transition-all placeholder:text-zinc-600"
+                                value={data.website} onChange={e => setData({ ...data, website: e.target.value })}
+                            />
+                        </div>
+                        <div className="space-y-2">
+                            <label className="text-xs uppercase tracking-widest text-[#82ff1f] font-semibold ml-1">Email</label>
+                            <input
+                                type="email"
+                                placeholder="teenviaremos@elreporte.com"
+                                className="w-full bg-black/50 border border-white/10 rounded-xl p-4 text-white focus:border-[#82ff1f] focus:outline-none transition-all placeholder:text-zinc-600"
+                                value={data.email} onChange={e => setData({ ...data, email: e.target.value })}
+                            />
+                        </div>
+                    </div>
+
+                    <PrimaryButton className="w-full mt-4 text-lg py-5" onClick={() => onSubmit(data)} disabled={!data.company || !data.sector || !data.email}>
+                        Analizar Oportunidades
+                    </PrimaryButton>
+                    <p className="text-xs text-center text-zinc-600 mt-4">
+                        *Análisis gratuito generado por IA. Tus datos están seguros.
+                    </p>
+                </div>
             </div>
         </motion.div>
     );
 };
 
 // --- Screen 2: Loading ---
-const steps = [
-    { icon: Search, label: "Analizando estructura web..." },
-    { icon: Star, label: "Escaneando opiniones..." },
-    { icon: Instagram, label: "Revisando engagement..." },
-    { icon: Zap, label: "Detectando oportunidades..." },
-];
-
-const LoadingScreen = ({ onComplete }: { onComplete: () => void }) => {
-    const [currentStep, setCurrentStep] = useState(0);
+const LoadingScreen = ({ onComplete, data }: { onComplete: (opps: any[]) => void, data: FormData }) => {
+    const [log, setLog] = useState<string>("Iniciando escáner...");
+    const [progress, setProgress] = useState(0);
 
     useEffect(() => {
-        const interval = setInterval(() => {
-            setCurrentStep(prev => {
-                if (prev >= steps.length - 1) {
-                    clearInterval(interval);
-                    setTimeout(onComplete, 500);
-                    return prev;
-                }
-                return prev + 1;
-            });
-        }, 1500);
-        return () => clearInterval(interval);
-    }, [onComplete]);
+        const sequence = async () => {
+            // Simulation of "Real" Analysis Steps
+            const steps = [
+                { msg: `Conectando con ${data.website || "base de datos de sector"}...`, t: 800 },
+                { msg: `Analizando presencia digital de ${data.company}...`, t: 1500 },
+                { msg: "Detectando tecnologías actuales...", t: 1000 },
+                { msg: "Buscando reseñas y sentimiento de cliente...", t: 1200 },
+                { msg: `Calculando métricas para sector: ${data.sector}...`, t: 1000 },
+                { msg: "Generando hoja de ruta de IA...", t: 800 },
+            ];
+
+            for (let i = 0; i < steps.length; i++) {
+                setLog(steps[i].msg);
+                setProgress(((i + 1) / steps.length) * 100);
+                await new Promise(r => setTimeout(r, steps[i].t));
+            }
+
+            // Generate tailored results
+            const sectorOpps = SECTOR_OPPORTUNITIES[data.sector] || DEFAULT_OPPS;
+            onComplete(sectorOpps);
+        };
+
+        sequence();
+    }, [onComplete, data]);
 
     return (
         <motion.div
             initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-            className="w-full max-w-md mx-auto text-center space-y-12"
+            className="w-full max-w-md mx-auto text-center space-y-8 py-12"
         >
-            <div className="relative w-32 h-32 mx-auto">
-                <div className="absolute inset-0 border-t-2 border-[#00ff88] rounded-full animate-spin" />
-                <div className="absolute inset-2 border-r-2 border-[#00ff88]/50 rounded-full animate-spin reverse" style={{ animationDirection: 'reverse', animationDuration: '2s' }} />
-                <div className="absolute inset-0 flex items-center justify-center">
-                    {steps[currentStep] && (() => {
-                        const Icon = steps[currentStep].icon;
-                        return <Icon className="w-10 h-10 text-[#00ff88]" />;
-                    })()}
-                </div>
+            <div className="relative w-24 h-24 mx-auto">
+                <Loader2 className="w-full h-full text-[#82ff1f] animate-spin" />
             </div>
 
             <div className="space-y-4">
-                {steps.map((step, index) => (
+                <h3 className="text-2xl font-light text-white">Analizando <span className="text-[#82ff1f] font-normal">{data.company}</span>...</h3>
+                <p className="text-zinc-400 font-mono text-sm">{log}</p>
+
+                <div className="w-full h-1 bg-white/10 rounded-full overflow-hidden max-w-xs mx-auto">
                     <motion.div
-                        key={index}
-                        initial={{ opacity: 0.3, x: -10 }}
-                        animate={{
-                            opacity: index === currentStep ? 1 : index < currentStep ? 0.5 : 0.2,
-                            x: index === currentStep ? 0 : 0,
-                            scale: index === currentStep ? 1.05 : 1
-                        }}
-                        className="flex items-center justify-center gap-3 text-lg"
-                    >
-                        {index < currentStep ? <CheckCircle2 className="w-5 h-5 text-[#00ff88]" /> : <div className="w-5 h-5" />}
-                        <span className={index === currentStep ? "text-[#00ff88] font-bold" : "text-white"}>{step.label}</span>
-                    </motion.div>
-                ))}
+                        className="h-full bg-[#82ff1f]"
+                        initial={{ width: 0 }}
+                        animate={{ width: `${progress}%` }}
+                    />
+                </div>
             </div>
         </motion.div>
     );
 };
 
 // --- Screen 3: Results ---
-const ResultsScreen = ({ onDetailedClick }: { onDetailedClick: () => void }) => {
+const ResultsScreen = ({ opps, data, onDetailedClick }: { opps: any[], data: FormData, onDetailedClick: () => void }) => {
     return (
         <motion.div
             initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-            className="w-full max-w-4xl mx-auto space-y-10"
+            className="w-full max-w-5xl mx-auto space-y-10"
         >
             <div className="text-center space-y-4">
-                <div className="inline-block border border-[#00ff88] rounded-full px-6 py-2 bg-[#00ff88]/10">
-                    <span className="text-[#00ff88] font-bold text-xl tracking-widest">AETHER SCORE: 42/100</span>
+                <div className="inline-block border border-[#82ff1f]/30 rounded-full px-4 py-1 bg-[#82ff1f]/10 mb-2">
+                    <span className="text-[#82ff1f] font-bold text-sm tracking-widest uppercase">Análisis Completado</span>
                 </div>
-                <h2 className="text-3xl font-light text-white">Hemos encontrado <span className="text-[#00ff88] font-bold">5 oportunidades críticas</span></h2>
+                <h2 className="text-3xl md:text-5xl font-light text-white leading-tight">
+                    Hemos detectado <span className="text-[#82ff1f] font-medium">{opps.length} Oportunidades Clave</span> para {data.company}
+                </h2>
+                <p className="text-zinc-400 max-w-2xl mx-auto">
+                    Basado en el análisis de tu sector ({data.sector}), estas son las implementaciones de IA que generarían mayor ROI inmediato.
+                </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {[
-                    { icon: MessageSquare, title: "Chatbot de Ventas", impact: "Alto", desc: "Automatiza el 80% de consultas recurrentes." },
-                    { icon: Star, title: "Gestión de Reviews", impact: "Medio", desc: "Mejora tu reputación respondiendo automáticamente." },
-                    { icon: Instagram, title: "Auto-Responder IG", impact: "Alto", desc: "No pierdas leads por tardar en contestar DMs." },
-                    { icon: Mic, title: "Voice Agent", impact: "Muy Alto", desc: "Atiende llamadas 24/7 sin coste extra." },
-                    { icon: TrendingUp, title: "Predictive Analytics", impact: "Medio", desc: "Anticipa la demanda de stock." },
-                ].map((item, i) => (
-                    <Card key={i} className="relative overflow-hidden">
-                        <div className="absolute top-0 right-0 p-3 opacity-10 group-hover:opacity-20 transition-opacity">
-                            <item.icon className="w-24 h-24 text-[#00ff88]" />
-                        </div>
-                        <div className="space-y-4 relative z-10">
-                            <div className="bg-[#00ff88]/10 w-fit p-3 rounded-lg">
-                                <item.icon className="w-6 h-6 text-[#00ff88]" />
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                {opps.map((item, i) => {
+                    const Icon = item.icon;
+                    return (
+                        <Card key={i} className="flex flex-col h-full bg-[#0a0a0a] hover:bg-[#111]">
+                            <div className="mb-6 bg-[#82ff1f]/10 w-fit p-3 rounded-xl">
+                                <Icon className="w-8 h-8 text-[#82ff1f]" />
                             </div>
-                            <div>
-                                <h4 className="text-lg font-bold text-white">{item.title}</h4>
-                                <div className="flex items-center gap-2 mt-1">
-                                    <span className="text-xs uppercase text-[#00ff88] bg-[#00ff88]/10 px-2 py-0.5 rounded">Impacto {item.impact}</span>
-                                </div>
+                            <h4 className="text-xl font-medium text-white mb-2">{item.title}</h4>
+                            <p className="text-sm text-zinc-400 flex-grow mb-4 leading-relaxed">{item.desc}</p>
+                            <div className="flex items-center gap-2 pt-4 border-t border-white/5">
+                                <span className="text-xs uppercase text-[#82ff1f] font-bold">Impacto {item.impact}</span>
                             </div>
-                            <p className="text-sm text-gray-400">{item.desc}</p>
-                        </div>
-                    </Card>
-                ))}
-
-                {/* Call to Action Card */}
-                <div className="bg-gradient-to-br from-[#00ff88]/20 to-black border border-[#00ff88]/50 p-6 rounded-xl flex flex-col justify-center items-center text-center space-y-4 hover:shadow-[0_0_30px_rgba(0,255,136,0.2)] transition-shadow">
-                    <h4 className="text-xl font-bold text-white">¿Quieres implementar esto?</h4>
-                    <NeonButton onClick={() => window.open("/contacto", "_self")}>
-                        Solicitar Demo
-                    </NeonButton>
-                </div>
+                        </Card>
+                    );
+                })}
             </div>
 
-            <div className="flex justify-center pt-8">
-                <button
-                    onClick={onDetailedClick}
-                    className="group flex items-center gap-2 text-gray-400 hover:text-white transition-colors border-b border-transparent hover:border-white pb-1"
-                >
-                    Ver informe detallado y ROI simulado
-                    <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </button>
+            <div className="text-center pt-8">
+                <PrimaryButton onClick={onDetailedClick} className="mx-auto" secondary>
+                    Ver Informe Detallado y Plan
+                </PrimaryButton>
             </div>
         </motion.div>
     );
 };
 
 // --- Screen 4: Detailed Report ---
-const ReportScreen = () => {
+const ReportScreen = ({ opps, data }: { opps: any[], data: FormData }) => {
     return (
         <motion.div
             initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }}
-            className="w-full max-w-5xl mx-auto bg-[#0a0a0a] border border-[#27272a] rounded-2xl overflow-hidden"
+            className="w-full max-w-4xl mx-auto bg-[#0a0a0a] border border-white/10 rounded-3xl overflow-hidden shadow-2xl"
         >
-            <div className="border-b border-[#27272a] p-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 bg-white/5">
+            <div className="p-8 md:p-12 border-b border-white/10 bg-white/5 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                 <div>
                     <h2 className="text-2xl font-bold text-white flex items-center gap-3">
-                        <span className="w-3 h-8 bg-[#00ff88] rounded-full inline-block" />
-                        Informe de Consultoría IA
+                        <span className="w-2 h-8 bg-[#82ff1f] rounded-full inline-block" />
+                        Plan Estratégico IA
                     </h2>
-                    <p className="text-gray-400 mt-1 ml-6">Generado para tu negocio</p>
+                    <p className="text-zinc-400 mt-1 ml-5">Preparado para {data.company}</p>
                 </div>
-                <NeonButton secondary className="text-sm px-4 py-2">
+                <PrimaryButton secondary className="text-sm px-4 py-2 h-10">
                     <Download className="w-4 h-4" /> PDF Report
-                </NeonButton>
+                </PrimaryButton>
             </div>
 
-            <div className="p-8 space-y-12">
+            <div className="p-8 md:p-12 space-y-12">
                 {/* Executive Summary */}
                 <section>
-                    <h3 className="text-[#00ff88] uppercase tracking-widest text-sm font-bold mb-4">Resumen Ejecutivo</h3>
-                    <p className="text-gray-300 leading-relaxed">
-                        Tras analizar la presencia digital de su empresa, detectamos un alto potencial de automatización en la
-                        atención al cliente y cualificación de leads. La implementación de agentes de IA podría reducir los costes
-                        operativos un 40% en el primer año.
+                    <h3 className="text-[#82ff1f] uppercase tracking-widest text-xs font-bold mb-4">Diagnóstico</h3>
+                    <p className="text-zinc-300 leading-relaxed text-lg font-light">
+                        {data.website ? "Tu presencia web muestra bases sólidas," : "Tu negocio tiene potencial,"} pero hemos detectado fugas de eficiencia en procesos repetitivos.
+                        En el sector <span className="text-white font-medium capitalize">{data.sector}</span>, la competencia ya está automatizando la atención al cliente y la gestión de leads.
+                        Implementar estas soluciones podría <span className="text-white font-medium">ahorrarte +20h semanales</span>.
                     </p>
                 </section>
 
-                {/* Findings Grid */}
-                <div className="grid md:grid-cols-3 gap-8">
-                    <div className="space-y-4">
-                        <div className="flex items-center gap-2 text-white font-semibold">
-                            <Search className="w-5 h-5 text-[#00ff88]" /> Hallazgos Web
-                        </div>
-                        <ul className="text-sm text-gray-400 space-y-2 list-disc list-inside">
-                            <li>Tiempo de carga mejorable</li>
-                            <li>Falta de chatbot captador</li>
-                            <li>SEO técnico optimizable</li>
-                        </ul>
-                    </div>
-                    <div className="space-y-4">
-                        <div className="flex items-center gap-2 text-white font-semibold">
-                            <Star className="w-5 h-5 text-[#00ff88]" /> Hallazgos Reviews
-                        </div>
-                        <ul className="text-sm text-gray-400 space-y-2 list-disc list-inside">
-                            <li>4.2/5 Score medio</li>
-                            <li>15% reviews sin respuesta</li>
-                            <li>Sentimiento positivo</li>
-                        </ul>
-                    </div>
-                    <div className="space-y-4">
-                        <div className="flex items-center gap-2 text-white font-semibold">
-                            <Instagram className="w-5 h-5 text-[#00ff88]" /> Hallazgos Social
-                        </div>
-                        <ul className="text-sm text-gray-400 space-y-2 list-disc list-inside">
-                            <li>Engagement rate: 3.5%</li>
-                            <li>Frecuencia posts: Baja</li>
-                            <li>DMs manuales detectados</li>
-                        </ul>
-                    </div>
-                </div>
-
-                {/* Oportunidades Matrix */}
+                {/* Roadmap */}
                 <section>
-                    <h3 className="text-[#00ff88] uppercase tracking-widest text-sm font-bold mb-6">Matriz de Oportunidades IA</h3>
-                    <div className="bg-black/40 rounded-xl p-6 border border-white/5 space-y-4">
-                        {[
-                            { name: "Asistente de Voz IA", impact: 95, diff: 60 },
-                            { name: "Automatización de Citas", impact: 80, diff: 30 },
-                            { name: "Generación de Contenido", impact: 70, diff: 20 },
-                        ].map((op, i) => (
-                            <div key={i} className="flex flex-col md:flex-row md:items-center gap-4">
-                                <div className="w-1/3 text-white font-medium">{op.name}</div>
-                                <div className="flex-1 space-y-1">
-                                    <div className="flex justify-between text-xs text-gray-500">
-                                        <span>Impacto {op.impact}%</span>
-                                        <span>Dificultad {op.diff}%</span>
+                    <h3 className="text-[#82ff1f] uppercase tracking-widest text-xs font-bold mb-6">Hoja de Ruta Recomendada</h3>
+                    <div className="space-y-6">
+                        {opps.map((op, i) => (
+                            <div key={i} className="flex gap-4">
+                                <div className="flex flex-col items-center">
+                                    <div className="w-8 h-8 rounded-full bg-[#82ff1f]/20 border border-[#82ff1f]/50 flex items-center justify-center text-[#82ff1f] font-bold text-sm">
+                                        {i + 1}
                                     </div>
-                                    <div className="h-2 bg-gray-800 rounded-full overflow-hidden flex">
-                                        <div style={{ width: `${op.impact}%` }} className="bg-[#00ff88] h-full" />
-                                        <div style={{ width: `${op.diff}%` }} className="bg-red-500 h-full opacity-50" />
+                                    {i < opps.length - 1 && <div className="w-px h-full bg-white/10 my-2" />}
+                                </div>
+                                <div className="pb-6">
+                                    <h4 className="text-white font-medium text-lg">{op.title}</h4>
+                                    <p className="text-zinc-400 text-sm mt-1">{op.desc}</p>
+                                    <div className="flex gap-4 mt-3">
+                                        <div className="text-xs text-zinc-500">Dificultad: <span className="text-white">Baja</span></div>
+                                        <div className="text-xs text-zinc-500">Tiempo: <span className="text-white">2 semanas</span></div>
                                     </div>
                                 </div>
                             </div>
@@ -386,20 +336,16 @@ const ReportScreen = () => {
                     </div>
                 </section>
 
-                {/* Model ROI & Next Steps */}
-                <div className="grid md:grid-cols-2 gap-8">
-                    <div className="bg-[#00ff88]/5 p-6 rounded-xl border border-[#00ff88]/20">
-                        <h3 className="text-[#00ff88] font-bold mb-2">ROI Simulado (Anual)</h3>
-                        <div className="text-4xl font-bold text-white mb-1">€14.500</div>
-                        <p className="text-sm text-gray-400">Ahorro estimado en horas hombre y recuperación de leads perdidos.</p>
-                    </div>
-
-                    <div className="space-y-4">
-                        <h3 className="text-white font-bold">Próximos Pasos</h3>
-                        <NeonButton className="w-full text-sm">
-                            Agendar Reunión de Estrategia
-                        </NeonButton>
-                        <p className="text-xs text-center text-gray-500">Sin compromiso de compra</p>
+                {/* Call to action */}
+                <div className="bg-[#82ff1f] rounded-2xl p-8 text-black text-center">
+                    <h3 className="text-2xl font-bold mb-4">¿Hacemos esto realidad?</h3>
+                    <p className="mb-8 max-w-lg mx-auto leading-relaxed opacity-90">
+                        Tenemos la tecnología y la estrategia lista. Solo falta tu aprobación para empezar a transformar {data.company}.
+                    </p>
+                    <div className="flex justify-center gap-4">
+                        <button onClick={() => window.location.href = '/contacto'} className="bg-black text-white px-8 py-4 rounded-full font-bold hover:scale-105 transition-transform">
+                            Agendar Reunión Técnica
+                        </button>
                     </div>
                 </div>
             </div>
@@ -410,29 +356,27 @@ const ReportScreen = () => {
 // --- Main Container ---
 const BusinessConsultant = () => {
     const [screen, setScreen] = useState<ScreenState>("form");
+    const [formData, setFormData] = useState<FormData>({ company: "", website: "", instagram: "", sector: "", email: "" });
+    const [opportunities, setOpportunities] = useState<any[]>([]);
 
     const handleFormSubmit = (data: FormData) => {
-        // In a real app, send data here
+        setFormData(data);
         setScreen("loading");
     };
 
-    const handleLoadingComplete = () => {
+    const handleLoadingComplete = (opps: any[]) => {
+        setOpportunities(opps);
         setScreen("results");
     };
 
     return (
-        <section className="py-32 px-4 md:px-8 relative overflow-hidden bg-black" id="business-consultant">
-            {/* Background Ambient Effects */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#00ff88] opacity-[0.03] blur-[120px] rounded-full pointer-events-none" />
-
-            <div className="container max-w-7xl mx-auto relative z-10">
-                <AnimatePresence mode="wait">
-                    {screen === "form" && <FormScreen key="form" onSubmit={handleFormSubmit} />}
-                    {screen === "loading" && <LoadingScreen key="loading" onComplete={handleLoadingComplete} />}
-                    {screen === "results" && <ResultsScreen key="results" onDetailedClick={() => setScreen("report")} />}
-                    {screen === "report" && <ReportScreen key="report" />}
-                </AnimatePresence>
-            </div>
+        <section className="bg-black py-12 px-4" id="consultor-ia">
+            <AnimatePresence mode="wait">
+                {screen === "form" && <FormScreen key="form" onSubmit={handleFormSubmit} />}
+                {screen === "loading" && <LoadingScreen key="loading" data={formData} onComplete={handleLoadingComplete} />}
+                {screen === "results" && <ResultsScreen key="results" opps={opportunities} data={formData} onDetailedClick={() => setScreen("report")} />}
+                {screen === "report" && <ReportScreen key="report" opps={opportunities} data={formData} />}
+            </AnimatePresence>
         </section>
     );
 };

@@ -12,7 +12,6 @@ import TrainingSection from "@/components/sections/training-section";
 import TestimonialsCarousel from "@/components/sections/testimonials-carousel";
 import IdeaFormSection from "@/components/sections/idea-form-section";
 import Footer from "@/components/sections/footer";
-import BusinessConsultant from "@/components/sections/business-consultant";
 
 export default function Home() {
   return (
@@ -49,13 +48,7 @@ export default function Home() {
       {/* 10. BLOQUE FORMACION */}
       <TrainingSection />
 
-      {/* 11. TESTIMONIOS */}
-      <TestimonialsCarousel />
-
-      {/* 12. AETHER BUSINESS CONSULTANT */}
-      <BusinessConsultant />
-
-      {/* 13. CUENTANOS TU IDEA */}
+      {/* 12. CUENTANOS TU IDEA */}
       <IdeaFormSection />
 
       <Footer />

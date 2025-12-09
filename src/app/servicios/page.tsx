@@ -64,6 +64,12 @@ const servicesData: ServicePageProps = {
                 link: "/servicios/consultoria",
             },
             {
+                icon: "BookOpen", // Using BookOpen or similar for Education/Training
+                title: "Formación IA",
+                description: "Capacita a tu equipo o aprende tú mismo.",
+                link: "/servicios/formacion",
+            },
+            {
                 icon: "Layers",
                 title: "Automatización",
                 description: "Conecta tus apps y elimina tareas manuales.",
