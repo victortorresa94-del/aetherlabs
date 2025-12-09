@@ -9,9 +9,9 @@ const Footer = () => {
           {/* Logo y descripción */}
           <div>
             <div className="flex items-center mb-4">
-              <div className="relative h-[74px] w-[368px]">
+              <div className="relative h-[90px] w-[368px]">
                 <Image
-                  src="/images/aether-logo-white-v2.png"
+                  src="/logo-v2.png"
                   alt="Aether Labs"
                   fill
                   className="object-contain object-left"
