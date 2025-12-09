@@ -11,7 +11,7 @@ const Footer = () => {
             <div className="flex items-center mb-4">
               <div className="relative h-16 w-80">
                 <Image
-                  src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/LOGO-OK-1763511624593.png"
+                  src="/images/aether-logo-white.png"
                   alt="Aether Labs"
                   fill
                   className="object-contain object-left"

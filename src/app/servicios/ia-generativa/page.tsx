@@ -3,7 +3,7 @@
 import HeaderNavigation from '@/components/sections/header-navigation';
 import Footer from '@/components/sections/footer';
 import Link from 'next/link';
-import { ArrowRight, Sparkles } from 'lucide-react';
+
 import Image from 'next/image';
 import IdeaFormSection from '@/components/sections/idea-form-section';
 

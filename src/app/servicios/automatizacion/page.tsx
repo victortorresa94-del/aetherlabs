@@ -16,7 +16,7 @@ import {
 export default function AutomatizacionPage() {
   const featuredAgents = [
     {
-      icon: Mic,
+      icon: "Mic",
       title: 'Agentes de Voz Hiperrealistas',
       description: 'Capaces de mantener conversaciones telefónicas fluidas, agendar citas, cualificar leads y realizar encuestas con una latencia mínima y entonación humana.',
       highlight: true,
@@ -24,7 +24,7 @@ export default function AutomatizacionPage() {
       flow: ["Voz Entrante", "Speech-to-Text", "LLM Cerebro", "Text-to-Speech", "Audio Saliente"]
     },
     {
-      icon: ListTodo,
+      icon: "ListTodo",
       title: 'Asistente de Project Manager',
       description: 'Organiza tareas en Notion, ClickUp o Asana. Persigue deadlines, asigna responsables, actualiza estados y genera reportes de progreso automáticamente.',
       highlight: false,
@@ -32,7 +32,7 @@ export default function AutomatizacionPage() {
       flow: ["Update Diario", "Análisis Estado", "Detectar Retrasos", "Notificar Slack", "Actualizar Tablero"]
     },
     {
-      icon: MessageSquare,
+      icon: "MessageSquare",
       title: 'Soporte Omnicanal 24/7',
       description: 'Atención al cliente en WhatsApp, Instagram, Web y Email. Resuelve dudas, gestiona incidencias y escala casos complejos a humanos.',
       highlight: false,
@@ -44,47 +44,47 @@ export default function AutomatizacionPage() {
   const agentCategories = [
     {
       title: "Ventas & Marketing",
-      icon: ShoppingBag,
+      icon: "ShoppingBag",
       agents: [
         {
           title: "Cualificador de Leads",
           desc: "Filtra y puntúa prospectos automáticamente antes de pasarlos a ventas.",
-          icon: Filter,
+          icon: "Filter",
           image: '/images/agents/sales-analytics.png',
           flow: ["Form Web", "CRM", "Scoring AI", "Notificación Ventas"]
         },
         {
           title: "Agendador Automático",
           desc: "Coordina calendarios y cierra reuniones sin intercambio de emails.",
-          icon: Calendar,
+          icon: "Calendar",
           image: '/images/agents/calendar-scheduler.png',
           flow: ["Email/Chat", "Calendar API", "Verificar Huecos", "Enviar Invite"]
         },
         {
           title: "Generador de Contenido",
           desc: "Crea posts, blogs y copy adaptado a tu voz de marca.",
-          icon: PenTool,
+          icon: "PenTool",
           image: '/images/creative/skyflex.jpg',
           flow: ["Tendencia", "Redactor LLM", "Gen Imagen", "Programar Post"]
         },
         {
           title: "Respondedor Social",
           desc: "Interactúa con comentarios y DMs para aumentar el engagement.",
-          icon: MessageCircle,
+          icon: "MessageCircle",
           image: '/images/learn/chatbot-lifestyle.png',
           flow: ["Comentario", "Análisis Tono", "Borrador Respuesta", "Publicar"]
         },
         {
           title: "Buscador de Prospectos",
           desc: "Scrapea y encuentra clientes potenciales que encajan con tu ICP.",
-          icon: Search,
+          icon: "Search",
           image: '/images/services/ai-hub-real.png',
           flow: ["LinkedIn/Web", "Scraper", "Enriquecer Datos", "Email Frío"]
         },
         {
           title: "Analista de Marca",
           desc: "Monitoriza menciones y sentimiento en tiempo real.",
-          icon: BarChart2,
+          icon: "BarChart2",
           image: '/images/creative/twojeys.jpg',
           flow: ["Social Listening", "Base Datos", "Análisis Sentimiento", "Alerta"]
         }
@@ -92,47 +92,47 @@ export default function AutomatizacionPage() {
     },
     {
       title: "Operaciones & Gestión",
-      icon: Briefcase,
+      icon: "Briefcase",
       agents: [
         {
           title: "Triaje de Email",
           desc: "Clasifica, etiqueta y redacta borradores de respuesta en tu bandeja.",
-          icon: Mail,
+          icon: "Mail",
           image: '/images/agents/email-triage.png',
           flow: ["Inbox", "Clasificador AI", "Redactar Borrador", "Etiquetar"]
         },
         {
           title: "Resumidor de Reuniones",
           desc: "Transcribe llamadas y extrae puntos de acción automáticamente.",
-          icon: FileAudio,
+          icon: "FileAudio",
           image: '/images/learn/learning-session-elegant.png',
           flow: ["Grabación", "Whisper (Audio)", "Resumen", "Crear Tareas"]
         },
         {
           title: "Gestor de Inventario",
           desc: "Predice roturas de stock y genera órdenes de compra.",
-          icon: Package,
+          icon: "Package",
           image: '/images/agents/inventory-manager.png',
           flow: ["Datos Ventas", "Modelo Predicción", "Alerta Stock", "Orden Compra"]
         },
         {
           title: "Coordinador Logístico",
           desc: "Optimiza rutas y comunica estados de envío a clientes.",
-          icon: Truck,
+          icon: "Truck",
           image: '/images/agents/logistics.png',
           flow: ["Pedido", "Algoritmo Ruta", "App Conductor", "SMS Cliente"]
         },
         {
           title: "Asistente Onboarding",
           desc: "Guía a nuevos empleados por todo el proceso de alta.",
-          icon: UserPlus,
+          icon: "UserPlus",
           image: '/images/learn/tech-guy-natural.png',
           flow: ["Alta RRHH", "Email Bienvenida", "Crear Accesos", "Agendar Formación"]
         },
         {
           title: "Filtrado de CVs",
           desc: "Analiza cientos de currículums y destaca los mejores candidatos.",
-          icon: FileSearch,
+          icon: "FileSearch",
           image: '/images/agents/hr-cv.png',
           flow: ["PDF CV", "Parser", "Score Match", "Dashboard RRHH"]
         }
@@ -140,47 +140,47 @@ export default function AutomatizacionPage() {
     },
     {
       title: "Finanzas & Legal",
-      icon: Calculator,
+      icon: "Calculator",
       agents: [
         {
           title: "Procesador de Facturas",
           desc: "Extrae datos de PDFs y los introduce en tu software contable.",
-          icon: Receipt,
+          icon: "Receipt",
           image: '/images/agents/finance-security.png',
           flow: ["PDF Factura", "OCR Vision", "Validación", "Entrada ERP"]
         },
         {
           title: "Agente de Cobros",
           desc: "Realiza seguimiento amistoso de facturas impagadas.",
-          icon: Wallet,
+          icon: "Wallet",
           image: '/images/learn/trabajo.jpg',
           flow: ["Lista Impagos", "Estrategia Tono", "Email/SMS", "Link Pago"]
         },
         {
           title: "Generador de Presupuestos",
           desc: "Crea cotizaciones detalladas basadas en requerimientos.",
-          icon: FileText,
+          icon: "FileText",
           image: '/images/services/ai-hub-tech-elegant.png',
           flow: ["Datos Cliente", "Base Precios", "Generar PDF", "Enviar Email"]
         },
         {
           title: "Revisor de Contratos",
           desc: "Detecta cláusulas de riesgo en documentos legales estándar.",
-          icon: ShieldCheck,
+          icon: "ShieldCheck",
           image: '/images/agents/legal-contract.png',
           flow: ["Documento", "Legal AI", "Check Riesgos", "Informe"]
         },
         {
           title: "Auditor de Cumplimiento",
           desc: "Verifica que los procesos sigan las normativas vigentes.",
-          icon: ClipboardCheck,
+          icon: "ClipboardCheck",
           image: '/images/services/ai-hub-real.png',
           flow: ["Logs Proceso", "Base Normativa", "Cruce Datos", "Reporte"]
         },
         {
           title: "Reportero Financiero",
           desc: "Consolida datos y genera informes de pérdidas y ganancias.",
-          icon: PieChart,
+          icon: "PieChart",
           image: '/images/learn/web.jpg',
           flow: ["APIs Bancos", "Libro Mayor", "Análisis", "Dashboard CEO"]
         }
@@ -188,47 +188,47 @@ export default function AutomatizacionPage() {
     },
     {
       title: "Especializados",
-      icon: Brain,
+      icon: "Brain",
       agents: [
         {
           title: "Virtual Staging",
           desc: "Amuebla digitalmente propiedades vacías para inmobiliarias.",
-          icon: Home,
+          icon: "Home",
           image: '/images/creative/real-estate.jpg',
           flow: ["Foto Vacía", "Prompt Estilo", "Stable Diffusion", "Render Final"]
         },
         {
           title: "Gestor de Reservas",
           desc: "Administra mesas y turnos en restaurantes automáticamente.",
-          icon: Utensils,
+          icon: "Utensils",
           image: '/images/learn/chatbot-lifestyle.png',
           flow: ["Llamada/Chat", "Check Disponibilidad", "Bloquear Mesa", "Confirmación"]
         },
         {
           title: "Tutor Personalizado",
           desc: "Crea planes de estudio y resuelve dudas a alumnos 24/7.",
-          icon: GraduationCap,
+          icon: "GraduationCap",
           image: '/images/learn/learning-session.png',
           flow: ["Pregunta Alumno", "Base Conocimiento", "Explicación", "Quiz"]
         },
         {
           title: "Traductor Real-Time",
           desc: "Facilita la comunicación entre equipos internacionales.",
-          icon: Languages,
+          icon: "Languages",
           image: '/images/learn/chatbot.jpg',
           flow: ["Audio Entrada", "Transcipción", "Traducción", "Audio Salida"]
         },
         {
           title: "Analista de Mercado",
           desc: "Detecta tendencias emergentes analizando grandes volúmenes de datos.",
-          icon: TrendingUp,
+          icon: "TrendingUp",
           image: '/images/services/ai-hub-warm.png',
           flow: ["Feed Noticias", "Detección Patrones", "Insight", "Estrategia"]
         },
         {
           title: "Entrenador de Ventas",
           desc: "Simula clientes difíciles para practicar objeciones.",
-          icon: Users,
+          icon: "Users",
           image: '/images/learn/tech-guy-ai.png',
           flow: ["Escenario", "Bot Voz", "Interacción", "Feedback"]
         }

@@ -5,7 +5,7 @@ import Footer from '@/components/sections/footer';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion, useScroll, useTransform, useInView } from 'framer-motion';
-import { ArrowRight, Play, Zap, Film, Users, Sparkles, MonitorPlay, Wand2, Layers, Video, CheckCircle2, Globe, Cpu, Clapperboard, Music, Box, Gamepad2, Palette, ScanFace, MousePointer2 } from 'lucide-react';
+
 import { useRef, useState, useEffect } from 'react';
 
 // --- Components ---
@@ -30,7 +30,9 @@ const VideoSection = ({
 
     // Construct the correct embed URL
     // Using https://play.gumlet.io/embed/{ASSET_ID} format
-    const embedUrl = `https://play.gumlet.io/embed/${videoId}?autoplay=1&loop=1&muted=1&controls=0&preload=auto`;
+    // Added start_high_res=true to prevent pixelation
+    // Changed boolean values to 'true' for better compatibility
+    const embedUrl = `https://play.gumlet.io/embed/${videoId}?autoplay=true&loop=true&muted=true&controls=false&start_high_res=true&disable_player_controls=true`;
 
     return (
         <section ref={ref} className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-black border-t border-white/5">
@@ -86,14 +88,14 @@ const VideoSection = ({
     );
 };
 
-const TechLogo = ({ src, alt, width = 120, height = 40 }: { src: string, alt: string, width?: number, height?: number }) => (
-    <div className="relative opacity-50 hover:opacity-100 transition-opacity duration-500 grayscale hover:grayscale-0">
+const TechLogo = ({ src, alt, width = 120, height = 40, variant = 'blend' }: { src: string, alt: string, width?: number, height?: number, variant?: 'blend' | 'invert' }) => (
+    <div className="relative opacity-70 hover:opacity-100 transition-opacity duration-500">
         <Image
             src={src}
             alt={alt}
             width={width}
             height={height}
-            className="object-contain brightness-0 invert"
+            className={`object-contain ${variant === 'blend' ? 'mix-blend-screen' : 'brightness-0 invert'}`}
         />
     </div>
 );
@@ -123,11 +125,12 @@ export default function AnunciosVideosPage() {
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 1.2, ease: "easeOut" }}
                     >
-                        <h1 className="text-[12vw] leading-[0.8] font-bold tracking-tighter text-white mb-4 mix-blend-overlay opacity-90">
-                            VIDEO<br />REVOLUTION
+                        <h1 className="text-6xl md:text-8xl lg:text-[7rem] font-light mb-8 tracking-tighter leading-[0.9] text-white">
+                            La Nueva Era del <br />
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-zinc-400 to-zinc-600">Video Marketing</span>
                         </h1>
-                        <p className="text-xl md:text-3xl font-light text-zinc-300 max-w-3xl mx-auto mt-8 tracking-wide">
-                            PRODUCCIÓN CINEMATOGRÁFICA GENERATIVA
+                        <p className="text-xl md:text-2xl text-zinc-400 max-w-3xl mx-auto mb-12 font-light leading-relaxed">
+                            Producción cinematográfica generativa al servicio de tu marca.
                         </p>
                     </motion.div>
 
@@ -137,7 +140,7 @@ export default function AnunciosVideosPage() {
                         transition={{ delay: 1.5, duration: 1 }}
                         className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
                     >
-                        <span className="text-xs font-mono text-zinc-500 uppercase tracking-widest">Scroll to Explore</span>
+                        <span className="text-xs font-mono text-zinc-500 uppercase tracking-widest">Descubre Más</span>
                         <div className="w-px h-12 bg-gradient-to-b from-[#82ff1f] to-transparent" />
                     </motion.div>
                 </div>
@@ -146,11 +149,12 @@ export default function AnunciosVideosPage() {
             {/* 2. TECH STICKER */}
             <div className="border-y border-white/10 bg-black py-12 overflow-hidden">
                 <div className="container flex flex-wrap justify-center md:justify-between items-center gap-12">
-                    <TechLogo src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Runway_AI_Logo.svg/2560px-Runway_AI_Logo.svg.png" alt="Runway" />
-                    <TechLogo src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/OpenAI_Logo.svg/1024px-OpenAI_Logo.svg.png" alt="OpenAI" />
-                    <TechLogo src="https://framerusercontent.com/images/3y152Q2x5D5Gj2X3y4.png" alt="Kling" width={100} />
-                    <TechLogo src="https://assets-global.website-files.com/64f6f2c0e3f4c5a91c1e823a/654693d569494e624c79c5d5_Luma%20Logo.svg" alt="Luma" width={100} />
-                    <TechLogo src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/Midjourney_Emblem.svg/2048px-Midjourney_Emblem.svg.png" alt="Midjourney" width={140} />
+                    <TechLogo src="/images/logos/runway_logo_white.png" alt="Runway" variant="blend" />
+                    <TechLogo src="/images/logos/sora_logo_white.png" alt="OpenAI Sora" variant="blend" />
+                    <TechLogo src="/images/logos/kling_logo_white.png" alt="Kling AI" width={100} variant="blend" />
+                    <TechLogo src="https://assets-global.website-files.com/64f6f2c0e3f4c5a91c1e823a/654693d569494e624c79c5d5_Luma%20Logo.svg" alt="Luma Dream Machine" width={100} variant="invert" />
+                    <TechLogo src="/images/logos/midjourney_logo_white.png" alt="Midjourney" width={140} variant="blend" />
+                    <TechLogo src="/images/logos/elevenlabs_logo_white.png" alt="ElevenLabs" width={120} variant="blend" />
                 </div>
             </div>
 
@@ -159,7 +163,7 @@ export default function AnunciosVideosPage() {
 
                 <VideoSection
                     index={1}
-                    videoId="6934423a491e9c48bfb1f1a9"
+                    videoId="6934423b03bcee22ddd0d7aa"
                     subtitle="ATMOSPHERE CONTROL"
                     title="AI Relighting"
                     description="Control total sobre la iluminación y la atmósfera en post-producción. Transformamos el día en noche, o un estudio en un bosque de neón, sin necesidad de volver a rodar."
@@ -168,7 +172,7 @@ export default function AnunciosVideosPage() {
 
                 <VideoSection
                     index={2}
-                    videoId="6934423a7d19d070282b0f19"
+                    videoId="6934423b7d19d070282b0f3a"
                     subtitle="PERFECT CONTINUITY"
                     title="Subject Swap"
                     description="Reemplazo de actores o vestuario manteniendo la física y la iluminación original de la escena. La flexibilidad definitiva para campañas globales."
@@ -177,7 +181,7 @@ export default function AnunciosVideosPage() {
 
                 <VideoSection
                     index={3}
-                    videoId="6934423b7d19d070282b0f3a"
+                    videoId="6934423a7d19d070282b0f19"
                     subtitle="VIRTUAL WORLDS"
                     title="Game Simulation"
                     description="Generación de entornos inmersivos con estética de videojuego AAA. Ideal para trailers, experiencias de marca y narrativas futuristas."
@@ -186,7 +190,7 @@ export default function AnunciosVideosPage() {
 
                 <VideoSection
                     index={4}
-                    videoId="6934423b03bcee22ddd0d7aa"
+                    videoId="6934423a491e9c48bfb1f1a9"
                     subtitle="IMPOSSIBLE COMMERCIALS"
                     title="Product Showcase"
                     description="Spots publicitarios que desafían las leyes de la física. Líquidos, partículas y dinámicas imposibles de capturar con cámaras tradicionales."
@@ -195,7 +199,7 @@ export default function AnunciosVideosPage() {
 
                 <VideoSection
                     index={5}
-                    videoId="6934423b03bcee22ddd0d7b0"
+                    videoId="6934423b03bcee22ddd0d7b3"
                     subtitle="VISUAL RHYTHMS"
                     title="Music Video"
                     description="Sincronización perfecta entre audio y video generativo. Estilos visuales abstractos y oníricos que evolucionan con la música."
@@ -204,7 +208,7 @@ export default function AnunciosVideosPage() {
 
                 <VideoSection
                     index={6}
-                    videoId="6934423b03bcee22ddd0d7b3"
+                    videoId="69342e067d19d07028299898"
                     subtitle="NARRATIVE CONSISTENCY"
                     title="Character AI"
                     description="Mantenemos la identidad y rasgos de tus personajes a través de múltiples escenas y escenarios. Storytelling coherente generado por IA."
@@ -217,7 +221,7 @@ export default function AnunciosVideosPage() {
             <section className="py-32 bg-[#050505] border-t border-white/10">
                 <div className="container">
                     <div className="flex flex-col md:flex-row justify-between items-start mb-20">
-                        <h2 className="text-4xl md:text-6xl font-light tracking-tight mb-8 md:mb-0">Technical<br />Specifications</h2>
+                        <h2 className="text-4xl md:text-6xl font-light tracking-tight mb-8 md:mb-0">Especificaciones<br />Técnicas</h2>
                         <p className="text-xl text-zinc-400 max-w-md font-light">
                             Nuestra suite de herramientas cubre cada aspecto de la producción moderna.
                         </p>
@@ -249,7 +253,7 @@ export default function AnunciosVideosPage() {
                 <div className="absolute inset-0 bg-[url('/images/grid-pattern.svg')] opacity-5" />
                 <div className="container relative z-10 text-center">
                     <h2 className="text-6xl md:text-9xl font-bold tracking-tighter text-white mb-12 mix-blend-difference">
-                        START NOW
+                        EMPIEZA AHORA
                     </h2>
                     <div className="flex flex-col sm:flex-row gap-8 justify-center items-center">
                         <Link
@@ -275,3 +279,4 @@ export default function AnunciosVideosPage() {
         </main>
     );
 }
+

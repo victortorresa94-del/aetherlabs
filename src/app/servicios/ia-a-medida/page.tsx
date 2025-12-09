@@ -171,14 +171,14 @@ export default function CustomAIServicePage() {
 
                         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
                             {[
-                                { icon: Clock, title: "Ahorro de tiempo", desc: "Procesos que tardaban horas se hacen en segundos." },
-                                { icon: TrendingUp, title: "Reducción de costes", desc: "Necesitas menos personal para tareas repetitivas." },
-                                { icon: MessageSquare, title: "Atención 24/7", desc: "En WhatsApp, web, email o teléfono, sin descanso." },
-                                { icon: SparkleIcon, title: "Calidad de contenido", desc: "Texto, imágenes y vídeo coherentes con la marca." },
-                                { icon: Zap, title: "Decisiones rápidas", desc: "Analiza documentos, datos y contratos al instante." },
-                                { icon: Shield, title: "Privacidad garantizada", desc: "Nada se envía a terceros sin tu permiso explícito." },
-                                { icon: Brain, title: "Expertise sectorial", desc: "Cada Brain está especializado en tu nicho." },
-                                { icon: Cpu, title: "Tecnología sólida", desc: "Base en Gemini 3 + modelos propios + embeddings." },
+                                { icon: "Clock", title: "Ahorro de tiempo", desc: "Procesos que tardaban horas se hacen en segundos." },
+                                { icon: "TrendingUp", title: "Reducción de costes", desc: "Necesitas menos personal para tareas repetitivas." },
+                                { icon: "MessageSquare", title: "Atención 24/7", desc: "En WhatsApp, web, email o teléfono, sin descanso." },
+                                { icon: "SparkleIcon", title: "Calidad de contenido", desc: "Texto, imágenes y vídeo coherentes con la marca." },
+                                { icon: "Zap", title: "Decisiones rápidas", desc: "Analiza documentos, datos y contratos al instante." },
+                                { icon: "Shield", title: "Privacidad garantizada", desc: "Nada se envía a terceros sin tu permiso explícito." },
+                                { icon: "Brain", title: "Expertise sectorial", desc: "Cada Brain está especializado en tu nicho." },
+                                { icon: "Cpu", title: "Tecnología sólida", desc: "Base en Gemini 3 + modelos propios + embeddings." },
                             ].map((item, i) => (
                                 <div key={i} className="p-6 rounded-2xl bg-white/5 border border-white/5 hover:bg-white/10 transition-colors">
                                     <item.icon className="w-8 h-8 text-[#a0a0a0] mb-4" />
@@ -319,3 +319,4 @@ function CloudIcon(props: React.SVGProps<SVGSVGElement>) {
         </svg>
     )
 }
+

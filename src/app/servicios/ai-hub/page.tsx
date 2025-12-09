@@ -100,7 +100,7 @@ const useCases = [
 
 // --- Components ---
 
-const HubCard: React.FC<any> = ({ id, title, shortDescription, tools, icon: Icon, color }) => (
+const HubCard: React.FC<any> = ({ id, title, shortDescription, tools, icon: "Icon", color }) => (
     <Link href={`/servicios/ai-hub/${id}`} className="block h-full">
         <motion.div
             whileHover={{ y: -5 }}
@@ -353,3 +353,4 @@ export default function AIHubPage() {
         </main>
     );
 }
+

@@ -2,12 +2,13 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Menu, X, ChevronRight, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import Image from "next/image";
 
 interface NavItem {
   label: string;
   href: string;
+  variant?: 'default' | 'mega';
   subItems?: NavItem[];
 }
 
@@ -15,7 +16,6 @@ const HeaderNavigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
-  const [activeSubDropdown, setActiveSubDropdown] = useState<string | null>(null);
   const [expandedMobileItems, setExpandedMobileItems] = useState<string[]>([]);
 
   const toggleMobileItem = (label: string) => {
@@ -31,28 +31,52 @@ const HeaderNavigation = () => {
     {
       label: "Servicios",
       href: "/servicios",
+      variant: 'mega',
       subItems: [
         {
-          label: "IA Generativa",
-          href: "/servicios/ia-generativa",
+          label: "Por Tecnología",
+          href: "/servicios",
           subItems: [
-            { label: "Fotos de producto", href: "/servicios/ia-generativa/fotos-producto" },
-            { label: "Avatares y portavoces", href: "/servicios/ia-generativa/avatares" },
-            { label: "Anuncios y vídeos", href: "/servicios/ia-generativa/anuncios-videos" },
-            { label: "Virtual staging", href: "/servicios/ia-generativa/virtual-staging" },
-            { label: "Contenido UGC", href: "/servicios/ia-generativa/ugc" },
-            { label: "Campañas 360", href: "/servicios/ia-generativa/campanas-360" },
-            { label: "Web con IA", href: "/servicios/ia-generativa/web" },
-            { label: "Reels con IA", href: "/servicios/ia-generativa/reels" },
-            { label: "Branding con IA", href: "/servicios/ia-generativa/branding" },
+            { label: "IA Generativa", href: "/servicios/ia-generativa" },
+            { label: "Agentes IA", href: "/servicios/agentes-ia" },
+            { label: "Chatbots IA", href: "/servicios/chatbots" },
+            { label: "Automatización", href: "/servicios/automatizacion" },
+            { label: "Computer Vision", href: "/servicios/computer-vision" },
+            { label: "Web con IA", href: "/servicios/web-ia" },
+            { label: "Consultoría", href: "/servicios/consultoria" },
+            { label: "AI Hub", href: "/servicios/ai-hub" },
           ]
         },
-        { label: "AI Hub", href: "/servicios/ai-hub" },
-        { label: "Agentes IA", href: "/servicios/automatizacion" },
-        { label: "Chatbots IA", href: "/servicios/chatbots" },
-        { label: "IA a Medida", href: "/servicios/ia-a-medida" },
-        { label: "Computer Vision", href: "/servicios/computer-vision" },
-        { label: "Formación & Consultoría", href: "/servicios/consultoria" }
+        {
+          label: "Por Departamento",
+          href: "/servicios",
+          subItems: [
+            { label: "Ventas", href: "/servicios/departamento/ventas" },
+            { label: "Marketing", href: "/servicios/departamento/marketing" },
+            { label: "Atención al Cliente", href: "/servicios/departamento/atencion-cliente" },
+            { label: "Recursos Humanos", href: "/servicios/departamento/recursos-humanos" },
+            { label: "Operaciones", href: "/servicios/departamento/operaciones" },
+            { label: "Dirección / CEO", href: "/servicios/departamento/direccion" },
+            { label: "Formación Interna", href: "/servicios/departamento/formacion" },
+            { label: "Producto / eCommerce", href: "/servicios/departamento/producto" },
+          ]
+        },
+        {
+          label: "Por Industria",
+          href: "/servicios",
+          subItems: [
+            { label: "Restaurantes", href: "/servicios/industria/restauracion" },
+            { label: "Salud / Clínicas", href: "/servicios/industria/salud" },
+            { label: "Agencias Marketing", href: "/servicios/industria/marketing" },
+            { label: "Inmobiliarias", href: "/servicios/industria/inmobiliaria" },
+            { label: "Retail / Tiendas", href: "/servicios/industria/retail" },
+            { label: "Educación / Academias", href: "/servicios/industria/formacion" },
+            { label: "Construcción", href: "/servicios/industria/construccion" },
+            { label: "Servicios Profesionales", href: "/servicios/industria/servicios-profesionales" },
+            { label: "eCommerce / DTC", href: "/servicios/industria/ecommerce" },
+            { label: "Autónomos / PYMES", href: "/servicios/industria/pymes" },
+          ]
+        }
       ]
     },
     {
@@ -93,16 +117,62 @@ const HeaderNavigation = () => {
   const renderNavItem = (item: NavItem) => {
     const isDropdownOpen = activeDropdown === item.label;
 
+    if (item.variant === 'mega' && item.subItems) {
+      return (
+        <li
+          key={item.label}
+          className="relative group"
+          onMouseEnter={() => setActiveDropdown(item.label)}
+          onMouseLeave={() => setActiveDropdown(null)}
+        >
+          <Link
+            href={item.href}
+            className="flex items-center px-4 py-2 text-sm text-white transition-colors hover:text-gray-300 whitespace-nowrap gap-1"
+            aria-expanded={isDropdownOpen}
+            aria-haspopup="true"
+          >
+            <span dangerouslySetInnerHTML={{ __html: item.label }} />
+            <ChevronDown size={14} className={`transition-transform duration-200 ${isDropdownOpen ? 'rotate-180' : ''}`} />
+          </Link>
+
+          {isDropdownOpen && (
+            <div className="absolute top-full left-1/2 -translate-x-1/2 pt-4 w-[900px] z-50">
+              <div className="bg-black/95 backdrop-blur-md border border-[#2a2a2a] rounded-xl shadow-2xl p-6">
+                <div className="grid grid-cols-3 gap-8">
+                  {item.subItems.map((column, idx) => (
+                    <div key={idx} className="space-y-4">
+                      <h3 className="text-neon-green font-semibold text-sm uppercase tracking-wider border-b border-[#2a2a2a] pb-2">
+                        {column.label}
+                      </h3>
+                      <ul className="space-y-2">
+                        {column.subItems?.map((subItem) => (
+                          <li key={subItem.label}>
+                            <Link
+                              href={subItem.href}
+                              className="block text-sm text-gray-400 hover:text-white hover:translate-x-1 transition-all duration-200"
+                            >
+                              {subItem.label}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          )}
+        </li>
+      );
+    }
+
     if (item.subItems) {
       return (
         <li
           key={item.label}
           className="relative group"
           onMouseEnter={() => setActiveDropdown(item.label)}
-          onMouseLeave={() => {
-            setActiveDropdown(null);
-            setActiveSubDropdown(null);
-          }}
+          onMouseLeave={() => setActiveDropdown(null)}
         >
           <Link
             href={item.href}
@@ -119,47 +189,13 @@ const HeaderNavigation = () => {
               <div className="bg-black border border-[#2a2a2a] rounded-lg shadow-lg">
                 <ul className="py-1">
                   {item.subItems.map((subItem) => (
-                    <li
-                      key={subItem.label}
-                      className="relative group/sub"
-                      onMouseEnter={() => setActiveSubDropdown(subItem.label)}
-                      onMouseLeave={() => setActiveSubDropdown(null)}
-                    >
-                      {subItem.subItems ? (
-                        <>
-                          <Link
-                            href={subItem.href}
-                            className="flex items-center justify-between w-full text-left px-4 py-3 text-sm text-white hover:bg-[#1a1a1a] transition-colors"
-                          >
-                            {subItem.label}
-                            <ChevronRight size={14} />
-                          </Link>
-                          {/* Nested Dropdown */}
-                          <div className="absolute top-0 left-full pl-2 w-56 z-30 hidden group-hover/sub:block">
-                            <div className="bg-black border border-[#2a2a2a] rounded-lg shadow-lg">
-                              <ul className="py-1">
-                                {subItem.subItems.map((nestedItem) => (
-                                  <li key={nestedItem.label}>
-                                    <Link
-                                      href={nestedItem.href}
-                                      className="block w-full text-left px-4 py-3 text-sm text-white hover:bg-[#1a1a1a] transition-colors"
-                                    >
-                                      {nestedItem.label}
-                                    </Link>
-                                  </li>
-                                ))}
-                              </ul>
-                            </div>
-                          </div>
-                        </>
-                      ) : (
-                        <Link
-                          href={subItem.href}
-                          className="block w-full text-left px-4 py-3 text-sm text-white hover:bg-[#1a1a1a] transition-colors"
-                        >
-                          {subItem.label}
-                        </Link>
-                      )}
+                    <li key={subItem.label}>
+                      <Link
+                        href={subItem.href}
+                        className="block w-full text-left px-4 py-3 text-sm text-white hover:bg-[#1a1a1a] transition-colors"
+                      >
+                        {subItem.label}
+                      </Link>
                     </li>
                   ))}
                 </ul>
@@ -196,41 +232,27 @@ const HeaderNavigation = () => {
             />
           </div>
           <div className={`overflow-hidden transition-all duration-300 ease-in-out ${expandedMobileItems.includes(item.label) ? 'max-h-[1000px] opacity-100 mt-3' : 'max-h-0 opacity-0'}`}>
-            <ul className="pl-4 space-y-3">
+            <ul className="pl-4 space-y-4">
               {item.subItems.map(subItem => (
                 <li key={subItem.label}>
                   {subItem.subItems ? (
                     <div className="space-y-2">
-                      <div
-                        className="flex items-center justify-between cursor-pointer"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          toggleMobileItem(subItem.label);
-                        }}
-                      >
-                        <span className="text-lg text-[#a0a0a0] hover:text-white transition-colors block font-medium">
-                          {subItem.label}
-                        </span>
-                        <ChevronDown
-                          size={16}
-                          className={`text-[#a0a0a0] transition-transform duration-200 ${expandedMobileItems.includes(subItem.label) ? 'rotate-180' : ''}`}
-                        />
+                      <div className="text-neon-green font-medium text-sm uppercase tracking-wider">
+                        {subItem.label}
                       </div>
-                      <div className={`overflow-hidden transition-all duration-300 ease-in-out ${expandedMobileItems.includes(subItem.label) ? 'max-h-[500px] opacity-100 mt-2' : 'max-h-0 opacity-0'}`}>
-                        <ul className="pl-4 space-y-2 border-l border-[#2a2a2a] ml-1">
-                          {subItem.subItems.map(nestedItem => (
-                            <li key={nestedItem.label}>
-                              <Link
-                                href={nestedItem.href}
-                                className="text-base text-[#808080] hover:text-white transition-colors block"
-                                onClick={() => setIsMobileMenuOpen(false)}
-                              >
-                                {nestedItem.label}
-                              </Link>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
+                      <ul className="pl-2 space-y-2 border-l border-[#2a2a2a] ml-1">
+                        {subItem.subItems.map(nestedItem => (
+                          <li key={nestedItem.label}>
+                            <Link
+                              href={nestedItem.href}
+                              className="text-base text-[#a0a0a0] hover:text-white transition-colors block py-1"
+                              onClick={() => setIsMobileMenuOpen(false)}
+                            >
+                              {nestedItem.label}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
                     </div>
                   ) : (
                     <Link
@@ -266,7 +288,7 @@ const HeaderNavigation = () => {
         <div className="flex-1 flex justify-start">
           <Link href="/" className="flex items-center" aria-label="Aether Labs Home">
             <Image
-              src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/LOGO-OK-1763511624593.png"
+              src="/images/aether-logo-white.png"
               alt="Aether Labs"
               width={234}
               height={78}

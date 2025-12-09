@@ -298,12 +298,12 @@ export default function ComputerVisionPage() {
                         </h2>
                         <div className="flex flex-wrap justify-center gap-8 md:gap-16 opacity-70">
                             {[
-                                { icon: LayoutDashboard, label: "Google Sheets" },
-                                { icon: Smartphone, label: "WhatsApp" },
-                                { icon: CheckCircle2, label: "ClickUp" },
-                                { icon: Database, label: "Notion" },
-                                { icon: Mail, label: "Gmail" },
-                                { icon: Database, label: "SQL / APIs" },
+                                { icon: "LayoutDashboard", label: "Google Sheets" },
+                                { icon: "Smartphone", label: "WhatsApp" },
+                                { icon: "CheckCircle2", label: "ClickUp" },
+                                { icon: "Database", label: "Notion" },
+                                { icon: "Mail", label: "Gmail" },
+                                { icon: "Database", label: "SQL / APIs" },
                             ].map((item, i) => (
                                 <div key={i} className="flex flex-col items-center gap-3 group cursor-default">
                                     <div className="p-4 rounded-2xl bg-white/5 group-hover:bg-white/10 transition-colors">
@@ -347,7 +347,7 @@ export default function ComputerVisionPage() {
 }
 
 // Helper Component for Service Cards
-function ServiceCard({ icon: Icon, title, description, details }: { icon: any, title: string, description: string, details: string[] }) {
+function ServiceCard({ icon: "Icon", title, description, details }: { icon: "any", title: string, description: string, details: string[] }) {
     return (
         <div className="p-8 rounded-3xl border border-white/5 bg-[#0a0a0a] hover:border-[#82ff1f]/30 transition-all hover:shadow-[0_0_30px_rgba(130,255,31,0.05)] group h-full flex flex-col">
             <div className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center mb-6 group-hover:bg-[#82ff1f]/10 transition-colors">
@@ -368,3 +368,4 @@ function ServiceCard({ icon: Icon, title, description, details }: { icon: any, t
         </div>
     );
 }
+
