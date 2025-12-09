@@ -3,10 +3,11 @@ import "./globals.css";
 import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next";
 
-title: "Aether Labs - IA clara y útil para tu negocio",
+export const metadata: Metadata = {
+  title: "Aether Labs - IA clara y útil para tu negocio",
   description: "Automatización e IA para negocios reales. Sin tecnicismos. Sin complicaciones.",
-    icons: {
-  icon: '/images/aether-logo-white.png',
+  icons: {
+    icon: '/images/aether-logo-transparent.png',
   },
 };
 

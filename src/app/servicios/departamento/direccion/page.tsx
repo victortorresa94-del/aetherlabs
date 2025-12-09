@@ -12,7 +12,7 @@ const managementData: ServicePageProps = {
     hero: {
         title: "IA para Dirección y Management",
         subtitle: "Toma decisiones estratégicas basadas en datos reales, automatiza el reporting y libera tu agenda de tareas operativas.",
-        image: "/images/illustrations/ai_brain_neon.png",
+        image: "/images/experimental-lab-bg-v5.png",
         ctaPrimary: "Optimizar Gestión",
         ctaSecondary: "Ver Soluciones",
     },
@@ -46,7 +46,11 @@ const managementData: ServicePageProps = {
                 link: "/servicios/agentes-ia",
             },
             {
-                icon: "LineChart",
+                icon: {
+                    type: 'image',
+                    src: 'https://img.icons8.com/color/96/microsoft-power-bi-2021.png',
+                    alt: 'PowerBI Dashboard'
+                },
                 title: "Dashboard en Tiempo Real",
                 description: "Visualiza los KPIs críticos de toda la empresa en una sola pantalla, actualizados al segundo.",
                 link: "/servicios/ai-hub",
@@ -106,11 +110,19 @@ const managementData: ServicePageProps = {
     integrations: {
         title: "Conectado con Todo tu Negocio",
         logos: [
-            { src: "/images/logos/salesforce.png", alt: "Salesforce" },
+            { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Salesforce.com_logo.svg/2560px-Salesforce.com_logo.svg.png", alt: "Salesforce" },
             { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/SAP_2011_logo.svg/2560px-SAP_2011_logo.svg.png", alt: "SAP" },
             { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Microsoft_365_%282020%29.svg/2560px-Microsoft_365_%282020%29.svg.png", alt: "Microsoft 365" },
             { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/2048px-Google_%22G%22_Logo.svg.png", alt: "Google Workspace" },
         ],
+    },
+    successStory: {
+        company: "Grupo Inversor Alpha",
+        challenge: "Disfunción en la toma de decisiones por falta de datos consolidados de las 12 filiales.",
+        solution: "Data Lake centralizado con IA y Dashboard de Mando Integral para el Comité de Dirección.",
+        results: "Visión Global Real-Time",
+        quote: "Ahora entramos a las reuniones sabiendo exactamente qué preguntar. Hemos detectado sinergias que nos han ahorrado millones.",
+        author: "Roberto D., CEO"
     },
     ctaFinal: {
         title: "Lidera con Inteligencia",

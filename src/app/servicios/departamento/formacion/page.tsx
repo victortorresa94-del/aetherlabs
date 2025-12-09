@@ -12,7 +12,7 @@ const trainingData: ServicePageProps = {
     hero: {
         title: "IA para Formación y Desarrollo",
         subtitle: "Crea planes de formación personalizados, genera contenido educativo en minutos y asegura que tu equipo siempre esté actualizado.",
-        image: "/images/illustrations/ai_brain_neon.png",
+        image: "/images/experimental-lab-bg-v6.jpg",
         ctaPrimary: "Transformar Formación",
         ctaSecondary: "Ver Herramientas",
     },
@@ -52,7 +52,11 @@ const trainingData: ServicePageProps = {
                 link: "/servicios/ia-generativa/anuncios-videos",
             },
             {
-                icon: "Brain",
+                icon: {
+                    type: 'image',
+                    src: 'https://img.icons8.com/color/96/chatgpt.png',
+                    alt: 'AI Tutor'
+                },
                 title: "Tutor Personal IA",
                 description: "Un mentor virtual disponible 24/7 para resolver dudas y guiar el aprendizaje de cada empleado.",
                 link: "/servicios/chatbots",
@@ -111,6 +115,14 @@ const trainingData: ServicePageProps = {
             { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/LinkedIn_Logo_2019.svg/2560px-LinkedIn_Logo_2019.svg.png", alt: "LinkedIn Learning" },
             { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Cornerstone_OnDemand_logo.svg/2560px-Cornerstone_OnDemand_logo.svg.png", alt: "Cornerstone" },
         ],
+    },
+    successStory: {
+        company: "Academy Next",
+        challenge: "Materiales de formación técnicos que quedaban obsoletos cada 3 meses. Baja tasa de finalización de cursos.",
+        solution: "Generación automática de tutoriales vídeo con IA y tutores interactivos 24/7.",
+        results: "+85% Finalización",
+        quote: "Nuestros técnicos ahora se forman en el metro camino al trabajo con micro-cápsulas de vídeo creadas por la IA. Es una revolución.",
+        author: "Laura G., Directora de Formación"
     },
     ctaFinal: {
         title: "Empodera a tu Equipo",
