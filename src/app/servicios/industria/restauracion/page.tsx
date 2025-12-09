@@ -12,7 +12,7 @@ const restaurantData: ServicePageProps = {
     hero: {
         title: "IA para Restaurantes y Hostelería",
         subtitle: "Llena tus mesas automáticamente, gestiona reservas sin coger el teléfono y aumenta el ticket medio con menús inteligentes.",
-        image: "/images/illustrations/automation_gears_neon.png",
+        image: "/images/experimental-lab-bg-v2.png",
         ctaPrimary: "Ver Demo RestaurAI",
         ctaSecondary: "Casos de Éxito",
     },
@@ -40,7 +40,11 @@ const restaurantData: ServicePageProps = {
         title: "El Restaurante del Futuro, Hoy",
         items: [
             {
-                icon: "Phone",
+                icon: {
+                    type: 'image',
+                    src: 'https://img.icons8.com/color/96/whatsapp--v1.png',
+                    alt: 'WhatsApp Booking'
+                },
                 title: "RestaurAI Voicebot",
                 description: "IA que contesta el teléfono, gestiona reservas y responde dudas sobre la carta 24/7.",
                 link: "/servicios/agentes-ia",
@@ -111,6 +115,14 @@ const restaurantData: ServicePageProps = {
             { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/TheFork_logo_2022.svg/2560px-TheFork_logo_2022.svg.png", alt: "TheFork" },
             { src: "https://www.gloriafood.com/images/logo-white.png", alt: "GloriaFood" },
         ],
+    },
+    successStory: {
+        company: "Bistro 180",
+        challenge: "Muchos clientes llamaban durante el servicio de cenas y nadie podía atender el teléfono.",
+        solution: "Voicebot IA que atiende llamadas y gestiona reservas en CoverManager.",
+        results: "+40 Reservas/Mes",
+        quote: "Al principio tenía dudas de si sonaría robótico, pero los clientes ni se dan cuenta. Es como tener una recepcionista extra.",
+        author: "Javier S., Propietario"
     },
     ctaFinal: {
         title: "Llena tu Restaurante en Piloto Automático",

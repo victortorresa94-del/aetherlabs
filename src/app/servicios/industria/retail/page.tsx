@@ -12,7 +12,7 @@ const retailData: ServicePageProps = {
     hero: {
         title: "IA para Retail y Tiendas Físicas",
         subtitle: "Conecta el mundo físico y digital, personaliza la experiencia de compra y optimiza tu stock con inteligencia artificial.",
-        image: "/images/illustrations/data_flow_neon.png",
+        image: "/images/experimental-lab-bg-final.jpg",
         ctaPrimary: "Modernizar mi Tienda",
         ctaSecondary: "Ver Soluciones",
     },
@@ -111,6 +111,14 @@ const retailData: ServicePageProps = {
             { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/SAP_2011_logo.svg/2560px-SAP_2011_logo.svg.png", alt: "SAP Retail" },
             { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Square_Inc_logo.svg/2560px-Square_Inc_logo.svg.png", alt: "Square" },
         ],
+    },
+    successStory: {
+        company: "Fashion Retail S.L.",
+        challenge: "Exceso de stock al final de temporada y baja conversión en probadores.",
+        solution: "Probadores inteligentes que recomiendan combinaciones y sistema de predicción de demanda.",
+        results: "-30% Stock Sobrante",
+        quote: "Nuestras tiendas ahora 'entienden' al cliente. La IA nos dice qué se va a vender antes de que lo pidamos, es casi mágico.",
+        author: "Marta R., Directora de Operaciones"
     },
     ctaFinal: {
         title: "Digitaliza tu Punto de Venta",

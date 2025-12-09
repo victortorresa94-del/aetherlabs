@@ -288,11 +288,11 @@ const HeaderNavigation = () => {
         <div className="flex-1 flex justify-start">
           <Link href="/" className="flex items-center" aria-label="Aether Labs Home">
             <Image
-              src="/images/aether-logo-transparent.png"
+              src="/images/aether-logo-white-v2.png"
               alt="Aether Labs"
-              width={269}
-              height={90}
-              className="h-[74px] w-auto"
+              width={280}
+              height={94}
+              className="h-[78px] w-auto"
               priority
             />
           </Link>

@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   title: "Aether Labs - IA clara y útil para tu negocio",
   description: "Automatización e IA para negocios reales. Sin tecnicismos. Sin complicaciones.",
   icons: {
-    icon: '/images/aether-logo-transparent.png',
+    icon: '/images/aether-logo-white-v2.png',
   },
 };
 
