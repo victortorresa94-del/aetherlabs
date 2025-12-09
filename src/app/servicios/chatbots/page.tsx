@@ -7,6 +7,22 @@ import Footer from '@/components/sections/footer';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
+import {
+    Bot,
+    MessageSquare,
+    BrainCircuit,
+    Server,
+    Database,
+    Zap,
+    BarChart3,
+    CheckCircle2,
+    ArrowRight,
+    Users,
+    ShoppingBag,
+    Briefcase,
+    Stethoscope,
+    Calculator
+} from 'lucide-react';
 import ChatbotBuilder from '@/components/features/chatbot-builder';
 
 export default function ChatbotsPage() {
@@ -116,22 +132,22 @@ export default function ChatbotsPage() {
                         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                             {[
                                 {
-                                    icon: "MessageSquare",
+                                    icon: MessageSquare,
                                     title: "Texto y Voz",
                                     desc: "Chatbots en Web, WhatsApp, Instagram, Telegram, Apps propias y líneas telefónicas."
                                 },
                                 {
-                                    icon: "Zap",
+                                    icon: Zap,
                                     title: "Acciones Reales",
                                     desc: "Agendar citas, consultar stock, enviar emails, actualizar CRM, procesar leads."
                                 },
                                 {
-                                    icon: "BarChart3",
+                                    icon: BarChart3,
                                     title: "Costes Ridículos",
                                     desc: "Una consulta cuesta hoy menos de 0.002€. Eficiencia máxima para tu negocio."
                                 },
                                 {
-                                    icon: "CheckCircle2",
+                                    icon: CheckCircle2,
                                     title: "Latencia Casi Nula",
                                     desc: "Respuestas en milisegundos. Fluidez total en conversaciones de voz y texto."
                                 }
@@ -205,10 +221,10 @@ export default function ChatbotsPage() {
                             <div className="hidden md:block absolute top-1/2 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[#82ff1f]/30 to-transparent -translate-y-1/2 z-0" />
 
                             {[
-                                { icon: "MessageSquare", title: "Canales", desc: "Web, WhatsApp, Voz" },
-                                { icon: "BrainCircuit", title: "Cerebro IA", desc: "LLM (GPT-4, Claude)" },
-                                { icon: "Server", title: "Memoria", desc: "VectorDB (Conocimiento)" },
-                                { icon: "Database", title: "Acciones", desc: "CRM, Calendario, API" }
+                                { icon: MessageSquare, title: "Canales", desc: "Web, WhatsApp, Voz" },
+                                { icon: BrainCircuit, title: "Cerebro IA", desc: "LLM (GPT-4, Claude)" },
+                                { icon: Server, title: "Memoria", desc: "VectorDB (Conocimiento)" },
+                                { icon: Database, title: "Acciones", desc: "CRM, Calendario, API" }
                             ].map((step, idx) => (
                                 <div key={idx} className="relative z-10 bg-black p-6 rounded-2xl border border-white/10 text-center h-full flex flex-col items-center">
                                     <div className="w-16 h-16 bg-[#82ff1f]/10 rounded-full flex items-center justify-center mb-6 text-[#82ff1f] border border-[#82ff1f]/20 shadow-[0_0_15px_rgba(130,255,31,0.1)]">
@@ -370,22 +386,22 @@ export default function ChatbotsPage() {
                         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                             {[
                                 {
-                                    icon: "ShoppingBag",
+                                    icon: ShoppingBag,
                                     title: "E-commerce",
                                     desc: "Gestión automática de devoluciones y estado de pedidos."
                                 },
                                 {
-                                    icon: "Stethoscope",
+                                    icon: Stethoscope,
                                     title: "Clínicas",
                                     desc: "Confirmación de citas por WhatsApp y triaje básico."
                                 },
                                 {
-                                    icon: "Briefcase",
+                                    icon: Briefcase,
                                     title: "Consultoría",
                                     desc: "Cualificación de leads y generación de presupuestos preliminares."
                                 },
                                 {
-                                    icon: "Calculator",
+                                    icon: Calculator,
                                     title: "Restaurantes",
                                     desc: "Reservas automáticas y gestión de carta/alérgenos."
                                 }
