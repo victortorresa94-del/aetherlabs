@@ -52,6 +52,9 @@ export default function RootLayout({
 
         {children}
         <Analytics />
+        <Script src="https://elevenlabs.io/convai-widget/index.js" strategy="afterInteractive" />
+        {/* @ts-ignore */}
+        <elevenlabs-convai agent-id="7wyfynsqgs4qym0h48t" />
       </body>
     </html>
   );
