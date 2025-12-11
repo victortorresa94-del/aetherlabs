@@ -2,17 +2,53 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { NeonButton } from "@/components/ui/neon-button";
+import {
+  Menu,
+  X,
+  ChevronDown,
+  Sparkles,
+  Bot,
+  MessageSquare,
+  Workflow,
+  Eye,
+  Globe,
+  Shield,
+  Grid,
+  GraduationCap,
+  Palette,
+  MessageSquareText,
+  Briefcase,
+  Building2,
+  Users,
+  Megaphone,
+  HeadphonesIcon,
+  BookOpen,
+  ShoppingBag,
+  Utensils,
+  Stethoscope,
+  Target,
+  Home,
+  Store,
+  School,
+  HardHat,
+  ShoppingCart,
+  Laptop
+} from "lucide-react";
 import Image from "next/image";
 
 interface NavItem {
   label: string;
   href: string;
-  variant?: 'default' | 'mega';
+  variant?: 'default' | 'mega' | 'rich';
+  description?: string;
+  icon?: React.ElementType;
   subItems?: NavItem[];
 }
 
 const HeaderNavigation = () => {
+  const router = useRouter();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
@@ -27,71 +63,132 @@ const HeaderNavigation = () => {
   };
 
   const navItems: NavItem[] = [
-    { label: "Inicio", href: "/" },
     {
       label: "Servicios",
       href: "/servicios",
-      variant: 'mega',
+      variant: 'rich',
       subItems: [
         {
-          label: "Por Tecnología",
-          href: "/servicios",
-          subItems: [
-            { label: "IA Generativa", href: "/servicios/ia-generativa" },
-            { label: "Agentes IA", href: "/servicios/agentes-ia" },
-            { label: "Chatbots IA", href: "/servicios/chatbots" },
-            { label: "Automatización", href: "/servicios/automatizacion" },
-            { label: "Computer Vision", href: "/servicios/computer-vision" },
-            { label: "Web con IA", href: "/servicios/web-ia" },
-            { label: "Consultoría", href: "/servicios/consultoria" },
-            { label: "AI Hub", href: "/servicios/ai-hub" },
-          ]
+          label: "IA Generativa",
+          href: "/servicios/ia-generativa",
+          icon: Sparkles,
+          description: "Generación de contenido visual y textual de altísima calidad para distinguir a tu marca."
         },
+        {
+          label: "Agentes IA",
+          href: "/servicios/agentes-ia",
+          icon: Bot,
+          description: "Sistemas que 'piensan' y ejecutan tareas complejas como un empleado digital."
+        },
+        {
+          label: "Chatbots IA",
+          href: "/servicios/chatbots",
+          icon: MessageSquare,
+          description: "Asistentes que atienden y venden 24/7 con conversaciones totalmente naturales."
+        },
+        {
+          label: "Computer Vision",
+          href: "/servicios/computer-vision",
+          icon: Eye,
+          description: "Dota a tus sistemas de 'ojos' para detectar calidad o seguridad automáticamente."
+        },
+        {
+          label: "Desarrollo Web",
+          href: "/servicios/web-ia",
+          icon: Globe,
+          description: "Desarrollo web con IA: reducimos drásticamente los tiempos aumentando la personalización."
+        },
+        {
+          label: "Consultoría",
+          href: "/servicios/consultoria",
+          icon: Shield,
+          description: "Hoja de ruta estratégica para integrar IA en tu empresa sin perder dinero."
+        },
+        {
+          label: "Formación",
+          href: "/servicios/formacion",
+          icon: GraduationCap,
+          description: "Capacita a tu equipo para dominar la IA y multiplicar su productividad."
+        },
+        {
+          label: "AI Hub",
+          href: "/servicios/ai-hub",
+          icon: Grid,
+          description: "Implementamos ecosistemas de herramientas IA líderes del mercado adaptadas a tu flujo."
+        },
+      ]
+    },
+    {
+      label: "Labs",
+      href: "/labs",
+      variant: 'rich',
+      subItems: [
+        {
+          label: "Creative Lab",
+          href: "/labs/creative",
+          icon: Palette,
+          description: "Edita imágenes y crea historias visuales con nuestros inventos de IA creativa."
+        },
+        {
+          label: "AI Agents Lab",
+          href: "/labs/agents",
+          icon: Bot,
+          description: "Crea tus propios agentes de IA y observa cómo resuelven problemas por sí mismos."
+        },
+        {
+          label: "LLM Lab",
+          href: "/labs/llm-lab",
+          icon: MessageSquareText,
+          description: "Experimenta con distintos 'cerebros' digitales y pon a prueba su razonamiento."
+        },
+        {
+          label: "Vision Lab",
+          href: "/labs/vision",
+          icon: Eye,
+          description: "Interactúa con nuestras demos de visión y mira lo que la IA es capaz de ver."
+        }
+      ]
+    },
+    {
+      label: "Casos de Uso",
+      href: "/servicios", // Fallback, mostly for hover
+      variant: 'mega',
+      subItems: [
         {
           label: "Por Departamento",
           href: "/servicios",
           subItems: [
-            { label: "Ventas", href: "/servicios/departamento/ventas" },
-            { label: "Marketing", href: "/servicios/departamento/marketing" },
-            { label: "Atención al Cliente", href: "/servicios/departamento/atencion-cliente" },
-            { label: "Recursos Humanos", href: "/servicios/departamento/recursos-humanos" },
-            { label: "Operaciones", href: "/servicios/departamento/operaciones" },
-            { label: "Dirección / CEO", href: "/servicios/departamento/direccion" },
-            { label: "Formación Interna", href: "/servicios/departamento/formacion" },
-            { label: "Producto / eCommerce", href: "/servicios/departamento/producto" },
+            { label: "Ventas", href: "/servicios/departamento/ventas", icon: ShoppingBag },
+            { label: "Marketing", href: "/servicios/departamento/marketing", icon: Megaphone },
+            { label: "Atención al Cliente", href: "/servicios/departamento/atencion-cliente", icon: HeadphonesIcon },
+            { label: "Recursos Humanos", href: "/servicios/departamento/recursos-humanos", icon: Users },
+            { label: "Operaciones", href: "/servicios/departamento/operaciones", icon: Workflow },
+            { label: "Dirección / CEO", href: "/servicios/departamento/direccion", icon: Briefcase },
+            { label: "Formación Interna", href: "/servicios/departamento/formacion", icon: BookOpen },
+            { label: "Producto / eCommerce", href: "/servicios/departamento/producto", icon: ShoppingBag },
           ]
         },
         {
           label: "Por Industria",
           href: "/servicios",
           subItems: [
-            { label: "Restaurantes", href: "/servicios/industria/restauracion" },
-            { label: "Salud / Clínicas", href: "/servicios/industria/salud" },
-            { label: "Agencias Marketing", href: "/servicios/industria/marketing" },
-            { label: "Inmobiliarias", href: "/servicios/industria/inmobiliaria" },
-            { label: "Retail / Tiendas", href: "/servicios/industria/retail" },
-            { label: "Educación / Academias", href: "/servicios/industria/formacion" },
-            { label: "Construcción", href: "/servicios/industria/construccion" },
-            { label: "Servicios Profesionales", href: "/servicios/industria/servicios-profesionales" },
-            { label: "eCommerce / DTC", href: "/servicios/industria/ecommerce" },
-            { label: "Autónomos / PYMES", href: "/servicios/industria/pymes" },
+            { label: "Restaurantes", href: "/servicios/industria/restauracion", icon: Utensils },
+            { label: "Salud / Clínicas", href: "/servicios/industria/salud", icon: Stethoscope },
+            { label: "Agencias Marketing", href: "/servicios/industria/marketing", icon: Target },
+            { label: "Inmobiliarias", href: "/servicios/industria/inmobiliaria", icon: Home },
+            { label: "Retail / Tiendas", href: "/servicios/industria/retail", icon: Store },
+            { label: "Educación / Academias", href: "/servicios/industria/formacion", icon: School },
+            { label: "Construcción", href: "/servicios/industria/construccion", icon: HardHat },
+            { label: "Servicios Profesionales", href: "/servicios/industria/servicios-profesionales", icon: Building2 },
+            { label: "eCommerce / DTC", href: "/servicios/industria/ecommerce", icon: ShoppingCart },
+            { label: "Autónomos / PYMES", href: "/servicios/industria/pymes", icon: Laptop },
           ]
         }
       ]
     },
     {
-      label: "Labs",
-      href: "/labs",
-      subItems: [
-        { label: "Creative Lab", href: "/labs/creative" },
-        { label: "AI Agents Lab", href: "/labs/agents" },
-        { label: "LLM Lab", href: "/labs/llm-lab" },
-        { label: "Vision Lab", href: "/labs/vision" }
-      ]
-    },
-    {
       label: "Learn",
-      href: "/learn/personal",
+      href: "/servicios/formacion",
       subItems: [
         { label: "Para Personas", href: "/learn/personal" },
         { label: "Para Empresas", href: "/learn/corporate" }
@@ -114,111 +211,123 @@ const HeaderNavigation = () => {
     document.body.style.overflow = isMobileMenuOpen ? "hidden" : "auto";
   }, [isMobileMenuOpen]);
 
+  // Updated render logic for rich dropdowns (Icons + Description)
+  const renderRichDropdown = (item: NavItem) => (
+    <div className="absolute top-full left-1/2 -translate-x-1/2 pt-4 w-[800px] z-50">
+      <div className="bg-black/95 backdrop-blur-md border border-white/10 rounded-xl shadow-2xl p-6">
+        <div className="grid grid-cols-2 gap-x-4 gap-y-4">
+          {item.subItems?.map((subItem) => (
+            <Link
+              key={subItem.label}
+              href={subItem.href}
+              className="flex items-start gap-4 p-3 rounded-lg hover:bg-white/5 transition-colors group"
+            >
+              <div className="mt-0.5 text-[#82ff1f]">
+                {subItem.icon && <subItem.icon size={22} />}
+              </div>
+              <div>
+                <div className="text-white font-bold text-sm">
+                  {subItem.label}
+                </div>
+                {subItem.description && (
+                  <p className="text-zinc-400 text-sm mt-1 leading-snug group-hover:text-white transition-colors">
+                    {subItem.description}
+                  </p>
+                )}
+              </div>
+            </Link>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+
+  const renderMegaDropdown = (item: NavItem) => (
+    <div className="absolute top-full left-1/2 -translate-x-1/2 pt-4 w-[800px] z-50">
+      <div className="bg-black/95 backdrop-blur-md border border-white/10 rounded-xl shadow-2xl p-8">
+        <div className="grid grid-cols-2 gap-12">
+          {item.subItems?.map((column, idx) => (
+            <div key={idx} className="space-y-4">
+              <h3 className="text-white font-semibold text-sm uppercase tracking-wider border-b border-white/10 pb-2">
+                {column.label}
+              </h3>
+              <ul className="space-y-2">
+                {column.subItems?.map((subItem) => (
+                  <li key={subItem.label}>
+                    <Link
+                      href={subItem.href}
+                      className="flex items-center gap-2 text-sm text-zinc-400 hover:text-white hover:translate-x-1 transition-all duration-200"
+                    >
+                      {/* Optional icon for mega menu items if provided */}
+                      {subItem.icon && <subItem.icon size={14} className="text-[#82ff1f]" />}
+                      {subItem.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+
+  const renderStandardDropdown = (item: NavItem) => (
+    <div className="absolute top-full left-0 pt-2 w-56 z-50">
+      <div className="bg-black/95 backdrop-blur-md border border-white/10 rounded-lg shadow-xl overflow-hidden">
+        <ul className="py-1">
+          {item.subItems?.map((subItem) => (
+            <li key={subItem.label}>
+              <Link
+                href={subItem.href}
+                className="block w-full text-left px-4 py-3 text-sm text-white hover:bg-white/5 hover:text-[#82ff1f] transition-colors"
+              >
+                {subItem.label}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  );
+
   const renderNavItem = (item: NavItem) => {
     const isDropdownOpen = activeDropdown === item.label;
-
-    if (item.variant === 'mega' && item.subItems) {
-      return (
-        <li
-          key={item.label}
-          className="relative group"
-          onMouseEnter={() => setActiveDropdown(item.label)}
-          onMouseLeave={() => setActiveDropdown(null)}
-        >
-          <Link
-            href={item.href}
-            className="flex items-center px-4 py-2 text-sm text-white transition-colors hover:text-gray-300 whitespace-nowrap gap-1"
-            aria-expanded={isDropdownOpen}
-            aria-haspopup="true"
-          >
-            <span dangerouslySetInnerHTML={{ __html: item.label }} />
-            <ChevronDown size={14} className={`transition-transform duration-200 ${isDropdownOpen ? 'rotate-180' : ''}`} />
-          </Link>
-
-          {isDropdownOpen && (
-            <div className="absolute top-full left-1/2 -translate-x-1/2 pt-4 w-[900px] z-50">
-              <div className="bg-black/95 backdrop-blur-md border border-[#2a2a2a] rounded-xl shadow-2xl p-6">
-                <div className="grid grid-cols-3 gap-8">
-                  {item.subItems.map((column, idx) => (
-                    <div key={idx} className="space-y-4">
-                      <h3 className="text-neon-green font-semibold text-sm uppercase tracking-wider border-b border-[#2a2a2a] pb-2">
-                        {column.label}
-                      </h3>
-                      <ul className="space-y-2">
-                        {column.subItems?.map((subItem) => (
-                          <li key={subItem.label}>
-                            <Link
-                              href={subItem.href}
-                              className="block text-sm text-gray-400 hover:text-white hover:translate-x-1 transition-all duration-200"
-                            >
-                              {subItem.label}
-                            </Link>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          )}
-        </li>
-      );
-    }
-
-    if (item.subItems) {
-      return (
-        <li
-          key={item.label}
-          className="relative group"
-          onMouseEnter={() => setActiveDropdown(item.label)}
-          onMouseLeave={() => setActiveDropdown(null)}
-        >
-          <Link
-            href={item.href}
-            className="flex items-center px-4 py-2 text-sm text-white transition-colors hover:text-gray-300 whitespace-nowrap gap-1"
-            aria-expanded={isDropdownOpen}
-            aria-haspopup="true"
-          >
-            <span dangerouslySetInnerHTML={{ __html: item.label }} />
-            <ChevronDown size={14} className={`transition-transform duration-200 ${isDropdownOpen ? 'rotate-180' : ''}`} />
-          </Link>
-
-          {isDropdownOpen && (
-            <div className="absolute top-full left-0 pt-2 w-56 z-20">
-              <div className="bg-black border border-[#2a2a2a] rounded-lg shadow-lg">
-                <ul className="py-1">
-                  {item.subItems.map((subItem) => (
-                    <li key={subItem.label}>
-                      <Link
-                        href={subItem.href}
-                        className="block w-full text-left px-4 py-3 text-sm text-white hover:bg-[#1a1a1a] transition-colors"
-                      >
-                        {subItem.label}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          )}
-        </li>
-      );
-    }
+    const hasDropdown = item.subItems && item.subItems.length > 0;
 
     return (
-      <li key={item.label}>
+      <li
+        key={item.label}
+        className="relative group"
+        onMouseEnter={() => hasDropdown && setActiveDropdown(item.label)}
+        onMouseLeave={() => hasDropdown && setActiveDropdown(null)}
+      >
         <Link
           href={item.href}
-          className="px-4 py-2 text-sm text-white transition-colors hover:text-gray-300 whitespace-nowrap"
-          dangerouslySetInnerHTML={{ __html: item.label }}
-        />
+          className="flex items-center px-4 py-2 text-sm text-white transition-colors hover:text-zinc-400 whitespace-nowrap gap-1"
+          aria-expanded={isDropdownOpen}
+          aria-haspopup="true"
+        >
+          <span dangerouslySetInnerHTML={{ __html: item.label }} />
+          {hasDropdown && (
+            <ChevronDown
+              size={14}
+              className={`transition-transform duration-200 ${isDropdownOpen ? 'rotate-180' : ''}`}
+            />
+          )}
+        </Link>
+
+        {isDropdownOpen && (
+          item.variant === 'rich' ? renderRichDropdown(item) :
+            item.variant === 'mega' ? renderMegaDropdown(item) :
+              renderStandardDropdown(item)
+        )}
       </li>
     );
   };
 
   const renderMobileNavItem = (item: NavItem) => (
-    <div key={item.label} className="py-3 border-b border-[#2a2a2a] last:border-b-0">
+    <div key={item.label} className="py-3 border-b border-white/10 last:border-b-0">
       {item.subItems ? (
         <div>
           <div
@@ -236,16 +345,17 @@ const HeaderNavigation = () => {
               {item.subItems.map(subItem => (
                 <li key={subItem.label}>
                   {subItem.subItems ? (
+                    // Mega menu simple mobile view
                     <div className="space-y-2">
-                      <div className="text-neon-green font-medium text-sm uppercase tracking-wider">
+                      <div className="text-white font-medium text-sm uppercase tracking-wider mt-4">
                         {subItem.label}
                       </div>
-                      <ul className="pl-2 space-y-2 border-l border-[#2a2a2a] ml-1">
+                      <ul className="pl-2 space-y-2 border-l border-white/10 ml-1">
                         {subItem.subItems.map(nestedItem => (
                           <li key={nestedItem.label}>
                             <Link
                               href={nestedItem.href}
-                              className="text-base text-[#a0a0a0] hover:text-white transition-colors block py-1"
+                              className="text-base text-zinc-400 hover:text-white transition-colors block py-1"
                               onClick={() => setIsMobileMenuOpen(false)}
                             >
                               {nestedItem.label}
@@ -255,12 +365,19 @@ const HeaderNavigation = () => {
                       </ul>
                     </div>
                   ) : (
+                    // Standard or Rich item mobile view
                     <Link
                       href={subItem.href}
-                      className="text-lg text-[#a0a0a0] hover:text-white transition-colors block"
+                      className="flex items-center gap-3 text-zinc-400 hover:text-white transition-colors py-2"
                       onClick={() => setIsMobileMenuOpen(false)}
                     >
-                      {subItem.label}
+                      {subItem.icon && <subItem.icon size={18} className="text-[#82ff1f]" />}
+                      <div>
+                        <div className="text-lg text-white">{subItem.label}</div>
+                        {subItem.description && (
+                          <div className="text-xs text-zinc-500 line-clamp-1">{subItem.description}</div>
+                        )}
+                      </div>
                     </Link>
                   )}
                 </li>
@@ -281,7 +398,7 @@ const HeaderNavigation = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${isScrolled || isMobileMenuOpen ? "bg-black" : "bg-transparent"
+      className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${isScrolled || isMobileMenuOpen ? "bg-black/90 backdrop-blur-sm shadow-md" : "bg-transparent"
         }`}
     >
       <div className="container h-[90px] flex items-center justify-between">
@@ -292,7 +409,7 @@ const HeaderNavigation = () => {
               alt="Aether Labs"
               width={280}
               height={94}
-              className="h-[90px] w-auto"
+              className="h-[90px] w-auto transition-all duration-300"
               priority
             />
           </Link>
@@ -306,14 +423,16 @@ const HeaderNavigation = () => {
 
         <div className="flex-1 flex justify-end">
           <div className="flex items-center gap-6">
-            <Link
-              href="/crea-tu-ia"
-              className="hidden lg:block text-sm font-semibold tracking-wider text-black bg-white rounded-full px-7 py-2.5 transition-all hover:scale-105 ease-out duration-200"
+            <NeonButton
+              variant="default"
+              size="cta"
+              onClick={() => router.push('/crea-tu-ia')}
+              className="hidden lg:block"
             >
               Crea tu IA
-            </Link>
+            </NeonButton>
             <button
-              className="lg:hidden text-white"
+              className="lg:hidden text-foreground"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               aria-label="Toggle menu"
             >
@@ -332,7 +451,7 @@ const HeaderNavigation = () => {
         <div className="container h-full overflow-y-auto pb-20 pt-4">
           <nav className="flex flex-col space-y-2">
             {navItems.map(renderMobileNavItem)}
-            <div className="pt-6 mt-6 border-t border-[#2a2a2a]">
+            <div className="pt-6 mt-6 border-t border-white/10">
               <Link
                 href="/crea-tu-ia"
                 className="block w-full text-center text-sm font-semibold tracking-wider text-black bg-white rounded-full px-7 py-4 transition-all hover:scale-105 ease-out duration-200"

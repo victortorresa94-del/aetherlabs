@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next";
+import JasonBot from "@/components/ui/jason-bot";
 
 export const metadata: Metadata = {
   title: "Aether Labs - IA clara y útil para tu negocio",
@@ -38,7 +39,7 @@ export default function RootLayout({
         })(window,document,'script','dataLayer','GTM-T2K2L3NQ');`}
       </Script>
       {/* End Google Tag Manager */}
-      <body className="antialiased bg-black text-white">
+      <body className="antialiased bg-black text-white selection:bg-[#82ff1f] selection:text-black">
         {/* Google Tag Manager (noscript) */}
         <noscript>
           <iframe
@@ -52,9 +53,7 @@ export default function RootLayout({
 
         {children}
         <Analytics />
-        <Script src="https://elevenlabs.io/convai-widget/index.js" strategy="afterInteractive" />
-        {/* @ts-ignore */}
-        <elevenlabs-convai agent-id="7wyfynsqgs4qym0h48t" />
+        <JasonBot />
       </body>
     </html>
   );

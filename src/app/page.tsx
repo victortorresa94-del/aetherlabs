@@ -15,7 +15,7 @@ import Footer from "@/components/sections/footer";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-black">
+    <main className="min-h-screen bg-black relative">
       <HeaderNavigation />
 
       {/* 1. BANNER */}
