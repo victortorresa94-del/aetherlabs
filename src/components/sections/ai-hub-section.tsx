@@ -11,7 +11,7 @@ const AIHubSection: React.FC = () => {
 
                     {/* Content */}
                     <div className="order-2 lg:order-1">
-                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-bold tracking-widest uppercase mb-6">
+                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#82ff1f]/10 border border-[#82ff1f]/20 text-[#82ff1f] text-xs font-bold tracking-widest uppercase mb-6">
                             <LayoutGrid size={12} />
                             AI Hub
                         </div>
@@ -37,7 +37,7 @@ const AIHubSection: React.FC = () => {
                                 "Formación de equipos en herramientas IA"
                             ].map((item, i) => (
                                 <li key={i} className="flex items-center gap-3 text-zinc-300">
-                                    <CheckCircle2 className="w-5 h-5 text-blue-500" />
+                                    <CheckCircle2 className="w-5 h-5 text-[#82ff1f]" />
                                     {item}
                                 </li>
                             ))}

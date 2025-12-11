@@ -171,6 +171,10 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
+  html {
+    background-color: #000000;
+  }
+
   body {
     background-color: var(--background);
     color: var(--foreground);

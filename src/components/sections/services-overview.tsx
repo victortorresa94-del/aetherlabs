@@ -17,28 +17,10 @@ const services: Service[] = [
     link: "/servicios/ia-generativa"
   },
   {
-    icon: LayoutGrid,
-    title: "AI Hub",
-    description: "Implementación y formación en las mejores herramientas de IA del mercado.",
-    link: "/servicios/ai-hub"
-  },
-  {
     icon: Bot,
     title: "Agentes IA",
     description: "Empleados digitales autónomos que ejecutan tareas complejas 24/7.",
-    link: "/servicios/automatizacion"
-  },
-  {
-    icon: GraduationCap,
-    title: "Consultoría",
-    description: "Estrategia y acompañamiento para integrar la IA en tu modelo de negocio.",
-    link: "/servicios/consultoria"
-  },
-  {
-    icon: Globe,
-    title: "Webs con IA",
-    description: "Desarrollo web acelerado y potenciado por inteligencia artificial.",
-    link: "/servicios/ia-generativa/web"
+    link: "/servicios/agentes-ia"
   },
   {
     icon: MessageSquare,
@@ -47,16 +29,10 @@ const services: Service[] = [
     link: "/servicios/chatbots"
   },
   {
-    icon: ScanEye,
-    title: "Computer Vision",
-    description: "Sistemas que ven y entienden el mundo real para retail, seguridad y más.",
-    link: "/servicios/computer-vision"
-  },
-  {
-    icon: Database,
-    title: "LLM a Medida",
-    description: "Modelos de lenguaje entrenados con tus propios datos corporativos.",
-    link: "/servicios/ia-a-medida"
+    icon: GraduationCap,
+    title: "Consultoría",
+    description: "Estrategia y acompañamiento para integrar la IA en tu modelo de negocio.",
+    link: "/servicios/consultoria"
   }
 ];
 

@@ -25,11 +25,11 @@ const HeroVideoSection = () => {
     }, [titleNumber, titles]);
 
     return (
-        <section className="relative h-screen min-h-[600px] w-full overflow-hidden bg-black flex flex-col md:flex-row">
+        <section className="relative h-[100dvh] min-h-[600px] w-full overflow-hidden bg-black flex flex-col md:flex-row">
 
-            <div className="container h-full flex flex-col md:flex-row items-center justify-end md:justify-center px-4 sm:px-6 lg:px-8 z-20 pb-24 md:pb-0 md:pt-28 pointer-events-none">
+            <div className="container h-full flex flex-col md:flex-row items-center justify-center px-4 sm:px-6 lg:px-8 z-20 pointer-events-none">
                 {/* Left content (Text) */}
-                <div className="flex-1 flex flex-col justify-center w-full pointer-events-auto relative z-20">
+                <div className="w-full md:flex-1 flex flex-col justify-center pointer-events-auto relative z-20 md:pr-12">
                     <div className="max-w-2xl">
                         <h1 className="font-light text-4xl sm:text-6xl md:text-7xl lg:text-[5rem] leading-[1.1] tracking-[-0.02em] mb-6 text-white text-left drop-shadow-lg md:drop-shadow-none">
                             <span className="block text-white/90">Donde las ideas</span>
@@ -69,7 +69,7 @@ const HeroVideoSection = () => {
                         className="w-full h-full"
                     />
                     {/* Mobile Gradient Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent md:hidden pointer-events-none" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent md:hidden pointer-events-none" />
                 </div>
             </div>
         </section>

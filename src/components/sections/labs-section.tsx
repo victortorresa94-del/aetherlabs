@@ -9,38 +9,30 @@ const labs = [
   {
     icon: Brain,
     title: "Creative Lab",
-    description: "Experimenta con generación de imágenes, videos y contenido.",
+    description: "Experimenta con generación de contenido visual y audiovisual.",
     link: "/labs/creative",
-    image: "/images/creative/skyflex.jpg",
-    color: "text-purple-400",
-    overlay: "from-purple-900/80 to-black/50"
+    image: "/images/creative/skyflex.jpg"
   },
   {
     icon: ScanEye,
     title: "Vision Lab",
-    description: "Controla partículas con tus manos. Una experiencia interactiva que fusiona tu realidad con el mundo digital.",
+    description: "Controla partículas con tus manos y fusiona tu realidad.",
     link: "/labs/vision",
-    image: "/images/labs/computer-vision-card.png",
-    color: "text-[#82ff1f]",
-    overlay: "from-green-900/80 to-black/50"
+    image: "/images/labs/computer-vision-card.png"
   },
   {
     icon: Cpu,
     title: "AI Agents Lab",
-    description: "Crea tus propios automatizadores y agentes autónomos.",
+    description: "Crea tus propios agentes autónomos que trabajan por ti.",
     link: "/labs/agents",
-    image: "/images/learn/automatizacion.jpg",
-    color: "text-blue-400",
-    overlay: "from-blue-900/80 to-black/50"
+    image: "/images/learn/automatizacion.jpg"
   },
   {
     icon: Beaker,
     title: "LLM Lab",
-    description: "Experimenta con Grandes Modelos de Lenguaje y chats personalizados.",
+    description: "Pon a prueba la inteligencia de nuestros chats avanzados.",
     link: "/labs/llm-lab",
-    image: "/images/learn/chatbot-lifestyle.png",
-    color: "text-orange-400",
-    overlay: "from-orange-900/80 to-black/50"
+    image: "/images/learn/chatbot-lifestyle.png"
   },
 ];
 
@@ -75,12 +67,12 @@ const LabsSection = () => {
               />
 
               {/* Overlay */}
-              <div className={`absolute inset-0 bg-gradient-to-t ${lab.overlay} opacity-90 transition-opacity duration-300`} />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-90 transition-opacity duration-300" />
               <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-300" />
 
               {/* Content */}
               <div className="relative z-10">
-                <div className={`w-12 h-12 mb-6 rounded-xl bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20 ${lab.color}`}>
+                <div className="w-12 h-12 mb-6 rounded-xl bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20 text-[#82ff1f]">
                   <lab.icon className="w-6 h-6" strokeWidth={1.5} />
                 </div>
 
@@ -88,7 +80,7 @@ const LabsSection = () => {
                   {lab.title}
                 </h3>
 
-                <p className="text-zinc-200 text-sm leading-relaxed mb-6 opacity-80 group-hover:opacity-100 transition-opacity">
+                <p className="text-zinc-200 text-sm leading-relaxed mb-6 opacity-80 group-hover:opacity-100 transition-opacity line-clamp-2">
                   {lab.description}
                 </p>
 

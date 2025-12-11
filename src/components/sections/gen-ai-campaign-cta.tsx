@@ -32,15 +32,16 @@ export default function GenAICampaignCTA() {
                 <div className="grid lg:grid-cols-2 gap-16 items-center">
 
                     {/* Left Content */}
+                    {/* Left Content */}
                     <div>
-                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-400 text-xs font-bold tracking-widest uppercase mb-6">
+                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#82ff1f]/10 border border-[#82ff1f]/20 text-[#82ff1f] text-xs font-bold tracking-widest uppercase mb-6">
                             <Sparkles size={12} />
                             Campaña IA Generativa
                         </div>
 
                         <h2 className="text-4xl md:text-5xl lg:text-6xl font-light text-white mb-6 leading-tight">
                             Crea tu campaña con <br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#82ff1f] to-purple-400 font-medium">
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#82ff1f] to-blue-400 font-medium">
                                 IA Generativa
                             </span>
                         </h2>
@@ -109,7 +110,7 @@ export default function GenAICampaignCTA() {
                                     {carouselImages.map((_, idx) => (
                                         <div
                                             key={idx}
-                                            className={`h-1 rounded-full transition-all duration-300 ${idx === currentImage ? 'w-8 bg-purple-500' : 'w-2 bg-white/20'}`}
+                                            className={`h-1 rounded-full transition-all duration-300 ${idx === currentImage ? 'w-8 bg-[#82ff1f]' : 'w-2 bg-white/20'}`}
                                         />
                                     ))}
                                 </div>
