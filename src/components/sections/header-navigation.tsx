@@ -326,35 +326,36 @@ const HeaderNavigation = () => {
   };
 
   const renderMobileNavItem = (item: NavItem) => (
-    <div key={item.label} className="py-3 border-b border-white/10 last:border-b-0">
+    <div key={item.label} className="border-b border-white/10 last:border-b-0">
       {item.subItems ? (
         <div>
-          <div
-            className="flex items-center justify-between cursor-pointer"
+          <button
+            className="flex items-center justify-between w-full py-4 text-left"
             onClick={() => toggleMobileItem(item.label)}
           >
-            <h3 className="text-xl text-white font-medium" dangerouslySetInnerHTML={{ __html: item.label }} />
+            <span className="text-lg text-white font-medium" dangerouslySetInnerHTML={{ __html: item.label }} />
             <ChevronDown
               size={20}
               className={`text-white transition-transform duration-200 ${expandedMobileItems.includes(item.label) ? 'rotate-180' : ''}`}
             />
-          </div>
-          <div className={`overflow-hidden transition-all duration-300 ease-in-out ${expandedMobileItems.includes(item.label) ? 'max-h-[5000px] opacity-100 mt-3' : 'max-h-0 opacity-0'}`}>
-            <ul className="pl-4 space-y-4">
+          </button>
+
+          <div className={`overflow-hidden transition-all duration-300 ease-in-out ${expandedMobileItems.includes(item.label) ? 'max-h-[2000px] opacity-100' : 'max-h-0 opacity-0'}`}>
+            <ul className="flex flex-col gap-2 pb-4 pl-4">
               {item.subItems.map(subItem => (
                 <li key={subItem.label}>
                   {subItem.subItems ? (
-                    // Mega menu simple mobile view
-                    <div className="space-y-2">
-                      <div className="text-white font-medium text-sm uppercase tracking-wider mt-4">
+                    // Mega Menu Column (e.g., "Por Departamento")
+                    <div className="mb-4">
+                      <span className="block text-sm font-semibold text-white/60 mb-2 uppercase tracking-wider">
                         {subItem.label}
-                      </div>
-                      <ul className="pl-2 space-y-2 border-l border-white/10 ml-1">
+                      </span>
+                      <ul className="flex flex-col gap-2 pl-2 border-l border-white/10">
                         {subItem.subItems.map(nestedItem => (
                           <li key={nestedItem.label}>
                             <Link
                               href={nestedItem.href}
-                              className="text-base text-zinc-400 hover:text-white transition-colors block py-1"
+                              className="block py-2 text-base text-zinc-400 hover:text-white active:text-white transition-colors"
                               onClick={() => setIsMobileMenuOpen(false)}
                             >
                               {nestedItem.label}
@@ -364,19 +365,13 @@ const HeaderNavigation = () => {
                       </ul>
                     </div>
                   ) : (
-                    // Standard or Rich item mobile view
+                    // Standard Item
                     <Link
                       href={subItem.href}
-                      className="flex items-center gap-3 text-zinc-400 hover:text-white transition-colors py-2"
+                      className="block py-2 text-base text-zinc-400 hover:text-white active:text-white transition-colors"
                       onClick={() => setIsMobileMenuOpen(false)}
                     >
-                      {subItem.icon && <subItem.icon size={18} className="text-[#82ff1f]" />}
-                      <div>
-                        <div className="text-lg text-white">{subItem.label}</div>
-                        {subItem.description && (
-                          <div className="text-xs text-zinc-500 line-clamp-1">{subItem.description}</div>
-                        )}
-                      </div>
+                      {subItem.label}
                     </Link>
                   )}
                 </li>
@@ -387,7 +382,7 @@ const HeaderNavigation = () => {
       ) : (
         <Link
           href={item.href}
-          className="text-xl text-white font-medium"
+          className="block py-4 text-lg text-white font-medium"
           onClick={() => setIsMobileMenuOpen(false)}
           dangerouslySetInnerHTML={{ __html: item.label }}
         />
@@ -443,7 +438,7 @@ const HeaderNavigation = () => {
 
       {/* Mobile Menu */}
       <div
-        className={`fixed top-[90px] bottom-0 left-0 right-0 bg-black z-40 transition-transform duration-300 lg:hidden ${isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
+        className={`fixed top-[90px] left-0 right-0 bottom-0 bg-black z-40 w-full h-[calc(100vh-90px)] transition-transform duration-300 lg:hidden ${isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
           }`}
       >
         <div className="container h-full overflow-y-auto pb-20 pt-4">

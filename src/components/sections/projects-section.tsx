@@ -9,10 +9,10 @@ const ProjectsSection = () => {
         <div className="flex justify-between items-end mb-16">
           <div>
             <h2 className="text-4xl md:text-6xl font-light tracking-tight mb-4">
-              Proyectos Realizados
+              Resultados IA Generativa para empresas
             </h2>
             <p className="text-lg text-zinc-400 max-w-xl">
-              Casos de éxito donde la creatividad se une con la inteligencia artificial para crear marcas únicas.
+              Campañas visuales de alto impacto creadas 100% con algoritmos generativos.
             </p>
           </div>
           <Link

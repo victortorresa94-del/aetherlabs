@@ -6,6 +6,7 @@ import ComputerVisionBanner from "@/components/sections/computer-vision-banner";
 import LabsSection from "@/components/sections/labs-section";
 import AIHubSection from "@/components/sections/ai-hub-section";
 import ProjectsSection from "@/components/sections/projects-section";
+import InventionsSection from "@/components/sections/inventions-section";
 import GenAICampaignCTA from "@/components/sections/gen-ai-campaign-cta";
 import ProcessSteps from "@/components/sections/process-steps";
 import TrainingSection from "@/components/sections/training-section";
@@ -36,6 +37,9 @@ export default function Home() {
       {/* 6. PROYECTOS REALIZADOS */}
       <ProjectsSection />
 
+      {/* 6.5. NUESTROS INVENTOS */}
+      <InventionsSection />
+
       {/* 7. CTA CREA TU CAMPAÑA CON IA GENERATIVA */}
       <GenAICampaignCTA />
 
@@ -43,7 +47,7 @@ export default function Home() {
       <ProcessSteps />
 
       {/* 9. CONTROLA LA REALIDAD CON TUS MANOS (Moved below Process) */}
-      <ComputerVisionBanner />
+      {/* <ComputerVisionBanner /> */}
 
       {/* 10. BLOQUE FORMACION */}
       <TrainingSection />
