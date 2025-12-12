@@ -193,7 +193,7 @@ const HeaderNavigation = () => {
         { label: "Para Empresas", href: "/learn/corporate" }
       ]
     },
-    { label: "Proyectos", href: "/proyectos" },
+    { label: "Experimentos", href: "/experimentos" },
     { label: "Nosotros", href: "/sobre-nosotros" },
     { label: "Contacto", href: "/contacto" },
   ];

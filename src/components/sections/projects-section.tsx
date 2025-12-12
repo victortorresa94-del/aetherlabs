@@ -16,10 +16,10 @@ const ProjectsSection = () => {
             </p>
           </div>
           <Link
-            href="/proyectos"
+            href="/experimentos"
             className="hidden md:flex items-center gap-2 text-sm font-medium hover:text-zinc-300 transition-colors"
           >
-            Ver todos los proyectos
+            Ver todos los experimentos
             <ArrowUpRight className="w-4 h-4" />
           </Link>
         </div>

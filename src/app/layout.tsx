@@ -53,7 +53,10 @@ export default function RootLayout({
 
         {children}
         <Analytics />
-        <JasonBot />
+        {/* <JasonBot /> */}
+        <Script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript" strategy="afterInteractive" />
+        {/* @ts-ignore */}
+        <elevenlabs-convai agent-id="agent_7901k85nn7wyfynsqgs4qym0h48t"></elevenlabs-convai>
       </body>
     </html>
   );

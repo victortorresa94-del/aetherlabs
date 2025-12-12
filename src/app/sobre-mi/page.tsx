@@ -245,10 +245,10 @@ export default function SobreMiPage() {
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
               <Link
-                href="/proyectos"
+                href="/experimentos"
                 className="inline-flex items-center justify-center bg-transparent text-white font-semibold text-base py-4 px-8 rounded-full border-2 border-white transition-all duration-200 hover:bg-white hover:text-black"
               >
-                Ver proyectos
+                Ver experimentos
               </Link>
             </div>
           </div>
