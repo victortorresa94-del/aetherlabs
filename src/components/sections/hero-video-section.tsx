@@ -50,7 +50,7 @@ const HeroVideoSection = () => {
                             </span>
                         </h1>
                         <p className="text-base sm:text-lg md:text-xl font-normal max-w-xl text-zinc-400 leading-relaxed mb-8 md:mb-0 drop-shadow-md md:drop-shadow-none">
-                            Combinamos la creatividad y la tecnología para crear soluciones IA entendibles, seguras y accesibles para cualquier negocio.
+                            Combinamos la creatividad y la tecnología para crear soluciones IA a medida para tus objetivos de negocio.
                         </p>
                         <Link
                             href="#servicios"

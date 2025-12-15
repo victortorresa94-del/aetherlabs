@@ -29,6 +29,21 @@ export default function SkyflexPage() {
         '/images/skyflex/gallery-4.jpg',
         '/images/skyflex/gallery-5.jpg'
       ]}
-    />
+    >
+      <section className="container px-6 md:px-12 lg:px-24 mb-32">
+        <h2 className="text-3xl font-light text-white mb-8">Video Reel AI</h2>
+        <div className="bg-[#0a0a0a] border border-[#2a2a2a] rounded-2xl overflow-hidden p-2">
+          <div className="relative aspect-video w-full rounded-xl overflow-hidden bg-black">
+            <iframe
+              src="https://play.gumlet.io/embed/6940040d616d7c8c6a525626"
+              className="absolute inset-0 w-full h-full"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+              title="Skyflex AI Reel"
+            />
+          </div>
+        </div>
+      </section>
+    </ProjectDetail>
   );
 }

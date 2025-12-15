@@ -1,6 +1,9 @@
+"use client";
+
 import React from 'react';
 import { Bot, Palette, GraduationCap, ArrowRight, LayoutGrid, Globe, ScanEye, Database, MessageSquare } from 'lucide-react';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
 
 interface Service {
   icon: React.ElementType;
@@ -13,25 +16,25 @@ const services: Service[] = [
   {
     icon: Palette,
     title: "IA Generativa",
-    description: "Creación de contenido visual y audiovisual hiperrealista para campañas de impacto.",
+    description: "Creación de contenido visual, audiovisual y experiencias hiperrealistas para campañas de impacto.",
     link: "/servicios/ia-generativa"
   },
   {
     icon: Bot,
-    title: "Agentes IA",
-    description: "Empleados digitales autónomos que ejecutan tareas complejas 24/7.",
+    title: "Automatización & Agentes",
+    description: "Empleados digitales autónomos y automatización de procesos para optimizar la operativa 24/7.",
     link: "/servicios/agentes-ia"
   },
   {
-    icon: MessageSquare,
-    title: "Chatbots IA",
-    description: "Asistentes conversacionales inteligentes para atención al cliente y ventas.",
-    link: "/servicios/chatbots"
+    icon: LayoutGrid,
+    title: "Apps e IA a medida",
+    description: "Desarrollo de Software, Apps Móviles, Vision por Computador y LLMs personalizados.",
+    link: "/proyectos"
   },
   {
     icon: GraduationCap,
-    title: "Consultoría",
-    description: "Estrategia y acompañamiento para integrar la IA en tu modelo de negocio.",
+    title: "Consultoría y Formación",
+    description: "Acompañamiento estratégico y formación in-company para integrar la IA en tu modelo de negocio.",
     link: "/servicios/consultoria"
   }
 ];
@@ -43,7 +46,7 @@ const ServicesOverview: React.FC = () => {
         <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
           <div className="max-w-2xl">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-light leading-tight tracking-tight mb-6">
-              Nuestros Servicios
+              Qué hacemos
             </h2>
             <p className="text-zinc-400 text-lg leading-relaxed max-w-xl">
               Soluciones integrales de Inteligencia Artificial diseñadas para escalar tu negocio.

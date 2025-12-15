@@ -17,7 +17,7 @@ export default function SumaSalutPage() {
         'Recepción liberada para tareas más importantes.',
         'Automatización completa de reservas y cancelaciones.'
       ]}
-      heroImage="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=2070&auto=format&fit=crop"
+      heroImage="/images/agents/numa-physio.png"
       gallery={[
         'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1000&auto=format&fit=crop',
         'https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=1000&auto=format&fit=crop'

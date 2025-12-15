@@ -33,44 +33,8 @@ export default function GenAICampaignCTA() {
 
                     {/* Left Content */}
                     {/* Left Content */}
-                    <div>
-                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#82ff1f]/10 border border-[#82ff1f]/20 text-[#82ff1f] text-xs font-bold tracking-widest uppercase mb-6">
-                            <Sparkles size={12} />
-                            Campaña IA Generativa
-                        </div>
-
-                        <h2 className="text-4xl md:text-5xl lg:text-6xl font-light text-white mb-6 leading-tight">
-                            Crea tu campaña con <br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#82ff1f] to-blue-400 font-medium">
-                                IA Generativa
-                            </span>
-                        </h2>
-
-                        <p className="text-zinc-400 text-lg leading-relaxed mb-8 max-w-xl">
-                            Transforma tu marketing con contenido visual impactante generado por IA.
-                            Desde fotos de producto hiperrealistas hasta avatares personalizados y videos promocionales.
-                            Reduce costes y tiempos de producción sin sacrificar calidad.
-                        </p>
-
-                        <div className="flex flex-col sm:flex-row gap-4">
-                            <Link
-                                href="/servicios/ia-generativa"
-                                className="inline-flex items-center justify-center px-8 py-4 bg-white text-black font-bold text-sm tracking-widest uppercase rounded-full hover:scale-105 transition-transform shadow-[0_0_30px_rgba(255,255,255,0.2)]"
-                            >
-                                Ver Servicios
-                                <ArrowRight size={18} className="ml-2" />
-                            </Link>
-                            <Link
-                                href="/contacto"
-                                className="inline-flex items-center justify-center px-8 py-4 border border-white/20 text-white font-bold text-sm tracking-widest uppercase rounded-full hover:bg-white/5 transition-colors"
-                            >
-                                Cuéntanos tu idea
-                            </Link>
-                        </div>
-                    </div>
-
-                    {/* Right Carousel */}
-                    <div className="relative aspect-[4/3] lg:aspect-square w-full max-w-2xl mx-auto">
+                    {/* Right Carousel (Now Left) */}
+                    <div className="order-2 lg:order-1 relative aspect-[4/3] lg:aspect-square w-full max-w-2xl mx-auto">
                         <div className="absolute inset-0 rounded-3xl overflow-hidden border border-white/10 shadow-2xl bg-zinc-900">
                             <AnimatePresence mode="wait">
                                 <motion.div
@@ -121,6 +85,49 @@ export default function GenAICampaignCTA() {
                         <div className="absolute -top-10 -right-10 w-32 h-32 bg-purple-500/20 rounded-full blur-3xl pointer-events-none" />
                         <div className="absolute -bottom-10 -left-10 w-32 h-32 bg-pink-500/20 rounded-full blur-3xl pointer-events-none" />
                     </div>
+
+                    {/* Left Content (Now Right) */}
+                    <motion.div
+                        initial={{ opacity: 0, x: 20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8 }}
+                        className="order-1 lg:order-2"
+                    >
+                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#82ff1f]/10 border border-[#82ff1f]/20 text-[#82ff1f] text-xs font-bold tracking-widest uppercase mb-6">
+                            <Sparkles size={12} />
+                            Campaña IA Generativa
+                        </div>
+
+                        <h2 className="text-4xl md:text-5xl lg:text-6xl font-light text-white mb-6 leading-tight">
+                            Crea tu campaña con <br />
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#82ff1f] to-blue-400 font-medium">
+                                IA Generativa
+                            </span>
+                        </h2>
+
+                        <p className="text-zinc-400 text-lg leading-relaxed mb-8 max-w-xl">
+                            Transforma tu marketing con contenido visual impactante generado por IA.
+                            Desde fotos de producto hiperrealistas hasta avatares personalizados y videos promocionales.
+                            Reduce costes y tiempos de producción sin sacrificar calidad.
+                        </p>
+
+                        <div className="flex flex-col sm:flex-row gap-4">
+                            <Link
+                                href="/servicios/ia-generativa"
+                                className="inline-flex items-center justify-center px-8 py-4 bg-white text-black font-bold text-sm tracking-widest uppercase rounded-full hover:scale-105 transition-transform shadow-[0_0_30px_rgba(255,255,255,0.2)]"
+                            >
+                                Ver Servicios
+                                <ArrowRight size={18} className="ml-2" />
+                            </Link>
+                            <Link
+                                href="/contacto"
+                                className="inline-flex items-center justify-center px-8 py-4 border border-white/20 text-white font-bold text-sm tracking-widest uppercase rounded-full hover:bg-white/5 transition-colors"
+                            >
+                                Cuéntanos tu idea
+                            </Link>
+                        </div>
+                    </motion.div>
 
                 </div>
             </div>

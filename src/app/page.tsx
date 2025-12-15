@@ -2,17 +2,18 @@ import HeaderNavigation from "@/components/sections/header-navigation";
 import HeroVideoSection from "@/components/sections/hero-video-section";
 import ServicesOverview from "@/components/sections/services-overview";
 import TrustedBrandsSection from "@/components/sections/trusted-brands-section";
-import ComputerVisionBanner from "@/components/sections/computer-vision-banner";
-import LabsSection from "@/components/sections/labs-section";
+
 import AIHubSection from "@/components/sections/ai-hub-section";
 import ProjectsSection from "@/components/sections/projects-section";
-import InventionsSection from "@/components/sections/inventions-section";
+
 import GenAICampaignCTA from "@/components/sections/gen-ai-campaign-cta";
 import ProcessSteps from "@/components/sections/process-steps";
 import TrainingSection from "@/components/sections/training-section";
 import TestimonialsCarousel from "@/components/sections/testimonials-carousel";
 import IdeaFormSection from "@/components/sections/idea-form-section";
 import Footer from "@/components/sections/footer";
+
+import CreateAgentCTA from "@/components/sections/create-agent-cta";
 
 export default function Home() {
   return (
@@ -22,37 +23,31 @@ export default function Home() {
       {/* 1. BANNER */}
       <HeroVideoSection />
 
-      {/* 2. SERVICIOS */}
+      {/* 2. QUE HACEMOS */}
       <ServicesOverview />
 
-      {/* 3. EMPRESAS QUE CONFIAN EN NOSOTROS */}
-      <TrustedBrandsSection />
-
-      {/* 4. AETHER LABS (Moved below logos) */}
-      <LabsSection />
-
-      {/* 5. AI HUB */}
-      <AIHubSection />
-
-      {/* 6. PROYECTOS REALIZADOS */}
+      {/* 3. NUESTROS EXPERIMENTOS */}
       <ProjectsSection />
 
-      {/* 6.5. NUESTROS INVENTOS */}
-      <InventionsSection />
+      {/* 4. EMPRESAS QUE CONFIAN EN NOSOTROS */}
+      <TrustedBrandsSection />
 
-      {/* 7. CTA CREA TU CAMPAÑA CON IA GENERATIVA */}
+      {/* 5. IA EN TODA TU EMPRESA */}
+      <AIHubSection />
+
+      {/* 6. CREA TU CAMPAÑA (Imagen Izquierda) */}
       <GenAICampaignCTA />
+
+      {/* 7. CREA TU AGENTE (Imagen Derecha) */}
+      <CreateAgentCTA />
 
       {/* 8. BLOQUE NUESTRO PROCESO */}
       <ProcessSteps />
 
-      {/* 9. CONTROLA LA REALIDAD CON TUS MANOS (Moved below Process) */}
-      {/* <ComputerVisionBanner /> */}
-
-      {/* 10. BLOQUE FORMACION */}
+      {/* 9. BLOQUE FORMACION */}
       <TrainingSection />
 
-      {/* 12. CUENTANOS TU IDEA */}
+      {/* 10. CUENTANOS TU IDEA */}
       <IdeaFormSection />
 
       <Footer />

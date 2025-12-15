@@ -15,6 +15,7 @@ interface ProjectDetailProps {
   heroImage: string;
   gallery: string[];
   projectLink?: string;
+  children?: React.ReactNode;
 }
 
 export default function ProjectDetail({
@@ -30,6 +31,7 @@ export default function ProjectDetail({
   heroImage,
   gallery,
   projectLink,
+  children,
 }: ProjectDetailProps) {
   return (
     <main className="bg-black text-white min-h-screen pt-32">
@@ -161,6 +163,9 @@ export default function ProjectDetail({
           </div>
         </div>
       </section>
+
+      {/* Custom Content (e.g. Video Banners) */}
+      {children}
 
       {/* Galería de Imágenes */}
       {gallery && gallery.length > 0 && (

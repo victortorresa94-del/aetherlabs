@@ -19,6 +19,7 @@ interface ServiceDetailProps {
     galleryTitle?: string;
     galleryAspectRatio?: string;
     heroImage?: string;
+    children?: React.ReactNode;
 }
 
 const ServiceDetail = ({
@@ -31,6 +32,7 @@ const ServiceDetail = ({
     galleryTitle = "Resultados",
     galleryAspectRatio = "aspect-square",
     heroImage,
+    children,
 }: ServiceDetailProps) => {
     return (
         <main className="min-h-screen bg-black text-white">
@@ -116,6 +118,9 @@ const ServiceDetail = ({
                     </div>
                 </section>
             )}
+
+            {/* Main Content (Children) */}
+            {children}
 
             {/* Gallery Section */}
             {gallery && gallery.length > 0 && (
