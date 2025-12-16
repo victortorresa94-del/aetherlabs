@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Send, Sparkles } from "lucide-react";
+import { Send, Sparkles, CheckCircle2 } from "lucide-react";
 
 const IdeaFormSection = () => {
     const [formData, setFormData] = useState({
@@ -9,16 +9,38 @@ const IdeaFormSection = () => {
         email: "",
         idea: "",
     });
-    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        setIsSubmitting(true);
-        // Simulate submission
-        await new Promise((resolve) => setTimeout(resolve, 1000));
-        console.log("Idea submitted:", formData);
-        setIsSubmitting(false);
-        // Reset form or show success message
+        setStatus('submitting');
+
+        try {
+            const response = await fetch("https://formsubmit.co/ajax/hola@aetherlabs.es", {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    ...formData,
+                    _subject: `Nueva Idea de Proyecto: ${formData.name}`,
+                    _template: "table",
+                    _captcha: "false"
+                })
+            });
+
+            if (response.ok) {
+                setStatus('success');
+                setFormData({ name: "", email: "", idea: "" });
+            } else {
+                console.error("Error submitting form");
+                setStatus('error');
+            }
+        } catch (error) {
+            console.error("Network error:", error);
+            setStatus('error');
+        }
     };
 
     return (
@@ -43,7 +65,24 @@ const IdeaFormSection = () => {
                     </p>
                 </div>
 
-                <form onSubmit={handleSubmit} className="space-y-6 bg-white/5 p-8 md:p-12 rounded-3xl border border-white/10 backdrop-blur-sm">
+                <form onSubmit={handleSubmit} className="space-y-6 bg-white/5 p-8 md:p-12 rounded-3xl border border-white/10 backdrop-blur-sm relative">
+                    {status === 'success' && (
+                        <div className="absolute inset-0 bg-black/90 backdrop-blur-md rounded-3xl flex flex-col items-center justify-center z-20 animate-in fade-in">
+                            <CheckCircle2 className="w-16 h-16 text-[#82ff1f] mb-4" />
+                            <h3 className="text-2xl font-bold text-white mb-2">¡Idea Recibida!</h3>
+                            <p className="text-white/60 text-center max-w-sm">
+                                Gracias por compartir tu visión. Analizaremos tu propuesta y te contactaremos pronto.
+                            </p>
+                            <button
+                                type="button"
+                                onClick={() => setStatus('idle')}
+                                className="mt-8 text-sm text-[#82ff1f] hover:underline"
+                            >
+                                Enviar otra idea
+                            </button>
+                        </div>
+                    )}
+
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div className="space-y-2">
                             <label htmlFor="name" className="text-sm font-medium text-white/80 ml-1">Nombre</label>
@@ -86,10 +125,10 @@ const IdeaFormSection = () => {
 
                     <button
                         type="submit"
-                        disabled={isSubmitting}
-                        className="w-full bg-white text-black font-semibold text-lg py-4 rounded-xl hover:bg-gray-100 transition-all duration-200 flex items-center justify-center gap-2 group"
+                        disabled={status === 'submitting'}
+                        className="w-full bg-white text-black font-semibold text-lg py-4 rounded-xl hover:bg-gray-100 transition-all duration-200 flex items-center justify-center gap-2 group disabled:opacity-70 disabled:cursor-not-allowed"
                     >
-                        {isSubmitting ? (
+                        {status === 'submitting' ? (
                             "Enviando..."
                         ) : (
                             <>
@@ -98,6 +137,9 @@ const IdeaFormSection = () => {
                             </>
                         )}
                     </button>
+                    {status === 'error' && (
+                        <p className="text-red-400 text-sm text-center mt-2">Hubo un error al enviar. Por favor intenta de nuevo.</p>
+                    )}
                 </form>
             </div>
         </section>

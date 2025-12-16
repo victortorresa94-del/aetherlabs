@@ -110,10 +110,10 @@ const trainingData: ServicePageProps = {
     integrations: {
         title: "Se integra con tu LMS",
         logos: [
-            { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Moodle-logo-white-bg.svg/2560px-Moodle-logo-white-bg.svg.png", alt: "Moodle" },
-            { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Canvas_logo.svg/2560px-Canvas_logo.svg.png", alt: "Canvas" },
-            { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/LinkedIn_Logo_2019.svg/2560px-LinkedIn_Logo_2019.svg.png", alt: "LinkedIn Learning" },
-            { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Cornerstone_OnDemand_logo.svg/2560px-Cornerstone_OnDemand_logo.svg.png", alt: "Cornerstone" },
+            { src: "https://img.icons8.com/color/96/moodle.png", alt: "Moodle" },
+            { src: "https://img.icons8.com/external-tal-revivo-color-tal-revivo/96/external-canvas-by-instructure-a-web-based-learning-management-system-logo-color-tal-revivo.png", alt: "Canvas" },
+            { src: "https://img.icons8.com/color/96/linkedin.png", alt: "LinkedIn Learning" },
+            { src: "https://img.icons8.com/color/96/cornerstone.png", alt: "Cornerstone" },
         ],
     },
     successStory: {

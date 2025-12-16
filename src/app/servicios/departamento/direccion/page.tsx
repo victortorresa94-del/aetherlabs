@@ -65,7 +65,7 @@ const managementData: ServicePageProps = {
                 icon: "Globe",
                 title: "Inteligencia de Mercado",
                 description: "Agentes que rastrean a la competencia y tendencias globales para darte ventaja competitiva.",
-                link: "/servicios/automatizacion",
+                link: "/servicios/agentes-ia",
             },
             {
                 icon: "PieChart",
@@ -110,10 +110,10 @@ const managementData: ServicePageProps = {
     integrations: {
         title: "Conectado con Todo tu Negocio",
         logos: [
-            { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Salesforce.com_logo.svg/2560px-Salesforce.com_logo.svg.png", alt: "Salesforce" },
-            { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/SAP_2011_logo.svg/2560px-SAP_2011_logo.svg.png", alt: "SAP" },
-            { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Microsoft_365_%282020%29.svg/2560px-Microsoft_365_%282020%29.svg.png", alt: "Microsoft 365" },
-            { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/2048px-Google_%22G%22_Logo.svg.png", alt: "Google Workspace" },
+            { src: "https://img.icons8.com/color/96/salesforce.png", alt: "Salesforce" },
+            { src: "https://img.icons8.com/color/96/sap.png", alt: "SAP" },
+            { src: "https://img.icons8.com/color/96/microsoft-office-2019.png", alt: "Microsoft 365" },
+            { src: "https://img.icons8.com/color/96/google-logo.png", alt: "Google Workspace" },
         ],
     },
     successStory: {

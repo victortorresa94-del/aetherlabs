@@ -197,7 +197,7 @@ export default function ChatbotsPage() {
                             {[
                                 { icon: "https://img.icons8.com/color/96/chrome.png", label: "Web" },
                                 { icon: "https://img.icons8.com/color/96/whatsapp--v1.png", label: "WhatsApp API" },
-                                { icon: "https://img.icons8.com/fluency/96/instagram-new.png", label: "Instagram DM" },
+                                { icon: "https://img.icons8.com/color/96/instagram-new.png", label: "Instagram DM" },
                                 { icon: "https://img.icons8.com/color/96/telegram-app.png", label: "Telegram" },
                                 { icon: "https://img.icons8.com/color/96/hubspot.png", label: "ERP / CRM" },
                                 { icon: "https://img.icons8.com/color/96/phone.png", label: "Teléfono (Voz)" },

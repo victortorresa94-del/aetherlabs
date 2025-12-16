@@ -69,12 +69,7 @@ const servicesData: ServicePageProps = {
                 description: "Capacita a tu equipo o aprende tú mismo.",
                 link: "/servicios/formacion",
             },
-            {
-                icon: "Layers",
-                title: "Automatización",
-                description: "Conecta tus apps y elimina tareas manuales.",
-                link: "/servicios/automatizacion",
-            },
+
             {
                 icon: "Cpu",
                 title: "Computer Vision",
@@ -112,10 +107,10 @@ const servicesData: ServicePageProps = {
     integrations: {
         title: "Trabajamos con tu Stack",
         logos: [
-            { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Amazon_Web_Services_Logo.svg/2560px-Amazon_Web_Services_Logo.svg.png", alt: "AWS" },
-            { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Microsoft_logo.svg/2048px-Microsoft_logo.svg.png", alt: "Microsoft Azure" },
-            { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/2048px-Google_%22G%22_Logo.svg.png", alt: "Google Cloud" },
-            { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/ChatGPT_logo.svg/2048px-ChatGPT_logo.svg.png", alt: "OpenAI" },
+            { src: "https://img.icons8.com/color/96/amazon-web-services.png", alt: "AWS" },
+            { src: "https://img.icons8.com/color/96/azure-1.png", alt: "Microsoft Azure" },
+            { src: "https://img.icons8.com/color/96/google-cloud.png", alt: "Google Cloud" },
+            { src: "https://img.icons8.com/color/96/chatgpt.png", alt: "OpenAI" },
         ],
     },
     ctaFinal: {

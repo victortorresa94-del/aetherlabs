@@ -73,7 +73,7 @@ const educationData: ServicePageProps = {
                 icon: "Calendar",
                 title: "Gestión de Horarios",
                 description: "Optimiza el uso de aulas y profesores automáticamente evitando conflictos.",
-                link: "/servicios/automatizacion",
+                link: "/servicios/agentes-ia",
             },
         ],
     },
@@ -106,10 +106,10 @@ const educationData: ServicePageProps = {
     integrations: {
         title: "Se conecta con tu LMS y CRM",
         logos: [
-            { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Moodle-logo-white-bg.svg/2560px-Moodle-logo-white-bg.svg.png", alt: "Moodle" },
-            { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Canvas_logo.svg/2560px-Canvas_logo.svg.png", alt: "Canvas" },
-            { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Salesforce.com_logo.svg/2560px-Salesforce.com_logo.svg.png", alt: "Salesforce Education" },
-            { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/HubSpot_Logo.svg/2560px-HubSpot_Logo.svg.png", alt: "HubSpot" },
+            { src: "https://img.icons8.com/color/96/moodle.png", alt: "Moodle" },
+            { src: "https://img.icons8.com/external-tal-revivo-color-tal-revivo/96/external-canvas-by-instructure-a-web-based-learning-management-system-logo-color-tal-revivo.png", alt: "Canvas" },
+            { src: "https://img.icons8.com/color/96/salesforce.png", alt: "Salesforce Education" },
+            { src: "https://img.icons8.com/color/96/hubspot.png", alt: "HubSpot" },
         ],
     },
     ctaFinal: {

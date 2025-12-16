@@ -65,7 +65,7 @@ const marketingData: ServicePageProps = {
                 },
                 title: "Automatización de Redes",
                 description: "Planifica, genera y publica contenido automáticamente en todas tus redes.",
-                link: "/servicios/automatizacion",
+                link: "/servicios/agentes-ia",
             },
             {
                 icon: {
@@ -114,10 +114,10 @@ const marketingData: ServicePageProps = {
     integrations: {
         title: "Conectado con tu Stack de Marketing",
         logos: [
-            { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/HubSpot_Logo.svg/2560px-HubSpot_Logo.svg.png", alt: "HubSpot" },
-            { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Meta_Platforms_Inc._logo.svg/2560px-Meta_Platforms_Inc._logo.svg.png", alt: "Meta Ads" },
-            { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Google_Ads_logo.svg/2048px-Google_Ads_logo.svg.png", alt: "Google Ads" },
-            { src: "https://s.w.org/style/images/about/WordPress-logotype-wmark-white.png", alt: "WordPress" },
+            { src: "https://img.icons8.com/color/96/hubspot.png", alt: "HubSpot" },
+            { src: "https://img.icons8.com/color/96/meta.png", alt: "Meta Ads" },
+            { src: "https://img.icons8.com/color/96/google-ads.png", alt: "Google Ads" },
+            { src: "https://img.icons8.com/color/96/wordpress.png", alt: "WordPress" },
         ],
     },
     successStory: {

@@ -79,7 +79,7 @@ const hrData: ServicePageProps = {
                 },
                 title: "Gestión de Turnos",
                 description: "Algoritmos que optimizan los horarios y turnos de trabajo según disponibilidad y demanda.",
-                link: "/servicios/automatizacion",
+                link: "/servicios/agentes-ia",
             },
             {
                 icon: {
@@ -122,10 +122,10 @@ const hrData: ServicePageProps = {
     integrations: {
         title: "Compatible con tu Software de RRHH",
         logos: [
-            { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/LinkedIn_Logo_2019.svg/2560px-LinkedIn_Logo_2019.svg.png", alt: "LinkedIn" },
-            { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Workday_Inc._logo.svg/2560px-Workday_Inc._logo.svg.png", alt: "Workday" },
-            { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/BambooHR_logo.svg/2560px-BambooHR_logo.svg.png", alt: "BambooHR" },
-            { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Slack_icon_2019.svg/2048px-Slack_icon_2019.svg.png", alt: "Slack" },
+            { src: "https://img.icons8.com/color/96/linkedin.png", alt: "LinkedIn" },
+            { src: "https://img.icons8.com/color/96/workday.png", alt: "Workday" },
+            { src: "https://img.icons8.com/color/96/bamboohr.png", alt: "BambooHR" },
+            { src: "https://img.icons8.com/color/96/slack-new.png", alt: "Slack" },
         ],
     },
     successStory: {

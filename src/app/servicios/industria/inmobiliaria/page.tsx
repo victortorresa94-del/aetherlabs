@@ -55,7 +55,7 @@ const realEstateData: ServicePageProps = {
                 icon: "Search",
                 title: "Matching Inteligente",
                 description: "Algoritmo que cruza tu cartera con tu base de datos y avisa al comercial cuando hay coincidencia.",
-                link: "/servicios/automatizacion",
+                link: "/servicios/agentes-ia",
             },
             {
                 icon: "FileText",
@@ -73,7 +73,7 @@ const realEstateData: ServicePageProps = {
                 icon: "UserCheck",
                 title: "Gestión de Alquileres",
                 description: "Automatiza el cobro, incidencias y renovación de contratos de tu cartera de alquiler.",
-                link: "/servicios/automatizacion",
+                link: "/servicios/agentes-ia",
             },
         ],
     },
@@ -107,9 +107,9 @@ const realEstateData: ServicePageProps = {
         title: "Se conecta con tu CRM Inmobiliario",
         logos: [
             { src: "https://st3.idealista.com/static/common/icons/logo-idealista-white.svg", alt: "Idealista" },
-            { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Fotocasa_Logo.svg/2560px-Fotocasa_Logo.svg.png", alt: "Fotocasa" },
-            { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Salesforce.com_logo.svg/2560px-Salesforce.com_logo.svg.png", alt: "Salesforce" },
-            { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/HubSpot_Logo.svg/2560px-HubSpot_Logo.svg.png", alt: "HubSpot" },
+            { src: "https://img.icons8.com/color/96/fotocasa.png", alt: "Fotocasa" },
+            { src: "https://img.icons8.com/color/96/salesforce.png", alt: "Salesforce" },
+            { src: "https://img.icons8.com/color/96/hubspot.png", alt: "HubSpot" },
         ],
     },
     ctaFinal: {

@@ -55,7 +55,7 @@ const ecommerceData: ServicePageProps = {
                 icon: "Mail",
                 title: "Email Marketing IA",
                 description: "Envía correos hiper-personalizados en el momento exacto para recuperar carritos y fidelizar.",
-                link: "/servicios/automatizacion",
+                link: "/servicios/agentes-ia",
             },
             {
                 icon: "Camera",
@@ -73,7 +73,7 @@ const ecommerceData: ServicePageProps = {
                 icon: "Truck",
                 title: "Logística Inteligente",
                 description: "Optimiza rutas de reparto y automatiza la gestión de devoluciones.",
-                link: "/servicios/automatizacion",
+                link: "/servicios/agentes-ia",
             },
         ],
     },
@@ -106,10 +106,10 @@ const ecommerceData: ServicePageProps = {
     integrations: {
         title: "Nativo para tu Plataforma",
         logos: [
-            { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Shopify_logo_2018.svg/2560px-Shopify_logo_2018.svg.png", alt: "Shopify" },
-            { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/WooCommerce_logo.svg/2560px-WooCommerce_logo.svg.png", alt: "WooCommerce" },
-            { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Klaviyo_Logo.svg/2560px-Klaviyo_Logo.svg.png", alt: "Klaviyo" },
-            { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Meta_Platforms_Inc._logo.svg/2560px-Meta_Platforms_Inc._logo.svg.png", alt: "Meta Ads" },
+            { src: "https://img.icons8.com/color/96/shopify.png", alt: "Shopify" },
+            { src: "https://img.icons8.com/color/96/woocommerce.png", alt: "WooCommerce" },
+            { src: "https://img.icons8.com/color/96/klaviyo.png", alt: "Klaviyo" },
+            { src: "https://img.icons8.com/color/96/meta.png", alt: "Meta Ads" },
         ],
     },
     ctaFinal: {

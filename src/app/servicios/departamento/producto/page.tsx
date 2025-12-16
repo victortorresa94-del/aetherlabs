@@ -71,7 +71,7 @@ const productData: ServicePageProps = {
                 icon: "BarChart2",
                 title: "Análisis de Competencia",
                 description: "Monitoriza precios y catálogo de tus rivales en tiempo real para ajustar tu oferta.",
-                link: "/servicios/automatizacion",
+                link: "/servicios/agentes-ia",
             },
             {
                 icon: "Zap",
@@ -110,10 +110,10 @@ const productData: ServicePageProps = {
     integrations: {
         title: "Se conecta con tu Tienda",
         logos: [
-            { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Shopify_logo_2018.svg/2560px-Shopify_logo_2018.svg.png", alt: "Shopify" },
-            { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/WooCommerce_logo.svg/2560px-WooCommerce_logo.svg.png", alt: "WooCommerce" },
-            { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Magento_Logo.svg/2560px-Magento_Logo.svg.png", alt: "Magento" },
-            { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/PrestaShop_Logo.svg/2560px-PrestaShop_Logo.svg.png", alt: "PrestaShop" },
+            { src: "https://img.icons8.com/color/96/shopify.png", alt: "Shopify" },
+            { src: "https://img.icons8.com/color/96/woocommerce.png", alt: "WooCommerce" },
+            { src: "https://img.icons8.com/color/96/magento.png", alt: "Magento" },
+            { src: "https://img.icons8.com/color/96/prestashop.png", alt: "PrestaShop" },
         ],
     },
     successStory: {

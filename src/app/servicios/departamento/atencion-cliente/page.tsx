@@ -55,7 +55,7 @@ const customerServiceData: ServicePageProps = {
                 icon: "RefreshCcw",
                 title: "Gestión de Devoluciones",
                 description: "Automatiza todo el proceso de cambios y devoluciones sin intervención humana.",
-                link: "/servicios/automatizacion",
+                link: "/servicios/agentes-ia",
             },
             {
                 icon: "Database",
@@ -110,10 +110,10 @@ const customerServiceData: ServicePageProps = {
     integrations: {
         title: "Se integra con tu Helpdesk",
         logos: [
-            { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Zendesk_logo.svg/2560px-Zendesk_logo.svg.png", alt: "Zendesk" },
-            { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Intercom_logo.svg/2560px-Intercom_logo.svg.png", alt: "Intercom" },
-            { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/2044px-WhatsApp.svg.png", alt: "WhatsApp" },
-            { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Salesforce.com_logo.svg/2560px-Salesforce.com_logo.svg.png", alt: "Salesforce" },
+            { src: "https://img.icons8.com/color/96/zendesk.png", alt: "Zendesk" },
+            { src: "https://img.icons8.com/color/96/intercom.png", alt: "Intercom" },
+            { src: "https://img.icons8.com/color/96/whatsapp--v1.png", alt: "WhatsApp" },
+            { src: "https://img.icons8.com/color/96/salesforce.png", alt: "Salesforce" },
         ],
     },
     successStory: {

@@ -55,7 +55,7 @@ const agencyData: ServicePageProps = {
                 icon: "Copy",
                 title: "Generador de Ads Masivo",
                 description: "Crea cientos de variaciones de anuncios para test A/B automáticos y mejora el ROAS.",
-                link: "/servicios/automatizacion",
+                link: "/servicios/agentes-ia",
             },
             {
                 icon: "Rocket",
@@ -106,10 +106,10 @@ const agencyData: ServicePageProps = {
     integrations: {
         title: "Se integra con tu Stack",
         logos: [
-            { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Meta_Platforms_Inc._logo.svg/2560px-Meta_Platforms_Inc._logo.svg.png", alt: "Meta Business" },
-            { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Google_Ads_logo.svg/2048px-Google_Ads_logo.svg.png", alt: "Google Ads" },
-            { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/HubSpot_Logo.svg/2560px-HubSpot_Logo.svg.png", alt: "HubSpot" },
-            { src: "https://upload.wikimedia.org/wikipedia/en/thumb/a/a9/TikTok_logo.svg/2560px-TikTok_logo.svg.png", alt: "TikTok Ads" },
+            { src: "https://img.icons8.com/color/96/meta.png", alt: "Meta Business" },
+            { src: "https://img.icons8.com/color/96/google-ads.png", alt: "Google Ads" },
+            { src: "https://img.icons8.com/color/96/hubspot.png", alt: "HubSpot" },
+            { src: "https://img.icons8.com/color/96/tiktok.png", alt: "TikTok Ads" },
         ],
     },
     ctaFinal: {

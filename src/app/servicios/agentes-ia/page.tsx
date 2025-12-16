@@ -13,7 +13,7 @@ import {
   TrendingUp
 } from 'lucide-react';
 
-export default function AutomatizacionPage() {
+export default function AgentesIAPage() {
   const featuredAgents = [
     {
       icon: Mic,
@@ -293,7 +293,7 @@ export default function AutomatizacionPage() {
               <span className="text-sm font-medium text-white/80">Fuerza Laboral Digital</span>
             </div>
             <h1 className="text-5xl md:text-7xl font-light mb-8 leading-tight">
-              Automatiza tu negocio
+              Agentes IA & Automatización
             </h1>
             <p className="text-xl text-zinc-400 max-w-2xl mx-auto mb-10 leading-relaxed">
               Implementamos trabajadores digitales que ejecutan tareas, toman decisiones y usan tus herramientas de software. Desde atender llamadas hasta gestionar proyectos enteros.
@@ -588,7 +588,7 @@ export default function AutomatizacionPage() {
 
       {/* CTA Section */}
       <section className="py-24 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[#82ff1f]/5" />
+
         <div className="container relative z-10 text-center">
           <h2 className="text-4xl md:text-6xl font-light mb-8">
             ¿Listo para automatizar?

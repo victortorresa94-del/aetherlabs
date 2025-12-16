@@ -55,7 +55,7 @@ const professionalServicesData: ServicePageProps = {
                 icon: "Calendar",
                 title: "Agendamiento Inteligente",
                 description: "IA que coordina reuniones con clientes y juzgados evitando conflictos de agenda.",
-                link: "/servicios/automatizacion",
+                link: "/servicios/agentes-ia",
             },
             {
                 icon: "Shield",
@@ -108,8 +108,8 @@ const professionalServicesData: ServicePageProps = {
         logos: [
             { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Lexnet_Logo.png/800px-Lexnet_Logo.png", alt: "Lexnet" },
             { src: "https://www.thomsonreuters.es/content/dam/openweb/images/logos/thomson-reuters-logo-white.svg", alt: "Aranzadi" },
-            { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Sage_Group_logo.svg/2560px-Sage_Group_logo.svg.png", alt: "Sage Despachos" },
-            { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Microsoft_365_%282020%29.svg/2560px-Microsoft_365_%282020%29.svg.png", alt: "Office 365" },
+            { src: "https://img.icons8.com/color/96/sage.png", alt: "Sage Despachos" },
+            { src: "https://img.icons8.com/color/96/microsoft-office-2019.png", alt: "Office 365" },
         ],
     },
     ctaFinal: {

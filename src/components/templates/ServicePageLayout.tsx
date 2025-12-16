@@ -250,45 +250,81 @@ export default function ServicePageLayout({
                 </div>
             </section>
 
-            {/* 5. USE CASES (Before/After) */}
-            <section className="py-32 bg-black">
-                <div className="container px-4">
-                    <h2 className="text-2xl md:text-3xl font-light mb-20 text-center">
-                        {useCases.title}
-                    </h2>
-                    <div className="space-y-12">
+            {/* 5. USE CASES (Before/After) - REDESIGNED */}
+            <section className="py-32 bg-black relative">
+                {/* Decorative background glow */}
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full max-w-7xl pointer-events-none">
+                    <div className="absolute top-1/4 right-0 w-96 h-96 bg-[#82ff1f]/5 blur-[120px] rounded-full" />
+                    <div className="absolute bottom-1/4 left-0 w-96 h-96 bg-blue-900/5 blur-[120px] rounded-full" />
+                </div>
+
+                <div className="container px-4 relative z-10">
+                    <div className="text-center mb-20">
+                        <h2 className="text-3xl md:text-5xl font-light mb-6 tracking-tight">
+                            {useCases.title}
+                        </h2>
+                        <p className="text-zinc-400 text-lg max-w-2xl mx-auto">
+                            Transformación real en tu operativa diaria.
+                        </p>
+                    </div>
+
+                    <div className="grid grid-cols-1 gap-8 max-w-5xl mx-auto">
                         {useCases.items.map((useCase, i) => (
                             <motion.div
                                 key={i}
                                 initial={{ opacity: 0, y: 30 }}
                                 whileInView={{ opacity: 1, y: 0 }}
-                                className="grid grid-cols-1 md:grid-cols-2 gap-0 rounded-3xl overflow-hidden border border-white/10"
+                                transition={{ delay: i * 0.1 }}
+                                className="relative group"
                             >
-                                <div className="p-12 bg-[#0a0a0a] flex flex-col justify-center">
-                                    <h3 className="text-xl font-medium mb-8 text-white">{useCase.title}</h3>
-                                    <div className="space-y-6">
-                                        <div className="p-4 rounded-xl bg-red-500/5 border border-red-500/20">
-                                            <span className="text-[10px] font-mono text-red-400 uppercase tracking-widest mb-2 block">ANTES</span>
-                                            <p className="text-zinc-300 text-sm font-light">{useCase.before}</p>
+                                <div className="absolute inset-0 bg-gradient-to-r from-zinc-900 to-[#0a0a0a] rounded-3xl transform transition-transform group-hover:scale-[1.01]" />
+                                <div className="absolute inset-0 bg-[#82ff1f]/5 opacity-0 group-hover:opacity-100 transition-opacity rounded-3xl blur-xl" />
+
+                                <div className="relative bg-[#0a0a0a] border border-white/10 rounded-3xl p-8 md:p-12 overflow-hidden hover:border-[#82ff1f]/30 transition-colors">
+                                    <h3 className="text-2xl font-medium text-white mb-8 text-center md:text-left">
+                                        {useCase.title}
+                                    </h3>
+
+                                    <div className="flex flex-col md:flex-row gap-8 items-stretch">
+                                        {/* BEFORE */}
+                                        <div className="flex-1 min-w-0">
+                                            <div className="h-full p-6 rounded-2xl bg-white/5 border border-white/5 flex gap-4 items-start relative group/before grayscale hover:grayscale-0 transition-all duration-500">
+                                                <div className="absolute top-0 left-0 w-1 h-full bg-red-500/50 rounded-l-2xl" />
+                                                <div className="mt-1 w-8 h-8 rounded-full bg-red-500/10 flex items-center justify-center flex-shrink-0 text-red-500">
+                                                    <LucideIcons.X size={16} />
+                                                </div>
+                                                <div>
+                                                    <div className="text-xs font-bold text-red-500 uppercase tracking-widest mb-1">Antes</div>
+                                                    <p className="text-zinc-400 text-base leading-relaxed">
+                                                        {useCase.before}
+                                                    </p>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div className="flex justify-center">
-                                            <ArrowRight className="w-5 h-5 text-zinc-600 rotate-90 md:rotate-0" />
+
+                                        {/* ARROW */}
+                                        <div className="flex items-center justify-center md:rotate-0 rotate-90">
+                                            <div className="w-10 h-10 rounded-full bg-[#82ff1f]/10 flex items-center justify-center border border-[#82ff1f]/20 text-[#82ff1f]">
+                                                <ArrowRight size={20} />
+                                            </div>
                                         </div>
-                                        <div className="p-4 rounded-xl bg-[#82ff1f]/5 border border-[#82ff1f]/20">
-                                            <span className="text-[10px] font-mono text-[#82ff1f] uppercase tracking-widest mb-2 block">DESPUÉS (CON IA)</span>
-                                            <p className="text-white text-sm font-light">{useCase.after}</p>
+
+                                        {/* AFTER */}
+                                        <div className="flex-1 min-w-0">
+                                            <div className="h-full p-6 rounded-2xl bg-[#82ff1f]/5 border border-[#82ff1f]/20 flex gap-4 items-start relative box-shadow-[0_0_30px_rgba(130,255,31,0.05)]">
+                                                <div className="absolute top-0 left-0 w-1 h-full bg-[#82ff1f] rounded-l-2xl" />
+                                                <div className="mt-1 w-8 h-8 rounded-full bg-[#82ff1f] flex items-center justify-center flex-shrink-0 text-black shadow-[0_0_15px_rgba(130,255,31,0.3)]">
+                                                    <Check size={18} strokeWidth={3} />
+                                                </div>
+                                                <div>
+                                                    <div className="text-xs font-bold text-[#82ff1f] uppercase tracking-widest mb-1">Con Aether IA</div>
+                                                    <p className="text-white text-base font-medium leading-relaxed">
+                                                        {useCase.after}
+                                                    </p>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div className="relative min-h-[300px] bg-zinc-900">
-                                    {useCase.image ? (
-                                        <Image src={useCase.image} alt={useCase.title} fill className="object-cover" />
-                                    ) : (
-                                        <div className="absolute inset-0 flex items-center justify-center text-zinc-700">
-                                            <span className="font-mono text-xs">Visualización del proceso</span>
-                                        </div>
-                                    )}
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
                                 </div>
                             </motion.div>
                         ))}

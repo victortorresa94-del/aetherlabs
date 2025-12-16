@@ -43,7 +43,7 @@ const retailData: ServicePageProps = {
                 icon: "MapPin",
                 title: "Geomarketing IA",
                 description: "Envía ofertas personalizadas al móvil del cliente cuando pasa cerca de tu tienda.",
-                link: "/servicios/automatizacion",
+                link: "/servicios/agentes-ia",
             },
             {
                 icon: "Camera",
@@ -67,7 +67,7 @@ const retailData: ServicePageProps = {
                 icon: "Tag",
                 title: "Precios Dinámicos",
                 description: "Etiquetas electrónicas que ajustan precios automáticamente según demanda, caducidad o competencia.",
-                link: "/servicios/automatizacion",
+                link: "/servicios/agentes-ia",
             },
             {
                 icon: "Users",
@@ -106,10 +106,10 @@ const retailData: ServicePageProps = {
     integrations: {
         title: "Se integra con tu TPV y ERP",
         logos: [
-            { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Shopify_logo_2018.svg/2560px-Shopify_logo_2018.svg.png", alt: "Shopify POS" },
-            { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Salesforce.com_logo.svg/2560px-Salesforce.com_logo.svg.png", alt: "Salesforce Commerce" },
-            { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/SAP_2011_logo.svg/2560px-SAP_2011_logo.svg.png", alt: "SAP Retail" },
-            { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Square_Inc_logo.svg/2560px-Square_Inc_logo.svg.png", alt: "Square" },
+            { src: "https://img.icons8.com/color/96/shopify.png", alt: "Shopify POS" },
+            { src: "https://img.icons8.com/color/96/salesforce.png", alt: "Salesforce Commerce" },
+            { src: "https://img.icons8.com/color/96/sap.png", alt: "SAP Retail" },
+            { src: "https://img.icons8.com/color/96/square.png", alt: "Square" },
         ],
     },
     successStory: {

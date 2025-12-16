@@ -65,7 +65,7 @@ const restaurantData: ServicePageProps = {
                 icon: "Star",
                 title: "Gestor de Reseñas",
                 description: "IA que responde a todas las reseñas agradeciendo o gestionando quejas automáticamente.",
-                link: "/servicios/automatizacion",
+                link: "/servicios/agentes-ia",
             },
             {
                 icon: "ChefHat",
@@ -111,7 +111,7 @@ const restaurantData: ServicePageProps = {
         title: "Se conecta con tu Libro de Reservas",
         logos: [
             { src: "https://www.covermanager.com/wp-content/uploads/2022/06/Logo-CoverManager-Blanco.png", alt: "CoverManager" },
-            { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/OpenTable_Logo.svg/2560px-OpenTable_Logo.svg.png", alt: "OpenTable" },
+            { src: "https://img.icons8.com/color/96/opentable.png", alt: "OpenTable" },
             { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/TheFork_logo_2022.svg/2560px-TheFork_logo_2022.svg.png", alt: "TheFork" },
             { src: "https://www.gloriafood.com/images/logo-white.png", alt: "GloriaFood" },
         ],

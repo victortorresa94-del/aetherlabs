@@ -101,12 +101,13 @@ export default function SobreNosotros() {
               </div>
             </div>
             <div className="relative">
-              <div className="aspect-square bg-gradient-to-br from-[#1a1a1a] to-[#0a0a0a] rounded-2xl border border-[#2a2a2a] p-12 flex items-center justify-center">
-                <div className="text-center">
-                  <Sparkles className="h-32 w-32 text-white mx-auto mb-6 opacity-50" />
-                  <p className="text-white text-xl font-light">Barcelona, 2024</p>
-                  <p className="text-[#a0a0a0] text-sm mt-2">Donde la IA se hace real</p>
-                </div>
+              <div className="aspect-square bg-gradient-to-br from-[#1a1a1a] to-[#0a0a0a] rounded-2xl border border-[#2a2a2a] p-12 flex items-center justify-center relative overflow-hidden">
+                <Image
+                  src="/logo-v2.png"
+                  alt="Aether Labs Logo"
+                  fill
+                  className="object-contain p-12 opacity-80"
+                />
               </div>
             </div>
           </div>

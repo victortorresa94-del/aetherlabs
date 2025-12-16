@@ -59,7 +59,7 @@ const healthData: ServicePageProps = {
                 icon: "Calendar",
                 title: "Recordatorios Inteligentes",
                 description: "Sistema proactivo que confirma asistencia por WhatsApp/SMS y rellena huecos libres.",
-                link: "/servicios/automatizacion",
+                link: "/servicios/agentes-ia",
             },
             {
                 icon: "FileText",
@@ -113,7 +113,7 @@ const healthData: ServicePageProps = {
             { src: "https://www.doctoralia.es/img/doctoralia-white.svg", alt: "Doctoralia" },
             { src: "https://www.topdoctors.es/images/logo_topdoctors_white.png", alt: "TopDoctors" },
             { src: "https://clinic-cloud.com/wp-content/uploads/2019/09/logo-clinic-cloud-blanco.png", alt: "Clinic Cloud" },
-            { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Salesforce.com_logo.svg/2560px-Salesforce.com_logo.svg.png", alt: "Salesforce Health Cloud" },
+            { src: "https://img.icons8.com/color/96/salesforce.png", alt: "Salesforce Health Cloud" },
         ],
     },
     successStory: {

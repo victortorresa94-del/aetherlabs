@@ -43,7 +43,7 @@ const operationsData: ServicePageProps = {
                 icon: "Settings",
                 title: "Automatización de Workflows",
                 description: "Conecta tus apps (ERP, CRM, Email) para que los datos fluyan solos sin intervención humana.",
-                link: "/servicios/automatizacion",
+                link: "/servicios/agentes-ia",
             },
             {
                 icon: "Database",
@@ -110,10 +110,10 @@ const operationsData: ServicePageProps = {
     integrations: {
         title: "Integración Total con tu ERP",
         logos: [
-            { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/SAP_2011_logo.svg/2560px-SAP_2011_logo.svg.png", alt: "SAP" },
-            { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Oracle_logo.svg/2560px-Oracle_logo.svg.png", alt: "Oracle" },
-            { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Microsoft_Dynamics_365_logo.svg/2560px-Microsoft_Dynamics_365_logo.svg.png", alt: "Microsoft Dynamics" },
-            { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Sage_Group_logo.svg/2560px-Sage_Group_logo.svg.png", alt: "Sage" },
+            { src: "https://img.icons8.com/color/96/sap.png", alt: "SAP" },
+            { src: "https://img.icons8.com/color/96/oracle-logo.png", alt: "Oracle" },
+            { src: "https://img.icons8.com/color/96/microsoft-dynamics-365.png", alt: "Microsoft Dynamics" },
+            { src: "https://img.icons8.com/color/96/sage.png", alt: "Sage" },
         ],
     },
     successStory: {

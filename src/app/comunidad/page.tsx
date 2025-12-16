@@ -207,7 +207,7 @@ export default function ContactoPage() {
                 <p className="text-sm text-[#a0a0a0] mb-4">
                   Agentes y flujos automáticos
                 </p>
-                <a href="/servicios/automatizacion" className="text-white text-sm font-medium hover:text-[#c8c8c8] transition-colors">
+                <a href="/servicios/agentes-ia" className="text-white text-sm font-medium hover:text-[#c8c8c8] transition-colors">
                   Ver servicios →
                 </a>
               </div>

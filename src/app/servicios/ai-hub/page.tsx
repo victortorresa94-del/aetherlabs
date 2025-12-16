@@ -330,7 +330,7 @@ export default function AIHubPage() {
 
             {/* CTA Final */}
             <section id="contact" className="py-24 relative overflow-hidden">
-                <div className="absolute inset-0 bg-[#82ff1f]/5" />
+
                 <div className="container relative z-10 text-center">
                     <h2 className="text-4xl md:text-5xl font-light mb-6">
                         ¿Quieres un <span className="text-[#82ff1f]">AI Hub</span> en tu empresa?

@@ -43,7 +43,7 @@ const constructionData: ServicePageProps = {
                 icon: "Calculator",
                 title: "Presupuestador IA",
                 description: "Sube los planos y la IA calcula mediciones y costes de materiales en minutos con alta precisión.",
-                link: "/servicios/automatizacion",
+                link: "/servicios/agentes-ia",
             },
             {
                 icon: "Camera",
@@ -106,10 +106,10 @@ const constructionData: ServicePageProps = {
     integrations: {
         title: "Se integra con tu Software BIM y ERP",
         logos: [
-            { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Autodesk_AutoCAD_logo.svg/2048px-Autodesk_AutoCAD_logo.svg.png", alt: "AutoCAD" },
-            { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Revit_Logo.svg/1200px-Revit_Logo.svg.png", alt: "Revit" },
+            { src: "https://img.icons8.com/color/96/autocad.png", alt: "AutoCAD" },
+            { src: "https://img.icons8.com/color/96/autodesk-revit.png", alt: "Revit" },
             { src: "https://www.rib-software.es/wp-content/uploads/2021/05/Presto-Logo-White.png", alt: "Presto" },
-            { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Procore_Logo.svg/2560px-Procore_Logo.svg.png", alt: "Procore" },
+            { src: "https://img.icons8.com/color/96/procore.png", alt: "Procore" },
         ],
     },
     ctaFinal: {

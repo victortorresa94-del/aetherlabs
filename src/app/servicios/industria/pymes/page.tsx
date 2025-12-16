@@ -49,7 +49,7 @@ const pymesData: ServicePageProps = {
                 icon: "FileText",
                 title: "Facturación Automática",
                 description: "Escanea tickets y facturas con el móvil y olvídate de picar datos para el trimestre.",
-                link: "/servicios/automatizacion",
+                link: "/servicios/agentes-ia",
             },
             {
                 icon: "Search",
@@ -106,10 +106,10 @@ const pymesData: ServicePageProps = {
     integrations: {
         title: "Funciona con lo que ya usas",
         logos: [
-            { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/2044px-WhatsApp.svg.png", alt: "WhatsApp" },
-            { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Google_Ads_logo.svg/2048px-Google_Ads_logo.svg.png", alt: "Google My Business" },
-            { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/2048px-Instagram_logo_2016.svg.png", alt: "Instagram" },
-            { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Microsoft_Office_Excel_%282019%E2%80%93present%29.svg/2203px-Microsoft_Office_Excel_%282019%E2%80%93present%29.svg.png", alt: "Excel / Sheets" },
+            { src: "https://img.icons8.com/color/96/whatsapp--v1.png", alt: "WhatsApp" },
+            { src: "https://img.icons8.com/color/96/google-business.png", alt: "Google My Business" },
+            { src: "https://img.icons8.com/color/96/instagram-new.png", alt: "Instagram" },
+            { src: "https://img.icons8.com/color/96/microsoft-excel-2019--v1.png", alt: "Excel / Sheets" },
         ],
     },
     ctaFinal: {
