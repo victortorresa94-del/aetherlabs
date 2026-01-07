@@ -134,26 +134,26 @@ export default function LosMejoresHumosProposal() {
                 <div className="container px-4 md:px-6">
                     <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
                         <motion.div {...fadeInUp} className="space-y-6 md:space-y-8 text-center md:text-left">
-                            <Badge variant="outline" className="text-red-400 border-red-500/20 bg-red-500/5">Situación Actual</Badge>
+                            <Badge variant="outline" className="text-[#82ff1f] border-[#82ff1f]/20 bg-[#82ff1f]/5">Situación Actual</Badge>
                             <h2 className="text-3xl md:text-5xl font-bold leading-tight">
                                 ¿Por qué un Chatbot IA? <br />
                                 <span className="text-zinc-500">La necesidad de evolucionar.</span>
                             </h2>
                             <p className="text-lg md:text-xl text-zinc-400 leading-relaxed">
-                                Actualmente, el equipo invierte demasiadas horas en responder dudas repetitivas que frenan el crecimiento. Un "upgrade" tecnológico no solo soluciona esto, sino que posiciona a la marca como líder innovador frente a la competencia.
+                                Actualmente, el equipo de Los Mejores Humos invierte demasiadas horas en responder dudas repetitivas que frenan el crecimiento. Un "upgrade" tecnológico no solo soluciona esto, sino que posiciona a la marca como líder innovador frente a la competencia.
                             </p>
                         </motion.div>
 
                         <div className="grid gap-4 md:gap-6">
                             <motion.div {...fadeInUp} transition={{ delay: 0.1 }} className="bg-black p-5 md:p-6 rounded-xl border border-zinc-800 flex items-start gap-4">
-                                <div className="bg-red-500/10 p-2 md:p-3 rounded-lg"><ShieldCheck className="w-5 h-5 md:w-6 md:h-6 text-red-500" /></div>
+                                <div className="bg-[#82ff1f]/10 p-2 md:p-3 rounded-lg"><ShieldCheck className="w-5 h-5 md:w-6 md:h-6 text-[#82ff1f]" /></div>
                                 <div>
                                     <h4 className="text-white font-bold text-base md:text-lg">Saturación de Soporte</h4>
                                     <p className="text-zinc-500 mt-1 text-sm md:text-base">El mismo personal respondiendo lo mismo una y otra vez.</p>
                                 </div>
                             </motion.div>
                             <motion.div {...fadeInUp} transition={{ delay: 0.2 }} className="bg-black p-5 md:p-6 rounded-xl border border-zinc-800 flex items-start gap-4">
-                                <div className="bg-amber-500/10 p-2 md:p-3 rounded-lg"><Activity className="w-5 h-5 md:w-6 md:h-6 text-amber-500" /></div>
+                                <div className="bg-[#82ff1f]/10 p-2 md:p-3 rounded-lg"><Activity className="w-5 h-5 md:w-6 md:h-6 text-[#82ff1f]" /></div>
                                 <div>
                                     <h4 className="text-white font-bold text-base md:text-lg">Onboarding Lento</h4>
                                     <p className="text-zinc-500 mt-1 text-sm md:text-base">Los nuevos clientes tardan en ser productivos.</p>
