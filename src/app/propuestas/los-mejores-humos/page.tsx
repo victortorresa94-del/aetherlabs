@@ -16,7 +16,7 @@ const fadeInUp = {
 const phases = [
     {
         number: "1",
-        title: "Chatbot IA (Widow)",
+        subtitle: "Chatbot IA (Widow)",
         icon: Bot,
         description: [
             "Esta fase se centra en la implementación de un chatbot interno con IA dentro del software.",
@@ -30,39 +30,48 @@ const phases = [
     },
     {
         number: "2",
-        title: "Funcionalidades internas con IA",
+        subtitle: "Funcionalidades internas con IA",
         icon: Cpu,
         description: [
-            "En esta fase se incorporan funcionalidades internas basadas en IA directamente dentro del software.",
-            "Son mejoras que automatizan procesos concretos y mejoran la operativa diaria de los clubes, reduciendo tareas manuales y mejorando la calidad de la información.",
-            "Incluye el reconocimiento automático de DNI, la generación automática de páginas de producto y el uso de IA para estructurar y enriquecer datos internos."
+            "Incorporación de funcionalidades internas basadas en IA directamente dentro del software.",
+            "Estas mejoras automatizan procesos concretos y mejoran la calidad de la información, como el alta de socios o la generación de contenido estructurado para productos."
         ],
-        cta: "Ver Fase 2",
-        color: "#3b82f6"
+        details: [
+            "Reconocimiento automático de DNI",
+            "Páginas automáticas de producto"
+        ],
+        cta: "Ver fase 2",
+        color: "#82ff1f"
     },
     {
         number: "3",
-        title: "Automatizaciones y agentes IA externos",
+        subtitle: "Automatizaciones y agentes IA externos",
         icon: Zap,
         description: [
-            "Esta fase agrupa todas las automatizaciones y agentes de IA que no forman parte directa del core del software, pero que apoyan la operación y el crecimiento del negocio.",
-            "Incluye procesos administrativos, generación de contenido y herramientas de apoyo a la captación, siempre manteniendo control humano sobre las acciones sensibles.",
-            "Se contemplan automatizaciones administrativas, agentes editoriales para noticias del sector y sistemas de apoyo a la prospección."
+            "Desarrollo de automatizaciones y agentes de IA que apoyan la operación diaria y el crecimiento del negocio, sin formar parte directa del core del software.",
+            "Incluye tareas administrativas, generación de contenido y herramientas de apoyo a la captación, siempre manteniendo control humano sobre los procesos sensibles."
         ],
-        cta: "Ver Fase 3",
-        color: "#8b5cf6"
+        details: [
+            "Automatizaciones administrativas",
+            "Agente de noticias del sector",
+            "Prospección y apoyo a ventas (RAMI / LMH)"
+        ],
+        cta: "Ver fase 3",
+        color: "#82ff1f"
     },
     {
         number: "4",
-        title: "IA generativa avanzada (audioguías)",
+        subtitle: "IA generativa avanzada (audioguías)",
         icon: Beaker,
         description: [
-            "Esta fase está orientada a soluciones de IA generativa más avanzadas, como audioguías o videoguías para proyectos culturales.",
-            "Es una fase experimental, que se plantea trabajar mediante pruebas y validación previa antes de una implementación completa.",
-            "Esta fase se evalúa de forma independiente y no es prioritaria para el arranque del proyecto."
+            "Soluciones de IA generativa orientadas a proyectos culturales, como audioguías y videoguías.",
+            "Esta fase se plantea como un desarrollo experimental, que se valida mediante pruebas antes de una implementación completa."
         ],
-        cta: "Ver Fase 4",
-        color: "#f59e0b"
+        details: [
+            "Esta fase no es prioritaria y se evalúa de forma independiente."
+        ],
+        cta: "Ver fase 4",
+        color: "#82ff1f"
     }
 ];
 
@@ -90,44 +99,6 @@ export default function ProjectPhasesPage() {
                 </div>
             </header>
 
-            {/* 2. INTRODUCTION */}
-            <section className="py-20 border-b border-zinc-900">
-                <div className="container px-4 md:px-6 max-w-4xl mx-auto">
-                    <motion.div {...fadeInUp} className="space-y-8 bg-zinc-950/50 p-8 md:p-12 rounded-3xl border border-zinc-800">
-                        <div className="grid md:grid-cols-2 gap-12 items-start">
-                            <div>
-                                <h2 className="text-xl font-semibold mb-4 text-white">Estrategia de implementación</h2>
-                                <p className="text-zinc-400 leading-relaxed">
-                                    Este proyecto abarca diversas soluciones de inteligencia artificial que, aunque complementarias, presentan diferentes niveles de prioridad e impacto.
-                                    El desarrollo por fases nos permite:
-                                </p>
-                                <ul className="mt-6 space-y-3">
-                                    {[
-                                        "Priorizar las soluciones más críticas",
-                                        "Validar cada bloque antes de avanzar",
-                                        "Evitar desarrollos innecesarios",
-                                        "Mantener un control técnico y económico total"
-                                    ].map((item, i) => (
-                                        <li key={i} className="flex items-center gap-3 text-sm text-zinc-300">
-                                            <CheckCircle2 className="w-4 h-4 text-[#82ff1f]" />
-                                            {item}
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-                            <div className="text-zinc-400 space-y-4 pt-2">
-                                <p>
-                                    El objetivo no es implementar todo de golpe, sino construir una base sólida y avanzar paso a paso.
-                                </p>
-                                <p>
-                                    Cada fase tiene sentido por sí misma y aporta valor real al negocio. Esto permite empezar por lo más importante ahora y dejar preparadas las siguientes etapas para cuando tenga sentido activarlas.
-                                </p>
-                            </div>
-                        </div>
-                    </motion.div>
-                </div>
-            </section>
-
             {/* 3. TIMELINE / PHASES */}
             <section className="py-24 relative">
                 <div className="container px-4 md:px-6 max-w-5xl mx-auto">
@@ -141,17 +112,12 @@ export default function ProjectPhasesPage() {
                                 {/* Indicator */}
                                 <div className="hidden md:flex flex-col items-center">
                                     <div
-                                        className="w-16 h-16 rounded-2xl flex items-center justify-center text-2xl font-bold border"
-                                        style={{
-                                            borderColor: `${phase.color}33`,
-                                            backgroundColor: `${phase.color}11`,
-                                            color: phase.color
-                                        }}
+                                        className="w-16 h-16 rounded-2xl flex items-center justify-center text-2xl font-bold border border-[#82ff1f]/33 bg-[#82ff1f]/11 text-[#82ff1f]"
                                     >
                                         {phase.number}
                                     </div>
                                     {index !== phases.length - 1 && (
-                                        <div className="w-px h-full bg-gradient-to-b from-zinc-800 to-transparent mt-4" />
+                                        <div className="w-px h-full bg-gradient-to-b from-[#82ff1f]/40 to-transparent mt-4" />
                                     )}
                                 </div>
 
@@ -159,37 +125,31 @@ export default function ProjectPhasesPage() {
                                 <div
                                     className="group relative bg-zinc-950/40 p-8 md:p-10 rounded-3xl border border-zinc-800/50 hover:border-zinc-700 transition-all duration-500"
                                 >
-                                    <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8">
-                                        <div className="flex items-center gap-4">
+                                    <div className="flex flex-col md:flex-row md:items-start justify-between gap-6 mb-8">
+                                        <div className="flex items-start gap-4">
                                             <div
-                                                className="p-3 rounded-xl md:hidden"
-                                                style={{ backgroundColor: `${phase.color}11`, color: phase.color }}
+                                                className="p-3 rounded-xl md:hidden bg-[#82ff1f]/11 text-[#82ff1f]"
                                             >
                                                 <phase.icon className="w-6 h-6" />
                                             </div>
-                                            <h3 className="text-2xl md:text-3xl font-bold text-white group-hover:text-white transition-colors">
-                                                FASE {phase.number} — {phase.title}
-                                            </h3>
+                                            <div className="flex flex-col">
+                                                <h3 className="text-2xl md:text-3xl font-bold text-white uppercase mb-1">
+                                                    FASE {phase.number}
+                                                </h3>
+                                                <span className="text-2xl md:text-3xl font-normal text-zinc-400 leading-tight">
+                                                    {phase.subtitle}
+                                                </span>
+                                            </div>
                                         </div>
-                                        {phase.link ? (
-                                            <Link href={phase.link}>
-                                                <Button
-                                                    variant="outline"
-                                                    className="rounded-full border-zinc-800 hover:border-white hover:bg-white hover:text-black transition-all group/btn"
-                                                >
-                                                    {phase.cta}
-                                                    <ArrowRight className="ml-2 w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
-                                                </Button>
-                                            </Link>
-                                        ) : (
+                                        <Link href={phase.link || "#"} className="mt-2 md:mt-0">
                                             <Button
                                                 variant="outline"
-                                                disabled
-                                                className="rounded-full border-zinc-900 text-zinc-600 cursor-not-allowed opacity-50"
+                                                className="rounded-full border-zinc-800 hover:border-white hover:bg-white hover:text-black transition-all group/btn"
                                             >
-                                                Próximamente
+                                                {phase.cta}
+                                                <ArrowRight className="ml-2 w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
                                             </Button>
-                                        )}
+                                        </Link>
                                     </div>
 
                                     <div className="space-y-4 max-w-3xl">
@@ -200,11 +160,26 @@ export default function ProjectPhasesPage() {
                                         ))}
                                     </div>
 
+                                    {phase.details && (
+                                        <div className="mt-8 pt-8 border-t border-zinc-900/50">
+                                            <h4 className="text-sm font-semibold text-zinc-500 uppercase tracking-widest mb-4">
+                                                Se han identificado las siguientes posibles soluciones IA:
+                                            </h4>
+                                            <ul className="space-y-3">
+                                                {phase.details.map((detail, i) => (
+                                                    <li key={i} className="flex items-center gap-3 text-sm md:text-base text-zinc-300">
+                                                        <div className="w-1.5 h-1.5 rounded-full bg-[#82ff1f]" />
+                                                        {detail}
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        </div>
+                                    )}
+
                                     {phase.highlight && (
                                         <div className="mt-8 pt-6 border-t border-zinc-900">
                                             <span
-                                                className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full border"
-                                                style={{ borderColor: `${phase.color}44`, color: phase.color, backgroundColor: `${phase.color}08` }}
+                                                className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full border border-[#82ff1f]/33 text-[#82ff1f] bg-[#82ff1f]/08"
                                             >
                                                 <Zap className="w-3 h-3" />
                                                 {phase.highlight}
@@ -227,7 +202,7 @@ export default function ProjectPhasesPage() {
                         </p>
                         <div className="inline-block p-1 rounded-full bg-gradient-to-r from-zinc-800 to-zinc-900 border border-zinc-700">
                             <div className="px-8 py-4 bg-black rounded-full text-zinc-400 text-sm md:text-base">
-                                <span className="text-white font-medium">Fase actual:</span> La propuesta se centra en comenzar por la <span className="text-[#82ff1f] font-semibold">Fase 1 — Chatbot IA</span>.
+                                <span className="text-white font-medium">Fase actual:</span> La propuesta se centra en comenzar por la <span className="text-[#82ff1f] font-semibold">FASE 1 — Chatbot IA</span>.
                             </div>
                         </div>
                     </motion.div>

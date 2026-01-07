@@ -771,16 +771,22 @@ export default function LosMejoresHumosProposal() {
                                         <CheckCircle2 className="w-4 h-4 md:w-5 md:h-5 text-[#82ff1f]" />
                                         <span className="text-zinc-300 text-sm md:text-base">Puesta en Marcha y Tuning</span>
                                     </div>
+                                    <div className="flex items-center gap-3">
+                                        <CheckCircle2 className="w-4 h-4 md:w-5 md:h-5 text-[#82ff1f]" />
+                                        <span className="text-zinc-300 text-sm md:text-base">Revisión y optimización</span>
+                                    </div>
                                 </div>
-                                <Button className="bg-[#82ff1f] text-black hover:bg-[#72e61b] rounded-full px-8 py-5 md:py-6 text-base md:text-lg font-bold w-full md:w-auto mt-4">
-                                    Aprobar Presupuesto
-                                </Button>
+                                <Link href="https://wa.me/34627281459?text=Hola%20Víctor!%20He%20revisado%20la%20propuesta%20de%20la%20Fase%201%20para%20Los%20Mejores%20Humos%20y%20me%20gustaría%20aprobar%20el%20presupuesto%20para%20empezar." target="_blank" className="w-full md:w-auto mt-4 inline-block">
+                                    <Button className="bg-[#82ff1f] text-black hover:bg-[#72e61b] rounded-full px-8 py-5 md:py-6 text-base md:text-lg font-bold w-full">
+                                        Aprobar Presupuesto
+                                    </Button>
+                                </Link>
                             </div>
                             <div className="bg-zinc-900/50 p-8 md:p-12 flex flex-col justify-center items-center border-l-0 md:border-l border-zinc-900 border-t md:border-t-0">
                                 <span className="text-zinc-500 font-mono text-[10px] md:text-xs mb-2 uppercase tracking-widest">PAGO ÚNICO</span>
                                 <span className="text-4xl sm:text-5xl md:text-6xl font-bold text-white tracking-tight">1.500€</span>
                                 <span className="text-zinc-500 text-[11px] md:text-sm mt-4 text-center max-w-xs px-4">
-                                    + desde 50€/mes (autogestión) o 120€/mes (todo incluido)
+                                    + impuestos aplicables
                                 </span>
                             </div>
                         </div>
@@ -805,10 +811,6 @@ export default function LosMejoresHumosProposal() {
                             {
                                 q: "¿Dónde \"vive\" realmente el chatbot?",
                                 a: "El chatbot vive en una infraestructura externa, completamente desacoplada. No se toca el core del sistema, se puede actualizar sin desplegar el software y escala de forma independiente."
-                            },
-                            {
-                                q: "¿Nuestro equipo podría desarrollar esto internamente?",
-                                a: "Sí, técnicamente es posible. El valor del servicio está en el diseño del flujo conversacional, el entrenamiento con documentación real, el control de costes, la gestión de errores y el mantenimiento continuo."
                             },
                             {
                                 q: "¿Qué información usa el chatbot para responder?",
@@ -863,12 +865,6 @@ export default function LosMejoresHumosProposal() {
                         ))}
                     </div>
 
-                    {/* Closing statement */}
-                    <div className="mt-12 p-6 bg-zinc-900/30 border border-zinc-800 rounded-xl text-center">
-                        <p className="text-zinc-300 text-sm leading-relaxed max-w-2xl mx-auto">
-                            Esta solución está diseñada para integrarse sin fricción en el sistema actual, aportar valor real desde el primer día y mantener un control total sobre costes, datos y funcionamiento.
-                        </p>
-                    </div>
                 </div>
             </section>
 
