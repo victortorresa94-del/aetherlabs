@@ -28,6 +28,7 @@ import { Badge } from "@/components/ui/badge";
 import ArchitectureDiagram from "@/components/propuestas/architecture-diagram";
 import WidowChat from "@/components/propuestas/widow-chat";
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useState, useRef } from "react";
 
 export default function LosMejoresHumosProposal() {
