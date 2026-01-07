@@ -24,7 +24,7 @@ const phases = [
             "Es la primera fase porque aporta valor inmediato, reduce carga de soporte y permite diferenciar el software desde el primer momento."
         ],
         highlight: "Fase inicial recomendada para empezar el proyecto.",
-        link: "/propuestas/los-mejores-humos/fase-1",
+        link: "/propuestas/los-mejores-humos/fase1",
         cta: "Ver Fase 1",
         color: "#82ff1f"
     },
