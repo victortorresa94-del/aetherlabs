@@ -14,7 +14,9 @@ import {
     Coins,
     Server,
     Activity,
-    ChevronDown
+    ChevronDown,
+    Database,
+    FileText
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -24,7 +26,7 @@ import { useEffect, useState, useRef } from "react";
 
 export default function LosMejoresHumosProposal() {
     const [currentSlide, setCurrentSlide] = useState(1);
-    const totalSlides = 9; // Hero, Context, Benefits, Functions, Architecture, Requirements, Tech Cost, Maintenance, Final Investment
+    const totalSlides = 10; // Hero, Context, Benefits, Functions, Architecture, Tech Cost, Infrastructure Detail, Maintenance, Requirements, Final Investment
     const containerRef = useRef<HTMLDivElement>(null);
 
     // Track scroll for nav visibility
@@ -99,12 +101,12 @@ export default function LosMejoresHumosProposal() {
                             <span className="text-[#82ff1f] font-mono text-sm tracking-widest uppercase">Propuesta de Implementación • Fase 1</span>
                         </div>
 
-                        <h1 className="text-5xl md:text-8xl font-bold tracking-tight leading-none text-white mb-8">
-                            Chatbot Conversacional <br />
-                            <span className="text-zinc-500">Impulsado por IA</span>
+                        <h1 className="font-light text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] leading-[1.1] tracking-[-0.02em] mb-8 text-white">
+                            <span className="block text-white/90">Chatbot Conversacional</span>
+                            <span className="block font-semibold text-white">Impulsado por IA</span>
                         </h1>
 
-                        <p className="text-xl md:text-3xl text-zinc-400 max-w-3xl leading-relaxed border-l-4 border-[#82ff1f] pl-8">
+                        <p className="text-lg md:text-xl font-normal max-w-2xl text-zinc-400 leading-relaxed">
                             Inteligencia artificial que entiende, aprende y resuelve dudas operativas para eliminar el cuello de botella en soporte y formación.
                         </p>
 
@@ -198,20 +200,13 @@ export default function LosMejoresHumosProposal() {
                             transition={{ duration: 0.8 }}
                             className="relative flex justify-center"
                         >
-                            <div className="absolute inset-0 bg-[#82ff1f]/20 blur-[100px] rounded-full opacity-30" />
-                            <div className="relative aspect-square w-full max-w-lg rounded-3xl overflow-hidden border border-zinc-800 shadow-2xl bg-zinc-900">
+                            <div className="relative aspect-[3/4] w-full max-w-xs rounded-2xl overflow-hidden">
                                 <Image
                                     src="/images/widow-robot.jpg"
                                     alt="Widow Robot"
                                     fill
-                                    className="object-cover hover:scale-105 transition-transform duration-700"
+                                    className="object-cover"
                                 />
-                                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black via-black/90 to-transparent p-8 pt-32">
-                                    <div className="flex items-center gap-3">
-                                        <span className="w-2.5 h-2.5 rounded-full bg-[#82ff1f] animate-pulse" />
-                                        <span className="text-[#82ff1f] text-sm font-mono tracking-widest uppercase">System Online</span>
-                                    </div>
-                                </div>
                             </div>
                         </motion.div>
                     </div>
@@ -342,57 +337,231 @@ export default function LosMejoresHumosProposal() {
                 </div>
             </section>
 
-            {/* SLIDE 7: Maintenance & Infra (NEW) */}
-            <section data-slide="7" className="h-screen w-full snap-start bg-black flex items-center justify-center relative overflow-hidden">
-                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#82ff1f]/50 to-transparent" />
+            {/* SLIDE 7: Infrastructure Detail (NEW) */}
+            <section data-slide="7" className="min-h-screen w-full snap-start bg-zinc-950 flex items-center justify-center py-16 relative border-t border-zinc-900">
                 <div className="container px-4 md:px-6">
-                    <div className="max-w-5xl mx-auto bg-zinc-900/30 border border-zinc-800 rounded-3xl p-8 md:p-12 relative overflow-hidden backdrop-blur-md">
-                        <div className="grid md:grid-cols-2 gap-12">
-                            <div className="space-y-8">
-                                <div>
-                                    <Badge className="bg-white text-black hover:bg-zinc-200 mb-4">Mantenimiento y Soporte</Badge>
-                                    <h2 className="text-3xl md:text-5xl font-bold mb-4">Infraestructura <br />Gestionada</h2>
-                                    <p className="text-zinc-400 text-lg">
-                                        Para evitar gestiones técnicas por vuestra parte, proponemos un precio mensual único y cerrado que lo incluye todo.
-                                    </p>
-                                </div>
+                    <div className="mb-10 text-center">
+                        <Badge variant="outline" className="border-zinc-700 text-zinc-400 mb-4">Desglose Técnico</Badge>
+                        <h2 className="text-3xl md:text-4xl font-bold">Infraestructura Necesaria</h2>
+                        <p className="text-zinc-500 mt-2 max-w-xl mx-auto text-sm">Coste mensual real de los servicios que mantienen el chatbot en producción.</p>
+                    </div>
 
-                                <div className="space-y-4">
-                                    {[
-                                        "Pago y gestión de servidores (Vercel/Node.js)",
-                                        "Consumo de IA (Tokens) incluido con margen de seguridad",
-                                        "Bases de datos Vectoriales (Supabase)",
-                                        "Monitorización, Logs y Ajustes continuos",
-                                        "Soporte técnico directo ante incidencias"
-                                    ].map((item, i) => (
-                                        <div key={i} className="flex items-center gap-3">
-                                            <CheckCircle2 className="w-5 h-5 text-[#82ff1f] flex-shrink-0" />
-                                            <span className="text-zinc-300">{item}</span>
-                                        </div>
-                                    ))}
-                                </div>
+                    <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-4 max-w-6xl mx-auto">
+                        {/* Backend */}
+                        <div className="bg-black p-5 rounded-xl border border-zinc-800 group hover:border-zinc-700 transition-colors">
+                            <div className="flex items-center justify-between mb-3">
+                                <Server className="w-6 h-6 text-blue-400" />
+                                <span className="text-xl font-bold text-white">20€</span>
                             </div>
+                            <h4 className="font-bold text-white text-sm mb-1">Backend Node.js</h4>
+                            <p className="text-zinc-500 text-xs mb-3">API / "Cerebro" del chatbot</p>
+                            <ul className="text-xs text-zinc-600 space-y-1 border-t border-zinc-900 pt-3">
+                                <li>• Vercel Pro</li>
+                                <li>• Serverless Functions</li>
+                                <li>• Escalado automático</li>
+                                <li>• HTTPS + Seguridad</li>
+                            </ul>
+                        </div>
 
-                            <div className="flex flex-col justify-center items-center bg-black rounded-2xl border border-zinc-800 p-8 shadow-2xl relative">
-                                <div className="absolute inset-0 bg-[#82ff1f]/5 blur-3xl opacity-50" />
-                                <div className="relative z-10 text-center space-y-2">
-                                    <span className="text-zinc-500 font-mono text-sm uppercase tracking-widest">Cuota Mensual "Todo Incluido"</span>
-                                    <div className="text-7xl font-bold text-white tracking-tighter">100€</div>
-                                    <div className="bg-zinc-900/80 px-4 py-2 rounded-full text-xs text-zinc-400 border border-zinc-800 mt-4 inline-block">
-                                        Olvídate de facturas de proveedores
-                                    </div>
-                                </div>
-                                <Button className="w-full mt-8 bg-white text-black hover:bg-zinc-200 font-bold">
-                                    Ver detalles del servicio
-                                </Button>
+                        {/* Database */}
+                        <div className="bg-black p-5 rounded-xl border border-zinc-800 group hover:border-zinc-700 transition-colors">
+                            <div className="flex items-center justify-between mb-3">
+                                <Database className="w-6 h-6 text-emerald-400" />
+                                <span className="text-xl font-bold text-white">25€</span>
+                            </div>
+                            <h4 className="font-bold text-white text-sm mb-1">Base de Datos</h4>
+                            <p className="text-zinc-500 text-xs mb-3">PostgreSQL gestionado</p>
+                            <ul className="text-xs text-zinc-600 space-y-1 border-t border-zinc-900 pt-3">
+                                <li>• Supabase Pro</li>
+                                <li>• Usuarios, sesiones, config</li>
+                                <li>• Backups automáticos</li>
+                                <li>• Conexiones simultáneas</li>
+                            </ul>
+                        </div>
+
+                        {/* Vector DB */}
+                        <div className="bg-black p-5 rounded-xl border border-zinc-800 group hover:border-zinc-700 transition-colors">
+                            <div className="flex items-center justify-between mb-3">
+                                <BrainCircuit className="w-6 h-6 text-purple-400" />
+                                <span className="text-xl font-bold text-[#82ff1f]">0€</span>
+                            </div>
+                            <h4 className="font-bold text-white text-sm mb-1">Vector Database</h4>
+                            <p className="text-zinc-500 text-xs mb-3">Memoria del conocimiento</p>
+                            <ul className="text-xs text-zinc-600 space-y-1 border-t border-zinc-900 pt-3">
+                                <li>• Incluido en Supabase Pro</li>
+                                <li>• FAQs, manuales, docs</li>
+                                <li>• Búsqueda semántica</li>
+                                <li>• Respuestas con contexto</li>
+                            </ul>
+                        </div>
+
+                        {/* Storage */}
+                        <div className="bg-black p-5 rounded-xl border border-zinc-800 group hover:border-zinc-700 transition-colors">
+                            <div className="flex items-center justify-between mb-3">
+                                <FileText className="w-6 h-6 text-amber-400" />
+                                <span className="text-xl font-bold text-zinc-400">0-5€</span>
+                            </div>
+                            <h4 className="font-bold text-white text-sm mb-1">Storage Archivos</h4>
+                            <p className="text-zinc-500 text-xs mb-3">PDFs, documentos, logs</p>
+                            <ul className="text-xs text-zinc-600 space-y-1 border-t border-zinc-900 pt-3">
+                                <li>• Supabase Storage (S3)</li>
+                                <li>• Normalmente 0€</li>
+                                <li>• Depende del volumen</li>
+                            </ul>
+                        </div>
+
+                        {/* Auth */}
+                        <div className="bg-black p-5 rounded-xl border border-zinc-800 group hover:border-zinc-700 transition-colors">
+                            <div className="flex items-center justify-between mb-3">
+                                <Lock className="w-6 h-6 text-red-400" />
+                                <span className="text-xl font-bold text-[#82ff1f]">0€</span>
+                            </div>
+                            <h4 className="font-bold text-white text-sm mb-1">Auth & Seguridad</h4>
+                            <p className="text-zinc-500 text-xs mb-3">Control de acceso</p>
+                            <ul className="text-xs text-zinc-600 space-y-1 border-t border-zinc-900 pt-3">
+                                <li>• Supabase Auth</li>
+                                <li>• Protección API</li>
+                                <li>• Anti-abuso</li>
+                            </ul>
+                        </div>
+
+                        {/* Logs */}
+                        <div className="bg-black p-5 rounded-xl border border-zinc-800 group hover:border-zinc-700 transition-colors">
+                            <div className="flex items-center justify-between mb-3">
+                                <Activity className="w-6 h-6 text-cyan-400" />
+                                <span className="text-xl font-bold text-[#82ff1f]">0€</span>
+                            </div>
+                            <h4 className="font-bold text-white text-sm mb-1">Logs & Monitorización</h4>
+                            <p className="text-zinc-500 text-xs mb-3">Errores, llamadas, caídas</p>
+                            <ul className="text-xs text-zinc-600 space-y-1 border-t border-zinc-900 pt-3">
+                                <li>• Logs Vercel</li>
+                                <li>• Logs Supabase</li>
+                                <li>• Incluido en Pro</li>
+                            </ul>
+                        </div>
+
+                        {/* Domain */}
+                        <div className="bg-black p-5 rounded-xl border border-zinc-800 group hover:border-zinc-700 transition-colors">
+                            <div className="flex items-center justify-between mb-3">
+                                <Zap className="w-6 h-6 text-zinc-500" />
+                                <span className="text-xl font-bold text-zinc-500">0-2€</span>
+                            </div>
+                            <h4 className="font-bold text-white text-sm mb-1">Dominio Técnico</h4>
+                            <p className="text-zinc-500 text-xs mb-3">api.aetherlabs.es</p>
+                            <ul className="text-xs text-zinc-600 space-y-1 border-t border-zinc-900 pt-3">
+                                <li>• Opcional</li>
+                                <li>• Subdominio existente</li>
+                            </ul>
+                        </div>
+
+                        {/* Total Summary Card */}
+                        <div className="bg-zinc-900/50 p-5 rounded-xl border border-[#82ff1f]/20 relative overflow-hidden">
+                            <div className="absolute inset-0 bg-[#82ff1f]/5 blur-2xl" />
+                            <div className="relative z-10">
+                                <h4 className="font-bold text-[#82ff1f] text-xs uppercase tracking-wider mb-2">Total Infraestructura</h4>
+                                <div className="text-3xl font-bold text-white mb-2">45-52€<span className="text-sm font-normal text-zinc-500">/mes</span></div>
+                                <p className="text-xs text-zinc-500">Sin incluir tokens de IA (10-50€ adicionales)</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            {/* SLIDE 8: Requirements */}
-            <section data-slide="8" className="h-screen w-full snap-start bg-zinc-950 flex items-center justify-center border-t border-zinc-900">
+            {/* SLIDE 8: Maintenance & Infra - Two Options */}
+            <section data-slide="8" className="min-h-screen w-full snap-start bg-black flex items-center justify-center relative overflow-hidden py-16">
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#82ff1f]/50 to-transparent" />
+                <div className="container px-4 md:px-6">
+                    <div className="text-center mb-12">
+                        <Badge className="bg-white text-black hover:bg-zinc-200 mb-4">Mantenimiento Mensual</Badge>
+                        <h2 className="text-3xl md:text-5xl font-bold mb-4">Elige tu Modalidad</h2>
+                        <p className="text-zinc-400 max-w-2xl mx-auto">Dos opciones para gestionar la infraestructura del chatbot según vuestras preferencias.</p>
+                    </div>
+
+                    <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                        {/* Option A: Self-Managed */}
+                        <div className="bg-zinc-900/30 border border-zinc-800 rounded-3xl p-8 relative">
+                            <div className="mb-6">
+                                <span className="text-zinc-500 font-mono text-xs uppercase tracking-widest">Opción A</span>
+                                <h3 className="text-2xl font-bold text-white mt-2">Autogestión</h3>
+                                <p className="text-zinc-500 text-sm mt-2">Vosotros gestionáis las cuentas de los proveedores directamente.</p>
+                            </div>
+
+                            <div className="space-y-3 mb-8">
+                                {[
+                                    "Pagáis directamente a Vercel, Supabase, etc.",
+                                    "Control total de vuestras facturas",
+                                    "Configuración inicial incluida",
+                                    "Formación para gestión básica"
+                                ].map((item, i) => (
+                                    <div key={i} className="flex items-start gap-3">
+                                        <CheckCircle2 className="w-4 h-4 text-zinc-500 mt-0.5 flex-shrink-0" />
+                                        <span className="text-zinc-400 text-sm">{item}</span>
+                                    </div>
+                                ))}
+                            </div>
+
+                            <div className="border-t border-zinc-800 pt-6">
+                                <div className="flex items-baseline gap-2">
+                                    <span className="text-4xl font-bold text-white">50-70€</span>
+                                    <span className="text-zinc-500">/mes aprox.</span>
+                                </div>
+                                <p className="text-zinc-600 text-xs mt-2">Coste real de proveedores. Sin margen.</p>
+                            </div>
+
+                            <div className="mt-6 p-4 bg-amber-500/5 border border-amber-500/20 rounded-xl">
+                                <p className="text-amber-400 text-xs font-medium flex items-center gap-2">
+                                    <Activity className="w-4 h-4" />
+                                    Cualquier ajuste, mejora o incidencia se factura aparte
+                                </p>
+                            </div>
+                        </div>
+
+                        {/* Option B: Fully Managed (Recommended) */}
+                        <div className="bg-zinc-900/50 border-2 border-[#82ff1f]/30 rounded-3xl p-8 relative shadow-[0_0_60px_rgba(130,255,31,0.05)]">
+                            <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#82ff1f] text-black text-[10px] font-bold px-4 py-1 rounded-full uppercase tracking-wider">
+                                Recomendado
+                            </div>
+
+                            <div className="mb-6">
+                                <span className="text-[#82ff1f] font-mono text-xs uppercase tracking-widest">Opción B</span>
+                                <h3 className="text-2xl font-bold text-white mt-2">Todo Gestionado</h3>
+                                <p className="text-zinc-400 text-sm mt-2">Nosotros nos encargamos de absolutamente todo.</p>
+                            </div>
+
+                            <div className="space-y-3 mb-8">
+                                {[
+                                    "Pago y gestión de todos los proveedores",
+                                    "Consumo de IA (Tokens) incluido",
+                                    "Monitorización y ajustes continuos",
+                                    "Soporte técnico directo ilimitado",
+                                    "Sin sorpresas ni facturas extra"
+                                ].map((item, i) => (
+                                    <div key={i} className="flex items-start gap-3">
+                                        <CheckCircle2 className="w-4 h-4 text-[#82ff1f] mt-0.5 flex-shrink-0" />
+                                        <span className="text-zinc-300 text-sm">{item}</span>
+                                    </div>
+                                ))}
+                            </div>
+
+                            <div className="border-t border-zinc-700 pt-6">
+                                <div className="flex items-baseline gap-2">
+                                    <span className="text-5xl font-bold text-white">120€</span>
+                                    <span className="text-zinc-500">/mes</span>
+                                </div>
+                                <p className="text-zinc-500 text-xs mt-2">Precio cerrado. Todo incluido.</p>
+                            </div>
+
+                            <Button className="w-full mt-6 bg-[#82ff1f] text-black hover:bg-[#72e61b] font-bold">
+                                Elegir esta opción
+                            </Button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+            {/* SLIDE 9: Requirements */}
+            <section data-slide="9" className="h-screen w-full snap-start bg-zinc-950 flex items-center justify-center border-t border-zinc-900">
                 <div className="container px-4 md:px-6">
                     <div className="max-w-3xl mx-auto text-center mb-12">
                         <h2 className="text-3xl font-bold mb-4">Qué necesitamos para empezar</h2>
@@ -446,8 +615,8 @@ export default function LosMejoresHumosProposal() {
                 </div>
             </section>
 
-            {/* SLIDE 9: Investment (Final) */}
-            <section data-slide="9" className="h-screen w-full snap-start bg-black flex items-center justify-center relative border-t border-zinc-900">
+            {/* SLIDE 10: Investment (Final) */}
+            <section data-slide="10" className="h-screen w-full snap-start bg-black flex items-center justify-center relative border-t border-zinc-900">
                 <div className="container px-4 md:px-6">
                     <div className="relative max-w-4xl mx-auto overflow-hidden rounded-3xl border border-zinc-800 bg-zinc-950">
                         <div className="absolute top-0 right-0 w-64 h-64 bg-[#82ff1f]/10 blur-[100px]" />
@@ -480,7 +649,7 @@ export default function LosMejoresHumosProposal() {
                                 <span className="text-zinc-500 font-mono mb-2">PAGO ÚNICO</span>
                                 <span className="text-6xl font-bold text-white tracking-tight">1.000€</span>
                                 <span className="text-zinc-500 text-sm mt-4 text-center max-w-xs">
-                                    + 100€/mes infraestructura y soporte
+                                    + desde 50€/mes (autogestión) o 120€/mes (todo incluido)
                                 </span>
                             </div>
                         </div>
