@@ -22,7 +22,8 @@ import {
     Sparkles,
     Rocket,
     PiggyBank,
-    BarChart3
+    BarChart3,
+    Eye
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -36,6 +37,112 @@ export default function LosMejoresHumosProposal() {
     const [currentSlide, setCurrentSlide] = useState(1);
     const totalSlides = 12; // Added Business Impact Slide
     const containerRef = useRef<HTMLDivElement>(null);
+    const [selectedModel, setSelectedModel] = useState<"deepseek" | "gpt" | "gemini">("deepseek");
+
+    const pricingModels = {
+        deepseek: {
+            id: 'deepseek',
+            name: 'DeepSeek-V3',
+            description: 'El modelo más eficiente calidad/precio del mercado actual.',
+            color: 'text-[#82ff1f]',
+            borderColor: 'border-[#82ff1f]',
+            prices: {
+                inputCache: '0,024€',
+                input: '0,24€',
+                output: '0,36€'
+            },
+            examples: {
+                low: '≈ 1,5 €',
+                med: '≈ 7-10 €',
+                high: '≈ 25 €',
+                calc: '≈ 1,5 €'
+            },
+            consumption: {
+                short: "Coste insignificante",
+                brief: "Coste muy bajo",
+                complex: "Coste bajo"
+            },
+            calculationText: (
+                <>
+                    1.000 consultas/mes × 5.000 tokens = 5.000.000 tokens<br />
+                    <span className="text-zinc-500 text-xs block mt-1">
+                        Input (30%): 1,5M × 0,28$ = 0,42$<br />
+                        Output (70%): 3,5M × 0,42$ = 1,47$<br />
+                        <strong>Total ≈ 1,89$ ≈ 1,60€ / mes</strong>
+                    </span>
+                </>
+            ),
+            vision: false
+        },
+        gpt: {
+            id: 'gpt',
+            name: 'GPT-5 mini',
+            description: 'Una versión más económica y rápida de GPT-5 para tareas claras y concretas.',
+            color: 'text-blue-400',
+            borderColor: 'border-blue-400',
+            prices: {
+                inputCache: '0,021€',
+                input: '0,21€',
+                output: '1,72€'
+            },
+            examples: {
+                low: '≈ 3–4 €',
+                med: '≈ 18–25 €',
+                high: '≈ 60 €',
+                calc: '≈ 6,35 €'
+            },
+            consumption: {
+                short: "Coste bajo",
+                brief: "Coste medio",
+                complex: "Coste alto"
+            },
+            calculationText: (
+                <>
+                    Total tokens: 5.000.000<br />
+                    <span className="text-zinc-500 text-xs block mt-1">
+                        Input (30%): 1,5M × 0,25$ = 0,375$<br />
+                        Output (70%): 3,5M × 2,00$ = 7,00$<br />
+                        <strong>Total ≈ 7,38$ ≈ 6,35€ / mes</strong>
+                    </span>
+                </>
+            ),
+            vision: true
+        },
+        gemini: {
+            id: 'gemini',
+            name: 'Gemini 2.5 flash-lite',
+            description: 'Es nuestro modelo más pequeño y rentable, recomendado por incluir Visión.',
+            color: 'text-purple-400',
+            borderColor: 'border-purple-400',
+            prices: {
+                inputCache: '0,009€',
+                input: '0,09€',
+                output: '0,34€'
+            },
+            examples: {
+                low: '≈ 1 €',
+                med: '≈ 4–6 €',
+                high: '≈ 15 €',
+                calc: '≈ 1,3 €'
+            },
+            consumption: {
+                short: "Coste insignificante",
+                brief: "Coste muy bajo",
+                complex: "Coste bajo"
+            },
+            calculationText: (
+                <>
+                    Total tokens: 5.000.000<br />
+                    <span className="text-zinc-500 text-xs block mt-1">
+                        Input (30%): 1,5M × 0,10$ = 0,15$<br />
+                        Output (70%): 3,5M × 0,40$ = 1,40$<br />
+                        <strong>Total ≈ 1,55$ ≈ 1,30€ / mes</strong>
+                    </span>
+                </>
+            ),
+            vision: true
+        }
+    };
 
     // Track scroll for nav visibility
     const { scrollY } = useScroll();
@@ -352,8 +459,8 @@ export default function LosMejoresHumosProposal() {
             <section data-slide="5" className="min-h-screen w-full snap-start bg-zinc-950 flex items-center justify-center border-t border-zinc-900 py-12 md:py-20">
                 <div className="container px-4 md:px-6">
                     <div className="mb-8 md:mb-12 text-center">
-                        <h2 className="text-2xl md:text-5xl font-bold mb-4">Capacidades Extendidas</h2>
-                        <p className="text-zinc-400 text-base md:text-xl">Potencia real desde el día 1.</p>
+                        <h2 className="text-2xl md:text-5xl font-bold mb-4">Capacidades de Widow</h2>
+                        <p className="text-zinc-400 text-base md:text-xl">¿Qué puede hacer el asistente IA?</p>
                     </div>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
@@ -365,7 +472,7 @@ export default function LosMejoresHumosProposal() {
                             { icon: MessageSquare, title: "Contexto Real", desc: "Entiende referencias a preguntas anteriores (memoria)." },
                             { icon: Lock, title: "Seguridad Garantizada", desc: "Solo responde con información aprobada y documentada." },
                             { icon: BrainCircuit, title: "Base Vectorial", desc: "Alimentado con manuales, PDFs y FAQs existentes." },
-                            { icon: CheckCircle2, title: "Escalado Inteligente", desc: "Sabe cuándo transferir el ticket a un humano." }
+                            { icon: CheckCircle2, title: "Tickets Inteligentes", desc: "Widow sabe cuándo debe transferir a un humano, recopila toda la información y genera un ticket notificando al equipo." }
                         ].map((item, i) => (
                             <motion.div
                                 initial={{ opacity: 0, y: 20 }}
@@ -411,38 +518,63 @@ export default function LosMejoresHumosProposal() {
                             <div>
                                 <h2 className="text-3xl md:text-4xl font-bold mb-4">Coste de Inteligencia Artificial</h2>
                                 <p className="text-zinc-400 text-lg leading-relaxed mb-6">
-                                    El chatbot funciona mediante el consumo de <strong>tokens</strong> (unidades de texto). El coste depende directamente del volumen de uso y la complejidad de las respuestas.
+                                    El chatbot funciona mediante el consumo de <strong>tokens</strong> (unidades de texto). Puedes alternar entre opciones para comparar:
                                 </p>
-                                <div className="border-l-4 border-[#82ff1f] pl-6 py-1">
-                                    <p className="text-white font-medium text-lg">
-                                        Modelo elegido: <span className="text-[#82ff1f]">DeepSeek-V3</span>
+
+                                {/* Model Switcher */}
+                                <div className="flex p-1 bg-zinc-900 rounded-xl mb-6 border border-zinc-800">
+                                    {Object.values(pricingModels).map((model) => (
+                                        <button
+                                            key={model.id}
+                                            onClick={() => setSelectedModel(model.id as any)}
+                                            className={`flex-1 py-2 text-xs md:text-sm font-medium rounded-lg transition-all ${selectedModel === model.id
+                                                ? "bg-zinc-800 text-white shadow-sm"
+                                                : "text-zinc-500 hover:text-zinc-300"
+                                                }`}
+                                        >
+                                            {model.name}
+                                        </button>
+                                    ))}
+                                </div>
+
+                                <div className={`border-l-4 pl-6 py-1 ${pricingModels[selectedModel].borderColor}`}>
+                                    <p className="text-white font-medium text-lg flex items-center gap-2">
+                                        Modelo elegido: <span className={pricingModels[selectedModel].color}>{pricingModels[selectedModel].name}</span>
+                                        {pricingModels[selectedModel].vision && (
+                                            <Badge variant="outline" className="text-[10px] bg-white/5 border-white/20 text-white flex gap-1 items-center ml-2">
+                                                <Eye className="w-3 h-3" /> Vision
+                                            </Badge>
+                                        )}
                                     </p>
-                                    <p className="text-zinc-500 text-sm">El modelo más eficiente calidad/precio del mercado actual.</p>
+                                    <p className="text-zinc-500 text-sm mt-1">{pricingModels[selectedModel].description}</p>
                                 </div>
                             </div>
 
-                            <div className="bg-zinc-900 rounded-2xl p-6 border border-zinc-800 shadow-xl">
+                            <div className="bg-zinc-900 rounded-2xl p-6 border border-zinc-800 shadow-xl transition-all duration-300">
                                 <h4 className="text-white font-bold mb-6 flex items-center gap-3 text-lg">
-                                    <Coins className="w-5 h-5 text-[#82ff1f]" />
+                                    <Coins className={`w-5 h-5 ${pricingModels[selectedModel].color}`} />
                                     Precios de Mercado (1M tokens)
                                 </h4>
                                 <ul className="space-y-4 text-sm text-zinc-400">
                                     <li className="flex justify-between items-center">
                                         <span>Entrada (Cache Hit)</span>
-                                        <span className="text-white font-mono bg-zinc-800 px-2 py-0.5 rounded">0,026€</span>
+                                        <span className="text-white font-mono bg-zinc-800 px-2 py-0.5 rounded">{pricingModels[selectedModel].prices.inputCache}</span>
                                     </li>
                                     <li className="flex justify-between items-center">
                                         <span>Entrada (Normal)</span>
-                                        <span className="text-white font-mono bg-zinc-800 px-2 py-0.5 rounded">0,26€</span>
+                                        <span className="text-white font-mono bg-zinc-800 px-2 py-0.5 rounded">{pricingModels[selectedModel].prices.input}</span>
                                     </li>
                                     <li className="flex justify-between items-center border-t border-zinc-700 pt-3">
-                                        <span className="text-[#82ff1f]">Salida (Generado)</span>
-                                        <span className="text-[#82ff1f] font-bold font-mono text-lg">0,39€</span>
+                                        <span className={pricingModels[selectedModel].color}>Salida (Generado)</span>
+                                        <span className={`${pricingModels[selectedModel].color} font-bold font-mono text-lg`}>{pricingModels[selectedModel].prices.output}</span>
                                     </li>
                                 </ul>
                             </div>
-                            <p className="text-center text-[#82ff1f] font-mono text-[10px] mt-4 uppercase tracking-widest">
-                                1 MILLON DE TOKENS : 750.000 PALABRAS ≈ 0,40€
+                            <p className="text-center text-white font-mono text-[10px] mt-4 uppercase tracking-widest">
+                                30% INPUT - 70% OUTPUT
+                            </p>
+                            <p className="text-center text-[#82ff1f] font-mono text-[10px] mt-1 uppercase tracking-widest">
+                                1 MILLON DE TOKENS : 750.000 PALABRAS
                             </p>
                         </div>
 
@@ -452,23 +584,23 @@ export default function LosMejoresHumosProposal() {
                             {/* Examples */}
                             <div>
                                 <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
-                                    <Zap className="w-5 h-5 text-[#82ff1f]" /> Ejemplos de Consumo Real
+                                    <Zap className={`w-5 h-5 ${pricingModels[selectedModel].color}`} /> Ejemplos de Consumo Real
                                 </h3>
                                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                                     <div className="bg-black border border-zinc-800 p-5 rounded-2xl hover:border-zinc-700 transition-colors">
                                         <div className="text-zinc-500 text-[10px] font-bold uppercase mb-3 tracking-wider">Frase Corta (~20 tokens)</div>
-                                        <p className="text-[#82ff1f] text-sm italic font-medium">"¿Dónde puedo subir un producto?"</p>
-                                        <div className="mt-3 text-[10px] text-zinc-600 text-right">Coste insignificante</div>
+                                        <p className={`${pricingModels[selectedModel].color} text-sm italic font-medium`}>"¿Dónde puedo subir un producto?"</p>
+                                        <div className="mt-3 text-[10px] text-zinc-600 text-right">{pricingModels[selectedModel].consumption.short}</div>
                                     </div>
                                     <div className="bg-black border border-zinc-800 p-5 rounded-2xl hover:border-zinc-700 transition-colors">
                                         <div className="text-zinc-500 text-[10px] font-bold uppercase mb-3 tracking-wider">Respuesta Breve (~400 tokens)</div>
                                         <p className="text-zinc-300 text-sm italic">"Para subir un producto ve a Inventario &gt; Añadir. Rellena nombre, variedad y precio..."</p>
-                                        <div className="mt-3 text-[10px] text-zinc-600 text-right">~0.0001$</div>
+                                        <div className="mt-3 text-[10px] text-zinc-600 text-right">{pricingModels[selectedModel].consumption.brief}</div>
                                     </div>
                                     <div className="bg-black border border-zinc-800 p-5 rounded-2xl hover:border-zinc-700 transition-colors col-span-1 md:col-span-3 lg:col-span-1">
                                         <div className="text-zinc-500 text-[10px] font-bold uppercase mb-3 tracking-wider">Compleja (~1k tokens)</div>
-                                        <p className="text-zinc-300 text-sm italic">"Explicación paso a paso de cómo configurar la impresora de tickets, incluyendo la instalación de drivers, configuración de puertos y pruebas de impresión final para asegurar que el logotipo sale centrado..."</p>
-                                        <div className="mt-3 text-[10px] text-zinc-600 text-right">~0.0004$</div>
+                                        <p className="text-zinc-300 text-sm italic">"Explicación paso a paso de cómo configurar..."</p>
+                                        <div className="mt-3 text-[10px] text-zinc-600 text-right">{pricingModels[selectedModel].consumption.complex}</div>
                                     </div>
                                 </div>
                             </div>
@@ -476,7 +608,7 @@ export default function LosMejoresHumosProposal() {
                             {/* Projections */}
                             <div>
                                 <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
-                                    <BarChart3 className="w-5 h-5 text-[#82ff1f]" /> Proyección Mensual Estimada
+                                    <BarChart3 className={`w-5 h-5 ${pricingModels[selectedModel].color}`} /> Proyección Mensual Estimada
                                 </h3>
                                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                                     {/* Low */}
@@ -484,15 +616,15 @@ export default function LosMejoresHumosProposal() {
                                         <div className="absolute top-0 right-0 w-24 h-24 bg-zinc-800/20 rounded-full -mr-12 -mt-12 transition-transform group-hover:scale-150" />
                                         <h4 className="text-zinc-400 font-bold mb-1">Bajo</h4>
                                         <p className="text-xs text-zinc-600 mb-4">1.000 consultas/mes</p>
-                                        <div className="text-3xl font-bold text-white">≈ 2€ <span className="text-sm font-normal text-zinc-500">/mes</span></div>
+                                        <div className="text-3xl font-bold text-white max-w-full truncate">{pricingModels[selectedModel].examples.low} <span className="text-sm font-normal text-zinc-500">/mes</span></div>
                                     </div>
 
                                     {/* Medium */}
-                                    <div className="bg-zinc-900/50 p-6 rounded-2xl border border-[#82ff1f]/30 relative overflow-hidden group">
-                                        <div className="absolute top-0 right-0 w-32 h-32 bg-[#82ff1f]/10 rounded-full -mr-12 -mt-12 blur-2xl transition-opacity group-hover:opacity-100" />
+                                    <div className={`bg-zinc-900/50 p-6 rounded-2xl border ${pricingModels[selectedModel].borderColor}/30 relative overflow-hidden group`}>
+                                        <div className={`absolute top-0 right-0 w-32 h-32 ${selectedModel === 'deepseek' ? 'bg-[#82ff1f]/10' : selectedModel === 'gpt' ? 'bg-blue-500/10' : 'bg-purple-500/10'} rounded-full -mr-12 -mt-12 blur-2xl transition-opacity group-hover:opacity-100`} />
                                         <h4 className="text-white font-bold mb-1">Medio (Normal)</h4>
-                                        <p className="text-xs text-[#82ff1f] mb-4">5.000 consultas/mes</p>
-                                        <div className="text-4xl font-bold text-white">≈ 10-15€ <span className="text-sm font-normal text-zinc-500">/mes</span></div>
+                                        <p className={`text-xs ${pricingModels[selectedModel].color} mb-4`}>5.000 consultas/mes</p>
+                                        <div className="text-4xl font-bold text-white max-w-full truncate">{pricingModels[selectedModel].examples.med} <span className="text-sm font-normal text-zinc-500">/mes</span></div>
                                         <p className="text-[10px] text-zinc-400 mt-2">Uso activo diario</p>
                                     </div>
 
@@ -501,33 +633,33 @@ export default function LosMejoresHumosProposal() {
                                         <div className="absolute top-0 right-0 w-24 h-24 bg-amber-500/10 rounded-full -mr-12 -mt-12 transition-transform group-hover:scale-150" />
                                         <h4 className="text-zinc-400 font-bold mb-1">Alto</h4>
                                         <p className="text-xs text-amber-600 mb-4">15.000+ consultas</p>
-                                        <div className="text-3xl font-bold text-white">≈ 35€ <span className="text-sm font-normal text-zinc-500">/mes</span></div>
+                                        <div className="text-3xl font-bold text-white max-w-full truncate">{pricingModels[selectedModel].examples.high} <span className="text-sm font-normal text-zinc-500">/mes</span></div>
                                         <p className="text-[10px] text-zinc-500 mt-2">Uso masivo 24/7</p>
                                     </div>
                                 </div>
                             </div>
 
                             <p className="text-xs text-zinc-500 italic mt-4 text-center bg-zinc-900/50 p-3 rounded-lg border border-zinc-800/50">
-                                Estos costes son estimados y dependen del uso real. Se facturará el consumo exacto de la API, sin margen añadido por gestión en la opción de pago directo.
+                                Estos costes son estimados y dependen del uso real. Se facturará el consumo exacto de la API.
                             </p>
-                        </div>
-                    </div>
 
-                    {/* New Full Width Banner */}
-                    <div className="mt-12 pt-8 border-t border-zinc-900">
-                        <div className="bg-zinc-900/30 p-6 rounded-2xl border border-zinc-800 flex flex-col md:flex-row items-center justify-between text-center md:text-left gap-6">
-                            <div>
-                                <h4 className="text-white font-bold text-lg mb-1 flex items-center justify-center md:justify-start gap-2">
-                                    <span className="text-[#82ff1f]">Ejemplo Práctico</span> de Cálculo
-                                </h4>
-                                <p className="text-zinc-400 text-sm">
-                                    1.000 consultas/mes × 5.000 tokens <span className="text-zinc-600 text-xs">(5 respuestas/consulta)</span> = 5.000.000 tokens
-                                </p>
-                            </div>
-                            <div className="flex bg-black px-6 py-3 rounded-xl border border-zinc-800 items-baseline gap-2">
-                                <span className="text-zinc-500 text-xs uppercase font-bold mr-2">Coste Aprox</span>
-                                <span className="text-3xl font-bold text-[#82ff1f]">≈ 2,10€</span>
-                                <span className="text-zinc-500 text-sm">/mes</span>
+                            {/* New Full Width Banner */}
+                            <div className="mt-8 pt-8 border-t border-zinc-900">
+                                <div className="bg-zinc-900/30 p-6 rounded-2xl border border-zinc-800 flex flex-col md:flex-row items-center justify-between text-center md:text-left gap-6">
+                                    <div>
+                                        <h4 className="text-white font-bold text-lg mb-1 flex items-center justify-center md:justify-start gap-2">
+                                            <span className={pricingModels[selectedModel].color}>Ejemplo Práctico</span> de Cálculo
+                                        </h4>
+                                        <p className="text-zinc-400 text-sm">
+                                            {pricingModels[selectedModel].calculationText}
+                                        </p>
+                                    </div>
+                                    <div className="flex bg-black px-6 py-3 rounded-xl border border-zinc-800 items-baseline gap-2">
+                                        <span className="text-zinc-500 text-xs uppercase font-bold mr-2">Coste Aprox</span>
+                                        <span className={`text-3xl font-bold ${pricingModels[selectedModel].color}`}>{pricingModels[selectedModel].examples.calc}</span>
+                                        <span className="text-zinc-500 text-sm">/mes</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -796,7 +928,7 @@ export default function LosMejoresHumosProposal() {
                             </div>
                             <div className="bg-zinc-900/50 p-8 md:p-12 flex flex-col justify-center items-center border-l-0 md:border-l border-zinc-900 border-t md:border-t-0">
                                 <span className="text-zinc-500 font-mono text-[10px] md:text-xs mb-2 uppercase tracking-widest">PAGO ÚNICO</span>
-                                <span className="text-4xl sm:text-5xl md:text-6xl font-bold text-white tracking-tight">1.200€</span>
+                                <span className="text-4xl sm:text-5xl md:text-6xl font-bold text-white tracking-tight">1.299€</span>
                             </div>
                         </div>
                     </div>
@@ -837,10 +969,10 @@ export default function LosMejoresHumosProposal() {
 
                             <div className="border-t border-zinc-800 pt-6">
                                 <div className="flex items-baseline gap-2">
-                                    <span className="text-3xl md:text-4xl font-bold text-white">50-70€</span>
+                                    <span className="text-3xl md:text-4xl font-bold text-white">50-60€</span>
                                     <span className="text-zinc-500">/mes aprox.</span>
                                 </div>
-                                <p className="text-zinc-600 text-xs mt-2">Coste real de proveedores. Sin margen.</p>
+                                <p className="text-zinc-600 text-xs mt-2">Coste real de proveedores. Dependiendo del consumo de la API.</p>
                             </div>
 
                             <div className="mt-6 p-4 bg-amber-500/5 border border-amber-500/20 rounded-xl">

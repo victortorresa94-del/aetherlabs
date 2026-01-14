@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Database, Cpu, Monitor, Zap, ArrowRight, Server, Shield, FileText, BarChart3, Coins, MessageSquare } from "lucide-react";
+import { Database, Cpu, Monitor, Zap, ArrowRight, Server, Shield, FileText, BarChart3, Coins, MessageSquare, ArrowDown, Mail } from "lucide-react";
 
 export default function ArchitectureDiagram() {
     return (
@@ -157,6 +157,7 @@ export default function ArchitectureDiagram() {
                     </div>
 
                     {/* Knowledge & Logs combined or separate? Keeping original Sources logic */}
+                    {/* Knowledge & Logs */}
                     <div className="bg-zinc-950 border border-zinc-800 rounded-xl p-4">
                         <h5 className="text-xs text-zinc-400 font-bold uppercase mb-3 flex items-center gap-2">
                             <FileText className="w-3 h-3" /> Fuentes
@@ -168,6 +169,27 @@ export default function ArchitectureDiagram() {
                                 </div>
                             ))}
                         </div>
+                    </div>
+
+                    {/* Connector Arrow */}
+                    <div className="col-span-2 flex justify-center -my-2">
+                        <ArrowDown className="w-5 h-5 text-zinc-600" />
+                    </div>
+
+                    {/* Notification System */}
+                    <div className="col-span-2 bg-zinc-900/80 border border-pink-900/30 rounded-xl p-4">
+                        <div className="flex items-center gap-3 mb-2">
+                            <div className="w-9 h-9 rounded-lg bg-pink-950/40 flex items-center justify-center">
+                                <Mail className="w-4 h-4 text-pink-500" />
+                            </div>
+                            <div>
+                                <h4 className="font-bold text-white text-sm">Notificación Humana</h4>
+                                <p className="text-[10px] text-pink-500">Email / Ticketing</p>
+                            </div>
+                        </div>
+                        <p className="text-[10px] text-zinc-500 mt-1 pl-12">
+                            Si la IA no sabe o detecta incidencia, envía email inmediato al equipo con todo el contexto.
+                        </p>
                     </div>
                 </motion.div>
 
