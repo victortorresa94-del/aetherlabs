@@ -82,7 +82,7 @@ export default function ArchitectureDiagram() {
                         {/* Sub-modules */}
                         <div className="grid grid-cols-2 gap-3 relative z-10">
                             <div className="bg-zinc-900/30 p-3 rounded-lg border border-zinc-800/50">
-                                <div className="flex items-center gap-2 text-zinc-400 text-xs font-bold mb-2">
+                                <div className="flex items-center gap-2 text-[#82ff1f] text-xs font-bold mb-2">
                                     <Shield className="w-3 h-3" /> SEGURIDAD
                                 </div>
                                 <ul className="text-[10px] text-zinc-500 space-y-1">
@@ -92,7 +92,7 @@ export default function ArchitectureDiagram() {
                                 </ul>
                             </div>
                             <div className="bg-zinc-900/30 p-3 rounded-lg border border-zinc-800/50">
-                                <div className="flex items-center gap-2 text-zinc-400 text-xs font-bold mb-2">
+                                <div className="flex items-center gap-2 text-[#82ff1f] text-xs font-bold mb-2">
                                     <Coins className="w-3 h-3" /> CONTROL DE COSTE
                                 </div>
                                 <ul className="text-[10px] text-zinc-500 space-y-1">
@@ -106,7 +106,7 @@ export default function ArchitectureDiagram() {
                     <ArrowRight className="w-5 h-5 text-zinc-600 flex-shrink-0" />
                 </motion.div>
 
-                {/* 4. External Services (Supabase + DeepSeek + Knowledge + Logs) */}
+                {/* 4. External Services */}
                 <motion.div
                     initial={{ opacity: 0, x: 20 }}
                     whileInView={{ opacity: 1, x: 0 }}
@@ -114,7 +114,7 @@ export default function ArchitectureDiagram() {
                     transition={{ delay: 0.3 }}
                     className="flex-shrink-0 grid grid-cols-2 gap-4 w-[380px]"
                 >
-                    {/* Supabase */}
+                    {/* Supabase Vectors */}
                     <div className="bg-zinc-900/80 border border-emerald-900/30 rounded-xl p-4">
                         <div className="flex items-center gap-3 mb-3">
                             <div className="w-9 h-9 rounded-lg bg-emerald-950/40 flex items-center justify-center">
@@ -123,12 +123,27 @@ export default function ArchitectureDiagram() {
                             <div>
                                 <h4 className="font-bold text-white text-sm">Supabase</h4>
                                 <p className="text-[10px] text-emerald-500">Vector Database</p>
+                                <p className="text-[9px] text-zinc-500 mt-1">Memoria semántica (Embeddings)</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Supabase SQL (NEW) */}
+                    <div className="bg-zinc-900/80 border border-emerald-900/30 rounded-xl p-4">
+                        <div className="flex items-center gap-3 mb-3">
+                            <div className="w-9 h-9 rounded-lg bg-emerald-950/40 flex items-center justify-center">
+                                <Database className="w-4 h-4 text-emerald-500" />
+                            </div>
+                            <div>
+                                <h4 className="font-bold text-white text-sm">PostgreSQL</h4>
+                                <p className="text-[10px] text-emerald-500">Supabase SQL</p>
+                                <p className="text-[9px] text-zinc-500 mt-1">Usuarios y configuración</p>
                             </div>
                         </div>
                     </div>
 
                     {/* DeepSeek */}
-                    <div className="bg-zinc-900/80 border border-indigo-900/30 rounded-xl p-4">
+                    <div className="bg-zinc-900/80 border border-indigo-900/30 rounded-xl p-4 text-left">
                         <div className="flex items-center gap-3 mb-3">
                             <div className="w-9 h-9 rounded-lg bg-indigo-950/40 flex items-center justify-center">
                                 <Cpu className="w-4 h-4 text-indigo-400" />
@@ -136,34 +151,23 @@ export default function ArchitectureDiagram() {
                             <div>
                                 <h4 className="font-bold text-white text-sm">DeepSeek API</h4>
                                 <p className="text-[10px] text-indigo-400">LLM Engine</p>
+                                <p className="text-[9px] text-zinc-500 mt-1">Razonamiento y generación</p>
                             </div>
                         </div>
                     </div>
 
-                    {/* Knowledge Sources */}
+                    {/* Knowledge & Logs combined or separate? Keeping original Sources logic */}
                     <div className="bg-zinc-950 border border-zinc-800 rounded-xl p-4">
                         <h5 className="text-xs text-zinc-400 font-bold uppercase mb-3 flex items-center gap-2">
-                            <FileText className="w-3 h-3" /> Fuentes Conocimiento
+                            <FileText className="w-3 h-3" /> Fuentes
                         </h5>
                         <div className="grid grid-cols-2 gap-2">
-                            {["Docs Software", "FAQs", "Manuales", "Info Cannabis"].map((src, i) => (
+                            {["Docs", "FAQs", "Manuales", "Videos"].map((src, i) => (
                                 <div key={i} className="bg-black border border-zinc-800 p-1.5 rounded text-[9px] text-zinc-500 text-center">
                                     {src}
                                 </div>
                             ))}
                         </div>
-                    </div>
-
-                    {/* Logs & Metrics */}
-                    <div className="bg-zinc-950 border border-zinc-800 rounded-xl p-4">
-                        <h5 className="text-xs text-zinc-400 font-bold uppercase mb-2 flex items-center gap-2">
-                            <BarChart3 className="w-3 h-3" /> Logs & Mejora
-                        </h5>
-                        <ul className="text-[10px] text-zinc-600 space-y-1">
-                            <li>• Historial Conversaciones</li>
-                            <li>• Métricas de Calidad</li>
-                            <li>• Ajuste continuo prompts</li>
-                        </ul>
                     </div>
                 </motion.div>
 

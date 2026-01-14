@@ -41,6 +41,7 @@ const phases = [
             "Páginas automáticas de producto"
         ],
         cta: "Ver fase 2",
+        link: "/propuestas/los-mejores-humos/fase2",
         color: "#82ff1f"
     },
     {
@@ -57,6 +58,7 @@ const phases = [
             "Prospección y apoyo a ventas (RAMI / LMH)"
         ],
         cta: "Ver fase 3",
+        link: "/propuestas/los-mejores-humos/fase3",
         color: "#82ff1f"
     },
     {
@@ -71,6 +73,7 @@ const phases = [
             "Esta fase no es prioritaria y se evalúa de forma independiente."
         ],
         cta: "Ver fase 4",
+        link: "/propuestas/los-mejores-humos/fase4",
         color: "#82ff1f"
     }
 ];

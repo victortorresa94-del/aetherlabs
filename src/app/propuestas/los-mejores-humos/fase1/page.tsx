@@ -21,7 +21,8 @@ import {
     TrendingUp,
     Sparkles,
     Rocket,
-    PiggyBank
+    PiggyBank,
+    BarChart3
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -383,7 +384,7 @@ export default function LosMejoresHumosProposal() {
                 <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(130,255,31,0.03),transparent_70%)]" />
                 <div className="container px-4 md:px-6 h-full flex flex-col justify-center">
                     <div className="text-center mb-6 md:mb-8">
-                        <h2 className="text-2xl md:text-5xl font-bold mb-4">Arquitectura Técnica Segura</h2>
+                        <h2 className="text-2xl md:text-5xl font-bold mb-4">Arquitectura Técnica</h2>
                         <p className="text-zinc-400 max-w-2xl mx-auto text-xs md:text-base">
                             El cerebro IA vive en una capa intermedia segura, protegiendo vuestro core PHP.
                         </p>
@@ -397,72 +398,132 @@ export default function LosMejoresHumosProposal() {
                 </div>
             </section>
 
-            {/* SLIDE 7: Technical Cost Detail (NEW) */}
+            {/* SLIDE 7: Technical Cost Detail (EXPANDED) */}
             <section data-slide="7" className="min-h-screen w-full snap-start bg-zinc-950 flex items-center justify-center relative border-t border-zinc-900 py-12 md:py-20">
                 <div className="container px-4 md:px-6">
-                    <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-start">
-                        {/* Left: Explanation */}
-                        <div className="w-full md:w-1/3 space-y-4 md:space-y-6">
-                            <h2 className="text-2xl md:text-4xl font-bold">Coste de Inteligencia Artificial</h2>
-                            <div className="space-y-3 md:space-y-4 text-zinc-400 text-sm md:text-lg">
-                                <p>El chatbot funciona mediante el consumo de <strong>tokens</strong> (unidades de texto). El coste depende directamente del volumen de uso.</p>
-                                <p className="text-white font-medium border-l-2 border-[#82ff1f] pl-4">El gasto es variable pero predecible y siempre controlable.</p>
+                    <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 items-start">
+                        {/* Left: Explanation & Pricing */}
+                        <div className="w-full lg:w-1/3 space-y-8">
+                            <div>
+                                <h2 className="text-3xl md:text-4xl font-bold mb-4">Coste de Inteligencia Artificial</h2>
+                                <p className="text-zinc-400 text-lg leading-relaxed mb-6">
+                                    El chatbot funciona mediante el consumo de <strong>tokens</strong> (unidades de texto). El coste depende directamente del volumen de uso y la complejidad de las respuestas.
+                                </p>
+                                <div className="border-l-4 border-[#82ff1f] pl-6 py-1">
+                                    <p className="text-white font-medium text-lg">
+                                        Modelo elegido: <span className="text-[#82ff1f]">DeepSeek-V3</span>
+                                    </p>
+                                    <p className="text-zinc-500 text-sm">El modelo más eficiente calidad/precio del mercado actual.</p>
+                                </div>
                             </div>
 
-                            <div className="bg-zinc-900 rounded-xl p-5 md:p-6 border border-zinc-800 mt-6 md:mt-8">
-                                <h4 className="text-white font-bold mb-4 flex items-center gap-2 text-sm md:text-base">
+                            <div className="bg-zinc-900 rounded-2xl p-6 border border-zinc-800 shadow-xl">
+                                <h4 className="text-white font-bold mb-6 flex items-center gap-3 text-lg">
                                     <Coins className="w-5 h-5 text-[#82ff1f]" />
-                                    ¿Qué es un token?
+                                    Precios de Mercado (1M tokens)
                                 </h4>
-                                <ul className="space-y-2 text-xs md:text-sm text-zinc-400">
-                                    <li>• 1 frase corta ≈ 20 tokens</li>
-                                    <li>• 1 respuesta breve ≈ 400 tokens</li>
-                                    <li>• 1 respuesta detallada ≈ 1.000 tokens</li>
+                                <ul className="space-y-4 text-sm text-zinc-400">
+                                    <li className="flex justify-between items-center">
+                                        <span>Entrada (Cache Hit)</span>
+                                        <span className="text-white font-mono bg-zinc-800 px-2 py-0.5 rounded">0,026€</span>
+                                    </li>
+                                    <li className="flex justify-between items-center">
+                                        <span>Entrada (Normal)</span>
+                                        <span className="text-white font-mono bg-zinc-800 px-2 py-0.5 rounded">0,26€</span>
+                                    </li>
+                                    <li className="flex justify-between items-center border-t border-zinc-700 pt-3">
+                                        <span className="text-[#82ff1f]">Salida (Generado)</span>
+                                        <span className="text-[#82ff1f] font-bold font-mono text-lg">0,39€</span>
+                                    </li>
                                 </ul>
                             </div>
+                            <p className="text-center text-[#82ff1f] font-mono text-[10px] mt-4 uppercase tracking-widest">
+                                1 MILLON DE TOKENS : 750.000 PALABRAS ≈ 0,40€
+                            </p>
                         </div>
 
-                        {/* Right: Scenarios */}
-                        <div className="w-full md:w-2/3 grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+                        {/* Right: Examples & Scenarios */}
+                        <div className="w-full lg:w-2/3 space-y-8">
 
-                            {/* Scenario A */}
-                            <div className="bg-black p-6 rounded-2xl border border-zinc-800 relative group overflow-hidden">
-                                <div className="absolute top-0 right-0 w-16 h-16 bg-zinc-800/50 rounded-bl-full -mr-8 -mt-8" />
-                                <h4 className="text-base md:text-lg font-bold text-zinc-300 mb-1">Escenario Bajo</h4>
-                                <p className="text-[10px] text-zinc-500 mb-4 md:mb-6 font-mono">USO CONTROLADO</p>
-                                <ul className="space-y-2 text-xs md:text-sm text-zinc-400 mb-6 md:mb-8 border-t border-zinc-900 pt-4">
-                                    <li>• 1.000 consultas/mes</li>
-                                    <li>• Respuestas breves</li>
-                                    <li>• Soporte básico</li>
-                                </ul>
-                                <div className="text-2xl md:text-3xl font-bold text-white mb-1">≈ 10€ <span className="text-sm font-normal text-zinc-500">/mes</span></div>
-                            </div>
-
-                            {/* Scenario B */}
-                            <div className="bg-zinc-900/40 p-6 rounded-2xl border border-[#82ff1f]/30 relative group shadow-[0_0_30px_rgba(130,255,31,0.05)]">
-                                <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#82ff1f] text-black text-[9px] md:text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider w-max">
-                                    Más Probable
+                            {/* Examples */}
+                            <div>
+                                <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
+                                    <Zap className="w-5 h-5 text-[#82ff1f]" /> Ejemplos de Consumo Real
+                                </h3>
+                                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                    <div className="bg-black border border-zinc-800 p-5 rounded-2xl hover:border-zinc-700 transition-colors">
+                                        <div className="text-zinc-500 text-[10px] font-bold uppercase mb-3 tracking-wider">Frase Corta (~20 tokens)</div>
+                                        <p className="text-[#82ff1f] text-sm italic font-medium">"¿Dónde puedo subir un producto?"</p>
+                                        <div className="mt-3 text-[10px] text-zinc-600 text-right">Coste insignificante</div>
+                                    </div>
+                                    <div className="bg-black border border-zinc-800 p-5 rounded-2xl hover:border-zinc-700 transition-colors">
+                                        <div className="text-zinc-500 text-[10px] font-bold uppercase mb-3 tracking-wider">Respuesta Breve (~400 tokens)</div>
+                                        <p className="text-zinc-300 text-sm italic">"Para subir un producto ve a Inventario &gt; Añadir. Rellena nombre, variedad y precio..."</p>
+                                        <div className="mt-3 text-[10px] text-zinc-600 text-right">~0.0001$</div>
+                                    </div>
+                                    <div className="bg-black border border-zinc-800 p-5 rounded-2xl hover:border-zinc-700 transition-colors col-span-1 md:col-span-3 lg:col-span-1">
+                                        <div className="text-zinc-500 text-[10px] font-bold uppercase mb-3 tracking-wider">Compleja (~1k tokens)</div>
+                                        <p className="text-zinc-300 text-sm italic">"Explicación paso a paso de cómo configurar la impresora de tickets, incluyendo la instalación de drivers, configuración de puertos y pruebas de impresión final para asegurar que el logotipo sale centrado..."</p>
+                                        <div className="mt-3 text-[10px] text-zinc-600 text-right">~0.0004$</div>
+                                    </div>
                                 </div>
-                                <h4 className="text-base md:text-lg font-bold text-white mb-1">Escenario Medio</h4>
-                                <p className="text-[10px] text-[#82ff1f] mb-4 md:mb-6 font-mono">USO INTENSIVO NORMAL</p>
-                                <ul className="space-y-2 text-xs md:text-sm text-zinc-300 mb-6 md:mb-8 border-t border-zinc-800 pt-4">
-                                    <li>• 2k - 4k consultas/mes</li>
-                                    <li>• Respuestas elaboradas</li>
-                                    <li>• Onboarding + Soporte</li>
-                                </ul>
-                                <div className="text-2xl md:text-3xl font-bold text-white mb-1">≈ 25€ <span className="text-sm font-normal text-zinc-500">/mes</span></div>
                             </div>
 
-                            {/* Scenario C */}
-                            <div className="bg-black p-6 rounded-2xl border border-zinc-800 relative group overflow-hidden">
-                                <h4 className="text-base md:text-lg font-bold text-zinc-300 mb-1">Escenario Alto</h4>
-                                <p className="text-[10px] text-amber-500 mb-4 md:mb-6 font-mono">CRECIMIENTO FUERTE</p>
-                                <ul className="space-y-2 text-xs md:text-sm text-zinc-400 mb-6 md:mb-8 border-t border-zinc-900 pt-4">
-                                    <li>• 5.000+ consultas/mes</li>
-                                    <li>• Canal principal</li>
-                                    <li>• Uso continuo 24h</li>
-                                </ul>
-                                <div className="text-2xl md:text-3xl font-bold text-white mb-1">≈ 45€ <span className="text-sm font-normal text-zinc-500">/mes</span></div>
+                            {/* Projections */}
+                            <div>
+                                <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
+                                    <BarChart3 className="w-5 h-5 text-[#82ff1f]" /> Proyección Mensual Estimada
+                                </h3>
+                                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                    {/* Low */}
+                                    <div className="bg-zinc-900/30 p-6 rounded-2xl border border-zinc-800 relative overflow-hidden group">
+                                        <div className="absolute top-0 right-0 w-24 h-24 bg-zinc-800/20 rounded-full -mr-12 -mt-12 transition-transform group-hover:scale-150" />
+                                        <h4 className="text-zinc-400 font-bold mb-1">Bajo</h4>
+                                        <p className="text-xs text-zinc-600 mb-4">1.000 consultas/mes</p>
+                                        <div className="text-3xl font-bold text-white">≈ 2€ <span className="text-sm font-normal text-zinc-500">/mes</span></div>
+                                    </div>
+
+                                    {/* Medium */}
+                                    <div className="bg-zinc-900/50 p-6 rounded-2xl border border-[#82ff1f]/30 relative overflow-hidden group">
+                                        <div className="absolute top-0 right-0 w-32 h-32 bg-[#82ff1f]/10 rounded-full -mr-12 -mt-12 blur-2xl transition-opacity group-hover:opacity-100" />
+                                        <h4 className="text-white font-bold mb-1">Medio (Normal)</h4>
+                                        <p className="text-xs text-[#82ff1f] mb-4">5.000 consultas/mes</p>
+                                        <div className="text-4xl font-bold text-white">≈ 10-15€ <span className="text-sm font-normal text-zinc-500">/mes</span></div>
+                                        <p className="text-[10px] text-zinc-400 mt-2">Uso activo diario</p>
+                                    </div>
+
+                                    {/* High */}
+                                    <div className="bg-zinc-900/30 p-6 rounded-2xl border border-zinc-800 relative overflow-hidden group">
+                                        <div className="absolute top-0 right-0 w-24 h-24 bg-amber-500/10 rounded-full -mr-12 -mt-12 transition-transform group-hover:scale-150" />
+                                        <h4 className="text-zinc-400 font-bold mb-1">Alto</h4>
+                                        <p className="text-xs text-amber-600 mb-4">15.000+ consultas</p>
+                                        <div className="text-3xl font-bold text-white">≈ 35€ <span className="text-sm font-normal text-zinc-500">/mes</span></div>
+                                        <p className="text-[10px] text-zinc-500 mt-2">Uso masivo 24/7</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <p className="text-xs text-zinc-500 italic mt-4 text-center bg-zinc-900/50 p-3 rounded-lg border border-zinc-800/50">
+                                Estos costes son estimados y dependen del uso real. Se facturará el consumo exacto de la API, sin margen añadido por gestión en la opción de pago directo.
+                            </p>
+                        </div>
+                    </div>
+
+                    {/* New Full Width Banner */}
+                    <div className="mt-12 pt-8 border-t border-zinc-900">
+                        <div className="bg-zinc-900/30 p-6 rounded-2xl border border-zinc-800 flex flex-col md:flex-row items-center justify-between text-center md:text-left gap-6">
+                            <div>
+                                <h4 className="text-white font-bold text-lg mb-1 flex items-center justify-center md:justify-start gap-2">
+                                    <span className="text-[#82ff1f]">Ejemplo Práctico</span> de Cálculo
+                                </h4>
+                                <p className="text-zinc-400 text-sm">
+                                    1.000 consultas/mes × 5.000 tokens <span className="text-zinc-600 text-xs">(5 respuestas/consulta)</span> = 5.000.000 tokens
+                                </p>
+                            </div>
+                            <div className="flex bg-black px-6 py-3 rounded-xl border border-zinc-800 items-baseline gap-2">
+                                <span className="text-zinc-500 text-xs uppercase font-bold mr-2">Coste Aprox</span>
+                                <span className="text-3xl font-bold text-[#82ff1f]">≈ 2,10€</span>
+                                <span className="text-zinc-500 text-sm">/mes</span>
                             </div>
                         </div>
                     </div>
@@ -487,11 +548,11 @@ export default function LosMejoresHumosProposal() {
                             </div>
                             <h4 className="font-bold text-white text-sm mb-1">Backend Node.js</h4>
                             <p className="text-zinc-500 text-[10px] md:text-xs mb-3">API / "Cerebro" del chatbot</p>
+                            <div className="text-[#82ff1f] text-xs font-bold mb-3 uppercase tracking-wider">VERCEL PRO</div>
                             <ul className="text-[10px] md:text-xs text-zinc-600 space-y-1 border-t border-zinc-900 pt-3">
-                                <li>• Vercel Pro</li>
-                                <li>• Serverless Functions</li>
-                                <li>• Escalado automático</li>
-                                <li>• HTTPS + Seguridad</li>
+                                <li>• Ejecución del chat en la nube</li>
+                                <li>• Respuesta ultrarrápida (Edge)</li>
+                                <li>• Sin servidores que mantener</li>
                             </ul>
                         </div>
 
@@ -503,11 +564,11 @@ export default function LosMejoresHumosProposal() {
                             </div>
                             <h4 className="font-bold text-white text-sm mb-1">Base de Datos</h4>
                             <p className="text-zinc-500 text-[10px] md:text-xs mb-3">PostgreSQL gestionado</p>
+                            <div className="text-[#82ff1f] text-xs font-bold mb-3 uppercase tracking-wider">SUPABASE PRO</div>
                             <ul className="text-[10px] md:text-xs text-zinc-600 space-y-1 border-t border-zinc-900 pt-3">
-                                <li>• Supabase Pro</li>
-                                <li>• Usuarios, sesiones, config</li>
-                                <li>• Backups automáticos</li>
-                                <li>• Conexiones simultáneas</li>
+                                <li>• Gestión de usuarios y permisos</li>
+                                <li>• Copias de seguridad diarias</li>
+                                <li>• Panel de control visual</li>
                             </ul>
                         </div>
 
@@ -519,6 +580,7 @@ export default function LosMejoresHumosProposal() {
                             </div>
                             <h4 className="font-bold text-white text-sm mb-1">Vector Database</h4>
                             <p className="text-zinc-500 text-[10px] md:text-xs mb-3">Memoria del conocimiento</p>
+                            <div className="text-[#82ff1f] text-xs font-bold mb-3 uppercase tracking-wider">SUPABASE VECTORS</div>
                             <ul className="text-[10px] md:text-xs text-zinc-600 space-y-1 border-t border-zinc-900 pt-3">
                                 <li>• Incluido en Supabase Pro</li>
                                 <li>• FAQs, manuales, docs</li>
@@ -535,10 +597,11 @@ export default function LosMejoresHumosProposal() {
                             </div>
                             <h4 className="font-bold text-white text-sm mb-1">Storage Archivos</h4>
                             <p className="text-zinc-500 text-[10px] md:text-xs mb-3">PDFs, documentos, logs</p>
+                            <div className="text-[#82ff1f] text-xs font-bold mb-3 uppercase tracking-wider">SUPABASE STORAGE</div>
                             <ul className="text-[10px] md:text-xs text-zinc-600 space-y-1 border-t border-zinc-900 pt-3">
-                                <li>• Supabase Storage (S3)</li>
-                                <li>• Normalmente 0€</li>
-                                <li>• Depende del volumen</li>
+                                <li>• Alojamiento de PDFs/Docs</li>
+                                <li>• Copias de seguridad de manuales</li>
+                                <li>• Acceso rápido y seguro</li>
                             </ul>
                         </div>
 
@@ -550,10 +613,11 @@ export default function LosMejoresHumosProposal() {
                             </div>
                             <h4 className="font-bold text-white text-sm mb-1">Auth & Seguridad</h4>
                             <p className="text-zinc-500 text-[10px] md:text-xs mb-3">Control de acceso</p>
+                            <div className="text-[#82ff1f] text-xs font-bold mb-3 uppercase tracking-wider">SUPABASE AUTH</div>
                             <ul className="text-[10px] md:text-xs text-zinc-600 space-y-1 border-t border-zinc-900 pt-3">
-                                <li>• Supabase Auth</li>
-                                <li>• Protección API</li>
-                                <li>• Anti-abuso</li>
+                                <li>• Protección de la API</li>
+                                <li>• Sistemas anti-abuso y límites</li>
+                                <li>• Gestión segura de claves</li>
                             </ul>
                         </div>
 
@@ -565,10 +629,11 @@ export default function LosMejoresHumosProposal() {
                             </div>
                             <h4 className="font-bold text-white text-sm mb-1">Logs & Monitorización</h4>
                             <p className="text-zinc-500 text-[10px] md:text-xs mb-3">Errores, llamadas, caídas</p>
+                            <div className="text-[#82ff1f] text-xs font-bold mb-3 uppercase tracking-wider">VERCEL LOGS</div>
                             <ul className="text-[10px] md:text-xs text-zinc-600 space-y-1 border-t border-zinc-900 pt-3">
-                                <li>• Logs Vercel</li>
-                                <li>• Logs Supabase</li>
-                                <li>• Incluido en Pro</li>
+                                <li>• Historial de errores</li>
+                                <li>• Alerta de caídas</li>
+                                <li>• Monitorización en tiempo real</li>
                             </ul>
                         </div>
 
@@ -581,8 +646,9 @@ export default function LosMejoresHumosProposal() {
                             <h4 className="font-bold text-white text-sm mb-1">Dominio Técnico</h4>
                             <p className="text-zinc-500 text-[10px] md:text-xs mb-3">api.aetherlabs.es</p>
                             <ul className="text-[10px] md:text-xs text-zinc-600 space-y-1 border-t border-zinc-900 pt-3">
-                                <li>• Opcional</li>
-                                <li>• Subdominio existente</li>
+                                <li>• Dirección web profesional</li>
+                                <li>• Certificados SSL seguros</li>
+                                <li>• Mejor reputación técnica</li>
                             </ul>
                         </div>
 
@@ -591,7 +657,7 @@ export default function LosMejoresHumosProposal() {
                             <div className="absolute inset-0 bg-[#82ff1f]/5 blur-2xl" />
                             <div className="relative z-10">
                                 <h4 className="font-bold text-[#82ff1f] text-xs uppercase tracking-wider mb-2">Total Infraestructura</h4>
-                                <div className="text-3xl font-bold text-white mb-2">45-52€<span className="text-sm font-normal text-zinc-500">/mes</span></div>
+                                <div className="text-3xl font-bold text-white mb-2">50€ aprox<span className="text-sm font-normal text-zinc-500">/mes</span></div>
                                 <p className="text-xs text-zinc-500">Sin incluir tokens de IA (10-50€ adicionales)</p>
                             </div>
                         </div>
@@ -599,13 +665,146 @@ export default function LosMejoresHumosProposal() {
                 </div>
             </section>
 
-            {/* SLIDE 9: Maintenance & Infra - Two Options */}
-            <section data-slide="9" className="min-h-screen w-full snap-start bg-black flex items-center justify-center relative overflow-hidden py-12 md:py-20">
+            {/* SLIDE 9: Roadmap / Timeline (NEW) */}
+            <section data-slide="9" className="min-h-screen w-full snap-start bg-zinc-950 flex items-center justify-center border-t border-zinc-900 py-12 md:py-20">
+                <div className="container px-4 md:px-6">
+                    <div className="text-center mb-12">
+                        <Badge variant="outline" className="border-zinc-700 text-zinc-400 mb-4">Roadmap de Implementación</Badge>
+                        <h2 className="text-3xl md:text-5xl font-bold mb-4">Cómo implementamos a Widow</h2>
+                        <p className="text-zinc-400 max-w-2xl mx-auto">Cuatro semanas para transformar la atención al cliente con IA.</p>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-4 gap-6 max-w-7xl mx-auto relative">
+                        {/* Connecting Line (Desktop) */}
+                        <div className="hidden md:block absolute top-12 left-0 w-full h-0.5 bg-zinc-800 -z-10" />
+
+                        {[
+                            {
+                                week: "Semana 1",
+                                title: "Preparación y Entendimiento",
+                                desc: "Recopilación de documentación, análisis de consultas reales y definición del tono y límites.",
+                                items: [
+                                    "Recopilación de documentación (FAQs, manuales)",
+                                    "Revisión de consultas reales de soporte",
+                                    "Definición de tono, límites, comportamiento",
+                                    "Diseño del comportamiento (respuesta vs humano)"
+                                ]
+                            },
+                            {
+                                week: "Semana 2",
+                                title: "Construcción y Entrenamiento",
+                                desc: "Configuración de la base de conocimiento y enseñanza del 'cerebro' del chatbot.",
+                                items: [
+                                    "Configuración de la infraestructura",
+                                    "Entrenamiento del agente",
+                                    "Configuración de la Base de Conocimiento",
+                                    "Definición de prompts internos y reglas",
+                                    "Conversión de contenidos a formato entrenable"
+                                ]
+                            },
+                            {
+                                week: "Semana 3",
+                                title: "Integración Técnica",
+                                desc: "Desarrollo del widget, conexión segura y pruebas dentro del entorno PHP.",
+                                items: [
+                                    "Desarrollo del widget del chatbot",
+                                    "Integración mediante iframe/componente",
+                                    "Conexión segura con infraestructura externa",
+                                    "Pruebas de funcionamiento en entorno PHP",
+                                    "Pruebas de funcionamiento dentro del software"
+                                ]
+                            },
+                            {
+                                week: "Semana 4",
+                                title: "Pruebas y Optimización",
+                                desc: "Validación con casos reales, ajustes finales de respuestas y puesta en producción.",
+                                items: [
+                                    "Pruebas con casos reales de usuarios",
+                                    "Ajustes de respuestas confusas o incompletas",
+                                    "Optimización de costes y tiempos",
+                                    "Preparación para uso continuo y producción",
+                                    "Detección de errores y nuevas posibles preguntas y respuestas"
+                                ]
+                            }
+                        ].map((phase, i) => (
+                            <motion.div
+                                key={i}
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: i * 0.1 }}
+                                className="bg-black border border-zinc-800 p-6 rounded-2xl relative group hover:border-zinc-700 transition-colors"
+                            >
+                                <div className="w-8 h-8 rounded-full bg-zinc-900 border border-zinc-700 flex items-center justify-center text-xs font-bold text-zinc-400 mb-4 md:absolute md:-top-4 md:left-1/2 md:-translate-x-1/2 md:bg-black z-10 group-hover:border-[#82ff1f] group-hover:text-[#82ff1f] transition-colors">
+                                    {i + 1}
+                                </div>
+                                <div className="text-[#82ff1f] text-xs font-bold uppercase tracking-wider mb-2">{phase.week}</div>
+                                <h3 className="text-white font-bold text-lg mb-3 leading-tight">{phase.title}</h3>
+                                <ul className="text-zinc-500 text-xs space-y-2">
+                                    {phase.items.map((item, j) => (
+                                        <li key={j} className="flex items-start gap-2">
+                                            <div className="w-1 h-1 bg-zinc-600 rounded-full mt-1.5" />
+                                            {item}
+                                        </li>
+                                    ))}
+                                </ul>
+                            </motion.div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* SLIDE 10: Investment (Final) */}
+            <section data-slide="10" className="min-h-screen w-full snap-start bg-black flex items-center justify-center relative border-t border-zinc-900 py-12 md:py-20">
+                <div className="container px-4 md:px-6">
+                    <div className="relative max-w-4xl mx-auto overflow-hidden rounded-3xl border border-zinc-800 bg-zinc-950">
+                        <div className="absolute top-0 right-0 w-64 h-64 bg-[#82ff1f]/10 blur-[100px]" />
+
+                        <div className="grid md:grid-cols-2">
+                            <div className="p-8 md:p-12 space-y-6 md:space-y-8">
+                                <div>
+                                    <h2 className="text-2xl md:text-3xl font-bold mb-2">Inversión Fase 1</h2>
+                                    <p className="text-zinc-400 text-sm md:text-base">Proyecto llave en mano</p>
+                                </div>
+                                <div className="space-y-3 md:space-y-4">
+                                    <div className="flex items-center gap-3">
+                                        <CheckCircle2 className="w-4 h-4 md:w-5 md:h-5 text-[#82ff1f]" />
+                                        <span className="text-zinc-300 text-sm md:text-base">Desarrollo del Cerebro IA</span>
+                                    </div>
+                                    <div className="flex items-center gap-3">
+                                        <CheckCircle2 className="w-4 h-4 md:w-5 md:h-5 text-[#82ff1f]" />
+                                        <span className="text-zinc-300 text-sm md:text-base">Integración de Widget</span>
+                                    </div>
+                                    <div className="flex items-center gap-3">
+                                        <CheckCircle2 className="w-4 h-4 md:w-5 md:h-5 text-[#82ff1f]" />
+                                        <span className="text-zinc-300 text-sm md:text-base">Puesta en Marcha y Tuning</span>
+                                    </div>
+                                    <div className="flex items-center gap-3">
+                                        <CheckCircle2 className="w-4 h-4 md:w-5 md:h-5 text-[#82ff1f]" />
+                                        <span className="text-zinc-300 text-sm md:text-base">Revisión y optimización</span>
+                                    </div>
+                                </div>
+                                <Link href="https://wa.me/34627281459?text=Hola%20Víctor!%20He%20revisado%20la%20propuesta%20de%20la%20Fase%201%20para%20Los%20Mejores%20Humos%20y%20me%20gustaría%20aprobar%20el%20presupuesto%20para%20empezar." target="_blank" className="w-full md:w-auto mt-4 inline-block">
+                                    <Button className="bg-[#82ff1f] text-black hover:bg-[#72e61b] rounded-full px-8 py-5 md:py-6 text-base md:text-lg font-bold w-full">
+                                        Aprobar Presupuesto
+                                    </Button>
+                                </Link>
+                            </div>
+                            <div className="bg-zinc-900/50 p-8 md:p-12 flex flex-col justify-center items-center border-l-0 md:border-l border-zinc-900 border-t md:border-t-0">
+                                <span className="text-zinc-500 font-mono text-[10px] md:text-xs mb-2 uppercase tracking-widest">PAGO ÚNICO</span>
+                                <span className="text-4xl sm:text-5xl md:text-6xl font-bold text-white tracking-tight">1.200€</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* SLIDE 11: Maintenance & Infra - Two Options */}
+            <section data-slide="11" className="min-h-screen w-full snap-start bg-black flex items-center justify-center relative overflow-hidden py-12 md:py-20">
                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#82ff1f]/50 to-transparent" />
                 <div className="container px-4 md:px-6">
                     <div className="text-center mb-8 md:mb-12">
-                        <Badge className="bg-white text-black hover:bg-zinc-200 mb-4">Mantenimiento Mensual</Badge>
-                        <h2 className="text-2xl md:text-5xl font-bold mb-4">Elige tu Modalidad</h2>
+                        <h2 className="text-2xl md:text-5xl font-bold mb-4">Mantenimiento Mensual</h2>
                         <p className="text-zinc-400 max-w-2xl mx-auto text-sm md:text-base">Dos opciones para gestionar la infraestructura del chatbot según vuestras preferencias.</p>
                     </div>
 
@@ -681,19 +880,20 @@ export default function LosMejoresHumosProposal() {
                                     <span className="text-zinc-500">/mes</span>
                                 </div>
                                 <p className="text-zinc-500 text-xs mt-2">Precio cerrado. Todo incluido.</p>
+                                <div className="mt-4 bg-[#82ff1f]/10 p-3 rounded-lg border border-[#82ff1f]/20">
+                                    <p className="text-[#82ff1f] text-xs font-bold text-center">
+                                        🎁 Primer mes incluido en el precio inicial
+                                    </p>
+                                </div>
                             </div>
 
-                            <Button className="w-full mt-6 bg-[#82ff1f] text-black hover:bg-[#72e61b] font-bold">
-                                Elegir esta opción
-                            </Button>
                         </div>
                     </div>
                 </div>
             </section>
 
-
-            {/* SLIDE 10: Requirements */}
-            <section data-slide="10" className="min-h-screen w-full snap-start bg-zinc-950 flex items-center justify-center border-t border-zinc-900 py-12 md:py-20">
+            {/* SLIDE 12: Requirements (Moved here) */}
+            <section data-slide="12" className="min-h-screen w-full snap-start bg-zinc-950 flex items-center justify-center border-t border-zinc-900 py-12 md:py-20">
                 <div className="container px-4 md:px-6">
                     <div className="max-w-3xl mx-auto text-center mb-8 md:mb-12">
                         <h2 className="text-2xl md:text-3xl font-bold mb-4">Qué necesitamos para empezar</h2>
@@ -747,56 +947,8 @@ export default function LosMejoresHumosProposal() {
                 </div>
             </section>
 
-            {/* SLIDE 11: Investment (Final) */}
-            <section data-slide="11" className="min-h-screen w-full snap-start bg-black flex items-center justify-center relative border-t border-zinc-900 py-12 md:py-20">
-                <div className="container px-4 md:px-6">
-                    <div className="relative max-w-4xl mx-auto overflow-hidden rounded-3xl border border-zinc-800 bg-zinc-950">
-                        <div className="absolute top-0 right-0 w-64 h-64 bg-[#82ff1f]/10 blur-[100px]" />
-
-                        <div className="grid md:grid-cols-2">
-                            <div className="p-8 md:p-12 space-y-6 md:space-y-8">
-                                <div>
-                                    <h2 className="text-2xl md:text-3xl font-bold mb-2">Inversión Fase 1</h2>
-                                    <p className="text-zinc-400 text-sm md:text-base">Proyecto llave en mano</p>
-                                </div>
-                                <div className="space-y-3 md:space-y-4">
-                                    <div className="flex items-center gap-3">
-                                        <CheckCircle2 className="w-4 h-4 md:w-5 md:h-5 text-[#82ff1f]" />
-                                        <span className="text-zinc-300 text-sm md:text-base">Desarrollo del Cerebro IA</span>
-                                    </div>
-                                    <div className="flex items-center gap-3">
-                                        <CheckCircle2 className="w-4 h-4 md:w-5 md:h-5 text-[#82ff1f]" />
-                                        <span className="text-zinc-300 text-sm md:text-base">Integración de Widget</span>
-                                    </div>
-                                    <div className="flex items-center gap-3">
-                                        <CheckCircle2 className="w-4 h-4 md:w-5 md:h-5 text-[#82ff1f]" />
-                                        <span className="text-zinc-300 text-sm md:text-base">Puesta en Marcha y Tuning</span>
-                                    </div>
-                                    <div className="flex items-center gap-3">
-                                        <CheckCircle2 className="w-4 h-4 md:w-5 md:h-5 text-[#82ff1f]" />
-                                        <span className="text-zinc-300 text-sm md:text-base">Revisión y optimización</span>
-                                    </div>
-                                </div>
-                                <Link href="https://wa.me/34627281459?text=Hola%20Víctor!%20He%20revisado%20la%20propuesta%20de%20la%20Fase%201%20para%20Los%20Mejores%20Humos%20y%20me%20gustaría%20aprobar%20el%20presupuesto%20para%20empezar." target="_blank" className="w-full md:w-auto mt-4 inline-block">
-                                    <Button className="bg-[#82ff1f] text-black hover:bg-[#72e61b] rounded-full px-8 py-5 md:py-6 text-base md:text-lg font-bold w-full">
-                                        Aprobar Presupuesto
-                                    </Button>
-                                </Link>
-                            </div>
-                            <div className="bg-zinc-900/50 p-8 md:p-12 flex flex-col justify-center items-center border-l-0 md:border-l border-zinc-900 border-t md:border-t-0">
-                                <span className="text-zinc-500 font-mono text-[10px] md:text-xs mb-2 uppercase tracking-widest">PAGO ÚNICO</span>
-                                <span className="text-4xl sm:text-5xl md:text-6xl font-bold text-white tracking-tight">1.500€</span>
-                                <span className="text-zinc-500 text-[11px] md:text-sm mt-4 text-center max-w-xs px-4">
-                                    + impuestos aplicables
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* SLIDE 12: FAQ Section */}
-            <section data-slide="12" className="min-h-screen w-full snap-start bg-zinc-950 py-12 md:py-20 border-t border-zinc-900">
+            {/* SLIDE 13: FAQ Section */}
+            <section data-slide="13" className="min-h-screen w-full snap-start bg-zinc-950 py-12 md:py-20 border-t border-zinc-900">
                 <div className="container px-4 md:px-6 max-w-6xl mx-auto">
                     <div className="mb-8 md:mb-12 text-center">
                         <h2 className="text-2xl md:text-4xl font-bold mb-4">Preguntas frecuentes (FAQ)</h2>
@@ -867,9 +1019,9 @@ export default function LosMejoresHumosProposal() {
                     </div>
 
                 </div>
-            </section>
+            </section >
 
-        </div>
+        </div >
     );
 }
 
