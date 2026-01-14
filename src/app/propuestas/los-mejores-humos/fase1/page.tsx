@@ -880,7 +880,7 @@ export default function LosMejoresHumosProposal() {
 
                             <div className="border-t border-zinc-700 pt-6">
                                 <div className="flex items-baseline gap-2">
-                                    <span className="text-4xl md:text-5xl font-bold text-white">120€</span>
+                                    <span className="text-4xl md:text-5xl font-bold text-white">99€</span>
                                     <span className="text-zinc-500">/mes</span>
                                 </div>
                                 <p className="text-zinc-500 text-xs mt-2">Precio cerrado. Todo incluido.</p>
