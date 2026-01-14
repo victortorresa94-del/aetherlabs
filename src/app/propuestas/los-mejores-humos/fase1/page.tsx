@@ -78,7 +78,11 @@ export default function LosMejoresHumosProposal() {
                     <div className="flex items-center gap-2 md:gap-4">
                         <span className="font-bold tracking-tight text-xs md:text-sm uppercase truncate max-w-[120px] md:max-w-none">Los Mejores Humos</span>
                         <span className="text-zinc-700">/</span>
-                        <Badge variant="outline" className="border-[#82ff1f] text-[#82ff1f] bg-[#82ff1f]/10 text-[10px] md:text-sm">Propuesta</Badge>
+                        <Link href="/propuestas/los-mejores-humos">
+                            <Badge variant="outline" className="border-[#82ff1f] text-[#82ff1f] bg-[#82ff1f]/10 text-[10px] md:text-sm hover:bg-[#82ff1f] hover:text-black cursor-pointer transition-colors">
+                                Propuesta
+                            </Badge>
+                        </Link>
                     </div>
                     <div className="hidden md:flex items-center gap-1">
                         <span className="text-xs text-zinc-500">Desliza para navegar</span>
