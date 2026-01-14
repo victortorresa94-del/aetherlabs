@@ -81,7 +81,7 @@ export default function Phase3Proposal() {
                 <div className="container px-4 md:px-6 relative z-10 text-center md:text-left">
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
+                        animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8 }}
                         className="max-w-5xl mx-auto md:mx-0"
                     >

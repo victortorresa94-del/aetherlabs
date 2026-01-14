@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useScroll } from "framer-motion";
-import { Search, Filter, Database, ChevronLeft, MapPin, AlertTriangle, ShieldAlert } from "lucide-react";
+import { Search, Filter, Database, ChevronLeft, MapPin, AlertTriangle, ShieldAlert, Server, ListChecks, ArrowRight } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
@@ -112,6 +112,70 @@ export default function LeadProspectingPage() {
                             </div>
                         </div>
 
+                    </div>
+                </section>
+
+                <section className="container px-4 md:px-6 mb-32">
+                    <div className="bg-zinc-900/30 border border-zinc-800 rounded-3xl p-8 md:p-12">
+                        <h2 className="text-3xl font-bold mb-12 text-center md:text-left">Detalles de Implementación</h2>
+                        <div className="grid md:grid-cols-2 gap-12">
+                            <div className="space-y-8">
+                                <div>
+                                    <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
+                                        <div className="p-2 bg-zinc-900 rounded-lg border border-zinc-800"><Server className="w-5 h-5 text-[#82ff1f]" /></div>
+                                        Infraestructura
+                                    </h3>
+                                    <p className="text-zinc-400 text-sm leading-relaxed">
+                                        Desplegamos scripts de scraping a medida (Python/Node.js) utilizando redes de <strong>Proxies Rotatorios</strong> residenciales para evitar bloqueos y acceder a datos públicos geolocalizados como si fuéramos un usuario real.
+                                    </p>
+                                </div>
+                                <div>
+                                    <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
+                                        <div className="p-2 bg-zinc-900 rounded-lg border border-zinc-800"><ListChecks className="w-5 h-5 text-[#82ff1f]" /></div>
+                                        Qué necesitamos
+                                    </h3>
+                                    <ul className="text-zinc-400 text-sm space-y-2">
+                                        <li className="flex items-start gap-2">• Definición clara del "Cliente Ideal" (Buyer Persona).</li>
+                                        <li className="flex items-start gap-2">• Zonas geográficas prioritarias (Barrios, Ciudades, Radio Km).</li>
+                                        <li className="flex items-start gap-2">• Criterios de filtrado (p.ej. "Solo con Instagram activo").</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div className="space-y-8">
+                                <div>
+                                    <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
+                                        <div className="p-2 bg-zinc-900 rounded-lg border border-zinc-800"><ArrowRight className="w-5 h-5 text-[#82ff1f]" /></div>
+                                        Roadmap Estimado
+                                    </h3>
+                                    <div className="space-y-3 relative pl-4 border-l border-zinc-800">
+                                        <div className="relative">
+                                            <div className="absolute -left-[21px] top-1.5 w-2.5 h-2.5 rounded-full bg-zinc-600" />
+                                            <h4 className="text-white text-sm font-bold">Semana 1</h4>
+                                            <p className="text-zinc-500 text-xs">Configuración de parámetros y prueba piloto.</p>
+                                        </div>
+                                        <div className="relative">
+                                            <div className="absolute -left-[21px] top-1.5 w-2.5 h-2.5 rounded-full bg-zinc-600" />
+                                            <h4 className="text-white text-sm font-bold">Semana 2</h4>
+                                            <p className="text-zinc-500 text-xs">Ejecución masiva, limpieza y enriquecimiento.</p>
+                                        </div>
+                                        <div className="relative">
+                                            <div className="absolute -left-[21px] top-1.5 w-2.5 h-2.5 rounded-full bg-[#82ff1f]" />
+                                            <h4 className="text-white text-sm font-bold">Semana 3</h4>
+                                            <p className="text-zinc-500 text-xs">Entrega de base de datos final y reporte.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="bg-black p-6 rounded-2xl border border-zinc-800 shadow-xl">
+                                    <h3 className="text-sm font-bold text-zinc-400 uppercase tracking-wider mb-2">Recomendación</h3>
+                                    <div className="text-xl font-bold text-white mb-2">Formación o Mini-Agente</div>
+                                    <p className="text-zinc-500 text-xs leading-relaxed">
+                                        Para prospección, recomendamos formaros internamente (podemos dar capacitación gratuita/low-cost) o desarrollar un pequeño ejecutable a medida (precio a definir según alcance).
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </section>
 

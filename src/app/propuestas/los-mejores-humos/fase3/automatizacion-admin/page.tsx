@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useScroll } from "framer-motion";
-import { Mail, Calendar, Bot, ChevronLeft, Clock, Zap, FileText } from "lucide-react";
+import { Mail, Calendar, Bot, ChevronLeft, Clock, Zap, FileText, Server, ListChecks, ArrowRight } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
@@ -106,6 +106,70 @@ export default function AdminAutoPage() {
                                     </div>
                                 </li>
                             </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section className="container px-4 md:px-6 mb-32">
+                    <div className="bg-zinc-900/30 border border-zinc-800 rounded-3xl p-8 md:p-12">
+                        <h2 className="text-3xl font-bold mb-12 text-center md:text-left">Detalles de Implementación</h2>
+                        <div className="grid md:grid-cols-2 gap-12">
+                            <div className="space-y-8">
+                                <div>
+                                    <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
+                                        <div className="p-2 bg-zinc-900 rounded-lg border border-zinc-800"><Server className="w-5 h-5 text-[#82ff1f]" /></div>
+                                        Infraestructura
+                                    </h3>
+                                    <p className="text-zinc-400 text-sm leading-relaxed">
+                                        Usamos <strong>n8n</strong> como orquestador de flujos por su flexibilidad y bajo coste. Para el OCR (Lectura de documentos) integramos servicios de <strong>Google Vision AI</strong> o modelos específicos como <strong>Azure Intelligence</strong> según la complejidad del documento.
+                                    </p>
+                                </div>
+                                <div>
+                                    <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
+                                        <div className="p-2 bg-zinc-900 rounded-lg border border-zinc-800"><ListChecks className="w-5 h-5 text-[#82ff1f]" /></div>
+                                        Qué necesitamos
+                                    </h3>
+                                    <ul className="text-zinc-400 text-sm space-y-2">
+                                        <li className="flex items-start gap-2">• Acceso a la cuenta de email o carpeta donde llegan los documentos.</li>
+                                        <li className="flex items-start gap-2">• Muestra de 10-20 facturas/documentos reales para entrenar/calibrar.</li>
+                                        <li className="flex items-start gap-2">• Diagrama claro de qué hacer con cada dato extraído (Excel, CRM, etc).</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div className="space-y-8">
+                                <div>
+                                    <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
+                                        <div className="p-2 bg-zinc-900 rounded-lg border border-zinc-800"><ArrowRight className="w-5 h-5 text-[#82ff1f]" /></div>
+                                        Roadmap Estimado
+                                    </h3>
+                                    <div className="space-y-3 relative pl-4 border-l border-zinc-800">
+                                        <div className="relative">
+                                            <div className="absolute -left-[21px] top-1.5 w-2.5 h-2.5 rounded-full bg-zinc-600" />
+                                            <h4 className="text-white text-sm font-bold">Semana 1</h4>
+                                            <p className="text-zinc-500 text-xs">Análisis de documentos y definición de reglas de extracción.</p>
+                                        </div>
+                                        <div className="relative">
+                                            <div className="absolute -left-[21px] top-1.5 w-2.5 h-2.5 rounded-full bg-zinc-600" />
+                                            <h4 className="text-white text-sm font-bold">Semana 2</h4>
+                                            <p className="text-zinc-500 text-xs">Construcción del flujo en n8n y pruebas de OCR.</p>
+                                        </div>
+                                        <div className="relative">
+                                            <div className="absolute -left-[21px] top-1.5 w-2.5 h-2.5 rounded-full bg-[#82ff1f]" />
+                                            <h4 className="text-white text-sm font-bold">Semana 3</h4>
+                                            <p className="text-zinc-500 text-xs">Funcionamiento en paralelo y validación humana.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="bg-black p-6 rounded-2xl border border-zinc-800 shadow-xl">
+                                    <h3 className="text-sm font-bold text-zinc-400 uppercase tracking-wider mb-2">Inversión Estimada</h3>
+                                    <div className="text-4xl font-bold text-white mb-2">≈ 700€ <span className="text-lg font-normal text-zinc-600">/ flujo</span></div>
+                                    <p className="text-zinc-500 text-xs leading-relaxed">
+                                        Incluye configuración OCR avanzada y lógica de negocio. Precio para flujos complejos como "Lectura y Procesado de Facturas/DNI".
+                                    </p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </section>

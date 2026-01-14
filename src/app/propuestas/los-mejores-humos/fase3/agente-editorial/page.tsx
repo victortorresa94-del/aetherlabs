@@ -128,6 +128,70 @@ export default function EditorialAgentPage() {
                     </div>
                 </section>
 
+                <section className="container px-4 md:px-6 mb-32">
+                    <div className="bg-zinc-900/30 border border-zinc-800 rounded-3xl p-8 md:p-12">
+                        <h2 className="text-3xl font-bold mb-12 text-center md:text-left">Detalles de Implementación</h2>
+                        <div className="grid md:grid-cols-2 gap-12">
+                            <div className="space-y-8">
+                                <div>
+                                    <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
+                                        <div className="p-2 bg-zinc-900 rounded-lg border border-zinc-800"><Rss className="w-5 h-5 text-[#82ff1f]" /></div>
+                                        Infraestructura
+                                    </h3>
+                                    <p className="text-zinc-400 text-sm leading-relaxed">
+                                        El agente vive en <strong>Cloud Functions</strong> (Python) que se ejecutan programáticamente. Utiliza una <strong>Base de Datos Vectorial</strong> para recordar el contexto de lo que ya se ha publicado y evitar repeticiones, y conecta con las APIs de <strong>OpenAI (GPT-4)</strong> para la redacción final.
+                                    </p>
+                                </div>
+                                <div>
+                                    <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
+                                        <div className="p-2 bg-zinc-900 rounded-lg border border-zinc-800"><Bot className="w-5 h-5 text-[#82ff1f]" /></div>
+                                        Qué necesitamos
+                                    </h3>
+                                    <ul className="text-zinc-400 text-sm space-y-2">
+                                        <li className="flex items-start gap-2">• Lista de fuentes fiables (Blogs, Revistas, BOE, URLs específicas).</li>
+                                        <li className="flex items-start gap-2">• Guía de estilo o ejemplos de artículos pasados para clonar el tono.</li>
+                                        <li className="flex items-start gap-2">• (Opcional) Acceso al CMS/Blog para guardar borradores.</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div className="space-y-8">
+                                <div>
+                                    <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
+                                        <div className="p-2 bg-zinc-900 rounded-lg border border-zinc-800"><ArrowRight className="w-5 h-5 text-[#82ff1f]" /></div>
+                                        Roadmap Estimado
+                                    </h3>
+                                    <div className="space-y-3 relative pl-4 border-l border-zinc-800">
+                                        <div className="relative">
+                                            <div className="absolute -left-[21px] top-1.5 w-2.5 h-2.5 rounded-full bg-zinc-600" />
+                                            <h4 className="text-white text-sm font-bold">Semana 1</h4>
+                                            <p className="text-zinc-500 text-xs">Configuración de scrapers y fuentes.</p>
+                                        </div>
+                                        <div className="relative">
+                                            <div className="absolute -left-[21px] top-1.5 w-2.5 h-2.5 rounded-full bg-zinc-600" />
+                                            <h4 className="text-white text-sm font-bold">Semana 2</h4>
+                                            <p className="text-zinc-500 text-xs">Ajuste del "Prompt System" para clavar el tono.</p>
+                                        </div>
+                                        <div className="relative">
+                                            <div className="absolute -left-[21px] top-1.5 w-2.5 h-2.5 rounded-full bg-[#82ff1f]" />
+                                            <h4 className="text-white text-sm font-bold">Semana 3</h4>
+                                            <p className="text-zinc-500 text-xs">Despliegue y pruebas de auto-publicación.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="bg-black p-6 rounded-2xl border border-zinc-800 shadow-xl">
+                                    <h3 className="text-sm font-bold text-zinc-400 uppercase tracking-wider mb-2">Inversión Estimada</h3>
+                                    <div className="text-4xl font-bold text-white mb-2">≈ 500€ <span className="text-lg font-normal text-zinc-600">/ setup</span></div>
+                                    <p className="text-zinc-500 text-xs leading-relaxed">
+                                        Pago único por la configuración del agente. El coste mensual (tokens + serverless) suele ser residual (&lt;10€/mes) dependiendo del volumen de noticias.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
                 <div className="container px-4 md:px-6 pt-20 text-center">
                     <p className="text-zinc-500 mb-8">Esta solución requiere un setup inicial y un coste mensual de mantenimiento.</p>
                     <Link href="/propuestas/los-mejores-humos/fase3">
