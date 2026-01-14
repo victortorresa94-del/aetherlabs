@@ -886,8 +886,11 @@ export default function LosMejoresHumosProposal() {
                                     </p>
                                 </div>
                             </div>
-
+                            <p className="mt-4 text-[10px] md:text-xs text-zinc-500 text-center">
+                                * Recomendamos contratar todo gestionado durante al menos los 3 primeros meses
+                            </p>
                         </div>
+
                     </div>
                 </div>
             </section>
@@ -935,7 +938,7 @@ export default function LosMejoresHumosProposal() {
                                 </li>
                                 <li className="flex items-start gap-3 text-zinc-400">
                                     <div className="w-1.5 h-1.5 rounded-full bg-zinc-600 mt-1.5" />
-                                    <span className="text-sm md:text-base">Definición de "Tono de Voz" (Forma/Cercano)</span>
+                                    <span className="text-sm md:text-base">Política de registro de datos de clientes</span>
                                 </li>
                                 <li className="flex items-start gap-3 text-zinc-400">
                                     <div className="w-1.5 h-1.5 rounded-full bg-zinc-600 mt-1.5" />
@@ -945,7 +948,7 @@ export default function LosMejoresHumosProposal() {
                         </div>
                     </div>
                 </div>
-            </section>
+            </section >
 
             {/* SLIDE 13: FAQ Section */}
             <section data-slide="13" className="min-h-screen w-full snap-start bg-zinc-950 py-12 md:py-20 border-t border-zinc-900">
@@ -1006,20 +1009,21 @@ export default function LosMejoresHumosProposal() {
                                 a: "El software del cliente sigue funcionando. El chatbot simplemente deja de responder hasta que se restablece. No afecta a la operativa diaria."
                             }
                         ].map((item, i) => (
-                            <details key={i} className="group bg-black border border-zinc-800 rounded-xl overflow-hidden">
-                                <summary className="flex items-center justify-between p-5 cursor-pointer hover:bg-zinc-900/50 transition-colors">
-                                    <span className="text-sm font-medium text-white pr-4 text-left">{item.q}</span>
-                                    <ChevronDown className="w-4 h-4 text-zinc-500 group-open:rotate-180 transition-transform flex-shrink-0" />
-                                </summary>
-                                <div className="px-5 pb-5 pt-0">
-                                    <p className="text-zinc-400 text-sm leading-relaxed text-left">{item.a}</p>
-                                </div>
-                            </details>
+                            <div key={i} className="group bg-black border border-zinc-800 rounded-xl overflow-hidden h-fit">
+                                <details className="group">
+                                    <summary className="flex items-center justify-between p-5 cursor-pointer hover:bg-zinc-900/50 transition-colors">
+                                        <span className="text-sm font-medium text-white pr-4 text-left">{item.q}</span>
+                                        <ChevronDown className="w-4 h-4 text-zinc-500 group-open:rotate-180 transition-transform flex-shrink-0" />
+                                    </summary>
+                                    <div className="px-5 pb-5 pt-0">
+                                        <p className="text-zinc-400 text-sm leading-relaxed text-left">{item.a}</p>
+                                    </div>
+                                </details>
+                            </div>
                         ))}
                     </div>
-
                 </div>
-            </section >
+            </section>
 
         </div >
     );

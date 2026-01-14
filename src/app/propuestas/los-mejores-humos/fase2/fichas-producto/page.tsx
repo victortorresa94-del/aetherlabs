@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useScroll, useTransform } from "framer-motion";
-import { Sparkles, FileText, Bot, ChevronLeft, Image as ImageIcon, Database, Wand2, ArrowRight } from "lucide-react";
+import { Sparkles, FileText, Bot, ChevronLeft, Image as ImageIcon, Database, Wand2, ArrowRight, Star, Layout } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
@@ -47,7 +47,7 @@ export default function FichasProductoPage() {
                         animate={{ opacity: 1, y: 0 }}
                         className="text-4xl md:text-7xl font-bold mb-6 tracking-tight"
                     >
-                        Tu Menú Digital,<br /><span className="text-zinc-500">Perfecto al Instante</span>
+                        Páginas de producto con IA
                     </motion.h1>
                     <motion.p
                         initial={{ opacity: 0, y: 20 }}
@@ -76,20 +76,77 @@ export default function FichasProductoPage() {
                                 <ArrowRight className="rotate-90 lg:rotate-0 text-zinc-600 animate-bounce" />
                             </div>
 
-                            <Badge variant="outline" className="border-[#82ff1f]/30 text-[#82ff1f] bg-[#82ff1f]/5">Después (Lo que genera la IA)</Badge>
-                            <div className="bg-gradient-to-br from-zinc-900 to-black border border-zinc-700 p-6 rounded-2xl">
-                                <div className="flex items-start gap-4 mb-4">
-                                    <div className="w-16 h-16 bg-zinc-800 rounded-lg flex items-center justify-center shrink-0 border border-zinc-700">
-                                        <ImageIcon className="w-8 h-8 text-zinc-500" />
-                                    </div>
-                                    <div>
-                                        <h3 className="font-bold text-white text-lg">Amnesia Haze</h3>
-                                        <p className="text-xs text-zinc-400">Sativa Dominante • Cítrico, Terroso</p>
+                            <Badge variant="outline" className="border-[#82ff1f]/30 text-[#82ff1f] bg-[#82ff1f]/5 mb-4">Después (Lo que genera la IA)</Badge>
+
+                            {/* Rich Product Page Mock */}
+                            <div className="bg-zinc-950 border border-zinc-800 rounded-2xl overflow-hidden shadow-2xl relative group">
+                                {/* Mock Browser Header */}
+                                <div className="h-6 bg-zinc-900 border-b border-zinc-800 flex items-center px-4 gap-1.5 align-middle">
+                                    <div className="w-2 h-2 rounded-full bg-red-500/50" />
+                                    <div className="w-2 h-2 rounded-full bg-yellow-500/50" />
+                                    <div className="w-2 h-2 rounded-full bg-green-500/50" />
+                                </div>
+
+                                <div className="p-6 relative">
+                                    {/* Ambient Glow */}
+                                    <div className="absolute top-0 right-0 w-64 h-64 bg-[#82ff1f]/5 blur-3xl rounded-full -z-10 pointer-events-none" />
+
+                                    <div className="grid gap-6">
+                                        {/* Header */}
+                                        <div className="flex justify-between items-start">
+                                            <div>
+                                                <Badge className="bg-[#82ff1f] text-black hover:bg-[#82ff1f] mb-2 px-2 py-0.5 text-[10px] uppercase tracking-wider font-bold">Sativa</Badge>
+                                                <h2 className="text-2xl font-bold text-white mb-1 tracking-tight">Amnesia Haze</h2>
+                                                <div className="flex items-center gap-1 text-yellow-500">
+                                                    <Star className="w-3.5 h-3.5 fill-current" />
+                                                    <Star className="w-3.5 h-3.5 fill-current" />
+                                                    <Star className="w-3.5 h-3.5 fill-current" />
+                                                    <Star className="w-3.5 h-3.5 fill-current" />
+                                                    <Star className="w-3.5 h-3.5 fill-zinc-800 text-zinc-800" />
+                                                    <span className="text-zinc-500 text-xs ml-1 font-medium">(142)</span>
+                                                </div>
+                                            </div>
+                                            <div className="text-right">
+                                                <div className="text-2xl font-bold text-white">8€<span className="text-sm text-zinc-500 font-normal">/g</span></div>
+                                                <div className="text-[10px] text-[#82ff1f] font-medium tracking-wide uppercase mt-1">Disponible</div>
+                                            </div>
+                                        </div>
+
+                                        {/* Main Content Grid */}
+                                        <div className="grid grid-cols-10 gap-4">
+                                            {/* Product Image */}
+                                            <div className="col-span-3 bg-zinc-900 rounded-xl aspect-[3/4] flex items-center justify-center border border-zinc-800 relative overflow-hidden group/img">
+                                                <Image
+                                                    src="/images/cannabis_mock.png"
+                                                    alt="Amnesia Haze AI Generated"
+                                                    fill
+                                                    className="object-cover group-hover/img:scale-110 transition-transform duration-500"
+                                                />
+                                                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover/img:opacity-100 transition-opacity" />
+                                            </div>
+
+                                            {/* Description & Tags */}
+                                            <div className="col-span-7 flex flex-col justify-between">
+                                                <p className="text-sm text-zinc-300 leading-relaxed">
+                                                    "Una leyenda de Ámsterdam. Experimenta un subidón cerebral potente y enérgico, perfecto para comenzar el día. Sus notas cítricas y terrosas envuelven el paladar con una frescura inconfundible..."
+                                                </p>
+
+                                                <div className="flex flex-wrap gap-1.5 mt-3">
+                                                    <Badge variant="secondary" className="bg-zinc-900 text-zinc-400 text-[10px] border border-zinc-800 px-2">Cítrico</Badge>
+                                                    <Badge variant="secondary" className="bg-zinc-900 text-zinc-400 text-[10px] border border-zinc-800 px-2">Terroso</Badge>
+                                                    <Badge variant="secondary" className="bg-zinc-900 text-zinc-400 text-[10px] border border-zinc-800 px-2">Energía</Badge>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        {/* CTA */}
+                                        <div className="pt-2 border-t border-zinc-800/50">
+                                            <Button className="w-full bg-white text-black hover:bg-zinc-200 font-semibold h-9 rounded-lg text-sm">
+                                                Añadir al Carrito
+                                            </Button>
+                                        </div>
                                     </div>
                                 </div>
-                                <p className="text-sm text-zinc-300 leading-relaxed italic">
-                                    "Una leyenda de Ámsterdam. Experimenta un subidón cerebral potente y enérgico, perfecto para comenzar el día. Sus notas cítricas y terrosas envuelven el paladar..."
-                                </p>
                             </div>
                         </div>
 
@@ -111,6 +168,13 @@ export default function FichasProductoPage() {
                                     <div>
                                         <strong className="text-white block">Imágenes Ilustrativas</strong>
                                         <p className="text-sm text-zinc-500">Genera una imagen representativa de alta calidad (macro, estudio) de la variedad, manteniendo una estética uniforme en todo el menú.</p>
+                                    </div>
+                                </li>
+                                <li className="flex items-start gap-3">
+                                    <Layout className="w-6 h-6 text-[#82ff1f] shrink-0 mt-1" />
+                                    <div>
+                                        <strong className="text-white block">Maquetación Automática</strong>
+                                        <p className="text-sm text-zinc-500">La IA organiza textos, imágenes y metadatos en un diseño atractivo y listo para vender.</p>
                                     </div>
                                 </li>
                             </ul>
