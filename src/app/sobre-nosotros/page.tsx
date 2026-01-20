@@ -103,7 +103,7 @@ export default function SobreNosotros() {
             <div className="relative">
               <div className="aspect-square bg-gradient-to-br from-[#1a1a1a] to-[#0a0a0a] rounded-2xl border border-[#2a2a2a] p-12 flex items-center justify-center relative overflow-hidden">
                 <Image
-                  src="/logo-v2.png"
+                  src="/aether-logo-white.png"
                   alt="Aether Labs Logo"
                   fill
                   className="object-contain p-12 opacity-80"
