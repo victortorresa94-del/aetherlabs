@@ -6,11 +6,11 @@ import JasonBot from "@/components/ui/jason-bot";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://aetherlabs.es"),
-  title: "Aether Labs - Convertimos ideas en tecnología - IA para PYMES sin complicaciones",
-  description: "Aether Labs - Convertimos ideas en tecnología - IA para PYMES sin complicaciones",
+  title: "Aether Labs - Convertimos ideas en tecnología",
+  description: "IA para PYMES sin complicaciones.",
   openGraph: {
-    title: "Aether Labs - Convertimos ideas en tecnología - IA para PYMES sin complicaciones",
-    description: "Convertimos ideas en tecnología. IA para PYMES sin complicaciones.",
+    title: "Aether Labs - Convertimos ideas en tecnología",
+    description: "IA para PYMES sin complicaciones.",
     images: [
       {
         url: "/og-image-black.png",
