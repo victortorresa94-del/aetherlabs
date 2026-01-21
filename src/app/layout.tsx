@@ -5,8 +5,23 @@ import { Analytics } from "@vercel/analytics/next";
 import JasonBot from "@/components/ui/jason-bot";
 
 export const metadata: Metadata = {
-  title: "Aether Labs - IA clara y útil para tu negocio",
-  description: "Automatización e IA para negocios reales. Sin tecnicismos. Sin complicaciones.",
+  metadataBase: new URL("https://aetherlabs.es"),
+  title: "Aether Labs - Convertimos ideas en tecnología - IA para PYMES sin complicaciones",
+  description: "Aether Labs - Convertimos ideas en tecnología - IA para PYMES sin complicaciones",
+  openGraph: {
+    title: "Aether Labs - Convertimos ideas en tecnología - IA para PYMES sin complicaciones",
+    description: "Convertimos ideas en tecnología. IA para PYMES sin complicaciones.",
+    images: [
+      {
+        url: "/og-image-black.png",
+        width: 1200,
+        height: 630,
+        alt: "Aether Labs Logo",
+      },
+    ],
+    locale: "es_ES",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
