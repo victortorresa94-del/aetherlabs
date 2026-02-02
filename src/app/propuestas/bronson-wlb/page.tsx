@@ -8,16 +8,9 @@ import {
     ArrowRight,
     Zap,
     RefreshCw,
-    Layers,
-    ShieldCheck,
-    DollarSign,
-    MessageCircle,
-    AlertTriangle,
-    Workflow,
     Camera,
     ShoppingBag,
     Database,
-    ArrowDown,
     XCircle,
     TrendingDown,
     Clock,
@@ -25,17 +18,26 @@ import {
     CheckCircle2,
     Store,
     BrainCircuit,
-    Lock,
-    Server
+    Sparkles,
+    TrendingUp,
+    Euro,
+    Mic,
+    Image as ImageIcon,
+    Bell,
+    BarChart3,
+    MessageSquare,
+    Files
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import Image from "next/image";
+import BronsonAppDemo from "@/components/propuestas/bronson-app-demo";
 
 const fadeInUp = {
     initial: { opacity: 0, y: 20 },
     whileInView: { opacity: 1, y: 0 },
     viewport: { once: true, margin: "-100px" },
-    transition: { duration: 0.6, ease: "easeOut" }
+    transition: { duration: 0.6 }
 };
 
 const staggerContainer = {
@@ -52,25 +54,24 @@ export default function BronsonWLBProposal() {
     return (
         <div className="min-h-screen bg-black text-zinc-100 font-sans selection:bg-[#82ff1f]/30 overflow-x-hidden">
 
-            {/* 1. HERO / PORTADA */}
-            <header className="py-24 md:py-32 border-b border-zinc-900 bg-[radial-gradient(circle_at_50%_0%,rgba(130,255,31,0.05),transparent_70%)] relative overflow-hidden">
-                <div className="container px-4 md:px-6 max-w-6xl mx-auto">
+            {/* 1. HERO / PORTADA - FULL SCREEN */}
+            <header className="min-h-screen flex items-center border-b border-zinc-900 bg-[radial-gradient(circle_at_50%_0%,rgba(130,255,31,0.05),transparent_70%)] relative overflow-hidden">
+                <div className="container px-4 md:px-6 max-w-7xl mx-auto">
                     <div className="grid md:grid-cols-2 gap-16 items-center">
                         <motion.div
                             initial={{ opacity: 0, x: -20 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ duration: 0.8 }}
                         >
-                            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#82ff1f]/10 text-[#82ff1f] text-xs font-bold uppercase tracking-widest mb-6 border border-[#82ff1f]/20">
-                                <Store className="w-3 h-3" />
-                                Propuesta Privada
-                            </div>
-                            <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-6 text-white leading-tight">
-                                Gestionar tu tienda <br />
-                                <span className="text-zinc-500">desde tu bolsillo.</span>
+                            <h2 className="text-lg font-bold text-white mb-8 tracking-wider">BRONSON WLB</h2>
+
+                            <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-8 text-white leading-tight">
+                                Gestiona tu tienda<br />
+                                <span className="text-zinc-500">desde tu bolsillo</span>
                             </h1>
-                            <p className="text-zinc-400 text-lg md:text-xl mb-8 leading-relaxed max-w-lg">
-                                Una mini herramienta privada conectada a tu web actual para subir productos, controlar stock y vender más sin tocar el ordenador.
+
+                            <p className="text-zinc-400 text-xl md:text-2xl mb-10 leading-relaxed max-w-lg">
+                                Una mini-app privada conectada a tu web actual para subir productos, controlar stock y vender más sin tocar el ordenador.
                             </p>
 
                             <ul className="space-y-4 mb-10">
@@ -84,10 +85,10 @@ export default function BronsonWLBProposal() {
                                         initial={{ opacity: 0, x: -10 }}
                                         animate={{ opacity: 1, x: 0 }}
                                         transition={{ delay: 0.4 + (i * 0.1) }}
-                                        className="flex items-center gap-3 text-zinc-300"
+                                        className="flex items-center gap-4 text-lg text-zinc-300"
                                     >
-                                        <div className="w-6 h-6 rounded-full bg-[#82ff1f]/10 flex items-center justify-center text-[#82ff1f]">
-                                            <Check className="w-3 h-3" />
+                                        <div className="w-7 h-7 rounded-full bg-[#82ff1f]/10 flex items-center justify-center text-[#82ff1f] border border-[#82ff1f]/20">
+                                            <Check className="w-4 h-4" />
                                         </div>
                                         {item}
                                     </motion.li>
@@ -99,37 +100,31 @@ export default function BronsonWLBProposal() {
                             initial={{ opacity: 0, scale: 0.9 }}
                             animate={{ opacity: 1, scale: 1 }}
                             transition={{ delay: 0.3, duration: 0.8 }}
-                            className="relative"
+                            className="relative flex justify-center items-center"
                         >
-                            {/* Abstract Phone Mockup */}
-                            <div className="relative z-10 mx-auto w-64 md:w-72 h-[500px] bg-zinc-950 rounded-[3rem] border-8 border-zinc-900 shadow-2xl flex flex-col overflow-hidden">
-                                <div className="h-full w-full bg-zinc-900/50 p-6 flex flex-col gap-4 relative">
-                                    {/* Mock UI Elements */}
-                                    <div className="w-12 h-1 bg-zinc-800 mx-auto rounded-full mb-4"></div>
-                                    <div className="h-8 w-3/4 bg-zinc-800 rounded-lg"></div>
-                                    <div className="h-32 w-full bg-zinc-800/50 rounded-xl border border-dashed border-zinc-700 flex items-center justify-center">
-                                        <Camera className="w-8 h-8 text-zinc-600" />
-                                    </div>
-                                    <div className="h-10 w-full bg-[#82ff1f] rounded-lg mt-auto opacity-80"></div>
-                                </div>
-                                {/* Glow behind phone */}
-                                <div className="absolute -inset-1 blur-2xl bg-[#82ff1f]/20 -z-10 rounded-full"></div>
+                            <div className="relative z-10">
+                                <Image
+                                    src="/images/bronson/app-mockup.png"
+                                    alt="Bronson WLB App Mockup"
+                                    width={400}
+                                    height={800}
+                                    className="rounded-3xl shadow-2xl"
+                                    priority
+                                />
+                                <div className="absolute -inset-4 blur-3xl bg-[#82ff1f]/20 -z-10 rounded-full"></div>
                             </div>
                         </motion.div>
                     </div>
                 </div>
             </header>
 
-            {/* 2. EL PROBLEMA ACTUAL */}
-            <section className="py-24 bg-zinc-950 relative border-b border-zinc-900/50">
-                <div className="container px-4 md:px-6 max-w-5xl mx-auto">
-                    <motion.div {...fadeInUp} className="text-center mb-16 max-w-3xl mx-auto">
-                        <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-                            Lo que pasa hoy con tu web
+            {/* 2. EL PROBLEMA ACTUAL - FULL SCREEN */}
+            <section className="min-h-screen flex items-center bg-zinc-950 relative border-b border-zinc-900/50 py-24">
+                <div className="container px-4 md:px-6 max-w-6xl mx-auto">
+                    <motion.div {...fadeInUp} className="text-center mb-20">
+                        <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+                            Lo que pasa hoy
                         </h2>
-                        <p className="text-zinc-400 text-lg leading-relaxed">
-                            Tienes una tienda online potente, pero el día a día te come. Subir un producto es lento, requiere sentarse en el ordenador y muchas veces <span className="text-white">simplemente no se hace</span> por falta de tiempo.
-                        </p>
                     </motion.div>
 
                     <motion.div
@@ -137,288 +132,333 @@ export default function BronsonWLBProposal() {
                         initial="hidden"
                         whileInView="show"
                         viewport={{ once: true }}
-                        className="grid md:grid-cols-3 gap-8"
+                        className="grid md:grid-cols-2 lg:grid-cols-4 gap-6"
                     >
                         {[
-                            { icon: Clock, title: "Proceso Lento", desc: "Demasiados clics para subir una sola camiseta." },
-                            { icon: XCircle, title: "Stock Desactualizado", desc: "Vendes algo en tienda y olvidas quitarlo de la web." },
-                            { icon: TrendingDown, title: "Web Estática", desc: "Al no haber novedades, los clientes dejan de entrar." }
+                            { icon: Clock, title: "Proceso Lento", desc: "Demasiados clics para subir una sola bamba" },
+                            { icon: XCircle, title: "Stock Desactualizado", desc: "Vendes algo en tienda y olvidas quitarlo de la web" },
+                            { icon: TrendingDown, title: "Web Estática", desc: "Al no haber novedades, los clientes dejan de entrar" },
+                            { icon: Euro, title: "Pérdida de ventas", desc: "Los productos no están online cuando el cliente quiere comprar" }
                         ].map((item, i) => (
                             <motion.div
                                 key={i}
                                 variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0 } }}
-                                className="p-8 rounded-2xl bg-zinc-900/30 border border-zinc-800/50 flex flex-col items-center text-center"
+                                className="p-8 rounded-2xl bg-zinc-900/50 border border-zinc-800 flex flex-col items-center text-center hover:border-zinc-700 transition-all group"
                             >
-                                <div className="w-12 h-12 rounded-full bg-red-500/10 text-red-500 flex items-center justify-center mb-4">
-                                    <item.icon className="w-6 h-6" />
+                                <div className="w-16 h-16 rounded-full bg-zinc-900 text-zinc-500 flex items-center justify-center mb-6 group-hover:text-[#82ff1f] group-hover:bg-[#82ff1f]/10 transition-colors">
+                                    <item.icon className="w-8 h-8" />
                                 </div>
-                                <h3 className="text-xl font-semibold text-zinc-200 mb-2">{item.title}</h3>
-                                <p className="text-zinc-500">{item.desc}</p>
+                                <h3 className="text-xl font-bold text-zinc-200 mb-3">{item.title}</h3>
+                                <p className="text-zinc-500 leading-relaxed">{item.desc}</p>
                             </motion.div>
                         ))}
-                    </motion.div>
-
-                    <motion.div {...fadeInUp} className="mt-16 text-center">
-                        <p className="text-2xl md:text-3xl font-light text-zinc-400">
-                            "La web no me ayuda a vender porque <br /> <span className="text-white font-medium">me cuesta demasiado alimentarla</span>."
-                        </p>
                     </motion.div>
                 </div>
             </section>
 
-            {/* 3. LO QUE SE ESTÁ PERDIENDO HOY */}
-            <section className="py-24 bg-black border-b border-zinc-900/50">
-                <div className="container px-4 md:px-6 max-w-5xl mx-auto">
-                    <div className="grid md:grid-cols-2 gap-16 items-center">
-                        <motion.div {...fadeInUp}>
-                            <h2 className="text-3xl font-bold text-white mb-6">
-                                Ventas que se escapan
-                            </h2>
-                            <p className="text-zinc-400 mb-8">
-                                Tus clientes ven novedades en Instagram, preguntan, pero si no está en la web, la compra se enfría. El impulso de compra muere en el trayecto "Redes Social → Mensaje Directo → Esperar respuesta".
-                            </p>
+            {/* 3. VENTAS QUE SE ESCAPAN - FULL SCREEN */}
+            <section className="min-h-screen flex items-center bg-black border-b border-zinc-900/50 py-24">
+                <div className="container px-4 md:px-6 max-w-6xl mx-auto">
+                    <motion.div {...fadeInUp} className="text-center mb-16">
+                        <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+                            Ventas que se escapan
+                        </h2>
+                        <p className="text-zinc-400 text-xl max-w-3xl mx-auto">
+                            Tus clientes ven novedades en Instagram, preguntan, pero si no está en la web, la venta se enfría.
+                        </p>
+                    </motion.div>
 
-                            <div className="bg-zinc-900/50 rounded-xl p-6 border border-zinc-800">
-                                <div className="flex items-start gap-4 mb-4">
-                                    <div className="w-10 h-10 rounded-full bg-zinc-800 flex-shrink-0"></div>
-                                    <div className="bg-zinc-800/50 px-4 py-3 rounded-tr-xl rounded-b-xl text-sm text-zinc-300">
-                                        "¿Tenéis esta en talla M? No la veo en la web..."
-                                    </div>
-                                </div>
-                                <div className="flex items-start gap-4 justify-end opacity-50">
-                                    <div className="bg-[#82ff1f]/10 px-4 py-3 rounded-tl-xl rounded-b-xl text-sm text-[#82ff1f]">
-                                        (Respuesta 4 horas después) Sí, perdona, es que no nos dio tiempo a subirla...
-                                    </div>
-                                </div>
-                            </div>
+                    <div className="grid md:grid-cols-3 gap-8">
+                        <motion.div
+                            {...fadeInUp}
+                            className="bg-gradient-to-br from-zinc-900 to-black p-8 rounded-3xl border border-zinc-800 text-center relative group hover:border-[#82ff1f]/50 transition-colors duration-500"
+                        >
+                            <div className="absolute inset-0 bg-[#82ff1f]/5 opacity-0 group-hover:opacity-100 transition-opacity rounded-3xl"></div>
+                            <div className="text-6xl font-bold text-white mb-2 relative z-10">15-20%</div>
+                            <p className="text-zinc-400 relative z-10">de ventas perdidas por productos no disponibles online</p>
                         </motion.div>
 
-                        <motion.div {...fadeInUp} className="bg-zinc-900/20 p-8 rounded-3xl border border-zinc-800/50 relative overflow-hidden">
-                            <div className="absolute top-0 right-0 p-4 opacity-10">
-                                <AlertTriangle className="w-32 h-32" />
-                            </div>
-                            <h3 className="text-zinc-500 text-sm uppercase tracking-widest mb-2">Estimación conservadora</h3>
-                            <div className="text-5xl md:text-6xl font-bold text-white mb-2">
-                                15-20%
-                            </div>
-                            <p className="text-zinc-400">
-                                de ventas perdidas por no tener el producto disponible online en el momento del interés.
-                            </p>
+                        <motion.div
+                            {...fadeInUp}
+                            transition={{ delay: 0.1 }}
+                            className="bg-gradient-to-br from-zinc-900 to-black p-8 rounded-3xl border border-zinc-800 text-center relative group hover:border-[#82ff1f]/50 transition-colors duration-500"
+                        >
+                            <div className="absolute inset-0 bg-[#82ff1f]/5 opacity-0 group-hover:opacity-100 transition-opacity rounded-3xl"></div>
+                            <div className="text-6xl font-bold text-[#82ff1f] mb-2 relative z-10">~10</div>
+                            <p className="text-zinc-400 relative z-10">ventas perdidas cada mes</p>
+                        </motion.div>
+
+                        <motion.div
+                            {...fadeInUp}
+                            transition={{ delay: 0.2 }}
+                            className="bg-gradient-to-br from-zinc-900 to-black p-8 rounded-3xl border border-zinc-800 text-center relative group hover:border-[#82ff1f]/50 transition-colors duration-500"
+                        >
+                            <div className="absolute inset-0 bg-[#82ff1f]/5 opacity-0 group-hover:opacity-100 transition-opacity rounded-3xl"></div>
+                            <div className="text-6xl font-bold text-[#82ff1f] mb-2 relative z-10">~600€</div>
+                            <p className="text-zinc-400 relative z-10">pérdida mensual estimada</p>
                         </motion.div>
                     </div>
                 </div>
             </section>
 
-            {/* 4. TU REALIDAD ACTUAL (PROCESO MANUAL) */}
-            <section className="py-24 bg-zinc-950 border-b border-zinc-900/50">
-                <div className="container px-4 md:px-6 max-w-4xl mx-auto text-center">
-                    <motion.div {...fadeInUp}>
-                        <h2 className="text-3xl font-bold text-white mb-6">Sabemos cómo trabajas</h2>
-                        <p className="text-zinc-400 max-w-2xl mx-auto mb-12">
-                            Compras de forma manual, viajas, ves oportunidades y las traes. Ese sistema funciona y es tu esencia. <span className="text-[#82ff1f]">No queremos cambiar tu forma de comprar, solo tu forma de digitalizarlo.</span>
+            {/* 4. AUTOMATIZAMOS TU PROCESO MANUAL - FULL SCREEN */}
+            <section className="min-h-screen flex items-center bg-zinc-950 border-b border-zinc-900/50 py-24">
+                <div className="container px-4 md:px-6 max-w-5xl mx-auto">
+                    <motion.div {...fadeInUp} className="text-center mb-16">
+                        <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+                            Automatizamos tu proceso manual
+                        </h2>
+                        <p className="text-zinc-400 text-xl max-w-2xl mx-auto">
+                            Compras de forma manual, viajas, ves oportunidades y las traes. <span className="text-[#82ff1f]">No queremos cambiar tu forma de comprar, solo tu forma de digitalizarlo.</span>
                         </p>
                     </motion.div>
 
-                    <div className="grid md:grid-cols-2 gap-4 md:gap-0 relative">
+                    <div className="grid md:grid-cols-2 gap-6 relative">
                         <motion.div
                             initial={{ opacity: 0, x: -20 }}
                             whileInView={{ opacity: 1, x: 0 }}
-                            className="p-8 bg-zinc-900/50 rounded-2xl md:rounded-r-none border border-zinc-800"
+                            className="p-10 bg-zinc-900/50 rounded-3xl border border-zinc-800"
                         >
-                            <h3 className="text-zinc-500 mb-4 font-mono text-sm">HOY</h3>
-                            <ul className="text-left space-y-4 text-zinc-400">
-                                <li className="flex items-center gap-2"><XCircle className="w-4 h-4 text-red-500" /> Foto con el móvil</li>
-                                <li className="flex items-center gap-2"><XCircle className="w-4 h-4 text-red-500" /> Pasarla al ordenador</li>
-                                <li className="flex items-center gap-2"><XCircle className="w-4 h-4 text-red-500" /> Retocar en Photoshop</li>
-                                <li className="flex items-center gap-2"><XCircle className="w-4 h-4 text-red-500" /> Entrar en WordPress</li>
-                                <li className="flex items-center gap-2"><XCircle className="w-4 h-4 text-red-500" /> Crear ficha técnica</li>
+                            <h3 className="text-zinc-500 mb-6 font-mono text-sm font-bold uppercase tracking-widest">HOY (Manual)</h3>
+                            <ul className="space-y-4 text-zinc-400">
+                                <li className="flex items-start gap-3">
+                                    <XCircle className="w-5 h-5 text-red-500 mt-1 flex-shrink-0" />
+                                    <span>Foto con el móvil</span>
+                                </li>
+                                <li className="flex items-start gap-3">
+                                    <XCircle className="w-5 h-5 text-red-500 mt-1 flex-shrink-0" />
+                                    <span>Subir foto a Gemini y promptear</span>
+                                </li>
+                                <li className="flex items-start gap-3">
+                                    <XCircle className="w-5 h-5 text-red-500 mt-1 flex-shrink-0" />
+                                    <span>Guardar la imagen</span>
+                                </li>
+                                <li className="flex items-start gap-3">
+                                    <XCircle className="w-5 h-5 text-red-500 mt-1 flex-shrink-0" />
+                                    <span>Encender PC</span>
+                                </li>
+                                <li className="flex items-start gap-3">
+                                    <XCircle className="w-5 h-5 text-red-500 mt-1 flex-shrink-0" />
+                                    <span>Entrar en WordPress</span>
+                                </li>
+                                <li className="flex items-start gap-3">
+                                    <XCircle className="w-5 h-5 text-red-500 mt-1 flex-shrink-0" />
+                                    <span>Subir la imagen a la web</span>
+                                </li>
+                                <li className="flex items-start gap-3">
+                                    <XCircle className="w-5 h-5 text-red-500 mt-1 flex-shrink-0" />
+                                    <span>Rellenar ficha técnica completa (nombre, precio, tallas, descripción, categorías...)</span>
+                                </li>
+                                <li className="flex items-start gap-3">
+                                    <XCircle className="w-5 h-5 text-red-500 mt-1 flex-shrink-0" />
+                                    <span>Subir producto</span>
+                                </li>
                             </ul>
                         </motion.div>
 
-                        <div className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 bg-black border border-zinc-800 rounded-full items-center justify-center z-10 text-zinc-500">
+                        <div className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-black border-2 border-zinc-700 rounded-full items-center justify-center z-10 text-zinc-400 font-bold text-sm">
                             VS
                         </div>
 
                         <motion.div
                             initial={{ opacity: 0, x: 20 }}
                             whileInView={{ opacity: 1, x: 0 }}
-                            className="p-8 bg-[#82ff1f]/5 rounded-2xl md:rounded-l-none border border-[#82ff1f]/20 relative overflow-hidden"
+                            className="p-10 bg-[#82ff1f]/5 rounded-3xl border border-[#82ff1f]/30 relative overflow-hidden"
                         >
-                            <div className="absolute inset-0 bg-gradient-to-br from-[#82ff1f]/5 to-transparent pointer-events-none"></div>
-                            <h3 className="text-[#82ff1f] mb-4 font-mono text-sm">NUEVA SOLUCIÓN</h3>
-                            <ul className="text-left space-y-4 text-zinc-200">
-                                <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-[#82ff1f]" /> Foto con el móvil</li>
-                                <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-[#82ff1f]" /> Subir a la App</li>
-                                <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-[#82ff1f]" /> <strong>¡Listo!</strong> (IA hace el resto)</li>
+                            <div className="absolute inset-0 bg-gradient-to-br from-[#82ff1f]/10 to-transparent pointer-events-none"></div>
+                            <h3 className="text-[#82ff1f] mb-6 font-mono text-sm font-bold uppercase tracking-widest relative z-10">NUEVA SOLUCIÓN (Automática)</h3>
+                            <ul className="space-y-4 text-zinc-200 relative z-10">
+                                <li className="flex items-start gap-3">
+                                    <CheckCircle2 className="w-5 h-5 text-[#82ff1f] mt-1 flex-shrink-0" />
+                                    <span>Foto con el móvil</span>
+                                </li>
+                                <li className="flex items-start gap-3">
+                                    <CheckCircle2 className="w-5 h-5 text-[#82ff1f] mt-1 flex-shrink-0" />
+                                    <span>Abres la mini-app</span>
+                                </li>
+                                <li className="flex items-start gap-3">
+                                    <CheckCircle2 className="w-5 h-5 text-[#82ff1f] mt-1 flex-shrink-0" />
+                                    <span>Rellenar formulario rápido</span>
+                                </li>
+                                <li className="flex items-start gap-3">
+                                    <CheckCircle2 className="w-5 h-5 text-[#82ff1f] mt-1 flex-shrink-0" />
+                                    <span className="font-bold text-[#82ff1f]">¡Listo! La IA hace el resto</span>
+                                </li>
                             </ul>
                         </motion.div>
                     </div>
                 </div>
             </section>
 
-            {/* 5. LA SOLUCIÓN */}
-            <section className="py-32 bg-black relative overflow-hidden">
-                {/* Background Gradients */}
-                <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#82ff1f]/5 blur-[100px] rounded-full pointer-events-none opacity-50"></div>
+            {/* 5. LA SOLUCIÓN (UNIFIED) - FULL SCREEN */}
+            <section className="min-h-screen flex items-center bg-black relative overflow-hidden py-24">
+                <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#82ff1f]/5 blur-[120px] rounded-full pointer-events-none"></div>
 
-                <div className="container px-4 md:px-6 max-w-5xl mx-auto relative z-10">
-                    <div className="grid md:grid-cols-2 gap-16 items-center">
-                        <motion.div {...fadeInUp}>
-                            <div className="inline-block px-4 py-1 rounded-full border border-[#82ff1f]/30 bg-[#82ff1f]/10 text-[#82ff1f] text-sm font-medium mb-6">
-                                Presentamos
-                            </div>
-                            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-                                Tu Panel de Control <br /> de Bolsillo
-                            </h2>
-                            <p className="text-zinc-400 text-lg mb-6 leading-relaxed">
-                                No vamos a cambiar tu web actual. Vamos a crear una <span className="text-white">puerta trasera inteligente</span>. Una mini aplicación web privada, solo para ti y tu equipo, diseñada para usarse exclusivamente desde el móvil.
-                            </p>
-                            <p className="text-zinc-500 border-l-2 border-[#82ff1f] pl-4 italic">
-                                "Como tener un asistente digital que sabe usar WordPress por ti."
-                            </p>
-                        </motion.div>
-
-                        <motion.div
-                            initial={{ opacity: 0, y: 40 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.8 }}
-                            className="relative"
-                        >
-                            {/* Illustration of solution */}
-                            <div className="aspect-square bg-zinc-900/50 rounded-3xl border border-zinc-800 flex items-center justify-center relative overflow-hidden group">
-                                <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(130,255,31,0.05),transparent_60%)]"></div>
-                                <Smartphone className="w-32 h-32 text-zinc-700 group-hover:text-[#82ff1f] transition-colors duration-500" />
-                                <div className="absolute bottom-8 left-8 right-8 bg-black/80 backdrop-blur-sm p-4 rounded-xl border border-zinc-800 flex items-center gap-4">
-                                    <div className="w-2 h-2 rounded-full bg-[#82ff1f] animate-pulse"></div>
-                                    <span className="text-xs text-zinc-300 font-mono">CONECTADO A BRONSONWLB.ES</span>
-                                </div>
-                            </div>
-                        </motion.div>
-                    </div>
-                </div>
-            </section>
-
-            {/* 6. QUÉ SE PODRÁ HACER */}
-            <section className="py-24 bg-zinc-950 border-y border-zinc-900">
-                <div className="container px-4 md:px-6 max-w-6xl mx-auto">
+                <div className="container px-4 md:px-6 max-w-7xl mx-auto relative z-10">
                     <motion.div {...fadeInUp} className="text-center mb-16">
-                        <h2 className="text-3xl font-bold text-white mb-4">Todo lo que necesitas, nada más</h2>
-                        <p className="text-zinc-400">Funcionalidades diseñadas para la velocidad.</p>
+                        <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+                            Tu solución completa en una sola app
+                        </h2>
+                        <p className="text-zinc-400 text-xl max-w-3xl mx-auto leading-relaxed">
+                            Gestiona tu web de zapatillas desde el móvil. Sube productos, edita stock y publica todo sin tocar el ordenador.
+                        </p>
                     </motion.div>
 
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-                        {[
-                            { icon: ShoppingBag, title: "Subir Productos", desc: "Foto, precio y listo." },
-                            { icon: Camera, title: "Fotos IA", desc: "Mejora automática de imágenes." },
-                            { icon: Database, title: "Gestión Stock", desc: "Sincronizado en tiempo real." },
-                            { icon: RefreshCw, title: "Editar Rápido", desc: "Cambia precios al vuelo." }
-                        ].map((feature, i) => (
-                            <motion.div
-                                key={i}
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                transition={{ delay: i * 0.1 }}
-                                className="group p-6 bg-zinc-900/30 border border-zinc-800 hover:border-[#82ff1f]/30 rounded-2xl transition-all duration-300 hover:bg-zinc-900/60"
-                            >
-                                <div className="w-10 h-10 rounded-lg bg-zinc-800 text-zinc-400 group-hover:text-[#82ff1f] group-hover:bg-[#82ff1f]/10 flex items-center justify-center mb-4 transition-colors">
-                                    <feature.icon className="w-5 h-5" />
+                    <div className="grid lg:grid-cols-2 gap-16 items-center">
+                        {/* App Mockup */}
+                        <motion.div
+                            initial={{ opacity: 0, x: -40 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.8 }}
+                            className="flex justify-center"
+                        >
+                            <div className="relative">
+                                <BronsonAppDemo />
+                                <div className="absolute -inset-6 blur-3xl bg-[#82ff1f]/15 -z-10 rounded-full"></div>
+                            </div>
+                        </motion.div>
+
+                        {/* Features & Flow */}
+                        <div className="space-y-8">
+                            <motion.div {...fadeInUp}>
+                                <h3 className="text-2xl font-bold text-white mb-6">Funcionalidades incluidas</h3>
+                                <div className="grid gap-4">
+                                    {[
+                                        { icon: Camera, title: "Subir producto", desc: "Foto, nombre, precio y listo" },
+                                        { icon: Sparkles, title: "Inteligencia artificial", desc: "Genera la foto profesional y la descripción" },
+                                        { icon: Database, title: "Control de stock", desc: "Sincronizado en tiempo real" },
+                                        { icon: ShoppingBag, title: "Gestión rápida", desc: "Edita precios y disponibilidad al vuelo" }
+                                    ].map((feature, i) => (
+                                        <div key={i} className="flex items-start gap-4 p-4 rounded-xl bg-zinc-900/30 border border-zinc-800 hover:border-[#82ff1f]/30 transition-all">
+                                            <div className="w-12 h-12 rounded-lg bg-[#82ff1f]/10 text-[#82ff1f] flex items-center justify-center flex-shrink-0">
+                                                <feature.icon className="w-6 h-6" />
+                                            </div>
+                                            <div>
+                                                <h4 className="font-semibold text-white mb-1">{feature.title}</h4>
+                                                <p className="text-sm text-zinc-500">{feature.desc}</p>
+                                            </div>
+                                        </div>
+                                    ))}
                                 </div>
-                                <h3 className="text-white font-medium mb-1">{feature.title}</h3>
-                                <p className="text-sm text-zinc-500">{feature.desc}</p>
                             </motion.div>
-                        ))}
-                    </div>
-                </div>
-            </section>
 
-            {/* 7. CÓMO SE SUBE UN PRODUCTO (FLUJO) */}
-            <section className="py-24 bg-black">
-                <div className="container px-4 md:px-6 max-w-5xl mx-auto">
-                    <motion.h2 {...fadeInUp} className="text-3xl font-bold text-white text-center mb-16">
-                        Subir una zapatilla en 1 minuto
-                    </motion.h2>
-
-                    <div className="relative">
-                        {/* Line connecting steps */}
-                        <div className="hidden md:block absolute top-1/2 left-0 w-full h-px bg-zinc-900 -translate-y-1/2 z-0"></div>
-
-                        <div className="grid md:grid-cols-4 gap-8 relative z-10">
-                            {[
-                                { step: "1", title: "Haces la foto", desc: "Desde la propia app con tu móvil." },
-                                { step: "2", title: "Rellenas info básica", desc: "Nombre y Precio. Nada más." },
-                                { step: "3", title: "IA trabaja", desc: "Mejora la foto y crea descripción." },
-                                { step: "4", title: "Publicado", desc: "Ya está a la venta en la web." }
-                            ].map((item, i) => (
-                                <motion.div
-                                    key={i}
-                                    initial={{ opacity: 0, y: 20 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    transition={{ delay: i * 0.2 }}
-                                    className="flex flex-col items-center text-center"
-                                >
-                                    <div className="w-12 h-12 rounded-full bg-zinc-950 border-2 border-zinc-800 text-zinc-500 font-bold flex items-center justify-center mb-4 relative z-10">
-                                        {item.step}
-                                    </div>
-                                    <h3 className="text-white font-medium mb-2">{item.title}</h3>
-                                    <p className="text-sm text-zinc-500 px-2">{item.desc}</p>
-                                </motion.div>
-                            ))}
+                            <motion.div {...fadeInUp}>
+                                <h3 className="text-2xl font-bold text-white mb-6">Subir una zapatilla en 1 minuto</h3>
+                                <div className="space-y-4">
+                                    {[
+                                        { step: "1", title: "Haces la foto", desc: "Desde la propia app con tu móvil." },
+                                        { step: "2", title: "Rellenas info básica", desc: "Nombre y Precio. Nada más." },
+                                        { step: "3", title: "IA trabaja", desc: "Mejora la foto y crea descripción." },
+                                        { step: "4", title: "Publicado", desc: "Ya está a la venta en la web." }
+                                    ].map((item, i) => (
+                                        <div key={i} className="flex items-start gap-4">
+                                            <div className="w-10 h-10 rounded-full bg-[#82ff1f]/10 border-2 border-[#82ff1f]/30 text-[#82ff1f] font-bold flex items-center justify-center flex-shrink-0">
+                                                {item.step}
+                                            </div>
+                                            <div>
+                                                <h4 className="font-semibold text-white mb-1">{item.title}</h4>
+                                                <p className="text-sm text-zinc-500">{item.desc}</p>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            </motion.div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            {/* 8. IMÁGENES CON IA */}
-            <section className="py-24 bg-zinc-950 border-y border-zinc-900 overflow-hidden">
-                <div className="container px-4 md:px-6 max-w-6xl mx-auto">
-                    <div className="grid md:grid-cols-2 gap-16 items-center">
-                        <motion.div {...fadeInUp} className="order-2 md:order-1">
-                            <div className="relative rounded-2xl overflow-hidden border border-zinc-700/50 shadow-2xl">
-                                {/* Pseudo Compare Image slider */}
-                                <div className="grid grid-cols-2 h-64 md:h-80">
-                                    <div className="bg-zinc-800 flex items-center justify-center relative border-r border-zinc-700">
-                                        <span className="absolute top-4 left-4 text-xs font-mono text-zinc-500 bg-black/50 px-2 py-1 rounded">ORIGINAL</span>
-                                        <Camera className="w-12 h-12 text-zinc-600 opacity-50" />
-                                        <p className="absolute bottom-4 text-zinc-600 text-xs">Foto casera (oscura)</p>
+            {/* 6. DOBLE BANNER: IA FOTOS + SEO - FULL SCREEN */}
+            <section className="min-h-screen flex items-center bg-zinc-950 border-y border-zinc-900 py-24">
+                <div className="container px-4 md:px-6 max-w-7xl mx-auto">
+                    <motion.div {...fadeInUp} className="text-center mb-16">
+                        <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+                            Inteligencia Artificial integrada
+                        </h2>
+                    </motion.div>
+
+                    <div className="grid lg:grid-cols-2 gap-12">
+                        {/* IA Photos */}
+                        <motion.div {...fadeInUp}>
+                            <h2 className="text-3xl font-bold text-white mb-6">Fotos que venden</h2>
+                            <p className="text-zinc-400 text-lg mb-8 leading-relaxed">
+                                Sin fotógrafo. Sin caja de luz. La IA transforma tus fotos caseras en imágenes profesionales listas para vender.
+                            </p>
+
+                            <div className="relative rounded-2xl overflow-hidden border border-zinc-700 shadow-2xl mb-8">
+                                <div className="grid grid-cols-2 min-h-[300px]">
+                                    <div className="bg-zinc-800 flex flex-col items-center justify-center relative p-8">
+                                        <span className="absolute top-4 left-4 text-xs font-mono text-zinc-500 bg-black/50 px-3 py-1 rounded">ANTES</span>
+                                        <Image
+                                            src="/images/bronson/sneaker-before.png"
+                                            alt="Foto casera de zapatilla"
+                                            width={200}
+                                            height={200}
+                                            className="rounded-lg"
+                                        />
                                     </div>
-                                    <div className="bg-[#82ff1f]/5 flex items-center justify-center relative">
-                                        <span className="absolute top-4 right-4 text-xs font-mono text-[#82ff1f] bg-[#82ff1f]/10 px-2 py-1 rounded border border-[#82ff1f]/20">MEJORADA CON IA</span>
-                                        <Zap className="w-12 h-12 text-[#82ff1f] opacity-80" />
-                                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-50"></div>
-                                        <p className="absolute bottom-4 text-[#82ff1f] text-xs font-semibold">Fondo limpio + Luz ajustada</p>
-                                    </div>
-                                </div>
-                                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-lg transform cursor-grab">
-                                    <div className="flex gap-1">
-                                        <div className="w-0.5 h-4 bg-zinc-300"></div>
-                                        <div className="w-0.5 h-4 bg-zinc-300"></div>
+                                    <div className="bg-white flex flex-col items-center justify-center relative p-8">
+                                        <span className="absolute top-4 right-4 text-xs font-mono text-[#82ff1f] bg-[#82ff1f]/10 px-3 py-1 rounded border border-[#82ff1f]/20">DESPUÉS</span>
+                                        <Image
+                                            src="/images/bronson/sneaker-after.png"
+                                            alt="Foto profesional de zapatilla"
+                                            width={200}
+                                            height={200}
+                                            className="rounded-lg"
+                                        />
                                     </div>
                                 </div>
                             </div>
-                        </motion.div>
 
-                        <motion.div {...fadeInUp} className="order-1 md:order-2">
-                            <h2 className="text-3xl font-bold text-white mb-6">Tus fotos, nivel estudio</h2>
-                            <p className="text-zinc-400 text-lg mb-6">
-                                No necesitas una caja de luz ni un fotógrafo. Haz la foto sobre el mostrador o el suelo. El sistema usa Inteligencia Artificial para:
+                            <p className="text-zinc-300 font-medium mb-4">
+                                IA preentrenada para que no tengas que promptear, y genere automáticamente imágenes con:
                             </p>
-                            <ul className="space-y-3 mb-8">
-                                <li className="flex items-center gap-3 text-zinc-300">
-                                    <div className="w-1.5 h-1.5 rounded-full bg-[#82ff1f]"></div>
-                                    Eliminar fondos molestos
+                            <ul className="space-y-3">
+                                <li className="flex items-center gap-3 text-zinc-400">
+                                    <div className="w-2 h-2 rounded-full bg-[#82ff1f]"></div>
+                                    Fondos limpios automáticos
                                 </li>
-                                <li className="flex items-center gap-3 text-zinc-300">
-                                    <div className="w-1.5 h-1.5 rounded-full bg-[#82ff1f]"></div>
-                                    Ajustar iluminación y color
+                                <li className="flex items-center gap-3 text-zinc-400">
+                                    <div className="w-2 h-2 rounded-full bg-[#82ff1f]"></div>
+                                    Iluminación profesional
                                 </li>
-                                <li className="flex items-center gap-3 text-zinc-300">
-                                    <div className="w-1.5 h-1.5 rounded-full bg-[#82ff1f]"></div>
-                                    Optimizar para carga web rápida
+                                <li className="flex items-center gap-3 text-zinc-400">
+                                    <div className="w-2 h-2 rounded-full bg-[#82ff1f]"></div>
+                                    Múltiples perspectivas
                                 </li>
                             </ul>
-                            <div className="px-4 py-3 bg-zinc-900 border border-zinc-800 rounded-lg inline-block">
-                                <p className="text-xs text-zinc-500 font-mono">
-                                    <span className="text-[#82ff1f]">NOTA:</span> Todo incluido en el precio. Sin sorpresas.
+                        </motion.div>
+
+                        {/* SEO Descriptions */}
+                        <motion.div {...fadeInUp}>
+                            <h2 className="text-3xl font-bold text-white mb-6">Descripciones que posicionan</h2>
+                            <p className="text-zinc-400 text-lg mb-8 leading-relaxed">
+                                La IA crea descripciones optimizadas para SEO que ayudan a que tus productos aparezcan en Google cuando la gente busca.
+                            </p>
+
+                            <div className="bg-zinc-900/50 p-8 rounded-2xl border border-zinc-800 mb-8">
+                                <div className="flex items-start gap-3 mb-4">
+                                    <Zap className="w-5 h-5 text-[#82ff1f] mt-1" />
+                                    <div>
+                                        <p className="text-sm text-zinc-500 mb-2">TÚ ESCRIBES:</p>
+                                        <p className="text-zinc-300">"Nike Air Max"</p>
+                                    </div>
+                                </div>
+                                <div className="h-px bg-zinc-800 my-6"></div>
+                                <div className="flex items-start gap-3">
+                                    <Sparkles className="w-5 h-5 text-[#82ff1f] mt-1" />
+                                    <div>
+                                        <p className="text-sm text-zinc-500 mb-2">LA IA GENERA:</p>
+                                        <p className="text-zinc-300 italic leading-relaxed">
+                                            "Zapatillas Nike Air Max originales con sistema de amortiguación visible. Perfectas para uso diario y estilo urbano. Disponibles en tallas 38-45. Envío gratis península. Compra auténticas Nike Air Max en Bronson WLB."
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="px-6 py-4 bg-[#82ff1f]/10 rounded-xl border border-[#82ff1f]/20 inline-block">
+                                <p className="text-sm text-[#82ff1f] font-medium">
+                                    ✓ Optimizado para buscadores · Sin trabajo extra
                                 </p>
                             </div>
                         </motion.div>
@@ -426,163 +466,407 @@ export default function BronsonWLBProposal() {
                 </div>
             </section>
 
-            {/* 9. STOCK SINCRONIZADO */}
-            <section className="py-24 bg-black">
-                <div className="container px-4 md:px-6 max-w-4xl mx-auto text-center">
-                    <motion.div {...fadeInUp} className="mb-12">
-                        <h2 className="text-3xl font-bold text-white mb-4">Un solo stock, cero líos</h2>
-                        <p className="text-zinc-400">Se acabó vender lo que ya no tienes.</p>
+            {/* 7. ARQUITECTURA DEL SISTEMA - FULL SCREEN */}
+            <section className="min-h-screen flex items-center bg-black border-y border-zinc-900 relative py-24">
+                <div className="container px-4 md:px-6 max-w-6xl mx-auto text-center relative z-10">
+                    <motion.div {...fadeInUp} className="mb-20">
+                        <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Cómo se conecta todo</h2>
+                        <p className="text-zinc-400 text-xl">El sistema completo que hace funcionar tu tienda online</p>
                     </motion.div>
 
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 0.5 }}
-                        className="p-8 bg-zinc-900/30 rounded-3xl border border-zinc-800 flex flex-col md:flex-row items-center justify-between gap-8 md:gap-16"
-                    >
-                        <div className="flex flex-col items-center gap-4">
-                            <div className="w-16 h-16 rounded-2xl bg-zinc-800 flex items-center justify-center text-zinc-400">
-                                <Store className="w-8 h-8" />
-                            </div>
-                            <span className="font-semibold text-white">Tienda Física</span>
-                        </div>
-
-                        <div className="flex-1 flex flex-col items-center gap-2">
-                            <div className="w-full h-1 bg-gradient-to-r from-zinc-800 via-[#82ff1f]/50 to-zinc-800 relative">
-                                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-black border border-[#82ff1f] rounded-full flex items-center justify-center">
-                                    <RefreshCw className="w-4 h-4 text-[#82ff1f]" />
+                    {/* New Simple Diagram */}
+                    <div className="max-w-3xl mx-auto">
+                        <motion.div
+                            initial={{ opacity: 0, y: 40 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            className="space-y-8"
+                        >
+                            {/* MINI-APP */}
+                            <div className="bg-zinc-950 border-2 border-[#82ff1f] rounded-2xl p-8">
+                                <div className="flex items-center justify-center gap-3 mb-6">
+                                    <Smartphone className="w-8 h-8 text-[#82ff1f]" />
+                                    <h3 className="text-2xl font-bold text-white">MINI-APP</h3>
+                                </div>
+                                <div className="grid grid-cols-3 gap-4">
+                                    <div className="bg-zinc-900 rounded-lg p-4 border border-zinc-800">
+                                        <Camera className="w-6 h-6 text-zinc-400 mx-auto mb-2" />
+                                        <p className="text-xs text-zinc-500 text-center">IA FOTOS</p>
+                                    </div>
+                                    <div className="bg-zinc-900 rounded-lg p-4 border border-zinc-800">
+                                        <ShoppingBag className="w-6 h-6 text-zinc-400 mx-auto mb-2" />
+                                        <p className="text-xs text-zinc-500 text-center">FORMULARIO</p>
+                                    </div>
+                                    <div className="bg-zinc-900 rounded-lg p-4 border border-zinc-800">
+                                        <Database className="w-6 h-6 text-zinc-400 mx-auto mb-2" />
+                                        <p className="text-xs text-zinc-500 text-center">STOCK</p>
+                                    </div>
                                 </div>
                             </div>
-                            <span className="text-xs font-mono text-[#82ff1f]">SYNC TIEMPO REAL</span>
-                        </div>
 
-                        <div className="flex flex-col items-center gap-4">
-                            <div className="w-16 h-16 rounded-2xl bg-zinc-800 flex items-center justify-center text-zinc-400">
-                                <Globe className="w-8 h-8" />
+                            {/* Arrow */}
+                            <div className="flex items-center justify-center gap-2">
+                                <div className="h-12 w-px bg-gradient-to-b from-[#82ff1f] to-zinc-800"></div>
+                                <RefreshCw className="w-6 h-6 text-[#82ff1f] animate-pulse" />
+                                <div className="h-12 w-px bg-gradient-to-b from-zinc-800 to-[#82ff1f]"></div>
                             </div>
-                            <span className="font-semibold text-white">Web Online</span>
-                        </div>
-                    </motion.div>
-                </div>
-            </section>
 
-            {/* 10. ARQUITECTURA / CONEXIÓN */}
-            <section className="py-32 bg-zinc-950 border-y border-zinc-900 relative">
-                <div className="container px-4 md:px-6 max-w-5xl mx-auto text-center relative z-10">
-                    <motion.div {...fadeInUp} className="mb-16">
-                        <h2 className="text-3xl font-bold text-white mb-6">Cómo se conecta todo</h2>
-                        <p className="text-zinc-400">Un ecosistema robusto, invisible para ti, que lo hace funcionar todo.</p>
-                    </motion.div>
+                            {/* WORDPRESS */}
+                            <div className="bg-zinc-900/50 border border-zinc-800 rounded-2xl p-6">
+                                <div className="flex items-center justify-center gap-3">
+                                    <BrainCircuit className="w-7 h-7 text-zinc-400" />
+                                    <h3 className="text-xl font-bold text-white">WORDPRESS</h3>
+                                </div>
+                                <p className="text-zinc-500 text-sm mt-2">Sistema de gestión automatizado</p>
+                            </div>
 
-                    <div className="relative h-[400px] md:h-[500px] w-full flex items-center justify-center">
-                        {/* Central Hub */}
-                        <motion.div
-                            initial={{ opacity: 0, scale: 0.5 }}
-                            whileInView={{ opacity: 1, scale: 1 }}
-                            transition={{ duration: 0.8 }}
-                            className="relative z-20 w-32 h-32 md:w-40 md:h-40 bg-zinc-900 rounded-full border border-zinc-700 flex flex-col items-center justify-center shadow-[0_0_50px_rgba(130,255,31,0.1)]"
-                        >
-                            <BrainCircuit className="w-10 h-10 md:w-12 md:h-12 text-[#82ff1f] mb-2" />
-                            <span className="text-[10px] md:text-sm font-bold text-zinc-200 uppercase tracking-widest text-center px-2">Sistema Automático</span>
+                            {/* Arrow */}
+                            <div className="flex items-center justify-center">
+                                <div className="h-12 w-px bg-gradient-to-b from-[#82ff1f] to-zinc-800"></div>
+                            </div>
+
+                            {/* WEB EN VIVO */}
+                            <div className="bg-gradient-to-r from-[#82ff1f]/10 to-transparent border border-[#82ff1f]/30 rounded-2xl p-6">
+                                <div className="flex items-center justify-center gap-3">
+                                    <Globe className="w-7 h-7 text-[#82ff1f]" />
+                                    <h3 className="text-xl font-bold text-white">WEB EN VIVO</h3>
+                                </div>
+                                <p className="text-zinc-400 text-sm mt-2">bronsonwlb.es — Tu tienda pública</p>
+                            </div>
                         </motion.div>
 
-                        {/* Orbiting Elements */}
-                        {[
-                            { icon: Smartphone, label: "Tu Mini App", x: "0", y: "-150px", delay: 0.2 },
-                            { icon: Globe, label: "Web Pública", x: "140px", y: "80px", delay: 0.4 },
-                            { icon: Camera, label: "Modulo IA", x: "-140px", y: "80px", delay: 0.6 }
-                        ].map((node, i) => (
-                            <React.Fragment key={i}>
-                                {/* Connection Line */}
-                                <motion.div
-                                    initial={{ opacity: 0, pathLength: 0 }}
-                                    whileInView={{ opacity: 1, pathLength: 1 }}
-                                    className="absolute top-1/2 left-1/2 w-full h-full -translate-x-1/2 -translate-y-1/2 pointer-events-none"
-                                >
-                                    {/* Using simple divs as lines for simplicity in this swift implementation, typically SVG lines */}
-                                    <span
-                                        className="absolute top-1/2 left-1/2 h-[1px] bg-zinc-800 origin-left"
-                                        style={{
-                                            width: '140px',
-                                            transform: `rotate(${i === 0 ? '-90deg' : i === 1 ? '30deg' : '150deg'}) translateY(-50%)`
-                                        }}
-                                    />
-                                </motion.div>
-
-                                {/* Node */}
-                                <motion.div
-                                    initial={{ opacity: 0, x: 0, y: 0 }}
-                                    whileInView={{ opacity: 1, x: parseFloat(node.x), y: parseFloat(node.y) }}
-                                    transition={{ delay: node.delay, duration: 0.8 }}
-                                    className="absolute z-20 w-24 h-24 bg-black rounded-xl border border-zinc-800 flex flex-col items-center justify-center hover:border-[#82ff1f] transition-colors"
-                                    style={{ transform: `translate(${node.x}, ${node.y})` }} // Fallback
-                                >
-                                    <node.icon className="w-6 h-6 text-zinc-400 mb-2" />
-                                    <span className="text-xs text-zinc-500 font-medium">{node.label}</span>
-                                </motion.div>
-                            </React.Fragment>
-                        ))}
+                        <motion.div {...fadeInUp} className="mt-12 p-6 bg-zinc-900/30 rounded-xl border border-zinc-800">
+                            <p className="text-zinc-400 text-lg">
+                                <span className="text-white font-semibold">El stock es bidireccional:</span> Vendes en la web → se actualiza. Actualizas desde la app → se refleja en la tienda.
+                            </p>
+                        </motion.div>
                     </div>
                 </div>
             </section>
 
-            {/* 11. PRECIO */}
-            <section className="py-32 bg-black">
+            {/* 8. UPGRADES OPCIONALES - FULL SCREEN */}
+            <section className="min-h-screen flex items-center bg-zinc-950 border-y border-zinc-900 py-24">
+                <div className="container px-4 md:px-6 max-w-6xl mx-auto">
+                    <motion.div {...fadeInUp} className="text-center mb-16">
+                        <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+                            Ampliaciones opcionales
+                        </h2>
+                        <p className="text-zinc-400 text-xl">Funcionalidades avanzadas que puedes añadir en el futuro</p>
+                    </motion.div>
+
+                    <div className="grid md:grid-cols-2 gap-8">
+                        {/* Voice Upload */}
+                        <motion.div {...fadeInUp} className="bg-zinc-900/30 border border-zinc-800 rounded-3xl p-8 relative overflow-hidden">
+                            <div className="absolute top-4 right-4 px-3 py-1 bg-amber-500/10 border border-amber-500/20 rounded-full">
+                                <span className="text-xs font-bold text-amber-500">OPCIONAL</span>
+                            </div>
+
+                            <div className="w-16 h-16 rounded-2xl bg-purple-500/10 text-purple-500 flex items-center justify-center mb-6">
+                                <Mic className="w-8 h-8" />
+                            </div>
+
+                            <h3 className="text-2xl font-bold text-white mb-4">Subida por voz</h3>
+                            <p className="text-zinc-400 mb-6 leading-relaxed">
+                                "He comprado unas Air Force Max, número 42, precio 85 euros, tengo 3 pares... súbelas a la web"
+                            </p>
+
+                            <div className="space-y-3 mb-6">
+                                <div className="flex items-center gap-2 text-sm text-zinc-500">
+                                    <div className="w-1.5 h-1.5 rounded-full bg-purple-500"></div>
+                                    Requiere API de IA adicional
+                                </div>
+                                <div className="flex items-center gap-2 text-sm text-zinc-500">
+                                    <div className="w-1.5 h-1.5 rounded-full bg-purple-500"></div>
+                                    Uso 3 veces/día ≈ 10€/mes
+                                </div>
+                            </div>
+
+                            <div className="px-4 py-2 bg-purple-500/10 rounded-lg inline-block">
+                                <p className="text-sm text-purple-400">No incluido en el precio base</p>
+                            </div>
+                        </motion.div>
+
+                        {/* Integrated IA */}
+                        <motion.div {...fadeInUp} className="bg-zinc-900/30 border border-[#82ff1f]/30 rounded-3xl p-8 relative overflow-hidden">
+                            <div className="absolute top-4 right-4 px-3 py-1 bg-[#82ff1f]/10 border border-[#82ff1f]/20 rounded-full">
+                                <span className="text-xs font-bold text-[#82ff1f]">INCLUIDO</span>
+                            </div>
+
+                            <div className="w-16 h-16 rounded-2xl bg-[#82ff1f]/10 text-[#82ff1f] flex items-center justify-center mb-6">
+                                <ImageIcon className="w-8 h-8" />
+                            </div>
+
+                            <h3 className="text-2xl font-bold text-white mb-4">IA de imágenes integrada</h3>
+                            <p className="text-zinc-400 mb-6 leading-relaxed">
+                                Genera las fotos profesionales directamente desde la app, sin usar Gemini por separado.
+                            </p>
+
+                            <div className="grid grid-cols-2 gap-4 mb-6">
+                                <div className="p-4 bg-zinc-900 rounded-lg border border-zinc-800">
+                                    <p className="text-xs text-zinc-500 mb-1">FLUJO ACTUAL</p>
+                                    <p className="text-sm text-zinc-300">Gemini → Descargar → App</p>
+                                </div>
+                                <div className="p-4 bg-[#82ff1f]/5 rounded-lg border border-[#82ff1f]/20">
+                                    <p className="text-xs text-[#82ff1f] mb-1">FLUJO INTEGRADO</p>
+                                    <p className="text-sm text-white">Foto → App → ¡Listo!</p>
+                                </div>
+                            </div>
+
+                            <div className="space-y-3 mb-6">
+                                <div className="flex items-center gap-2 text-sm text-zinc-500">
+                                    <div className="w-1.5 h-1.5 rounded-full bg-[#82ff1f]"></div>
+                                    API Gemini a tu nombre
+                                </div>
+                                <div className="flex items-center gap-2 text-sm text-zinc-500">
+                                    <div className="w-1.5 h-1.5 rounded-full bg-[#82ff1f]"></div>
+                                    Coste mensual según uso
+                                </div>
+                            </div>
+
+                            <div className="px-4 py-2 bg-[#82ff1f]/10 rounded-lg inline-block">
+                                <p className="text-sm text-[#82ff1f] font-bold">Incluido en el precio base</p>
+                            </div>
+                        </motion.div>
+
+                        {/* NEW 1: Avisos inteligentes de stock */}
+                        <motion.div {...fadeInUp} className="bg-zinc-900/30 border border-zinc-800 rounded-3xl p-8 relative overflow-hidden">
+                            <div className="absolute top-4 right-4 px-3 py-1 bg-amber-500/10 border border-amber-500/20 rounded-full">
+                                <span className="text-xs font-bold text-amber-500">OPCIONAL</span>
+                            </div>
+
+                            <div className="w-16 h-16 rounded-2xl bg-rose-500/10 text-rose-500 flex items-center justify-center mb-6">
+                                <Bell className="w-8 h-8" />
+                            </div>
+
+                            <h3 className="text-2xl font-bold text-white mb-4">Avisos inteligentes de stock</h3>
+                            <p className="text-zinc-400 mb-6 leading-relaxed">
+                                El sistema te avisa automáticamente cuando un modelo o una talla se está agotando o se vende más rápido de lo habitual.
+                            </p>
+
+                            <div className="bg-zinc-900 rounded-xl border border-zinc-800 p-5 mb-6 space-y-2">
+                                <p className="text-xs font-mono text-zinc-500 mb-2 uppercase">Ejemplos de alertas</p>
+                                <p className="text-sm text-zinc-300">“Quedan 2 pares de este modelo”</p>
+                                <p className="text-sm text-zinc-300">“Esta talla se ha vendido muy rápido”</p>
+                                <p className="text-sm text-zinc-300">“Este producto se agotó en 3 días”</p>
+                            </div>
+
+                            <div className="space-y-3 mb-6">
+                                <div className="flex items-center gap-2 text-sm text-zinc-500">
+                                    <div className="w-1.5 h-1.5 rounded-full bg-rose-500"></div>
+                                    Evita quedarte sin producto top
+                                </div>
+                                <div className="flex items-center gap-2 text-sm text-zinc-500">
+                                    <div className="w-1.5 h-1.5 rounded-full bg-rose-500"></div>
+                                    Te ayuda a decidir re-stock
+                                </div>
+                                <div className="flex items-center gap-2 text-sm text-zinc-500">
+                                    <div className="w-1.5 h-1.5 rounded-full bg-rose-500"></div>
+                                    Sin revisar nada manualmente
+                                </div>
+                            </div>
+
+                            <div className="px-4 py-2 bg-rose-500/10 rounded-lg inline-block">
+                                <p className="text-sm text-rose-400">No incluido en el precio base</p>
+                            </div>
+                        </motion.div>
+
+                        {/* NEW 2: Histórico de ventas */}
+                        <motion.div {...fadeInUp} className="bg-zinc-900/30 border border-zinc-800 rounded-3xl p-8 relative overflow-hidden">
+                            <div className="absolute top-4 right-4 px-3 py-1 bg-amber-500/10 border border-amber-500/20 rounded-full">
+                                <span className="text-xs font-bold text-amber-500">OPCIONAL</span>
+                            </div>
+
+                            <div className="w-16 h-16 rounded-2xl bg-emerald-500/10 text-emerald-500 flex items-center justify-center mb-6">
+                                <BarChart3 className="w-8 h-8" />
+                            </div>
+
+                            <h3 className="text-2xl font-bold text-white mb-4">Histórico de ventas y rotación</h3>
+                            <p className="text-zinc-400 mb-6 leading-relaxed">
+                                Un panel sencillo dentro de la app donde puedes ver qué se vende más, qué tallas vuelan y qué productos se quedan parados.
+                            </p>
+
+                            <div className="bg-zinc-900 rounded-xl border border-zinc-800 p-5 mb-6 space-y-2">
+                                <p className="text-xs font-mono text-zinc-500 mb-2 uppercase">Qué muestra</p>
+                                <p className="text-sm text-zinc-300 flex justify-between"><span>Modelos más vendidos</span> <span className="text-emerald-500">Top 5</span></p>
+                                <p className="text-sm text-zinc-300 flex justify-between"><span>Tallas con mayor rotación</span> <span className="text-emerald-500">42, 43</span></p>
+                                <p className="text-sm text-zinc-300 flex justify-between"><span>Tiempo medio venta</span> <span className="text-emerald-500">~12 días</span></p>
+                            </div>
+
+                            <div className="space-y-3 mb-6">
+                                <div className="flex items-center gap-2 text-sm text-zinc-500">
+                                    <div className="w-1.5 h-1.5 rounded-full bg-emerald-500"></div>
+                                    Compra mejor al viajar
+                                </div>
+                                <div className="flex items-center gap-2 text-sm text-zinc-500">
+                                    <div className="w-1.5 h-1.5 rounded-full bg-emerald-500"></div>
+                                    Evita modelos que no rotan
+                                </div>
+                                <div className="flex items-center gap-2 text-sm text-zinc-500">
+                                    <div className="w-1.5 h-1.5 rounded-full bg-emerald-500"></div>
+                                    Datos claros, sin líos
+                                </div>
+                            </div>
+
+                            <div className="px-4 py-2 bg-emerald-500/10 rounded-lg inline-block">
+                                <p className="text-sm text-emerald-400">No incluido en el precio base</p>
+                            </div>
+                        </motion.div>
+
+                        {/* NEW 3: Pedidos automáticos */}
+                        <motion.div {...fadeInUp} className="bg-zinc-900/30 border border-zinc-800 rounded-3xl p-8 relative overflow-hidden">
+                            <div className="absolute top-4 right-4 px-3 py-1 bg-amber-500/10 border border-amber-500/20 rounded-full">
+                                <span className="text-xs font-bold text-amber-500">OPCIONAL</span>
+                            </div>
+
+                            <div className="w-16 h-16 rounded-2xl bg-pink-500/10 text-pink-500 flex items-center justify-center mb-6">
+                                <MessageSquare className="w-8 h-8" />
+                            </div>
+
+                            <h3 className="text-2xl font-bold text-white mb-4">Pedidos auto WhatsApp/IG</h3>
+                            <p className="text-zinc-400 mb-6 leading-relaxed">
+                                Cuando alguien te escribe preguntando por una bamba, el sistema puede responder solo consultando el stock y enviando el link.
+                            </p>
+
+                            <div className="bg-zinc-900 rounded-xl border border-zinc-800 p-5 mb-6 relative">
+                                <div className="absolute top-0 right-0 p-2 opacity-10">
+                                    <MessageSquare className="w-12 h-12" />
+                                </div>
+                                <p className="text-xs font-mono text-zinc-500 mb-2 uppercase">Ejemplo real</p>
+                                <p className="text-sm text-zinc-400 mb-1 italic">Usuario: "¿La tienes en 42?"</p>
+                                <p className="text-sm text-pink-400">Bot: "¡Sí! Nos quedan 2. Cómpralas aquí: [Link]"</p>
+                            </div>
+
+                            <div className="space-y-3 mb-6">
+                                <div className="flex items-center gap-2 text-sm text-zinc-500">
+                                    <div className="w-1.5 h-1.5 rounded-full bg-pink-500"></div>
+                                    Menos tiempo respondiendo
+                                </div>
+                                <div className="flex items-center gap-2 text-sm text-zinc-500">
+                                    <div className="w-1.5 h-1.5 rounded-full bg-pink-500"></div>
+                                    No pierdas ventas por tardar
+                                </div>
+                                <div className="flex items-center gap-2 text-sm text-zinc-500">
+                                    <div className="w-1.5 h-1.5 rounded-full bg-pink-500"></div>
+                                    Conexión directa Redes ↔ Web
+                                </div>
+                            </div>
+
+                            <div className="px-4 py-2 bg-pink-500/10 rounded-lg inline-block">
+                                <p className="text-sm text-pink-400">Coste mensual extra según uso</p>
+                            </div>
+                        </motion.div>
+
+                        {/* NEW 4: Subida masiva */}
+                        <motion.div {...fadeInUp} className="bg-zinc-900/30 border border-zinc-800 rounded-3xl p-8 relative overflow-hidden">
+                            <div className="absolute top-4 right-4 px-3 py-1 bg-amber-500/10 border border-amber-500/20 rounded-full">
+                                <span className="text-xs font-bold text-amber-500">OPCIONAL</span>
+                            </div>
+
+                            <div className="w-16 h-16 rounded-2xl bg-cyan-500/10 text-cyan-500 flex items-center justify-center mb-6">
+                                <Files className="w-8 h-8" />
+                            </div>
+
+                            <h3 className="text-2xl font-bold text-white mb-4">Subida masiva de productos</h3>
+                            <p className="text-zinc-400 mb-6 leading-relaxed">
+                                Sube varios productos de golpe a la web cuando tengas más volumen, usando listados, facturas o archivos preparados.
+                            </p>
+
+                            <div className="bg-zinc-900 rounded-xl border border-zinc-800 p-5 mb-6">
+                                <p className="text-xs font-mono text-zinc-500 mb-2 uppercase">Casos de uso</p>
+                                <ul className="space-y-1">
+                                    <li className="text-sm text-zinc-300">• Cuando recibes 20 pares a la vez</li>
+                                    <li className="text-sm text-zinc-300">• Si trabajas con proveedores</li>
+                                    <li className="text-sm text-zinc-300">• Para escalar más rápido</li>
+                                </ul>
+                            </div>
+
+                            <div className="space-y-3 mb-6">
+                                <div className="flex items-center gap-2 text-sm text-zinc-500">
+                                    <div className="w-1.5 h-1.5 rounded-full bg-cyan-500"></div>
+                                    Ahorra horas en cargas grandes
+                                </div>
+                                <div className="flex items-center gap-2 text-sm text-zinc-500">
+                                    <div className="w-1.5 h-1.5 rounded-full bg-cyan-500"></div>
+                                    Ideal fase de crecimiento
+                                </div>
+                                <div className="flex items-center gap-2 text-sm text-zinc-500">
+                                    <div className="w-1.5 h-1.5 rounded-full bg-cyan-500"></div>
+                                    Compatible con la mini-app
+                                </div>
+                            </div>
+
+                            <div className="px-4 py-2 bg-cyan-500/10 rounded-lg inline-block">
+                                <p className="text-sm text-cyan-400">No incluido en el precio base</p>
+                            </div>
+                        </motion.div>
+                    </div>
+                </div>
+            </section>
+
+            {/* 9. PRECIO - FULL SCREEN */}
+            <section className="min-h-screen flex items-center bg-black py-24">
                 <div className="container px-4 md:px-6 max-w-4xl mx-auto">
                     <motion.div
                         {...fadeInUp}
-                        className="bg-zinc-900/40 border border-zinc-800 rounded-3xl p-8 md:p-16 text-center relative overflow-hidden"
+                        className="bg-zinc-900/40 border-2 border-[#82ff1f]/30 rounded-3xl p-12 md:p-20 text-center relative overflow-hidden mb-12"
                     >
-                        <div className="absolute top-0 w-full h-1 bg-gradient-to-r from-transparent via-[#82ff1f] to-transparent opacity-50"></div>
+                        <div className="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-transparent via-[#82ff1f] to-transparent"></div>
 
-                        <h2 className="text-2xl font-medium text-zinc-400 mb-8 uppercase tracking-widest text-sm">Inversión Única</h2>
+                        <h2 className="text-xl font-medium text-zinc-400 mb-10 uppercase tracking-widest">Inversión Total</h2>
 
-                        <div className="flex items-baseline justify-center gap-2 mb-8">
-                            <span className="text-6xl md:text-8xl font-bold text-white tracking-tighter">1.250€</span>
-                            <span className="text-xl text-zinc-500">+ IVA</span>
+                        <div className="flex items-baseline justify-center gap-3 mb-10">
+                            <span className="text-7xl md:text-9xl font-bold text-white tracking-tighter">799€</span>
+                            <span className="text-2xl text-zinc-500">+ IVA</span>
                         </div>
 
-                        <div className="max-w-md mx-auto space-y-4 mb-12 text-left">
-                            <div className="flex items-center gap-3 text-zinc-300">
-                                <CheckCircle2 className="w-5 h-5 text-[#82ff1f]" />
-                                <span>Diseño y Desarrollo de la Mini App</span>
-                            </div>
-                            <div className="flex items-center gap-3 text-zinc-300">
-                                <CheckCircle2 className="w-5 h-5 text-[#82ff1f]" />
-                                <span>Conexión con tu Web actual</span>
-                            </div>
-                            <div className="flex items-center gap-3 text-zinc-300">
-                                <CheckCircle2 className="w-5 h-5 text-[#82ff1f]" />
-                                <span>Configuración de IA para imágenes</span>
-                            </div>
-                            <div className="flex items-center gap-3 text-zinc-300">
-                                <CheckCircle2 className="w-5 h-5 text-[#82ff1f]" />
-                                <span>1 Mes de Soporte y Ajustes incluido</span>
-                            </div>
+                        <div className="max-w-lg mx-auto space-y-4 mb-12 text-left">
+                            {[
+                                "Diseño y desarrollo de la mini-app",
+                                "Conexión con tu WordPress actual",
+                                "Configuración de IA para fotos y descripciones",
+                                "1 mes de soporte y ajustes incluido"
+                            ].map((item, i) => (
+                                <div key={i} className="flex items-center gap-4 text-lg text-zinc-300">
+                                    <CheckCircle2 className="w-6 h-6 text-[#82ff1f] flex-shrink-0" />
+                                    <span>{item}</span>
+                                </div>
+                            ))}
                         </div>
 
-                        <div className="inline-block px-6 py-3 bg-[#82ff1f]/10 rounded-lg border border-[#82ff1f]/20">
-                            <p className="text-[#82ff1f] text-sm">
-                                Sin cuotas de mantenimiento mensual obligatorias.
+                        <div className="inline-block px-8 py-4 bg-[#82ff1f]/10 rounded-xl border border-[#82ff1f]/20">
+                            <p className="text-[#82ff1f] text-lg font-medium">
+                                Sin cuotas mensuales obligatorias
                             </p>
                         </div>
+                    </motion.div>
+
+                    {/* ROI Block Moved Here */}
+                    <motion.div
+                        {...fadeInUp}
+                        className="bg-gradient-to-r from-[#82ff1f]/10 to-transparent p-10 rounded-3xl border border-[#82ff1f]/30 text-center"
+                    >
+                        <p className="text-2xl md:text-3xl font-bold text-white mb-2">
+                            Inversión recuperada en ~1 mes
+                        </p>
+                        <p className="text-zinc-400 text-lg">
+                            Con sólo evitar 1-2 ventas perdidas al mes, la inversión de 799€ se paga sola.
+                        </p>
                     </motion.div>
                 </div>
             </section>
 
-            {/* 12. CIERRE */}
-            <footer className="py-24 border-t border-zinc-900/50 bg-zinc-950 text-center">
-                <div className="container px-4 md:px-6">
+            {/* 10. CIERRE - FULL SCREEN */}
+            <footer className="min-h-screen flex items-center border-t border-zinc-900/50 bg-zinc-950 text-center py-24">
+                <div className="container px-4 md:px-6 max-w-4xl mx-auto">
                     <motion.div {...fadeInUp}>
-                        <p className="text-2xl md:text-3xl text-zinc-300 font-light mb-12 max-w-2xl mx-auto leading-normal">
-                            Es hora de que tu web trabaje para ti, <br />
+                        <p className="text-3xl md:text-5xl text-zinc-300 font-light mb-16 max-w-3xl mx-auto leading-normal">
+                            Es hora de que tu web trabaje para ti,<br />
                             <span className="text-white font-medium">no tú para ella.</span>
                         </p>
 
-                        <Link href="#">
-                            <Button className="bg-[#82ff1f] hover:bg-[#72e01b] text-black font-bold text-lg px-8 py-6 rounded-full transition-all hover:scale-105">
+                        <Link href="https://wa.me/34627281459?text=Hola%20Victor!%20He%20revisado%20la%20propuesta%20y%20quiero%20tirarlo%20hacia%20delante">
+                            <Button className="bg-[#82ff1f] hover:bg-[#72e01b] text-black font-bold text-xl px-12 py-8 rounded-full transition-all hover:scale-105 shadow-lg shadow-[#82ff1f]/20">
                                 Comenzar Proyecto
-                                <ArrowRight className="ml-2 w-5 h-5" />
+                                <ArrowRight className="ml-3 w-6 h-6" />
                             </Button>
                         </Link>
                     </motion.div>
