@@ -142,7 +142,7 @@ export function EmailTicketMockup() {
                         </div>
 
                         {/* Detail Content */}
-                        <div className="p-6 md:p-10 flex-1 overflow-y-auto">
+                        <div className="p-4 md:p-10 flex-1 overflow-y-auto">
                             <div className="max-w-2xl mx-auto space-y-8">
 
                                 {/* AI Header Analysis */}
@@ -158,7 +158,7 @@ export function EmailTicketMockup() {
                                     </div>
                                 </div>
 
-                                <div className="grid md:grid-cols-2 gap-8">
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
                                     {/* Left Column: Images */}
                                     <div className="space-y-4">
                                         <label className="text-xs font-bold text-gray-500 uppercase tracking-wider block">Imágenes del producto</label>
@@ -278,11 +278,11 @@ export function EmailTicketMockup() {
                                     </div>
                                 </div>
 
-                                <div className="pt-6 border-t border-gray-100 flex gap-4">
-                                    <Button className="flex-1 bg-black hover:bg-zinc-800 text-white font-bold h-12 rounded-xl">
+                                <div className="pt-6 border-t border-gray-100 flex flex-col md:flex-row gap-3 md:gap-4">
+                                    <Button className="flex-1 bg-black hover:bg-zinc-800 text-white font-bold h-10 md:h-12 rounded-xl text-sm md:text-base">
                                         Publicar en Web
                                     </Button>
-                                    <Button variant="outline" className="flex-1 border-gray-200 text-gray-500 h-12 rounded-xl">
+                                    <Button variant="outline" className="flex-1 border-gray-200 text-gray-500 h-10 md:h-12 rounded-xl text-sm md:text-base">
                                         Guardar cambios
                                     </Button>
                                 </div>

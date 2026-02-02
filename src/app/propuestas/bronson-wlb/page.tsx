@@ -863,17 +863,18 @@ export default function BronsonWLBProposal() {
                         className="bg-zinc-900/40 border border-zinc-800 rounded-3xl overflow-hidden relative"
                     >
                         {/* Label */}
-                        <div className="absolute top-6 right-6 px-4 py-1.5 bg-[#82ff1f]/10 border border-[#82ff1f]/20 rounded-full flex flex-col items-end">
+                        {/* Label */}
+                        <div className="md:absolute md:top-6 md:right-6 mb-8 md:mb-0 px-4 py-1.5 bg-[#82ff1f]/10 border border-[#82ff1f]/20 rounded-full flex flex-col items-end w-max">
                             <span className="text-xs font-bold text-[#82ff1f] uppercase tracking-wider">Extra Opcional</span>
                             <span className="text-[10px] font-medium text-zinc-500">Activable cuando quieras</span>
                         </div>
 
-                        <div className="p-8 md:p-16">
+                        <div className="p-6 md:p-16">
                             <div className="max-w-3xl mb-12">
-                                <h2 className="text-3xl font-bold text-white mb-4">
+                                <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
                                     Del ticket al producto listo para vender
                                 </h2>
-                                <p className="text-xl text-zinc-400">
+                                <p className="text-lg md:text-xl text-zinc-400">
                                     El sistema prepara el producto automáticamente. Tú solo revisas y confirmas.
                                 </p>
                             </div>
@@ -881,31 +882,31 @@ export default function BronsonWLBProposal() {
                             {/* Visual Process - Simplified */}
                             <div className="mb-16 text-center">
                                 <p className="text-xs font-bold text-zinc-500 uppercase tracking-widest mb-6">Flujo automático</p>
-                                <div className="flex flex-wrap justify-center items-center gap-4 md:gap-8 opacity-90 scale-90 md:scale-100 origin-top bg-zinc-950/50 p-6 rounded-2xl border border-zinc-900 inline-flex">
+                                <div className="flex flex-col md:flex-row justify-center items-center gap-4 md:gap-8 opacity-90 origin-top bg-zinc-950/50 p-6 rounded-2xl border border-zinc-900 inline-flex w-full md:w-auto">
                                     <div className="flex flex-col items-center gap-2">
                                         <div className="w-12 h-12 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center text-white text-xl">📩</div>
                                         <span className="text-xs font-medium text-zinc-500">Email</span>
                                     </div>
-                                    <ArrowRight className="w-4 h-4 text-zinc-700" />
+                                    <ArrowRight className="w-4 h-4 text-zinc-700 rotate-90 md:rotate-0" />
                                     <div className="flex flex-col items-center gap-2">
                                         <div className="w-12 h-12 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center text-[#82ff1f]">
                                             <BrainCircuit className="w-6 h-6" />
                                         </div>
                                         <span className="text-xs font-medium text-zinc-500">Análisis</span>
                                     </div>
-                                    <ArrowRight className="w-4 h-4 text-zinc-700" />
+                                    <ArrowRight className="w-4 h-4 text-zinc-700 rotate-90 md:rotate-0" />
                                     <div className="flex flex-col items-center gap-2">
                                         <div className="w-12 h-12 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center text-white">
                                             <Smartphone className="w-6 h-6" />
                                         </div>
                                         <span className="text-xs font-medium text-zinc-500">App (Borrador)</span>
                                     </div>
-                                    <ArrowRight className="w-4 h-4 text-zinc-700" />
+                                    <ArrowRight className="w-4 h-4 text-zinc-700 rotate-90 md:rotate-0" />
                                     <div className="flex flex-col items-center gap-2">
                                         <div className="w-12 h-12 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center text-[#82ff1f] text-xl">👀</div>
                                         <span className="text-xs font-medium text-zinc-500">Revisión</span>
                                     </div>
-                                    <ArrowRight className="w-4 h-4 text-zinc-700" />
+                                    <ArrowRight className="w-4 h-4 text-zinc-700 rotate-90 md:rotate-0" />
                                     <div className="flex flex-col items-center gap-2">
                                         <div className="w-12 h-12 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center text-white">
                                             <Globe className="w-6 h-6" />
