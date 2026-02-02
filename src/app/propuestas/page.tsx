@@ -7,7 +7,8 @@ import {
     ArrowRight,
     Calendar,
     Lock,
-    Plus
+    Plus,
+    Store
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
@@ -22,6 +23,16 @@ const proposals = [
         link: "/propuestas/los-mejores-humos",
         icon: Building2,
         gradient: "from-[#82ff1f] to-green-600"
+    },
+    {
+        id: "bronson-wlb",
+        client: "Bronson WLB",
+        title: "Mini App Gestión (Presentación Privada)",
+        status: "active",
+        date: "Febrero 2026",
+        link: "/propuestas/bronson-wlb",
+        icon: Store,
+        gradient: "from-[#82ff1f] to-emerald-500"
     },
     // Placeholders for future proposals
     {
