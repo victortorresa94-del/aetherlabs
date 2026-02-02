@@ -32,6 +32,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Image from "next/image";
 import BronsonAppDemo from "@/components/propuestas/bronson-app-demo";
+import { EmailTicketMockup } from "@/components/propuestas/email-ticket-mockup";
 
 const fadeInUp = {
     initial: { opacity: 0, y: 20 },
@@ -854,6 +855,134 @@ export default function BronsonWLBProposal() {
                 </div>
             </section>
 
+            {/* NEW EXTRA BLOCK: EMAIL TICKET */}
+            <section className="py-24 bg-zinc-950 border-t border-zinc-900">
+                <div className="container px-4 md:px-6 max-w-6xl mx-auto">
+                    <motion.div
+                        {...fadeInUp}
+                        className="bg-zinc-900/40 border border-zinc-800 rounded-3xl overflow-hidden relative"
+                    >
+                        {/* Label */}
+                        <div className="absolute top-6 right-6 px-4 py-1.5 bg-[#82ff1f]/10 border border-[#82ff1f]/20 rounded-full flex flex-col items-end">
+                            <span className="text-xs font-bold text-[#82ff1f] uppercase tracking-wider">Extra Opcional</span>
+                            <span className="text-[10px] font-medium text-zinc-500">Activable cuando quieras</span>
+                        </div>
+
+                        <div className="p-8 md:p-16">
+                            <div className="max-w-3xl mb-12">
+                                <h2 className="text-3xl font-bold text-white mb-4">
+                                    Del ticket al producto listo para vender
+                                </h2>
+                                <p className="text-xl text-zinc-400">
+                                    El sistema prepara el producto automáticamente. Tú solo revisas y confirmas.
+                                </p>
+                            </div>
+
+                            {/* Visual Process - Simplified */}
+                            <div className="mb-16 text-center">
+                                <p className="text-xs font-bold text-zinc-500 uppercase tracking-widest mb-6">Flujo automático</p>
+                                <div className="flex flex-wrap justify-center items-center gap-4 md:gap-8 opacity-90 scale-90 md:scale-100 origin-top bg-zinc-950/50 p-6 rounded-2xl border border-zinc-900 inline-flex">
+                                    <div className="flex flex-col items-center gap-2">
+                                        <div className="w-12 h-12 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center text-white text-xl">📩</div>
+                                        <span className="text-xs font-medium text-zinc-500">Email</span>
+                                    </div>
+                                    <ArrowRight className="w-4 h-4 text-zinc-700" />
+                                    <div className="flex flex-col items-center gap-2">
+                                        <div className="w-12 h-12 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center text-[#82ff1f]">
+                                            <BrainCircuit className="w-6 h-6" />
+                                        </div>
+                                        <span className="text-xs font-medium text-zinc-500">Análisis</span>
+                                    </div>
+                                    <ArrowRight className="w-4 h-4 text-zinc-700" />
+                                    <div className="flex flex-col items-center gap-2">
+                                        <div className="w-12 h-12 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center text-white">
+                                            <Smartphone className="w-6 h-6" />
+                                        </div>
+                                        <span className="text-xs font-medium text-zinc-500">App (Borrador)</span>
+                                    </div>
+                                    <ArrowRight className="w-4 h-4 text-zinc-700" />
+                                    <div className="flex flex-col items-center gap-2">
+                                        <div className="w-12 h-12 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center text-[#82ff1f] text-xl">👀</div>
+                                        <span className="text-xs font-medium text-zinc-500">Revisión</span>
+                                    </div>
+                                    <ArrowRight className="w-4 h-4 text-zinc-700" />
+                                    <div className="flex flex-col items-center gap-2">
+                                        <div className="w-12 h-12 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center text-white">
+                                            <Globe className="w-6 h-6" />
+                                        </div>
+                                        <span className="text-xs font-medium text-zinc-500">Web</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Main Mockup */}
+                            <div className="mb-16">
+                                <EmailTicketMockup />
+                            </div>
+
+                            {/* System Features - New Block */}
+                            <div className="bg-zinc-900/30 rounded-2xl p-8 border border-zinc-800 mb-12">
+                                <h3 className="text-lg font-bold text-white mb-6">Qué hace el sistema por ti</h3>
+                                <div className="grid md:grid-cols-2 gap-x-12 gap-y-4">
+                                    <div className="space-y-4">
+                                        <div className="flex items-start gap-3">
+                                            <div className="mt-1 bg-[#82ff1f]/10 p-1 rounded">
+                                                <Check className="w-3 h-3 text-[#82ff1f]" />
+                                            </div>
+                                            <p className="text-sm text-zinc-400">Extrae modelo y referencia desde el ticket</p>
+                                        </div>
+                                        <div className="flex items-start gap-3">
+                                            <div className="mt-1 bg-[#82ff1f]/10 p-1 rounded">
+                                                <Check className="w-3 h-3 text-[#82ff1f]" />
+                                            </div>
+                                            <p className="text-sm text-zinc-400">Detecta precio de compra automáticamente</p>
+                                        </div>
+                                        <div className="flex items-start gap-3">
+                                            <div className="mt-1 bg-[#82ff1f]/10 p-1 rounded">
+                                                <Check className="w-3 h-3 text-[#82ff1f]" />
+                                            </div>
+                                            <p className="text-sm text-zinc-400">Busca imágenes de referencia si falta foto</p>
+                                        </div>
+                                    </div>
+                                    <div className="space-y-4">
+                                        <div className="flex items-start gap-3">
+                                            <div className="mt-1 bg-purple-500/10 p-1 rounded">
+                                                <Sparkles className="w-3 h-3 text-purple-400" />
+                                            </div>
+                                            <p className="text-sm text-zinc-400">Recomienda margen y precio de venta</p>
+                                        </div>
+                                        <div className="flex items-start gap-3">
+                                            <div className="mt-1 bg-[#82ff1f]/10 p-1 rounded">
+                                                <Check className="w-3 h-3 text-[#82ff1f]" />
+                                            </div>
+                                            <p className="text-sm text-zinc-400">Prepara el producto en la app en borrador</p>
+                                        </div>
+                                        <div className="flex items-start gap-3">
+                                            <div className="mt-1 bg-zinc-800 p-1 rounded">
+                                                <Check className="w-3 h-3 text-zinc-500" />
+                                            </div>
+                                            <p className="text-sm text-zinc-400"><strong>Nunca publica nada</strong> sin tu confirmación</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="mt-12 text-center pt-8 border-t border-zinc-800">
+                                <p className="text-zinc-500 text-lg italic mb-8">
+                                    "El sistema prepara el trabajo pesado. Tú decides cuándo y cómo se publica."
+                                </p>
+
+                                <div className="inline-block px-8 py-4 bg-[#82ff1f]/10 rounded-2xl border border-[#82ff1f]/20">
+                                    <p className="text-[#82ff1f] text-xl font-bold">
+                                        Precio final con este extra: 999€ + IVA
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </motion.div>
+                </div>
+            </section>
+
             {/* 10. CIERRE - FULL SCREEN */}
             <footer className="min-h-screen flex items-center border-t border-zinc-900/50 bg-zinc-950 text-center py-24">
                 <div className="container px-4 md:px-6 max-w-4xl mx-auto">
@@ -871,8 +1000,8 @@ export default function BronsonWLBProposal() {
                         </Link>
                     </motion.div>
                 </div>
-            </footer>
+            </footer >
 
-        </div>
+        </div >
     );
 }
