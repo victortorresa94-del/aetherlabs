@@ -684,39 +684,7 @@ export default function PersonalTrainerProposal() {
                                 </div>
                             </div>
 
-                            {/* NOT INCLUDED PRO */}
-                            <div className="p-6 rounded-xl border border-zinc-800/50 bg-black/40">
-                                <h4 className="font-bold text-zinc-500 mb-4 uppercase tracking-wider text-xs flex items-center gap-2">
-                                    <div className="w-1 h-4 bg-zinc-700 rounded-full"></div>
-                                    Qué NO incluye (Disponible en PREMIUM)
-                                </h4>
-                                <div className="grid md:grid-cols-3 gap-4 opacity-50">
-                                    <div className="flex items-center gap-3 text-zinc-400">
-                                        <X className="w-4 h-4 text-zinc-600" />
-                                        <span className="text-sm line-through decoration-zinc-700">Identidad Visual Completa</span>
-                                    </div>
-                                    <div className="flex items-center gap-3 text-zinc-400">
-                                        <X className="w-4 h-4 text-zinc-600" />
-                                        <span className="text-sm line-through decoration-zinc-700">Lead Magnet Engine</span>
-                                    </div>
-                                    <div className="flex items-center gap-3 text-zinc-400">
-                                        <X className="w-4 h-4 text-zinc-600" />
-                                        <span className="text-sm line-through decoration-zinc-700">Fábrica de Contenido</span>
-                                    </div>
-                                    <div className="flex items-center gap-3 text-zinc-400">
-                                        <X className="w-4 h-4 text-zinc-600" />
-                                        <span className="text-sm line-through decoration-zinc-700">Vendedor IA (Setter)</span>
-                                    </div>
-                                    <div className="flex items-center gap-3 text-zinc-400">
-                                        <X className="w-4 h-4 text-zinc-600" />
-                                        <span className="text-sm line-through decoration-zinc-700">Upsell Automático</span>
-                                    </div>
-                                    <div className="flex items-center gap-3 text-zinc-400">
-                                        <X className="w-4 h-4 text-zinc-600" />
-                                        <span className="text-sm line-through decoration-zinc-700">Área Privada Alumno</span>
-                                    </div>
-                                </div>
-                            </div>
+
 
                             {/* Horizontal Flow - Architecture */}
                             <div className="bg-zinc-900/20 p-8 rounded-3xl border border-zinc-700">
