@@ -8,7 +8,8 @@ import {
     Calendar,
     Lock,
     Plus,
-    Store
+    Store,
+    Dumbbell
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
@@ -33,6 +34,16 @@ const proposals = [
         link: "/propuestas/bronson-wlb",
         icon: Store,
         gradient: "from-[#82ff1f] to-emerald-500"
+    },
+    {
+        id: "personal-trainer",
+        client: "Personal Trainer",
+        title: "Infraestructura Digital Fitness",
+        status: "active",
+        date: "Marzo 2026",
+        link: "/propuestas/personal-trainer",
+        icon: Dumbbell,
+        gradient: "from-zinc-100 to-zinc-400"
     },
     // Placeholders for future proposals
     {
