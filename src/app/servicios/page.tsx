@@ -153,18 +153,65 @@ export default function ServiciosPage() {
                             </button>
                         </div>
 
-                        {/* Social Proof */}
+                        {/* Social Proof — Scrolling Logos */}
                         <div className="mt-16 pt-8 border-t border-white/5">
                             <p className="text-[10px] text-zinc-500 mb-6 uppercase tracking-widest font-semibold">
                                 Integrado con los líderes de la industria
                             </p>
-                            <div className="flex flex-wrap justify-center gap-8 opacity-40 grayscale text-xl font-bold">
-                                <span>Salesforce</span>
-                                <span>HubSpot</span>
-                                <span>Meta</span>
-                                <span>OpenAI</span>
-                                <span>Zendesk</span>
+                            <div className="relative overflow-hidden">
+                                {/* Fade edges */}
+                                <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-black to-transparent z-10 pointer-events-none" />
+                                <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-black to-transparent z-10 pointer-events-none" />
+
+                                <div className="flex animate-marquee whitespace-nowrap">
+                                    {[...Array(2)].map((_, setIdx) => (
+                                        <div key={setIdx} className="flex items-center gap-12 mx-6 shrink-0">
+                                            {[
+                                                { name: "Salesforce", slug: "salesforce" },
+                                                { name: "HubSpot", slug: "hubspot" },
+                                                { name: "Meta", slug: "meta" },
+                                                { name: "OpenAI", slug: "openai" },
+                                                { name: "WhatsApp", slug: "whatsapp" },
+                                                { name: "Google", slug: "google" },
+                                                { name: "Slack", slug: "slack" },
+                                                { name: "Zapier", slug: "zapier" },
+                                                { name: "Stripe", slug: "stripe" },
+                                                { name: "Shopify", slug: "shopify" },
+                                                { name: "Calendly", slug: "calendly" },
+                                                { name: "Notion", slug: "notion" },
+                                                { name: "Airtable", slug: "airtable" },
+                                                { name: "Zendesk", slug: "zendesk" },
+                                            ].map((logo) => (
+                                                <div
+                                                    key={logo.slug}
+                                                    className="flex flex-col items-center gap-2 opacity-40 hover:opacity-90 transition-opacity duration-300"
+                                                >
+                                                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                                                    <img
+                                                        src={`https://cdn.simpleicons.org/${logo.slug}/white`}
+                                                        alt={logo.name}
+                                                        className="h-8 w-auto"
+                                                        loading="lazy"
+                                                    />
+                                                    <span className="text-[10px] text-zinc-600 font-medium tracking-wide">
+                                                        {logo.name}
+                                                    </span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    ))}
+                                </div>
                             </div>
+
+                            <style jsx>{`
+                                @keyframes marquee {
+                                    0% { transform: translateX(0); }
+                                    100% { transform: translateX(-50%); }
+                                }
+                                .animate-marquee {
+                                    animation: marquee 30s linear infinite;
+                                }
+                            `}</style>
                         </div>
                     </motion.div>
                 </div>
@@ -285,8 +332,8 @@ export default function ServiciosPage() {
                                         key={i}
                                         onClick={() => setActiveProblem(i)}
                                         className={`flex items-center justify-between p-4 rounded-xl text-left transition-all duration-300 ${activeProblem === i
-                                                ? "bg-white/5 border-l-4 border-[#82ff1f]"
-                                                : "bg-transparent border border-white/5 border-l-4 border-l-transparent hover:border-l-zinc-500 hover:bg-white/5"
+                                            ? "bg-white/5 border-l-4 border-[#82ff1f]"
+                                            : "bg-transparent border border-white/5 border-l-4 border-l-transparent hover:border-l-zinc-500 hover:bg-white/5"
                                             }`}
                                     >
                                         <span className={`font-medium ${activeProblem === i ? "text-white" : "text-zinc-400"}`}>

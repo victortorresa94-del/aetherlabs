@@ -3,6 +3,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 
 const agents = [
     {
@@ -92,59 +93,60 @@ const AgentsSection = () => {
                 {/* Cards Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
                     {agents.map((agent, index) => (
-                        <motion.article
-                            key={agent.id}
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: index * 0.1, duration: 0.5 }}
-                            className="group relative flex flex-col bg-black rounded-3xl overflow-hidden shadow-2xl transition-transform duration-500 hover:-translate-y-2 border border-zinc-900/50 hover:border-zinc-800"
-                        >
-                            {/* Image Container */}
-                            <div className="relative h-[420px] overflow-hidden w-full">
-                                <Image
-                                    src={agent.image}
-                                    alt={agent.name}
-                                    fill
-                                    className="w-full h-full object-cover object-top grayscale contrast-[1.1] brightness-90 transition-all duration-500 group-hover:brightness-100 group-hover:contrast-[1.15] group-hover:scale-[1.03]"
-                                />
-                                {/* Fade to black gradient overlay */}
-                                <div
-                                    className="absolute inset-0 z-10 pointer-events-none"
-                                    style={{ background: 'linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.8) 80%, #000000 100%)' }}
-                                ></div>
-                            </div>
-
-                            {/* Content Container - overlaps image */}
-                            <div className="relative z-20 flex flex-col justify-between flex-grow px-8 pb-10 -mt-12 bg-transparent">
-                                <div>
-                                    {/* Role Label */}
-                                    <div className="mb-2 flex items-center gap-2">
-                                        <span className="w-1.5 h-1.5 rounded-full bg-[#82ff1f] shadow-[0_0_8px_rgba(130,255,31,0.6)]"></span>
-                                        <span className="text-[10px] uppercase tracking-[0.2em] text-[#82ff1f] font-bold">{agent.role}</span>
-                                    </div>
-
-                                    {/* Name */}
-                                    <h3 className="text-3xl font-bold text-white mb-6 tracking-tight">{agent.name}</h3>
-
-                                    {/* Features List */}
-                                    <ul className="space-y-3 mb-8">
-                                        {agent.checklist.map((item, idx) => (
-                                            <li key={idx} className="flex items-start gap-3 group/item">
-                                                <span className="mt-1.5 w-1 h-1 rounded-full bg-[#82ff1f]/40 group-hover/item:bg-[#82ff1f] transition-colors"></span>
-                                                <span className="text-zinc-400 text-sm font-light leading-relaxed">{item}</span>
-                                            </li>
-                                        ))}
-                                    </ul>
+                        <Link key={agent.id} href={`/agentes/${agent.id}`} className="block">
+                            <motion.article
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: index * 0.1, duration: 0.5 }}
+                                className="group relative flex flex-col bg-black rounded-3xl overflow-hidden shadow-2xl transition-transform duration-500 hover:-translate-y-2 border border-zinc-900/50 hover:border-zinc-800 h-full"
+                            >
+                                {/* Image Container */}
+                                <div className="relative h-[420px] overflow-hidden w-full">
+                                    <Image
+                                        src={agent.image}
+                                        alt={agent.name}
+                                        fill
+                                        className="w-full h-full object-cover object-top grayscale contrast-[1.1] brightness-90 transition-all duration-500 group-hover:brightness-100 group-hover:contrast-[1.15] group-hover:scale-[1.03]"
+                                    />
+                                    {/* Fade to black gradient overlay */}
+                                    <div
+                                        className="absolute inset-0 z-10 pointer-events-none"
+                                        style={{ background: 'linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.8) 80%, #000000 100%)' }}
+                                    ></div>
                                 </div>
 
-                                {/* CTA Link */}
-                                <a href="#contacto" className="inline-flex items-center text-sm font-medium text-[#82ff1f] hover:text-white transition-colors duration-300 group/link mt-auto pt-4 border-t border-zinc-900">
-                                    Conocer agente
-                                    <span className="ml-2 transform group-hover/link:translate-x-1 transition-transform duration-300">→</span>
-                                </a>
-                            </div>
-                        </motion.article>
+                                {/* Content Container - overlaps image */}
+                                <div className="relative z-20 flex flex-col justify-between flex-grow px-8 pb-10 -mt-12 bg-transparent">
+                                    <div>
+                                        {/* Role Label */}
+                                        <div className="mb-2 flex items-center gap-2">
+                                            <span className="w-1.5 h-1.5 rounded-full bg-[#82ff1f] shadow-[0_0_8px_rgba(130,255,31,0.6)]"></span>
+                                            <span className="text-[10px] uppercase tracking-[0.2em] text-[#82ff1f] font-bold">{agent.role}</span>
+                                        </div>
+
+                                        {/* Name */}
+                                        <h3 className="text-3xl font-bold text-white mb-6 tracking-tight">{agent.name}</h3>
+
+                                        {/* Features List */}
+                                        <ul className="space-y-3 mb-8">
+                                            {agent.checklist.map((item, idx) => (
+                                                <li key={idx} className="flex items-start gap-3 group/item">
+                                                    <span className="mt-1.5 w-1 h-1 rounded-full bg-[#82ff1f]/40 group-hover/item:bg-[#82ff1f] transition-colors"></span>
+                                                    <span className="text-zinc-400 text-sm font-light leading-relaxed">{item}</span>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+
+                                    {/* CTA Link */}
+                                    <span className="inline-flex items-center text-sm font-medium text-[#82ff1f] hover:text-white transition-colors duration-300 group/link mt-auto pt-4 border-t border-zinc-900">
+                                        Conocer agente
+                                        <span className="ml-2 transform group-hover/link:translate-x-1 transition-transform duration-300">→</span>
+                                    </span>
+                                </div>
+                            </motion.article>
+                        </Link>
                     ))}
                 </div>
 
