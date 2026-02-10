@@ -1,0 +1,458 @@
+"use client";
+
+import React from "react";
+import { motion } from "framer-motion";
+import Image from "next/image";
+import Link from "next/link";
+import HeaderNavigation from "@/components/sections/header-navigation";
+import Footer from "@/components/sections/footer";
+
+const fadeIn = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 },
+};
+
+export default function LauraAgentPage() {
+    return (
+        <main className="min-h-screen bg-black text-white">
+            <HeaderNavigation />
+
+            {/* ═══════════════════════════════════════════════════
+          SECTION 1 — HERO
+      ═══════════════════════════════════════════════════ */}
+            <section className="relative pt-32 pb-24 overflow-hidden">
+                {/* Ambient glow */}
+                <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#82ff1f]/5 rounded-full blur-[150px] pointer-events-none" />
+                <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[#82ff1f]/5 rounded-full blur-[120px] pointer-events-none" />
+
+                <div className="container px-6 lg:px-8 relative z-10">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center max-w-7xl mx-auto">
+                        {/* Text */}
+                        <motion.div
+                            initial="hidden"
+                            animate="visible"
+                            variants={fadeIn}
+                            transition={{ duration: 0.6 }}
+                        >
+                            <div className="inline-flex items-center space-x-2 mb-6">
+                                <span className="w-2 h-2 rounded-full bg-[#82ff1f] shadow-[0_0_10px_rgba(130,255,31,0.6)]" />
+                                <span className="text-[#82ff1f] text-xs font-bold tracking-widest uppercase">
+                                    Agente IA
+                                </span>
+                            </div>
+
+                            <h1 className="text-5xl lg:text-7xl font-bold tracking-tight mb-4">
+                                Laura
+                            </h1>
+                            <p className="text-xl lg:text-2xl text-zinc-400 font-light mb-6">
+                                Agente de atención y citas
+                            </p>
+                            <p className="text-lg text-zinc-400 leading-relaxed max-w-lg mb-10">
+                                Diseñada para atender clientes, resolver dudas y agendar citas
+                                sin saturar a tu equipo.
+                            </p>
+
+                            <div className="flex flex-col sm:flex-row gap-4">
+                                <Link
+                                    href="/contacto"
+                                    className="inline-flex items-center justify-center h-14 px-8 rounded-full bg-[#82ff1f] text-black font-semibold text-base transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(130,255,31,0.3)]"
+                                >
+                                    Solicitar demo
+                                </Link>
+                                <Link
+                                    href="/contacto"
+                                    className="inline-flex items-center justify-center h-14 px-8 rounded-full border border-zinc-700 text-white font-medium text-base transition-all duration-300 hover:border-zinc-500 hover:bg-zinc-900"
+                                >
+                                    Hablar con un especialista
+                                </Link>
+                            </div>
+                        </motion.div>
+
+                        {/* Agent Image */}
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.95 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ duration: 0.8, delay: 0.2 }}
+                            className="relative flex justify-center lg:justify-end"
+                        >
+                            <div className="relative w-[340px] h-[460px] lg:w-[400px] lg:h-[540px] rounded-3xl overflow-hidden border border-zinc-800">
+                                <Image
+                                    src="/images/agentes/Laura.png"
+                                    alt="Laura — Agente de atención y citas"
+                                    fill
+                                    className="object-cover object-top grayscale contrast-[1.1] brightness-90"
+                                    priority
+                                />
+                                <div
+                                    className="absolute inset-0 pointer-events-none"
+                                    style={{
+                                        background:
+                                            "linear-gradient(to bottom, transparent 50%, rgba(0,0,0,0.9) 100%)",
+                                    }}
+                                />
+                                <div className="absolute bottom-6 left-6 z-10">
+                                    <span className="text-[#82ff1f] text-xs font-bold tracking-widest uppercase">
+                                        Atención al Cliente
+                                    </span>
+                                </div>
+                            </div>
+                        </motion.div>
+                    </div>
+                </div>
+            </section>
+
+            {/* ═══════════════════════════════════════════════════
+          SECTION 2 — WHAT THIS AGENT DOES
+      ═══════════════════════════════════════════════════ */}
+            <section className="py-24 border-t border-zinc-900">
+                <div className="container px-6 lg:px-8">
+                    <div className="max-w-5xl mx-auto">
+                        <motion.div
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true }}
+                            variants={fadeIn}
+                            transition={{ duration: 0.5 }}
+                        >
+                            <span className="text-[#82ff1f] text-xs font-bold tracking-widest uppercase mb-4 block">
+                                Funcionalidades
+                            </span>
+                            <h2 className="text-3xl md:text-5xl font-bold mb-12">
+                                Qué hace Laura
+                            </h2>
+                        </motion.div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            {[
+                                {
+                                    title: "Atiende clientes multicanal",
+                                    desc: "Atiende clientes por WhatsApp, web y llamadas de forma natural y fluida.",
+                                    icon: "💬",
+                                },
+                                {
+                                    title: "Agenda citas automáticamente",
+                                    desc: "Agenda citas directamente en tu sistema sin intervención humana.",
+                                    icon: "📅",
+                                },
+                                {
+                                    title: "Responde preguntas frecuentes",
+                                    desc: "Responde preguntas frecuentes de forma clara y humana, como lo haría tu mejor empleado.",
+                                    icon: "🎯",
+                                },
+                                {
+                                    title: "Filtra consultas inteligentemente",
+                                    desc: "Filtra consultas antes de llegar a tu equipo para que solo reciban lo importante.",
+                                    icon: "🔍",
+                                },
+                            ].map((item, i) => (
+                                <motion.div
+                                    key={i}
+                                    initial="hidden"
+                                    whileInView="visible"
+                                    viewport={{ once: true }}
+                                    variants={fadeIn}
+                                    transition={{ delay: i * 0.1, duration: 0.5 }}
+                                    className="group p-8 rounded-2xl bg-zinc-900/40 border border-zinc-800 hover:border-[#82ff1f]/30 transition-all duration-500"
+                                >
+                                    <div className="text-3xl mb-4">{item.icon}</div>
+                                    <h3 className="text-xl font-bold text-white mb-3">
+                                        {item.title}
+                                    </h3>
+                                    <p className="text-zinc-400 leading-relaxed">{item.desc}</p>
+                                </motion.div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* ═══════════════════════════════════════════════════
+          SECTION 3 — IDEAL FOR
+      ═══════════════════════════════════════════════════ */}
+            <section className="py-24 border-t border-zinc-900">
+                <div className="container px-6 lg:px-8">
+                    <div className="max-w-5xl mx-auto">
+                        <motion.div
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true }}
+                            variants={fadeIn}
+                            transition={{ duration: 0.5 }}
+                        >
+                            <span className="text-[#82ff1f] text-xs font-bold tracking-widest uppercase mb-4 block">
+                                ¿Es para ti?
+                            </span>
+                            <h2 className="text-3xl md:text-5xl font-bold mb-12">
+                                Ideal para negocios que…
+                            </h2>
+                        </motion.div>
+
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            {[
+                                "Reciben muchas consultas diarias",
+                                "Tienen citas o reservas",
+                                "Necesitan atención rápida y constante",
+                                "Quieren mejorar la experiencia del cliente",
+                            ].map((item, i) => (
+                                <motion.div
+                                    key={i}
+                                    initial="hidden"
+                                    whileInView="visible"
+                                    viewport={{ once: true }}
+                                    variants={fadeIn}
+                                    transition={{ delay: i * 0.1, duration: 0.5 }}
+                                    className="flex items-start gap-4 p-6 rounded-xl bg-zinc-900/30 border border-zinc-800/50"
+                                >
+                                    <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[#82ff1f]/10 flex items-center justify-center">
+                                        <span className="w-2.5 h-2.5 rounded-full bg-[#82ff1f]" />
+                                    </span>
+                                    <span className="text-lg text-white">{item}</span>
+                                </motion.div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* ═══════════════════════════════════════════════════
+          SECTION 4 — HOW IT WORKS
+      ═══════════════════════════════════════════════════ */}
+            <section className="py-24 border-t border-zinc-900 relative overflow-hidden">
+                <div
+                    className="absolute inset-0 pointer-events-none"
+                    style={{
+                        backgroundImage: `linear-gradient(rgba(130, 255, 31, 0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(130, 255, 31, 0.02) 1px, transparent 1px)`,
+                        backgroundSize: "40px 40px",
+                    }}
+                />
+                <div className="container px-6 lg:px-8 relative z-10">
+                    <div className="max-w-5xl mx-auto">
+                        <motion.div
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true }}
+                            variants={fadeIn}
+                            transition={{ duration: 0.5 }}
+                        >
+                            <span className="text-[#82ff1f] text-xs font-bold tracking-widest uppercase mb-4 block">
+                                Proceso
+                            </span>
+                            <h2 className="text-3xl md:text-5xl font-bold mb-16">
+                                Cómo trabaja en tu negocio
+                            </h2>
+                        </motion.div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+                            {[
+                                {
+                                    step: "01",
+                                    title: "El cliente escribe o llama",
+                                    desc: "Laura recibe el mensaje o la llamada y entiende la intención del cliente.",
+                                },
+                                {
+                                    step: "02",
+                                    title: "Atiende y recopila información",
+                                    desc: "Hace las preguntas correctas para entender la necesidad real.",
+                                },
+                                {
+                                    step: "03",
+                                    title: "Agenda, responde o deriva",
+                                    desc: "Según el caso: agenda una cita, resuelve la duda o escala a un humano.",
+                                },
+                                {
+                                    step: "04",
+                                    title: "Tu equipo solo recibe lo importante",
+                                    desc: "Sin ruido, sin consultas repetitivas. Solo oportunidades reales.",
+                                },
+                            ].map((item, i) => (
+                                <motion.div
+                                    key={i}
+                                    initial="hidden"
+                                    whileInView="visible"
+                                    viewport={{ once: true }}
+                                    variants={fadeIn}
+                                    transition={{ delay: i * 0.15, duration: 0.5 }}
+                                    className="relative"
+                                >
+                                    <div className="text-5xl font-bold text-[#82ff1f]/15 mb-4 font-mono">
+                                        {item.step}
+                                    </div>
+                                    <h3 className="text-lg font-bold text-white mb-3">
+                                        {item.title}
+                                    </h3>
+                                    <p className="text-sm text-zinc-400 leading-relaxed">
+                                        {item.desc}
+                                    </p>
+                                    {i < 3 && (
+                                        <div className="hidden md:block absolute top-8 -right-4 text-zinc-700 text-2xl">
+                                            →
+                                        </div>
+                                    )}
+                                </motion.div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* ═══════════════════════════════════════════════════
+          SECTION 5 — PERSONALITY & COMMUNICATION STYLE
+      ═══════════════════════════════════════════════════ */}
+            <section className="py-24 border-t border-zinc-900">
+                <div className="container px-6 lg:px-8">
+                    <div className="max-w-5xl mx-auto">
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                            <motion.div
+                                initial="hidden"
+                                whileInView="visible"
+                                viewport={{ once: true }}
+                                variants={fadeIn}
+                                transition={{ duration: 0.5 }}
+                            >
+                                <span className="text-[#82ff1f] text-xs font-bold tracking-widest uppercase mb-4 block">
+                                    Personalidad
+                                </span>
+                                <h2 className="text-3xl md:text-5xl font-bold mb-8">
+                                    Cómo se comunica
+                                </h2>
+                                <p className="text-zinc-400 text-lg leading-relaxed mb-8">
+                                    Laura no suena a robot. Se adapta a tu marca y habla como lo
+                                    haría un miembro más de tu equipo.
+                                </p>
+                            </motion.div>
+
+                            <div className="space-y-4">
+                                {[
+                                    {
+                                        trait: "Tono cercano y profesional",
+                                        desc: "Genera confianza desde el primer mensaje.",
+                                    },
+                                    {
+                                        trait: "Lenguaje claro y sin tecnicismos",
+                                        desc: "Cualquier persona la entiende a la primera.",
+                                    },
+                                    {
+                                        trait: "Empática pero eficiente",
+                                        desc: "Entiende al cliente pero va al grano.",
+                                    },
+                                    {
+                                        trait: "Adaptable a tu marca",
+                                        desc: "Aprende tu tono, tus productos y tu forma de hablar.",
+                                    },
+                                ].map((item, i) => (
+                                    <motion.div
+                                        key={i}
+                                        initial="hidden"
+                                        whileInView="visible"
+                                        viewport={{ once: true }}
+                                        variants={fadeIn}
+                                        transition={{ delay: i * 0.1, duration: 0.5 }}
+                                        className="flex items-start gap-4 p-5 rounded-xl bg-zinc-900/30 border border-zinc-800/50"
+                                    >
+                                        <span className="flex-shrink-0 mt-1 w-2 h-2 rounded-full bg-[#82ff1f]" />
+                                        <div>
+                                            <p className="text-white font-semibold">{item.trait}</p>
+                                            <p className="text-sm text-zinc-500">{item.desc}</p>
+                                        </div>
+                                    </motion.div>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* ═══════════════════════════════════════════════════
+          SECTION 6 — INTEGRATIONS
+      ═══════════════════════════════════════════════════ */}
+            <section className="py-24 border-t border-zinc-900">
+                <div className="container px-6 lg:px-8">
+                    <div className="max-w-5xl mx-auto text-center">
+                        <motion.div
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true }}
+                            variants={fadeIn}
+                            transition={{ duration: 0.5 }}
+                        >
+                            <span className="text-[#82ff1f] text-xs font-bold tracking-widest uppercase mb-4 block">
+                                Compatibilidad
+                            </span>
+                            <h2 className="text-3xl md:text-5xl font-bold mb-4">
+                                Integraciones habituales
+                            </h2>
+                            <p className="text-zinc-400 text-lg mb-16 max-w-2xl mx-auto">
+                                Laura se conecta con las herramientas que ya usas, sin
+                                complicaciones.
+                            </p>
+                        </motion.div>
+
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+                            {[
+                                { name: "WhatsApp Business", icon: "📱" },
+                                { name: "Formularios web", icon: "📋" },
+                                { name: "Agenda / Citas", icon: "📅" },
+                                { name: "CRM", icon: "🗂️" },
+                            ].map((item, i) => (
+                                <motion.div
+                                    key={i}
+                                    initial="hidden"
+                                    whileInView="visible"
+                                    viewport={{ once: true }}
+                                    variants={fadeIn}
+                                    transition={{ delay: i * 0.1, duration: 0.5 }}
+                                    className="flex flex-col items-center gap-4 p-8 rounded-2xl bg-zinc-900/40 border border-zinc-800 hover:border-[#82ff1f]/30 transition-all duration-500"
+                                >
+                                    <div className="text-4xl">{item.icon}</div>
+                                    <p className="text-white font-medium text-sm">{item.name}</p>
+                                </motion.div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* ═══════════════════════════════════════════════════
+          SECTION 7 — CTA
+      ═══════════════════════════════════════════════════ */}
+            <section className="py-32 border-t border-zinc-900 relative overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-t from-zinc-900/30 via-black to-black pointer-events-none" />
+                <div className="container px-6 lg:px-8 relative z-10 text-center">
+                    <motion.div
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true }}
+                        variants={fadeIn}
+                        transition={{ duration: 0.6 }}
+                        className="max-w-3xl mx-auto"
+                    >
+                        <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
+                            ¿Quieres que Laura trabaje en tu negocio?
+                        </h2>
+                        <p className="text-lg text-zinc-400 mb-10 max-w-xl mx-auto">
+                            Solicita una demo y te mostramos cómo Laura puede mejorar tu
+                            atención al cliente desde el día uno.
+                        </p>
+
+                        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                            <Link
+                                href="/contacto"
+                                className="inline-flex items-center justify-center h-14 px-10 rounded-full bg-[#82ff1f] text-black font-semibold text-base transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(130,255,31,0.3)]"
+                            >
+                                Solicitar demo
+                            </Link>
+                            <Link
+                                href="/#agentes"
+                                className="inline-flex items-center justify-center h-14 px-10 rounded-full border border-zinc-700 text-white font-medium text-base transition-all duration-300 hover:border-zinc-500 hover:bg-zinc-900"
+                            >
+                                Ver otros agentes
+                            </Link>
+                        </div>
+                    </motion.div>
+                </div>
+            </section>
+
+            <Footer />
+        </main>
+    );
+}

@@ -64,6 +64,7 @@ const HeaderNavigation = () => {
   const navItems: NavItem[] = [
     // V2 nav items backed up - hidden for V3
     // Servicios, Labs, Casos de Uso, Learn, Experimentos, Contacto removed from visible nav
+    { label: "Servicios", href: "/servicios" },
     { label: "Nosotros", href: "/sobre-nosotros" },
   ];
 
