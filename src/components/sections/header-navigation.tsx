@@ -63,9 +63,8 @@ const HeaderNavigation = () => {
 
   const navItems: NavItem[] = [
     // V2 nav items backed up - hidden for V3
-    // Servicios, Labs, Casos de Uso, Learn, Experimentos removed from visible nav
+    // Servicios, Labs, Casos de Uso, Learn, Experimentos, Contacto removed from visible nav
     { label: "Nosotros", href: "/sobre-nosotros" },
-    { label: "Contacto", href: "/contacto" },
   ];
 
   useEffect(() => {
@@ -290,7 +289,7 @@ const HeaderNavigation = () => {
             <NeonButton
               variant="default"
               size="cta"
-              onClick={() => router.push('/crea-tu-ia')}
+              onClick={() => router.push('/contacto')}
               className="hidden lg:block"
             >
               Auditoría de ventas
@@ -320,7 +319,7 @@ const HeaderNavigation = () => {
                 size="cta"
                 className="w-full"
                 onClick={() => {
-                  router.push('/crea-tu-ia');
+                  router.push('/contacto');
                   setIsMobileMenuOpen(false);
                 }}
               >

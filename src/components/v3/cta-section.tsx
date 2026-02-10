@@ -26,13 +26,13 @@ const CTASection = () => {
                         En 15 minutos analizamos tu proceso y te decimos si esto tiene sentido para tu negocio. sin compromiso.
                     </p>
 
-                    <button
-                        onClick={() => document.getElementById('diagnosis-modal')?.showModal()}
+                    <a
+                        href="/contacto"
                         className="group relative inline-flex h-14 items-center justify-center overflow-hidden rounded-full bg-white px-10 text-lg font-medium text-black transition-all duration-300 hover:bg-zinc-200 hover:scale-105 hover:shadow-[0_0_30px_rgba(255,255,255,0.2)]"
                     >
-                        <span className="mr-2">Diagnóstico Express</span>
+                        <span className="mr-2">Agendar Auditoría</span>
                         <svg className="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
-                    </button>
+                    </a>
 
                     <p className="mt-8 text-sm text-zinc-600">
                         * No te venderemos nada que no necesites.

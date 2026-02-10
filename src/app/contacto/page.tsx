@@ -56,10 +56,10 @@ export default function ContactoPage() {
               Contacto
             </p>
             <h1 className="text-5xl md:text-[4rem] font-light text-white mb-6 leading-tight">
-              Hablemos de tu proyecto
+              Hablemos de cómo aumentar tus ventas con IA
             </h1>
             <p className="text-xl text-[#c8c8c8] max-w-2xl mx-auto">
-              Cuéntanos qué necesitas y te mostramos cómo la IA puede ayudarte.
+              Cuéntanos tu situación actual y te mostramos cómo la IA puede ayudarte a vender más.
             </p>
           </div>
         </div>
@@ -211,27 +211,11 @@ export default function ContactoPage() {
                     />
                   </div>
 
-                  <div>
-                    <label htmlFor="budget" className="block text-sm font-medium text-[#c8c8c8] mb-2">
-                      Presupuesto estimado
-                    </label>
-                    <select
-                      id="budget"
-                      name="budget"
-                      className="w-full px-4 py-3 bg-[#1a1a1a] border border-[#2a2a2a] rounded-lg text-white focus:outline-none focus:border-[#4a4a4a] transition-colors"
-                    >
-                      <option value="">Selecciona un rango</option>
-                      <option value="<1000">Menos de 1.000€</option>
-                      <option value="1000-3000">1.000€ - 3.000€</option>
-                      <option value="3000-5000">3.000€ - 5.000€</option>
-                      <option value="5000-10000">5.000€ - 10.000€</option>
-                      <option value=">10000">Más de 10.000€</option>
-                    </select>
-                  </div>
+
 
                   <div>
                     <label htmlFor="project" className="block text-sm font-medium text-[#c8c8c8] mb-2">
-                      Cuéntanos tu idea
+                      Explícanos tu situación actual
                     </label>
                     <textarea
                       id="project"
@@ -239,7 +223,7 @@ export default function ContactoPage() {
                       rows={6}
                       required
                       className="w-full px-4 py-3 bg-[#1a1a1a] border border-[#2a2a2a] rounded-lg text-white placeholder-[#666666] focus:outline-none focus:border-[#4a4a4a] transition-colors resize-none"
-                      placeholder="Describe qué necesitas... ¿Es IA generativa? ¿Automatización? ¿Ambas?"
+                      placeholder="¿Cómo gestionas tus leads actualmente? ¿Dónde crees que pierdes oportunidades? ¿Qué canales usas?"
                     />
                   </div>
 
