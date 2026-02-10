@@ -62,138 +62,8 @@ const HeaderNavigation = () => {
   };
 
   const navItems: NavItem[] = [
-    {
-      label: "Servicios",
-      href: "/servicios",
-      variant: 'rich',
-      subItems: [
-        {
-          label: "IA Generativa",
-          href: "/servicios/ia-generativa",
-          icon: Sparkles,
-          description: "Generación de contenido visual y textual de altísima calidad para distinguir a tu marca."
-        },
-        {
-          label: "Agentes IA",
-          href: "/servicios/agentes-ia",
-          icon: Bot,
-          description: "Sistemas que 'piensan' y ejecutan tareas complejas como un empleado digital."
-        },
-        {
-          label: "Chatbots IA",
-          href: "/servicios/chatbots",
-          icon: MessageSquare,
-          description: "Asistentes que atienden y venden 24/7 con conversaciones totalmente naturales."
-        },
-        {
-          label: "Computer Vision",
-          href: "/servicios/computer-vision",
-          icon: Eye,
-          description: "Dota a tus sistemas de 'ojos' para detectar calidad o seguridad automáticamente."
-        },
-        {
-          label: "Desarrollo Web",
-          href: "/servicios/web-ia",
-          icon: Globe,
-          description: "Desarrollo web con IA: reducimos drásticamente los tiempos aumentando la personalización."
-        },
-        {
-          label: "Consultoría",
-          href: "/servicios/consultoria",
-          icon: Shield,
-          description: "Hoja de ruta estratégica para integrar IA en tu empresa sin perder dinero."
-        },
-        {
-          label: "Formación",
-          href: "/servicios/formacion",
-          icon: GraduationCap,
-          description: "Capacita a tu equipo para dominar la IA y multiplicar su productividad."
-        },
-        {
-          label: "AI Hub",
-          href: "/servicios/ai-hub",
-          icon: Grid,
-          description: "Implementamos ecosistemas de herramientas IA líderes del mercado adaptadas a tu flujo."
-        },
-      ]
-    },
-    {
-      label: "Labs",
-      href: "/labs",
-      variant: 'rich',
-      subItems: [
-        {
-          label: "Creative Lab",
-          href: "/labs/creative",
-          icon: Palette,
-          description: "Edita imágenes y crea historias visuales con nuestros inventos de IA creativa."
-        },
-        {
-          label: "AI Agents Lab",
-          href: "/labs/agents",
-          icon: Bot,
-          description: "Crea tus propios agentes de IA y observa cómo resuelven problemas por sí mismos."
-        },
-        {
-          label: "LLM Lab",
-          href: "/labs/llm-lab",
-          icon: MessageSquareText,
-          description: "Experimenta con distintos 'cerebros' digitales y pon a prueba su razonamiento."
-        },
-        {
-          label: "Vision Lab",
-          href: "/labs/vision",
-          icon: Eye,
-          description: "Interactúa con nuestras demos de visión y mira lo que la IA es capaz de ver."
-        }
-      ]
-    },
-    {
-      label: "Casos de Uso",
-      href: "/servicios", // Fallback, mostly for hover
-      variant: 'mega',
-      subItems: [
-        {
-          label: "Por Departamento",
-          href: "/servicios",
-          subItems: [
-            { label: "Ventas", href: "/servicios/departamento/ventas", icon: ShoppingBag },
-            { label: "Marketing", href: "/servicios/departamento/marketing", icon: Megaphone },
-            { label: "Atención al Cliente", href: "/servicios/departamento/atencion-cliente", icon: HeadphonesIcon },
-            { label: "Recursos Humanos", href: "/servicios/departamento/recursos-humanos", icon: Users },
-            { label: "Operaciones", href: "/servicios/departamento/operaciones", icon: Workflow },
-            { label: "Dirección / CEO", href: "/servicios/departamento/direccion", icon: Briefcase },
-            { label: "Formación Interna", href: "/servicios/departamento/formacion", icon: BookOpen },
-            { label: "Producto / eCommerce", href: "/servicios/departamento/producto", icon: ShoppingBag },
-          ]
-        },
-        {
-          label: "Por Industria",
-          href: "/servicios",
-          subItems: [
-            { label: "Restaurantes", href: "/servicios/industria/restauracion", icon: Utensils },
-            { label: "Salud / Clínicas", href: "/servicios/industria/salud", icon: Stethoscope },
-            { label: "Agencias Marketing", href: "/servicios/industria/marketing", icon: Target },
-            { label: "Inmobiliarias", href: "/servicios/industria/inmobiliaria", icon: Home },
-            { label: "Retail / Tiendas", href: "/servicios/industria/retail", icon: Store },
-            { label: "Educación / Academias", href: "/servicios/industria/formacion", icon: School },
-            { label: "Construcción", href: "/servicios/industria/construccion", icon: HardHat },
-            { label: "Servicios Profesionales", href: "/servicios/industria/servicios-profesionales", icon: Building2 },
-            { label: "eCommerce / DTC", href: "/servicios/industria/ecommerce", icon: ShoppingCart },
-            { label: "Autónomos / PYMES", href: "/servicios/industria/pymes", icon: Laptop },
-          ]
-        }
-      ]
-    },
-    {
-      label: "Learn",
-      href: "/servicios/formacion",
-      subItems: [
-        { label: "Para Personas", href: "/learn/personal" },
-        { label: "Para Empresas", href: "/learn/corporate" }
-      ]
-    },
-    { label: "Experimentos", href: "/experimentos" },
+    // V2 nav items backed up - hidden for V3
+    // Servicios, Labs, Casos de Uso, Learn, Experimentos removed from visible nav
     { label: "Nosotros", href: "/sobre-nosotros" },
     { label: "Contacto", href: "/contacto" },
   ];
@@ -423,7 +293,7 @@ const HeaderNavigation = () => {
               onClick={() => router.push('/crea-tu-ia')}
               className="hidden lg:block"
             >
-              Crea tu IA
+              Auditoría de ventas
             </NeonButton>
             <button
               className="lg:hidden text-foreground"
@@ -454,7 +324,7 @@ const HeaderNavigation = () => {
                   setIsMobileMenuOpen(false);
                 }}
               >
-                Crea tu IA
+                Auditoría de ventas
               </NeonButton>
             </div>
           </nav>
