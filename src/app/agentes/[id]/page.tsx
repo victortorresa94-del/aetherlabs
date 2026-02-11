@@ -25,11 +25,13 @@ export default function AgentPage({ params }: { params: Promise<{ id: string }> 
     const [showCallCTA, setShowCallCTA] = useState(false);
 
     useEffect(() => {
-        if (agent?.id === 'laura') {
-            const timer = setTimeout(() => setShowCallCTA(true), 2500);
+        if (widgetMode === 'call' && agent?.id === 'laura') {
+            const timer = setTimeout(() => setShowCallCTA(true), 1500);
             return () => clearTimeout(timer);
+        } else {
+            setShowCallCTA(false);
         }
-    }, [agent?.id]);
+    }, [widgetMode, agent?.id]);
 
     useEffect(() => {
         if (!widgetMode || agent?.id !== 'laura') return;
@@ -61,7 +63,7 @@ export default function AgentPage({ params }: { params: Promise<{ id: string }> 
         script.setAttribute('data-title', 'Habla con Laura');
         script.setAttribute('data-phone-number', '+17759241199');
         script.setAttribute('data-countries', 'ES');
-        script.setAttribute('data-color', '#FFFFFF'); // White theme as requested
+        script.setAttribute('data-color', '#000000'); // We will invert this in CSS to get white/black
         script.setAttribute('data-title', 'Habla con Laura');
 
         script.onload = () => console.log("Retell script loaded successfully");
@@ -78,23 +80,23 @@ export default function AgentPage({ params }: { params: Promise<{ id: string }> 
         <main className="min-h-screen bg-black text-white selection:bg-[#82ff1f] selection:text-black overflow-x-hidden">
             <HeaderNavigation />
 
-            {/* Retell Call CTA Bubble */}
+            {/* Retell Call CTA Bubble - Bottom Left */}
             <AnimatePresence>
-                {showCallCTA && !widgetMode && (
+                {showCallCTA && widgetMode === 'call' && (
                     <motion.div
                         initial={{ opacity: 0, scale: 0.8, y: 20 }}
                         animate={{ opacity: 1, scale: 1, y: 0 }}
                         exit={{ opacity: 0, scale: 0.8, y: 20 }}
-                        className="fixed bottom-24 right-6 z-[9999] flex flex-col items-end pointer-events-none md:pointer-events-auto"
+                        className="fixed bottom-24 left-6 z-[9999] flex flex-col items-start pointer-events-none md:pointer-events-auto"
                     >
-                        <div className="bg-white text-black px-5 py-3 rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.3)] border border-zinc-200 text-sm font-bold relative mb-2 max-w-[220px] text-center pointer-events-auto">
+                        <div className="bg-white text-black px-5 py-3 rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.3)] border border-zinc-200 text-sm font-bold relative mb-2 max-w-[220px] text-center pointer-events-auto animate-bounce-subtle">
                             <span className="block mb-1">¡Hola! Soy Laura 👋</span>
                             <span className="text-zinc-500 font-medium">Haz clic aquí para hablar conmigo</span>
-                            <div className="absolute -bottom-2 right-6 w-4 h-4 bg-white border-r border-b border-zinc-200 rotate-45"></div>
+                            <div className="absolute -bottom-2 left-6 w-4 h-4 bg-white border-l border-b border-zinc-200 rotate-45"></div>
                         </div>
                         <button
                             onClick={() => setShowCallCTA(false)}
-                            className="text-[10px] text-zinc-500 hover:text-white mr-2 pointer-events-auto bg-black/50 px-2 py-1 rounded-full backdrop-blur-sm"
+                            className="text-[10px] text-zinc-500 hover:text-white ml-2 pointer-events-auto bg-black/50 px-2 py-1 rounded-full backdrop-blur-sm"
                         >
                             Cerrar
                         </button>
