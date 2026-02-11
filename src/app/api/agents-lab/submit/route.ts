@@ -13,6 +13,17 @@ export async function POST(req: Request) {
 
         const channelsText = (config.channels || []).map((c: string) => channelLabels[c] || c).join(", ");
 
+        // Backup to local file
+        try {
+            const fs = require('fs');
+            const path = require('path');
+            const logPath = path.join(process.cwd(), 'agents-lab-requests.jsonl');
+            const logEntry = JSON.stringify({ timestamp: new Date().toISOString(), config }) + '\n';
+            fs.appendFileSync(logPath, logEntry);
+        } catch (err) {
+            console.error("Failed to write to log file:", err);
+        }
+
         // Build email body
         const emailBody = `
 Nueva solicitud de Agents Lab
@@ -56,7 +67,7 @@ Fecha: ${new Date().toLocaleString("es-ES", { timeZone: "Europe/Madrid" })}
             // Simple email via SMTP relay - using fetch to Resend API if key exists
             const resendKey = process.env.RESEND_API_KEY;
             if (resendKey) {
-                await fetch("https://api.resend.com/emails", {
+                const response = await fetch("https://api.resend.com/emails", {
                     method: "POST",
                     headers: {
                         "Authorization": `Bearer ${resendKey}`,
@@ -64,16 +75,19 @@ Fecha: ${new Date().toLocaleString("es-ES", { timeZone: "Europe/Madrid" })}
                     },
                     body: JSON.stringify({
                         from: "Agents Lab <onboarding@resend.dev>",
-                        to: ["victor@aetherlabs.es"],
+                        to: ["victor@aetherlabs.es", "hola@aetherlabs.es"],
                         subject: `[Agents Lab] Nueva solicitud de ${config.contact?.name || "cliente"}`,
-                        text: emailBody,
+                        html: `<pre>${emailBody}</pre>`,
                     }),
                 });
+
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    console.error("Resend API Error:", errorData);
+                }
             } else {
-                // Fallback: use Google Apps Script or any webhook
-                // For now just log - the data is captured server-side
                 console.log("No RESEND_API_KEY found. Email logged but not sent.");
-                console.log(`Would send to: victor@aetherlabs.es`);
+                console.log(`Would send to: victor@aetherlabs.es, hola@aetherlabs.es`);
             }
         } catch (emailError) {
             console.error("Email send error (non-blocking):", emailError);

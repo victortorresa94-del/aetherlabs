@@ -4,10 +4,11 @@ import React from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import Script from "next/script";
 import HeaderNavigation from "@/components/sections/header-navigation";
 import Footer from "@/components/sections/footer";
 import LauraWidget from "@/components/laura-widget";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const fadeIn = {
     hidden: { opacity: 0, y: 20 },
@@ -15,7 +16,44 @@ const fadeIn = {
 };
 
 export default function LauraAgentPage() {
-    const [isChatOpen, setIsChatOpen] = useState(false);
+    const [widgetMode, setWidgetMode] = useState<'chat' | 'call' | null>(null);
+
+    useEffect(() => {
+        if (!widgetMode) return;
+        console.log("Activating Retell widget mode:", widgetMode);
+
+        const scriptId = 'retell-widget';
+        const existingScript = document.getElementById(scriptId);
+        if (existingScript) existingScript.remove();
+
+        const script = document.createElement('script');
+        script.id = scriptId;
+        script.src = 'https://dashboard.retellai.com/retell-widget.js';
+        script.async = true;
+
+        script.setAttribute('data-public-key', 'public_key_29e6f793020ea429cdd0d');
+        script.setAttribute('data-agent-id', 'agent_a9a331075e3b72c616cded5bbc');
+        script.setAttribute('data-auto-open', 'true');
+
+        if (widgetMode === 'chat') {
+            script.setAttribute('data-widget', 'chat');
+            script.setAttribute('data-title', 'Chatear con Laura');
+            script.setAttribute('data-bot-name', 'Laura');
+        } else {
+            script.setAttribute('data-widget', 'web_call');
+            script.setAttribute('data-title', 'Llamar a Laura');
+        }
+
+        script.onload = () => console.log("Retell script loaded successfully");
+        script.onerror = (e) => console.error("Retell script failed to load", e);
+
+        document.head.appendChild(script);
+
+        return () => {
+            const s = document.getElementById(scriptId);
+            if (s) s.remove();
+        };
+    }, [widgetMode]);
 
     return (
         <main className="min-h-screen bg-black text-white">
@@ -30,13 +68,14 @@ export default function LauraAgentPage() {
                 <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[#82ff1f]/5 rounded-full blur-[120px] pointer-events-none" />
 
                 <div className="container px-6 lg:px-8 relative z-10">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center max-w-7xl mx-auto">
+                    <div className="flex flex-col lg:flex-row gap-16 items-center max-w-7xl mx-auto">
                         {/* Text */}
                         <motion.div
                             initial="hidden"
                             animate="visible"
                             variants={fadeIn}
                             transition={{ duration: 0.6 }}
+                            className="w-full lg:w-[60%]"
                         >
                             <div className="inline-flex items-center space-x-2 mb-6">
                                 <span className="w-2 h-2 rounded-full bg-[#82ff1f] shadow-[0_0_10px_rgba(130,255,31,0.6)]" />
@@ -58,17 +97,19 @@ export default function LauraAgentPage() {
 
                             <div className="flex flex-col sm:flex-row gap-4">
                                 <button
-                                    onClick={() => setIsChatOpen(true)}
-                                    className="inline-flex items-center justify-center h-14 px-8 rounded-full bg-[#82ff1f] text-black font-semibold text-base transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(130,255,31,0.3)]"
+                                    onClick={() => { setWidgetMode(null); setTimeout(() => setWidgetMode('call'), 50); }}
+                                    className="inline-flex items-center justify-center h-14 px-8 rounded-full bg-[#82ff1f] text-black font-semibold text-base transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(130,255,31,0.3)] gap-2"
                                 >
-                                    Hablar con Laura
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                                    Llamar a Laura
                                 </button>
-                                <Link
-                                    href="/contacto"
-                                    className="inline-flex items-center justify-center h-14 px-8 rounded-full border border-zinc-700 text-white font-medium text-base transition-all duration-300 hover:border-zinc-500 hover:bg-zinc-900"
+                                <button
+                                    onClick={() => { setWidgetMode(null); setTimeout(() => setWidgetMode('chat'), 50); }}
+                                    className="inline-flex items-center justify-center h-14 px-8 rounded-full border border-zinc-700 text-white font-medium text-base transition-all duration-300 hover:border-zinc-500 hover:bg-zinc-900 gap-2"
                                 >
-                                    Hablar con un especialista
-                                </Link>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                                    Chatear con Laura
+                                </button>
                             </div>
                         </motion.div>
 
@@ -77,14 +118,14 @@ export default function LauraAgentPage() {
                             initial={{ opacity: 0, scale: 0.95 }}
                             animate={{ opacity: 1, scale: 1 }}
                             transition={{ duration: 0.8, delay: 0.2 }}
-                            className="relative flex justify-center lg:justify-end"
+                            className="relative flex justify-center lg:justify-end w-full lg:w-[40%]"
                         >
                             <div className="relative w-[340px] h-[460px] lg:w-[400px] lg:h-[540px] rounded-3xl overflow-hidden border border-zinc-800">
                                 <Image
                                     src="/images/agentes/Laura.png"
                                     alt="Laura — Agente de atención y citas"
                                     fill
-                                    className="object-cover object-top grayscale contrast-[1.1] brightness-90"
+                                    className="object-cover object-[50%_20%] grayscale contrast-[1.1] brightness-90"
                                     priority
                                 />
                                 <div
@@ -105,7 +146,7 @@ export default function LauraAgentPage() {
                 </div>
             </section>
 
-            <LauraWidget isOpen={isChatOpen} onClose={() => setIsChatOpen(false)} />
+
 
             {/* ═══════════════════════════════════════════════════
           SECTION 2 — WHAT THIS AGENT DOES
@@ -442,7 +483,7 @@ export default function LauraAgentPage() {
 
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
                             <button
-                                onClick={() => setIsChatOpen(true)}
+                                onClick={() => setWidgetMode('chat')}
                                 className="inline-flex items-center justify-center h-14 px-10 rounded-full bg-[#82ff1f] text-black font-semibold text-base transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(130,255,31,0.3)]"
                             >
                                 Hablar con Laura

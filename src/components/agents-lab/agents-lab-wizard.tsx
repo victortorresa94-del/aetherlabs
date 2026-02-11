@@ -147,21 +147,32 @@ const AgentsLabWizard = () => {
                 }}
             />
 
-            <div className="relative z-10 flex flex-col flex-1 max-w-[1600px] mx-auto w-full p-6 md:p-8 lg:p-10 gap-6">
+            <div className="relative z-10 flex flex-col flex-1 max-w-[1600px] mx-auto w-full p-6 md:p-8 lg:p-10 gap-10 pt-52 pb-10">
                 {/* Header with steps */}
                 <header className="flex flex-col gap-6 flex-none">
                     <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-4">
-                            <div className="w-10 h-10 rounded-xl bg-black flex items-center justify-center text-[#82ff1f] font-bold text-xl">A</div>
+                        <div className="flex items-center gap-6">
+                            <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-[#82ff1f] shadow-[0_0_15px_rgba(130,255,31,0.3)] relative">
+                                <img
+                                    src="/images/agentes/Diego.png"
+                                    alt="Agents Lab"
+                                    className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
+                                />
+                            </div>
                             <div>
-                                <h1 className="text-2xl font-bold tracking-tight text-black" style={{ fontFamily: "'Instrument Serif', serif" }}>Agents Lab</h1>
-                                <p className="text-xs text-zinc-400 font-medium -mt-0.5">by Aether Labs</p>
+                                <h1 className="text-5xl md:text-6xl font-bold tracking-tighter text-black" style={{ fontFamily: "'Instrument Serif', serif" }}>
+                                    Agents Lab
+                                </h1>
+                                <p className="text-sm text-zinc-500 font-medium tracking-wide uppercase mt-1">by Aether Labs</p>
                             </div>
                         </div>
-                        <Link href="/" className="text-zinc-400 hover:text-black transition-colors">
-                            <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-                            </svg>
+                        <Link href="/" className="group flex items-center gap-2 text-zinc-400 hover:text-black transition-colors px-4 py-2 rounded-full hover:bg-zinc-100">
+                            <span className="text-sm font-medium hidden sm:block">Cancelar</span>
+                            <div className="bg-zinc-100 group-hover:bg-zinc-200 p-2 rounded-full transition-colors">
+                                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                            </div>
                         </Link>
                     </div>
 

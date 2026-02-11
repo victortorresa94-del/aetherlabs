@@ -8,7 +8,8 @@ import { notFound } from "next/navigation";
 import HeaderNavigation from "@/components/sections/header-navigation";
 import Footer from "@/components/sections/footer";
 import { agentsData } from "@/data/agents";
-import { use } from "react";
+import { use, useState, useEffect } from "react";
+import Script from "next/script";
 
 const fadeIn = {
     hidden: { opacity: 0, y: 20 },
@@ -18,6 +19,45 @@ const fadeIn = {
 export default function AgentPage({ params }: { params: Promise<{ id: string }> }) {
     const { id } = use(params);
     const agent = agentsData.find((a) => a.id === id);
+    const [widgetMode, setWidgetMode] = useState<'chat' | 'call' | null>(null);
+
+    useEffect(() => {
+        if (!widgetMode || agent?.id !== 'laura') return;
+        console.log("Activating Retell widget mode:", widgetMode);
+
+        const scriptId = 'retell-widget';
+        const existingScript = document.getElementById(scriptId);
+        if (existingScript) existingScript.remove();
+
+        const script = document.createElement('script');
+        script.id = scriptId;
+        script.src = 'https://dashboard.retellai.com/retell-widget.js';
+        script.async = true;
+
+        script.setAttribute('data-public-key', 'public_key_29e6f793020ea429cdd0d');
+        script.setAttribute('data-agent-id', 'agent_a9a331075e3b72c616cded5bbc');
+        script.setAttribute('data-auto-open', 'true'); // Automatically open the widget
+
+        if (widgetMode === 'chat') {
+            script.setAttribute('data-widget', 'chat');
+            script.setAttribute('data-title', 'Chatear con Laura');
+            script.setAttribute('data-bot-name', 'Laura');
+        } else {
+            script.setAttribute('data-widget', 'web_call');
+            script.setAttribute('data-title', 'Llamar a Laura');
+        }
+
+        script.onload = () => console.log("Retell script loaded successfully");
+        script.onerror = (e) => console.error("Retell script failed to load", e);
+
+        document.head.appendChild(script);
+
+        return () => {
+            const s = document.getElementById(scriptId);
+            if (s) s.remove();
+        };
+    }, [widgetMode, agent?.id]);
+
     if (!agent) return notFound();
 
     return (
@@ -29,13 +69,13 @@ export default function AgentPage({ params }: { params: Promise<{ id: string }> 
             ═══════════════════════════════════════ */}
             <section className="relative min-h-[90vh] flex flex-col lg:flex-row border-b border-white/10 pt-20 lg:pt-0">
                 {/* Left: Portrait */}
-                <div className="w-full lg:w-1/2 relative bg-zinc-950 overflow-hidden group min-h-[50vh] lg:min-h-0">
+                <div className="w-full lg:w-[40%] relative bg-zinc-950 overflow-hidden group min-h-[50vh] lg:min-h-0">
                     <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-10 opacity-80 lg:opacity-40" />
                     <Image
                         src={agent.image}
                         alt={agent.name}
                         fill
-                        className="object-cover object-top grayscale contrast-[1.1] brightness-90 group-hover:scale-105 transition-transform duration-700 ease-out"
+                        className="object-cover object-[50%_20%] grayscale contrast-[1.1] brightness-90 group-hover:scale-105 transition-transform duration-700 ease-out"
                         priority
                     />
                     {/* Status Indicator */}
@@ -49,7 +89,7 @@ export default function AgentPage({ params }: { params: Promise<{ id: string }> 
                 </div>
 
                 {/* Right: Content */}
-                <div className="w-full lg:w-1/2 flex flex-col justify-center px-8 lg:px-20 py-16 lg:py-20 bg-black relative">
+                <div className="w-full lg:w-[60%] flex flex-col justify-center px-8 lg:px-20 py-16 lg:py-20 bg-black relative">
                     <div className="absolute left-0 top-10 bottom-10 w-px bg-gradient-to-b from-transparent via-white/10 to-transparent hidden lg:block" />
 
                     <motion.div initial="hidden" animate="visible" variants={fadeIn} transition={{ duration: 0.6 }}>
@@ -66,21 +106,48 @@ export default function AgentPage({ params }: { params: Promise<{ id: string }> 
                             {agent.heroDescription}
                         </p>
 
-                        <div className="flex flex-col sm:flex-row gap-4">
-                            <Link
-                                href="/contacto"
-                                className="bg-[#82ff1f] text-black font-bold text-lg px-8 py-4 rounded-lg hover:bg-white transition-colors duration-300 shadow-[0_0_20px_rgba(130,255,31,0.3)] flex items-center justify-center gap-2 group"
-                            >
-                                Solicitar demo
-                                <span className="group-hover:translate-x-1 transition-transform">→</span>
-                            </Link>
-                            <Link
-                                href="/agentes"
-                                className="border border-white/20 text-white font-medium text-lg px-8 py-4 rounded-lg hover:bg-white/5 transition-colors duration-300 flex items-center justify-center gap-2"
-                            >
-                                Ver otros agentes
-                            </Link>
-                        </div>
+                        {agent.id === 'laura' ? (
+                            <div className="flex flex-col sm:flex-row gap-4">
+                                <button
+                                    onClick={() => {
+                                        console.log("Start Call clicked");
+                                        setWidgetMode(null);
+                                        setTimeout(() => setWidgetMode('call'), 50);
+                                    }}
+                                    className="bg-[#82ff1f] text-black font-bold text-lg px-8 py-4 rounded-lg hover:bg-white transition-colors duration-300 shadow-[0_0_20px_rgba(130,255,31,0.3)] flex items-center justify-center gap-2 group"
+                                >
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                                    Llamar a Laura
+                                </button>
+                                <button
+                                    onClick={() => {
+                                        console.log("Start Chat clicked");
+                                        setWidgetMode(null);
+                                        setTimeout(() => setWidgetMode('chat'), 50);
+                                    }}
+                                    className="border border-white/20 text-white font-medium text-lg px-8 py-4 rounded-lg hover:bg-white/5 transition-colors duration-300 flex items-center justify-center gap-2"
+                                >
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                                    Chatear con Laura
+                                </button>
+                            </div>
+                        ) : (
+                            <div className="flex flex-col sm:flex-row gap-4">
+                                <Link
+                                    href="/contacto"
+                                    className="bg-[#82ff1f] text-black font-bold text-lg px-8 py-4 rounded-lg hover:bg-white transition-colors duration-300 shadow-[0_0_20px_rgba(130,255,31,0.3)] flex items-center justify-center gap-2 group"
+                                >
+                                    Solicitar demo
+                                    <span className="group-hover:translate-x-1 transition-transform">→</span>
+                                </Link>
+                                <Link
+                                    href="/agentes"
+                                    className="border border-white/20 text-white font-medium text-lg px-8 py-4 rounded-lg hover:bg-white/5 transition-colors duration-300 flex items-center justify-center gap-2"
+                                >
+                                    Ver otros agentes
+                                </Link>
+                            </div>
+                        )}
 
                         {/* Stats */}
                         <div className="mt-16 grid grid-cols-3 gap-8 border-t border-white/10 pt-8">
@@ -386,6 +453,38 @@ export default function AgentPage({ params }: { params: Promise<{ id: string }> 
                     </motion.div>
                 </div>
             </section>
+
+            {/* Retell Widget for Laura */}
+            {agent.id === 'laura' && widgetMode === 'chat' && (
+                <Script
+                    key="chat-widget"
+                    src="https://dashboard.retellai.com/retell-widget.js"
+                    strategy="lazyOnload"
+                    // @ts-ignore
+                    type="module"
+                    data-public-key="public_key_29e6f793020ea429cdd0d"
+                    data-agent-id="agent_a9a331075e3b72c616cded5bbc"
+                    data-widget="chat"
+                    data-title="Chatear con Laura"
+                    data-bot-name="Laura"
+                    data-auto-open="true"
+                />
+            )}
+            {agent.id === 'laura' && widgetMode === 'call' && (
+                <Script
+                    key="call-widget"
+                    src="https://dashboard.retellai.com/retell-widget.js"
+                    strategy="lazyOnload"
+                    // @ts-ignore
+                    type="module"
+                    data-public-key="public_key_29e6f793020ea429cdd0d"
+                    data-agent-id="agent_a9a331075e3b72c616cded5bbc"
+                    data-widget="callback"
+                    data-title="Llamar a Laura"
+                    data-phone-number="+15550000000"
+                    data-auto-open="true"
+                />
+            )}
 
             <Footer />
         </main>

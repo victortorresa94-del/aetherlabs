@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import { NeonButton } from "@/components/ui/neon-button";
 import {
   Menu,
@@ -48,11 +48,13 @@ interface NavItem {
 }
 
 const HeaderNavigation = () => {
-  const router = useRouter();
+  const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [expandedMobileItems, setExpandedMobileItems] = useState<string[]>([]);
+
+  const isAgentsLab = pathname?.includes('/agents-lab');
 
   const toggleMobileItem = (label: string) => {
     // Accordion behavior: Close others, toggle current
@@ -66,15 +68,13 @@ const HeaderNavigation = () => {
     // Servicios, Labs, Casos de Uso, Learn, Experimentos, Contacto removed from visible nav
     { label: "Agentes", href: "/agentes" },
     { label: "Servicios", href: "/servicios" },
-    // Labs hidden for now
-    // {
-    //   label: "Labs",
-    //   href: "#",
-    //   subItems: [
-    //     { label: "Agents Lab", href: "/agents-lab" },
-    //     { label: "Ads Lab", href: "/ads-lab" },
-    //   ],
-    // },
+    {
+      label: "Labs",
+      href: "#",
+      subItems: [
+        { label: "Agents Lab", href: "/agents-lab" },
+      ],
+    },
     { label: "Nosotros", href: "/sobre-nosotros" },
   ];
 
@@ -183,7 +183,7 @@ const HeaderNavigation = () => {
       >
         <Link
           href={item.href}
-          className="flex items-center px-4 py-2 text-base text-white transition-colors hover:text-zinc-400 whitespace-nowrap gap-1"
+          className="flex items-center px-6 py-2 text-lg font-medium text-white transition-colors hover:text-zinc-300 whitespace-nowrap gap-1"
           aria-expanded={isDropdownOpen}
           aria-haspopup="true"
         >
@@ -272,7 +272,7 @@ const HeaderNavigation = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${isScrolled || isMobileMenuOpen ? "bg-black/90 backdrop-blur-sm shadow-md" : "bg-transparent"
+      className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${isScrolled || isMobileMenuOpen || isAgentsLab ? "bg-black/90 backdrop-blur-sm shadow-md" : "bg-transparent"
         }`}
     >
       <div className="container h-[90px] flex items-center justify-between">

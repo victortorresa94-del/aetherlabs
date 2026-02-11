@@ -88,8 +88,8 @@ const JasonWidget = () => {
                             {messages.map((m, i) => (
                                 <div key={i} className={`flex ${m.role === 'user' ? 'justify-end' : 'justify-start'}`}>
                                     <div className={`max-w-[85%] p-3 text-sm rounded-xl leading-relaxed ${m.role === 'user'
-                                            ? 'bg-[#82ff1f] text-black font-medium rounded-tr-none'
-                                            : 'bg-zinc-800 text-zinc-200 rounded-tl-none'
+                                        ? 'bg-[#82ff1f] text-black font-medium rounded-tr-none'
+                                        : 'bg-zinc-800 text-zinc-200 rounded-tl-none'
                                         }`}>
                                         {m.content}
                                     </div>
@@ -143,7 +143,7 @@ const JasonWidget = () => {
                 {isOpen ? (
                     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#82ff1f" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
                 ) : (
-                    <img src="/jason-avatar.jpg" alt="Chat" className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity" />
+                    <img src="/jason-avatar.jpg" alt="Chat" className="w-full h-full object-cover object-top opacity-90 group-hover:opacity-100 transition-opacity" />
                 )}
             </motion.button>
         </div>
