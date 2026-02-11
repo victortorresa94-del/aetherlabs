@@ -6,8 +6,9 @@ export interface AgentData {
     model: string;
     image: string;
     badge?: string;
-    idealFor: string;
-    description: string;
+    idealFor: string[]; // Changed to array for bullet points
+    description: string; // Used for "Beneficio" or short description in card
+    benefit: string; // New field for "Beneficio"
     heroDescription: string;
     checklist: string[];
     capabilities: { icon: string; title: string; desc: string }[];
@@ -21,19 +22,24 @@ export const agentsData: AgentData[] = [
     {
         id: "maria",
         name: "María",
-        role: "Ventas / Sales",
-        roleShort: "Cierre de Ventas y Negociación",
+        role: "VENTAS / SALES",
+        roleShort: "Cierre de Ventas",
         model: "AH-700",
         image: "/images/agentes/Maria.png",
         badge: "TOP VENTAS",
-        idealFor: "Inmobiliarias y Servicios High-Ticket",
-        description: "Agente comercial IA especializada en cualificación, seguimiento y cierre de ventas. María gestiona tu pipeline 24/7 y solo te pasa oportunidades listas para cerrar.",
-        heroDescription: "Diseñada para ser tu mejor comercial. María cualifica leads, gestiona objeciones de precio, agenda reuniones de alto valor y sincroniza todo con tu CRM automáticamente.",
         checklist: [
-            "Cualificación y filtrado 24/7.",
-            "Agenda reuniones de alto valor.",
-            "Sincronización con CRM.",
+            "Filtra leads por presupuesto y urgencia.",
+            "Detecta si hay decisor real.",
+            "Empuja a llamada, visita o presupuesto."
         ],
+        benefit: "👉 Menos llamadas inútiles. Más leads listos para cerrar.",
+        idealFor: [
+            "Servicios +1.000€ con muchos leads poco serios.",
+            "Empresas con comerciales saturados.",
+            "Negocios donde el chat se llena de \"solo miro\"."
+        ],
+        description: "Agente comercial IA especializada en cualificación, seguimiento y cierre de ventas.",
+        heroDescription: "Diseñada para ser tu mejor comercial. María cualifica leads, gestiona objeciones de precio, agenda reuniones de alto valor y sincroniza todo con tu CRM automáticamente.",
         capabilities: [
             { icon: "🎯", title: "Cualificación Inteligente", desc: "Filtra leads automáticamente según criterios de valor, descartando curiosos y priorizando oportunidades reales." },
             { icon: "💰", title: "Gestión de Objeciones", desc: "Maneja objeciones de precio y competencia en tiempo real con argumentos personalizados." },
@@ -65,18 +71,23 @@ export const agentsData: AgentData[] = [
     {
         id: "laura",
         name: "Laura",
-        role: "Atención al Cliente",
-        roleShort: "Atención al Cliente 24/7",
+        role: "ATENCIÓN AL CLIENTE",
+        roleShort: "Atención 24/7",
         model: "AH-900",
         image: "/images/agentes/Laura.png",
-        idealFor: "Clínicas, Despachos y Servicios",
+        checklist: [
+            "Atiende WhatsApp y llamadas 24/7.",
+            "Agenda y confirma citas automáticamente.",
+            "Responde dudas frecuentes al instante."
+        ],
+        benefit: "👉 Recupera llamadas y mensajes que hoy se pierden.",
+        idealFor: [
+            "Clínicas con muchas consultas diarias.",
+            "Centros con llamadas fuera de horario.",
+            "Negocios con no-shows frecuentes."
+        ],
         description: "Agente de atención y citas. Laura atiende clientes, resuelve dudas y agenda citas sin saturar a tu equipo.",
         heroDescription: "Diseñada meticulosamente para ser la primera línea de tu negocio. Laura atiende clientes, resuelve dudas complejas y gestiona tu agenda en tiempo real, sin pausas ni esperas.",
-        checklist: [
-            "Resolución de tickets L1.",
-            "Aprendizaje continuo.",
-            "Escalado inteligente a humanos.",
-        ],
         capabilities: [
             { icon: "⚡", title: "Respuesta Inmediata", desc: "Atención instantánea a cualquier hora. Laura nunca duerme y escala infinitamente según la demanda." },
             { icon: "📅", title: "Gestión de Calendario", desc: "Sincronización bidireccional con tu agenda. Laura encuentra huecos y confirma citas automáticamente." },
@@ -108,18 +119,23 @@ export const agentsData: AgentData[] = [
     {
         id: "diego",
         name: "Diego",
-        role: "Cualificación de Leads (SDR)",
-        roleShort: "Cualificación de Leads (SDR)",
+        role: "TÉCNICO-COMERCIAL",
+        roleShort: "Cualificación Técnica",
         model: "AH-500",
         image: "/images/agentes/Diego.png",
-        idealFor: "B2B y Consultoría",
-        description: "Agente SDR especializado en cualificación y filtrado de leads. Diego separa curiosos de compradores reales antes de que lleguen a tu equipo.",
-        heroDescription: "Tu SDR incansable. Diego filtra leads basura, recopila datos clave antes de la llamada y mantiene el seguimiento persistente por WhatsApp hasta conseguir la respuesta.",
         checklist: [
-            "Interacciones de voz naturales.",
-            "Soporte multilingüe real.",
-            "Análisis de sentimiento.",
+            "Pide fotos, medidas y ubicación.",
+            "Filtra presupuestos irreales.",
+            "Prepara visitas técnicas con contexto."
         ],
+        benefit: "👉 Menos “¿cuánto cuesta?” sin datos. Más presupuestos viables.",
+        idealFor: [
+            "Reformas y obra.",
+            "Instaladores (clima, solar, calderas).",
+            "Servicios técnicos con consultas caóticas."
+        ],
+        description: "Agente SDR especializado en cualificación y filtrado de leads.",
+        heroDescription: "Tu SDR incansable. Diego filtra leads basura, recopila datos clave antes de la llamada y mantiene el seguimiento persistente por WhatsApp hasta conseguir la respuesta.",
         capabilities: [
             { icon: "🔬", title: "Filtrado Inteligente", desc: "Separa leads cualificados de curiosos con preguntas estratégicas calibradas para tu negocio." },
             { icon: "📋", title: "Recolección de Datos", desc: "Recopila toda la información que tu equipo necesita antes de la primera llamada humana." },
@@ -127,9 +143,9 @@ export const agentsData: AgentData[] = [
             { icon: "📊", title: "Scoring Automático", desc: "Puntúa cada lead según su intención de compra y capacidad de decisión." },
         ],
         useCases: [
-            { emoji: "🏢", title: "Consultorías B2B", desc: "Filtrado de empresas según facturación, sector y necesidad real." },
-            { emoji: "💻", title: "SaaS y Tecnología", desc: "Cualificación de trials y demo requests antes de asignar comercial." },
-            { emoji: "📈", title: "Agencias de Marketing", desc: "Evaluación de presupuesto y expectativas antes de la propuesta." },
+            { emoji: "🔨", title: "Reformas", desc: "Solicitud de medidas y fotos previas a presupuesto." },
+            { emoji: "⚡", title: "Instalaciones", desc: "Verificación de viabilidad técnica básica." },
+            { emoji: "🚒", title: "Urgencias", desc: "Clasificación de averías por gravedad y tipo." },
         ],
         personality: [
             { title: "Directo y eficiente", desc: "Va al grano sin rodeos, respetando el tiempo del prospecto." },
@@ -138,7 +154,7 @@ export const agentsData: AgentData[] = [
         ],
         workflow: [
             { step: "1", title: "Contacto Inicial", desc: "Diego responde al lead en menos de 5 segundos tras el formulario." },
-            { step: "2", title: "Cualificación", desc: "Realiza preguntas BANT (Budget, Authority, Need, Timeline)." },
+            { step: "2", title: "Cualificación", desc: "Realiza preguntas técnicas (medidas, fotos, ubicación)." },
             { step: "3", title: "Scoring", desc: "Asigna puntuación y etiquetas al lead según sus respuestas." },
             { step: "4", title: "Handoff", desc: "Pasa el lead cualificado a tu equipo con toda la información lista." },
         ],
@@ -151,39 +167,44 @@ export const agentsData: AgentData[] = [
     {
         id: "alvaro",
         name: "Álvaro",
-        role: "Soporte Técnico N1",
-        roleShort: "Soporte Técnico Nivel 1",
+        role: "INMOBILIARIA & VISITAS",
+        roleShort: "Gestión de Visitas",
         model: "AH-600",
         image: "/images/agentes/Álvaro.png",
-        idealFor: "SaaS y Tecnología",
-        description: "Agente de soporte técnico de primer nivel. Álvaro diagnostica problemas, guía paso a paso y solo escala lo que realmente necesita un humano.",
-        heroDescription: "Tu primer nivel de soporte perfecto. Álvaro diagnostica problemas técnicos, proporciona guías paso a paso y se integra con tu sistema de ticketing para resolver incidencias sin demora.",
         checklist: [
-            "Diagnóstico de problemas técnicos.",
-            "Guías paso a paso.",
-            "Integración con ticketing.",
+            "Filtra por zona y presupuesto.",
+            "Distingue compra vs alquiler.",
+            "Agenda solo visitas con encaje."
         ],
+        benefit: "👉 Menos visitas perdidas. Más operaciones reales.",
+        idealFor: [
+            "Inmobiliarias con mucho lead curioso.",
+            "Alquiler y compraventa urbana.",
+            "Equipos que pierden tiempo en visitas inútiles."
+        ],
+        description: "Agente inmobiliario para filtrado y visitas.",
+        heroDescription: "Tu primer nivel de soporte perfecto. Álvaro diagnostica problemas técnicos, proporciona guías paso a paso y se integra con tu sistema de ticketing para resolver incidencias sin demora.",
         capabilities: [
-            { icon: "🔧", title: "Diagnóstico Rápido", desc: "Identifica la causa raíz del problema técnico con preguntas estructuradas en menos de 2 minutos." },
-            { icon: "📖", title: "Guías Interactivas", desc: "Proporciona instrucciones paso a paso adaptadas al nivel técnico del usuario." },
-            { icon: "🎫", title: "Gestión de Tickets", desc: "Crea, actualiza y cierra tickets automáticamente en tu sistema de soporte." },
-            { icon: "⬆️", title: "Escalado Inteligente", desc: "Solo escala a humanos los casos que realmente lo necesitan, con todo el contexto documentado." },
+            { icon: "🏠", title: "Filtrado Inmobiliario", desc: "Pregunta zona, presupuesto y requisitos antes de agendar nada." },
+            { icon: "📅", title: "Gestión de Visitas", desc: "Coordina agendas de compradores y agentes automáticamente." },
+            { icon: "🔔", title: "Alertas de Stock", desc: "Avisa a leads antiguos cuando entra una propiedad que les encaja." },
+            { icon: "📄", title: "Documentación", desc: "Solicita nóminas o garantías antes de la visita si es necesario." },
         ],
         useCases: [
-            { emoji: "💻", title: "Empresas SaaS", desc: "Resolución de dudas técnicas y onboarding de usuarios." },
-            { emoji: "🛒", title: "E-commerce", desc: "Problemas con pedidos, pagos y acceso a cuentas." },
-            { emoji: "📱", title: "Apps Móviles", desc: "Soporte técnico para instalación, configuración y bugs." },
+            { emoji: "🏙️", title: "Agencias Inmobiliarias", desc: "Cualificación de portales inmobiliarios." },
+            { emoji: "🏘️", title: "Promotoras", desc: "Gestión de leads de obra nueva." },
+            { emoji: "🔑", title: "Alquileres", desc: "Filtrado masivo de candidatos inquilinos." },
         ],
         personality: [
-            { title: "Paciente y didáctico", desc: "Explica conceptos técnicos de forma sencilla, sin jerga innecesaria." },
-            { title: "Metódico", desc: "Sigue protocolos de diagnóstico probados para no dejar cabos sueltos." },
-            { title: "Resolutivo", desc: "Su objetivo es cerrar el ticket en la primera interacción siempre que sea posible." },
+            { title: "Empático y profesional", desc: "Entiende que buscar casa es emocional, pero mantiene el foco en el cierre." },
+            { title: "Organizado", desc: "No deja que ninguna visita se solape o se olvide." },
+            { title: "Proactivo", desc: "Propone alternativas si la propiedad solicitada ya no está disponible." },
         ],
         workflow: [
-            { step: "1", title: "Recepción", desc: "Álvaro recibe el ticket o mensaje de soporte al instante." },
-            { step: "2", title: "Diagnóstico", desc: "Realiza preguntas técnicas para identificar la causa raíz." },
-            { step: "3", title: "Resolución", desc: "Proporciona la solución paso a paso o aplica la corrección." },
-            { step: "4", title: "Verificación", desc: "Confirma que el problema está resuelto y cierra el ticket." },
+            { step: "1", title: "Recepción", desc: "Álvaro recibe el lead desde Idealista, Fotocasa o web." },
+            { step: "2", title: "Filtrado", desc: "Verifica si el lead tiene presupuesto y requisitos reales." },
+            { step: "3", title: "Agendamiento", desc: "Ofrece huecos de visita solo a leads cualificados." },
+            { step: "4", title: "Confirmación", desc: "Envía recordatorios para minimizar no-shows." },
         ],
         stats: [
             { value: "0.3s", label: "Latencia" },
@@ -194,39 +215,44 @@ export const agentsData: AgentData[] = [
     {
         id: "clara",
         name: "Clara",
-        role: "Atención Masiva",
-        roleShort: "Gestión de Alto Volumen",
+        role: "SOPORTE & OPERACIONES",
+        roleShort: "Soporte Operativo",
         model: "AH-800",
         image: "/images/agentes/Clara.png",
-        idealFor: "E-commerce y Retail",
-        description: "Agente diseñada para gestionar picos masivos de tráfico. Clara mantiene respuestas consistentes y recopila datos a escala sin perder calidad.",
-        heroDescription: "Construida para la escala. Clara gestiona cientos de conversaciones simultáneas sin degradar la calidad, manteniendo respuestas consistentes y recopilando datos valiosos de cada interacción.",
         checklist: [
-            "Gestión de picos de tráfico.",
-            "Respuestas consistentes.",
-            "Recopilación de datos masiva.",
+            "Gestiona incidencias y FAQs.",
+            "Recoge datos mínimos por proceso.",
+            "Escala a humano con todo preparado."
         ],
+        benefit: "👉 Menos tickets repetidos. Soporte más rápido y ordenado.",
+        idealFor: [
+            "E-commerce con alto volumen.",
+            "Academias y membresías.",
+            "Negocios con WhatsApp saturado."
+        ],
+        description: "Agente de soporte y operaciones para gestión masiva.",
+        heroDescription: "Construida para la escala. Clara gestiona cientos de conversaciones simultáneas sin degradar la calidad, manteniendo respuestas consistentes y recopilando datos valiosos de cada interacción.",
         capabilities: [
-            { icon: "📈", title: "Escalabilidad Infinita", desc: "Gestiona 10 o 10.000 conversaciones simultáneas sin perder calidad ni velocidad." },
-            { icon: "🎯", title: "Consistencia Total", desc: "Cada cliente recibe la misma calidad de atención, independientemente del volumen." },
-            { icon: "📊", title: "Recopilación Masiva", desc: "Extrae datos y patrones de miles de conversaciones para optimizar tu negocio." },
-            { icon: "🔥", title: "Gestión de Crisis", desc: "Preparada para picos de demanda en Black Friday, lanzamientos y eventos." },
+            { icon: "🎫", title: "Gestión de Incidencias", desc: "Clasifica y resuelve problemas comunes automáticamente." },
+            { icon: "📦", title: "Estado de Pedidos", desc: "Informa sobre envíos y devoluciones conectada a tu ERP." },
+            { icon: "🔄", title: "Procesos Recurrentes", desc: "Automatiza cambios de datos, bajas o renovaciones." },
+            { icon: "⚡", title: "Respuesta Masiva", desc: "Atiende picos de miles de mensajes sin latencia." },
         ],
         useCases: [
-            { emoji: "🛒", title: "E-commerce", desc: "Atención masiva durante campañas y eventos de venta." },
-            { emoji: "🏬", title: "Retail", desc: "Gestión de consultas de stock, envíos y devoluciones a escala." },
-            { emoji: "🎫", title: "Eventos", desc: "Venta de entradas y atención a asistentes en tiempo real." },
+            { emoji: "🛒", title: "E-commerce", desc: "Atención post-venta y logística." },
+            { emoji: "🎓", title: "Formación", desc: "Soporte a alumnos y acceso a plataformas." },
+            { emoji: "🚚", title: "Logística", desc: "Gestión de incidencias de entrega." },
         ],
         personality: [
             { title: "Eficiente y directa", desc: "Resuelve consultas rápidamente sin perder tiempo en conversación innecesaria." },
             { title: "Consistente", desc: "Mantiene el mismo estándar de calidad en la conversación 1 y en la 10.000." },
-            { title: "Data-driven", desc: "Cada interacción genera datos accionables para tu equipo de marketing." },
+            { title: "Resolutiva", desc: "Se enfoca en cerrar el ticket con solución, no solo en responder." },
         ],
         workflow: [
-            { step: "1", title: "Recepción Masiva", desc: "Clara recibe cientos de mensajes simultáneos sin cola de espera." },
-            { step: "2", title: "Clasificación", desc: "Categoriza cada consulta por tipo, urgencia y valor potencial." },
-            { step: "3", title: "Resolución Paralela", desc: "Gestiona todas las conversaciones en paralelo con calidad uniforme." },
-            { step: "4", title: "Reporting", desc: "Genera informes en tiempo real de patrones, quejas y oportunidades." },
+            { step: "1", title: "Recepción", desc: "Clara recibe la incidencia por cualquier canal." },
+            { step: "2", title: "Identificación", desc: "Solicita número de pedido o ID de cliente automáticamente." },
+            { step: "3", title: "Resolución", desc: "Consulta el estado y da la información o ejecuta el cambio." },
+            { step: "4", title: "Cierre", desc: "Confirma satisfacción y cierra el ticket." },
         ],
         stats: [
             { value: "0.1s", label: "Latencia" },
@@ -237,39 +263,44 @@ export const agentsData: AgentData[] = [
     {
         id: "daniela",
         name: "Daniela",
-        role: "Expansión Latam",
-        roleShort: "Expansión Mercado Latam",
+        role: "ATENCIÓN & FIDELIZACIÓN",
+        roleShort: "Fidelización de Clientes",
         model: "AH-1000",
         image: "/images/agentes/Latina.png",
-        idealFor: "Empresas con mercado Latam",
-        description: "Agente especializada en mercados latinoamericanos. Daniela adapta guiones, maneja modismos locales y opera en horario extendido para cubrir todas las zonas horarias.",
-        heroDescription: "Tu puerta de entrada a Latinoamérica. Daniela domina los matices culturales de cada país, adapta tu mensaje al mercado local y opera en horario extendido para cubrir México, Colombia, Argentina y más.",
         checklist: [
-            "Adaptación cultural de guiones.",
-            "Modismos y jerga local.",
-            "Horario extendido.",
+            "Resuelve dudas sensibles.",
+            "Da seguimiento post-venta.",
+            "Evita abandonos silenciosos."
         ],
+        benefit: "👉 Menos quejas. Más clientes que se quedan.",
+        idealFor: [
+            "Servicios recurrentes.",
+            "Clínicas y centros con seguimiento.",
+            "Negocios donde la experiencia importa."
+        ],
+        description: "Agente de fidelización y calidad.",
+        heroDescription: "Tu experta en fidelización. Daniela se asegura de que tus clientes estén felices, resuelve dudas sensibles con empatía y detecta riesgos de baja antes de que ocurran.",
         capabilities: [
-            { icon: "🌎", title: "Adaptación Cultural", desc: "Adapta el tono y vocabulario según el país: México, Colombia, Argentina, Chile y más." },
-            { icon: "🗣️", title: "Modismos Locales", desc: "Habla como un local. Entiende y usa expresiones propias de cada región." },
-            { icon: "🕐", title: "Cobertura Horaria Total", desc: "Opera en todas las zonas horarias de Latam sin interrupciones." },
-            { icon: "📋", title: "Localización de Procesos", desc: "Adapta flujos de venta y soporte a las particularidades de cada mercado." },
+            { icon: "❤️", title: "Empatía Digital", desc: "Detecta frustración y adapta su tono para calmar y resolver." },
+            { icon: "⭐", title: "Encuestas de Calidad", desc: "Recoge feedback real justo después del servicio." },
+            { icon: "🎁", title: "Reactivación", desc: "Contacta con clientes inactivos para ofrecerles volver." },
+            { icon: "🛡️", title: "Retención", desc: "Detecta intención de baja y ofrece alternativas para quedarse." },
         ],
         useCases: [
-            { emoji: "🏢", title: "Empresas en Expansión", desc: "Primer punto de contacto en nuevos mercados latinoamericanos." },
-            { emoji: "🛍️", title: "E-commerce Cross-Border", desc: "Atención al cliente en español neutro o localizado por país." },
-            { emoji: "📚", title: "EdTech", desc: "Soporte y ventas para plataformas educativas en toda Latam." },
+            { emoji: "🧘‍♀️", title: "Centros Wellness", desc: "Seguimiento de tratamientos y satisfacción." },
+            { emoji: "💳", title: "Suscripciones", desc: "Gestión de bajas y upgrades." },
+            { emoji: "🏨", title: "Hospitality", desc: "Atención al huésped y feedback post-estancia." },
         ],
         personality: [
             { title: "Cálida y cercana", desc: "Genera confianza rápidamente con un trato amable y natural." },
-            { title: "Culturalmente sensible", desc: "Nunca usa expresiones que puedan ser malinterpretadas en otro país." },
-            { title: "Bilingüe nativa", desc: "Maneja español e inglés con fluidez total y sin traducciones forzadas." },
+            { title: "Proactiva", desc: "Se anticipa a los problemas antes de que el cliente se queje." },
+            { title: "Detallista", desc: "Recuerda preferencias y detalles de conversaciones pasadas." },
         ],
         workflow: [
-            { step: "1", title: "Detección de Origen", desc: "Daniela identifica el país del lead por IP, prefijo o contexto." },
-            { step: "2", title: "Localización", desc: "Adapta vocabulario, tono y referencias culturales al país detectado." },
-            { step: "3", title: "Gestión", desc: "Cualifica, atiende o agenda según el flujo definido para ese mercado." },
-            { step: "4", title: "Reporting Regional", desc: "Genera métricas separadas por país para optimizar la estrategia Latam." },
+            { step: "1", title: "Seguimiento", desc: "Daniela contacta al cliente tras la venta o servicio." },
+            { step: "2", title: "Feedback", desc: "Pregunta qué tal ha ido todo y escucha activamente." },
+            { step: "3", title: "Solución", desc: "Si hay un problema, lo resuelve o compensa al momento." },
+            { step: "4", title: "Loyalty", desc: "Agradece y refuerza la relación para la próxima compra." },
         ],
         stats: [
             { value: "0.3s", label: "Latencia" },

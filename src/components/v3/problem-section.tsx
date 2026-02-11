@@ -32,13 +32,6 @@ const problems = [
         weight: "font-semibold",
         textColor: "text-white",
         icon: Archive
-    },
-    {
-        id: "05",
-        text: "Oportunidades calientes que nadie atiende en el momento clave.",
-        weight: "font-bold",
-        textColor: "text-white",
-        icon: Flame
     }
 ];
 
@@ -49,7 +42,7 @@ const ProblemSection = () => {
             {/* Abstract Background Element */}
             <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-[#82ff1f]/5 to-transparent pointer-events-none opacity-20"></div>
 
-            <div className="w-full max-w-4xl mx-auto relative z-10">
+            <div className="w-full max-w-6xl mx-auto relative z-10">
 
                 {/* Header */}
                 <header className="mb-24 text-center">
@@ -63,7 +56,7 @@ const ProblemSection = () => {
                 </header>
 
                 {/* Problems List */}
-                <div className="flex flex-col border-t border-white/10">
+                <div className="flex flex-col border-t border-white/10 max-w-3xl mx-auto w-full">
                     {problems.map((item) => (
                         <div
                             key={item.id}
@@ -73,13 +66,13 @@ const ProblemSection = () => {
                             <div className="absolute left-0 w-1 h-8 bg-[#82ff1f] opacity-0 -translate-x-4 transition-all duration-300 rounded-r group-hover:opacity-100 group-hover:translate-x-0"></div>
 
                             {/* Icon */}
-                            <div className="w-12 flex items-center justify-start text-[#82ff1f] opacity-70 group-hover:opacity-100 transition-opacity">
+                            <div className="w-12 flex-shrink-0 flex items-center justify-start text-[#82ff1f] opacity-70 group-hover:opacity-100 transition-opacity">
                                 <item.icon className="w-6 h-6" strokeWidth={1.5} />
                             </div>
 
                             {/* Text */}
                             <p className={cn(
-                                "text-lg md:text-2xl transition-colors tracking-wide group-hover:text-white",
+                                "text-lg md:text-xl lg:text-2xl transition-colors tracking-wide group-hover:text-white flex-1",
                                 item.weight,
                                 item.textColor
                             )}>
@@ -90,7 +83,7 @@ const ProblemSection = () => {
                 </div>
 
                 {/* Footer Insight */}
-                <div className="mt-24 text-center max-w-2xl mx-auto">
+                <div className="mt-24 text-center">
                     <p className="font-serif italic text-xl md:text-2xl text-zinc-400 leading-relaxed">
                         "El problema no es tener leads. Es no tener un sistema que los&nbsp;gestione<span className="text-[#82ff1f] not-italic font-sans">.</span>"
                     </p>

@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 const Footer = () => {
   return (
-    <footer className="bg-background text-foreground py-12 border-t border-border transition-colors duration-300">
+    <footer className="bg-background text-foreground py-12 border-t border-border transition-colors duration-300 overflow-hidden">
       <div className="container">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           {/* Logo y descripción */}

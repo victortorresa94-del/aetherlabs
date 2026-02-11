@@ -42,7 +42,7 @@ const HeroSection = () => {
                     {/* Badge */}
                     <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm">
                         <span className="w-1.5 h-1.5 rounded-full bg-[#82ff1f] animate-pulse"></span>
-                        <span className="text-xs font-medium uppercase tracking-widest text-zinc-400">Enterprise AI Systems</span>
+                        <span className="text-xs font-medium uppercase tracking-widest text-zinc-400">AI SALES FRAMEWORK</span>
                     </div>
 
                     {/* Headline */}
@@ -57,25 +57,18 @@ const HeroSection = () => {
 
                     {/* Subtitle */}
                     <p className="font-light text-lg md:text-xl text-zinc-300 max-w-2xl mx-auto leading-relaxed">
-                        Automatiza todo tu proceso comercial con IA, desde la captación hasta la atención postventa. Precisión absoluta para tu empresa.
+                        Automatiza todo tu proceso comercial con IA, desde la captación hasta la atención postventa.
                     </p>
 
                     {/* Buttons */}
                     <div className="flex flex-col sm:flex-row items-center gap-4 pt-4">
                         <Link
-                            href="#contacto"
+                            href="/contacto"
                             className="group relative px-8 py-3.5 bg-white text-black rounded-full font-medium transition-transform hover:scale-105 active:scale-95 flex items-center gap-2"
                         >
-                            <span>Empezar ahora</span>
+                            <span>Solicitar diagnóstico</span>
                             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                         </Link>
-                        <button
-                            className="group px-8 py-3.5 bg-transparent border border-white/20 text-white rounded-full font-medium hover:border-white transition-colors flex items-center gap-2 backdrop-blur-sm"
-                            onClick={() => console.log('Demo Clicked')}
-                        >
-                            <span>Ver demo</span>
-                            <Play className="w-4 h-4 opacity-70 group-hover:opacity-100 transition-opacity fill-current" />
-                        </button>
                     </div>
                 </div>
 

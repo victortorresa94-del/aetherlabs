@@ -6,6 +6,8 @@ import Image from "next/image";
 import Link from "next/link";
 import HeaderNavigation from "@/components/sections/header-navigation";
 import Footer from "@/components/sections/footer";
+import LauraWidget from "@/components/laura-widget";
+import { useState } from "react";
 
 const fadeIn = {
     hidden: { opacity: 0, y: 20 },
@@ -13,6 +15,8 @@ const fadeIn = {
 };
 
 export default function LauraAgentPage() {
+    const [isChatOpen, setIsChatOpen] = useState(false);
+
     return (
         <main className="min-h-screen bg-black text-white">
             <HeaderNavigation />
@@ -53,12 +57,12 @@ export default function LauraAgentPage() {
                             </p>
 
                             <div className="flex flex-col sm:flex-row gap-4">
-                                <Link
-                                    href="/contacto"
+                                <button
+                                    onClick={() => setIsChatOpen(true)}
                                     className="inline-flex items-center justify-center h-14 px-8 rounded-full bg-[#82ff1f] text-black font-semibold text-base transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(130,255,31,0.3)]"
                                 >
-                                    Solicitar demo
-                                </Link>
+                                    Hablar con Laura
+                                </button>
                                 <Link
                                     href="/contacto"
                                     className="inline-flex items-center justify-center h-14 px-8 rounded-full border border-zinc-700 text-white font-medium text-base transition-all duration-300 hover:border-zinc-500 hover:bg-zinc-900"
@@ -100,6 +104,8 @@ export default function LauraAgentPage() {
                     </div>
                 </div>
             </section>
+
+            <LauraWidget isOpen={isChatOpen} onClose={() => setIsChatOpen(false)} />
 
             {/* ═══════════════════════════════════════════════════
           SECTION 2 — WHAT THIS AGENT DOES
@@ -435,12 +441,12 @@ export default function LauraAgentPage() {
                         </p>
 
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                            <Link
-                                href="/contacto"
+                            <button
+                                onClick={() => setIsChatOpen(true)}
                                 className="inline-flex items-center justify-center h-14 px-10 rounded-full bg-[#82ff1f] text-black font-semibold text-base transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(130,255,31,0.3)]"
                             >
-                                Solicitar demo
-                            </Link>
+                                Hablar con Laura
+                            </button>
                             <Link
                                 href="/#agentes"
                                 className="inline-flex items-center justify-center h-14 px-10 rounded-full border border-zinc-700 text-white font-medium text-base transition-all duration-300 hover:border-zinc-500 hover:bg-zinc-900"

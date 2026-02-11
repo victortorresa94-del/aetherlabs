@@ -66,6 +66,15 @@ const HeaderNavigation = () => {
     // Servicios, Labs, Casos de Uso, Learn, Experimentos, Contacto removed from visible nav
     { label: "Agentes", href: "/agentes" },
     { label: "Servicios", href: "/servicios" },
+    // Labs hidden for now
+    // {
+    //   label: "Labs",
+    //   href: "#",
+    //   subItems: [
+    //     { label: "Agents Lab", href: "/agents-lab" },
+    //     { label: "Ads Lab", href: "/ads-lab" },
+    //   ],
+    // },
     { label: "Nosotros", href: "/sobre-nosotros" },
   ];
 
@@ -78,7 +87,7 @@ const HeaderNavigation = () => {
   }, []);
 
   useEffect(() => {
-    document.body.style.overflow = isMobileMenuOpen ? "hidden" : "auto";
+    document.body.style.overflowY = isMobileMenuOpen ? "hidden" : "auto";
   }, [isMobileMenuOpen]);
 
   // Updated render logic for rich dropdowns (Icons + Description)
@@ -174,7 +183,7 @@ const HeaderNavigation = () => {
       >
         <Link
           href={item.href}
-          className="flex items-center px-4 py-2 text-sm text-white transition-colors hover:text-zinc-400 whitespace-nowrap gap-1"
+          className="flex items-center px-4 py-2 text-base text-white transition-colors hover:text-zinc-400 whitespace-nowrap gap-1"
           aria-expanded={isDropdownOpen}
           aria-haspopup="true"
         >

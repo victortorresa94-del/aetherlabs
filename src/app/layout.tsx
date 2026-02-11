@@ -3,6 +3,7 @@ import "./globals.css";
 import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next";
 import JasonBot from "@/components/ui/jason-bot";
+import JasonWidget from "@/components/jason-widget";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://aetherlabs.es"),
@@ -54,7 +55,7 @@ export default function RootLayout({
         })(window,document,'script','dataLayer','GTM-T2K2L3NQ');`}
       </Script>
       {/* End Google Tag Manager */}
-      <body className="antialiased bg-black text-white selection:bg-[#82ff1f] selection:text-black">
+      <body className="antialiased bg-black text-white selection:bg-[#82ff1f] selection:text-black overflow-x-hidden">
         {/* Google Tag Manager (noscript) */}
         <noscript>
           <iframe
@@ -68,10 +69,11 @@ export default function RootLayout({
 
         {children}
         <Analytics />
-        {/* <JasonBot /> */}
-        <Script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript" strategy="afterInteractive" />
+        <Analytics />
+        <JasonWidget />
+        {/* <Script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript" strategy="afterInteractive" /> */}
         {/* @ts-ignore */}
-        <elevenlabs-convai agent-id="agent_7901k85nn7wyfynsqgs4qym0h48t"></elevenlabs-convai>
+        {/* <elevenlabs-convai agent-id="agent_7901k85nn7wyfynsqgs4qym0h48t"></elevenlabs-convai> */}
       </body>
     </html>
   );

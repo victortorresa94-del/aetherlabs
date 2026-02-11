@@ -19,11 +19,13 @@ const CTASection = () => {
                     className="max-w-4xl mx-auto"
                 >
                     <h2 className="text-4xl md:text-6xl font-light text-white mb-8 leading-tight">
-                        Descubre cuánto estás perdiendo <span className="text-white font-medium">por no responder a tiempo</span>
+                        ¿Cuánto estás perdiendo<br />
+                        <span className="text-white font-medium">por no responder a tiempo?</span>
                     </h2>
 
                     <p className="text-xl text-zinc-400 mb-12 max-w-2xl mx-auto leading-relaxed">
-                        En 15 minutos analizamos tu proceso y te decimos si esto tiene sentido para tu negocio. sin compromiso.
+                        En 15 minutos analizamos tu proceso y te decimos<br className="hidden md:inline" />
+                        si esto tiene sentido para tu negocio. Sin compromiso.
                     </p>
 
                     <a
