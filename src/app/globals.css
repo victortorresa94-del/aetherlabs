@@ -375,20 +375,24 @@ nextjs-portal {
   animation: bounce-subtle 4s infinite ease-in-out;
 }
 
-/* Retell Callback Widget Styling - Bottom Left */
-iframe[src*="retellai.com"] {
+/* Retell Callback Widget Styling */
+iframe[src*="retellai.com"],
+[id*="retell-widget"] {
   position: fixed !important;
   bottom: 24px !important;
-  left: 24px !important;
-  right: auto !important;
+  right: 24px !important;
+  left: auto !important;
   z-index: 9999 !important;
-  max-width: 90vw !important;
-  max-height: 90vh !important;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2) !important;
+  background: white !important;
   border-radius: 50% !important;
-  /* Circular like the button */
-  border: none !important;
-  background: transparent !important;
-  filter: invert(1) !important;
-  /* Flip Black/White to White/Black icon */
+}
+
+/* Force 16px to prevent iOS zoom */
+@media screen and (max-width: 768px) {
+
+  input,
+  textarea,
+  select {
+    font-size: 16px !important;
+  }
 }
