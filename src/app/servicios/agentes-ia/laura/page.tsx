@@ -46,8 +46,10 @@ export default function LauraAgentPage() {
         script.setAttribute('data-agent-id', 'agent_a9a331075e3b72c616cded5bbc');
         script.setAttribute('data-auto-open', 'true');
         script.setAttribute('data-widget', 'callback');
-        script.setAttribute('data-title', 'Llamar a Laura');
-        script.setAttribute('data-phone-number', '+34600000000'); // Placeholder or actual number for callback
+        script.setAttribute('data-title', 'Habla con Laura');
+        script.setAttribute('data-phone-number', '+17759241199');
+        script.setAttribute('data-countries', 'ES');
+        script.setAttribute('data-color', '#FFFFFF');
 
         script.onload = () => console.log("Retell script loaded successfully");
         script.onerror = (e) => console.error("Retell script failed to load", e);

@@ -348,4 +348,5 @@ iframe[src*="retellai.com"] {
   box-shadow: 0 0 50px rgba(0, 0, 0, 0.8) !important;
   border-radius: 20px !important;
   border: 2px solid #82ff1f !important;
+  background: white !important;
 }
