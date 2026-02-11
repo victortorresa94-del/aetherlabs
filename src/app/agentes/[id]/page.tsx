@@ -10,6 +10,7 @@ import Footer from "@/components/sections/footer";
 import { agentsData } from "@/data/agents";
 import { use, useState, useEffect } from "react";
 import Script from "next/script";
+import LauraChatWidget from "@/components/laura-chat-widget";
 
 const fadeIn = {
     hidden: { opacity: 0, y: 20 },
@@ -19,43 +20,45 @@ const fadeIn = {
 export default function AgentPage({ params }: { params: Promise<{ id: string }> }) {
     const { id } = use(params);
     const agent = agentsData.find((a) => a.id === id);
-    const [widgetMode, setWidgetMode] = useState<'chat' | 'call' | null>(null);
+    const [widgetMode, setWidgetMode] = useState<'call' | null>(null);
+    const [isChatOpen, setIsChatOpen] = useState(false);
 
     useEffect(() => {
         if (!widgetMode || agent?.id !== 'laura') return;
         console.log("Activating Retell widget mode:", widgetMode);
 
-        const scriptId = 'retell-widget';
-        const existingScript = document.getElementById(scriptId);
-        if (existingScript) existingScript.remove();
+        const cleanupWidget = () => {
+            const scriptId = 'retell-widget';
+            const existingScript = document.getElementById(scriptId);
+            if (existingScript) existingScript.remove();
+
+            const iframes = document.querySelectorAll('iframe[src*="retellai.com"]');
+            iframes.forEach(iframe => iframe.remove());
+
+            const containers = document.querySelectorAll('div[class*="retell"]');
+            containers.forEach(div => div.remove());
+        };
+
+        cleanupWidget();
 
         const script = document.createElement('script');
-        script.id = scriptId;
+        script.id = 'retell-widget';
         script.src = 'https://dashboard.retellai.com/retell-widget.js';
         script.async = true;
 
         script.setAttribute('data-public-key', 'public_key_29e6f793020ea429cdd0d');
         script.setAttribute('data-agent-id', 'agent_a9a331075e3b72c616cded5bbc');
-        script.setAttribute('data-auto-open', 'true'); // Automatically open the widget
-
-        if (widgetMode === 'chat') {
-            script.setAttribute('data-widget', 'chat');
-            script.setAttribute('data-title', 'Chatear con Laura');
-            script.setAttribute('data-bot-name', 'Laura');
-        } else {
-            script.setAttribute('data-widget', 'web_call');
-            script.setAttribute('data-title', 'Llamar a Laura');
-        }
+        script.setAttribute('data-auto-open', 'true');
+        script.setAttribute('data-widget', 'callback');
+        script.setAttribute('data-title', 'Llamar a Laura');
+        script.setAttribute('data-phone-number', '+34600000000'); // Placeholder or actual number for callback
 
         script.onload = () => console.log("Retell script loaded successfully");
         script.onerror = (e) => console.error("Retell script failed to load", e);
 
         document.head.appendChild(script);
 
-        return () => {
-            const s = document.getElementById(scriptId);
-            if (s) s.remove();
-        };
+        return cleanupWidget;
     }, [widgetMode, agent?.id]);
 
     if (!agent) return notFound();
@@ -122,8 +125,7 @@ export default function AgentPage({ params }: { params: Promise<{ id: string }> 
                                 <button
                                     onClick={() => {
                                         console.log("Start Chat clicked");
-                                        setWidgetMode(null);
-                                        setTimeout(() => setWidgetMode('chat'), 50);
+                                        setIsChatOpen(true);
                                     }}
                                     className="border border-white/20 text-white font-medium text-lg px-8 py-4 rounded-lg hover:bg-white/5 transition-colors duration-300 flex items-center justify-center gap-2"
                                 >
@@ -454,39 +456,10 @@ export default function AgentPage({ params }: { params: Promise<{ id: string }> 
                 </div>
             </section>
 
-            {/* Retell Widget for Laura */}
-            {agent.id === 'laura' && widgetMode === 'chat' && (
-                <Script
-                    key="chat-widget"
-                    src="https://dashboard.retellai.com/retell-widget.js"
-                    strategy="lazyOnload"
-                    // @ts-ignore
-                    type="module"
-                    data-public-key="public_key_29e6f793020ea429cdd0d"
-                    data-agent-id="agent_a9a331075e3b72c616cded5bbc"
-                    data-widget="chat"
-                    data-title="Chatear con Laura"
-                    data-bot-name="Laura"
-                    data-auto-open="true"
-                />
-            )}
-            {agent.id === 'laura' && widgetMode === 'call' && (
-                <Script
-                    key="call-widget"
-                    src="https://dashboard.retellai.com/retell-widget.js"
-                    strategy="lazyOnload"
-                    // @ts-ignore
-                    type="module"
-                    data-public-key="public_key_29e6f793020ea429cdd0d"
-                    data-agent-id="agent_a9a331075e3b72c616cded5bbc"
-                    data-widget="callback"
-                    data-title="Llamar a Laura"
-                    data-phone-number="+15550000000"
-                    data-auto-open="true"
-                />
-            )}
+
 
             <Footer />
+            <LauraChatWidget isOpen={isChatOpen} onClose={() => setIsChatOpen(false)} />
         </main>
     );
 }

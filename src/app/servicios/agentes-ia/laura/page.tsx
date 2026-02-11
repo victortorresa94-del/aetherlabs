@@ -7,8 +7,8 @@ import Link from "next/link";
 import Script from "next/script";
 import HeaderNavigation from "@/components/sections/header-navigation";
 import Footer from "@/components/sections/footer";
-import LauraWidget from "@/components/laura-widget";
 import { useState, useEffect } from "react";
+import LauraChatWidget from "@/components/laura-chat-widget";
 
 const fadeIn = {
     hidden: { opacity: 0, y: 20 },
@@ -16,43 +16,45 @@ const fadeIn = {
 };
 
 export default function LauraAgentPage() {
-    const [widgetMode, setWidgetMode] = useState<'chat' | 'call' | null>(null);
+    const [widgetMode, setWidgetMode] = useState<'call' | null>(null);
+    const [isChatOpen, setIsChatOpen] = useState(false);
 
     useEffect(() => {
         if (!widgetMode) return;
         console.log("Activating Retell widget mode:", widgetMode);
 
-        const scriptId = 'retell-widget';
-        const existingScript = document.getElementById(scriptId);
-        if (existingScript) existingScript.remove();
+        const cleanupWidget = () => {
+            const scriptId = 'retell-widget';
+            const existingScript = document.getElementById(scriptId);
+            if (existingScript) existingScript.remove();
+
+            const iframes = document.querySelectorAll('iframe[src*="retellai.com"]');
+            iframes.forEach(iframe => iframe.remove());
+
+            const containers = document.querySelectorAll('div[class*="retell"]');
+            containers.forEach(div => div.remove());
+        };
+
+        cleanupWidget();
 
         const script = document.createElement('script');
-        script.id = scriptId;
+        script.id = 'retell-widget';
         script.src = 'https://dashboard.retellai.com/retell-widget.js';
         script.async = true;
 
         script.setAttribute('data-public-key', 'public_key_29e6f793020ea429cdd0d');
         script.setAttribute('data-agent-id', 'agent_a9a331075e3b72c616cded5bbc');
         script.setAttribute('data-auto-open', 'true');
-
-        if (widgetMode === 'chat') {
-            script.setAttribute('data-widget', 'chat');
-            script.setAttribute('data-title', 'Chatear con Laura');
-            script.setAttribute('data-bot-name', 'Laura');
-        } else {
-            script.setAttribute('data-widget', 'web_call');
-            script.setAttribute('data-title', 'Llamar a Laura');
-        }
+        script.setAttribute('data-widget', 'callback');
+        script.setAttribute('data-title', 'Llamar a Laura');
+        script.setAttribute('data-phone-number', '+34600000000'); // Placeholder or actual number for callback
 
         script.onload = () => console.log("Retell script loaded successfully");
         script.onerror = (e) => console.error("Retell script failed to load", e);
 
         document.head.appendChild(script);
 
-        return () => {
-            const s = document.getElementById(scriptId);
-            if (s) s.remove();
-        };
+        return cleanupWidget;
     }, [widgetMode]);
 
     return (
@@ -104,7 +106,7 @@ export default function LauraAgentPage() {
                                     Llamar a Laura
                                 </button>
                                 <button
-                                    onClick={() => { setWidgetMode(null); setTimeout(() => setWidgetMode('chat'), 50); }}
+                                    onClick={() => setIsChatOpen(true)}
                                     className="inline-flex items-center justify-center h-14 px-8 rounded-full border border-zinc-700 text-white font-medium text-base transition-all duration-300 hover:border-zinc-500 hover:bg-zinc-900 gap-2"
                                 >
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
@@ -483,7 +485,7 @@ export default function LauraAgentPage() {
 
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
                             <button
-                                onClick={() => setWidgetMode('chat')}
+                                onClick={() => setIsChatOpen(true)}
                                 className="inline-flex items-center justify-center h-14 px-10 rounded-full bg-[#82ff1f] text-black font-semibold text-base transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(130,255,31,0.3)]"
                             >
                                 Hablar con Laura
@@ -500,6 +502,8 @@ export default function LauraAgentPage() {
             </section>
 
             <Footer />
+
+            <LauraChatWidget isOpen={isChatOpen} onClose={() => setIsChatOpen(false)} />
         </main>
     );
 }
