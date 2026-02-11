@@ -49,7 +49,7 @@ export default function LauraAgentPage() {
         script.setAttribute('data-title', 'Habla con Laura');
         script.setAttribute('data-phone-number', '+17759241199');
         script.setAttribute('data-countries', 'ES');
-        script.setAttribute('data-color', '#FFFFFF');
+        script.setAttribute('data-color', '#000000'); // Black theme for button/icons
 
         script.onload = () => console.log("Retell script loaded successfully");
         script.onerror = (e) => console.error("Retell script failed to load", e);
