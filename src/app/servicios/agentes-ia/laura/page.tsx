@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import Script from "next/script";
@@ -18,6 +18,12 @@ const fadeIn = {
 export default function LauraAgentPage() {
     const [widgetMode, setWidgetMode] = useState<'call' | null>(null);
     const [isChatOpen, setIsChatOpen] = useState(false);
+    const [showCallCTA, setShowCallCTA] = useState(false);
+
+    useEffect(() => {
+        const timer = setTimeout(() => setShowCallCTA(true), 2500);
+        return () => clearTimeout(timer);
+    }, []);
 
     useEffect(() => {
         if (!widgetMode) return;
@@ -49,7 +55,8 @@ export default function LauraAgentPage() {
         script.setAttribute('data-title', 'Habla con Laura');
         script.setAttribute('data-phone-number', '+17759241199');
         script.setAttribute('data-countries', 'ES');
-        script.setAttribute('data-color', '#000000'); // Black theme for button/icons
+        script.setAttribute('data-color', '#FFFFFF'); // White theme as requested
+        script.setAttribute('data-title', 'Habla con Laura');
 
         script.onload = () => console.log("Retell script loaded successfully");
         script.onerror = (e) => console.error("Retell script failed to load", e);
@@ -60,8 +67,34 @@ export default function LauraAgentPage() {
     }, [widgetMode]);
 
     return (
-        <main className="min-h-screen bg-black text-white">
+        <main className="min-h-screen bg-black text-white selection:bg-[#82ff1f] selection:text-black overflow-x-hidden">
             <HeaderNavigation />
+
+            {/* Retell Call CTA Bubble */}
+            <AnimatePresence>
+                {showCallCTA && !widgetMode && (
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.8, y: 20 }}
+                        animate={{ opacity: 1, scale: 1, y: 0 }}
+                        exit={{ opacity: 0, scale: 0.8, y: 20 }}
+                        className="fixed bottom-24 right-6 z-[9999] flex flex-col items-end pointer-events-none md:pointer-events-auto"
+                    >
+                        <div className="bg-white text-black px-5 py-3 rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.3)] border border-zinc-200 text-sm font-bold relative mb-2 max-w-[220px] text-center pointer-events-auto">
+                            <span className="block mb-1">¡Hola! Soy Laura 👋</span>
+                            <span className="text-zinc-500 font-medium">Haz clic aquí para hablar conmigo</span>
+                            <div className="absolute -bottom-2 right-6 w-4 h-4 bg-white border-r border-b border-zinc-200 rotate-45"></div>
+                        </div>
+                        <button
+                            onClick={() => setShowCallCTA(false)}
+                            className="text-[10px] text-zinc-500 hover:text-white mr-2 pointer-events-auto bg-black/50 px-2 py-1 rounded-full backdrop-blur-sm"
+                        >
+                            Cerrar
+                        </button>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+
+            <LauraChatWidget isOpen={isChatOpen} onClose={() => setIsChatOpen(false)} />
 
             {/* ═══════════════════════════════════════════════════
           SECTION 1 — HERO
