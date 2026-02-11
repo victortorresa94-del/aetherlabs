@@ -167,7 +167,7 @@ const AdsLabWizard = () => {
     }
 
     return (
-        <div className="relative flex-1 flex flex-col bg-white overflow-hidden">
+        <div className="relative min-h-screen flex flex-col bg-white overflow-hidden">
             {/* Grid background */}
             <div
                 className="absolute inset-0 pointer-events-none opacity-60"
@@ -177,22 +177,23 @@ const AdsLabWizard = () => {
                 }}
             />
 
-            <div className="relative z-10 flex flex-col flex-1 max-w-[1600px] mx-auto w-full p-6 md:p-8 lg:p-10 gap-6">
+            <div className="relative z-10 flex flex-col flex-1 max-w-[1600px] mx-auto w-full p-6 md:p-8 lg:p-10 gap-6 pt-16">
                 {/* Header */}
-                <header className="flex items-center justify-between flex-none">
-                    <Link href="/" className="flex items-center gap-4">
-                        <div className="w-10 h-10 rounded-xl bg-black flex items-center justify-center text-[#82ff1f] font-bold text-xl">A</div>
+                <header className="flex items-center justify-between border-b border-zinc-100 pb-6 flex-none">
+                    <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 rounded-xl bg-black flex items-center justify-center text-[#82ff1f] font-black text-xl shadow-lg">A</div>
                         <div>
-                            <h1 className="text-2xl font-bold tracking-tight text-black" style={{ fontFamily: "'Instrument Serif', serif" }}>Ads Lab</h1>
-                            <p className="text-xs text-zinc-400 font-medium -mt-0.5">by Aether Labs</p>
+                            <h3 className="text-xl font-bold tracking-tight text-black">Configurador de Ads</h3>
+                            <p className="text-xs text-zinc-500 font-medium uppercase tracking-wider">Campaña Inteligente v1.2</p>
                         </div>
-                    </Link>
+                    </div>
+
                     <div className="flex items-center gap-6">
                         <div className="flex flex-col items-end">
-                            <span className="text-xs font-semibold uppercase tracking-wider text-[#82ff1f]">
+                            <span className="text-[10px] font-bold uppercase tracking-wider text-[#82ff1f]">
                                 Paso {String(currentStep).padStart(2, '0')} / 03
                             </span>
-                            <span className="text-sm font-bold text-black">{steps[currentStep - 1].label}</span>
+                            <span className="text-sm font-black text-black">{steps[currentStep - 1].label}</span>
                         </div>
                         <div className="w-32 h-1.5 bg-zinc-100 rounded-full overflow-hidden">
                             <div
@@ -201,22 +202,17 @@ const AdsLabWizard = () => {
                             />
                         </div>
                     </div>
-                    <Link href="/" className="text-zinc-400 hover:text-black transition-colors">
-                        <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-                        </svg>
-                    </Link>
                 </header>
 
                 {/* Content */}
-                <main className="flex-1 min-h-0 overflow-hidden">
+                <main className="flex-1 pb-20 pt-8">
                     <AnimatePresence mode="wait">
                         <motion.div
                             key={currentStep}
-                            initial={{ opacity: 0, x: 20 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            exit={{ opacity: 0, x: -20 }}
-                            transition={{ duration: 0.3 }}
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -10 }}
+                            transition={{ duration: 0.2 }}
                             className="h-full"
                         >
                             {currentStep === 1 && <StepCampaign config={config} updateConfig={updateConfig} />}

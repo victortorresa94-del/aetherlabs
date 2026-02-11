@@ -137,7 +137,7 @@ const AgentsLabWizard = () => {
     }
 
     return (
-        <div className="relative flex-1 flex flex-col bg-white overflow-hidden">
+        <div className="relative min-h-screen flex flex-col bg-white overflow-hidden">
             {/* Grid background */}
             <div
                 className="absolute inset-0 pointer-events-none opacity-60"
@@ -147,85 +147,73 @@ const AgentsLabWizard = () => {
                 }}
             />
 
-            <div className="relative z-10 flex flex-col flex-1 max-w-[1600px] mx-auto w-full p-6 md:p-8 lg:p-10 gap-10 pt-52 pb-10">
+            <div className="relative z-10 flex flex-col flex-1 max-w-[1600px] mx-auto w-full p-6 md:p-8 lg:p-10 gap-10 pt-16 pb-10">
                 {/* Header with steps */}
                 <header className="flex flex-col gap-6 flex-none">
-                    <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-6">
-                            <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-[#82ff1f] shadow-[0_0_15px_rgba(130,255,31,0.3)] relative">
+                    <div className="flex items-center justify-between border-b border-zinc-100 pb-6">
+                        <div className="flex items-center gap-4">
+                            <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-[#82ff1f] shadow-[0_0_10px_rgba(130,255,31,0.2)]">
                                 <img
                                     src="/images/agentes/Diego.png"
-                                    alt="Agents Lab"
-                                    className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
+                                    alt="Diego"
+                                    className="w-full h-full object-cover grayscale"
                                 />
                             </div>
                             <div>
-                                <h1 className="text-5xl md:text-6xl font-bold tracking-tighter text-black" style={{ fontFamily: "'Instrument Serif', serif" }}>
-                                    Agents Lab
-                                </h1>
-                                <p className="text-sm text-zinc-500 font-medium tracking-wide uppercase mt-1">by Aether Labs</p>
+                                <h3 className="text-xl font-bold tracking-tight text-black">Configuración del Agente</h3>
+                                <p className="text-xs text-zinc-500 font-medium uppercase tracking-wider">Lab Session v1.0</p>
                             </div>
                         </div>
-                        <Link href="/" className="group flex items-center gap-2 text-zinc-400 hover:text-black transition-colors px-4 py-2 rounded-full hover:bg-zinc-100">
-                            <span className="text-sm font-medium hidden sm:block">Cancelar</span>
-                            <div className="bg-zinc-100 group-hover:bg-zinc-200 p-2 rounded-full transition-colors">
-                                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-                                </svg>
+
+                        <div className="flex items-center gap-6">
+                            <div className="hidden sm:flex flex-col items-end">
+                                <span className="text-[10px] font-bold uppercase tracking-wider text-[#82ff1f]">Paso {String(currentStep).padStart(2, '0')} / 04</span>
+                                <span className="text-sm font-black text-black">{steps[currentStep - 1].label}</span>
                             </div>
-                        </Link>
+                            <div className="w-24 h-1.5 bg-zinc-100 rounded-full overflow-hidden">
+                                <div className="h-full bg-[#82ff1f] rounded-full transition-all duration-500" style={{ width: `${(currentStep / 4) * 100}%` }} />
+                            </div>
+                        </div>
                     </div>
 
-                    {/* Steps Navigation */}
-                    <nav className="w-full max-w-4xl mx-auto hidden md:block">
+                    {/* Steps Navigation - More minimal */}
+                    <nav className="w-full max-w-4xl mx-auto hidden md:block px-4">
                         <div className="relative flex justify-between items-center w-full">
-                            <div className="absolute top-5 left-0 w-full h-[1px] bg-zinc-200 -z-10" />
+                            <div className="absolute top-5 left-0 w-full h-[1px] bg-zinc-100 -z-10" />
                             {steps.map((step, idx) => {
                                 const stepNum = idx + 1;
                                 const isActive = stepNum === currentStep;
                                 const isDone = stepNum < currentStep;
                                 return (
-                                    <div key={step.number} className="flex flex-col items-center gap-3 bg-white px-4 z-10">
-                                        <div className={`w-10 h-10 rounded-full border-2 flex items-center justify-center text-sm font-bold transition-all duration-300 ${isActive ? 'bg-[#82ff1f] border-[#82ff1f] text-black' :
-                                            isDone ? 'bg-[#82ff1f] border-[#82ff1f] text-black' :
-                                                'bg-white border-zinc-200 text-zinc-400'
+                                    <div key={step.number} className="flex flex-col items-center gap-2 bg-white px-6 z-10">
+                                        <div className={`w-10 h-10 rounded-full border-2 flex items-center justify-center text-xs font-black transition-all duration-300 ${isActive ? 'bg-[#82ff1f] border-[#82ff1f] text-black scale-110 shadow-lg shadow-[#82ff1f]/20' :
+                                            isDone ? 'bg-black border-black text-white' :
+                                                'bg-white border-zinc-100 text-zinc-300'
                                             }`}>
                                             {isDone ? (
-                                                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                                                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={4}>
                                                     <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                                                 </svg>
                                             ) : step.number}
                                         </div>
-                                        <span className={`text-xs uppercase tracking-wider ${isActive || isDone ? 'text-black font-bold' : 'text-zinc-400'}`}>
-                                            {step.label}
-                                        </span>
                                     </div>
                                 );
                             })}
                         </div>
                     </nav>
-
-                    {/* Mobile step indicator */}
-                    <div className="md:hidden flex items-center justify-between">
-                        <span className="text-xs font-semibold uppercase tracking-wider text-[#82ff1f]">Paso {String(currentStep).padStart(2, '0')} / 04</span>
-                        <span className="text-sm font-bold text-black">{steps[currentStep - 1].label}</span>
-                        <div className="w-24 h-1.5 bg-zinc-100 rounded-full overflow-hidden">
-                            <div className="h-full bg-[#82ff1f] rounded-full transition-all duration-500" style={{ width: `${(currentStep / 4) * 100}%` }} />
-                        </div>
-                    </div>
                 </header>
 
                 {/* Content Area */}
-                <main className="flex-1 flex flex-col lg:flex-row gap-8 min-h-0 overflow-hidden">
+                <main className="flex-1 flex flex-col lg:flex-row gap-12 pt-8">
                     {/* Left Column: Step Content */}
-                    <div className="flex-1 min-h-0 overflow-y-auto pr-2 pb-4">
+                    <div className="flex-1 pb-10">
                         <AnimatePresence mode="wait">
                             <motion.div
                                 key={currentStep}
-                                initial={{ opacity: 0, x: 20 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                exit={{ opacity: 0, x: -20 }}
-                                transition={{ duration: 0.3 }}
+                                initial={{ opacity: 0, y: 10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, y: -10 }}
+                                transition={{ duration: 0.2 }}
                             >
                                 {currentStep === 1 && <StepChannels config={config} updateConfig={updateConfig} />}
                                 {currentStep === 2 && <StepRole config={config} updateConfig={updateConfig} />}
@@ -236,9 +224,10 @@ const AgentsLabWizard = () => {
                     </div>
 
                     {/* Right Column: Agent Preview & Chat */}
-                    <aside className="hidden lg:flex w-[400px] xl:w-[440px] flex-none flex-col gap-6 overflow-y-auto">
-                        <AgentPreviewCard config={config} />
-                        <AgentChat config={config} />
+                    <aside className="hidden lg:flex w-[400px] xl:w-[460px] flex-none flex-col gap-8 sticky top-32 h-fit">
+                        <div className="bg-zinc-50/50 rounded-[32px] p-2 border border-zinc-100 shadow-sm">
+                            <AgentPreviewCard config={config} />
+                        </div>
                     </aside>
                 </main>
 

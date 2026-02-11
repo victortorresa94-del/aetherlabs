@@ -5,54 +5,24 @@ import { motion } from "framer-motion";
 import HeaderNavigation from "@/components/sections/header-navigation";
 import Footer from "@/components/sections/footer";
 import Link from "next/link";
-
-const fadeIn = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0 },
-};
+import {
+    Share2,
+    Brain,
+    Zap,
+    ArrowRight,
+    Cpu,
+    Bot,
+    Phone,
+    MessageSquare,
+    Target,
+    BarChart3,
+    GraduationCap,
+    BookOpen
+} from "lucide-react";
 
 /* ──────────────────────────────────────────
-   DATA
+   DATA (Preserved from original page)
    ────────────────────────────────────────── */
-
-const processSteps = [
-    { icon: "📡", num: "1", title: "Adquisición", desc: "Captura de leads cualificados mediante segmentación IA avanzada." },
-    { icon: "💬", num: "2", title: "Conversación", desc: "Agentes conversacionales nutren el interés 24/7 en tiempo real." },
-    { icon: "✅", num: "3", title: "Conversión", desc: "Cierre de ventas automatizado o agendamiento directo a CRM." },
-    { icon: "🎧", num: "4", title: "Atención", desc: "Onboarding instantáneo y soporte postventa sin esperas." },
-];
-
-const services = [
-    {
-        mod: "MOD. 01",
-        icon: "🎯",
-        title: "Ads con IA",
-        desc: "Algoritmos predictivos que optimizan tu inversión publicitaria en tiempo real, identificando audiencias de alto valor antes que la competencia.",
-        bullets: ["Optimización de ROAS automático", "Generación de creatividades dinámica", "A/B Testing masivo 24/7"],
-    },
-    {
-        mod: "MOD. 02",
-        icon: "🤖",
-        title: "Agentes IA",
-        desc: "Fuerza de ventas digital que nunca duerme. Agentes entrenados en tu producto capaces de mantener conversaciones complejas y cerrar tratos.",
-        bullets: ["Respuestas en < 5 segundos", "Manejo de objeciones avanzado", "Multicanal (WhatsApp, Email, Web)"],
-    },
-    {
-        mod: "MOD. 03",
-        icon: "🗄️",
-        title: "CRM Autónomo",
-        desc: "El sistema nervioso de tu empresa. Limpieza de datos, scoring de leads y asignación de tareas totalmente automatizada.",
-        bullets: ["Lead Scoring predictivo", "Enriquecimiento de datos B2B", "Pipeline auto-gestionado"],
-    },
-    {
-        mod: "MOD. 04",
-        icon: "🎓",
-        title: "Formación Corporativa",
-        desc: "Capacitación para tu equipo humano. Enséñales a gobernar las herramientas de IA en lugar de competir con ellas.",
-        bullets: ["Workshops de Prompt Engineering", "Gobernanza de datos y ética", "Certificación interna"],
-    },
-];
-
 const problems = [
     {
         label: "No generamos suficientes leads",
@@ -88,227 +58,92 @@ const problems = [
     },
 ];
 
-const whyPoints = [
-    {
-        title: "Implementación en 14 días",
-        desc: "Sin periodos de onboarding eternos. Conectamos, configuramos y lanzamos en tiempo récord.",
-    },
-    {
-        title: "Infraestructura Propia",
-        desc: "No revendemos software de terceros. Utilizamos nuestros propios modelos ajustados a ventas.",
-    },
-    {
-        title: "ROI Auditado",
-        desc: "Dashboard transparente en tiempo real. Si no generamos retorno, ajustamos el sistema sin coste.",
-    },
-];
-
-/* ──────────────────────────────────────────
-   PAGE COMPONENT
-   ────────────────────────────────────────── */
+const fadeIn = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 },
+};
 
 export default function ServiciosPage() {
     const [activeProblem, setActiveProblem] = useState(0);
 
     return (
-        <main className="min-h-screen bg-black text-white">
+        <main className="min-h-screen bg-white text-black selection:bg-[#82ff1f] selection:text-black font-sans">
             <HeaderNavigation />
 
             {/* ═══════════════════════════════════════
-          SECTION 1 — HERO
-      ═══════════════════════════════════════ */}
-            <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-black">
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[500px] bg-[#82ff1f]/5 blur-[120px] rounded-full pointer-events-none" />
-
-                <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                    <motion.div initial="hidden" animate="visible" variants={fadeIn} transition={{ duration: 0.6 }}>
-                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 mb-8">
-                            <span className="w-2 h-2 rounded-full bg-[#82ff1f] animate-pulse" />
-                            <span className="text-xs font-medium text-zinc-300 uppercase tracking-wider">Enterprise AI Solutions</span>
-                        </div>
-
-                        <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white mb-6 leading-tight">
-                            Automatiza todo tu <br className="hidden md:block" />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-zinc-200 to-zinc-500">
-                                proceso comercial
-                            </span>{" "}
-                            con IA
+               HERO SECTION (From New HTML)
+               ═══════════════════════════════════════ */}
+            <header className="pt-52 pb-40 px-8 bg-white overflow-hidden">
+                <div className="max-w-[1400px] mx-auto">
+                    <div className="max-w-5xl">
+                        <span className="inline-block py-1 px-3 bg-black text-[#82ff1f] font-mono text-[10px] tracking-[0.3em] uppercase mb-10">
+                            Sales Automation Ecosystem
+                        </span>
+                        <h1 className="text-[clamp(3rem,8vw,6rem)] leading-[0.9] tracking-[-0.04em] font-extrabold mb-12">
+                            Automatiza todo tu proceso comercial con <span className="text-zinc-300">SAVIA™</span>
                         </h1>
-
-                        <p className="mt-4 max-w-2xl mx-auto text-xl text-zinc-400 font-light leading-relaxed">
-                            Desde la captación hasta la atención postventa. Eliminamos la fricción humana en tareas repetitivas para escalar tus ingresos con precisión quirúrgica.
+                        <p className="text-2xl text-zinc-500 font-light max-w-2xl leading-relaxed mb-16">
+                            Desplegamos infraestructuras de inteligencia artificial que gestionan desde la captura de demanda hasta el cierre técnico.
                         </p>
-
-                        <div className="mt-10 flex flex-col sm:flex-row justify-center gap-4">
-                            <Link
-                                href="/contacto"
-                                className="group bg-[#82ff1f] hover:bg-[#6de018] text-black px-8 py-4 rounded-lg text-base font-semibold transition-all duration-200 flex items-center justify-center gap-2"
-                            >
-                                Solicitar diagnóstico
-                                <span className="transition-transform group-hover:translate-x-1">→</span>
-                            </Link>
-                            <button className="group bg-transparent hover:bg-white/5 text-white border border-white/20 px-8 py-4 rounded-lg text-base font-medium transition-all duration-200 flex items-center justify-center gap-2">
-                                Ver cómo funciona
-                                <span className="opacity-50 group-hover:opacity-100">▶</span>
+                        <div className="flex gap-4">
+                            <button className="px-10 py-6 bg-black text-white rounded-full font-bold text-xs tracking-widest uppercase hover:bg-[#82ff1f] hover:text-black transition-all">
+                                Ver el sistema completo
                             </button>
                         </div>
+                    </div>
+                </div>
+            </header>
 
-                        {/* Social Proof — Scrolling Logos */}
-                        <div className="mt-16 pt-8 border-t border-white/5">
-                            <p className="text-[10px] text-zinc-500 mb-6 uppercase tracking-widest font-semibold">
-                                Integrado con los líderes de la industria
+            {/* ═══════════════════════════════════════
+               SECTION 2: ELIMINA EL CAOS
+               ═══════════════════════════════════════ */}
+            <section className="px-6 py-10 bg-white">
+                <div className="max-w-[1400px] mx-auto bg-black rounded-[24px] p-12 md:p-24 text-white">
+                    <div className="grid lg:grid-cols-2 gap-20 items-center">
+                        <div>
+                            <h2 className="text-5xl font-bold tracking-tight mb-8 leading-[1.1]">
+                                Elimina el caos.<br /><span className="text-[#82ff1f]">Estandariza el éxito.</span>
+                            </h2>
+                            <p className="text-xl text-zinc-400 font-light leading-relaxed mb-12">
+                                Las empresas pierden hasta el 60% de sus oportunidades por falta de seguimiento o procesos manuales lentos. SAVIA™ integra cada etapa del embudo en un organismo digital coherente.
                             </p>
-                            <div className="relative overflow-hidden">
-                                {/* Fade edges */}
-                                <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-black to-transparent z-10 pointer-events-none" />
-                                <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-black to-transparent z-10 pointer-events-none" />
-
-                                <div className="flex animate-marquee whitespace-nowrap">
-                                    {[...Array(2)].map((_, setIdx) => (
-                                        <div key={setIdx} className="flex items-center gap-12 mx-6 shrink-0">
-                                            {[
-                                                { name: "Salesforce", slug: "salesforce" },
-                                                { name: "HubSpot", slug: "hubspot" },
-                                                { name: "Meta", slug: "meta" },
-                                                { name: "OpenAI", slug: "openai" },
-                                                { name: "WhatsApp", slug: "whatsapp" },
-                                                { name: "Google", slug: "google" },
-                                                { name: "Slack", slug: "slack" },
-                                                { name: "Zapier", slug: "zapier" },
-                                                { name: "Stripe", slug: "stripe" },
-                                                { name: "Shopify", slug: "shopify" },
-                                                { name: "Calendly", slug: "calendly" },
-                                                { name: "Notion", slug: "notion" },
-                                                { name: "Airtable", slug: "airtable" },
-                                                { name: "Zendesk", slug: "zendesk" },
-                                            ].map((logo) => (
-                                                <div
-                                                    key={logo.slug}
-                                                    className="flex flex-col items-center gap-2 opacity-40 hover:opacity-90 transition-opacity duration-300"
-                                                >
-                                                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                                                    <img
-                                                        src={`https://cdn.simpleicons.org/${logo.slug}/white`}
-                                                        alt={logo.name}
-                                                        className="h-8 w-auto"
-                                                        loading="lazy"
-                                                    />
-                                                    <span className="text-[10px] text-zinc-600 font-medium tracking-wide">
-                                                        {logo.name}
-                                                    </span>
-                                                </div>
-                                            ))}
+                            <div className="space-y-6">
+                                <div className="flex items-center gap-6 p-6 rounded-2xl border border-white/10 hover:border-[#82ff1f]/50 transition-colors">
+                                    <div className="w-12 h-12 rounded-full bg-[#82ff1f] flex items-center justify-center flex-shrink-0">
+                                        <Share2 className="text-black font-bold w-6 h-6" />
+                                    </div>
+                                    <div>
+                                        <h4 className="font-bold text-lg">Control Centralizado</h4>
+                                        <p className="text-sm text-zinc-500">Adiós a los silos de información y a los leads perdidos en excels.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="grid grid-cols-1 gap-4">
+                            <div className="bg-white/5 p-1 rounded-3xl">
+                                <div className="grid grid-cols-2 gap-2">
+                                    {[
+                                        { num: "01", label: "Adquisición" },
+                                        { num: "02", label: "Conversación" },
+                                        { num: "03", label: "Conversión" },
+                                        { num: "04", label: "Escala" }
+                                    ].map((item, idx) => (
+                                        <div key={idx} className="bg-white/5 p-8 rounded-2xl flex flex-col items-center text-center">
+                                            <span className="text-[#82ff1f] text-3xl font-bold mb-2">{item.num}</span>
+                                            <span className="text-[10px] font-bold tracking-widest uppercase text-zinc-400">{item.label}</span>
                                         </div>
                                     ))}
                                 </div>
                             </div>
-
-                            <style jsx>{`
-                                @keyframes marquee {
-                                    0% { transform: translateX(0); }
-                                    100% { transform: translateX(-50%); }
-                                }
-                                .animate-marquee {
-                                    animation: marquee 30s linear infinite;
-                                }
-                            `}</style>
                         </div>
-                    </motion.div>
-                </div>
-            </section>
-
-            {/* ═══════════════════════════════════════
-          SECTION 2 — PROCESS FLOW
-      ═══════════════════════════════════════ */}
-            <section className="py-20 bg-zinc-950 border-y border-white/5 relative">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="grid grid-cols-1 md:grid-cols-4 gap-8 relative">
-                        {/* Connecting line (desktop) */}
-                        <div className="hidden md:block absolute top-12 left-0 w-full h-px bg-white/10 z-0" />
-                        <div className="hidden md:block absolute top-12 left-0 w-full h-px bg-gradient-to-r from-[#82ff1f]/0 via-[#82ff1f] to-[#82ff1f]/0 z-0 opacity-20" />
-
-                        {processSteps.map((step, i) => (
-                            <motion.div
-                                key={i}
-                                initial="hidden"
-                                whileInView="visible"
-                                viewport={{ once: true }}
-                                variants={fadeIn}
-                                transition={{ delay: i * 0.12, duration: 0.5 }}
-                                className="relative z-10 group"
-                            >
-                                <div className="w-24 h-24 mx-auto bg-black rounded-2xl border border-white/10 group-hover:border-[#82ff1f]/50 transition-colors flex items-center justify-center mb-6 relative">
-                                    <div className="absolute inset-0 bg-[#82ff1f]/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity" />
-                                    <span className="text-3xl relative z-10">{step.icon}</span>
-                                    <div className="absolute -bottom-3 left-1/2 -translate-x-1/2">
-                                        <div className="w-6 h-6 rounded-full bg-black border border-[#82ff1f] flex items-center justify-center text-[10px] text-[#82ff1f] font-bold">
-                                            {step.num}
-                                        </div>
-                                    </div>
-                                </div>
-                                <h3 className="text-center text-lg font-semibold text-white mb-2">{step.title}</h3>
-                                <p className="text-center text-sm text-zinc-500">{step.desc}</p>
-                            </motion.div>
-                        ))}
                     </div>
                 </div>
             </section>
 
             {/* ═══════════════════════════════════════
-          SECTION 3 — CORE SERVICES GRID
-      ═══════════════════════════════════════ */}
-            <section className="py-24 bg-black">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <motion.div
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true }}
-                        variants={fadeIn}
-                        transition={{ duration: 0.5 }}
-                        className="text-center max-w-3xl mx-auto mb-16"
-                    >
-                        <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Arquitectura de Crecimiento</h2>
-                        <p className="text-zinc-400">Nuestras soluciones modulares se integran perfectamente en tu infraestructura actual.</p>
-                    </motion.div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-                        {services.map((svc, i) => (
-                            <motion.div
-                                key={i}
-                                initial="hidden"
-                                whileInView="visible"
-                                viewport={{ once: true }}
-                                variants={fadeIn}
-                                transition={{ delay: i * 0.1, duration: 0.5 }}
-                                className="bg-zinc-950 rounded-2xl p-8 border border-white/5 hover:border-[#82ff1f]/30 transition-all duration-300 group"
-                            >
-                                <div className="flex justify-between items-start mb-6">
-                                    <div className="p-3 bg-white/5 rounded-lg text-2xl group-hover:bg-[#82ff1f]/10 transition-colors">
-                                        {svc.icon}
-                                    </div>
-                                    <span className="text-xs font-mono text-zinc-500 border border-white/10 px-2 py-1 rounded">
-                                        {svc.mod}
-                                    </span>
-                                </div>
-                                <h3 className="text-2xl font-bold text-white mb-3">{svc.title}</h3>
-                                <p className="text-zinc-400 mb-8 text-sm leading-relaxed">{svc.desc}</p>
-                                <ul className="space-y-3">
-                                    {svc.bullets.map((b, j) => (
-                                        <li key={j} className="flex items-center gap-3 text-sm text-zinc-300">
-                                            <span className="w-1.5 h-1.5 rounded-full bg-[#82ff1f] shadow-[0_0_8px_rgba(130,255,31,0.8)]" />
-                                            {b}
-                                        </li>
-                                    ))}
-                                </ul>
-                            </motion.div>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-            {/* ═══════════════════════════════════════
-          SECTION 4 — DIAGNOSIS / PROBLEM TABS
-      ═══════════════════════════════════════ */}
+               SECTION: PRESERVED DIAGNOSIS / PROBLEM TABS
+               (Integrated here as high-value interaction)
+               ═══════════════════════════════════════ */}
             <section className="py-24 bg-zinc-950 relative overflow-hidden">
                 <div
                     className="absolute inset-0 pointer-events-none opacity-20"
@@ -317,7 +152,7 @@ export default function ServiciosPage() {
                         backgroundSize: "20px 20px",
                     }}
                 />
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
                         {/* Left: Problem Tabs */}
                         <div className="lg:col-span-5">
@@ -380,7 +215,7 @@ export default function ServiciosPage() {
                                         href="/contacto"
                                         className="text-white font-medium border-b border-[#82ff1f] pb-0.5 hover:text-[#82ff1f] transition-colors inline-flex items-center gap-2"
                                     >
-                                        {problems[activeProblem].cta} <span>→</span>
+                                        {problems[activeProblem].cta} <ArrowRight className="w-4 h-4" />
                                     </Link>
                                 </div>
                             </div>
@@ -390,94 +225,199 @@ export default function ServiciosPage() {
             </section>
 
             {/* ═══════════════════════════════════════
-          SECTION 5 — WHY AETHER
-      ═══════════════════════════════════════ */}
-            <section className="py-24 bg-black">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-                        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn} transition={{ duration: 0.6 }}>
-                            <h2 className="text-4xl lg:text-5xl font-bold text-white leading-tight mb-8">
-                                No somos una agencia. <br />
-                                <span className="text-zinc-500">Somos ingeniería de ventas.</span>
-                            </h2>
-                            <p className="text-zinc-400 text-lg mb-8">
-                                Dejamos atrás las promesas vacías del marketing tradicional. Construimos sistemas predecibles, escalables y auditables.
-                            </p>
-                            <div className="relative h-64 w-full rounded-2xl overflow-hidden bg-white/5 border border-white/10">
-                                <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
-                                <div className="absolute bottom-6 left-6">
-                                    <div className="text-white font-mono text-sm">
-                                        SYSTEM_STATUS: <span className="text-[#82ff1f]">ONLINE</span>
-                                    </div>
+               SECTION 3: ADS & LANDINGS
+               ═══════════════════════════════════════ */}
+            <section className="py-32 px-8 bg-white">
+                <div className="max-w-[1400px] mx-auto">
+                    <div className="flex flex-col lg:flex-row gap-20 items-center">
+                        <div className="lg:w-1/2 order-2 lg:order-1">
+                            <div className="relative rounded-3xl overflow-hidden bg-zinc-100 aspect-[4/5]">
+                                <img
+                                    alt="High Contrast AI Ads"
+                                    className="w-full h-full object-cover grayscale contrast-110"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCbsScU6sLMaM09i93vrKP2el6cZeJ6KITzctJy2rzoqNbOql6l76e5h2UYyS09z2vNjEmjzAyXwX8GFNOTnzW9NTrWZl14puaFa53G_gf2dNyznZsqonZ6nBhIL_n05JWRmKzXVluuvAQCH4jU30o62liwsjoF-GHaAUVLsGZwhzKftOFPE4VuwSifcNHs5oQJ4R8ZSAbrlxRMPM8QLysc158gQmfFthLu1zKPtD7sdjWIWSBlABZP1dx4EuGQkJSXvaQ8MdeeGeNg"
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                                <div className="absolute bottom-10 left-10">
+                                    <span className="text-[#82ff1f] font-mono text-xs tracking-widest uppercase">Phase 01: Demand Gen</span>
                                 </div>
                             </div>
-                        </motion.div>
-
-                        <div className="space-y-12">
-                            {whyPoints.map((point, i) => (
-                                <motion.div
-                                    key={i}
-                                    initial="hidden"
-                                    whileInView="visible"
-                                    viewport={{ once: true }}
-                                    variants={fadeIn}
-                                    transition={{ delay: i * 0.15, duration: 0.5 }}
-                                    className="group border-l border-white/10 pl-8 hover:border-[#82ff1f] transition-colors duration-300"
-                                >
-                                    <h3 className="text-2xl font-semibold text-white mb-2 group-hover:text-[#82ff1f] transition-colors">
-                                        {point.title}
-                                    </h3>
-                                    <p className="text-zinc-500 max-w-sm">{point.desc}</p>
-                                </motion.div>
-                            ))}
+                        </div>
+                        <div className="lg:w-1/2 order-1 lg:order-2">
+                            <span className="text-zinc-400 font-bold text-[10px] tracking-[0.4em] uppercase mb-6 block">Estrategia de Captación</span>
+                            <h2 className="text-6xl font-extrabold mb-10 tracking-tight leading-[0.9]">
+                                ADS CON IA & <br />LANDINGS 3.0
+                            </h2>
+                            <p className="text-xl text-zinc-600 font-light mb-12 leading-relaxed">
+                                Utilizamos modelos de visión y lenguaje para generar miles de variaciones de anuncios y páginas de aterrizaje dinámicas que se adaptan en tiempo real al perfil del visitante.
+                            </p>
+                            <ul className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                                <li className="flex flex-col gap-2">
+                                    <Brain className="text-[#82ff1f] w-8 h-8" />
+                                    <h4 className="font-bold text-sm uppercase tracking-wider">Creatividad Algorítmica</h4>
+                                    <p className="text-xs text-zinc-500 leading-relaxed">Análisis de patrones ganadores en tu industria para crear piezas de alto impacto.</p>
+                                </li>
+                                <li className="flex flex-col gap-2">
+                                    <Zap className="text-[#82ff1f] w-8 h-8" />
+                                    <h4 className="font-bold text-sm uppercase tracking-wider">Conversion Engine</h4>
+                                    <p className="text-xs text-zinc-500 leading-relaxed">Landings optimizadas para carga instantánea y fricción mínima.</p>
+                                </li>
+                            </ul>
+                            <button className="group flex items-center gap-4 text-[11px] font-bold tracking-widest uppercase">
+                                Ver casos de captación
+                                <span className="w-12 h-12 rounded-full bg-black text-white flex items-center justify-center group-hover:bg-[#82ff1f] group-hover:text-black transition-all">
+                                    <ArrowRight className="w-5 h-5" />
+                                </span>
+                            </button>
                         </div>
                     </div>
                 </div>
             </section>
 
             {/* ═══════════════════════════════════════
-          SECTION 6 — FINAL CTA
-      ═══════════════════════════════════════ */}
-            <section className="py-24 bg-zinc-950 border-t border-white/5">
-                <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="bg-gradient-to-br from-black to-zinc-950 rounded-3xl p-12 md:p-20 text-center border border-white/10 relative overflow-hidden">
-                        <div className="absolute top-0 right-0 w-64 h-64 bg-[#82ff1f]/10 blur-[100px] rounded-full" />
-                        <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#82ff1f]/5 blur-[100px] rounded-full" />
+               SECTION 4: AGENTES IA
+               ═══════════════════════════════════════ */}
+            <section className="py-10 px-6 bg-white">
+                <div className="max-w-[1400px] mx-auto bg-black rounded-[24px] p-12 md:p-24 text-white">
+                    <div className="text-center max-w-3xl mx-auto mb-20">
+                        <span className="text-[#82ff1f] font-mono text-[10px] tracking-[0.4em] uppercase mb-6 block">24/7 Autonomy</span>
+                        <h2 className="text-6xl font-bold tracking-tighter mb-8 leading-[0.9]">Agentes IA Multicanal</h2>
+                        <p className="text-xl text-zinc-400 font-light">
+                            Tu fuerza de ventas nunca duerme. Agentes que escuchan, hablan y escriben con la misma precisión que tu mejor ejecutivo.
+                        </p>
+                    </div>
 
-                        <motion.div
-                            initial="hidden"
-                            whileInView="visible"
-                            viewport={{ once: true }}
-                            variants={fadeIn}
-                            transition={{ duration: 0.6 }}
-                            className="relative z-10"
-                        >
-                            <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
-                                Descubre cuánto estás perdiendo hoy
-                            </h2>
-                            <p className="text-zinc-400 text-lg mb-10 max-w-2xl mx-auto">
-                                Cada día sin automatización es dinero que dejas sobre la mesa. Agenda una auditoría gratuita de 15 minutos y te mostraremos dónde está la fuga.
-                            </p>
-
-                            <div className="flex flex-col sm:flex-row justify-center gap-4">
-                                <Link
-                                    href="/contacto"
-                                    className="bg-[#82ff1f] hover:bg-[#6de018] text-black px-8 py-4 rounded-lg text-lg font-bold transition-all shadow-[0_0_20px_rgba(130,255,31,0.3)] hover:shadow-[0_0_30px_rgba(130,255,31,0.5)]"
-                                >
-                                    Auditar mi proceso ahora
-                                </Link>
-                                <Link
-                                    href="/contacto"
-                                    className="bg-white/5 hover:bg-white/10 text-white border border-white/10 px-8 py-4 rounded-lg text-lg font-medium transition-all"
-                                >
-                                    Hablar con un experto
-                                </Link>
+                    <div className="grid md:grid-cols-3 gap-8 mb-20">
+                        {/* WhatsApp AI */}
+                        <div className="bg-white/5 border border-white/10 p-10 rounded-3xl hover:bg-white/10 transition-colors group">
+                            <div className="w-20 h-20 bg-zinc-900 rounded-2xl mb-8 flex items-center justify-center grayscale group-hover:grayscale-0 transition-all overflow-hidden">
+                                <img alt="Agent 1" className="w-full h-full object-cover grayscale contrast-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBb9xvgWIBPi15mfOxe4wA64WtWsHsc36nI5hWRWMWfc8Lple6Fh5Wxou2sFQkmB84NJOiVjucBn5yEdxNnvlW47RT7sJUnKW_Irq6HSxwxUsvyZeiKbv1uYoRcRmsEzA-x1EcPSvqCjJ9yeOxN1JuMkaVEuOKnq0ZH_6mLu5nIJ2VcIKMk4oGCN2pithww9AzdnXEQc6WGxR0WoKLQHFv0r5Ii1Rv8x9BHlH9ML-OxTT04pld8VXwHvthcX3n3tiAxdz-mnuaxzQ2v" />
                             </div>
+                            <h4 className="text-2xl font-bold mb-4">WhatsApp AI</h4>
+                            <p className="text-sm text-zinc-500 mb-8 leading-relaxed">Gestión masiva de chats. Cualificación en frío y agendamiento directo en tu calendario.</p>
+                            <div className="flex flex-wrap gap-2">
+                                <span className="text-[9px] px-2 py-1 rounded bg-white/10 font-bold uppercase tracking-widest">Latencia &lt; 2s</span>
+                                <span className="text-[9px] px-2 py-1 rounded bg-white/10 font-bold uppercase tracking-widest">Multilingüe</span>
+                            </div>
+                        </div>
 
-                            <p className="mt-8 text-xs text-zinc-500">
-                                Sin compromiso. Solo datos reales sobre tu potencial de crecimiento.
+                        {/* Voice AI */}
+                        <div className="bg-white/5 border border-white/10 p-10 rounded-3xl hover:bg-white/10 transition-colors group">
+                            <div className="w-20 h-20 bg-zinc-900 rounded-2xl mb-8 flex items-center justify-center grayscale group-hover:grayscale-0 transition-all overflow-hidden">
+                                <img alt="Agent 2" className="w-full h-full object-cover grayscale contrast-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBPvY80_-MkRrhgw7KuaT0SZCY-ah0YtNkyr_TNg4Xe-2x2R3CkBumTF9HAODf-_CnqKdiW5I7wiWmIf0Kux5fP10EgRPvFyL0xf7i1BDvOpX6tyfWDqTrCXUrlHGYnBmDJ6p3XjKwz9j1aNR8Y_FhJvQas9aM2Kk2RzHSYC-8v2nLhV2W-Ksc-XvFt0YwsMHx-N5gbrCvagu5ZCrGMHz0XdRqaWApC3boKeL4bo0z-16-LhfKGhUK7X4N5dYnZO3fv5_o0GouOB-Iz" />
+                            </div>
+                            <h4 className="text-2xl font-bold mb-4">Voice AI</h4>
+                            <p className="text-sm text-zinc-500 mb-8 leading-relaxed">Llamadas salientes de confirmación y reactivación de leads con voz humana hiperrealista.</p>
+                            <div className="flex flex-wrap gap-2">
+                                <span className="text-[9px] px-2 py-1 rounded bg-white/10 font-bold uppercase tracking-widest">Tono Natural</span>
+                                <span className="text-[9px] px-2 py-1 rounded bg-white/10 font-bold uppercase tracking-widest">Outbound</span>
+                            </div>
+                        </div>
+
+                        {/* Web Concierge */}
+                        <div className="bg-white/5 border border-white/10 p-10 rounded-3xl hover:bg-white/10 transition-colors group">
+                            <div className="w-20 h-20 bg-zinc-900 rounded-2xl mb-8 flex items-center justify-center grayscale group-hover:grayscale-0 transition-all overflow-hidden">
+                                <img alt="Agent 3" className="w-full h-full object-cover grayscale contrast-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAhnVA2VfSA0Y1GGbxzgCUZ9q6rIJ4udCixFmuTUfsGuGZ_IxthlJhq9XYI5Gh5jmrYIm93ZcbbDYTSsGQfND3tXigd5sVZDohuz5W8uV3N69Duh9evA_1SsngwctV9ODrADIbue3TGzQJUm8SmJfcbrjDBhv29cT6TTFai87nhhzpmHtTZngQolmaldQHm64DbbLT1fRRUWS9GiwBk1IA9WGzUVXA4BFalV40VdVG5c9nOaBi-QLFplQrw9r6NT_Z90uQ3Ns8ImrCg" />
+                            </div>
+                            <h4 className="text-2xl font-bold mb-4">Web Concierge</h4>
+                            <p className="text-sm text-zinc-500 mb-8 leading-relaxed">Captura a los visitantes de tu web en el momento de máxima intención con asistencia guiada.</p>
+                            <div className="flex flex-wrap gap-2">
+                                <span className="text-[9px] px-2 py-1 rounded bg-white/10 font-bold uppercase tracking-widest">Interactivo</span>
+                                <span className="text-[9px] px-2 py-1 rounded bg-white/10 font-bold uppercase tracking-widest">Real-Time</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="bg-[#82ff1f]/10 border border-[#82ff1f]/20 rounded-3xl p-10 flex flex-col md:flex-row items-center justify-between gap-8">
+                        <div className="flex items-center gap-6">
+                            <div className="w-16 h-16 bg-[#82ff1f] rounded-full flex items-center justify-center flex-shrink-0">
+                                <Cpu className="text-black text-3xl" />
+                            </div>
+                            <div>
+                                <h5 className="text-xl font-bold">Capacidad de Escala Infinita</h5>
+                                <p className="text-zinc-400 text-sm">Gestiona 10 o 10,000 conversaciones simultáneas sin degradar la calidad.</p>
+                            </div>
+                        </div>
+                        <button className="bg-white text-black px-10 py-5 rounded-full font-bold text-xs tracking-widest uppercase hover:bg-[#82ff1f] transition-all">
+                            Escuchar demo de voz
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            {/* ═══════════════════════════════════════
+               SECTION 5: CRM
+               ═══════════════════════════════════════ */}
+            <section className="py-32 px-8 bg-white">
+                <div className="max-w-[1400px] mx-auto">
+                    <div className="grid lg:grid-cols-2 gap-20 items-center">
+                        <div className="max-w-xl">
+                            <span className="text-zinc-400 font-bold text-[10px] tracking-[0.4em] uppercase mb-6 block">Conversión Inteligente</span>
+                            <h2 className="text-6xl font-extrabold mb-10 tracking-tight leading-[0.9]">
+                                CRM: El Cerebro <br />del Pipeline
+                            </h2>
+                            <p className="text-xl text-zinc-600 font-light mb-12 leading-relaxed">
+                                Un sistema que no solo registra datos, sino que te dice dónde está el dinero. Priorización predictiva de leads y automatización de seguimientos post-reunión.
                             </p>
-                        </motion.div>
+                            <div className="space-y-8">
+                                <div className="flex gap-6">
+                                    <div className="w-1 bg-[#82ff1f]"></div>
+                                    <div>
+                                        <h4 className="font-bold text-sm uppercase tracking-widest mb-2">Lead Scoring Dinámico</h4>
+                                        <p className="text-sm text-zinc-500">La IA analiza el comportamiento y califica al lead para que el equipo humano solo hable con el Top 5%.</p>
+                                    </div>
+                                </div>
+                                <div className="flex gap-6">
+                                    <div className="w-1 bg-black"></div>
+                                    <div>
+                                        <h4 className="font-bold text-sm uppercase tracking-widest mb-2">Seguimiento Invisible</h4>
+                                        <p className="text-sm text-zinc-500">Secuencias personalizadas que nutren al cliente durante semanas sin intervención humana.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="relative">
+                            <div className="bg-zinc-100 rounded-[32px] p-1 overflow-hidden shadow-2xl">
+                                <img alt="CRM Interface" className="w-full rounded-[30px] grayscale contrast-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDUgA6MWMAdIy8AJjkWINiLzEM97QTXd-MWXhKUcHM6DSZcIkMUDTFOPUqyGznCGthS21tq3m4AGMkGN9ErmWoDWvFahJLFBtguoo7IQABvy90Ntp2o7Yox3Mc0IOnbkbXFs9Zmsc5RugS70qEAlwTzsjBo1if3-7qYM5eqc3QwYbZXUCd9JMfcmTUbgzTtx46mJYhkXCl8OfOlNNm3Po76iQL2DBuXD1dKKhxyeE8OVLAD4RLGO8FQ96mEp_RE87r289EVpUqIdFQY" />
+                            </div>
+                            <div className="absolute -bottom-10 -right-10 bg-black p-10 rounded-3xl text-white hidden xl:block shadow-2xl">
+                                <div className="text-4xl font-bold text-[#82ff1f] mb-1">94%</div>
+                                <div className="text-[10px] font-bold tracking-[0.3em] uppercase">Reducción de fuga</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* ═══════════════════════════════════════
+               SECTION 6: LEGACY
+               ═══════════════════════════════════════ */}
+            <section className="py-10 px-6 bg-white mb-20">
+                <div className="max-w-[1400px] mx-auto bg-black rounded-[24px] overflow-hidden text-white">
+                    <div className="grid lg:grid-cols-2">
+                        <div className="p-12 md:p-24 flex flex-col justify-center">
+                            <span className="text-[#82ff1f] font-mono text-[10px] tracking-[0.4em] uppercase mb-6 block">Legacy & Knowledge</span>
+                            <h2 className="text-6xl font-bold tracking-tighter mb-10 leading-[0.9]">
+                                Transferencia <br />de Autonomía
+                            </h2>
+                            <p className="text-xl text-zinc-400 font-light mb-12">
+                                No instalamos software y nos vamos. Formamos a tu equipo comercial para que domine el Framework SAVIA™ y sea capaz de iterar el sistema de forma independiente.
+                            </p>
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                                <div>
+                                    <h5 className="text-[#82ff1f] font-bold text-xs uppercase tracking-widest mb-3">Workshops Elite</h5>
+                                    <p className="text-xs text-zinc-500">Capacitación técnica y estratégica para managers de ventas.</p>
+                                </div>
+                                <div>
+                                    <h5 className="text-[#82ff1f] font-bold text-xs uppercase tracking-widest mb-3">SOPs Digitales</h5>
+                                    <p className="text-xs text-zinc-500">Manuales operativos personalizados para tu nueva infraestructura IA.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="relative min-h-[500px]">
+                            <img alt="Team Training" className="absolute inset-0 w-full h-full object-cover grayscale contrast-110 opacity-60" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdgNvvZpaNGUxADqYLjfM9TXcVhQotCGaP_T8YaUnQvwrKL5ONvp1Q3StodolBf-vmulX9RpMKaOBl2ej5ol8DJnAQPxzgwa1E8dUeSyYV7Q1S6gN2L7hJGQ-JBB0il--SCni-KcPjejpeN_vTdmghGxCvowGZkmAblCEQNVcW9z4gdPKgUnNTRpRnXk1cXjFFS34lQHg9gpFXGlg4JBA81woyzhC3QZBa3sY0MGtjsPFYekWgCHi85bEmmzpTXA3ibwXzKteKtYLZ" />
+                            <div className="absolute inset-0 bg-gradient-to-r from-black to-transparent"></div>
+                        </div>
                     </div>
                 </div>
             </section>
