@@ -383,8 +383,6 @@ iframe[src*="retellai.com"],
   right: 24px !important;
   left: auto !important;
   z-index: 9999 !important;
-  background: white !important;
-  border-radius: 50% !important;
 }
 
 /* Force 16px to prevent iOS zoom */
