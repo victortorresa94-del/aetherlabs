@@ -4,6 +4,7 @@ import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next";
 import JasonBot from "@/components/ui/jason-bot";
 import JasonWidget from "@/components/jason-widget";
+import type { Viewport } from "next";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://aetherlabs.es"),
@@ -23,6 +24,13 @@ export const metadata: Metadata = {
     locale: "es_ES",
     type: "website",
   },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
 };
 
 export default function RootLayout({
@@ -68,7 +76,6 @@ export default function RootLayout({
         {/* End Google Tag Manager (noscript) */}
 
         {children}
-        <Analytics />
         <Analytics />
         <JasonWidget />
         {/* <Script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript" strategy="afterInteractive" /> */}
