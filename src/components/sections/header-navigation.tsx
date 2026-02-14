@@ -34,7 +34,11 @@ import {
   School,
   HardHat,
   ShoppingCart,
-  Laptop
+  Laptop,
+  Database,
+  TrendingUp,
+  Zap,
+  LayoutGrid
 } from "lucide-react";
 import Image from "next/image";
 
@@ -67,7 +71,17 @@ const HeaderNavigation = () => {
     // V2 nav items backed up - hidden for V3
     // Servicios, Labs, Casos de Uso, Learn, Experimentos, Contacto removed from visible nav
     { label: "Agentes", href: "/agentes" },
-    { label: "Servicios", href: "/servicios" },
+    {
+      label: "Servicios",
+      href: "/servicios",
+      variant: 'rich',
+      subItems: [
+        { label: "Ads con IA", href: "/ads-con-ia", icon: TrendingUp, description: "Atrae tráfico cualificado a tu negocio." },
+        { label: "CRM con IA", href: "/crm-con-ia", icon: Database, description: "Gestión, seguimiento y cierre automatizado." },
+        { label: "Formación IA", href: "/formacion-ia-ventas", icon: GraduationCap, description: "Capacitación estratégica para equipos." }
+      ]
+    },
+    { label: "Industrias", href: "/industrias" },
     {
       label: "Labs",
       href: "#",
@@ -272,7 +286,7 @@ const HeaderNavigation = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${isScrolled || isMobileMenuOpen || isAgentsLab || pathname === '/servicios' ? "bg-black/90 backdrop-blur-sm shadow-md" : "bg-transparent"
+      className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${isScrolled || isMobileMenuOpen || isAgentsLab || pathname === '/servicios' || pathname === '/industrias' ? "bg-black/90 backdrop-blur-sm shadow-md" : "bg-transparent"
         }`}
     >
       <div className="container h-[90px] flex items-center justify-between">

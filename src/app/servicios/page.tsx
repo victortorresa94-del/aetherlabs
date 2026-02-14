@@ -97,7 +97,7 @@ export default function ServiciosPage() {
             {/* ═══════════════════════════════════════
                SECTION 2: ELIMINA EL CAOS
                ═══════════════════════════════════════ */}
-            <section className="px-6 py-10 bg-white">
+            <section className="pt-10 pb-[250px] bg-white">
                 <div className="max-w-[1400px] mx-auto bg-black rounded-[24px] p-12 md:p-24 text-white">
                     <div className="grid lg:grid-cols-2 gap-20 items-center">
                         <div>
@@ -144,7 +144,7 @@ export default function ServiciosPage() {
                SECTION: PRESERVED DIAGNOSIS / PROBLEM TABS
                (Integrated here as high-value interaction)
                ═══════════════════════════════════════ */}
-            <section className="py-24 bg-zinc-950 relative overflow-hidden">
+            <section className="pt-[250px] pb-24 bg-zinc-950 relative overflow-hidden">
                 <div
                     className="absolute inset-0 pointer-events-none opacity-20"
                     style={{
@@ -263,12 +263,12 @@ export default function ServiciosPage() {
                                     <p className="text-xs text-zinc-500 leading-relaxed">Landings optimizadas para carga instantánea y fricción mínima.</p>
                                 </li>
                             </ul>
-                            <button className="group flex items-center gap-4 text-[11px] font-bold tracking-widest uppercase">
-                                Ver casos de captación
+                            <Link href="/ads-con-ia" className="group flex items-center gap-4 text-[11px] font-bold tracking-widest uppercase">
+                                Saber más
                                 <span className="w-12 h-12 rounded-full bg-black text-white flex items-center justify-center group-hover:bg-[#82ff1f] group-hover:text-black transition-all">
                                     <ArrowRight className="w-5 h-5" />
                                 </span>
-                            </button>
+                            </Link>
                         </div>
                     </div>
                 </div>
@@ -338,9 +338,9 @@ export default function ServiciosPage() {
                                 <p className="text-zinc-400 text-sm">Gestiona 10 o 10,000 conversaciones simultáneas sin degradar la calidad.</p>
                             </div>
                         </div>
-                        <button className="bg-white text-black px-10 py-5 rounded-full font-bold text-xs tracking-widest uppercase hover:bg-[#82ff1f] transition-all">
-                            Escuchar demo de voz
-                        </button>
+                        <Link href="/agentes" className="bg-white text-black px-10 py-5 rounded-full font-bold text-xs tracking-widest uppercase hover:bg-[#82ff1f] transition-all">
+                            Saber más
+                        </Link>
                     </div>
                 </div>
             </section>
@@ -373,6 +373,14 @@ export default function ServiciosPage() {
                                         <h4 className="font-bold text-sm uppercase tracking-widest mb-2">Seguimiento Invisible</h4>
                                         <p className="text-sm text-zinc-500">Secuencias personalizadas que nutren al cliente durante semanas sin intervención humana.</p>
                                     </div>
+                                </div>
+                                <div className="mt-12">
+                                    <Link href="/crm-con-ia" className="group flex items-center gap-4 text-[11px] font-bold tracking-widest uppercase">
+                                        Saber más
+                                        <span className="w-12 h-12 rounded-full bg-black text-white flex items-center justify-center group-hover:bg-[#82ff1f] group-hover:text-black transition-all">
+                                            <ArrowRight className="w-5 h-5" />
+                                        </span>
+                                    </Link>
                                 </div>
                             </div>
                         </div>
@@ -412,6 +420,14 @@ export default function ServiciosPage() {
                                     <h5 className="text-[#82ff1f] font-bold text-xs uppercase tracking-widest mb-3">SOPs Digitales</h5>
                                     <p className="text-xs text-zinc-500">Manuales operativos personalizados para tu nueva infraestructura IA.</p>
                                 </div>
+                            </div>
+                            <div className="mt-12">
+                                <Link href="/servicios/formacion" className="group flex items-center gap-4 text-[11px] font-bold tracking-widest uppercase">
+                                    Saber más
+                                    <span className="w-12 h-12 rounded-full bg-[#82ff1f] text-black flex items-center justify-center group-hover:bg-white transition-all">
+                                        <ArrowRight className="w-5 h-5" />
+                                    </span>
+                                </Link>
                             </div>
                         </div>
                         <div className="relative min-h-[500px]">

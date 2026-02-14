@@ -1,304 +1,482 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
-import Image from "next/image";
-import Link from "next/link";
 import HeaderNavigation from "@/components/sections/header-navigation";
 import Footer from "@/components/sections/footer";
-import { agentsData } from "@/data/agents";
-
-const fadeIn = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0 },
-};
+import {
+    TrendingUp,
+    PlayCircle,
+    Target,
+    Badge,
+    Share2,
+    Zap,
+    CheckCircle,
+    ArrowRight,
+    MousePointerClick,
+    MessageSquare,
+    Database,
+    RefreshCw,
+    Check,
+    BrainCircuit
+} from "lucide-react";
+import Link from "next/link";
 
 export default function AgentesPage() {
     return (
-        <main className="min-h-screen bg-black text-white">
+        <main className="bg-[#050505] text-white font-sans antialiased selection:bg-[#7bff00] selection:text-black min-h-screen overflow-x-hidden">
+            {/* Styles from the provided HTML */}
+            <style dangerouslySetInnerHTML={{
+                __html: `
+                .obsidian-gradient {
+                    background: linear-gradient(180deg, #050505 0%, #0a0a0a 100%);
+                }
+                .hero-pattern {
+                    background-image: radial-gradient(circle at 2px 2px, #1f1f1f 1px, transparent 0);
+                    background-size: 40px 40px;
+                }
+                .glow-subtle {
+                    box-shadow: 0 0 20px rgba(123, 255, 0, 0.05);
+                }
+                .agent-card {
+                    transition: all 0.3s ease;
+                    background-color: #0a0a0a;
+                    border: 1px solid #1f1f1f;
+                }
+                .agent-card:hover {
+                    border-color: #7bff00;
+                    box-shadow: 0 0 40px rgba(123, 255, 0, 0.1);
+                }
+            `}} />
+
             <HeaderNavigation />
 
-            {/* ═══════════════════════════════════════
-                SECTION 1 — HERO
-            ═══════════════════════════════════════ */}
-            <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-28 overflow-hidden">
-                {/* Decorative Glow */}
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#82ff1f]/5 rounded-full blur-[120px] pointer-events-none" />
-
-                <div className="relative max-w-5xl mx-auto px-6 text-center">
-                    <motion.div initial="hidden" animate="visible" variants={fadeIn} transition={{ duration: 0.6 }}>
-                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/5 text-xs font-medium text-[#82ff1f] mb-8 tracking-wide uppercase">
-                            <span className="relative flex h-2 w-2">
-                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#82ff1f] opacity-75" />
-                                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#82ff1f]" />
-                            </span>
-                            Nueva Generación v2.4
-                        </div>
-
-                        <h1 className="text-5xl md:text-7xl font-bold text-white mb-8 leading-tight tracking-tight">
-                            Agentes IA que atienden,<br />
-                            <span className="text-[#82ff1f]">cualifican y venden</span> por ti.
+            {/* Section 1: Hero */}
+            <section className="relative pt-40 pb-24 overflow-hidden hero-pattern">
+                <div className="max-w-7xl mx-auto px-6 relative z-10">
+                    <div className="flex flex-col items-center text-center max-w-4xl mx-auto">
+                        <span className="px-4 py-1 rounded-full border border-[#7bff00]/30 bg-[#7bff00]/10 text-[#7bff00] text-xs font-bold tracking-[0.2em] uppercase mb-8">
+                            Directorio de Agentes Especializados
+                        </span>
+                        <h1 className="text-6xl md:text-8xl font-display font-semibold tracking-tight leading-[1.05] mb-8">
+                            AGENTES IA <br />
+                            que convierten <span className="text-[#7bff00] italic">conversaciones</span> en ventas.
                         </h1>
-
-                        <p className="text-xl md:text-2xl text-zinc-400 max-w-3xl mx-auto mb-10 leading-relaxed font-light">
-                            Disponibles por WhatsApp, web y llamadas. Diseñados para negocios con{" "}
-                            <span className="text-white font-medium border-b border-[#82ff1f]/50">volumen real</span>.
+                        <p className="text-xl text-zinc-400 font-light leading-relaxed mb-12 max-w-2xl">
+                            No son bots. Son perfiles entrenados para vender, atender y gestionar procesos comerciales dentro de tu empresa.
                         </p>
-
-                        <div className="flex flex-col md:flex-row items-center justify-center gap-6 text-sm text-zinc-500 font-medium">
-                            <div className="flex items-center gap-2">
-                                <span className="text-[#82ff1f]">✓</span>
-                                <span>No son chatbots genéricos</span>
-                            </div>
-                            <div className="flex items-center gap-2">
-                                <span className="text-[#82ff1f]">✓</span>
-                                <span>Entrenados para situaciones reales</span>
-                            </div>
-                            <div className="flex items-center gap-2">
-                                <span className="text-[#82ff1f]">✓</span>
-                                <span>Integración en 5 minutos</span>
-                            </div>
-                        </div>
-                    </motion.div>
-                </div>
-            </section>
-
-            {/* ═══════════════════════════════════════
-                SECTION 2 — DEFINITION
-            ═══════════════════════════════════════ */}
-            <section className="max-w-4xl mx-auto px-6 mb-32">
-                <motion.div
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true }}
-                    variants={fadeIn}
-                    transition={{ duration: 0.5 }}
-                    className="border-l-2 border-[#82ff1f] pl-8 md:pl-12 py-4 bg-gradient-to-r from-white/5 to-transparent rounded-r-xl"
-                >
-                    <h3 className="text-[#82ff1f] text-xs font-bold mb-3 uppercase tracking-widest">Definición</h3>
-                    <p className="text-2xl md:text-3xl text-zinc-200 leading-relaxed font-light">
-                        Un <strong className="text-white font-semibold">Agente Aether</strong> no es un script predefinido. Es una entidad digital autónoma capaz de razonar, mantener contexto, gestionar objeciones complejas y ejecutar acciones en tu CRM como lo haría tu mejor empleado.
-                    </p>
-                </motion.div>
-            </section>
-
-            {/* ═══════════════════════════════════════
-                SECTION 3 — AGENT CARDS
-            ═══════════════════════════════════════ */}
-            <section className="max-w-7xl mx-auto px-6 mb-32">
-                <div className="flex items-end justify-between mb-12 border-b border-white/10 pb-6">
-                    <div>
-                        <h2 className="text-3xl font-bold text-white mb-2">Catálogo de Agentes</h2>
-                        <p className="text-zinc-400">Selecciona el perfil especializado para tu necesidad</p>
-                    </div>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {agentsData.map((agent, i) => (
-                        <motion.div
-                            key={agent.id}
-                            initial="hidden"
-                            whileInView="visible"
-                            viewport={{ once: true }}
-                            variants={fadeIn}
-                            transition={{ delay: i * 0.1, duration: 0.5 }}
-                        >
-                            <Link
-                                href={`/agentes/${agent.id}`}
-                                className="group relative bg-white/[0.02] border border-white/10 hover:border-[#82ff1f]/50 rounded-xl overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-[#82ff1f]/5 flex flex-col h-full"
-                            >
-                                {/* Image */}
-                                <div className="aspect-[4/5] w-full overflow-hidden relative grayscale group-hover:grayscale-0 transition-all duration-500">
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-10 opacity-90" />
-                                    <Image
-                                        src={agent.image}
-                                        alt={agent.name}
-                                        fill
-                                        className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
-                                    />
-                                    <div className="absolute bottom-4 left-4 z-20">
-                                        {agent.badge && (
-                                            <span className="inline-block bg-[#82ff1f] text-black text-xs font-bold px-2 py-1 rounded mb-2">
-                                                {agent.badge}
-                                            </span>
-                                        )}
-                                        <h3 className="text-3xl font-bold text-white">{agent.name}</h3>
-                                    </div>
-                                </div>
-
-                                {/* Content */}
-                                <div className="p-6 flex flex-col flex-grow">
-                                    <div className="mb-4">
-                                        <p className="text-xs text-zinc-500 uppercase tracking-wider font-semibold mb-1">Rol Funcional</p>
-                                        <p className="text-lg text-white font-medium">{agent.roleShort}</p>
-                                    </div>
-
-                                    <div className="mb-6">
-                                        <p className="text-xs text-zinc-500 uppercase tracking-wider font-semibold mb-2">Ideal para</p>
-                                        <p className="text-sm text-zinc-300 bg-white/5 p-2 rounded border border-white/5 inline-block">
-                                            {agent.idealFor}
-                                        </p>
-                                    </div>
-
-                                    <ul className="space-y-3 mb-8 text-sm text-zinc-400 flex-grow">
-                                        {agent.checklist.map((item, j) => (
-                                            <li key={j} className="flex items-start gap-2">
-                                                <span className="text-[#82ff1f] mt-1">•</span>
-                                                {item}
-                                            </li>
-                                        ))}
-                                    </ul>
-
-                                    <span className="inline-flex items-center gap-2 text-white font-medium group-hover:text-[#82ff1f] transition-colors border-t border-white/10 pt-4 w-full">
-                                        Ver cómo trabaja {agent.name}
-                                        <span className="text-sm group-hover:translate-x-1 transition-transform">→</span>
-                                    </span>
-                                </div>
+                        <div className="flex flex-col sm:flex-row gap-4 w-full justify-center">
+                            <Link href="/contacto" className="bg-[#7bff00] text-black px-8 py-5 rounded-xl font-bold text-lg hover:scale-105 transition-transform flex items-center justify-center gap-2">
+                                Solicitar Diagnóstico Estratégico
+                                <TrendingUp className="w-5 h-5" />
                             </Link>
-                        </motion.div>
-                    ))}
-                </div>
-            </section>
-
-            {/* ═══════════════════════════════════════
-                SECTION 4 — INTEGRATION FLOW
-            ═══════════════════════════════════════ */}
-            <section className="max-w-6xl mx-auto px-6 mb-32">
-                <motion.div
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true }}
-                    variants={fadeIn}
-                    transition={{ duration: 0.5 }}
-                    className="bg-gradient-to-b from-white/[0.03] to-transparent border border-white/5 rounded-2xl p-8 md:p-16 text-center"
-                >
-                    <h2 className="text-2xl md:text-3xl font-bold text-white mb-12">Flujo de Trabajo Integrado</h2>
-                    <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-0 relative">
-                        {/* Step 1: Client */}
-                        <div className="relative z-10 bg-black border border-white/20 p-6 rounded-xl w-64 h-40 flex flex-col items-center justify-center">
-                            <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center mb-3 text-2xl">
-                                👤
-                            </div>
-                            <h4 className="text-white font-bold text-lg">Cliente</h4>
-                            <p className="text-xs text-zinc-500 mt-1">WhatsApp / Web / Tlf</p>
-                        </div>
-
-                        {/* Connection 1 */}
-                        <div className="h-12 w-0.5 md:h-0.5 md:w-24 bg-gradient-to-b md:bg-gradient-to-r from-white/20 via-[#82ff1f]/50 to-white/20 relative">
-                            <div className="absolute inset-0 flex items-center justify-center">
-                                <div className="w-2 h-2 bg-[#82ff1f] rounded-full animate-ping" />
-                            </div>
-                        </div>
-
-                        {/* Step 2: AI Agent */}
-                        <div className="relative z-10 bg-black border border-[#82ff1f] p-6 rounded-xl w-64 h-40 flex flex-col items-center justify-center shadow-[0_0_30px_rgba(130,255,31,0.1)]">
-                            <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#82ff1f] text-black text-[10px] font-bold px-2 py-0.5 rounded-full whitespace-nowrap">
-                                INTELIGENCIA AETHER
-                            </div>
-                            <div className="w-12 h-12 rounded-full bg-[#82ff1f]/20 flex items-center justify-center mb-3 text-2xl">
-                                🧠
-                            </div>
-                            <h4 className="text-white font-bold text-lg">Agente IA</h4>
-                            <p className="text-xs text-zinc-400 mt-1">Cualifica, Responde, Vende</p>
-                        </div>
-
-                        {/* Connection 2 */}
-                        <div className="h-12 w-0.5 md:h-0.5 md:w-24 bg-gradient-to-b md:bg-gradient-to-r from-white/20 via-[#82ff1f]/50 to-white/20 relative" />
-
-                        {/* Step 3: CRM/Team */}
-                        <div className="relative z-10 bg-black border border-white/20 p-6 rounded-xl w-64 h-40 flex flex-col items-center justify-center">
-                            <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center mb-3 text-2xl">
-                                👥
-                            </div>
-                            <h4 className="text-white font-bold text-lg">Equipo / CRM</h4>
-                            <p className="text-xs text-zinc-500 mt-1">HubSpot, Salesforce, Slack</p>
+                            <Link href="/industrias" className="border border-white/20 hover:border-white/50 bg-white/5 text-white px-8 py-5 rounded-xl font-bold text-lg transition-all flex items-center justify-center gap-2">
+                                Ver cómo funciona SALVIA
+                                <PlayCircle className="w-5 h-5" />
+                            </Link>
                         </div>
                     </div>
-                    <p className="mt-12 text-sm text-zinc-400">
-                        <span className="text-[#82ff1f] font-bold">100% Transparente:</span> Tus comerciales reciben leads listos para cerrar, con todo el historial de la conversación.
-                    </p>
-                </motion.div>
-            </section>
 
-            {/* ═══════════════════════════════════════
-                SECTION 5 — USE CASES
-            ═══════════════════════════════════════ */}
-            <section className="max-w-5xl mx-auto px-6 mb-32">
-                <div className="grid md:grid-cols-2 gap-16">
-                    <motion.div
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true }}
-                        variants={fadeIn}
-                        transition={{ duration: 0.5 }}
-                    >
-                        <h2 className="text-3xl font-bold text-white mb-6">¿Cuándo tiene sentido implementarlos?</h2>
-                        <p className="text-zinc-400 mb-8 leading-relaxed">
-                            No todos los negocios necesitan IA. Pero si te identificas con estos problemas operativos, Aether Labs es la solución escalar.
-                        </p>
-                        <div className="h-1 w-20 bg-[#82ff1f] rounded-full" />
-                    </motion.div>
-
-                    <div className="space-y-6">
-                        {[
-                            { title: "Leads fríos por demora", desc: "Pierdes el 40% de tus oportunidades porque tu equipo tarda más de 15 minutos en responder el primer mensaje." },
-                            { title: "Saturación en Atención al Cliente", desc: "Tu equipo de soporte responde las mismas 5 preguntas el 80% del tiempo, impidiendo resolver problemas complejos." },
-                            { title: 'Citas "No-Show"', desc: "Tus comerciales tienen la agenda llena, pero la mitad de las reuniones no se presentan porque no hubo confirmación previa." },
-                        ].map((c, i) => (
-                            <motion.div
-                                key={i}
-                                initial="hidden"
-                                whileInView="visible"
-                                viewport={{ once: true }}
-                                variants={fadeIn}
-                                transition={{ delay: i * 0.1, duration: 0.5 }}
-                                className="flex gap-4"
-                            >
-                                <div className="flex-shrink-0 w-8 h-8 rounded-full bg-red-500/10 flex items-center justify-center mt-1">
-                                    <span className="text-red-500 text-sm">✕</span>
-                                </div>
-                                <div>
-                                    <h4 className="text-white font-bold text-lg">{c.title}</h4>
-                                    <p className="text-zinc-400 text-sm mt-1">{c.desc}</p>
-                                </div>
-                            </motion.div>
-                        ))}
+                    {/* Hero Visual: Minimalist System Grid */}
+                    <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-4 opacity-40">
+                        <div className="h-32 border border-[#1f1f1f] rounded-xl bg-[#0a0a0a] flex items-center justify-center">
+                            <span className="text-xs font-mono text-zinc-600">NODE_01_CAPTURE</span>
+                        </div>
+                        <div className="h-32 border border-[#7bff00]/20 rounded-xl bg-[#7bff00]/5 flex items-center justify-center">
+                            <span className="text-xs font-mono text-[#7bff00]">NODE_02_INTELLIGENCE</span>
+                        </div>
+                        <div className="h-32 border border-[#1f1f1f] rounded-xl bg-[#0a0a0a] flex items-center justify-center">
+                            <span className="text-xs font-mono text-zinc-600">NODE_03_CRM_SYNC</span>
+                        </div>
+                        <div className="h-32 border border-[#1f1f1f] rounded-xl bg-[#0a0a0a] flex items-center justify-center">
+                            <span className="text-xs font-mono text-zinc-600">NODE_04_CLOSING</span>
+                        </div>
                     </div>
                 </div>
             </section>
 
-            {/* ═══════════════════════════════════════
-                SECTION 6 — FINAL CTA
-            ═══════════════════════════════════════ */}
-            <section className="max-w-4xl mx-auto px-6 mb-24">
-                <motion.div
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true }}
-                    variants={fadeIn}
-                    transition={{ duration: 0.6 }}
-                    className="bg-white/[0.03] border border-white/10 rounded-2xl p-12 relative overflow-hidden text-center"
-                >
-                    <div className="absolute -top-24 -right-24 w-64 h-64 bg-[#82ff1f]/10 rounded-full blur-[80px]" />
-                    <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-[#82ff1f]/10 rounded-full blur-[80px]" />
-
-                    <div className="relative z-10">
-                        <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-                            Descubre qué agente encaja contigo
+            {/* Section 2: La Evolución del Servicio */}
+            <section className="bg-white py-32 px-6 text-black relative z-10">
+                <div className="max-w-7xl mx-auto">
+                    <div className="max-w-5xl mb-24">
+                        <h2 className="text-5xl md:text-7xl font-display font-semibold mb-10 leading-[1.05] tracking-tight uppercase">
+                            La evolución del servicio:<br />
+                            <span className="text-zinc-300">Un agente IA no es un chatbot.</span>
                         </h2>
-                        <p className="text-xl text-zinc-400 mb-8 max-w-2xl mx-auto">
-                            Analizamos tu flujo de ventas actual y te proponemos una demo personalizada del agente ideal para tu negocio.
-                        </p>
-                        <Link
-                            href="/contacto"
-                            className="inline-flex items-center gap-2 bg-[#82ff1f] hover:bg-[#6de018] text-black text-lg font-bold px-8 py-4 rounded-lg shadow-[0_0_20px_rgba(130,255,31,0.4)] hover:shadow-[0_0_30px_rgba(130,255,31,0.6)] transition-all transform hover:-translate-y-1"
-                        >
-                            Solicitar diagnóstico gratuito
-                            <span>↗</span>
-                        </Link>
-                        <p className="mt-4 text-xs text-zinc-500">Sin compromiso • Implementación en 7 días</p>
+                        <div className="flex flex-col md:flex-row gap-12 items-start">
+                            <div className="w-1.5 bg-[#7bff00] h-32 hidden md:block self-stretch"></div>
+                            <p className="text-2xl font-light text-zinc-600 leading-relaxed md:pl-0 pl-8 md:border-l-0 border-l-4 border-[#7bff00]">
+                                Mientras que un chatbot tradicional responde preguntas basadas en reglas fijas, un Agente IA de Aether Labs razona sobre objetivos, entiende el contexto emocional del cliente e integra datos en tiempo real para cerrar ventas.
+                            </p>
+                        </div>
                     </div>
-                </motion.div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16">
+                        <div className="space-y-6 group">
+                            <div className="w-16 h-16 bg-[#7bff00]/10 flex items-center justify-center rounded-xl group-hover:bg-[#7bff00] transition-colors duration-500">
+                                <Target className="w-8 h-8 text-[#7bff00] group-hover:text-black transition-colors" />
+                            </div>
+                            <h3 className="text-sm font-bold uppercase tracking-[0.2em] pt-2">Objetivo claro</h3>
+                            <p className="text-sm text-zinc-500 font-medium leading-relaxed">Capacidad de priorizar la conversión sobre la simple respuesta informativa.</p>
+                        </div>
+                        <div className="space-y-6 group">
+                            <div className="w-16 h-16 bg-[#7bff00]/10 flex items-center justify-center rounded-xl group-hover:bg-[#7bff00] transition-colors duration-500">
+                                <BrainCircuit className="w-8 h-8 text-[#7bff00] group-hover:text-black transition-colors" />
+                            </div>
+                            <h3 className="text-sm font-bold uppercase tracking-[0.2em] pt-2">Rol definido</h3>
+                            <p className="text-sm text-zinc-500 font-medium leading-relaxed">Cada agente posee una personalidad y tono de voz ajustado a su función comercial.</p>
+                        </div>
+                        <div className="space-y-6 group">
+                            <div className="w-16 h-16 bg-[#7bff00]/10 flex items-center justify-center rounded-xl group-hover:bg-[#7bff00] transition-colors duration-500">
+                                <Database className="w-8 h-8 text-[#7bff00] group-hover:text-black transition-colors" />
+                            </div>
+                            <h3 className="text-sm font-bold uppercase tracking-[0.2em] pt-2">Integración CRM</h3>
+                            <p className="text-sm text-zinc-500 font-medium leading-relaxed">Escritura automática de prospectos y notas en Salesforce, HubSpot o SAP.</p>
+                        </div>
+                        <div className="space-y-6 group">
+                            <div className="w-16 h-16 bg-[#7bff00]/10 flex items-center justify-center rounded-xl group-hover:bg-[#7bff00] transition-colors duration-500">
+                                <Zap className="w-8 h-8 text-[#7bff00] group-hover:text-black transition-colors" />
+                            </div>
+                            <h3 className="text-sm font-bold uppercase tracking-[0.2em] pt-2">Escalar volumen</h3>
+                            <p className="text-sm text-zinc-500 font-medium leading-relaxed">Atención simultánea de 10,000 conversaciones sin perder calidad humana.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Section 3: Directory - NUESTROS AGENTES */}
+            <section className="py-32 bg-[#050505]">
+                <div className="max-w-7xl mx-auto px-6">
+                    <div className="flex justify-between items-end mb-16">
+                        <div>
+                            <h2 className="text-5xl font-display font-semibold mb-4 italic tracking-tight">Perfiles Especializados</h2>
+                            <p className="text-zinc-500">Nuestros Agentes IA especializados por función.</p>
+                        </div>
+                        <div className="hidden md:block text-right">
+                            <span className="text-sm text-zinc-600 font-mono tracking-widest uppercase">Directory [v1.0.4]</span>
+                        </div>
+                    </div>
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        {/* Agent Card 1: Laura */}
+                        <div className="agent-card group rounded-xl overflow-hidden flex flex-col">
+                            <div className="relative h-[400px] bg-zinc-800">
+                                <img
+                                    className="w-full h-full object-cover grayscale brightness-90 group-hover:grayscale-0 transition-all duration-700"
+                                    alt="Laura - Atención & Citas"
+                                    src="/images/agentes/Laura.png"
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+                                <div className="absolute bottom-6 left-6">
+                                    <h3 className="text-3xl font-bold leading-tight uppercase">Laura</h3>
+                                    <p className="text-[#7bff00] font-medium">Atención & Citas</p>
+                                </div>
+                            </div>
+                            <div className="p-8 flex flex-col flex-grow">
+                                <p className="text-zinc-400 text-sm mb-6 italic">Ideal para clínicas, estética y salud.</p>
+                                <ul className="space-y-4 text-sm text-zinc-400 flex-grow">
+                                    <li className="flex items-start gap-3"><CheckCircle className="text-[#7bff00] w-5 h-5 flex-shrink-0" /> Responde en segundos.</li>
+                                    <li className="flex items-start gap-3"><CheckCircle className="text-[#7bff00] w-5 h-5 flex-shrink-0" /> Filtra según criterios.</li>
+                                    <li className="flex items-start gap-3"><CheckCircle className="text-[#7bff00] w-5 h-5 flex-shrink-0" /> Agenda automáticamente.</li>
+                                    <li className="flex items-start gap-3"><CheckCircle className="text-[#7bff00] w-5 h-5 flex-shrink-0" /> Reactiva pacientes inactivos.</li>
+                                </ul>
+                                <button className="w-full mt-8 py-3 border border-[#1f1f1f] rounded-lg font-bold hover:bg-white hover:text-black transition-all">Ver Perfil Técnico</button>
+                            </div>
+                        </div>
+
+                        {/* Agent Card 2: María */}
+                        <div className="agent-card group rounded-xl overflow-hidden flex flex-col">
+                            <div className="relative h-[400px] bg-zinc-800">
+                                <img
+                                    className="w-full h-full object-cover grayscale brightness-90 group-hover:grayscale-0 transition-all duration-700"
+                                    alt="María - Ventas Directas"
+                                    src="/images/agentes/Maria.png"
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+                                <div className="absolute bottom-6 left-6">
+                                    <h3 className="text-3xl font-bold leading-tight uppercase">María</h3>
+                                    <p className="text-[#7bff00] font-medium">Ventas Directas</p>
+                                </div>
+                            </div>
+                            <div className="p-8 flex flex-col flex-grow">
+                                <p className="text-zinc-400 text-sm mb-6 italic">Ventas high ticket o servicios B2B.</p>
+                                <ul className="space-y-4 text-sm text-zinc-400 flex-grow">
+                                    <li className="flex items-start gap-3"><CheckCircle className="text-[#7bff00] w-5 h-5 flex-shrink-0" /> Cualifica leads.</li>
+                                    <li className="flex items-start gap-3"><CheckCircle className="text-[#7bff00] w-5 h-5 flex-shrink-0" /> Detecta intención real.</li>
+                                    <li className="flex items-start gap-3"><CheckCircle className="text-[#7bff00] w-5 h-5 flex-shrink-0" /> Gestiona objeciones.</li>
+                                    <li className="flex items-start gap-3"><CheckCircle className="text-[#7bff00] w-5 h-5 flex-shrink-0" /> Agenda con el comercial humano.</li>
+                                </ul>
+                                <button className="w-full mt-8 py-3 border border-[#1f1f1f] rounded-lg font-bold hover:bg-white hover:text-black transition-all">Ver Perfil Técnico</button>
+                            </div>
+                        </div>
+
+                        {/* Agent Card 3: Álvaro */}
+                        <div className="agent-card group rounded-xl overflow-hidden flex flex-col">
+                            <div className="relative h-[400px] bg-zinc-800">
+                                <img
+                                    className="w-full h-full object-cover grayscale brightness-90 group-hover:grayscale-0 transition-all duration-700"
+                                    alt="Álvaro - Inmobiliaria"
+                                    src="/images/agentes/Álvaro.png"
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+                                <div className="absolute bottom-6 left-6">
+                                    <h3 className="text-3xl font-bold leading-tight uppercase">Álvaro</h3>
+                                    <p className="text-[#7bff00] font-medium">Inmobiliaria</p>
+                                </div>
+                            </div>
+                            <div className="p-8 flex flex-col flex-grow">
+                                <p className="text-zinc-400 text-sm mb-6 italic">Especializado en real estate.</p>
+                                <ul className="space-y-4 text-sm text-zinc-400 flex-grow">
+                                    <li className="flex items-start gap-3"><CheckCircle className="text-[#7bff00] w-5 h-5 flex-shrink-0" /> Filtra compradores reales.</li>
+                                    <li className="flex items-start gap-3"><CheckCircle className="text-[#7bff00] w-5 h-5 flex-shrink-0" /> Clasifica por presupuesto.</li>
+                                    <li className="flex items-start gap-3"><CheckCircle className="text-[#7bff00] w-5 h-5 flex-shrink-0" /> Prioriza leads calientes.</li>
+                                    <li className="flex items-start gap-3"><CheckCircle className="text-[#7bff00] w-5 h-5 flex-shrink-0" /> Coordina visitas.</li>
+                                </ul>
+                                <button className="w-full mt-8 py-3 border border-[#1f1f1f] rounded-lg font-bold hover:bg-white hover:text-black transition-all">Ver Perfil Técnico</button>
+                            </div>
+                        </div>
+
+                        {/* Agent Card 4: Diego */}
+                        <div className="agent-card group rounded-xl overflow-hidden flex flex-col">
+                            <div className="relative h-[400px] bg-zinc-800">
+                                <img
+                                    className="w-full h-full object-cover grayscale brightness-90 group-hover:grayscale-0 transition-all duration-700"
+                                    alt="Diego - Técnico-Comercial"
+                                    src="/images/agentes/Diego.png"
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+                                <div className="absolute bottom-6 left-6">
+                                    <h3 className="text-3xl font-bold leading-tight uppercase">Diego</h3>
+                                    <p className="text-[#7bff00] font-medium">Técnico-Comercial</p>
+                                </div>
+                            </div>
+                            <div className="p-8 flex flex-col flex-grow">
+                                <p className="text-zinc-400 text-sm mb-6 italic">Reformas, instalaciones y servicios técnicos.</p>
+                                <ul className="space-y-4 text-sm text-zinc-400 flex-grow">
+                                    <li className="flex items-start gap-3"><CheckCircle className="text-[#7bff00] w-5 h-5 flex-shrink-0" /> Detecta urgencia.</li>
+                                    <li className="flex items-start gap-3"><CheckCircle className="text-[#7bff00] w-5 h-5 flex-shrink-0" /> Solicita información clave.</li>
+                                    <li className="flex items-start gap-3"><CheckCircle className="text-[#7bff00] w-5 h-5 flex-shrink-0" /> Genera presupuestos base.</li>
+                                    <li className="flex items-start gap-3"><CheckCircle className="text-[#7bff00] w-5 h-5 flex-shrink-0" /> Agenda visitas técnicas.</li>
+                                </ul>
+                                <button className="w-full mt-8 py-3 border border-[#1f1f1f] rounded-lg font-bold hover:bg-white hover:text-black transition-all">Ver Perfil Técnico</button>
+                            </div>
+                        </div>
+
+                        {/* Agent Card 5: Daniela */}
+                        <div className="agent-card group rounded-xl overflow-hidden flex flex-col">
+                            <div className="relative h-[400px] bg-zinc-800">
+                                <img
+                                    className="w-full h-full object-cover grayscale brightness-90 group-hover:grayscale-0 transition-all duration-700"
+                                    alt="Daniela - Retención & Reactivación"
+                                    src="/images/agentes/Latina.png"
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+                                <div className="absolute bottom-6 left-6">
+                                    <h3 className="text-3xl font-bold leading-tight uppercase">Daniela</h3>
+                                    <p className="text-[#7bff00] font-medium">Retención & Reactivación</p>
+                                </div>
+                            </div>
+                            <div className="p-8 flex flex-col flex-grow">
+                                <p className="text-zinc-400 text-sm mb-6 italic">Gestión de carteras activas.</p>
+                                <ul className="space-y-4 text-sm text-zinc-400 flex-grow">
+                                    <li className="flex items-start gap-3"><CheckCircle className="text-[#7bff00] w-5 h-5 flex-shrink-0" /> Detecta oportunidades de upsell.</li>
+                                    <li className="flex items-start gap-3"><CheckCircle className="text-[#7bff00] w-5 h-5 flex-shrink-0" /> Reactiva clientes inactivos.</li>
+                                    <li className="flex items-start gap-3"><CheckCircle className="text-[#7bff00] w-5 h-5 flex-shrink-0" /> Hace seguimiento automático.</li>
+                                    <li className="flex items-start gap-3"><CheckCircle className="text-[#7bff00] w-5 h-5 flex-shrink-0" /> Mejora recurrencia.</li>
+                                </ul>
+                                <button className="w-full mt-8 py-3 border border-[#1f1f1f] rounded-lg font-bold hover:bg-white hover:text-black transition-all">Ver Perfil Técnico</button>
+                            </div>
+                        </div>
+
+                        {/* Agent Card 6: Clara */}
+                        <div className="agent-card group rounded-xl overflow-hidden flex flex-col">
+                            <div className="relative h-[400px] bg-zinc-800">
+                                <img
+                                    className="w-full h-full object-cover grayscale brightness-90 group-hover:grayscale-0 transition-all duration-700"
+                                    alt="Clara - Soporte Operativo"
+                                    src="/images/agentes/Clara.png"
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+                                <div className="absolute bottom-6 left-6">
+                                    <h3 className="text-3xl font-bold leading-tight uppercase">Clara</h3>
+                                    <p className="text-[#7bff00] font-medium">Soporte Operativo</p>
+                                </div>
+                            </div>
+                            <div className="p-8 flex flex-col flex-grow">
+                                <p className="text-zinc-400 text-sm mb-6 italic">Gestión interna y procesos repetitivos.</p>
+                                <ul className="space-y-4 text-sm text-zinc-400 flex-grow">
+                                    <li className="flex items-start gap-3"><CheckCircle className="text-[#7bff00] w-5 h-5 flex-shrink-0" /> Gestiona consultas repetitivas.</li>
+                                    <li className="flex items-start gap-3"><CheckCircle className="text-[#7bff00] w-5 h-5 flex-shrink-0" /> Centraliza información.</li>
+                                    <li className="flex items-start gap-3"><CheckCircle className="text-[#7bff00] w-5 h-5 flex-shrink-0" /> Reduce carga administrativa.</li>
+                                    <li className="flex items-start gap-3"><CheckCircle className="text-[#7bff00] w-5 h-5 flex-shrink-0" /> Ordena procesos internos.</li>
+                                </ul>
+                                <button className="w-full mt-8 py-3 border border-[#1f1f1f] rounded-lg font-bold hover:bg-white hover:text-black transition-all">Ver Perfil Técnico</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Section 4: Cómo Funcionan */}
+            <section className="py-24 bg-[#0a0a0a] border-y border-[#1f1f1f]">
+                <div className="max-w-7xl mx-auto px-6">
+                    <div className="text-center mb-16">
+                        <h2 className="text-4xl md:text-5xl font-display font-semibold italic mb-6 tracking-tight">Cómo funcionan</h2>
+                        <div className="w-20 h-1 bg-[#7bff00] mx-auto"></div>
+                    </div>
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
+                        <div className="flex flex-col items-center text-center p-8 rounded-2xl bg-[#050505] border border-[#1f1f1f]">
+                            <div className="w-16 h-16 rounded-full bg-[#7bff00]/10 flex items-center justify-center mb-6">
+                                <Share2 className="text-[#7bff00] w-8 h-8" />
+                            </div>
+                            <h3 className="text-xl font-bold mb-4">Conexión Omnicanal</h3>
+                            <p className="text-zinc-400 text-sm">Se conectan a tus canales actuales (WhatsApp, Web, Redes Sociales, etc.) sin cambiar tu operativa.</p>
+                        </div>
+                        <div className="flex flex-col items-center text-center p-8 rounded-2xl bg-[#050505] border border-[#1f1f1f]">
+                            <div className="w-16 h-16 rounded-full bg-[#7bff00]/10 flex items-center justify-center mb-6">
+                                <Database className="text-[#7bff00] w-8 h-8" />
+                            </div>
+                            <h3 className="text-xl font-bold mb-4">Integración CRM</h3>
+                            <p className="text-zinc-400 text-sm">Se integran con tu CRM para registrar cada interacción y actualizar el pipeline en tiempo real.</p>
+                        </div>
+                        <div className="flex flex-col items-center text-center p-8 rounded-2xl bg-[#050505] border border-[#1f1f1f]">
+                            <div className="w-16 h-16 rounded-full bg-[#7bff00]/10 flex items-center justify-center mb-6">
+                                <TrendingUp className="text-[#7bff00] w-8 h-8" />
+                            </div>
+                            <h3 className="text-xl font-bold mb-4">Escala Infinita</h3>
+                            <p className="text-zinc-400 text-sm">Escalan volumen de atención masiva sin depender de contratar más personal humano.</p>
+                        </div>
+                    </div>
+                    <div className="mt-12 text-center text-zinc-500 font-medium">
+                        <p>✓ Registran cada interacción • ✓ Escalan volumen masivo • ✓ Derivan a humano cuando corresponde</p>
+                    </div>
+                </div>
+            </section>
+
+            {/* Section 5: Comparison - CHATBOT VS AGENTE */}
+            <section className="py-32 bg-white text-black border-y border-zinc-100">
+                <div className="max-w-5xl mx-auto px-6">
+                    <h2 className="text-5xl font-display font-semibold mb-16 text-center tracking-tight uppercase leading-[1.05]">Arquitectura:<br /><span className="text-zinc-300">Chatbot vs Agente SALVIA</span></h2>
+                    <div className="overflow-x-auto rounded-xl border border-zinc-200 bg-white shadow-sm">
+                        <table className="w-full text-left border-collapse">
+                            <thead>
+                                <tr className="border-b border-zinc-200 bg-zinc-50">
+                                    <th className="py-6 px-8 font-mono text-[10px] text-zinc-400 uppercase tracking-widest">Capacidad</th>
+                                    <th className="py-6 px-8 font-mono text-[10px] text-zinc-400 uppercase text-center tracking-widest">Chatbot Tradicional</th>
+                                    <th className="py-6 px-8 font-mono text-[10px] text-[#71e600] uppercase text-center tracking-widest font-black">Agente SALVIA</th>
+                                </tr>
+                            </thead>
+                            <tbody className="divide-y divide-zinc-100">
+                                <tr className="hover:bg-zinc-50/50 transition-colors">
+                                    <td className="py-8 px-8 font-bold text-sm uppercase tracking-tight">Contexto y Memoria</td>
+                                    <td className="py-8 px-8 text-center text-zinc-500 text-sm italic">Respuestas rígidas y flujos cerrados</td>
+                                    <td className="py-8 px-8 text-center font-bold text-black text-sm">
+                                        <div className="flex items-center justify-center gap-2">
+                                            <Zap className="text-[#7bff00] w-4 h-4" />
+                                            Contexto dinámico y memoria real
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr className="hover:bg-zinc-50/50 transition-colors">
+                                    <td className="py-8 px-8 font-bold text-sm uppercase tracking-tight">Objetivos de Negocio</td>
+                                    <td className="py-8 px-8 text-center text-zinc-500 text-sm italic">Sin contexto real de venta</td>
+                                    <td className="py-8 px-8 text-center font-bold text-black text-sm">
+                                        <div className="flex items-center justify-center gap-2">
+                                            <Zap className="text-[#7bff00] w-4 h-4" />
+                                            Objetivo comercial y cierre
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr className="hover:bg-zinc-50/50 transition-colors">
+                                    <td className="py-8 px-8 font-bold text-sm uppercase tracking-tight">Tecnología e Integración</td>
+                                    <td className="py-8 px-8 text-center text-zinc-500 text-sm italic">Sin conexión real al pipeline</td>
+                                    <td className="py-8 px-8 text-center font-bold text-black text-sm">
+                                        <div className="flex items-center justify-center gap-2">
+                                            <Zap className="text-[#7bff00] w-4 h-4" />
+                                            Integrado con CRM (HubSpot/Salesforce)
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr className="hover:bg-zinc-50/50 transition-colors">
+                                    <td className="py-8 px-8 font-bold text-sm uppercase tracking-tight">Propósito Principal</td>
+                                    <td className="py-8 px-8 text-center text-zinc-500 text-sm italic">Atención básica pasiva</td>
+                                    <td className="py-8 px-8 text-center font-bold text-black text-sm">
+                                        <div className="flex items-center justify-center gap-2">
+                                            <Zap className="text-[#7bff00] w-4 h-4" />
+                                            Pensado para vender y convertir
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            {/* Section 6: Integration in SALVIA */}
+            <section className="py-32 bg-[#0a0a0a] overflow-hidden">
+                <div className="max-w-7xl mx-auto px-6">
+                    <div className="text-center mb-20 max-w-3xl mx-auto">
+                        <h2 className="text-4xl font-display font-semibold mb-6 italic uppercase tracking-tight">Ecosistema SALVIA</h2>
+                        <p className="text-zinc-400 text-lg">
+                            Un agente solo no escala. Integrado en SALVIA, se convierte en una pieza del sistema completo:
+                        </p>
+                    </div>
+
+                    <div className="relative">
+                        {/* Connector Line */}
+                        <div className="absolute top-1/2 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#7bff00]/50 to-transparent hidden lg:block"></div>
+
+                        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 relative z-10">
+                            {/* Step 1 */}
+                            <div className="flex flex-col items-center text-center group">
+                                <div className="w-16 h-16 bg-[#050505] border border-[#1f1f1f] rounded-full flex items-center justify-center mb-6 group-hover:border-[#7bff00] transition-colors">
+                                    <MousePointerClick className="w-6 h-6 text-zinc-500 group-hover:text-[#7bff00]" />
+                                </div>
+                                <h4 className="font-bold mb-2">Ads</h4>
+                                <p className="text-[10px] text-zinc-500 uppercase tracking-widest">Fuentes de Tráfico</p>
+                            </div>
+                            {/* Step 2 */}
+                            <div className="flex flex-col items-center text-center group">
+                                <div className="w-16 h-16 bg-[#050505] border border-[#7bff00]/50 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                                    <MessageSquare className="w-6 h-6 text-[#7bff00]" />
+                                </div>
+                                <h4 className="font-bold mb-2">Conversación</h4>
+                                <p className="text-[10px] text-[#7bff00] uppercase tracking-widest">Agente IA en acción</p>
+                            </div>
+                            {/* Step 3 */}
+                            <div className="flex flex-col items-center text-center group">
+                                <div className="w-16 h-16 bg-[#050505] border border-[#1f1f1f] rounded-xl flex items-center justify-center mb-6 group-hover:border-[#7bff00] transition-colors">
+                                    <Database className="w-6 h-6 text-zinc-500 group-hover:text-[#7bff00]" />
+                                </div>
+                                <h4 className="font-bold mb-2">CRM</h4>
+                                <p className="text-[10px] text-zinc-500 uppercase tracking-widest">Data & Sincronización</p>
+                            </div>
+                            {/* Step 4 */}
+                            <div className="flex flex-col items-center text-center group">
+                                <div className="w-16 h-16 bg-[#050505] border border-[#1f1f1f] rounded-full flex items-center justify-center mb-6 group-hover:border-[#7bff00] transition-colors">
+                                    <RefreshCw className="w-6 h-6 text-zinc-500 group-hover:text-[#7bff00]" />
+                                </div>
+                                <h4 className="font-bold mb-2">Seguimiento</h4>
+                                <p className="text-[10px] text-zinc-500 uppercase tracking-widest">Nurturing Automático</p>
+                            </div>
+                            {/* Step 5 */}
+                            <div className="flex flex-col items-center text-center group">
+                                <div className="w-16 h-16 bg-[#7bff00] rounded-full flex items-center justify-center mb-6 shadow-[0_0_20px_rgba(123,255,0,0.4)]">
+                                    <Check className="w-8 h-8 text-black" />
+                                </div>
+                                <h4 className="font-bold mb-2">Cierre</h4>
+                                <p className="text-[10px] text-zinc-100 uppercase tracking-widest font-bold">Venta o Cita</p>
+                            </div>
+                            {/* Step 6 */}
+                            <div className="flex flex-col items-center text-center group">
+                                <div className="w-16 h-16 bg-[#050505] border border-[#1f1f1f] rounded-full flex items-center justify-center mb-6 group-hover:border-[#7bff00] transition-colors">
+                                    <BrainCircuit className="w-6 h-6 text-zinc-500 group-hover:text-[#7bff00]" />
+                                </div>
+                                <h4 className="font-bold mb-2">Formación</h4>
+                                <p className="text-[10px] text-zinc-500 uppercase tracking-widest">Optimización de IA</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </section>
 
             <Footer />
