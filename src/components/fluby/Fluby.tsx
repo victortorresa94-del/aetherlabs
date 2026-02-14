@@ -19,12 +19,12 @@ export const Fluby = () => {
         <div className="fixed inset-0 pointer-events-none z-[100]">
             <motion.div
                 drag
-                dragConstraints={{ left: -1200, right: 0, top: -800, bottom: 0 }}
+                dragConstraints={{ left: -300, right: 0, top: -600, bottom: 0 }}
                 dragElastic={0.05}
                 dragTransition={{ bounceStiffness: 600, bounceDamping: 30 }}
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
-                className="absolute bottom-12 right-12 w-40 h-40 pointer-events-auto cursor-grab active:cursor-grabbing"
+                className="absolute bottom-20 right-4 w-28 h-28 md:bottom-12 md:right-12 md:w-40 md:h-40 pointer-events-auto cursor-grab active:cursor-grabbing"
                 style={{ touchAction: 'none' }}
             >
                 {/* 3D Entity - FLUBY (Toggle logic only here) */}

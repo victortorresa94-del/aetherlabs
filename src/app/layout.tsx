@@ -78,7 +78,6 @@ export default function RootLayout({
 
         {children}
         <Analytics />
-        <JasonWidget />
         <Fluby />
         {/* <Script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript" strategy="afterInteractive" /> */}
         {/* @ts-ignore */}

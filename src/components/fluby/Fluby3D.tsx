@@ -83,8 +83,8 @@ const FlubyBody = ({ isCrystal = false, isHovered = false }) => {
                 emissiveIntensity={1}
                 roughness={0.05}
                 metalness={0.1}
-                distort={isHovered ? 0.35 : 0.15}
-                speed={isHovered ? 3 : 1.5}
+                distort={isHovered ? 0.25 : 0.1}
+                speed={isHovered ? 2 : 1.0}
                 transparent
                 opacity={0.95}
                 side={THREE.DoubleSide}

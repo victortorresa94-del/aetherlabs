@@ -142,7 +142,7 @@ export const useFlubyLogic = () => {
         }
 
         if (msg) {
-            const timer = setTimeout(() => showMessage(msg), 10000);
+            const timer = setTimeout(() => showMessage(msg), 25000);
             return () => clearTimeout(timer);
         }
     }, [pathname, state.maturity.stage, state.intent.profile, showMessage, state.context.scrollDepth, state.context.section]);

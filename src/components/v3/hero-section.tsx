@@ -11,7 +11,7 @@ import LightPillar from "@/components/v3/visuals/LightPillar";
 
 const HeroSection = () => {
     return (
-        <section className="relative w-full min-h-[115dvh] flex flex-col items-center justify-center overflow-hidden bg-black py-40">
+        <section className="relative w-full min-h-[115dvh] flex flex-col items-center justify-center overflow-x-hidden bg-black py-24 md:py-40">
 
             {/* Background Light Effect */}
             <div className="absolute inset-0 z-0 pointer-events-none opacity-50 overflow-hidden" style={{ width: '100%', height: '100%' }}>

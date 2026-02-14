@@ -84,7 +84,7 @@ export const FlubyChat = ({ isOpen, onClose, pathname, initialMessage, state, is
                     animate={{ opacity: 1, scale: 1, x: 0, y: 0 }}
                     exit={isRelative ? { opacity: 0, scale: 0.9, y: 20 } : { opacity: 0, scale: 0.9, x: 20, y: 20 }}
                     className={`flex flex-col overflow-hidden bg-black/95 border border-white/10 rounded-[30px] shadow-2xl backdrop-blur-2xl z-[110] 
-                        ${isRelative ? 'w-[380px] h-[550px]' : 'fixed bottom-32 right-8 w-[380px] h-[550px]'}
+                        ${isRelative ? 'w-full h-full' : 'fixed bottom-4 right-4 left-4 md:left-auto md:bottom-32 md:right-8 w-auto md:w-[380px] h-[65vh] md:h-[550px]'}
                     `}
                 >
                     {/* Header */}
@@ -126,8 +126,8 @@ export const FlubyChat = ({ isOpen, onClose, pathname, initialMessage, state, is
                                 className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
                             >
                                 <div className={`max-w-[85%] px-5 py-4 rounded-2xl text-[13px] leading-relaxed ${msg.role === 'user'
-                                        ? 'bg-[#82ff1f] text-black font-semibold'
-                                        : 'bg-white/5 text-zinc-200 border border-white/10 backdrop-blur-md'
+                                    ? 'bg-[#82ff1f] text-black font-semibold'
+                                    : 'bg-white/5 text-zinc-200 border border-white/10 backdrop-blur-md'
                                     } shadow-lg`}>
                                     {msg.content}
                                 </div>
