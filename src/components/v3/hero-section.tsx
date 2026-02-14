@@ -11,10 +11,17 @@ import LightPillar from "@/components/v3/visuals/LightPillar";
 
 const HeroSection = () => {
     return (
-        <section className="relative w-full min-h-[115dvh] flex flex-col items-center justify-center overflow-x-hidden bg-black py-24 md:py-40">
+        <section className="relative w-full min-h-[115dvh] flex flex-col items-center justify-center bg-black py-24 md:py-40">
 
-            {/* Background Light Effect */}
-            <div className="absolute inset-0 z-0 pointer-events-none opacity-50 overflow-hidden" style={{ width: '100%', height: '100%' }}>
+            {/* Background Light Effect - Extended with natural flow */}
+            <div className="absolute top-0 z-0 pointer-events-none opacity-50 block"
+                style={{
+                    height: '160%',
+                    width: '140%',
+                    left: '-20%',
+                    maskImage: 'linear-gradient(to bottom, black 50%, transparent 100%)',
+                    WebkitMaskImage: 'linear-gradient(to bottom, black 50%, transparent 100%)'
+                }}>
                 <LightPillar
                     topColor="#82ff1f"
                     bottomColor="#1a3306"
@@ -24,15 +31,14 @@ const HeroSection = () => {
                     pillarWidth={4}
                     pillarHeight={0.6}
                     noiseIntensity={0.4}
-                    pillarRotation={35}
+                    pillarRotation={55}
                     interactive={false}
                     mixBlendMode="screen"
                     quality="high"
                 />
             </div>
 
-            {/* Bottom Gradient Overlay for seamless section transition */}
-            <div className="absolute bottom-0 left-0 w-full h-[60vh] z-[5] bg-gradient-to-t from-white via-white/40 to-transparent pointer-events-none"></div>
+            {/* Bottom Gradient Removed */}
 
             <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col items-center gap-12 px-6">
 

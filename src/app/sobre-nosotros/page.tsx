@@ -148,10 +148,10 @@ export default function SobreNosotros() {
             </div>
             <div className="absolute inset-0 w-full h-full grayscale group-hover:grayscale-0 transition-all duration-700 opacity-60 group-hover:opacity-80">
               <Image
-                src="/images/victor-profile-new.jpg"
+                src="/images/Victor-CEO.png"
                 alt="Víctor Torres"
                 fill
-                className="object-cover"
+                className="object-cover object-top"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-90 group-hover:opacity-60 transition-opacity duration-500"></div>
             </div>
@@ -169,7 +169,7 @@ export default function SobreNosotros() {
                 src="/images/david-montesinos.jpg"
                 alt="David Montesinos"
                 fill
-                className="object-cover"
+                className="object-cover object-top"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-white via-white/50 to-transparent opacity-40 group-hover:opacity-10 transition-opacity duration-500"></div>
             </div>
@@ -187,7 +187,7 @@ export default function SobreNosotros() {
                 src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1974&auto=format&fit=crop"
                 alt="Xavi Rodriguez"
                 fill
-                className="object-cover"
+                className="object-cover object-top"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-90 group-hover:opacity-60 transition-opacity duration-500"></div>
             </div>
@@ -205,7 +205,7 @@ export default function SobreNosotros() {
                 src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=1974&auto=format&fit=crop"
                 alt="Juan Sebastian"
                 fill
-                className="object-cover"
+                className="object-cover object-top"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-white via-white/50 to-transparent opacity-40 group-hover:opacity-10 transition-opacity duration-500"></div>
             </div>

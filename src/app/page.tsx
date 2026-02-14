@@ -22,15 +22,17 @@ export default function Home() {
       <HeaderNavigation />
 
       <HeroSection />
-      <SolutionSection />
+      {/* 2. "Si esto te suena..." (ProblemSection) */}
       <ProblemSection />
+      <SolutionSection />
       <RealitySection />
-      <LossBanner />
       <AgentsIntro />
       <AgentsSection />
       <AgentsLabBanner />
       <ProcessSection />
       <DataImpactSection />
+      {/* 3. "1/3 de ventas se pierden" (LossBanner) - Moved here per request */}
+      <LossBanner />
       <IntegrationsSection />
       <CTASection />
 

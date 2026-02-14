@@ -37,7 +37,7 @@ const problems = [
 
 const ProblemSection = () => {
     return (
-        <section className="relative w-full py-24 px-6 md:px-12 bg-black text-white flex flex-col items-center overflow-hidden">
+        <section className="relative w-full py-24 px-6 md:px-12 bg-transparent text-white flex flex-col items-center overflow-hidden">
 
             {/* Abstract Background Element */}
             <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-[#82ff1f]/5 to-transparent pointer-events-none opacity-20"></div>
