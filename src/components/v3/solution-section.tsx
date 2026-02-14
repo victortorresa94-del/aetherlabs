@@ -5,6 +5,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, Bot, Zap, BarChart3, Users, MonitorSmartphone, BrainCircuit, Globe, BookOpen } from "lucide-react";
 
+import SalviaEcosystem from "./salvia-ecosystem";
+
 // Images from the user's HTML reference
 const IMAGES = {
     ads: "https://lh3.googleusercontent.com/aida-public/AB6AXuADFB46W34CThudnGlRUVOHt9bzrK1qTKow-bC0Z29s0CjimOkxKDXlHBZkuIEE15KGz_JnqE-CTvHfohsgoC3YzVhcpfS7PZautguCJg5qlpNd3PPtXoGyp-wTCXqPPPft0ALnCz-5SYrU7RV26UXADZ4l4rKnYykb8I5Nd1LTmpv-Ev0FOAotyB4M7_7oQInEr8iztvGlsRAxi-Nm0ZxcOEVAWulUdDuNRde-yP7wnL6GVgYlNsZ_X50XlULbMicRCDCDeczDmy26",
@@ -110,6 +112,8 @@ const SolutionSection = () => {
                             Sistema de Automatización de Leads &amp; Ventas con Inteligencia Artificial
                         </p>
                     </header>
+
+                    <SalviaEcosystem variant="light" hideHeader={true} noSection={true} />
 
                     {/* Grid */}
                     <div className="border border-zinc-200 bg-white shadow-sm">

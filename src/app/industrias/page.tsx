@@ -50,8 +50,8 @@ export default function IndustriesPage() {
                                 <span className="w-2 h-2 rounded-full bg-[#80ff00] animate-pulse"></span>
                                 Soluciones Verticales
                             </div>
-                            <h1 className="text-5xl lg:text-7xl font-bold tracking-tight leading-[1.1] text-balance dark:text-white">
-                                SALVIA adaptado <br />
+                            <h1 className="text-5xl lg:text-7xl font-normal tracking-tight leading-[1.1] text-balance dark:text-white font-display">
+                                <span className="font-instrument italic">SALVIA</span> adaptado <br />
                                 <span className="text-gray-400 font-light">a tu industria</span>
                             </h1>
                             <p className="text-xl text-gray-500 dark:text-gray-400 max-w-lg leading-relaxed">

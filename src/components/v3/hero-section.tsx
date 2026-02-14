@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from "next/image"; // Converting to next/image where possible for optimization
 import { ArrowRight, Play } from "lucide-react";
 import WordRotate from "@/components/ui/word-rotate";
+import LightPillar from "@/components/v3/visuals/LightPillar";
 
 // Hero Animation replaced by video
 
@@ -12,28 +13,26 @@ const HeroSection = () => {
     return (
         <section className="relative w-full min-h-[115dvh] flex flex-col items-center justify-center overflow-hidden bg-black py-40">
 
-            {/* Background Video */}
-            <video
-                autoPlay
-                loop
-                muted
-                playsInline
-                className="absolute inset-0 w-full h-full object-cover z-0"
-            >
-                <source src="/videos/Video%20Hero%20Aether%20v3.mp4" type="video/mp4" />
-            </video>
-
-            {/* Dark Overlay for text readability - Slightly reduced opacity for cleaner look */}
-            <div className="absolute inset-0 z-[1] bg-black/50"></div>
-
-            {/* Extended gentle gradient to white - Much taller and more gradual */}
-            <div className="absolute bottom-0 left-0 w-full h-[80vh] z-[3] bg-gradient-to-t from-white via-white/20 to-transparent pointer-events-none"></div>
-
-
-            {/* Background Glow Effect */}
-            <div className="absolute inset-0 z-[2] pointer-events-none flex items-center justify-center">
-                <div className="w-[800px] h-[800px] rounded-full opacity-20 bg-[radial-gradient(circle,_rgba(130,255,31,0.15)_0%,_rgba(0,0,0,0)_70%)]"></div>
+            {/* Background Light Effect */}
+            <div className="absolute inset-0 z-0 pointer-events-none opacity-50 overflow-hidden" style={{ width: '100%', height: '100%' }}>
+                <LightPillar
+                    topColor="#82ff1f"
+                    bottomColor="#1a3306"
+                    intensity={1.2}
+                    rotationSpeed={0.2}
+                    glowAmount={0.005}
+                    pillarWidth={4}
+                    pillarHeight={0.6}
+                    noiseIntensity={0.4}
+                    pillarRotation={35}
+                    interactive={false}
+                    mixBlendMode="screen"
+                    quality="high"
+                />
             </div>
+
+            {/* Bottom Gradient Overlay for seamless section transition */}
+            <div className="absolute bottom-0 left-0 w-full h-[60vh] z-[5] bg-gradient-to-t from-white via-white/40 to-transparent pointer-events-none"></div>
 
             <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col items-center gap-12 px-6">
 
@@ -47,11 +46,11 @@ const HeroSection = () => {
                     </div>
 
                     {/* Headline */}
-                    <h1 className="font-display font-semibold text-5xl md:text-7xl lg:text-8xl tracking-tight leading-[1.05] text-white">
+                    <h1 className="font-display font-normal text-5xl md:text-7xl lg:text-8xl tracking-tight leading-[1.05] text-white">
                         Convertimos <br className="hidden md:block" />
                         conversaciones en <WordRotate
                             words={["sistemas escalables", "negocios felices", "clientes fieles", "ventas predecibles", "citas cualificadas", "relaciones reales"]}
-                            className="font-instrument text-white inline-flex pl-3 font-normal text-[1.05em]"
+                            className="font-instrument italic text-white inline-flex pl-3 font-normal text-[1.05em]"
                             duration={2500}
                         />
                     </h1>

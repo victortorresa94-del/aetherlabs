@@ -44,7 +44,7 @@ const AgentsIntro = () => {
                             </div>
 
                             <h2 className="text-4xl md:text-5xl lg:text-7xl font-light leading-tight mb-8 text-black tracking-tight">
-                                <span className="font-bold">Agentes de IA:</span> <br />
+                                <span className="font-medium">Agentes de IA:</span> <br />
                                 Tu equipo de ventas que{" "}
                                 <span className="relative inline-block">
                                     nunca duerme.
@@ -144,7 +144,7 @@ const AgentsIntro = () => {
                                             <Layers className="w-6 h-6" />
                                         </div>
                                         <div className="w-full">
-                                            <h3 className="text-lg font-bold text-black mb-1">Integración Total</h3>
+                                            <h3 className="text-lg font-medium text-black mb-1">Integración Total</h3>
                                             <p className="text-zinc-500 font-light leading-relaxed text-sm mb-3">Sincronización instantánea con tu CRM, ERP y flujos de trabajo existentes.</p>
                                             {/* Integration Icons */}
                                             <div className="flex items-center gap-4 flex-wrap">
@@ -185,7 +185,7 @@ const AgentsIntro = () => {
                                             <Mic className="w-6 h-6" />
                                         </div>
                                         <div>
-                                            <h3 className="text-lg font-bold text-black mb-1">Chat y Voz</h3>
+                                            <h3 className="text-lg font-medium text-black mb-1">Chat y Voz</h3>
                                             <p className="text-zinc-500 font-light leading-relaxed text-sm">
                                                 Los agentes son capaces de responder mediante chat o voz en chatbots o llamadas, siendo siempre la misma persona y teniendo todos los datos unificados, como un humano real.
                                             </p>
@@ -222,7 +222,7 @@ const AgentsIntro = () => {
                                     <div className="absolute inset-0 bg-[#82ff1f]/5 pointer-events-none"></div>
                                     <div className="relative z-10">
                                         <div className="flex items-center gap-2 mb-3">
-                                            <h4 className="text-sm font-bold text-white uppercase tracking-wider">1 Agente IA</h4>
+                                            <h4 className="text-sm font-medium text-white uppercase tracking-wider">1 Agente IA</h4>
                                             <span className="px-2 py-0.5 rounded bg-[#82ff1f]/20 text-[#82ff1f] text-[10px] font-bold tracking-wider uppercase">Recomendado</span>
                                         </div>
                                         <div className="mb-2">

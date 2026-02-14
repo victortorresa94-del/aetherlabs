@@ -12,13 +12,12 @@ import {
     Zap,
     CheckCircle,
     ArrowRight,
-    MousePointerClick,
     MessageSquare,
     Database,
-    RefreshCw,
     Check,
     BrainCircuit
 } from "lucide-react";
+import SalviaEcosystem from "@/components/v3/salvia-ecosystem";
 import Link from "next/link";
 
 export default function AgentesPage() {
@@ -57,9 +56,11 @@ export default function AgentesPage() {
                         <span className="px-4 py-1 rounded-full border border-[#7bff00]/30 bg-[#7bff00]/10 text-[#7bff00] text-xs font-bold tracking-[0.2em] uppercase mb-8">
                             Directorio de Agentes Especializados
                         </span>
-                        <h1 className="text-6xl md:text-8xl font-display font-semibold tracking-tight leading-[1.05] mb-8">
-                            AGENTES IA <br />
-                            que convierten <span className="text-[#7bff00] italic">conversaciones</span> en ventas.
+                        <h1 className="text-6xl md:text-9xl font-display font-normal tracking-tight leading-[1.0] mb-8 uppercase">
+                            Agentes <span className="font-instrument italic lowercase">ia</span> <br />
+                            <span className="text-5xl md:text-7xl lowercase block mt-4">
+                                que convierten <span className="text-[#7bff00] font-instrument italic font-normal">conversaciones</span> en ventas.
+                            </span>
                         </h1>
                         <p className="text-xl text-zinc-400 font-light leading-relaxed mb-12 max-w-2xl">
                             No son bots. Son perfiles entrenados para vender, atender y gestionar procesos comerciales dentro de tu empresa.
@@ -98,7 +99,7 @@ export default function AgentesPage() {
             <section className="bg-white py-32 px-6 text-black relative z-10">
                 <div className="max-w-7xl mx-auto">
                     <div className="max-w-5xl mb-24">
-                        <h2 className="text-5xl md:text-7xl font-display font-semibold mb-10 leading-[1.05] tracking-tight uppercase">
+                        <h2 className="text-5xl md:text-7xl font-display font-normal mb-10 leading-[1.05] tracking-tight uppercase">
                             La evolución del servicio:<br />
                             <span className="text-zinc-300">Un agente IA no es un chatbot.</span>
                         </h2>
@@ -115,29 +116,29 @@ export default function AgentesPage() {
                             <div className="w-16 h-16 bg-[#7bff00]/10 flex items-center justify-center rounded-xl group-hover:bg-[#7bff00] transition-colors duration-500">
                                 <Target className="w-8 h-8 text-[#7bff00] group-hover:text-black transition-colors" />
                             </div>
-                            <h3 className="text-sm font-bold uppercase tracking-[0.2em] pt-2">Objetivo claro</h3>
-                            <p className="text-sm text-zinc-500 font-medium leading-relaxed">Capacidad de priorizar la conversión sobre la simple respuesta informativa.</p>
+                            <h3 className="text-sm font-medium uppercase tracking-[0.2em] pt-2">Objetivo claro</h3>
+                            <p className="text-sm text-zinc-500 font-light leading-relaxed">Capacidad de priorizar la conversión sobre la simple respuesta informativa.</p>
                         </div>
                         <div className="space-y-6 group">
                             <div className="w-16 h-16 bg-[#7bff00]/10 flex items-center justify-center rounded-xl group-hover:bg-[#7bff00] transition-colors duration-500">
                                 <BrainCircuit className="w-8 h-8 text-[#7bff00] group-hover:text-black transition-colors" />
                             </div>
-                            <h3 className="text-sm font-bold uppercase tracking-[0.2em] pt-2">Rol definido</h3>
-                            <p className="text-sm text-zinc-500 font-medium leading-relaxed">Cada agente posee una personalidad y tono de voz ajustado a su función comercial.</p>
+                            <h3 className="text-sm font-medium uppercase tracking-[0.2em] pt-2">Rol definido</h3>
+                            <p className="text-sm text-zinc-500 font-light leading-relaxed">Cada agente posee una personalidad y tono de voz ajustado a su función comercial.</p>
                         </div>
                         <div className="space-y-6 group">
                             <div className="w-16 h-16 bg-[#7bff00]/10 flex items-center justify-center rounded-xl group-hover:bg-[#7bff00] transition-colors duration-500">
                                 <Database className="w-8 h-8 text-[#7bff00] group-hover:text-black transition-colors" />
                             </div>
-                            <h3 className="text-sm font-bold uppercase tracking-[0.2em] pt-2">Integración CRM</h3>
-                            <p className="text-sm text-zinc-500 font-medium leading-relaxed">Escritura automática de prospectos y notas en Salesforce, HubSpot o SAP.</p>
+                            <h3 className="text-sm font-medium uppercase tracking-[0.2em] pt-2">Integración CRM</h3>
+                            <p className="text-sm text-zinc-500 font-light leading-relaxed">Escritura automática de prospectos y notas en Salesforce, HubSpot o SAP.</p>
                         </div>
                         <div className="space-y-6 group">
                             <div className="w-16 h-16 bg-[#7bff00]/10 flex items-center justify-center rounded-xl group-hover:bg-[#7bff00] transition-colors duration-500">
                                 <Zap className="w-8 h-8 text-[#7bff00] group-hover:text-black transition-colors" />
                             </div>
-                            <h3 className="text-sm font-bold uppercase tracking-[0.2em] pt-2">Escalar volumen</h3>
-                            <p className="text-sm text-zinc-500 font-medium leading-relaxed">Atención simultánea de 10,000 conversaciones sin perder calidad humana.</p>
+                            <h3 className="text-sm font-medium uppercase tracking-[0.2em] pt-2">Escalar volumen</h3>
+                            <p className="text-sm text-zinc-500 font-light leading-relaxed">Atención simultánea de 10,000 <span className="font-bold">conversaciones</span> sin perder calidad humana.</p>
                         </div>
                     </div>
                 </div>
@@ -148,7 +149,7 @@ export default function AgentesPage() {
                 <div className="max-w-7xl mx-auto px-6">
                     <div className="flex justify-between items-end mb-16">
                         <div>
-                            <h2 className="text-5xl font-display font-semibold mb-4 italic tracking-tight">Perfiles Especializados</h2>
+                            <h2 className="text-5xl font-display font-medium mb-4 italic tracking-tight">Perfiles Especializados</h2>
                             <p className="text-zinc-500">Nuestros Agentes IA especializados por función.</p>
                         </div>
                         <div className="hidden md:block text-right">
@@ -296,8 +297,8 @@ export default function AgentesPage() {
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
                                 <div className="absolute bottom-6 left-6">
-                                    <h3 className="text-3xl font-bold leading-tight uppercase">Clara</h3>
-                                    <p className="text-[#7bff00] font-medium">Soporte Operativo</p>
+                                    <h3 className="text-3xl font-medium leading-tight uppercase">Clara</h3>
+                                    <p className="text-[#7bff00] font-normal">Soporte Operativo</p>
                                 </div>
                             </div>
                             <div className="p-8 flex flex-col flex-grow">
@@ -308,7 +309,7 @@ export default function AgentesPage() {
                                     <li className="flex items-start gap-3"><CheckCircle className="text-[#7bff00] w-5 h-5 flex-shrink-0" /> Reduce carga administrativa.</li>
                                     <li className="flex items-start gap-3"><CheckCircle className="text-[#7bff00] w-5 h-5 flex-shrink-0" /> Ordena procesos internos.</li>
                                 </ul>
-                                <button className="w-full mt-8 py-3 border border-[#1f1f1f] rounded-lg font-bold hover:bg-white hover:text-black transition-all">Ver Perfil Técnico</button>
+                                <button className="w-full mt-8 py-3 border border-[#1f1f1f] rounded-lg font-medium hover:bg-white hover:text-black transition-all">Ver Perfil Técnico</button>
                             </div>
                         </div>
                     </div>
@@ -319,7 +320,7 @@ export default function AgentesPage() {
             <section className="py-24 bg-[#0a0a0a] border-y border-[#1f1f1f]">
                 <div className="max-w-7xl mx-auto px-6">
                     <div className="text-center mb-16">
-                        <h2 className="text-4xl md:text-5xl font-display font-semibold italic mb-6 tracking-tight">Cómo funcionan</h2>
+                        <h2 className="text-4xl md:text-5xl font-display font-medium italic mb-6 tracking-tight">Cómo funcionan</h2>
                         <div className="w-20 h-1 bg-[#7bff00] mx-auto"></div>
                     </div>
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
@@ -412,72 +413,7 @@ export default function AgentesPage() {
             </section>
 
             {/* Section 6: Integration in SALVIA */}
-            <section className="py-32 bg-[#0a0a0a] overflow-hidden">
-                <div className="max-w-7xl mx-auto px-6">
-                    <div className="text-center mb-20 max-w-3xl mx-auto">
-                        <h2 className="text-4xl font-display font-semibold mb-6 italic uppercase tracking-tight">Ecosistema SALVIA</h2>
-                        <p className="text-zinc-400 text-lg">
-                            Un agente solo no escala. Integrado en SALVIA, se convierte en una pieza del sistema completo:
-                        </p>
-                    </div>
-
-                    <div className="relative">
-                        {/* Connector Line */}
-                        <div className="absolute top-1/2 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#7bff00]/50 to-transparent hidden lg:block"></div>
-
-                        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 relative z-10">
-                            {/* Step 1 */}
-                            <div className="flex flex-col items-center text-center group">
-                                <div className="w-16 h-16 bg-[#050505] border border-[#1f1f1f] rounded-full flex items-center justify-center mb-6 group-hover:border-[#7bff00] transition-colors">
-                                    <MousePointerClick className="w-6 h-6 text-zinc-500 group-hover:text-[#7bff00]" />
-                                </div>
-                                <h4 className="font-bold mb-2">Ads</h4>
-                                <p className="text-[10px] text-zinc-500 uppercase tracking-widest">Fuentes de Tráfico</p>
-                            </div>
-                            {/* Step 2 */}
-                            <div className="flex flex-col items-center text-center group">
-                                <div className="w-16 h-16 bg-[#050505] border border-[#7bff00]/50 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                                    <MessageSquare className="w-6 h-6 text-[#7bff00]" />
-                                </div>
-                                <h4 className="font-bold mb-2">Conversación</h4>
-                                <p className="text-[10px] text-[#7bff00] uppercase tracking-widest">Agente IA en acción</p>
-                            </div>
-                            {/* Step 3 */}
-                            <div className="flex flex-col items-center text-center group">
-                                <div className="w-16 h-16 bg-[#050505] border border-[#1f1f1f] rounded-xl flex items-center justify-center mb-6 group-hover:border-[#7bff00] transition-colors">
-                                    <Database className="w-6 h-6 text-zinc-500 group-hover:text-[#7bff00]" />
-                                </div>
-                                <h4 className="font-bold mb-2">CRM</h4>
-                                <p className="text-[10px] text-zinc-500 uppercase tracking-widest">Data & Sincronización</p>
-                            </div>
-                            {/* Step 4 */}
-                            <div className="flex flex-col items-center text-center group">
-                                <div className="w-16 h-16 bg-[#050505] border border-[#1f1f1f] rounded-full flex items-center justify-center mb-6 group-hover:border-[#7bff00] transition-colors">
-                                    <RefreshCw className="w-6 h-6 text-zinc-500 group-hover:text-[#7bff00]" />
-                                </div>
-                                <h4 className="font-bold mb-2">Seguimiento</h4>
-                                <p className="text-[10px] text-zinc-500 uppercase tracking-widest">Nurturing Automático</p>
-                            </div>
-                            {/* Step 5 */}
-                            <div className="flex flex-col items-center text-center group">
-                                <div className="w-16 h-16 bg-[#7bff00] rounded-full flex items-center justify-center mb-6 shadow-[0_0_20px_rgba(123,255,0,0.4)]">
-                                    <Check className="w-8 h-8 text-black" />
-                                </div>
-                                <h4 className="font-bold mb-2">Cierre</h4>
-                                <p className="text-[10px] text-zinc-100 uppercase tracking-widest font-bold">Venta o Cita</p>
-                            </div>
-                            {/* Step 6 */}
-                            <div className="flex flex-col items-center text-center group">
-                                <div className="w-16 h-16 bg-[#050505] border border-[#1f1f1f] rounded-full flex items-center justify-center mb-6 group-hover:border-[#7bff00] transition-colors">
-                                    <BrainCircuit className="w-6 h-6 text-zinc-500 group-hover:text-[#7bff00]" />
-                                </div>
-                                <h4 className="font-bold mb-2">Formación</h4>
-                                <p className="text-[10px] text-zinc-500 uppercase tracking-widest">Optimización de IA</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            <SalviaEcosystem variant="dark" />
 
             <Footer />
         </main>

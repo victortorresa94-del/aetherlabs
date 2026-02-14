@@ -39,9 +39,9 @@ export default function CRMPage() {
                             <span className="px-4 py-1 rounded-full border border-[#7bff00]/30 bg-[#7bff00]/10 text-[#7bff00] text-xs font-bold tracking-[0.2em] uppercase mb-8">
                                 Sistema de Gestión Inteligente
                             </span>
-                            <h1 className="text-6xl md:text-7xl font-display font-semibold tracking-tight leading-[1.05] mb-8">
-                                CRM CON IA <br />
-                                <span className="text-zinc-400 font-light text-4xl md:text-5xl block mt-4">El cerebro de tu sistema comercial.</span>
+                            <h1 className="text-6xl md:text-7xl font-display font-normal tracking-tight leading-[1.05] mb-8">
+                                CRM con <span className="font-instrument italic">IA</span> <br />
+                                <span className="text-zinc-400 font-instrument italic font-normal text-4xl md:text-5xl block mt-4 tracking-tight">El cerebro de tu sistema comercial.</span>
                             </h1>
                             <p className="text-xl text-zinc-400 font-light leading-relaxed mb-8 max-w-xl">
                                 Centraliza conversaciones, organiza oportunidades y automatiza el seguimiento en un solo lugar.

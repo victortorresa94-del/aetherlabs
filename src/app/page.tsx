@@ -3,6 +3,7 @@ import ProblemSection from "@/components/v3/problem-section";
 import LossBanner from "@/components/v3/loss-banner";
 import RealitySection from "@/components/v3/reality-section";
 import SolutionSection from "@/components/v3/solution-section";
+import SalviaEcosystem from "@/components/v3/salvia-ecosystem";
 // SelectorSection import removed
 import AgentsIntro from "@/components/v3/agents-intro";
 import AgentsSection from "@/components/v3/agents-section";

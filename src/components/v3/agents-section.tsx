@@ -50,12 +50,12 @@ const AgentsSection = () => {
                                     <div className="absolute bottom-0 left-0 right-0 p-8 z-20 flex flex-col justify-end h-full">
 
                                         {/* Name */}
-                                        <h3 className="text-4xl font-bold text-white mb-2 tracking-tight drop-shadow-md">{agent.name}</h3>
+                                        <h3 className="text-4xl font-medium text-white mb-2 tracking-tight drop-shadow-md">{agent.name}</h3>
 
                                         {/* Role */}
                                         <div className="mb-6 flex items-center gap-2">
                                             <span className="w-1.5 h-1.5 rounded-full bg-[#82ff1f] shadow-[0_0_8px_rgba(130,255,31,0.6)]"></span>
-                                            <span className="text-[11px] uppercase tracking-[0.2em] text-[#82ff1f] font-bold drop-shadow-sm">{agent.role}</span>
+                                            <span className="text-[11px] uppercase tracking-[0.2em] text-[#82ff1f] font-medium drop-shadow-sm">{agent.role}</span>
                                         </div>
 
                                         {/* Checklist */}
@@ -74,15 +74,15 @@ const AgentsSection = () => {
                                 <div className="px-8 pb-8 -mt-4 bg-black flex-grow flex flex-col gap-6 relative z-20">
                                     {/* Benefit */}
                                     <div>
-                                        <p className="text-xs text-zinc-500 uppercase tracking-widest font-bold mb-2">Beneficio</p>
-                                        <p className="text-white text-sm font-medium border-l-2 border-[#82ff1f] pl-3 py-1">
+                                        <p className="text-xs text-zinc-500 uppercase tracking-widest font-normal mb-2">Beneficio</p>
+                                        <p className="text-white text-sm font-normal border-l-2 border-[#82ff1f] pl-3 py-1">
                                             {agent.benefit?.replace("👉 ", "")}
                                         </p>
                                     </div>
 
                                     {/* Ideal For */}
                                     <div>
-                                        <p className="text-xs text-zinc-500 uppercase tracking-widest font-bold mb-2">Ideal para</p>
+                                        <p className="text-xs text-zinc-500 uppercase tracking-widest font-normal mb-2">Ideal para</p>
                                         <ul className="space-y-1">
                                             {Array.isArray(agent.idealFor) ? agent.idealFor.map((item: string, idx: number) => (
                                                 <li key={idx} className="text-zinc-400 text-sm flex items-start gap-2">

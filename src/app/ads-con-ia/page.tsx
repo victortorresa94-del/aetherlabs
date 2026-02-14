@@ -51,10 +51,10 @@ export default function AdsPage() {
                                 <span className="inline-block py-1 px-3 rounded border border-[#7bff00]/30 bg-[#7bff00]/10 text-[#7bff00] font-mono text-[10px] tracking-[0.2em] uppercase mb-6">
                                     Fase 01: Captación Estructurada
                                 </span>
-                                <h1 className="text-6xl md:text-8xl font-extrabold tracking-tighter leading-none mb-6">
-                                    Ads con IA
+                                <h1 className="text-6xl md:text-8xl font-normal font-display tracking-tight leading-none mb-6">
+                                    Ads con <span className="font-instrument italic">IA</span>
                                 </h1>
-                                <h2 className="text-3xl font-light text-zinc-400 mb-8 italic">
+                                <h2 className="text-3xl font-light text-zinc-400 mb-8 font-instrument italic">
                                     Diseñados para activar tu sistema comercial.
                                 </h2>
                                 <p className="text-xl text-zinc-500 font-light leading-relaxed max-w-xl">

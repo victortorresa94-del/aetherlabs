@@ -39,9 +39,9 @@ export default function FormacionVentasPage() {
                             <span className="px-4 py-1 rounded-full border border-[#7bff00]/30 bg-[#7bff00]/10 text-[#7bff00] text-xs font-bold tracking-[0.2em] uppercase mb-8">
                                 Capacitación Estratégica
                             </span>
-                            <h1 className="text-6xl md:text-7xl font-display font-semibold tracking-tight leading-[1.05] mb-8">
-                                FORMACIÓN IA <br /> DE VENTAS
-                                <span className="text-zinc-400 font-light text-4xl md:text-5xl block mt-4">Convierte tu equipo en parte del sistema.</span>
+                            <h1 className="text-6xl md:text-7xl font-display font-normal tracking-tight leading-[1.05] mb-8">
+                                Formación <span className="font-instrument italic uppercase">ia</span> <br /> de Ventas
+                                <span className="text-zinc-400 font-instrument italic font-normal text-4xl md:text-5xl block mt-4 tracking-tight">Convierte tu equipo en parte del sistema.</span>
                             </h1>
                             <p className="text-xl text-zinc-400 font-light leading-relaxed mb-8 max-w-xl">
                                 No implementamos herramientas para que luego nadie las use.

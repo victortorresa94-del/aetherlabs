@@ -122,23 +122,23 @@ export const useFlubyLogic = () => {
 
         // Case A: Explorer + Awareness
         if (stage === 'awareness' && profile === 'explorer' && scrollDepth > 0.1) {
-            msg = "Estás entendiendo cómo funciona el sistema. No corras.";
+            msg = "Hola. Veo que estás explorando el ecosistema... ¿Encontraste ya lo que buscabas o te ayudo a navegar?";
         }
         // Case B: Technical
         else if (profile === 'technical' && section === 'agentes-ia') {
-            msg = "Veo que te interesa la parte operativa. La ingeniería es lo que nos separa del resto.";
+            msg = "Qué tal. Te gusta ver qué hay bajo el capó, ¿no? Si tienes dudas técnicas, soy todo oídos.";
         }
         // Case C: Commercial
         else if (profile === 'commercial' && stage === 'consideration') {
-            msg = "Lo que te preocupa es convertir más, no solo automatizar. Te entiendo perfectamente.";
+            msg = "Hola. Sé que buscas impacto real en las ventas. ¿Hablamos de cómo lo hacemos aquí?";
         }
         // Case D: Evaluator
         else if (profile === 'evaluator' || stage === 'decision') {
-            msg = "Quieres saber si esto encaja en tu estructura. El impacto real no se ve en diapositivas, se ve en el CRM.";
+            msg = "Buenas. Estás en la fase seria. Si quieres saber cómo encajamos en tu estructura, dispárame una duda.";
         }
         // Generic Scroll trigger
         else if (scrollDepth > 0.8 && stage === 'consideration') {
-            msg = "Ahora vamos a lo interesante. ¿Quieres que te lo explique rápido?";
+            msg = "Vaya, te has leído casi todo. Qué tal si me cuentas qué te ha parecido hasta ahora.";
         }
 
         if (msg) {
