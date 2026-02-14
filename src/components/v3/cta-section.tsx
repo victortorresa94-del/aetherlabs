@@ -19,7 +19,7 @@ const CTASection = () => {
                     className="max-w-4xl mx-auto"
                 >
                     <h2 className="text-4xl md:text-6xl font-light text-white mb-8 leading-tight">
-                        ¿Cuánto estás perdiendo<br />
+                        ¿Cuánto <span className="font-instrument italic font-normal text-[1.05em]">estás perdiendo</span><br />
                         <span className="text-white font-medium">por no responder a tiempo?</span>
                     </h2>
 

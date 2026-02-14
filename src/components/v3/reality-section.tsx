@@ -67,14 +67,14 @@ const RealitySection = () => {
                             className="group relative p-8 md:p-10 flex flex-col justify-between h-full border-b border-white/10 md:border-b-0"
                         >
                             <div>
+                                <h3 className="text-xs font-bold tracking-[0.15em] text-[#82ff1f] uppercase mb-2">
+                                    {item.label}
+                                </h3>
                                 <div className="mb-4">
                                     <span className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tighter text-white">
                                         {item.value}
                                     </span>
                                 </div>
-                                <h3 className="text-xs font-bold tracking-[0.15em] text-[#82ff1f] uppercase mb-3">
-                                    {item.label}
-                                </h3>
                                 <p className="text-sm text-zinc-400 font-light leading-relaxed">
                                     {item.description}
                                 </p>
@@ -91,49 +91,6 @@ const RealitySection = () => {
                         </motion.div>
                     ))}
                 </div>
-
-                {/* Conclusion — Horizontal Impact Layout */}
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.4, duration: 0.8 }}
-                    className="mt-20 pt-16 border-t border-white/5"
-                >
-                    <div className="flex flex-col md:flex-row items-center md:items-end gap-6 md:gap-12">
-
-                        {/* Left: The Number */}
-                        <motion.div
-                            initial={{ opacity: 0, x: -30 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: 0.6, duration: 0.6 }}
-                            className="flex-shrink-0"
-                        >
-                            <span className="text-[8rem] md:text-[10rem] lg:text-[12rem] font-black leading-[0.85] tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-[#82ff1f] to-[#4a9e0f] drop-shadow-[0_0_60px_rgba(130,255,31,0.2)]" style={{ WebkitTextStroke: '0' }}>
-                                1/3
-                            </span>
-                        </motion.div>
-
-                        {/* Right: Context */}
-                        <motion.div
-                            initial={{ opacity: 0, x: 30 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: 0.8, duration: 0.6 }}
-                            className="flex-1 pb-4 md:pb-8"
-                        >
-                            <div className="w-10 h-[2px] bg-[#82ff1f] mb-5" />
-                            <h3 className="text-2xl md:text-3xl font-bold text-white tracking-tight mb-3 uppercase">
-                                DE TUS VENTAS SE PIERDEN
-                            </h3>
-                            <p className="text-zinc-500 text-base md:text-lg font-light leading-relaxed max-w-md">
-                                No por falta de interés ni de producto — sino por no responder en el momento crítico.
-                            </p>
-                        </motion.div>
-
-                    </div>
-                </motion.div>
 
             </div>
         </section>

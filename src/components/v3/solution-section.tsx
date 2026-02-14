@@ -103,8 +103,8 @@ const SolutionSection = () => {
                 <div className="w-full max-w-7xl mx-auto px-6 relative z-10">
                     {/* Header */}
                     <header className="text-center mb-16 max-w-4xl mx-auto border-b border-zinc-200 pb-12">
-                        <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tighter mb-6 text-black">
-                            Cubrimos todo el proceso comercial con SALVIA<sup className="text-xl md:text-2xl align-super">™</sup>
+                        <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tighter mb-6 text-black font-display">
+                            Cubrimos todo el proceso comercial con <span className="font-normal">SALVIA</span><sup className="text-xl md:text-2xl align-super">™</sup>
                         </h2>
                         <p className="text-lg md:text-xl text-zinc-500 font-light tracking-wide">
                             Sistema de Automatización de Leads &amp; Ventas con Inteligencia Artificial

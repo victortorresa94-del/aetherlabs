@@ -17,7 +17,7 @@ const AgentsSection = () => {
 
                 {/* Section Header */}
                 <div className="mb-20 text-center">
-                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight">
+                    <h2 className="text-5xl md:text-6xl lg:text-7xl font-instrument text-white mb-6 tracking-tight font-normal">
                         Nuestros Agentes
                     </h2>
                     <p className="text-zinc-500 max-w-xl mx-auto text-lg font-light">

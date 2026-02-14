@@ -82,7 +82,17 @@ const HeaderNavigation = () => {
         { label: "Formación IA", href: "/formacion-ia-ventas", icon: GraduationCap, description: "Capacitación estratégica para equipos." }
       ]
     },
-    { label: "Industrias", href: "/industrias" },
+    {
+      label: "Industrias",
+      href: "/industrias",
+      variant: 'rich',
+      subItems: [
+        { label: "Clínicas", href: "/salvia-clinics", icon: Stethoscope, description: "Sistema comercial para clínicas." },
+        { label: "Inmobiliarias", href: "/salvia-estates", icon: Building2, description: "Captación y cualificación automática." },
+        { label: "Educación", href: "/salvia-education", icon: GraduationCap, description: "Matriculación y seguimiento alumno." },
+        { label: "Servicios Técnicos", href: "/salvia-technical-services", icon: HardHat, description: "Gestión de partes y técnicos." }
+      ]
+    },
     {
       label: "Labs",
       href: "#",
@@ -287,7 +297,7 @@ const HeaderNavigation = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${isScrolled || isMobileMenuOpen || isAgentsLab || pathname === '/servicios' || pathname === '/industrias' ? "bg-black/90 backdrop-blur-sm shadow-md" : "bg-transparent"
+      className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${isScrolled || isMobileMenuOpen || isAgentsLab || pathname === '/servicios' || pathname === '/industrias' || pathname?.includes('/salvia-') ? "bg-black/90 backdrop-blur-sm shadow-md" : "bg-transparent"
         }`}
     >
       <div className="container h-[90px] flex items-center justify-between">
@@ -318,7 +328,7 @@ const HeaderNavigation = () => {
               onClick={() => router.push('/contacto')}
               className="hidden lg:block"
             >
-              Auditoría de ventas
+              Charlar
             </NeonButton>
             <button
               className="lg:hidden text-foreground"
@@ -349,7 +359,7 @@ const HeaderNavigation = () => {
                   setIsMobileMenuOpen(false);
                 }}
               >
-                Auditoría de ventas
+                Charlar
               </NeonButton>
             </div>
           </nav>

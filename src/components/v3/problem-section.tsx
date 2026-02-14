@@ -50,8 +50,8 @@ const ProblemSection = () => {
                         Diagnóstico de Ventas
                     </span>
                     <h1 className="text-4xl md:text-5xl lg:text-7xl font-light tracking-tight text-white leading-[1.1]">
-                        Si esto te suena,<br />
-                        <span className="text-white font-medium">estás perdiendo ventas</span>
+                        <span className="font-instrument text-5xl md:text-6xl lg:text-8xl">Si esto te suena,</span><br />
+                        <span className="text-white font-light">estás perdiendo ventas</span>
                     </h1>
                 </header>
 

@@ -196,7 +196,7 @@ export default function IndustriesPage() {
                                         </li>
                                     ))}
                                 </ul>
-                                <Link href="#" className="inline-flex items-center text-sm font-bold group/link hover:text-[#80ff00] transition-colors mt-auto dark:text-white">
+                                <Link href="/salvia-clinics" className="inline-flex items-center text-sm font-bold group/link hover:text-[#80ff00] transition-colors mt-auto dark:text-white">
                                     Ver sistema para clínicas
                                     <ArrowRight className="ml-2 w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
                                 </Link>
@@ -227,7 +227,7 @@ export default function IndustriesPage() {
                                         </li>
                                     ))}
                                 </ul>
-                                <Link href="#" className="inline-flex items-center text-sm font-bold group/link hover:text-[#80ff00] transition-colors mt-auto dark:text-white">
+                                <Link href="/salvia-estates" className="inline-flex items-center text-sm font-bold group/link hover:text-[#80ff00] transition-colors mt-auto dark:text-white">
                                     Ver sistema inmobiliario
                                     <ArrowRight className="ml-2 w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
                                 </Link>
@@ -271,7 +271,7 @@ export default function IndustriesPage() {
                                 <img
                                     alt="Professional technical detail"
                                     className="w-full h-full object-cover grayscale contrast-[1.1] transition-[filter] duration-500 group-hover:filter-none"
-                                    src="https://images.unsplash.com/photo-1581092921461-eab62e97a780?q=80&w=2070&auto=format&fit=crop"
+                                    src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?q=80&w=2070&auto=format&fit=crop"
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-white/20 dark:from-slate-900/40 to-transparent"></div>
                             </div>

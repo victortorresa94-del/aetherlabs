@@ -6,12 +6,17 @@
 /* Updated: 2025-11-18T17:23:46.553Z */
 /* Updated: 2025-11-18T15:34:49.852Z */
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
 
 @theme {
+  /* Font Family Definitions */
+  --font-display: "Manrope", sans-serif;
+  --font-body: "Manrope", sans-serif;
+  --font-instrument: "Instrument Serif", serif;
   /* Shadcn/UI colors - Dark Theme */
   --color-background: #000000;
   --color-foreground: #ffffff;

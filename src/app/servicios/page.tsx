@@ -79,8 +79,8 @@ export default function ServiciosPage() {
                         <span className="inline-block py-1 px-3 bg-black text-[#82ff1f] font-mono text-[10px] tracking-[0.3em] uppercase mb-10">
                             Sales Automation Ecosystem
                         </span>
-                        <h1 className="text-[clamp(3rem,8vw,6rem)] leading-[0.9] tracking-[-0.04em] font-extrabold mb-12">
-                            Automatiza todo tu proceso comercial con <span className="text-zinc-300">SAVIA™</span>
+                        <h1 className="font-display font-semibold text-[clamp(3rem,8vw,6rem)] leading-[0.9] tracking-tight mb-12 text-black">
+                            Automatiza todo tu proceso comercial con <span className="font-normal text-black">SALVIA™</span>
                         </h1>
                         <p className="text-2xl text-zinc-500 font-light max-w-2xl leading-relaxed mb-16">
                             Desplegamos infraestructuras de inteligencia artificial que gestionan desde la captura de demanda hasta el cierre técnico.
@@ -105,7 +105,7 @@ export default function ServiciosPage() {
                                 Elimina el caos.<br /><span className="text-[#82ff1f]">Estandariza el éxito.</span>
                             </h2>
                             <p className="text-xl text-zinc-400 font-light leading-relaxed mb-12">
-                                Las empresas pierden hasta el 60% de sus oportunidades por falta de seguimiento o procesos manuales lentos. SAVIA™ integra cada etapa del embudo en un organismo digital coherente.
+                                Las empresas pierden hasta el 60% de sus oportunidades por falta de seguimiento o procesos manuales lentos. SALVIA™ integra cada etapa del embudo en un organismo digital coherente.
                             </p>
                             <div className="space-y-6">
                                 <div className="flex items-center gap-6 p-6 rounded-2xl border border-white/10 hover:border-[#82ff1f]/50 transition-colors">
@@ -409,7 +409,7 @@ export default function ServiciosPage() {
                                 Transferencia <br />de Autonomía
                             </h2>
                             <p className="text-xl text-zinc-400 font-light mb-12">
-                                No instalamos software y nos vamos. Formamos a tu equipo comercial para que domine el Framework SAVIA™ y sea capaz de iterar el sistema de forma independiente.
+                                No instalamos software y nos vamos. Formamos a tu equipo comercial para que domine el Framework SALVIA™ y sea capaz de iterar el sistema de forma independiente.
                             </p>
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
                                 <div>
