@@ -186,10 +186,10 @@ export default function IndustriesPage() {
                                 <span className="text-[#80ff00] font-bold text-xs tracking-widest uppercase mb-4">Sector Médico</span>
                                 <h3 className="text-2xl lg:text-3xl font-bold mb-3 dark:text-white">SALVIA Clinics</h3>
                                 <p className="text-slate-500 dark:text-slate-400 mb-8 leading-relaxed">
-                                    Optimización de agenda y triaje inteligente basado en redes neuronales.
+                                    Sistema de captación, agenda y seguimiento automatizado para clínicas y centros de salud.
                                 </p>
                                 <ul className="space-y-4 mb-10 flex-grow">
-                                    {["Confirmación automática de citas por WhatsApp", "Triaje básico de síntomas antes de derivar", "Re-agendamiento proactivo de huecos", "Recordatorios de tratamiento post-consulta"].map((item, i) => (
+                                    {["Confirmación automática de citas por WhatsApp", "Filtro inicial según motivo de consulta", "Reagendamiento automático de huecos cancelados", "Recordatorios previos y seguimiento post-consulta", "Registro automático en CRM"].map((item, i) => (
                                         <li key={i} className="flex items-start gap-3">
                                             <CheckCircle className="text-[#80ff00] text-xl mt-0.5" />
                                             <span className="text-sm lg:text-base text-slate-600 dark:text-slate-300">{item}</span>
@@ -215,12 +215,12 @@ export default function IndustriesPage() {
                             </div>
                             <div className="p-8 lg:p-10 flex flex-col flex-grow">
                                 <span className="text-[#80ff00] font-bold text-xs tracking-widest uppercase mb-4">Real Estate</span>
-                                <h3 className="text-2xl lg:text-3xl font-bold mb-3 dark:text-white">SALVIA Estates</h3>
+                                <h3 className="text-2xl lg:text-3xl font-bold mb-3 dark:text-white">SALVIA Real Estate</h3>
                                 <p className="text-slate-500 dark:text-slate-400 mb-8 leading-relaxed">
-                                    Cualificación profunda y nutrición de leads automatizada de alta conversión.
+                                    Captación y cualificación automatizada de compradores y propietarios.
                                 </p>
                                 <ul className="space-y-4 mb-10 flex-grow">
-                                    {["Perfilado financiero avanzado del comprador", "Envío automático de fichas técnicas", "Seguimiento inteligente a 6, 12 y 18 meses", "Coordinación de visitas físicas sin fricción"].map((item, i) => (
+                                    {["Filtrado automático por presupuesto e intención", "Clasificación de leads por nivel de interés", "Seguimiento inteligente en el tiempo", "Coordinación automática de visitas", "Registro completo en CRM"].map((item, i) => (
                                         <li key={i} className="flex items-start gap-3">
                                             <CheckCircle className="text-[#80ff00] text-xl mt-0.5" />
                                             <span className="text-sm lg:text-base text-slate-600 dark:text-slate-300">{item}</span>
@@ -246,12 +246,12 @@ export default function IndustriesPage() {
                             </div>
                             <div className="p-8 lg:p-10 flex flex-col flex-grow">
                                 <span className="text-[#80ff00] font-bold text-xs tracking-widest uppercase mb-4">Educación</span>
-                                <h3 className="text-2xl lg:text-3xl font-bold mb-3 dark:text-white">SALVIA Edu</h3>
+                                <h3 className="text-2xl lg:text-3xl font-bold mb-3 dark:text-white">SALVIA Education</h3>
                                 <p className="text-slate-500 dark:text-slate-400 mb-8 leading-relaxed">
-                                    Inscripciones fluidas y gestión de admisiones 24/7 sin intervención humana.
+                                    Sistema de admisiones, seguimiento y reactivación automatizada.
                                 </p>
                                 <ul className="space-y-4 mb-10 flex-grow">
-                                    {["Resolución de dudas de planes de estudio", "Gestión documental dinámica para admisión", "Recordatorios de fechas de examen", "Campañas automáticas de re-inscripción"].map((item, i) => (
+                                    {["Respuesta inmediata a solicitudes de información", "Gestión automatizada de documentación", "Recordatorios de fechas clave", "Seguimiento estructurado hasta matrícula", "Reactivación de interesados inactivos"].map((item, i) => (
                                         <li key={i} className="flex items-start gap-3">
                                             <CheckCircle className="text-[#80ff00] text-xl mt-0.5" />
                                             <span className="text-sm lg:text-base text-slate-600 dark:text-slate-300">{item}</span>
@@ -271,18 +271,18 @@ export default function IndustriesPage() {
                                 <img
                                     alt="Professional technical detail"
                                     className="w-full h-full object-cover grayscale contrast-[1.1] transition-[filter] duration-500 group-hover:filter-none"
-                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8T1vAKAUkhAJnd4gXoo_c61DF3Xr3IFvKufF_2lZVb5p5gbkeww5IXVy2JkGNR1RmyvybPKAQBO7A8OJ1YsgRc198YvCErqtXsc64L1bvO6ejDUwrG7Q49g-DyI1TXMiGxmKVS03UJKsn4bHVzzetCu2_g-xgYxHcefzQn6kEVKHUk6PDpqQSQLNiZISfSAKO9MSWsNhtbuDOJASkjCgRRltlZOGrCSWSqbTN6G_mOY74Q3yaGB0msQFtVPP7wipKAZemTQrJUHCc"
+                                    src="https://images.unsplash.com/photo-1581092921461-eab62e97a780?q=80&w=2070&auto=format&fit=crop"
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-white/20 dark:from-slate-900/40 to-transparent"></div>
                             </div>
                             <div className="p-8 lg:p-10 flex flex-col flex-grow">
                                 <span className="text-[#80ff00] font-bold text-xs tracking-widest uppercase mb-4">Servicios</span>
-                                <h3 className="text-2xl lg:text-3xl font-bold mb-3 dark:text-white">SALVIA Home</h3>
+                                <h3 className="text-2xl lg:text-3xl font-bold mb-3 dark:text-white">SALVIA Technical Services</h3>
                                 <p className="text-slate-500 dark:text-slate-400 mb-8 leading-relaxed">
-                                    Velocidad de respuesta crítica y cotización instantánea de servicios técnicos.
+                                    Captación y gestión automatizada para servicios técnicos y operativos.
                                 </p>
                                 <ul className="space-y-4 mb-10 flex-grow">
-                                    {["Respuesta instantánea ante urgencias 24/7", "Cotizador paramétrico integrado por voz", "Geolocalización y despacho de técnicos", "Encuestas de satisfacción automáticas"].map((item, i) => (
+                                    {["Respuesta inmediata a solicitudes", "Filtro según urgencia", "Solicitud automática de información técnica", "Generación de presupuesto base", "Asignación y coordinación de técnicos"].map((item, i) => (
                                         <li key={i} className="flex items-start gap-3">
                                             <CheckCircle className="text-[#80ff00] text-xl mt-0.5" />
                                             <span className="text-sm lg:text-base text-slate-600 dark:text-slate-300">{item}</span>
@@ -290,7 +290,7 @@ export default function IndustriesPage() {
                                     ))}
                                 </ul>
                                 <Link href="#" className="inline-flex items-center text-sm font-bold group/link hover:text-[#80ff00] transition-colors mt-auto dark:text-white">
-                                    Ver sistema de servicios
+                                    Ver sistema para servicios técnicos
                                     <ArrowRight className="ml-2 w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
                                 </Link>
                             </div>
