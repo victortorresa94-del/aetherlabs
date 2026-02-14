@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'path';
+import { HubspotService } from '../integrations/HubspotService';
 
 export interface Lead {
     name?: string;
@@ -39,6 +40,20 @@ export class LeadsService {
             }
 
             console.log('Lead saved successfully to JSONL and CSV:', lead.email);
+
+            // HubSpot Integration
+            if (process.env.HUBSPOT_ACCESS_TOKEN) {
+                console.log('Syncing lead to HubSpot...');
+                await HubspotService.createContact({
+                    name: lead.name,
+                    email: lead.email,
+                    phone: lead.phone,
+                    company: lead.company,
+                    notes: lead.notes,
+                    source: lead.source
+                });
+            }
+
             return { success: true, lead };
         } catch (error) {
             console.error('Error saving lead:', error);

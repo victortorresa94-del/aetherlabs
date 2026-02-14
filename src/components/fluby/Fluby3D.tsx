@@ -5,7 +5,6 @@ import { Canvas, useFrame } from '@react-three/fiber';
 import {
     Float,
     Environment,
-    ContactShadows,
     MeshDistortMaterial,
     PointMaterial,
     Points
@@ -154,16 +153,8 @@ export const Fluby3D = ({ isCrystal = false, isHovered = false, onClick = () => 
                             <ParticleSystem isHovered={isHovered} />
                         </group>
                     </Float>
-                    <ContactShadows
-                        position={[0, -2, 0]}
-                        opacity={0.5}
-                        scale={6}
-                        blur={2}
-                        far={10}
-                        color="#1a3306"
-                    />
                 </React.Suspense>
             </Canvas>
-        </div>
+        </div >
     );
 };
