@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { ArrowLeft, Check, GraduationCap, Users, BookOpen, Clock, CalendarCheck } from 'lucide-react';
+import { ArrowLeft, Check, GraduationCap, Users, BookOpen, Clock, CalendarCheck, Clipboard } from 'lucide-react';
 import HeaderNavigation from '@/components/sections/header-navigation';
 import Footer from '@/components/sections/footer';
 
@@ -134,8 +134,3 @@ export default function CentroFormativoPage() {
         </main>
     );
 }
-
-// Fixed import for Clipboard which was not available in standard lucide set in previous attempt if any, using ClipboardList instead if Clipboard fails but Clipboard is standard.
-// Actually Lucide imports in React are usually tree-shakeable. 
-// Adding necessary imports to ensure no compilation errors.
-import { ClipboardList } from 'lucide-react';

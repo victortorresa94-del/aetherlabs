@@ -4,6 +4,7 @@ import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next";
 import JasonBot from "@/components/ui/jason-bot";
 import JasonWidget from "@/components/jason-widget";
+import { Fluby } from "@/components/fluby/Fluby";
 import type { Viewport } from "next";
 
 export const metadata: Metadata = {
@@ -78,6 +79,7 @@ export default function RootLayout({
         {children}
         <Analytics />
         <JasonWidget />
+        <Fluby />
         {/* <Script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript" strategy="afterInteractive" /> */}
         {/* @ts-ignore */}
         {/* <elevenlabs-convai agent-id="agent_7901k85nn7wyfynsqgs4qym0h48t"></elevenlabs-convai> */}
