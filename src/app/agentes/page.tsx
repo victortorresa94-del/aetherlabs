@@ -50,46 +50,26 @@ export default function AgentesPage() {
             <HeaderNavigation />
 
             {/* Section 1: Hero */}
-            <section className="relative pt-40 pb-24 overflow-hidden hero-pattern">
+            <section className="relative pt-40 pb-24 overflow-hidden bg-white">
                 <div className="max-w-7xl mx-auto px-6 relative z-10">
                     <div className="flex flex-col items-center text-center max-w-4xl mx-auto">
-                        <span className="px-4 py-1 rounded-full border border-[#7bff00]/30 bg-[#7bff00]/10 text-[#7bff00] text-xs font-bold tracking-[0.2em] uppercase mb-8">
+                        <span className="px-4 py-1 rounded-full border border-black/10 bg-black/5 text-black text-xs font-bold tracking-[0.2em] uppercase mb-8">
                             Directorio de Agentes Especializados
                         </span>
-                        <h1 className="text-6xl md:text-9xl font-display font-normal tracking-tight leading-[1.0] mb-8 uppercase">
-                            Agentes <span className="font-instrument italic lowercase">ia</span> <br />
-                            <span className="text-5xl md:text-7xl lowercase block mt-4">
-                                que convierten <span className="text-[#7bff00] font-instrument italic font-normal">conversaciones</span> en ventas.
+                        <h1 className="text-6xl md:text-9xl font-display font-normal tracking-tight leading-[1.0] mb-8 uppercase text-black">
+                            Agentes IA <br />
+                            <span className="text-5xl md:text-7xl lowercase block mt-4 text-zinc-800">
+                                que convierten <span className="text-[#7bff00] font-instrument italic font-normal relative -top-[1px]">conversaciones</span> en ventas.
                             </span>
                         </h1>
-                        <p className="text-xl text-zinc-400 font-light leading-relaxed mb-12 max-w-2xl">
+                        <p className="text-xl text-zinc-500 font-light leading-relaxed mb-12 max-w-2xl">
                             No son bots. Son perfiles entrenados para vender, atender y gestionar procesos comerciales dentro de tu empresa.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 w-full justify-center">
-                            <Link href="/contacto" className="bg-[#7bff00] text-black px-8 py-5 rounded-xl font-bold text-lg hover:scale-105 transition-transform flex items-center justify-center gap-2">
-                                Solicitar Diagnóstico Estratégico
-                                <TrendingUp className="w-5 h-5" />
+                            <Link href="/contacto" className="bg-black/95 text-white px-10 py-4 rounded-full font-medium text-lg hover:bg-black hover:scale-105 transition-all flex items-center justify-center gap-2 shadow-lg hover:shadow-xl">
+                                Crear mi agente IA
+                                <ArrowRight className="w-5 h-5" />
                             </Link>
-                            <Link href="/industrias" className="border border-white/20 hover:border-white/50 bg-white/5 text-white px-8 py-5 rounded-xl font-bold text-lg transition-all flex items-center justify-center gap-2">
-                                Ver cómo funciona SALVIA
-                                <PlayCircle className="w-5 h-5" />
-                            </Link>
-                        </div>
-                    </div>
-
-                    {/* Hero Visual: Minimalist System Grid */}
-                    <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-4 opacity-40">
-                        <div className="h-32 border border-[#1f1f1f] rounded-xl bg-[#0a0a0a] flex items-center justify-center">
-                            <span className="text-xs font-mono text-zinc-600">NODE_01_CAPTURE</span>
-                        </div>
-                        <div className="h-32 border border-[#7bff00]/20 rounded-xl bg-[#7bff00]/5 flex items-center justify-center">
-                            <span className="text-xs font-mono text-[#7bff00]">NODE_02_INTELLIGENCE</span>
-                        </div>
-                        <div className="h-32 border border-[#1f1f1f] rounded-xl bg-[#0a0a0a] flex items-center justify-center">
-                            <span className="text-xs font-mono text-zinc-600">NODE_03_CRM_SYNC</span>
-                        </div>
-                        <div className="h-32 border border-[#1f1f1f] rounded-xl bg-[#0a0a0a] flex items-center justify-center">
-                            <span className="text-xs font-mono text-zinc-600">NODE_04_CLOSING</span>
                         </div>
                     </div>
                 </div>
@@ -179,7 +159,7 @@ export default function AgentesPage() {
                                     <li className="flex items-start gap-3"><CheckCircle className="text-[#7bff00] w-5 h-5 flex-shrink-0" /> Agenda automáticamente.</li>
                                     <li className="flex items-start gap-3"><CheckCircle className="text-[#7bff00] w-5 h-5 flex-shrink-0" /> Reactiva pacientes inactivos.</li>
                                 </ul>
-                                <button className="w-full mt-8 py-3 border border-[#1f1f1f] rounded-lg font-bold hover:bg-white hover:text-black transition-all">Ver Perfil Técnico</button>
+                                <Link href="/agentes/laura" className="block w-full text-center mt-8 py-3 border border-[#1f1f1f] rounded-lg font-bold hover:bg-white hover:text-black transition-all">Ver Agente</Link>
                             </div>
                         </div>
 
@@ -205,7 +185,7 @@ export default function AgentesPage() {
                                     <li className="flex items-start gap-3"><CheckCircle className="text-[#7bff00] w-5 h-5 flex-shrink-0" /> Gestiona objeciones.</li>
                                     <li className="flex items-start gap-3"><CheckCircle className="text-[#7bff00] w-5 h-5 flex-shrink-0" /> Agenda con el comercial humano.</li>
                                 </ul>
-                                <button className="w-full mt-8 py-3 border border-[#1f1f1f] rounded-lg font-bold hover:bg-white hover:text-black transition-all">Ver Perfil Técnico</button>
+                                <Link href="/agentes/maria" className="block w-full text-center mt-8 py-3 border border-[#1f1f1f] rounded-lg font-bold hover:bg-white hover:text-black transition-all">Ver Agente</Link>
                             </div>
                         </div>
 
@@ -231,7 +211,7 @@ export default function AgentesPage() {
                                     <li className="flex items-start gap-3"><CheckCircle className="text-[#7bff00] w-5 h-5 flex-shrink-0" /> Prioriza leads calientes.</li>
                                     <li className="flex items-start gap-3"><CheckCircle className="text-[#7bff00] w-5 h-5 flex-shrink-0" /> Coordina visitas.</li>
                                 </ul>
-                                <button className="w-full mt-8 py-3 border border-[#1f1f1f] rounded-lg font-bold hover:bg-white hover:text-black transition-all">Ver Perfil Técnico</button>
+                                <Link href="/agentes/alvaro" className="block w-full text-center mt-8 py-3 border border-[#1f1f1f] rounded-lg font-bold hover:bg-white hover:text-black transition-all">Ver Agente</Link>
                             </div>
                         </div>
 
@@ -257,7 +237,7 @@ export default function AgentesPage() {
                                     <li className="flex items-start gap-3"><CheckCircle className="text-[#7bff00] w-5 h-5 flex-shrink-0" /> Genera presupuestos base.</li>
                                     <li className="flex items-start gap-3"><CheckCircle className="text-[#7bff00] w-5 h-5 flex-shrink-0" /> Agenda visitas técnicas.</li>
                                 </ul>
-                                <button className="w-full mt-8 py-3 border border-[#1f1f1f] rounded-lg font-bold hover:bg-white hover:text-black transition-all">Ver Perfil Técnico</button>
+                                <Link href="/agentes/diego" className="block w-full text-center mt-8 py-3 border border-[#1f1f1f] rounded-lg font-bold hover:bg-white hover:text-black transition-all">Ver Agente</Link>
                             </div>
                         </div>
 
@@ -283,7 +263,7 @@ export default function AgentesPage() {
                                     <li className="flex items-start gap-3"><CheckCircle className="text-[#7bff00] w-5 h-5 flex-shrink-0" /> Hace seguimiento automático.</li>
                                     <li className="flex items-start gap-3"><CheckCircle className="text-[#7bff00] w-5 h-5 flex-shrink-0" /> Mejora recurrencia.</li>
                                 </ul>
-                                <button className="w-full mt-8 py-3 border border-[#1f1f1f] rounded-lg font-bold hover:bg-white hover:text-black transition-all">Ver Perfil Técnico</button>
+                                <Link href="/agentes/daniela" className="block w-full text-center mt-8 py-3 border border-[#1f1f1f] rounded-lg font-bold hover:bg-white hover:text-black transition-all">Ver Agente</Link>
                             </div>
                         </div>
 
@@ -309,7 +289,7 @@ export default function AgentesPage() {
                                     <li className="flex items-start gap-3"><CheckCircle className="text-[#7bff00] w-5 h-5 flex-shrink-0" /> Reduce carga administrativa.</li>
                                     <li className="flex items-start gap-3"><CheckCircle className="text-[#7bff00] w-5 h-5 flex-shrink-0" /> Ordena procesos internos.</li>
                                 </ul>
-                                <button className="w-full mt-8 py-3 border border-[#1f1f1f] rounded-lg font-medium hover:bg-white hover:text-black transition-all">Ver Perfil Técnico</button>
+                                <Link href="/agentes/clara" className="block w-full text-center mt-8 py-3 border border-[#1f1f1f] rounded-lg font-medium hover:bg-white hover:text-black transition-all">Ver Agente</Link>
                             </div>
                         </div>
                     </div>

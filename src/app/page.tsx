@@ -26,13 +26,13 @@ export default function Home() {
       <ProblemSection />
       <SolutionSection />
       <RealitySection />
+      {/* 3. "1/3 de ventas se pierden" (LossBanner) - Moved below Reality ("Datos que duelen") */}
+      <LossBanner />
       <AgentsIntro />
       <AgentsSection />
       <AgentsLabBanner />
       <ProcessSection />
       <DataImpactSection />
-      {/* 3. "1/3 de ventas se pierden" (LossBanner) - Moved here per request */}
-      <LossBanner />
       <IntegrationsSection />
       <CTASection />
 

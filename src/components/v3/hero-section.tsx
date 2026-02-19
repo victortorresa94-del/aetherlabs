@@ -5,7 +5,7 @@ import Link from 'next/link';
 import Image from "next/image"; // Converting to next/image where possible for optimization
 import { ArrowRight, Play } from "lucide-react";
 import WordRotate from "@/components/ui/word-rotate";
-import LightPillar from "@/components/v3/visuals/LightPillar";
+
 
 // Hero Animation replaced by video
 
@@ -13,30 +13,7 @@ const HeroSection = () => {
     return (
         <section className="relative w-full min-h-[115dvh] flex flex-col items-center justify-center bg-black py-24 md:py-40">
 
-            {/* Background Light Effect - Extended with natural flow */}
-            <div className="absolute top-0 z-0 pointer-events-none opacity-50 block"
-                style={{
-                    height: '160%',
-                    width: '140%',
-                    left: '-20%',
-                    maskImage: 'linear-gradient(to bottom, black 50%, transparent 100%)',
-                    WebkitMaskImage: 'linear-gradient(to bottom, black 50%, transparent 100%)'
-                }}>
-                <LightPillar
-                    topColor="#82ff1f"
-                    bottomColor="#1a3306"
-                    intensity={1.2}
-                    rotationSpeed={0.2}
-                    glowAmount={0.005}
-                    pillarWidth={4}
-                    pillarHeight={0.6}
-                    noiseIntensity={0.4}
-                    pillarRotation={55}
-                    interactive={false}
-                    mixBlendMode="screen"
-                    quality="high"
-                />
-            </div>
+
 
             {/* Bottom Gradient Removed */}
 

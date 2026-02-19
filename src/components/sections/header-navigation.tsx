@@ -297,7 +297,7 @@ const HeaderNavigation = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${isScrolled || isMobileMenuOpen || isAgentsLab || pathname === '/servicios' || pathname === '/industrias' || pathname?.includes('/salvia-') ? "bg-black/90 backdrop-blur-sm shadow-md" : "bg-transparent"
+      className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${isScrolled || isMobileMenuOpen || isAgentsLab || pathname === '/servicios' || pathname === '/industrias' || pathname === '/agentes' || pathname?.includes('/salvia-') ? "bg-black/90 backdrop-blur-sm shadow-md" : "bg-transparent"
         }`}
     >
       <div className="container h-[90px] flex items-center justify-between">
