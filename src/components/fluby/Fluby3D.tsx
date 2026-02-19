@@ -1,5 +1,6 @@
 'use client';
 
+
 import React, { useRef, useMemo, useState, useEffect } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import {
@@ -7,7 +8,8 @@ import {
     Environment,
     MeshDistortMaterial,
     PointMaterial,
-    Points
+    Points,
+    useGLTF
 } from '@react-three/drei';
 import * as THREE from 'three';
 
@@ -40,6 +42,7 @@ const FlubyEyes = ({ isHovered = false }) => {
     );
 };
 
+// Original Flubby Design (Green Ball) - Preserved
 const FlubyBody = ({ isCrystal = false, isHovered = false }) => {
     const meshRef = useRef<THREE.Mesh>(null);
     const mouse = useRef({ x: 0, y: 0 });
@@ -93,6 +96,50 @@ const FlubyBody = ({ isCrystal = false, isHovered = false }) => {
     );
 };
 
+// New Weebo Design (3D Model)
+const WeeboModel = ({ isHovered = false }) => {
+    const groupRef = useRef<THREE.Group>(null);
+    const { scene } = useGLTF('/weebo-3d.glb');
+    const mouse = useRef({ x: 0, y: 0 });
+
+    useEffect(() => {
+        const handleMouseMove = (e: MouseEvent) => {
+            mouse.current = {
+                x: (e.clientX / window.innerWidth) * 2 - 1,
+                y: -(e.clientY / window.innerHeight) * 2 + 1
+            };
+        };
+        window.addEventListener('mousemove', handleMouseMove);
+        return () => window.removeEventListener('mousemove', handleMouseMove);
+    }, []);
+
+    useFrame((state) => {
+        if (groupRef.current) {
+            const time = state.clock.getElapsedTime();
+
+            // Interaction: Rotate slightly towards mouse
+            const hoverFactor = isHovered ? 1.0 : 0.3;
+            // Adjust rotation intensity as needed for the model
+            const targetRotY = mouse.current.x * 0.5 * hoverFactor;
+            const targetRotX = -mouse.current.y * 0.3 * hoverFactor;
+
+            groupRef.current.rotation.y = THREE.MathUtils.lerp(groupRef.current.rotation.y, targetRotY, 0.08);
+            groupRef.current.rotation.x = THREE.MathUtils.lerp(groupRef.current.rotation.x, targetRotX, 0.08);
+
+            // Breathing effect (scale)
+            const baseScale = 2.0; // Adjust base scale if model is too small/big
+            const s = (isHovered ? baseScale * 1.1 : baseScale) + Math.sin(time * 2) * 0.05;
+            groupRef.current.scale.set(s, s, s);
+        }
+    });
+
+    return (
+        <group ref={groupRef} position={[0, -0.5, 0]}> {/* Adjusted position to center it */}
+            <primitive object={scene} />
+        </group>
+    );
+}
+
 const ParticleSystem = ({ isHovered = false }) => {
     const pointsRef = useRef<THREE.Points>(null);
     const count = 150;
@@ -132,6 +179,31 @@ const ParticleSystem = ({ isHovered = false }) => {
     );
 };
 
+
+// Error Boundary to handle missing or broken 3D models gracefully
+class ModelErrorBoundary extends React.Component<{ fallback: React.ReactNode, children: React.ReactNode }, { hasError: boolean }> {
+    constructor(props: any) {
+        super(props);
+        this.state = { hasError: false };
+    }
+
+    static getDerivedStateFromError(error: any) {
+        return { hasError: true };
+    }
+
+    componentDidCatch(error: any, errorInfo: any) {
+        console.error("3D Model failed to load:", error, errorInfo);
+    }
+
+    render() {
+        if (this.state.hasError) {
+            return this.props.fallback;
+        }
+
+        return this.props.children;
+    }
+}
+
 export const Fluby3D = ({ isCrystal = false, isHovered = false, onClick = () => { } }) => {
     return (
         <div className="w-full h-full pointer-events-auto">
@@ -149,7 +221,9 @@ export const Fluby3D = ({ isCrystal = false, isHovered = false, onClick = () => 
                     <Environment preset="night" />
                     <Float speed={3} rotationIntensity={0.6} floatIntensity={0.6}>
                         <group onClick={(e) => { e.stopPropagation(); onClick(); }}>
-                            <FlubyBody isCrystal={isCrystal} isHovered={isHovered} />
+                            <ModelErrorBoundary fallback={<FlubyBody isCrystal={isCrystal} isHovered={isHovered} />}>
+                                <WeeboModel isHovered={isHovered} />
+                            </ModelErrorBoundary>
                             <ParticleSystem isHovered={isHovered} />
                         </group>
                     </Float>
