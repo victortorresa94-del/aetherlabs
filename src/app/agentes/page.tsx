@@ -1,77 +1,226 @@
 "use client";
 
-import React from "react";
+import React, { useRef } from "react";
 import HeaderNavigation from "@/components/sections/header-navigation";
 import Footer from "@/components/sections/footer";
 import {
     TrendingUp,
-    PlayCircle,
     Target,
-    Badge,
     Share2,
     Zap,
     CheckCircle,
     ArrowRight,
-    MessageSquare,
     Database,
-    Check,
-    BrainCircuit
+    BrainCircuit,
 } from "lucide-react";
 import SalviaEcosystem from "@/components/v3/salvia-ecosystem";
 import Link from "next/link";
+import { motion, useAnimationFrame } from "framer-motion";
+
+// ─── Aurora Canvas ─────────────────────────────────────────────────────────────
+function AuroraCanvas() {
+    const canvasRef = useRef<HTMLCanvasElement>(null);
+    const t = useRef(0);
+
+    useAnimationFrame(() => {
+        const canvas = canvasRef.current;
+        if (!canvas) return;
+        const ctx = canvas.getContext("2d");
+        if (!ctx) return;
+        canvas.width = canvas.offsetWidth;
+        canvas.height = canvas.offsetHeight;
+        t.current += 0.0025;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        const draw = (
+            cx: number, cy: number, rx: number, ry: number,
+            c1: string, c2: string, phase: number
+        ) => {
+            const x = cx + Math.sin(t.current + phase) * rx * 0.3;
+            const y = cy + Math.cos(t.current * 0.7 + phase) * ry * 0.22;
+            const g = ctx.createRadialGradient(x, y, 0, x, y, Math.max(rx, ry));
+            g.addColorStop(0, c1);
+            g.addColorStop(1, c2);
+            ctx.globalCompositeOperation = "screen";
+            ctx.beginPath();
+            ctx.ellipse(x, y, rx, ry, t.current * 0.08, 0, Math.PI * 2);
+            ctx.fillStyle = g;
+            ctx.fill();
+        };
+
+        const w = canvas.width, h = canvas.height;
+        draw(w * 0.2, h * 0.35, w * 0.4, h * 0.5, "rgba(110,40,240,0.16)", "rgba(0,0,0,0)", 0);
+        draw(w * 0.75, h * 0.3, w * 0.35, h * 0.48, "rgba(0,160,255,0.11)", "rgba(0,0,0,0)", 2.1);
+        draw(w * 0.5, h * 0.65, w * 0.48, h * 0.42, "rgba(170,30,210,0.08)", "rgba(0,0,0,0)", 4.2);
+        draw(w * 0.88, h * 0.55, w * 0.26, h * 0.36, "rgba(0,210,170,0.06)", "rgba(0,0,0,0)", 3.3);
+    });
+
+    return (
+        <canvas
+            ref={canvasRef}
+            className="absolute inset-0 w-full h-full pointer-events-none"
+            style={{ mixBlendMode: "screen" }}
+        />
+    );
+}
+
+// ─── Particles ─────────────────────────────────────────────────────────────────
+const PARTICLES = Array.from({ length: 20 }, (_, i) => ({
+    id: i,
+    x: Math.random() * 100,
+    y: Math.random() * 100,
+    size: Math.random() * 1.4 + 0.4,
+    dur: 9 + Math.random() * 13,
+    delay: Math.random() * 9,
+    dx: (Math.random() - 0.5) * 5,
+    dy: -(4 + Math.random() * 7),
+    opacity: 0.12 + Math.random() * 0.28,
+}));
 
 export default function AgentesPage() {
     return (
         <main className="bg-[#050505] text-white font-sans antialiased selection:bg-[#7bff00] selection:text-black min-h-screen overflow-x-hidden">
-            {/* Styles from the provided HTML */}
             <style dangerouslySetInnerHTML={{
                 __html: `
-                .obsidian-gradient {
-                    background: linear-gradient(180deg, #050505 0%, #0a0a0a 100%);
-                }
-                .hero-pattern {
-                    background-image: radial-gradient(circle at 2px 2px, #1f1f1f 1px, transparent 0);
-                    background-size: 40px 40px;
-                }
-                .glow-subtle {
-                    box-shadow: 0 0 20px rgba(123, 255, 0, 0.05);
-                }
-                .agent-card {
-                    transition: all 0.3s ease;
-                    background-color: #0a0a0a;
-                    border: 1px solid #1f1f1f;
-                }
-                .agent-card:hover {
-                    border-color: #7bff00;
-                    box-shadow: 0 0 40px rgba(123, 255, 0, 0.1);
-                }
+                .agent-card { transition: all 0.3s ease; background-color: #0a0a0a; border: 1px solid #1f1f1f; }
+                .agent-card:hover { border-color: #7bff00; box-shadow: 0 0 40px rgba(123,255,0,0.1); }
             `}} />
 
             <HeaderNavigation />
 
-            {/* Section 1: Hero */}
-            <section className="relative pt-40 pb-24 overflow-hidden bg-white">
-                <div className="max-w-7xl mx-auto px-6 relative z-10">
-                    <div className="flex flex-col items-center text-center max-w-4xl mx-auto">
-                        <span className="px-4 py-1 rounded-full border border-black/10 bg-black/5 text-black text-xs font-bold tracking-[0.2em] uppercase mb-8">
-                            Directorio de Agentes Especializados
+            {/* ── HERO ── */}
+            <section className="relative min-h-[115dvh] flex items-center justify-center bg-black overflow-hidden pt-32 pb-20 px-6">
+
+                {/* Grid */}
+                <div className="absolute inset-0 pointer-events-none" style={{
+                    backgroundImage: `linear-gradient(to right,rgba(255,255,255,0.028) 1px,transparent 1px),linear-gradient(to bottom,rgba(255,255,255,0.028) 1px,transparent 1px)`,
+                    backgroundSize: "80px 80px",
+                    maskImage: "radial-gradient(ellipse 85% 70% at 50% 40%, black 0%, transparent 100%)",
+                }} />
+
+                {/* Aurora */}
+                <AuroraCanvas />
+
+                {/* Glows */}
+                <motion.div
+                    className="absolute rounded-full pointer-events-none"
+                    style={{
+                        width: "65vw", height: "50vh", top: "5%", left: "50%", translateX: "-50%",
+                        background: "radial-gradient(ellipse at center,rgba(110,40,255,0.13) 0%,transparent 70%)",
+                        filter: "blur(50px)",
+                    }}
+                    animate={{ scale: [1, 1.07, 1], opacity: [0.7, 1, 0.7] }}
+                    transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+                />
+                <motion.div
+                    className="absolute rounded-full pointer-events-none"
+                    style={{
+                        width: "40vw", height: "30vh", top: "10%", left: "65%",
+                        background: "radial-gradient(ellipse at center,rgba(0,150,255,0.07) 0%,transparent 70%)",
+                        filter: "blur(60px)",
+                    }}
+                    animate={{ scale: [1, 1.1, 1], opacity: [0.5, 0.8, 0.5] }}
+                    transition={{ duration: 13, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+                />
+
+                {/* Particles */}
+                <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                    {PARTICLES.map((p) => (
+                        <motion.div
+                            key={p.id}
+                            className="absolute rounded-full bg-white"
+                            style={{ left: `${p.x}%`, top: `${p.y}%`, width: p.size, height: p.size, opacity: p.opacity }}
+                            animate={{
+                                x: [0, p.dx, -p.dx * 0.5, 0],
+                                y: [0, p.dy, p.dy * 1.5, p.dy * 0.3, 0],
+                                opacity: [p.opacity, p.opacity * 1.4, 0, 0, p.opacity],
+                            }}
+                            transition={{ duration: p.dur, delay: p.delay, repeat: Infinity, ease: "easeInOut" }}
+                        />
+                    ))}
+                </div>
+
+                {/* Noise */}
+                <div className="absolute inset-0 pointer-events-none opacity-[0.03]" style={{
+                    backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`,
+                    backgroundRepeat: "repeat", backgroundSize: "200px 200px",
+                }} />
+
+                {/* Bottom fade into next section */}
+                <div className="absolute bottom-0 left-0 right-0 h-40 pointer-events-none"
+                    style={{ background: "linear-gradient(to top,#050505 0%,transparent 100%)" }} />
+
+                {/* Vignette */}
+                <div className="absolute inset-0 pointer-events-none"
+                    style={{ background: "radial-gradient(ellipse 120% 100% at 50% 0%,transparent 40%,rgba(0,0,0,0.55) 100%)" }} />
+
+                {/* Content */}
+                <div className="relative z-10 w-full max-w-5xl mx-auto flex flex-col items-center text-center gap-8">
+
+                    <motion.div
+                        initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}
+                        className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm"
+                    >
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#7bff00] animate-pulse" />
+                        <span className="text-xs font-medium uppercase tracking-widest text-zinc-400">Directorio de Agentes Especializados</span>
+                    </motion.div>
+
+                    <motion.h1
+                        initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.1 }}
+                        className="font-display font-normal text-5xl md:text-7xl lg:text-8xl tracking-tight leading-[1.1] text-white"
+                    >
+                        <span className="font-bold">Agentes IA</span>
+                        <br />
+                        que convierten{" "}
+                        <span
+                            className="font-instrument italic font-normal"
+                            style={{
+                                background: "linear-gradient(135deg,#ffffff 0%,rgba(123,255,0,0.85) 55%,rgba(0,180,255,0.8) 100%)",
+                                WebkitBackgroundClip: "text",
+                                WebkitTextFillColor: "transparent",
+                                backgroundClip: "text",
+                            }}
+                        >
+                            conversaciones
                         </span>
-                        <h1 className="text-6xl md:text-9xl font-display font-normal tracking-tight leading-[1.0] mb-8 uppercase text-black">
-                            Agentes IA <br />
-                            <span className="text-5xl md:text-7xl lowercase block mt-4 text-zinc-800">
-                                que convierten <span className="text-[#7bff00] font-instrument italic font-normal relative -top-[1px]">conversaciones</span> en ventas.
-                            </span>
-                        </h1>
-                        <p className="text-xl text-zinc-500 font-light leading-relaxed mb-12 max-w-2xl">
-                            No son bots. Son perfiles entrenados para vender, atender y gestionar procesos comerciales dentro de tu empresa.
-                        </p>
-                        <div className="flex flex-col sm:flex-row gap-4 w-full justify-center">
-                            <Link href="/contacto" className="bg-black/95 text-white px-10 py-4 rounded-full font-medium text-lg hover:bg-black hover:scale-105 transition-all flex items-center justify-center gap-2 shadow-lg hover:shadow-xl">
-                                Crear mi agente IA
-                                <ArrowRight className="w-5 h-5" />
-                            </Link>
-                        </div>
-                    </div>
+                        {" "}en ventas.
+                    </motion.h1>
+
+                    <motion.p
+                        initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.22 }}
+                        className="font-light text-lg md:text-xl text-zinc-400 max-w-2xl leading-relaxed"
+                    >
+                        No son bots. Son perfiles entrenados para vender, atender y gestionar procesos comerciales dentro de tu empresa.
+                    </motion.p>
+
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.34 }}
+                    >
+                        <Link
+                            href="/contacto"
+                            className="group flex items-center gap-2 px-8 py-4 bg-white text-black rounded-full font-medium text-base hover:scale-105 active:scale-95 transition-transform"
+                        >
+                            Crear mi agente IA
+                            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                        </Link>
+                    </motion.div>
+
+                    {/* Stat pills */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.46 }}
+                        className="flex flex-wrap justify-center gap-3 pt-4"
+                    >
+                        {[
+                            ["6", "Perfiles especializados"],
+                            ["24/7", "Disponibilidad total"],
+                            ["+50", "Empresas activas"],
+                        ].map(([val, label]) => (
+                            <div key={label} className="flex items-center gap-2 px-4 py-2 rounded-full border border-white/[0.08] bg-white/[0.04] backdrop-blur-sm">
+                                <span className="text-sm font-bold text-white">{val}</span>
+                                <span className="text-xs text-zinc-500">{label}</span>
+                            </div>
+                        ))}
+                    </motion.div>
                 </div>
             </section>
 
@@ -124,7 +273,7 @@ export default function AgentesPage() {
                 </div>
             </section>
 
-            {/* Section 3: Directory - NUESTROS AGENTES */}
+            {/* Section 3: Directory */}
             <section className="py-32 bg-[#050505]">
                 <div className="max-w-7xl mx-auto px-6">
                     <div className="flex justify-between items-end mb-16">
@@ -137,14 +286,10 @@ export default function AgentesPage() {
                         </div>
                     </div>
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {/* Agent Card 1: Laura */}
+                        {/* Laura */}
                         <div className="agent-card group rounded-xl overflow-hidden flex flex-col">
                             <div className="relative h-[400px] bg-zinc-800">
-                                <img
-                                    className="w-full h-full object-cover grayscale brightness-90 group-hover:grayscale-0 transition-all duration-700"
-                                    alt="Laura - Atención & Citas"
-                                    src="/images/agentes/Laura.png"
-                                />
+                                <img className="w-full h-full object-cover grayscale brightness-90 group-hover:grayscale-0 transition-all duration-700" alt="Laura - Atención & Citas" src="/images/agentes/Laura.png" />
                                 <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
                                 <div className="absolute bottom-6 left-6">
                                     <h3 className="text-3xl font-bold leading-tight uppercase">Laura</h3>
@@ -163,14 +308,10 @@ export default function AgentesPage() {
                             </div>
                         </div>
 
-                        {/* Agent Card 2: María */}
+                        {/* María */}
                         <div className="agent-card group rounded-xl overflow-hidden flex flex-col">
                             <div className="relative h-[400px] bg-zinc-800">
-                                <img
-                                    className="w-full h-full object-cover grayscale brightness-90 group-hover:grayscale-0 transition-all duration-700"
-                                    alt="María - Ventas Directas"
-                                    src="/images/agentes/Maria.png"
-                                />
+                                <img className="w-full h-full object-cover grayscale brightness-90 group-hover:grayscale-0 transition-all duration-700" alt="María - Ventas Directas" src="/images/agentes/Maria.png" />
                                 <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
                                 <div className="absolute bottom-6 left-6">
                                     <h3 className="text-3xl font-bold leading-tight uppercase">María</h3>
@@ -189,14 +330,10 @@ export default function AgentesPage() {
                             </div>
                         </div>
 
-                        {/* Agent Card 3: Álvaro */}
+                        {/* Álvaro */}
                         <div className="agent-card group rounded-xl overflow-hidden flex flex-col">
                             <div className="relative h-[400px] bg-zinc-800">
-                                <img
-                                    className="w-full h-full object-cover grayscale brightness-90 group-hover:grayscale-0 transition-all duration-700"
-                                    alt="Álvaro - Inmobiliaria"
-                                    src="/images/agentes/Álvaro.png"
-                                />
+                                <img className="w-full h-full object-cover grayscale brightness-90 group-hover:grayscale-0 transition-all duration-700" alt="Álvaro - Inmobiliaria" src="/images/agentes/Álvaro.png" />
                                 <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
                                 <div className="absolute bottom-6 left-6">
                                     <h3 className="text-3xl font-bold leading-tight uppercase">Álvaro</h3>
@@ -215,14 +352,10 @@ export default function AgentesPage() {
                             </div>
                         </div>
 
-                        {/* Agent Card 4: Diego */}
+                        {/* Diego */}
                         <div className="agent-card group rounded-xl overflow-hidden flex flex-col">
                             <div className="relative h-[400px] bg-zinc-800">
-                                <img
-                                    className="w-full h-full object-cover grayscale brightness-90 group-hover:grayscale-0 transition-all duration-700"
-                                    alt="Diego - Técnico-Comercial"
-                                    src="/images/agentes/Diego.png"
-                                />
+                                <img className="w-full h-full object-cover grayscale brightness-90 group-hover:grayscale-0 transition-all duration-700" alt="Diego - Técnico-Comercial" src="/images/agentes/Diego.png" />
                                 <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
                                 <div className="absolute bottom-6 left-6">
                                     <h3 className="text-3xl font-bold leading-tight uppercase">Diego</h3>
@@ -241,14 +374,10 @@ export default function AgentesPage() {
                             </div>
                         </div>
 
-                        {/* Agent Card 5: Daniela */}
+                        {/* Daniela */}
                         <div className="agent-card group rounded-xl overflow-hidden flex flex-col">
                             <div className="relative h-[400px] bg-zinc-800">
-                                <img
-                                    className="w-full h-full object-cover grayscale brightness-90 group-hover:grayscale-0 transition-all duration-700"
-                                    alt="Daniela - Retención & Reactivación"
-                                    src="/images/agentes/Latina.png"
-                                />
+                                <img className="w-full h-full object-cover grayscale brightness-90 group-hover:grayscale-0 transition-all duration-700" alt="Daniela - Retención & Reactivación" src="/images/agentes/Latina.png" />
                                 <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
                                 <div className="absolute bottom-6 left-6">
                                     <h3 className="text-3xl font-bold leading-tight uppercase">Daniela</h3>
@@ -267,14 +396,10 @@ export default function AgentesPage() {
                             </div>
                         </div>
 
-                        {/* Agent Card 6: Clara */}
+                        {/* Clara */}
                         <div className="agent-card group rounded-xl overflow-hidden flex flex-col">
                             <div className="relative h-[400px] bg-zinc-800">
-                                <img
-                                    className="w-full h-full object-cover grayscale brightness-90 group-hover:grayscale-0 transition-all duration-700"
-                                    alt="Clara - Soporte Operativo"
-                                    src="/images/agentes/Clara.png"
-                                />
+                                <img className="w-full h-full object-cover grayscale brightness-90 group-hover:grayscale-0 transition-all duration-700" alt="Clara - Soporte Operativo" src="/images/agentes/Clara.png" />
                                 <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
                                 <div className="absolute bottom-6 left-6">
                                     <h3 className="text-3xl font-medium leading-tight uppercase">Clara</h3>
@@ -332,7 +457,7 @@ export default function AgentesPage() {
                 </div>
             </section>
 
-            {/* Section 5: Comparison - CHATBOT VS AGENTE */}
+            {/* Section 5: Comparison */}
             <section className="py-32 bg-white text-black border-y border-zinc-100">
                 <div className="max-w-5xl mx-auto px-6">
                     <h2 className="text-5xl font-display font-semibold mb-16 text-center tracking-tight uppercase leading-[1.05]">Arquitectura:<br /><span className="text-zinc-300">Chatbot vs Agente SALVIA</span></h2>
@@ -346,53 +471,30 @@ export default function AgentesPage() {
                                 </tr>
                             </thead>
                             <tbody className="divide-y divide-zinc-100">
-                                <tr className="hover:bg-zinc-50/50 transition-colors">
-                                    <td className="py-8 px-8 font-bold text-sm uppercase tracking-tight">Contexto y Memoria</td>
-                                    <td className="py-8 px-8 text-center text-zinc-500 text-sm italic">Respuestas rígidas y flujos cerrados</td>
-                                    <td className="py-8 px-8 text-center font-bold text-black text-sm">
-                                        <div className="flex items-center justify-center gap-2">
-                                            <Zap className="text-[#7bff00] w-4 h-4" />
-                                            Contexto dinámico y memoria real
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr className="hover:bg-zinc-50/50 transition-colors">
-                                    <td className="py-8 px-8 font-bold text-sm uppercase tracking-tight">Objetivos de Negocio</td>
-                                    <td className="py-8 px-8 text-center text-zinc-500 text-sm italic">Sin contexto real de venta</td>
-                                    <td className="py-8 px-8 text-center font-bold text-black text-sm">
-                                        <div className="flex items-center justify-center gap-2">
-                                            <Zap className="text-[#7bff00] w-4 h-4" />
-                                            Objetivo comercial y cierre
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr className="hover:bg-zinc-50/50 transition-colors">
-                                    <td className="py-8 px-8 font-bold text-sm uppercase tracking-tight">Tecnología e Integración</td>
-                                    <td className="py-8 px-8 text-center text-zinc-500 text-sm italic">Sin conexión real al pipeline</td>
-                                    <td className="py-8 px-8 text-center font-bold text-black text-sm">
-                                        <div className="flex items-center justify-center gap-2">
-                                            <Zap className="text-[#7bff00] w-4 h-4" />
-                                            Integrado con CRM (HubSpot/Salesforce)
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr className="hover:bg-zinc-50/50 transition-colors">
-                                    <td className="py-8 px-8 font-bold text-sm uppercase tracking-tight">Propósito Principal</td>
-                                    <td className="py-8 px-8 text-center text-zinc-500 text-sm italic">Atención básica pasiva</td>
-                                    <td className="py-8 px-8 text-center font-bold text-black text-sm">
-                                        <div className="flex items-center justify-center gap-2">
-                                            <Zap className="text-[#7bff00] w-4 h-4" />
-                                            Pensado para vender y convertir
-                                        </div>
-                                    </td>
-                                </tr>
+                                {[
+                                    ["Contexto y Memoria", "Respuestas rígidas y flujos cerrados", "Contexto dinámico y memoria real"],
+                                    ["Objetivos de Negocio", "Sin contexto real de venta", "Objetivo comercial y cierre"],
+                                    ["Tecnología e Integración", "Sin conexión real al pipeline", "Integrado con CRM (HubSpot/Salesforce)"],
+                                    ["Propósito Principal", "Atención básica pasiva", "Pensado para vender y convertir"],
+                                ].map(([cap, bad, good]) => (
+                                    <tr key={cap} className="hover:bg-zinc-50/50 transition-colors">
+                                        <td className="py-8 px-8 font-bold text-sm uppercase tracking-tight">{cap}</td>
+                                        <td className="py-8 px-8 text-center text-zinc-500 text-sm italic">{bad}</td>
+                                        <td className="py-8 px-8 text-center font-bold text-black text-sm">
+                                            <div className="flex items-center justify-center gap-2">
+                                                <Zap className="text-[#7bff00] w-4 h-4" />
+                                                {good}
+                                            </div>
+                                        </td>
+                                    </tr>
+                                ))}
                             </tbody>
                         </table>
                     </div>
                 </div>
             </section>
 
-            {/* Section 6: Integration in SALVIA */}
+            {/* Section 6: Ecosystem */}
             <SalviaEcosystem variant="dark" />
 
             <Footer />

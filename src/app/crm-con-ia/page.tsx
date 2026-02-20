@@ -13,13 +13,13 @@ import {
     Users,
     CheckCircle2,
     TrendingUp,
-    PlayCircle,
     ArrowRight,
     Search,
     BrainCircuit,
     Database,
     Network
 } from "lucide-react";
+import { ServiceHero } from "@/components/v3/service-hero";
 
 export default function CRMPage() {
     return (
@@ -27,96 +27,14 @@ export default function CRMPage() {
             <HeaderNavigation />
 
             {/* 1. HERO */}
-            <section className="relative pt-40 pb-24 overflow-hidden">
-                {/* Background Elements */}
-                <div className="absolute top-0 left-0 w-full h-full z-0 opacity-20 pointer-events-none">
-                    <div className="absolute top-[20%] right-[10%] w-[500px] h-[500px] bg-[#7bff00]/10 rounded-full blur-[120px]"></div>
-                </div>
-
-                <div className="max-w-7xl mx-auto px-6 relative z-10">
-                    <div className="grid lg:grid-cols-2 gap-16 items-center">
-                        <div className="flex flex-col items-start text-left">
-                            <span className="px-4 py-1 rounded-full border border-[#7bff00]/30 bg-[#7bff00]/10 text-[#7bff00] text-xs font-bold tracking-[0.2em] uppercase mb-8">
-                                Sistema de Gestión Inteligente
-                            </span>
-                            <h1 className="text-6xl md:text-7xl font-display font-normal tracking-tight leading-[1.05] mb-8">
-                                CRM con <span className="font-instrument italic">IA</span> <br />
-                                <span className="text-zinc-400 font-instrument italic font-normal text-4xl md:text-5xl block mt-4 tracking-tight">El cerebro de tu sistema comercial.</span>
-                            </h1>
-                            <p className="text-xl text-zinc-400 font-light leading-relaxed mb-8 max-w-xl">
-                                Centraliza conversaciones, organiza oportunidades y automatiza el seguimiento en un solo lugar.
-                            </p>
-                            <p className="text-md text-zinc-500 mb-10 max-w-lg border-l-2 border-[#7bff00] pl-4">
-                                Sin control del pipeline, no hay sistema.<br />
-                                El CRM es donde todo se ordena y escala.
-                            </p>
-
-                            <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-                                <Link href="/contacto" className="bg-[#7bff00] text-black px-8 py-4 rounded-xl font-bold text-lg hover:scale-105 transition-transform flex items-center justify-center gap-2">
-                                    Solicitar Diagnóstico
-                                    <TrendingUp className="w-5 h-5" />
-                                </Link>
-                                <Link href="/industrias" className="border border-zinc-800 hover:border-zinc-700 bg-zinc-900/50 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all flex items-center justify-center gap-2">
-                                    Ver cómo funciona SALVIA
-                                    <PlayCircle className="w-5 h-5" />
-                                </Link>
-                            </div>
-                        </div>
-
-                        {/* Visual abstract architecture */}
-                        <div className="relative h-[500px] w-full border border-[#1f1f1f] bg-[#0a0a0a] rounded-2xl p-8 flex items-center justify-center overflow-hidden group">
-                            {/* Grid Background */}
-                            <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:40px_40px]"></div>
-
-                            {/* Diagram Container */}
-                            <div className="relative z-10 w-full max-w-md aspect-square flex flex-col justify-between py-8">
-                                {/* Top Nodes */}
-                                <div className="flex justify-between px-8">
-                                    <div className="w-12 h-12 rounded-lg border border-[#7bff00]/30 bg-[#7bff00]/5 flex items-center justify-center">
-                                        <MessageSquare className="w-5 h-5 text-[#7bff00]" />
-                                    </div>
-                                    <div className="w-12 h-12 rounded-lg border border-[#7bff00]/30 bg-[#7bff00]/5 flex items-center justify-center">
-                                        <MessageSquare className="w-5 h-5 text-[#7bff00]" />
-                                    </div>
-                                </div>
-
-                                {/* Central Hub */}
-                                <div className="self-center w-32 h-32 rounded-full border-2 border-[#7bff00] bg-[#7bff00]/5 flex flex-col items-center justify-center shadow-[0_0_30px_rgba(123,255,0,0.1)] relative">
-                                    <Database className="w-10 h-10 text-[#7bff00] mb-2" />
-                                    <span className="text-[10px] font-mono text-[#7bff00] tracking-widest uppercase">CORE_CRM</span>
-
-                                    {/* Connecting Lines */}
-                                    <div className="absolute -top-16 left-4 w-[1px] h-16 bg-gradient-to-b from-transparent via-[#7bff00]/50 to-[#7bff00]"></div>
-                                    <div className="absolute -top-16 right-4 w-[1px] h-16 bg-gradient-to-b from-transparent via-[#7bff00]/50 to-[#7bff00]"></div>
-                                    <div className="absolute top-1/2 -left-16 w-16 h-[1px] bg-gradient-to-r from-transparent via-[#7bff00]/50 to-[#7bff00]"></div>
-                                    <div className="absolute top-1/2 -right-16 w-16 h-[1px] bg-gradient-to-l from-transparent via-[#7bff00]/50 to-[#7bff00]"></div>
-                                    <div className="absolute -bottom-16 w-[1px] h-16 bg-gradient-to-t from-transparent via-[#7bff00]/50 to-[#7bff00]"></div>
-                                </div>
-
-                                {/* Side Nodes */}
-                                <div className="absolute top-1/2 left-0 -translate-y-1/2 w-10 h-10 rounded border border-zinc-700 bg-zinc-900 flex items-center justify-center">
-                                    <Network className="w-4 h-4 text-zinc-500" />
-                                </div>
-                                <div className="absolute top-1/2 right-0 -translate-y-1/2 w-10 h-10 rounded border border-zinc-700 bg-zinc-900 flex items-center justify-center">
-                                    <Users className="w-4 h-4 text-zinc-500" />
-                                </div>
-
-                                {/* Bottom Node */}
-                                <div className="self-center flex flex-col items-center">
-                                    <div className="w-24 h-8 rounded border border-zinc-700 bg-zinc-800 flex items-center justify-center text-xs font-mono text-zinc-400">
-                                        PIPELINE
-                                    </div>
-                                    <div className="flex gap-1 mt-2">
-                                        <div className="w-2 h-2 rounded-full bg-[#7bff00]"></div>
-                                        <div className="w-2 h-2 rounded-full bg-[#7bff00]/50"></div>
-                                        <div className="w-2 h-2 rounded-full bg-zinc-800"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            <ServiceHero
+                badge="Sistema de Gestión Inteligente"
+                titleLine1="CRM con IA"
+                titleLine2="el cerebro de tu"
+                titleAccent="sistema comercial."
+                subtitle="Centraliza conversaciones, organiza oportunidades y automatiza el seguimiento. Sin control del pipeline no hay sistema; con este CRM, todo escala."
+                ctaLabel="Solicitar diagnóstico"
+            />
 
             {/* 2. PROBLEMA */}
             <section className="bg-white text-black py-32 px-6">

@@ -9,7 +9,6 @@ import {
     Zap,
     TrendingUp,
     Database,
-    PlayCircle,
     ArrowRight,
     GraduationCap,
     BookOpen,
@@ -20,6 +19,7 @@ import {
     Target,
     BrainCircuit
 } from "lucide-react";
+import { ServiceHero } from "@/components/v3/service-hero";
 
 export default function FormacionVentasPage() {
     return (
@@ -27,83 +27,14 @@ export default function FormacionVentasPage() {
             <HeaderNavigation />
 
             {/* 1. HERO */}
-            <section className="relative pt-40 pb-24 overflow-hidden">
-                {/* Background Elements */}
-                <div className="absolute top-0 left-0 w-full h-full z-0 opacity-20 pointer-events-none">
-                    <div className="absolute top-[30%] left-[20%] w-[600px] h-[600px] bg-[#7bff00]/5 rounded-full blur-[150px]"></div>
-                </div>
-
-                <div className="max-w-7xl mx-auto px-6 relative z-10">
-                    <div className="grid lg:grid-cols-2 gap-16 items-center">
-                        <div className="flex flex-col items-start text-left">
-                            <span className="px-4 py-1 rounded-full border border-[#7bff00]/30 bg-[#7bff00]/10 text-[#7bff00] text-xs font-bold tracking-[0.2em] uppercase mb-8">
-                                Capacitación Estratégica
-                            </span>
-                            <h1 className="text-6xl md:text-7xl font-display font-normal tracking-tight leading-[1.05] mb-8">
-                                Formación <span className="font-instrument italic uppercase">ia</span> <br /> de Ventas
-                                <span className="text-zinc-400 font-instrument italic font-normal text-4xl md:text-5xl block mt-4 tracking-tight">Convierte tu equipo en parte del sistema.</span>
-                            </h1>
-                            <p className="text-xl text-zinc-400 font-light leading-relaxed mb-8 max-w-xl">
-                                No implementamos herramientas para que luego nadie las use.
-                                Entrenamos a tu equipo para vender con estructura y tecnología.
-                            </p>
-                            <p className="text-md text-zinc-500 mb-10 max-w-lg border-l-2 border-[#7bff00] pl-4">
-                                La automatización no sustituye al equipo.<br />
-                                Lo potencia.
-                            </p>
-
-                            <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-                                <Link href="/contacto" className="bg-[#7bff00] text-black px-8 py-4 rounded-xl font-bold text-lg hover:scale-105 transition-transform flex items-center justify-center gap-2">
-                                    Solicitar Diagnóstico
-                                    <TrendingUp className="w-5 h-5" />
-                                </Link>
-                                <Link href="/industrias" className="border border-zinc-800 hover:border-zinc-700 bg-zinc-900/50 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all flex items-center justify-center gap-2">
-                                    Ver el sistema completo
-                                    <PlayCircle className="w-5 h-5" />
-                                </Link>
-                            </div>
-                        </div>
-
-                        {/* Visual Schema */}
-                        <div className="relative h-[500px] w-full border border-[#1f1f1f] bg-[#0a0a0a] rounded-2xl p-8 flex items-center justify-center overflow-hidden">
-                            {/* Grid Background */}
-                            <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:40px_40px]"></div>
-
-                            {/* System Schema */}
-                            <div className="relative z-10 flex flex-col items-center gap-8 w-full max-w-sm">
-                                {/* Top: Equipo */}
-                                <div className="flex items-center gap-4 p-4 rounded-lg bg-zinc-900 border border-zinc-800 w-full justify-center group hover:border-[#7bff00]/50 transition-colors">
-                                    <Users className="w-6 h-6 text-zinc-400 group-hover:text-[#7bff00]" />
-                                    <span className="font-mono text-sm uppercase tracking-widest text-zinc-300">EQUIPO_HUMANO</span>
-                                </div>
-
-                                {/* Connector */}
-                                <div className="h-8 w-[1px] bg-gradient-to-b from-zinc-800 to-[#7bff00]"></div>
-
-                                {/* Row: Agents + CRM */}
-                                <div className="grid grid-cols-2 gap-4 w-full">
-                                    <div className="flex flex-col items-center gap-2 p-4 rounded-lg bg-[#7bff00]/5 border border-[#7bff00]/20 text-center">
-                                        <BrainCircuit className="w-6 h-6 text-[#7bff00]" />
-                                        <span className="font-mono text-[10px] uppercase tracking-widest text-[#7bff00]">AGENTES_IA</span>
-                                    </div>
-                                    <div className="flex flex-col items-center gap-2 p-4 rounded-lg bg-[#7bff00]/5 border border-[#7bff00]/20 text-center">
-                                        <Database className="w-6 h-6 text-[#7bff00]" />
-                                        <span className="font-mono text-[10px] uppercase tracking-widest text-[#7bff00]">CRM_CORE</span>
-                                    </div>
-                                </div>
-
-                                {/* Connector */}
-                                <div className="h-8 w-[1px] bg-gradient-to-b from-[#7bff00] to-white"></div>
-
-                                {/* Bottom: System */}
-                                <div className="w-full p-4 rounded-lg bg-zinc-100 text-black font-bold text-center uppercase tracking-widest text-sm shadow-[0_0_30px_rgba(255,255,255,0.1)]">
-                                    SISTEMA_ESTRUCTURADO
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            <ServiceHero
+                badge="Capacitación Estratégica SALVIA"
+                titleLine1="Formación IA"
+                titleLine2="convierte tu equipo en"
+                titleAccent="máquina."
+                subtitle="No implementamos herramientas para que nadie las use. Entrenamos a tu equipo para vender con estructura y tecnología. La automatización no sustituye al equipo: lo potencia."
+                ctaLabel="Solicitar diagnóstico"
+            />
 
             {/* 2. EL PROBLEMA REAL */}
             <section className="bg-white text-black py-32 px-6">

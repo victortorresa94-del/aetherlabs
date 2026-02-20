@@ -99,10 +99,12 @@ const FlubyBody = ({ isCrystal = false, isHovered = false }) => {
 // New Weebo Design (3D Model)
 const WeeboModel = ({ isHovered = false }) => {
     const groupRef = useRef<THREE.Group>(null);
-    const { scene } = useGLTF('/weebo-3d.glb');
+    // Adding a version query to bypass potential caching issues
+    const { scene } = useGLTF('/weebo-3d.glb?v=3');
     const mouse = useRef({ x: 0, y: 0 });
 
     useEffect(() => {
+        console.log("WeeboModel mounted, attempting to render scene:", scene);
         const handleMouseMove = (e: MouseEvent) => {
             mouse.current = {
                 x: (e.clientX / window.innerWidth) * 2 - 1,
@@ -111,7 +113,7 @@ const WeeboModel = ({ isHovered = false }) => {
         };
         window.addEventListener('mousemove', handleMouseMove);
         return () => window.removeEventListener('mousemove', handleMouseMove);
-    }, []);
+    }, [scene]);
 
     useFrame((state) => {
         if (groupRef.current) {
@@ -119,7 +121,7 @@ const WeeboModel = ({ isHovered = false }) => {
 
             // Interaction: Rotate slightly towards mouse
             const hoverFactor = isHovered ? 1.0 : 0.3;
-            // Adjust rotation intensity as needed for the model
+            // Adjust rotation intensity
             const targetRotY = mouse.current.x * 0.5 * hoverFactor;
             const targetRotX = -mouse.current.y * 0.3 * hoverFactor;
 
@@ -127,14 +129,15 @@ const WeeboModel = ({ isHovered = false }) => {
             groupRef.current.rotation.x = THREE.MathUtils.lerp(groupRef.current.rotation.x, targetRotX, 0.08);
 
             // Breathing effect (scale)
-            const baseScale = 2.0; // Adjust base scale if model is too small/big
+            // Adjusted base scale - if it's too big/small, tweak this
+            const baseScale = 1.0;
             const s = (isHovered ? baseScale * 1.1 : baseScale) + Math.sin(time * 2) * 0.05;
             groupRef.current.scale.set(s, s, s);
         }
     });
 
     return (
-        <group ref={groupRef} position={[0, -0.5, 0]}> {/* Adjusted position to center it */}
+        <group ref={groupRef} position={[0, -0.5, 0]}>
             <primitive object={scene} />
         </group>
     );

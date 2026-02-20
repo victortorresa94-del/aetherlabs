@@ -4,8 +4,6 @@ import React from "react";
 import HeaderNavigation from "@/components/sections/header-navigation";
 import Footer from "@/components/sections/footer";
 import {
-    TrendingUp,
-    PlayCircle,
     Zap,
     ArrowRight,
     Target,
@@ -17,10 +15,12 @@ import {
     CheckCircle2,
     Search,
     Layers,
-    Activity
+    Activity,
+    TrendingUp
 } from "lucide-react";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { ServiceHero } from "@/components/v3/service-hero";
 
 export default function AdsPage() {
     const fadeIn = {
@@ -32,96 +32,15 @@ export default function AdsPage() {
         <main className="bg-[#050505] text-white font-sans antialiased selection:bg-[#7bff00] selection:text-black min-h-screen overflow-x-hidden">
             <HeaderNavigation />
 
-            {/* 1. HERO SECTION */}
-            <section className="relative pt-48 pb-32 overflow-hidden">
-                <div className="absolute inset-0 opacity-10" style={{
-                    backgroundImage: `radial-gradient(circle at 2px 2px, #7bff00 1px, transparent 0)`,
-                    backgroundSize: '40px 40px'
-                }}></div>
-                <div className="max-w-7xl mx-auto px-6 relative z-10">
-                    <div className="grid lg:grid-cols-2 gap-16 items-center">
-                        <motion.div
-                            initial="hidden"
-                            animate="visible"
-                            variants={fadeIn}
-                            transition={{ duration: 0.6 }}
-                            className="space-y-8"
-                        >
-                            <div>
-                                <span className="inline-block py-1 px-3 rounded border border-[#7bff00]/30 bg-[#7bff00]/10 text-[#7bff00] font-mono text-[10px] tracking-[0.2em] uppercase mb-6">
-                                    Fase 01: Captación Estructurada
-                                </span>
-                                <h1 className="text-6xl md:text-8xl font-normal font-display tracking-tight leading-none mb-6">
-                                    Ads con <span className="font-instrument italic">IA</span>
-                                </h1>
-                                <h2 className="text-3xl font-light text-zinc-400 mb-8 font-instrument italic">
-                                    Diseñados para activar tu sistema comercial.
-                                </h2>
-                                <p className="text-xl text-zinc-500 font-light leading-relaxed max-w-xl">
-                                    No lanzamos campañas. Construimos la primera fase de tu arquitectura de ventas.
-                                </p>
-                                <p className="text-sm text-zinc-500 mt-6 font-medium">
-                                    Cada anuncio conecta directamente con agentes y CRM.<br />
-                                    No captamos leads aislados. Activamos procesos.
-                                </p>
-                            </div>
-                            <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                                <Link href="/contacto" className="bg-[#7bff00] text-black px-8 py-4 rounded-xl font-bold text-lg hover:scale-105 transition-transform flex items-center justify-center gap-2">
-                                    Solicitar Diagnóstico
-                                    <TrendingUp className="w-5 h-5" />
-                                </Link>
-                                <Link href="/industrias" className="border border-zinc-800 hover:border-zinc-700 bg-zinc-900/50 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all flex items-center justify-center gap-2">
-                                    Ver el sistema completo
-                                    <PlayCircle className="w-5 h-5" />
-                                </Link>
-                            </div>
-                        </motion.div>
-
-                        <div className="relative">
-                            {/* Abstract Flow Visual: Ads -> Landing -> Agente -> CRM */}
-                            <div className="aspect-square bg-[#0a0a0a] border border-zinc-800 rounded-2xl p-12 relative overflow-hidden group">
-                                <div className="absolute inset-0 bg-gradient-to-br from-[#7bff00]/5 to-transparent"></div>
-
-                                <div className="flex flex-col justify-between h-full relative z-10">
-                                    {[
-                                        { label: "Ads", icon: <Target className="w-5 h-5" />, active: true },
-                                        { label: "Landing", icon: <Layout className="w-5 h-5" /> },
-                                        { label: "Agente", icon: <MessageSquare className="w-5 h-5" /> },
-                                        { label: "CRM", icon: <Database className="w-5 h-5" /> }
-                                    ].map((node, i) => (
-                                        <div key={i} className="flex items-center gap-6">
-                                            <div className={`w-12 h-12 rounded-xl flex items-center justify-center border transition-all duration-500 ${node.active
-                                                ? "bg-[#7bff00] border-[#7bff00] text-black shadow-[0_0_20px_rgba(123,255,0,0.3)]"
-                                                : "bg-zinc-900 border-zinc-800 text-zinc-500"
-                                                }`}>
-                                                {node.icon}
-                                            </div>
-                                            <div className="flex-grow">
-                                                <div className="h-px bg-zinc-800 relative">
-                                                    {i < 3 && (
-                                                        <motion.div
-                                                            animate={{ x: ["0%", "100%"] }}
-                                                            transition={{ repeat: Infinity, duration: 2, ease: "linear", delay: i * 0.5 }}
-                                                            className="absolute top-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-[#7bff00]/40"
-                                                        />
-                                                    )}
-                                                </div>
-                                            </div>
-                                            <span className={`font-mono text-[10px] tracking-widest uppercase ${node.active ? "text-[#7bff00]" : "text-zinc-600"}`}>
-                                                {node.label}
-                                            </span>
-                                        </div>
-                                    ))}
-                                </div>
-
-                                <div className="absolute top-8 right-8 font-mono text-[10px] text-zinc-700">
-                                    FLOW_PHASE_01
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            {/* 1. HERO */}
+            <ServiceHero
+                badge="Fase 01 · Captación Estructurada"
+                titleLine1="Ads con IA"
+                titleLine2="que convierten tráfico en"
+                titleAccent="ventas."
+                subtitle="No lanzamos campañas. Construimos la primera fase de tu arquitectura de ventas. Cada anuncio conecta directamente con agentes y CRM."
+                ctaLabel="Solicitar diagnóstico"
+            />
 
             {/* 2. PROBLEMA SECTION */}
             <section className="py-32 bg-white text-black">

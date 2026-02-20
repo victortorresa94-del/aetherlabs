@@ -295,13 +295,27 @@ const HeaderNavigation = () => {
     </div>
   );
 
+  // Pages with dark hero — nav stays transparent until scroll
+  const isDarkHeroPage =
+    pathname === '/agentes' ||
+    pathname?.includes('/agents-lab') ||
+    pathname === '/ads-con-ia' ||
+    pathname === '/crm-con-ia' ||
+    pathname === '/formacion-ia-ventas';
+
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${isScrolled || isMobileMenuOpen || isAgentsLab || pathname === '/servicios' || pathname === '/industrias' || pathname === '/agentes' || pathname?.includes('/salvia-') ? "bg-black/90 backdrop-blur-sm shadow-md" : "bg-transparent"
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled || isMobileMenuOpen
+        ? "bg-black/90 backdrop-blur-md shadow-md"
+        : isDarkHeroPage
+          ? "bg-transparent"
+          : (pathname === '/servicios' || pathname === '/industrias' || pathname?.includes('/salvia-'))
+            ? "bg-black/90 backdrop-blur-sm shadow-md"
+            : "bg-transparent"
         }`}
     >
-      <div className="container h-[90px] flex items-center justify-between">
-        <div className="flex-1 flex justify-start">
+      <div className="w-full h-[90px] flex items-center justify-between px-8 xl:px-24">
+        <div className="flex-[2] flex justify-start">
           <Link href="/" className="flex items-center" aria-label="Aether Labs Home">
             <Image
               src="/aether-logo-white.png"
@@ -320,7 +334,7 @@ const HeaderNavigation = () => {
           </ul>
         </nav>
 
-        <div className="flex-1 flex justify-end">
+        <div className="flex-[2] flex justify-end">
           <div className="flex items-center gap-6">
             <NeonButton
               variant="default"

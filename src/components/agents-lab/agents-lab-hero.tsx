@@ -1,220 +1,290 @@
 'use client'
 
-import React, { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import { Send, Terminal, Cpu, Clock, Zap, Mic, MessageSquare, Users, Brain, Target, TrendingUp, ArrowRight } from 'lucide-react'
+import React, { useRef } from 'react'
+import { motion, useAnimationFrame } from 'framer-motion'
+import { Users, Brain, Target, Zap, TrendingUp, ArrowRight } from 'lucide-react'
 
-const INDUSTRIES = [
-    { id: 'fintech', name: 'Fintech & Banking', color: '#82ff1f' },
-    { id: 'biotech', name: 'Biotech Systems', color: '#3b82f6' },
-    { id: 'logistics', name: 'Logistics AI', color: '#f59e0b' },
-    { id: 'energy', name: 'Energy Grids', color: '#10b981' },
-    { id: 'realestate', name: 'Real Estate Lab', color: '#8b5cf6' },
-]
+// ─── Aurora Canvas (same system as main hero) ─────────────────────────────────
+function AuroraCanvas() {
+    const canvasRef = useRef<HTMLCanvasElement>(null)
+    const t = useRef(0)
 
-const steps = [
-    {
-        icon: <Users className="w-5 h-5" />,
-        title: "Define su Rol",
-        description: "Leads escriben por WhatsApp o IG y reciben respuesta cualificada en segundos.",
-        status: "80% COMPLETO",
-        progress: 80
-    },
-    {
-        icon: <Brain className="w-5 h-5" />,
-        title: "Entrena su Cerebro",
-        description: "Selecciona su conocimiento y su personalidad (formal, cercano).",
-        status: "80% COMPLETO",
-        progress: 80
-    },
-    {
-        icon: <Target className="w-5 h-5" />,
-        title: "Crea su Estrategia",
-        description: "Configura objetivos estratégicos y pasos a seguir para maximizar cierres.",
-        status: "80% COMPLETO",
-        progress: 80
-    },
-    {
-        icon: <Zap className="w-5 h-5" />,
-        title: "Conecta su Entorno",
-        description: "Sube tus FAQs, catálogo y conecta con tu CRM favorito.",
-        status: "80% COMPLETO",
-        progress: 80
-    },
-    {
-        icon: <TrendingUp className="w-5 h-5" />,
-        title: "Activa y Mide",
-        description: "Despliega en vivo, analiza las conversaciones y monitoriza el retorno.",
-        status: "LISTO PARA DESPLEGAR",
-        progress: 100
-    }
-];
+    useAnimationFrame(() => {
+        const canvas = canvasRef.current
+        if (!canvas) return
+        const ctx = canvas.getContext('2d')
+        if (!ctx) return
 
-const AgentsLabHero = () => {
-    const [selectedIndustry, setSelectedIndustry] = useState(INDUSTRIES[0])
-    const [isVoice, setIsVoice] = useState(false)
-    const [messages, setMessages] = useState([
-        {
-            role: 'ai',
-            content: `Analizando flujos de capital para el sector ${selectedIndustry.name}. He detectado una ineficiencia en la reconciliación de pagos del 14%.`,
-            time: 'Hace 2s'
+        canvas.width = canvas.offsetWidth
+        canvas.height = canvas.offsetHeight
+        t.current += 0.0025
+
+        ctx.clearRect(0, 0, canvas.width, canvas.height)
+
+        const draw = (
+            cx: number, cy: number,
+            rx: number, ry: number,
+            color1: string, color2: string,
+            phase: number
+        ) => {
+            const x = cx + Math.sin(t.current + phase) * rx * 0.3
+            const y = cy + Math.cos(t.current * 0.7 + phase) * ry * 0.22
+            const grad = ctx.createRadialGradient(x, y, 0, x, y, Math.max(rx, ry))
+            grad.addColorStop(0, color1)
+            grad.addColorStop(1, color2)
+            ctx.globalCompositeOperation = 'screen'
+            ctx.beginPath()
+            ctx.ellipse(x, y, rx, ry, t.current * 0.08, 0, Math.PI * 2)
+            ctx.fillStyle = grad
+            ctx.fill()
         }
-    ])
 
-    const scrollToWizard = () => {
-        const wizard = document.getElementById('agents-lab-wizard');
-        if (wizard) {
-            wizard.scrollIntoView({ behavior: 'smooth' });
-        }
-    };
+        const w = canvas.width, h = canvas.height
+        draw(w * 0.2, h * 0.35, w * 0.4, h * 0.5, 'rgba(110,40,240,0.16)', 'rgba(0,0,0,0)', 0)
+        draw(w * 0.75, h * 0.3, w * 0.35, h * 0.48, 'rgba(0,160,255,0.11)', 'rgba(0,0,0,0)', 2.1)
+        draw(w * 0.5, h * 0.65, w * 0.48, h * 0.42, 'rgba(170,30,210,0.08)', 'rgba(0,0,0,0)', 4.2)
+        draw(w * 0.1, h * 0.7, w * 0.28, h * 0.32, 'rgba(40,100,255,0.09)', 'rgba(0,0,0,0)', 1.5)
+        draw(w * 0.88, h * 0.6, w * 0.26, h * 0.36, 'rgba(0,210,170,0.06)', 'rgba(0,0,0,0)', 3.3)
+    })
 
     return (
-        <div className="bg-white">
-            {/* SECTION 1: PROVING GROUND (HERO) - WHITE BACKGROUND, NO TITLE AS REQUESTED */}
-            <section className="relative min-h-[95vh] flex items-center justify-center pt-32 pb-20 px-6 overflow-hidden bg-white">
-                <div className="absolute inset-0 z-0 opacity-20 pointer-events-none"
-                    style={{ backgroundImage: `radial-gradient(#000000 1px, transparent 1px)`, backgroundSize: '40px 40px' }}
+        <canvas
+            ref={canvasRef}
+            className="absolute inset-0 w-full h-full pointer-events-none"
+            style={{ mixBlendMode: 'screen' }}
+        />
+    )
+}
+
+// ─── Particles ────────────────────────────────────────────────────────────────
+const PARTICLES = Array.from({ length: 22 }, (_, i) => ({
+    id: i,
+    x: Math.random() * 100,
+    y: Math.random() * 100,
+    size: Math.random() * 1.4 + 0.4,
+    dur: 9 + Math.random() * 13,
+    delay: Math.random() * 9,
+    dx: (Math.random() - 0.5) * 5,
+    dy: -(4 + Math.random() * 7),
+    opacity: 0.12 + Math.random() * 0.3,
+}))
+
+function Particles() {
+    return (
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            {PARTICLES.map((p) => (
+                <motion.div
+                    key={p.id}
+                    className="absolute rounded-full bg-white"
+                    style={{ left: `${p.x}%`, top: `${p.y}%`, width: p.size, height: p.size, opacity: p.opacity }}
+                    animate={{
+                        x: [0, p.dx, -p.dx * 0.5, 0],
+                        y: [0, p.dy, p.dy * 1.5, p.dy * 0.3, 0],
+                        opacity: [p.opacity, p.opacity * 1.4, 0, 0, p.opacity],
+                    }}
+                    transition={{ duration: p.dur, delay: p.delay, repeat: Infinity, ease: 'easeInOut' }}
                 />
-
-                <div className="max-w-7xl w-full mx-auto relative z-10 font-sans">
-                    {/* Title block removed from here */}
-
-                    <div className="bg-white rounded-[40px] overflow-hidden shadow-[0_30px_100px_rgba(0,0,0,0.1)] flex flex-col md:flex-row min-h-[700px] border border-zinc-100">
-                        {/* Proving Ground Sidebar */}
-                        <div className="w-full md:w-80 bg-[#fbfcfd] p-10 flex flex-col justify-between border-r border-zinc-100">
-                            <div>
-                                <span className="text-[10px] font-bold text-zinc-400 uppercase tracking-widest block mb-12">Industrias Disponibles</span>
-                                <div className="space-y-6">
-                                    {INDUSTRIES.map((ind) => (
-                                        <button
-                                            key={ind.id}
-                                            onClick={() => {
-                                                setSelectedIndustry(ind);
-                                                setMessages([{
-                                                    role: 'ai',
-                                                    content: `Módulo ${ind.name} iniciado. Cargando base de conocimientos y optimización dinámica.`,
-                                                    time: 'Ahora'
-                                                }]);
-                                            }}
-                                            className="flex items-center group relative w-full text-left"
-                                        >
-                                            {selectedIndustry.id === ind.id && (
-                                                <motion.div
-                                                    layoutId="activeTab"
-                                                    className="absolute -left-10 w-1.5 h-8 bg-[#82ff1f] rounded-full"
-                                                    initial={false}
-                                                />
-                                            )}
-                                            <span className={`text-xl font-bold transition-colors ${selectedIndustry.id === ind.id ? 'text-zinc-900' : 'text-zinc-300 group-hover:text-zinc-500'}`}>
-                                                {ind.name}
-                                            </span>
-                                        </button>
-                                    ))}
-                                </div>
-                            </div>
-                            <div className="space-y-4">
-                                <div className="flex justify-between items-center mb-2">
-                                    <span className="text-[10px] font-bold text-[#82ff1f] uppercase tracking-widest">IA Capacity</span>
-                                    <span className="text-[10px] font-bold text-zinc-400 uppercase tracking-widest">85%</span>
-                                </div>
-                                <div className="h-2 w-full bg-zinc-100 rounded-full overflow-hidden">
-                                    <motion.div animate={{ width: '85%' }} className="h-full bg-[#82ff1f]" />
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* Proving Ground Chat Lab Area */}
-                        <div className="flex-1 p-10 bg-white flex flex-col relative">
-                            <div className="flex items-center justify-between mb-12">
-                                <div className="flex gap-3">
-                                    <div className="px-4 py-1.5 bg-zinc-50 rounded-full flex items-center gap-2 border border-zinc-100">
-                                        <Terminal className="w-3 h-3 text-zinc-400" />
-                                        <span className="text-[10px] font-bold text-zinc-600 font-mono">NODE: SYST-829</span>
-                                    </div>
-                                    <div className="px-4 py-1.5 bg-zinc-50 rounded-full flex items-center gap-2 border border-zinc-100">
-                                        <Clock className="w-3 h-3 text-zinc-400" />
-                                        <span className="text-[10px] font-bold text-zinc-600 font-mono">0.02ms</span>
-                                    </div>
-                                </div>
-                                <div className="flex items-center gap-3">
-                                    <motion.div animate={{ scale: [1, 1.2, 1] }} transition={{ repeat: Infinity, duration: 2 }} className="w-8 h-8 rounded-full bg-[#82ff1f] flex items-center justify-center text-black">
-                                        <Zap className="w-4 h-4 fill-current" />
-                                    </motion.div>
-                                    <div className="w-8 h-8 rounded-full bg-zinc-900 overflow-hidden border border-zinc-200">
-                                        <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100&h=100&fit=crop" alt="User" className="w-full h-full object-cover" />
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="flex-1 overflow-y-auto space-y-8 mb-10 pt-10 px-4">
-                                <AnimatePresence mode="popLayout">
-                                    {messages.map((msg, i) => (
-                                        <motion.div key={i} initial={{ opacity: 0, y: 10, scale: 0.95 }} animate={{ opacity: 1, y: 0, scale: 1 }} className={`flex flex-col ${msg.role === 'user' ? 'items-end' : 'items-start'}`}>
-                                            <div className={`max-w-[85%] p-8 rounded-[30px] shadow-sm relative ${msg.role === 'user' ? 'bg-zinc-950 text-white rounded-tr-none italic' : 'bg-zinc-50 text-zinc-800 border border-zinc-100 rounded-tl-none leading-relaxed'}`}>
-                                                <p className="text-lg">"{msg.content}"</p>
-                                            </div>
-                                            <span className="mt-4 text-[10px] text-zinc-400 font-bold uppercase tracking-widest flex items-center gap-2">
-                                                {msg.role === 'ai' ? 'Aether Core' : 'Admin'} • {msg.time}
-                                            </span>
-                                        </motion.div>
-                                    ))}
-                                </AnimatePresence>
-                            </div>
-
-                            <div className="relative group">
-                                <div className="absolute left-6 top-1/2 -translate-y-1/2 flex items-center gap-4 text-zinc-400">
-                                    <button onClick={() => setIsVoice(!isVoice)} className={`p-2 rounded-lg transition-colors ${isVoice ? 'bg-[#82ff1f]/10 text-[#82ff1f]' : 'hover:bg-zinc-100'}`}>
-                                        {isVoice ? <Mic className="w-5 h-5" /> : <MessageSquare className="w-5 h-5" />}
-                                    </button>
-                                </div>
-                                <input type="text" placeholder={isVoice ? "Escucha activa..." : "Escribe un comando de sistema..."} className="w-full h-20 bg-white border border-zinc-200 rounded-[28px] pl-20 pr-44 text-lg text-zinc-900 placeholder:text-zinc-300 focus:outline-none focus:border-zinc-400 transition-all shadow-sm" />
-                                <button className="absolute right-4 top-1/2 -translate-y-1/2 px-10 py-3.5 bg-[#82ff1f] text-black font-bold uppercase tracking-widest text-[11px] rounded-2xl hover:scale-105 transition-transform shadow-lg shadow-[#82ff1f]/20">Ejecutar</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* SECTION 2: THE INFO BANNER - BLACK BACKGROUND, NEW TITLE "Crea tu propio Agente IA" */}
-            <section className="relative py-32 overflow-hidden bg-black">
-                <div className="absolute inset-0 z-0 opacity-40 mix-blend-screen pointer-events-none" style={{ backgroundImage: `url('/images/experimental-lab-bg-v2.png')`, backgroundSize: 'cover', backgroundPosition: 'center' }} />
-                <div className="absolute inset-0 z-0 bg-black/60 pointer-events-none" />
-
-                <div className="container relative z-10 mx-auto px-6 lg:px-12 max-w-[1400px]">
-                    <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-                        <motion.div initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>
-                            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#82ff1f]/10 border border-[#82ff1f]/20 mb-8 backdrop-blur-sm">
-                                <div className="w-2 h-2 rounded-full bg-[#82ff1f]" />
-                                <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#82ff1f]">AETHER LABS</span>
-                            </div>
-                            <h1 className="text-5xl lg:text-7xl font-bold text-white tracking-tight mb-6 leading-none">Crea tu propio<br /><span className="text-[#82ff1f]">Agente IA</span></h1>
-                            <p className="text-zinc-400 text-lg font-medium max-w-lg mb-10 leading-relaxed">Diseña y despliega agentes de IA comerciales inteligentes con nuestro sistema modular. Adapta cada aspecto para tus procesos de ventas y maximiza la conversión.</p>
-                            <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} onClick={scrollToWizard} className="flex items-center gap-3 px-8 py-4 bg-[#82ff1f] text-black rounded-full font-bold text-base transition-all duration-300 shadow-[0_0_20px_rgba(130,255,31,0.3)] hover:shadow-[0_0_30_rgba(130,255,31,0.5)]">
-                                Explorar la plataforma <ArrowRight className="w-5 h-5" />
-                            </motion.button>
-                        </motion.div>
-
-                        <div className="flex flex-col gap-3">
-                            {steps.map((step, idx) => (
-                                <motion.div key={idx} initial={{ opacity: 0, x: 50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: idx * 0.1 }} className="bg-white rounded-[24px] p-6 shadow-xl flex items-center gap-6 group hover:-translate-x-2 transition-transform duration-300 relative z-10">
-                                    <div className="w-14 h-14 rounded-2xl bg-zinc-50 flex items-center justify-center text-zinc-400 group-hover:text-[#82ff1f] transition-colors border border-zinc-100 flex-none">{step.icon}</div>
-                                    <div className="flex-1 min-w-0">
-                                        <div className="flex justify-between items-center mb-1">
-                                            <h3 className="text-lg font-bold text-zinc-900 truncate pr-4">{step.title}</h3>
-                                            <span className="text-[10px] font-bold text-zinc-400 uppercase tracking-wider flex-none">{step.status}</span>
-                                        </div>
-                                        <p className="text-sm text-zinc-500 font-medium leading-normal line-clamp-2">{step.description}</p>
-                                        <div className="mt-4 h-1.5 w-full bg-zinc-100 rounded-full overflow-hidden">
-                                            <motion.div initial={{ width: 0 }} whileInView={{ width: `${step.progress}%` }} viewport={{ once: true }} transition={{ duration: 1, delay: 0.5 + (idx * 0.1) }} className="h-full bg-[#82ff1f]" />
-                                        </div>
-                                    </div>
-                                </motion.div>
-                            ))}
-                        </div>
-                    </div>
-                </div>
-            </section>
+            ))}
         </div>
+    )
+}
+
+// ─── Grid ─────────────────────────────────────────────────────────────────────
+function Grid() {
+    return (
+        <div
+            className="absolute inset-0 pointer-events-none"
+            style={{
+                backgroundImage: `
+                    linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px)
+                `,
+                backgroundSize: '80px 80px',
+                maskImage: 'radial-gradient(ellipse 85% 70% at 50% 40%, black 0%, transparent 100%)',
+            }}
+        />
+    )
+}
+
+// ─── Ambient glows ────────────────────────────────────────────────────────────
+function Glows() {
+    return (
+        <>
+            <motion.div
+                className="absolute rounded-full pointer-events-none"
+                style={{
+                    width: '65vw', height: '50vh',
+                    top: '5%', left: '50%', translateX: '-50%',
+                    background: 'radial-gradient(ellipse at center, rgba(110,40,255,0.13) 0%, transparent 70%)',
+                    filter: 'blur(50px)',
+                }}
+                animate={{ scale: [1, 1.07, 1], opacity: [0.7, 1, 0.7] }}
+                transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
+            />
+            <motion.div
+                className="absolute rounded-full pointer-events-none"
+                style={{
+                    width: '40vw', height: '30vh',
+                    top: '10%', left: '65%',
+                    background: 'radial-gradient(ellipse at center, rgba(0,150,255,0.07) 0%, transparent 70%)',
+                    filter: 'blur(60px)',
+                }}
+                animate={{ scale: [1, 1.1, 1], opacity: [0.5, 0.8, 0.5] }}
+                transition={{ duration: 13, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
+            />
+            <div
+                className="absolute bottom-0 left-0 right-0 h-40 pointer-events-none"
+                style={{ background: 'linear-gradient(to top, #000000 0%, transparent 100%)' }}
+            />
+        </>
+    )
+}
+
+// ─── Noise ────────────────────────────────────────────────────────────────────
+function Noise() {
+    return (
+        <div
+            className="absolute inset-0 pointer-events-none opacity-[0.03]"
+            style={{
+                backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`,
+                backgroundRepeat: 'repeat',
+                backgroundSize: '200px 200px',
+            }}
+        />
+    )
+}
+
+// ─── Steps ────────────────────────────────────────────────────────────────────
+const steps = [
+    { icon: <Users className="w-4 h-4" />, title: 'Define su Rol', description: 'Personalidad, objetivos y tono de comunicación en segundos.', progress: 100 },
+    { icon: <Brain className="w-4 h-4" />, title: 'Entrena su Cerebro', description: 'Base de conocimiento propia: FAQs, catálogo, procesos internos.', progress: 100 },
+    { icon: <Target className="w-4 h-4" />, title: 'Crea su Estrategia', description: 'Configura pasos y objetivos para maximizar cierres y cualificación.', progress: 100 },
+    { icon: <Zap className="w-4 h-4" />, title: 'Conecta su Entorno', description: 'Integra tu CRM, WhatsApp, Instagram o cualquier canal en un clic.', progress: 100 },
+    { icon: <TrendingUp className="w-4 h-4" />, title: 'Activa y Mide', description: 'Despliega en vivo, analiza conversaciones y monitoriza el retorno.', progress: 100 },
+]
+
+// ─── Main Component ───────────────────────────────────────────────────────────
+const AgentsLabHero = () => {
+    const scrollToWizard = () => {
+        const wizard = document.getElementById('agents-lab-wizard')
+        if (wizard) wizard.scrollIntoView({ behavior: 'smooth' })
+    }
+
+    return (
+        <section className="relative min-h-[100dvh] flex items-center justify-center bg-black overflow-hidden pt-28 pb-24 px-6">
+
+            {/* ── Background layers ── */}
+            <Grid />
+            <AuroraCanvas />
+            <Glows />
+            <Particles />
+            <Noise />
+
+            {/* Vignette */}
+            <div
+                className="absolute inset-0 pointer-events-none"
+                style={{ background: 'radial-gradient(ellipse 120% 100% at 50% 0%, transparent 40%, rgba(0,0,0,0.55) 100%)' }}
+            />
+
+            {/* ── Content ── */}
+            <div className="relative z-10 w-full max-w-7xl mx-auto">
+                <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+
+                    {/* Left — Headline block */}
+                    <motion.div
+                        initial={{ opacity: 0, x: -30 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.8, ease: 'easeOut' }}
+                        className="flex flex-col items-start gap-8"
+                    >
+                        {/* Badge */}
+                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm">
+                            <span className="w-1.5 h-1.5 rounded-full bg-[#82ff1f] animate-pulse" />
+                            <span className="text-xs font-medium uppercase tracking-widest text-zinc-400">AETHER LABS · Agentes IA</span>
+                        </div>
+
+                        {/* Headline */}
+                        <h1 className="font-display font-normal text-5xl md:text-6xl lg:text-7xl tracking-tight leading-[1.05] text-white">
+                            Crea tu propio<br />
+                            <span
+                                className="font-instrument italic font-normal"
+                                style={{
+                                    background: 'linear-gradient(135deg, #ffffff 0%, rgba(130,255,31,0.85) 60%, rgba(0,180,255,0.8) 100%)',
+                                    WebkitBackgroundClip: 'text',
+                                    WebkitTextFillColor: 'transparent',
+                                    backgroundClip: 'text',
+                                }}
+                            >
+                                Agente IA
+                            </span>
+                        </h1>
+
+                        {/* Subtitle */}
+                        <p className="font-light text-lg text-zinc-400 max-w-lg leading-relaxed">
+                            Diseña y despliega agentes comerciales inteligentes con nuestro sistema modular. Adapta cada aspecto para tus procesos de venta y maximiza la conversión.
+                        </p>
+
+                        {/* CTA */}
+                        <motion.button
+                            whileHover={{ scale: 1.04 }}
+                            whileTap={{ scale: 0.97 }}
+                            onClick={scrollToWizard}
+                            className="group flex items-center gap-3 px-8 py-4 bg-white text-black rounded-full font-medium text-base transition-all duration-300"
+                        >
+                            Crear mi agente IA
+                            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                        </motion.button>
+
+                        {/* Social proof */}
+                        <div className="flex items-center gap-4 pt-2">
+                            <div className="flex -space-x-2">
+                                {['https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=60&h=60&fit=crop&crop=face',
+                                    'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=60&h=60&fit=crop&crop=face',
+                                    'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=60&h=60&fit=crop&crop=face'].map((src, i) => (
+                                        <img key={i} src={src} alt="" className="w-8 h-8 rounded-full border-2 border-black object-cover" />
+                                    ))}
+                            </div>
+                            <p className="text-xs text-zinc-500">
+                                <span className="text-white font-semibold">+50 empresas</span> ya tienen su agente activo
+                            </p>
+                        </div>
+                    </motion.div>
+
+                    {/* Right — Steps cards */}
+                    <div className="flex flex-col gap-3">
+                        {steps.map((step, idx) => (
+                            <motion.div
+                                key={idx}
+                                initial={{ opacity: 0, x: 40 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                transition={{ duration: 0.6, delay: 0.1 + idx * 0.09, ease: 'easeOut' }}
+                                className="group relative flex items-center gap-5 px-6 py-5 rounded-2xl border border-white/[0.07] bg-white/[0.03] backdrop-blur-sm hover:bg-white/[0.06] hover:border-white/[0.12] transition-all duration-300 cursor-default"
+                            >
+                                {/* Step number */}
+                                <div className="flex-none w-8 h-8 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-zinc-400 group-hover:text-white group-hover:border-white/20 transition-colors">
+                                    {step.icon}
+                                </div>
+
+                                {/* Text */}
+                                <div className="flex-1 min-w-0">
+                                    <p className="text-sm font-semibold text-white mb-0.5">{step.title}</p>
+                                    <p className="text-xs text-zinc-500 leading-relaxed line-clamp-1">{step.description}</p>
+                                </div>
+
+                                {/* Done indicator */}
+                                <div className="flex-none w-5 h-5 rounded-full bg-[#82ff1f]/10 border border-[#82ff1f]/30 flex items-center justify-center">
+                                    <div className="w-1.5 h-1.5 rounded-full bg-[#82ff1f]" />
+                                </div>
+
+                                {/* Hover glow line */}
+                                <div className="absolute left-0 top-1/2 -translate-y-1/2 w-0.5 h-0 group-hover:h-8 bg-[#82ff1f]/50 rounded-full transition-all duration-300" />
+                            </motion.div>
+                        ))}
+                    </div>
+
+                </div>
+            </div>
+        </section>
     )
 }
 
