@@ -1,11 +1,11 @@
 import { OpenAI } from "openai";
 
-const deepseek = new OpenAI({
-    apiKey: "sk-05758038e32f49fc91e59671bce46c32",
-    baseURL: "https://api.deepseek.com",
-});
-
 export async function POST(req: Request) {
+    const deepseek = new OpenAI({
+        apiKey: process.env.DEEPSEEK_API_KEY || "sk-05758038e32f49fc91e59671bce46c32",
+        baseURL: "https://api.deepseek.com",
+    });
+
     try {
         const { messages } = await req.json();
 
@@ -29,7 +29,7 @@ export async function POST(req: Request) {
 - **FORMATO CRÍTICO**: Usa saltos de línea frecuentes entre pasos. No escribas párrafos densos.
 - Usa negritas con el formato \`**texto**\` para resaltar botones, rutas o comandos.
 - Para tutoriales, usa listas numeradas con saltos de línea claros.
-- Mantén las respuestas estructuradas y fáciles de leer en una ventana de chat pequeña.`;
+- Mantén las respuestas estructuadas y fáciles de leer en una ventana de chat pequeña.`;
 
         const response = await deepseek.chat.completions.create({
             model: "deepseek-chat",

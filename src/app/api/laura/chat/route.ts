@@ -2,11 +2,7 @@
 import { OpenAI } from 'openai';
 import { NextResponse } from 'next/server';
 
-// Initialize the OpenAI client with DeepSeek configuration
-const client = new OpenAI({
-    baseURL: 'https://api.deepseek.com',
-    apiKey: process.env.DEEPSEEK_API_KEY,
-});
+
 
 const SYSTEM_PROMPT = `
 SYSTEM ROLE — LAURA (VERSIÓN DEMO COMERCIAL UNIFICADA)
@@ -778,6 +774,21 @@ Tu éxito es que el dueño quiera implementarte.
 `;
 
 export async function POST(req: Request) {
+    const apiKey = process.env.DEEPSEEK_API_KEY;
+
+    if (!apiKey) {
+        console.error('DEEPSEEK_API_KEY is not set');
+        return NextResponse.json(
+            { error: 'API key not configured' },
+            { status: 500 }
+        );
+    }
+
+    const client = new OpenAI({
+        baseURL: 'https://api.deepseek.com',
+        apiKey: apiKey,
+    });
+
     try {
         const { message, history } = await req.json();
 
