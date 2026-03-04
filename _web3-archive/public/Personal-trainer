@@ -1,0 +1,1231 @@
+CONTEXTO GENERAL
+
+Estás construyendo una página de propuesta de servicios dentro de la web de Aether Labs.
+Aether Labs es una agencia de IA aplicada que no vende promesas ni “gestión de redes”, sino sistemas reales que ahorran tiempo y generan ingresos.
+
+Esta página NO es una landing genérica.
+Es una página de propuesta clara, casi consultiva, para un perfil muy concreto:
+
+CLIENTE OBJETIVO
+- Entrenador personal / fitness coach / creador de contenido fitness
+- Vive de planes personalizados 1:1 o rutinas hechas a mano
+- Usa Excel, Canva y ChatGPT de forma desordenada
+- Envía rutinas y planes nutricionales manualmente por email o WhatsApp
+- Quiere lanzar un plan mensual barato (15€ aprox.) para escalar
+- No tiene:
+  - sistema de pagos
+  - email marketing
+  - automatizaciones
+  - funnel
+  - infraestructura técnica
+- Tiene ideas, pero no sabe ejecutarlas ni ordenarlas
+
+PROBLEMA CENTRAL DEL CLIENTE
+No es “crear contenido”.
+Es que todo depende de él, de su tiempo y de su energía:
+- crear la rutina
+- crear el plan nutricional
+- maquetarlo
+- enviarlo
+- responder mensajes
+- cobrar
+Todo es manual, repetitivo y no escalable.
+
+SOLUCIÓN QUE OFRECE AETHER LABS
+Montar la INFRAESTRUCTURA COMPLETA para que:
+- Instagram capte interés
+- un sistema convierta ese interés en pago
+- un agente de IA genere el plan semanal
+- el sistema lo diseñe automáticamente
+- el plan se entregue solo por email
+- el contenido se archive
+- el entrenador solo decida el tema y supervise
+
+OBJETIVO DE ESTA PÁGINA
+1. Explicar con claridad el sistema completo
+2. Presentar 3 planes (Básico, Pro y Premium)
+3. Que se entiendan las diferencias SIN esfuerzo mental
+4. Que el Plan Premium se perciba como el escenario ideal
+5. Dejar claro que NO ofrecemos:
+   - gestión mensual de redes
+   - posting
+   - community management
+6. Vender infraestructura, automatización y agentes IA
+
+TONO Y ESTILO
+- Claro
+- Directo
+- Profesional
+- Sin palabras futuristas
+- Sin promesas exageradas
+- Lenguaje de negocio real
+- Frases cortas
+- Mucha claridad visual
+- Orientado a resultados prácticos
+
+REGLAS IMPORTANTES
+- No inventes servicios que no estén relacionados con:
+  automatización, agentes IA, sistemas, infraestructura, diseño automático
+- No hables de “crear contenido viral”
+- No prometas resultados físicos (fitness / nutrición)
+- Usa disclaimers cuando sea necesario
+- Piensa como un consultor senior + product manager
+
+TAREA PRINCIPAL
+Generar TODO el contenido de la página de propuesta:
+- Hero principal
+- Explicación del problema actual del entrenador
+- Explicación de la solución (sistema)
+- Presentación clara de los 3 planes
+- Textos de apoyo y contexto
+- CTAs finales
+
+El resultado debe parecer una página lista para producción,
+no un borrador ni un esquema.
+
+
+CREA EL BLOQUE COMPLETO DEL PLAN “BÁSICO” DENTRO DE UNA PÁGINA DE PROPUESTA DE SERVICIOS.
+
+CONTEXTO DEL PLAN
+Este plan está pensado para entrenadores personales que:
+- No tienen ningún sistema montado
+- Venden hoy de forma manual
+- Quieren empezar a cobrar un plan mensual (15€ aprox.)
+- Necesitan dejar de hacer envíos y maquetaciones a mano
+- Quieren automatizar SIN montar todavía un ecosistema complejo
+
+El Plan Básico NO es un “apaño”.
+Es un primer sistema funcional, estable y automatizado, pero deliberadamente simple.
+
+NOMBRE DEL PLAN
+Plan Básico — “Starter Automatizado”
+
+OBJETIVO DEL PLAN
+Permitir que el entrenador:
+- Venda su plan mensual desde Instagram
+- Cobre sin perseguir pagos
+- Genere automáticamente el plan semanal (rutina + nutrición)
+- Entregue ese plan en PDF sin usar Canva manualmente
+- No tenga que aprender herramientas técnicas
+
+RESULTADO FINAL (DESCRÍBELO CLARO)
+Al terminar este plan, el cliente tendrá:
+- Un enlace de venta funcional
+- Un sistema que convierte comentarios de Instagram en pagos
+- Un agente de IA que genera el plan semanal
+- Un PDF que se crea y se envía automáticamente
+- Un proceso que no depende de su tiempo diario
+
+ESTRUCTURA DEL BLOQUE EN LA WEB
+El bloque del Plan Básico debe incluir, en este orden:
+1. Título del plan
+2. Frase resumen en 1 línea (qué soluciona)
+3. Bloque “Qué problema resuelve”
+4. Bloque “Qué incluye exactamente”
+5. Bloque “Cómo funciona paso a paso”
+6. Bloque “Cómo es la experiencia del cliente final”
+7. Bloque “Para quién es este plan”
+8. Bloque “Para quién NO es”
+9. Bloque “Qué no incluye (límites claros)”
+10. Resultado final tangible
+
+DESARROLLO DE CONTENIDO
+
+1. FRASE RESUMEN
+Escribe una frase clara tipo:
+“Empieza a vender y entregar tu plan mensual sin hacerlo todo a mano.”
+
+2. QUÉ PROBLEMA RESUELVE
+Explica brevemente el escenario actual del entrenador:
+- crea rutinas manualmente
+- diseña en Canva cada semana
+- envía emails uno a uno
+- cobra de forma desordenada
+- repite siempre el mismo trabajo
+
+Y conecta con la idea de:
+“Todo depende de ti. Este plan elimina esa dependencia.”
+
+3. QUÉ INCLUYE EXACTAMENTE (DETALLADO)
+Desarrolla cada punto, no solo lo listes.
+
+Incluye:
+
+A) Página de venta simple
+- Una landing clara, de una sola página
+- Explica qué incluye el plan mensual
+- Resuelve dudas habituales
+- CTA directo a pago
+- Pensada para convertir, no para decorar
+
+B) Sistema de pago simple
+- Configuración de pago mediante Gumroad o Stripe Payment Link
+- El cliente paga y queda registrado automáticamente
+- Sin fricción, sin procesos manuales
+
+C) Automatización básica de Instagram (ManyChat)
+- Configuración de palabras clave en comentarios o DMs
+- Respuesta automática explicando el plan
+- Envío del enlace de pago
+- Mensajes simples, claros y no invasivos
+
+D) Agente de IA para plan semanal (versión básica)
+- El entrenador introduce el tema semanal
+- El agente genera:
+  - rutina de entrenamiento estructurada
+  - plan nutricional orientativo
+  - tips complementarios
+- El contenido sigue un tono coherente y profesional
+- Incluye disclaimers de salud
+
+E) Creación automática del PDF
+- El contenido generado se inserta en una plantilla diseñada
+- El PDF se crea sin intervención manual
+- Diseño limpio, claro y reutilizable
+- No requiere abrir Canva ni editar nada
+
+F) Envío automático por email
+- Configuración básica de email (Brevo o Mailchimp)
+- Email de bienvenida
+- Email de entrega del plan semanal
+- El cliente recibe el PDF automáticamente
+
+G) Guardado del contenido
+- El PDF se guarda en una carpeta estructurada
+- Historial básico de planes creados
+
+4. CÓMO FUNCIONA PASO A PASO (EXPLÍCALO COMO UN SISTEMA)
+Describe el flujo real:
+
+1. El entrenador publica contenido en Instagram
+2. Una persona comenta o escribe una palabra clave
+3. El sistema responde automáticamente
+4. La persona accede al enlace de pago
+5. Paga el plan mensual
+6. Recibe un email de bienvenida
+7. Cada semana:
+   - el entrenador define el tema
+   - el agente genera el plan
+   - el PDF se crea
+   - el email se envía
+
+Todo ocurre sin que el entrenador tenga que repetir tareas.
+
+5. EXPERIENCIA DEL CLIENTE FINAL
+Describe cómo lo vive el usuario que paga:
+- siente que recibe algo profesional
+- recibe un PDF claro y bien presentado
+- sabe cuándo llegará el contenido
+- no depende de mensajes privados
+- percibe orden y consistencia
+
+6. PARA QUIÉN ES ESTE PLAN
+- Entrenadores que empiezan
+- Creadores fitness con audiencia pequeña o media
+- Profesionales que quieren validar el modelo de suscripción
+- Personas que quieren automatizar sin complicarse
+
+7. PARA QUIÉN NO ES
+- Quien busca crecimiento masivo inmediato
+- Quien quiere que le gestionen redes sociales
+- Quien necesita segmentación avanzada
+- Quien quiere múltiples versiones del plan semanal
+
+8. QUÉ NO INCLUYE (DEJAR CLARO)
+- No incluye estrategia de contenido mensual
+- No incluye creación ni publicación de posts
+- No incluye diseño premium avanzado
+- No incluye funnel de captación
+- No incluye CRM ni dashboards
+- No incluye biblioteca de miembros avanzada
+
+9. RESULTADO FINAL
+Cierra el bloque con una frase clara tipo:
+“Un sistema básico, automatizado y funcional para empezar a vender y entregar tu plan mensual sin depender de tu tiempo.”
+
+ESTILO VISUAL DEL BLOQUE
+- Texto claro
+- Bullets explicativos
+- Nada de párrafos largos
+- Sensación de sistema, no de servicio suelto
+
+
+CREA EL BLOQUE COMPLETO DEL PLAN “PRO” DENTRO DE UNA PÁGINA DE PROPUESTA DE SERVICIOS.
+
+CONTEXTO DEL PLAN
+El Plan Pro está diseñado para entrenadores personales que ya entienden que:
+- Vender un plan mensual no es “mandar un PDF”
+- Necesitan consistencia, diseño, orden y automatización real
+- Quieren un sistema que funcione como un producto digital profesional
+- No quieren depender de Canva, Excel ni envíos manuales
+- Buscan reducir al mínimo el tiempo operativo semanal
+
+Este plan es el punto en el que el proyecto deja de ser artesanal
+y empieza a comportarse como un negocio digital bien montado.
+
+NOMBRE DEL PLAN
+Plan Pro — “Sistema de Suscripción Automatizado”
+
+OBJETIVO DEL PLAN
+Permitir que el entrenador:
+- Venda su plan mensual como una suscripción recurrente
+- Cualifique mínimamente a los usuarios desde Instagram
+- Entregue un plan semanal diseñado profesionalmente
+- Tenga control, revisión y orden sin trabajo repetitivo
+- Dedique su tiempo a entrenar y crear, no a operar sistemas
+
+RESULTADO FINAL (DESCRÍBELO MUY CLARO)
+Al finalizar este plan, el cliente tendrá:
+- Un sistema de suscripción recurrente estable
+- Un flujo automático desde Instagram hasta el pago
+- Un agente de IA que genera el plan semanal de forma estructurada
+- Un PDF diseñado a nivel profesional, no “documento genérico”
+- Un sistema de revisión antes de enviar
+- Un archivo/biblioteca organizada de contenidos
+- Una percepción de marca y producto mucho más alta
+
+ESTRUCTURA DEL BLOQUE EN LA WEB
+El bloque del Plan Pro debe incluir:
+1. Título del plan
+2. Frase resumen clara
+3. Diferencia principal respecto al Plan Básico
+4. Qué incluye el sistema (desarrollado por capas)
+5. Arquitectura del sistema (explicada en lenguaje humano)
+6. Cómo funciona el plan semanal a nivel operativo
+7. Experiencia del usuario final
+8. Para quién es este plan
+9. Para quién NO es
+10. Resultado final y siguiente nivel lógico
+
+DESARROLLO DE CONTENIDO
+
+1. FRASE RESUMEN
+Ejemplo orientativo:
+“Convierte tu plan mensual en un producto digital profesional que se vende y se entrega solo.”
+
+2. DIFERENCIA CLAVE RESPECTO AL PLAN BÁSICO
+Explica que aquí:
+- Ya no hay pagos manuales ni links sueltos
+- El diseño del plan es consistente y de marca
+- El sistema cualifica mínimamente a los usuarios
+- El entrenador tiene control sin trabajo extra
+- El producto es escalable y ordenado
+
+3. QUÉ INCLUYE EL PLAN PRO (DESARROLLADO EN PROFUNDIDAD)
+
+A) Sistema de suscripción recurrente
+- Configuración de Stripe con cobro mensual automático
+- Confirmaciones de pago
+- Gestión de renovaciones y cancelaciones
+- Emails automáticos de pago fallido
+- Estructura pensada para ingresos recurrentes
+
+B) Landing de venta optimizada
+- Página enfocada en conversión
+- Copy claro y estructurado
+- Resolución de objeciones habituales
+- Enfoque “producto”, no “servicio”
+- CTA claros y directos
+
+C) Automatización avanzada de Instagram (ManyChat PRO)
+- Flujos de DM con cualificación ligera:
+  - objetivo del usuario
+  - nivel aproximado
+  - dónde entrena (gym o casa)
+- Etiquetado automático
+- Derivación clara a:
+  - suscripción
+  - o lead magnet si aún no paga
+- Mensajes humanos, no robóticos
+
+D) Email marketing estructurado
+- Herramienta configurada correctamente
+- Lista de clientes segmentada
+- Emails automáticos:
+  - bienvenida
+  - entrega semanal
+  - recordatorios
+  - fallos de pago
+- Base para futuras mejoras (sin complicar ahora)
+
+E) Agente de IA para plan semanal (versión PRO)
+- El entrenador define:
+  - tema semanal
+  - enfoque principal
+  - notas opcionales
+- El agente genera:
+  - rutina estructurada y coherente
+  - plan nutricional orientativo
+  - bloques de hábitos y tips
+- Contenido pensado para repetirse semana tras semana sin incoherencias
+
+F) Diseño automático del PDF (nivel profesional)
+- Uso de sistema de renderizado automático
+- Plantilla diseñada previamente
+- El contenido se inserta sin intervención manual
+- PDF multipágina, claro y visual
+- Consistencia de diseño semana tras semana
+
+G) Sistema de revisión y aprobación
+- Antes del envío, el entrenador puede:
+  - previsualizar el PDF
+  - aprobar con un clic
+  - pedir ajustes si es necesario
+- Control total sin trabajo operativo
+
+H) Archivado y biblioteca básica
+- Guardado automático del PDF
+- Organización por semanas
+- Acceso fácil a contenido anterior
+- Base para una biblioteca de valor
+
+4. ARQUITECTURA DEL SISTEMA (EXPLÍCALA SIMPLE)
+Describe el sistema como un flujo:
+- Instagram capta interés
+- El sistema conversa y cualifica
+- El usuario se suscribe
+- El agente genera el plan
+- El diseño se renderiza
+- El PDF se envía
+- El contenido se archiva
+
+Sin tecnicismos innecesarios.
+
+5. EXPERIENCIA DEL USUARIO FINAL
+Explica cómo se siente el cliente:
+- recibe un producto cuidado
+- percibe orden y profesionalidad
+- entiende qué recibe y cuándo
+- siente continuidad y estructura
+- confía más en la marca
+
+6. PARA QUIÉN ES ESTE PLAN
+- Entrenadores con audiencia activa
+- Profesionales que quieren ingresos recurrentes
+- Creadores que quieren subir nivel de marca
+- Personas que quieren automatizar sin perder control
+
+7. PARA QUIÉN NO ES
+- Quien busca algo improvisado
+- Quien no quiere usar suscripción
+- Quien necesita gestión completa de redes
+- Quien no quiere revisar ni supervisar nada
+
+8. QUÉ NO INCLUYE (DEJAR LÍMITES CLAROS)
+- No incluye gestión mensual de contenido
+- No incluye publicación en redes
+- No incluye branding completo
+- No incluye funnels avanzados de captación
+- No incluye CRM complejo
+
+9. RESULTADO FINAL
+Cierra con una frase tipo:
+“Un sistema profesional que convierte tu conocimiento en un producto recurrente, diseñado y entregado automáticamente, sin perder control.”
+
+ESTILO VISUAL DEL BLOQUE
+- Sensación de producto premium
+- Textos claros y estructurados
+- Bloques bien separados
+- Nada de marketing exagerado
+- Todo debe sonar ejecutable y real
+
+
+CREA EL BLOQUE COMPLETO DEL PLAN “PREMIUM” DENTRO DE UNA PÁGINA DE PROPUESTA DE SERVICIOS.
+
+CONTEXTO DEL PLAN
+El Plan Premium está diseñado para entrenadores personales que:
+- Quieren montar un negocio digital fitness real, no un experimento
+- Entienden que el problema no es crear contenido, sino tener sistema
+- Quieren escalar sin depender de su tiempo ni de improvisación
+- Quieren vender tanto un plan mensual accesible como servicios de alto valor
+- No quieren aprender herramientas técnicas ni montar funnels por su cuenta
+
+Este plan NO es una mejora incremental.
+Es el escenario ideal en el que todo está conectado y funciona como una máquina.
+
+NOMBRE DEL PLAN
+Plan Premium — “Fitness Business-in-a-Box”
+
+OBJETIVO DEL PLAN
+Dejar completamente montado el negocio digital fitness para que el entrenador:
+- Tenga una marca coherente
+- Publique contenido siguiendo un sistema claro
+- Convierta Instagram en leads y ventas
+- Venda una suscripción mensual de forma recurrente
+- Tenga un carril automático de upsell a planes personalizados
+- Entregue valor semanal de forma automática y diseñada
+- Dedique su tiempo a entrenar y crear, no a gestionar sistemas
+
+RESULTADO FINAL (DESCRÍBELO MUY CLARO)
+Al finalizar este plan, el cliente tendrá:
+- Un negocio digital fitness completamente operativo
+- Un sistema de captación, venta y entrega conectado
+- Un club mensual que funciona solo
+- Un sistema de contenido guiado por IA (sin gestión externa)
+- Una infraestructura preparada para crecer sin rehacer nada
+
+ESTRUCTURA DEL BLOQUE EN LA WEB
+El bloque del Plan Premium debe incluir:
+1. Título del plan
+2. Frase resumen potente
+3. Qué se entrega exactamente
+4. Sistemas que quedan montados
+5. Cómo funciona el negocio de principio a fin
+6. Qué puede hacer el entrenador con este sistema
+7. Por qué este plan es escalable
+8. Para quién es este plan
+9. Para quién NO es
+10. Resultado final y visión a medio plazo
+
+DESARROLLO DE CONTENIDO
+
+1. FRASE RESUMEN
+Ejemplo orientativo:
+“Te dejamos el negocio fitness completamente montado para que solo tengas que entrenar y crear.”
+
+2. QUÉ SE ENTREGA (EXPLÍCALO COMO UN PAQUETE COMPLETO)
+Explica que el plan incluye:
+- Infraestructura
+- Automatización
+- Agentes de IA
+- Sistemas de captación y venta
+- Diseño automático
+- Documentación de uso
+
+Todo conectado entre sí, no piezas sueltas.
+
+3. SISTEMAS QUE QUEDAN MONTADOS (DETALLA CADA UNO)
+
+A) Brand Kit funcional
+- Paleta de colores
+- Tipografías
+- Estilo visual
+- Assets para PDFs y contenidos
+- Coherencia visual sin branding infinito
+
+B) Content System Kit (sin gestión mensual)
+Deja claro que NO se gestiona contenido, se entrega el sistema.
+
+Incluye:
+- GPT personalizado de estrategia de contenido
+- GPT para guiones de reels
+- GPT para carruseles
+- GPT para memes con intención (engagement + CTA)
+- GPT para copies de venta y newsletters
+
+Además:
+- Plantillas de carrusel
+- Plantillas de stories
+- Formatos de reel
+- Banco de ideas y calendario en Notion
+
+C) Lead Engine completo
+- Lead magnet diseñado
+- Landing de captación
+- Entrega automática
+- Secuencia de emails de nurturing
+- Conversión a suscripción mensual
+
+D) Instagram DM Engine avanzado
+- ManyChat con múltiples rutas:
+  - lead magnet
+  - suscripción
+  - upsell a 1:1
+- Segmentación real:
+  - objetivo
+  - nivel
+  - entorno de entrenamiento
+  - dolor principal
+- Mensajes humanos y claros
+
+E) Sales Engine
+- Stripe con suscripción recurrente
+- Gestión de pagos fallidos
+- Emails automáticos
+- Sistema de cancelación con feedback
+- Carril de upsell a planes personalizados:
+  - formulario
+  - agenda
+  - seguimiento
+
+F) Delivery Engine (el corazón del sistema)
+- Agente de IA avanzado para plan semanal
+- Capaz de generar:
+  - rutinas gym / casa
+  - niveles novato / intermedio
+  - planes nutricionales orientativos
+- Diseño automático premium del PDF
+- Previsualización y aprobación
+- Envío segmentado por email
+- Archivado automático
+
+G) Biblioteca de miembros
+- Acceso organizado al contenido
+- Histórico de planes
+- Filtros por objetivo
+- Sensación de producto de valor
+
+H) Ops & Control
+- CRM ligero
+- Pipeline claro
+- Dashboards básicos
+- Métricas entendibles
+
+I) Documentación y handoff
+- Guía clara de uso del sistema
+- Qué tocar y qué no
+- Cómo lanzar campañas
+- Cómo elegir temas semanales
+- Cómo escalar sin romper nada
+
+4. CÓMO FUNCIONA EL NEGOCIO (EXPLÍCALO COMO HISTORIA)
+Describe el recorrido completo:
+- El entrenador publica contenido guiado
+- El sistema convierte atención en leads
+- Los leads se convierten en clientes
+- El club se entrega automáticamente
+- Parte de los clientes suben a 1:1
+- El negocio crece sin más trabajo operativo
+
+5. POR QUÉ ESTE PLAN ESCALA
+Explica que:
+- No depende del tiempo del entrenador
+- No requiere rehacer sistemas
+- Permite subir precios
+- Permite lanzar nuevos productos
+- Permite crecer audiencia y facturación a la vez
+
+6. PARA QUIÉN ES ESTE PLAN
+- Entrenadores con visión de negocio
+- Creadores fitness serios
+- Profesionales que quieren dejar de improvisar
+- Personas que quieren construir algo estable
+
+7. PARA QUIÉN NO ES
+- Quien quiere resultados inmediatos sin implicarse
+- Quien busca solo un bot o un PDF
+- Quien no quiere crear contenido
+- Quien no quiere supervisar nada
+
+8. RESULTADO FINAL
+Cierra con una frase tipo:
+“No es un servicio. Es un negocio fitness completamente montado.”
+
+ESTILO VISUAL DEL BLOQUE
+- Sensación de infraestructura sólida
+- Mucha claridad
+- Nada de humo
+- Texto bien separado
+- Enfoque business, no influencer
+
+
+OBJETIVO GENERAL
+Diseñar la estructura completa y el diseño visual de una página de propuesta de servicios
+para entrenadores personales / fitness coaches, dentro de la web de Aether Labs.
+
+La página debe:
+- Explicarse rápido
+- No cansar
+- Guiar visualmente a comparar planes
+- Hacer que el Plan Premium se perciba como el escenario ideal
+- Evitar texto denso innecesario
+- Funcionar como “vendedor silencioso”
+
+Esta NO es una landing agresiva.
+Es una página clara, consultiva y de alto nivel.
+
+PRINCIPIOS DE DISEÑO
+- Claridad antes que estética
+- Jerarquía visual muy marcada
+- Mucho aire / espacio en blanco
+- Bloques bien separados
+- Nada de efectos innecesarios
+- Diseño sobrio, profesional, oscuro
+- Sensación de sistema, no de agencia creativa
+
+PALETA Y ESTILO
+- Fondo principal oscuro (negro / grafito / petrol)
+- Texto claro (blanco / gris claro)
+- Color acento solo para:
+  - CTAs
+  - destacar Premium
+  - flujos o diagramas
+- Iconografía simple, lineal
+- Tipografía grande para títulos
+- Nada de ilustraciones genéricas de stock
+
+ESTRUCTURA DE LA PÁGINA (DE ARRIBA A ABAJO)
+
+────────────────────────
+1. HERO SECTION
+────────────────────────
+Layout:
+- Una sola columna centrada
+- Texto grande
+- Subtítulo debajo
+- CTA claro
+
+Contenido:
+- Headline muy claro (qué se monta)
+- Subheadline explicando el valor real
+- Frase diferencial:
+  “No gestionamos tu contenido. Montamos el sistema.”
+
+CTA:
+- “Ver planes”
+- o “Solicitar demo”
+
+Visual:
+- Sin imágenes decorativas
+- Opcional: diagrama muy simple del sistema (línea horizontal)
+
+────────────────────────
+2. BLOQUE “EL PROBLEMA ACTUAL”
+────────────────────────
+Layout:
+- 3 columnas o cards
+- Icono + título + 2 líneas
+
+Contenido:
+- Excel
+- Canva
+- Envíos manuales
+
+Objetivo:
+Que el entrenador se vea reflejado inmediatamente.
+
+────────────────────────
+3. BLOQUE “LA SOLUCIÓN: UN SISTEMA”
+────────────────────────
+Layout:
+- Diagrama visual horizontal o vertical
+- Muy simple
+
+Flujo visual:
+Instagram → DM → Pago → Plan semanal → PDF → Email → Archivo
+
+Texto de apoyo:
+- Frase corta explicando que todo se automatiza
+- Nada de tecnicismos
+
+────────────────────────
+4. BLOQUE “LOS PLANES”
+────────────────────────
+Layout:
+- 3 columnas
+- Todas visibles a la vez
+- Premium visualmente destacado:
+  - borde
+  - fondo ligeramente distinto
+  - etiqueta “Recomendado”
+
+Cada columna debe incluir:
+- Nombre del plan
+- Frase resumen
+- 4–6 bullets clave
+- CTA propio (“Ver detalles” o “Solicitar este plan”)
+
+Importante:
+- No meter todo el texto aquí
+- Esto es solo visión general
+
+────────────────────────
+5. BLOQUE DETALLE DE PLANES (UNO A UNO)
+────────────────────────
+Layout:
+- Sección por plan
+- Orden: Básico → Pro → Premium
+- Cada plan ocupa todo el ancho
+
+Dentro de cada plan:
+- Título grande
+- Subtítulo
+- Texto explicativo
+- Subbloques claros
+- Nada de columnas múltiples aquí
+
+Estructura interna recomendada:
+- Qué resuelve
+- Qué incluye
+- Cómo funciona
+- Para quién es
+- Para quién no
+- Resultado final
+
+────────────────────────
+6. BLOQUES DESPLEGABLES (ACCORDION)
+────────────────────────
+Objetivo:
+Evitar saturar de texto y permitir profundizar.
+
+Accordions recomendados:
+- “Ver arquitectura del sistema”
+- “Cómo funciona el agente semanal”
+- “Qué herramientas se usan (sin tecnicismos)”
+- “Preguntas frecuentes”
+
+Cada accordion:
+- Texto corto
+- Diagramas simples si aplica
+- Nada de párrafos largos
+
+────────────────────────
+7. BLOQUE COMPARATIVO (OPCIONAL PERO RECOMENDADO)
+────────────────────────
+Layout:
+- Tabla comparativa simple
+- Filas: funcionalidades
+- Columnas: Básico / Pro / Premium
+
+Visual:
+- Check ✔️
+- Líneas claras
+- Premium con más checks visibles
+
+Objetivo:
+Que el usuario vea que Premium es el sistema completo.
+
+────────────────────────
+8. CTA FINAL
+────────────────────────
+Layout:
+- Fondo distinto (bloque de cierre)
+- Texto claro
+- 1 o 2 CTAs máximo
+
+Texto:
+- “Si quieres montar esto bien desde el principio, hablemos.”
+- Reforzar que no es venta agresiva
+
+CTAs:
+- “Solicitar demo”
+- “Hablar por WhatsApp”
+
+────────────────────────
+9. FOOTER DE CONFIANZA
+────────────────────────
+Contenido:
+- Frase tipo:
+  “No vendemos promesas. Creamos sistemas que funcionan.”
+- Opcional: enlace a casos / proyectos / contacto
+
+ANIMACIONES
+- Muy sutiles
+- Fade-in
+- Nada de scroll loco
+- Nada de efectos llamativos
+
+RESPONSIVE
+- En móvil:
+  - planes en vertical
+  - Premium primero
+  - CTA siempre visible
+
+RESULTADO FINAL ESPERADO
+Una página:
+- Clara
+- Profesional
+- Fácil de entender
+- Que posiciona a Aether Labs como partner técnico serio
+- Que hace que el Plan Premium sea la opción lógica
+- Que no genera dudas, sino orden mental
+
+
+CONTEXTO
+Estás construyendo una página de propuesta de servicios para Aether Labs.
+Este bloque NO es marketing.
+Es un bloque de claridad operativa y técnica que sirve para:
+- transmitir profesionalidad
+- reducir objeciones
+- filtrar clientes no preparados
+- acelerar el cierre de ventas
+
+El lector es un entrenador personal que NO es técnico,
+pero quiere entender:
+- qué se va a montar exactamente
+- cómo funciona el sistema
+- qué recibe
+- cuánto tarda
+- qué tiene que aportar él
+- cuándo se considera el proyecto terminado
+
+OBJETIVO DEL BLOQUE
+Explicar de forma clara y ordenada:
+1. La arquitectura técnica del sistema
+2. Los entregables por cada plan
+3. El timeline de implementación
+4. Qué necesitamos del cliente
+5. Criterios de aceptación y cierre del proyecto
+
+Tono:
+- Profesional
+- Claro
+- Tranquilizador
+- Cero jerga técnica innecesaria
+- Sensación de “esto está pensado y probado”
+
+────────────────────────
+1. ARQUITECTURA GENERAL DEL SISTEMA
+────────────────────────
+Explica el sistema como un flujo lógico, no como herramientas sueltas.
+
+Describe el flujo base así:
+
+Instagram
+↓
+Automatización de mensajes (DM)
+↓
+Sistema de pago
+↓
+Alta del usuario
+↓
+Agente de IA
+↓
+Diseño automático del plan
+↓
+Entrega por email
+↓
+Archivo / biblioteca
+
+Acompaña cada bloque con 1–2 líneas explicativas:
+- qué hace
+- por qué existe
+- qué problema elimina
+
+Evita tecnicismos como APIs o webhooks.
+Habla en términos de negocio y experiencia.
+
+────────────────────────
+2. BLUEPRINT TÉCNICO (VISTA SIMPLE)
+────────────────────────
+Explica la arquitectura por capas:
+
+CAPA 1 — CAPTACIÓN
+- Instagram orgánico
+- Comentarios y mensajes directos
+- Automatización de respuestas
+Objetivo: convertir atención en conversación.
+
+CAPA 2 — CONVERSIÓN
+- Página de venta
+- Sistema de pago
+- Confirmación automática
+Objetivo: cobrar sin fricción.
+
+CAPA 3 — ORQUESTACIÓN
+- Sistema central que coordina todo
+- Decide cuándo se genera el plan
+- Decide cuándo se envía
+Objetivo: eliminar tareas manuales.
+
+CAPA 4 — GENERACIÓN DE CONTENIDO
+- Agente de IA entrenado
+- Genera rutina y nutrición
+- Sigue estructura y tono definidos
+Objetivo: consistencia y ahorro de tiempo.
+
+CAPA 5 — DISEÑO Y ENTREGA
+- Inserción automática del contenido en diseño
+- Creación del PDF
+- Envío por email
+Objetivo: percepción profesional y experiencia de cliente.
+
+CAPA 6 — CONTROL Y ARCHIVO
+- Guardado de contenido
+- Historial
+- Biblioteca básica o avanzada
+Objetivo: orden y reutilización.
+
+────────────────────────
+3. ENTREGABLES POR PLAN
+────────────────────────
+
+PLAN BÁSICO — ENTREGABLES
+- Landing simple de venta
+- Sistema de pago funcional
+- Automatización básica de Instagram
+- Agente de IA v1 para plan semanal
+- Plantilla de PDF simple
+- Envío automático por email
+- Archivo básico de planes
+- Sistema probado y funcionando
+
+PLAN PRO — ENTREGABLES
+Incluye todo lo anterior, más:
+- Suscripción recurrente configurada
+- Landing optimizada
+- Automatización de Instagram con cualificación
+- Agente de IA v2 (estructura avanzada)
+- Diseño automático profesional del PDF
+- Sistema de previsualización y aprobación
+- Biblioteca organizada
+- Dashboard básico de métricas
+
+PLAN PREMIUM — ENTREGABLES
+Incluye todo lo anterior, más:
+- Brand kit funcional
+- GPTs personalizados (estrategia, guiones, copies)
+- Plantillas de contenido
+- Lead magnet + landing + secuencia email
+- Sistema avanzado de DM con rutas
+- Upsell automático a planes personalizados
+- Biblioteca de miembros avanzada
+- CRM ligero
+- Documentación completa de uso
+
+────────────────────────
+4. TIMELINE DE IMPLEMENTACIÓN
+────────────────────────
+Explica los tiempos de forma honesta y realista.
+
+PLAN BÁSICO
+- Duración estimada: 7–10 días
+- Fases:
+  - definición mínima
+  - montaje del sistema
+  - pruebas
+  - entrega
+
+PLAN PRO
+- Duración estimada: 2–3 semanas
+- Fases:
+  - definición
+  - diseño del sistema
+  - configuración de pagos
+  - automatizaciones
+  - pruebas reales
+  - ajustes finales
+
+PLAN PREMIUM
+- Duración estimada: 4–6 semanas
+- Fases:
+  - definición estratégica
+  - branding funcional
+  - montaje de funnels
+  - configuración de agentes
+  - diseño y bibliotecas
+  - pruebas completas
+  - documentación y handoff
+
+Deja claro que los tiempos dependen de:
+- rapidez del cliente en entregar material
+- validaciones
+- alcance elegido
+
+────────────────────────
+5. QUÉ NECESITAMOS DEL CLIENTE
+────────────────────────
+Lista clara y tranquilizadora:
+
+- Nombre del proyecto
+- Enfoque principal (tipo de entrenamiento)
+- Precio del plan mensual
+- Ejemplos de rutinas o estilo (si tiene)
+- Tono de comunicación deseado
+- Email de uso principal
+- Cuenta de Instagram
+- Disponibilidad para validaciones puntuales
+
+Aclarar:
+“No necesitas conocimientos técnicos.”
+
+────────────────────────
+6. CRITERIOS DE ACEPTACIÓN (CUÁNDO SE CONSIDERA TERMINADO)
+────────────────────────
+Define claramente cuándo el proyecto está cerrado:
+
+- El flujo completo funciona de inicio a fin
+- El pago entra correctamente
+- El agente genera el plan sin errores
+- El PDF se diseña automáticamente
+- El email se envía correctamente
+- El contenido queda archivado
+- El cliente sabe usar el sistema
+
+Incluye una frase tipo:
+“El proyecto se considera finalizado cuando el sistema funciona sin intervención manual.”
+
+────────────────────────
+7. SOPORTE Y SIGUIENTES PASOS
+────────────────────────
+Aclara:
+- Qué soporte está incluido (ajustes iniciales)
+- Qué no es soporte continuo
+- Posibilidad de ampliaciones futuras
+
+Cierra con una frase tipo:
+“No es un servicio puntual. Es una base sólida para crecer.”
+
+ESTILO VISUAL DEL BLOQUE
+- Texto claro
+- Bloques bien separados
+- Listas legibles
+- Sensación de orden y control
+- Nada de lenguaje comercial exagerado
+
+
+CONTEXTO
+Estás diseñando el bloque de precios de una página de propuesta de servicios de Aether Labs.
+Estos precios NO son tarifas sueltas.
+Son precios de implementación de sistemas e infraestructura digital con IA.
+
+El cliente objetivo:
+- Entrenador personal / fitness coach
+- Autónomo o solopreneur
+- No técnico
+- Acostumbrado a cobrar por horas o planes 1:1
+- No está acostumbrado a pensar en “setup de sistemas”, pero sí entiende el valor del tiempo
+
+OBJETIVO DEL BLOQUE DE PRECIOS
+1. Mostrar precios con claridad y sin fricción
+2. Filtrar clientes poco serios
+3. Posicionar el Plan Premium como la opción lógica
+4. Evitar comparaciones de “horas” o “tareas”
+5. Comunicar que el valor está en el sistema montado, no en el tiempo invertido
+
+PRINCIPIOS CLAVE
+- No justificar precios con horas
+- No usar lenguaje defensivo
+- No vender barato
+- Usar “desde” para permitir flexibilidad
+- Dejar claro que el precio es por IMPLEMENTACIÓN, no por mantenimiento
+- Separar claramente:
+  - precio base
+  - posibles extras
+  - qué no está incluido
+
+ESTRUCTURA DEL BLOQUE DE PRECIOS
+
+────────────────────────
+1. INTRODUCCIÓN AL BLOQUE DE PRECIOS
+────────────────────────
+Escribe un texto breve explicando:
+- que los precios corresponden a la implementación completa del sistema
+- que no son cuotas mensuales de contenido
+- que una vez montado, el sistema es suyo
+
+Ejemplo de tono:
+“No vendemos horas ni tareas sueltas. Montamos sistemas completos listos para funcionar.”
+
+────────────────────────
+2. PRESENTACIÓN DE LOS PLANES CON PRECIO
+────────────────────────
+Muestra los tres planes en columnas o bloques claros.
+
+Para cada plan incluye:
+- Nombre del plan
+- Frase resumen
+- Precio base con “Desde”
+- Qué representa ese precio
+- CTA asociado
+
+PRECIOS A MOSTRAR (USAR EXACTAMENTE ESTOS RANGOS)
+
+PLAN BÁSICO
+Precio: Desde 1.200 €
+Texto de apoyo:
+“Implementación del sistema mínimo para vender y entregar tu plan mensual de forma automática.”
+
+PLAN PRO
+Precio: Desde 2.900 €
+Texto de apoyo:
+“Implementación de un sistema profesional de suscripción con diseño automático y control total.”
+
+PLAN PREMIUM
+Precio: Desde 5.900 €
+Etiqueta visual: “Recomendado”
+Texto de apoyo:
+“Negocio fitness completo montado y listo para escalar.”
+
+────────────────────────
+3. QUÉ INCLUYE EL PRECIO (ACLARACIÓN CLAVE)
+────────────────────────
+Debajo de los planes, añade un bloque explicativo:
+
+- El precio corresponde al diseño, configuración e implementación del sistema.
+- Incluye definición, montaje, pruebas y puesta en marcha.
+- No es un fee mensual.
+- El sistema queda operativo y en propiedad del cliente.
+
+Usa lenguaje tranquilizador:
+“No dependes de nosotros para que funcione.”
+
+────────────────────────
+4. EXTRAS Y VARIABLES DE PRECIO
+────────────────────────
+Incluye un bloque titulado:
+“¿Por qué pone ‘desde’?”
+
+Explica que el precio puede variar según:
+- Número de versiones del plan semanal (Gym / Casa)
+- Niveles (Novato / Intermedio)
+- Portal de miembros más avanzado
+- Branding adicional
+- Automatizaciones extra
+- Integraciones específicas
+
+Incluye ejemplos claros de extras (sin parecer upsell agresivo):
+- Versiones adicionales del plan
+- Biblioteca avanzada
+- Portal privado
+- Pack de lanzamiento
+
+────────────────────────
+5. LO QUE NO ESTÁ INCLUIDO EN EL PRECIO
+────────────────────────
+Bloque muy importante para evitar malentendidos.
+
+Aclarar explícitamente:
+- No incluye gestión mensual de redes sociales
+- No incluye publicación de contenido
+- No incluye community management
+- No incluye atención al cliente diaria
+- No incluye creación continua de contenido por la agencia
+
+Refuerza la idea:
+“El sistema está montado para que tú lo uses.”
+
+────────────────────────
+6. COMPARACIÓN IMPLÍCITA (SIN TABLA)
+────────────────────────
+Incluye un texto que ayude a contextualizar el precio:
+
+Ejemplo:
+“Un solo cliente de entrenamiento personalizado suele pagar entre X y Y €/mes.
+Este sistema está pensado para ayudarte a escalar sin multiplicar tu tiempo.”
+
+No pongas cifras exactas si no es necesario.
+Apela al razonamiento lógico.
+
+────────────────────────
+7. CTA FINAL DEL BLOQUE DE PRECIOS
+────────────────────────
+Cierra el bloque con un CTA tranquilo, no agresivo.
+
+Ejemplos:
+- “Ver si este sistema encaja contigo”
+- “Solicitar demo”
+- “Hablar del mejor plan para tu caso”
+
+Refuerza que:
+- no es una venta automática
+- hay una conversación previa
+- se adapta a su situación real
+
+────────────────────────
+8. ESTILO VISUAL DEL BLOQUE
+────────────────────────
+- Mucho aire
+- Precios grandes y claros
+- El símbolo “€” visible pero discreto
+- Premium destacado visualmente
+- Nada de tachados ni trucos de pricing baratos
+- Sensación de solidez y profesionalidad
+
+RESULTADO FINAL ESPERADO
+Un bloque de precios que:
+- no genera rechazo
+- transmite orden y seguridad
+- filtra clientes no preparados
+- hace que el Premium sea la opción lógica
+- refuerza que Aether Labs vende sistemas, no horas

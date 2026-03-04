@@ -2,36 +2,60 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next";
-import JasonBot from "@/components/ui/jason-bot";
-import JasonWidget from "@/components/jason-widget";
-import { Fluby } from "@/components/fluby/Fluby";
 import type { Viewport } from "next";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://aetherlabs.es"),
-  title: "Aether Labs - Convertimos ideas en tecnología",
-  description: "Laboratorios de Inteligencia Artificial - IA para PYMES sin complicaciones.",
+  title: "Aether Labs — El puente entre la tecnología y tu empresa | Barcelona",
+  description:
+    "Aether Labs distribuye e integra las mejores soluciones de IA del mundo para empresas españolas. Seleccionamos, implementamos y acompañamos. Sin fricciones.",
+  keywords: [
+    "inteligencia artificial empresas",
+    "distribuidor IA España",
+    "integración IA pymes",
+    "Closius España",
+    "AchieveApex CRM IA",
+    "consultoría IA Barcelona",
+    "Aether Labs",
+  ],
   openGraph: {
-    title: "Aether Labs - Convertimos ideas en tecnología",
-    description: "Laboratorios de Inteligencia Artificial - IA para PYMES sin complicaciones.",
+    title: "Aether Labs — El puente entre la tecnología y tu empresa",
+    description:
+      "Seleccionamos, distribuimos e implementamos las mejores soluciones de IA del mundo para que tu empresa compita en la nueva economía.",
     images: [
       {
         url: "/og-image-black.png",
         width: 1200,
         height: 630,
-        alt: "Aether Labs Logo",
+        alt: "Aether Labs — Barcelona 2025",
       },
     ],
     locale: "es_ES",
     type: "website",
+    siteName: "Aether Labs",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Aether Labs — El puente entre la tecnología y tu empresa",
+    description:
+      "Distribuimos e integramos las mejores soluciones de IA para empresas españolas. Basados en Barcelona.",
+    images: ["/og-image-black.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
   },
 };
 
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  maximumScale: 1,
-  userScalable: false,
+  maximumScale: 5,
+  userScalable: true,
 };
 
 export default function RootLayout({
@@ -41,7 +65,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
-      {/* Google Analytics (gtag.js) */}
+      {/* Google Analytics */}
       <Script
         src="https://www.googletagmanager.com/gtag/js?id=G-MFFHMKJR8Q"
         strategy="afterInteractive"
@@ -51,7 +75,6 @@ export default function RootLayout({
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
-
           gtag('config', 'G-MFFHMKJR8Q');
         `}
       </Script>
@@ -63,9 +86,7 @@ export default function RootLayout({
         'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
         })(window,document,'script','dataLayer','GTM-T2K2L3NQ');`}
       </Script>
-      {/* End Google Tag Manager */}
-      <body className="antialiased bg-black text-white selection:bg-[#82ff1f] selection:text-black overflow-x-hidden">
-        {/* Google Tag Manager (noscript) */}
+      <body className="antialiased bg-[#0A0A0A] text-[#F5F5F5] overflow-x-hidden">
         <noscript>
           <iframe
             src="https://www.googletagmanager.com/ns.html?id=GTM-T2K2L3NQ"
@@ -74,14 +95,8 @@ export default function RootLayout({
             style={{ display: "none", visibility: "hidden" }}
           />
         </noscript>
-        {/* End Google Tag Manager (noscript) */}
-
         {children}
         <Analytics />
-        <Fluby />
-        {/* <Script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript" strategy="afterInteractive" /> */}
-        {/* @ts-ignore */}
-        {/* <elevenlabs-convai agent-id="agent_7901k85nn7wyfynsqgs4qym0h48t"></elevenlabs-convai> */}
       </body>
     </html>
   );

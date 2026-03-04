@@ -78,7 +78,7 @@ const HeaderNavigation = () => {
       subItems: [
         { label: "Ads con IA", href: "/ads-con-ia", icon: TrendingUp, description: "Atrae tráfico cualificado a tu negocio." },
         { label: "Agentes IA", href: "/agentes", icon: Bot, description: "Fuerza de ventas digital 24/7." },
-        { label: "CRM con IA", href: "/crm-con-ia", icon: Database, description: "Gestión, seguimiento y cierre automatizado." },
+        { label: "Achieve Apex", href: "/achieve-apex", icon: Database, description: "CRM con IA: Gestión y cierre automatizado." },
         { label: "Formación IA", href: "/formacion-ia-ventas", icon: GraduationCap, description: "Capacitación estratégica para equipos." }
       ]
     },
