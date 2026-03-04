@@ -89,7 +89,7 @@ export default function AgentesPage() {
             <HeaderNavigation />
 
             {/* ── HERO ── */}
-            <section className="relative min-h-[115dvh] flex items-center justify-center bg-black overflow-hidden pt-32 pb-20 px-6">
+            <section className="relative min-h-screen lg:min-h-[115dvh] flex items-center justify-center bg-black overflow-hidden pt-24 lg:pt-32 pb-20 px-6">
 
                 {/* Grid */}
                 <div className="absolute inset-0 pointer-events-none" style={{
@@ -155,19 +155,19 @@ export default function AgentesPage() {
                     style={{ background: "radial-gradient(ellipse 120% 100% at 50% 0%,transparent 40%,rgba(0,0,0,0.55) 100%)" }} />
 
                 {/* Content */}
-                <div className="relative z-10 w-full max-w-5xl mx-auto flex flex-col items-center text-center gap-8">
+                <div className="relative z-10 w-full max-w-5xl mx-auto flex flex-col items-center text-center gap-6 lg:gap-8">
 
                     <motion.div
                         initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}
                         className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm"
                     >
                         <span className="w-1.5 h-1.5 rounded-full bg-[#7bff00] animate-pulse" />
-                        <span className="text-xs font-medium uppercase tracking-widest text-zinc-400">Directorio de Agentes Especializados</span>
+                        <span className="text-[10px] lg:text-xs font-medium uppercase tracking-[0.15em] text-zinc-400">Directorio de Agentes Especializados</span>
                     </motion.div>
 
                     <motion.h1
                         initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.1 }}
-                        className="font-display font-normal text-5xl md:text-7xl lg:text-8xl tracking-tight leading-[1.1] text-white"
+                        className="font-display font-normal text-4xl sm:text-5xl md:text-7xl lg:text-8xl tracking-tight leading-[1.1] text-white"
                     >
                         <span className="font-bold">Agentes IA</span>
                         <br />
@@ -188,7 +188,7 @@ export default function AgentesPage() {
 
                     <motion.p
                         initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.22 }}
-                        className="font-light text-lg md:text-xl text-zinc-400 max-w-2xl leading-relaxed"
+                        className="font-light text-base lg:text-xl text-zinc-400 max-w-2xl leading-relaxed px-4 lg:px-0"
                     >
                         No son bots. Son perfiles entrenados para vender, atender y gestionar procesos comerciales dentro de tu empresa.
                     </motion.p>
@@ -198,26 +198,27 @@ export default function AgentesPage() {
                     >
                         <Link
                             href="/contacto"
-                            className="group flex items-center gap-2 px-8 py-4 bg-white text-black rounded-full font-medium text-base hover:scale-105 active:scale-95 transition-transform"
+                            className="group flex items-center gap-2 px-10 py-5 bg-white text-black rounded-full font-bold text-lg hover:scale-105 active:scale-95 transition-all shadow-[0_0_20px_rgba(255,255,255,0.2)]"
+                            style={{ backgroundColor: 'white', color: 'black' }}
                         >
                             Crear mi agente IA
-                            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                         </Link>
                     </motion.div>
 
                     {/* Stat pills */}
                     <motion.div
                         initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.46 }}
-                        className="flex flex-wrap justify-center gap-3 pt-4"
+                        className="grid grid-cols-1 xs:grid-cols-3 gap-2 sm:gap-3 pt-6 px-4 w-full max-w-2xl"
                     >
                         {[
                             ["6", "Perfiles especializados"],
                             ["24/7", "Disponibilidad total"],
                             ["+50", "Empresas activas"],
                         ].map(([val, label]) => (
-                            <div key={label} className="flex items-center gap-2 px-4 py-2 rounded-full border border-white/[0.08] bg-white/[0.04] backdrop-blur-sm">
+                            <div key={label} className="flex items-center justify-center gap-2 px-3 py-2 rounded-full border border-white/[0.08] bg-white/[0.04] backdrop-blur-sm whitespace-nowrap">
                                 <span className="text-sm font-bold text-white">{val}</span>
-                                <span className="text-xs text-zinc-500">{label}</span>
+                                <span className="text-[10px] sm:text-xs text-zinc-500">{label}</span>
                             </div>
                         ))}
                     </motion.div>
@@ -227,14 +228,14 @@ export default function AgentesPage() {
             {/* Section 2: La Evolución del Servicio */}
             <section className="bg-white py-32 px-6 text-black relative z-10">
                 <div className="max-w-7xl mx-auto">
-                    <div className="max-w-5xl mb-24">
-                        <h2 className="text-5xl md:text-7xl font-display font-normal mb-10 leading-[1.05] tracking-tight uppercase">
+                    <div className="max-w-5xl mb-16 lg:mb-24">
+                        <h2 className="text-3xl sm:text-5xl md:text-7xl font-display font-normal mb-8 lg:mb-10 leading-[1.05] tracking-tight uppercase">
                             La evolución del servicio:<br />
                             <span className="text-zinc-300">Un agente IA no es un chatbot.</span>
                         </h2>
-                        <div className="flex flex-col md:flex-row gap-12 items-start">
+                        <div className="flex flex-col md:flex-row gap-8 lg:gap-12 items-start">
                             <div className="w-1.5 bg-[#7bff00] h-32 hidden md:block self-stretch"></div>
-                            <p className="text-2xl font-light text-zinc-600 leading-relaxed md:pl-0 pl-8 md:border-l-0 border-l-4 border-[#7bff00]">
+                            <p className="text-xl lg:text-2xl font-light text-zinc-600 leading-relaxed md:pl-0 pl-6 border-l-4 md:border-l-0 border-[#7bff00]">
                                 Mientras que un chatbot tradicional responde preguntas basadas en reglas fijas, un Agente IA de Aether Labs razona sobre objetivos, entiende el contexto emocional del cliente e integra datos en tiempo real para cerrar ventas.
                             </p>
                         </div>

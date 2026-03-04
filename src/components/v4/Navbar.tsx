@@ -54,26 +54,27 @@ export default function Navbar() {
                     {/* LEFT — Logo + version */}
                     <Link
                         href="/"
-                        style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none' }}
+                        style={{ display: 'flex', alignItems: 'center', gap: '8px', textDecoration: 'none' }}
                     >
                         <Image
                             src="/aether-logo-white.png"
                             alt="Aether Labs"
-                            width={120}
-                            height={32}
+                            width={110}
+                            height={28}
                             style={{ objectFit: 'contain' }}
                             priority
                         />
                         <span
+                            className="nav-version"
                             style={{
                                 fontFamily: 'var(--font-mono)',
                                 fontSize: '10px',
-                                color: '#888',
+                                color: '#666',
                                 letterSpacing: '0.05em',
                                 marginTop: '2px',
                             }}
                         >
-                            [v4.0 — ES]
+                            [v4.0]
                         </span>
                     </Link>
 
@@ -94,7 +95,7 @@ export default function Navbar() {
                                     color: '#888',
                                     textDecoration: 'none',
                                     fontFamily: 'var(--font-body)',
-                                    fontSize: '14px',
+                                    fontSize: '13px',
                                     fontWeight: 500,
                                     transition: 'color 0.2s ease',
                                 }}
@@ -110,6 +111,7 @@ export default function Navbar() {
                     <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
                         <a
                             href="#cta"
+                            className="desktop-nav"
                             style={{
                                 display: 'inline-flex',
                                 alignItems: 'center',
@@ -118,11 +120,11 @@ export default function Navbar() {
                                 color: '#000',
                                 fontFamily: 'var(--font-body)',
                                 fontWeight: 600,
-                                fontSize: '14px',
-                                padding: '10px 22px',
+                                fontSize: '13px',
+                                padding: '8px 20px',
                                 borderRadius: '100px',
                                 textDecoration: 'none',
-                                transition: 'transform 0.2s ease, opacity 0.2s ease',
+                                transition: 'opacity 0.2s ease',
                             }}
                             onMouseEnter={e => (e.currentTarget.style.opacity = '0.85')}
                             onMouseLeave={e => (e.currentTarget.style.opacity = '1')}
@@ -135,18 +137,23 @@ export default function Navbar() {
                             onClick={() => setMenuOpen(!menuOpen)}
                             aria-label="Toggle menu"
                             style={{
-                                background: 'transparent',
-                                border: 'none',
+                                background: 'rgba(255,255,255,0.05)',
+                                border: '1px solid rgba(255,255,255,0.1)',
                                 cursor: 'pointer',
-                                padding: '8px',
+                                padding: '10px',
+                                borderRadius: '8px',
                                 display: 'none',
+                                width: '40px',
+                                height: '40px',
+                                justifyContent: 'center',
+                                alignItems: 'center',
                             }}
                         >
                             <div style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
                                 <span
                                     style={{
                                         display: 'block',
-                                        width: '22px',
+                                        width: '18px',
                                         height: '1.5px',
                                         background: '#F5F5F5',
                                         transition: 'transform 0.2s, opacity 0.2s',
@@ -156,17 +163,18 @@ export default function Navbar() {
                                 <span
                                     style={{
                                         display: 'block',
-                                        width: '22px',
+                                        width: menuOpen ? '18px' : '12px',
                                         height: '1.5px',
                                         background: '#F5F5F5',
-                                        transition: 'opacity 0.2s',
+                                        alignSelf: 'flex-end',
+                                        transition: 'opacity 0.2s, width 0.2s',
                                         opacity: menuOpen ? 0 : 1,
                                     }}
                                 />
                                 <span
                                     style={{
                                         display: 'block',
-                                        width: '22px',
+                                        width: '18px',
                                         height: '1.5px',
                                         background: '#F5F5F5',
                                         transition: 'transform 0.2s, opacity 0.2s',
@@ -226,6 +234,9 @@ export default function Navbar() {
             <style jsx>{`
         @media (max-width: 768px) {
           .desktop-nav {
+            display: none !important;
+          }
+          .nav-version {
             display: none !important;
           }
           .hamburger-btn {

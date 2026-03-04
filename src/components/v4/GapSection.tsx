@@ -72,6 +72,7 @@ export default function GapSection() {
             />
 
             <div
+                className="content-container"
                 style={{
                     maxWidth: '1280px',
                     margin: '0 auto',
@@ -122,6 +123,7 @@ export default function GapSection() {
 
                 {/* Stats Cards */}
                 <div
+                    className="stats-grid"
                     style={{
                         display: 'grid',
                         gridTemplateColumns: 'repeat(3, 1fr)',
@@ -162,12 +164,15 @@ export default function GapSection() {
             </div>
 
             <style jsx>{`
-        @media (max-width: 768px) {
+        @media (max-width: 900px) {
           .stats-grid {
             grid-template-columns: 1fr !important;
           }
-          section > div:nth-child(2) {
+          .content-container {
             padding: 0 24px !important;
+          }
+          h2 {
+            font-size: 32px !important;
           }
         }
       `}</style>

@@ -70,14 +70,12 @@ const HeaderNavigation = () => {
   const navItems: NavItem[] = [
     // V2 nav items backed up - hidden for V3
     // Servicios, Labs, Casos de Uso, Learn, Experimentos, Contacto removed from visible nav
-    { label: "Agentes", href: "/agentes" },
     {
       label: "Servicios",
       href: "/servicios",
       variant: 'rich',
       subItems: [
         { label: "Ads con IA", href: "/ads-con-ia", icon: TrendingUp, description: "Atrae tráfico cualificado a tu negocio." },
-        { label: "Agentes IA", href: "/agentes", icon: Bot, description: "Fuerza de ventas digital 24/7." },
         { label: "Achieve Apex", href: "/achieve-apex", icon: Database, description: "CRM con IA: Gestión y cierre automatizado." },
         { label: "Formación IA", href: "/formacion-ia-ventas", icon: GraduationCap, description: "Capacitación estratégica para equipos." }
       ]
@@ -307,22 +305,22 @@ const HeaderNavigation = () => {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled || isMobileMenuOpen
         ? "bg-black/90 backdrop-blur-md shadow-md"
-        : isDarkHeroPage
-          ? "bg-transparent"
+        : (isDarkHeroPage && !isMobileMenuOpen)
+          ? "bg-transparent lg:bg-transparent bg-black/40 backdrop-blur-sm" // Slight background on mobile for legibility
           : (pathname === '/servicios' || pathname === '/industrias' || pathname?.includes('/salvia-'))
             ? "bg-black/90 backdrop-blur-sm shadow-md"
             : "bg-transparent"
         }`}
     >
-      <div className="w-full h-[90px] flex items-center justify-between px-8 xl:px-24">
+      <div className="w-full h-[70px] lg:h-[90px] flex items-center justify-between px-6 lg:px-8 xl:px-24">
         <div className="flex-[2] flex justify-start">
           <Link href="/" className="flex items-center" aria-label="Aether Labs Home">
             <Image
               src="/aether-logo-white.png"
               alt="Aether Labs"
-              width={140}
-              height={47}
-              className="h-[45px] w-auto transition-all duration-300"
+              width={120}
+              height={40}
+              className="h-[30px] lg:h-[45px] w-auto transition-all duration-300"
               priority
             />
           </Link>
@@ -355,9 +353,8 @@ const HeaderNavigation = () => {
         </div>
       </div>
 
-      {/* Mobile Menu */}
       <div
-        className={`fixed top-[90px] left-0 right-0 bottom-0 bg-black z-40 w-full h-[calc(100vh-90px)] transition-transform duration-300 lg:hidden ${isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
+        className={`fixed top-[70px] lg:top-[90px] left-0 right-0 bottom-0 bg-black z-40 w-full h-[calc(100vh-70px)] lg:h-[calc(100vh-90px)] transition-transform duration-300 lg:hidden ${isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
           }`}
       >
         <div className="container h-full overflow-y-auto pb-20 pt-4">

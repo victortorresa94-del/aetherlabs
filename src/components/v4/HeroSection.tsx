@@ -168,7 +168,7 @@ export default function HeroSection() {
                             <span style={{ display: 'block' }}>Somos el puente</span>
                             <span style={{ display: 'block' }}>entre la <span style={{ fontWeight: 700 }}>tecnología</span></span>
                             <span style={{ display: 'flex', alignItems: 'baseline', gap: '12px', flexWrap: 'wrap' }}>
-                                <span>y las</span>
+                                <span>y {wordIndex < 2 ? 'las' : 'los'}</span>
                                 <span style={{
                                     fontFamily: 'var(--font-serif)',
                                     fontStyle: 'italic',
@@ -181,6 +181,7 @@ export default function HeroSection() {
                                     transform: wordAnim ? 'translateY(-8px)' : 'translateY(0)',
                                     opacity: wordAnim ? 0 : 1,
                                     transition: 'transform 0.28s ease, opacity 0.28s ease',
+                                    filter: 'brightness(1.5)', // Ensure visibility on dark background
                                 }}>
                                     {WORDS[wordIndex]}
                                 </span>
@@ -190,26 +191,26 @@ export default function HeroSection() {
                         {/* Subtitle */}
                         <p style={{
                             fontFamily: 'var(--font-body)',
-                            fontSize: '18px',
-                            color: 'rgba(255,255,255,0.55)',
+                            fontSize: 'clamp(16px, 1.2vw, 18px)',
+                            color: 'rgba(255,255,255,0.6)',
                             maxWidth: '520px',
-                            lineHeight: 1.75,
+                            lineHeight: 1.6,
                             fontWeight: 300,
-                            marginBottom: '48px',
+                            marginBottom: '40px',
                         }}>
                             Seleccionamos, distribuimos e implementamos las mejores soluciones
                             de IA del mundo para que tu empresa compita en la nueva economía.
                         </p>
 
                         {/* CTAs */}
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '20px', flexWrap: 'wrap' }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '16px', flexWrap: 'wrap' }}>
                             <a
                                 href="#productos"
                                 style={{
                                     display: 'inline-flex', alignItems: 'center', gap: '8px',
                                     background: '#fff', color: '#000',
-                                    fontFamily: 'var(--font-body)', fontWeight: 600, fontSize: '15px',
-                                    padding: '14px 28px', borderRadius: '100px',
+                                    fontFamily: 'var(--font-body)', fontWeight: 600, fontSize: '14px',
+                                    padding: '12px 24px', borderRadius: '100px',
                                     textDecoration: 'none',
                                     transition: 'transform 0.2s ease, box-shadow 0.2s ease',
                                 }}
@@ -221,9 +222,10 @@ export default function HeroSection() {
                             <a
                                 href="#cta"
                                 style={{
-                                    fontFamily: 'var(--font-body)', fontSize: '15px', fontWeight: 400,
+                                    fontFamily: 'var(--font-body)', fontSize: '14px', fontWeight: 400,
                                     color: 'rgba(255,255,255,0.45)', textDecoration: 'none',
                                     transition: 'color 0.2s ease',
+                                    padding: '12px 10px',
                                 }}
                                 onMouseEnter={e => (e.currentTarget.style.color = 'rgba(255,255,255,0.85)')}
                                 onMouseLeave={e => (e.currentTarget.style.color = 'rgba(255,255,255,0.45)')}
@@ -251,7 +253,7 @@ export default function HeroSection() {
                 position: 'absolute', bottom: '40px', left: '50%',
                 transform: 'translateX(-50%)', zIndex: 2,
                 display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px',
-            }}>
+            }} className="scroll-indicator">
                 <div style={{
                     width: '1px', height: '48px', background: 'rgba(255,255,255,0.08)',
                     position: 'relative', overflow: 'hidden', borderRadius: '1px',
@@ -268,7 +270,11 @@ export default function HeroSection() {
         @keyframes glowB { 0%,100%{opacity:.5;transform:scale(1)} 50%{opacity:.9;transform:scale(1.12)} }
         @keyframes dropLine { 0%{top:-100%} 50%{top:100%} 51%{top:-100%} 100%{top:-100%} }
         @media (min-width: 1024px) { .hero-robot { display: block !important; } }
-        @media (max-width:1023px) { section > div:nth-child(8) { padding: 120px 24px 80px !important; } }
+        @media (max-width: 768px) {
+            section > div:nth-child(8) { padding: 120px 24px 60px !important; }
+            .scroll-indicator { display: none !important; }
+            h1 { font-size: 34px !important; }
+        }
       `}</style>
         </section>
     );

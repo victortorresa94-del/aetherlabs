@@ -69,6 +69,7 @@ export default function BridgeSection() {
             }}
         >
             <div
+                className="bridge-content-wrapper"
                 style={{
                     maxWidth: '1280px',
                     margin: '0 auto',
@@ -80,6 +81,7 @@ export default function BridgeSection() {
             >
                 {/* LEFT STICKY PANEL */}
                 <div
+                    className="bridge-sticky-panel"
                     style={{
                         width: '380px',
                         flexShrink: 0,
@@ -155,6 +157,7 @@ export default function BridgeSection() {
                         <div
                             key={i}
                             ref={(el) => { if (el) stepRefs.current[i] = el; }}
+                            className="bridge-step-item"
                             style={{
                                 minHeight: '100vh',
                                 display: 'flex',
@@ -254,6 +257,7 @@ export default function BridgeSection() {
                                 {/* Diagram */}
                                 {step.diagram && (
                                     <div
+                                        className="bridge-diagram"
                                         style={{
                                             display: 'flex',
                                             alignItems: 'center',
@@ -262,29 +266,31 @@ export default function BridgeSection() {
                                             background: 'rgba(130,255,31,0.06)',
                                             border: '1px solid rgba(130,255,31,0.2)',
                                             borderRadius: '8px',
-                                            flexWrap: 'wrap',
                                         }}
                                     >
-                                        {['Producto tech', 'Aether Labs', 'Empresa española'].map((label, fi) => (
-                                            <span key={fi} style={{ display: 'contents' }}>
-                                                <span
-                                                    style={{
-                                                        fontFamily: 'var(--font-mono)',
-                                                        fontSize: '12px',
-                                                        color: fi === 1 ? '#82ff1f' : '#aaa',
-                                                        padding: '6px 12px',
-                                                        border: `1px solid ${fi === 1 ? '#82ff1f' : 'rgba(255,255,255,0.1)'}`,
-                                                        borderRadius: '4px',
-                                                        fontWeight: fi === 1 ? 600 : 400,
-                                                    }}
-                                                >
-                                                    {label}
-                                                </span>
-                                                {fi < 2 && (
-                                                    <span style={{ color: '#555', fontSize: '14px' }}>→</span>
-                                                )}
-                                            </span>
-                                        ))}
+                                        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
+                                            {['Producto tech', 'Aether Labs', 'Empresa española'].map((label, fi) => (
+                                                <div key={fi} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                                                    <span
+                                                        style={{
+                                                            fontFamily: 'var(--font-mono)',
+                                                            fontSize: '11px',
+                                                            color: fi === 1 ? '#82ff1f' : '#aaa',
+                                                            padding: '6px 12px',
+                                                            border: `1px solid ${fi === 1 ? '#82ff1f' : 'rgba(255,255,255,0.1)'}`,
+                                                            borderRadius: '4px',
+                                                            fontWeight: fi === 1 ? 600 : 400,
+                                                            whiteSpace: 'nowrap',
+                                                        }}
+                                                    >
+                                                        {label}
+                                                    </span>
+                                                    {fi < 2 && (
+                                                        <span style={{ color: '#555', fontSize: '14px' }}>→</span>
+                                                    )}
+                                                </div>
+                                            ))}
+                                        </div>
                                     </div>
                                 )}
 
@@ -336,18 +342,18 @@ export default function BridgeSection() {
 
             <style jsx>{`
         @media (max-width: 1024px) {
-          section > div {
+          :global(.bridge-content-wrapper) {
             flex-direction: column !important;
             padding: 0 24px !important;
+            gap: 0 !important;
           }
-          /* Disable sticky on mobile */
-          div[style*="sticky"] {
+          :global(.bridge-sticky-panel) {
             position: static !important;
             transform: none !important;
             width: 100% !important;
             padding: 80px 0 40px !important;
           }
-          div[style*="100vh"] {
+          :global(.bridge-step-item) {
             min-height: unset !important;
             padding: 60px 0 !important;
             opacity: 1 !important;
