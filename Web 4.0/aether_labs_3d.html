@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aether Labs — Tu departamento externo de IA</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: #050508;
+  color: #fff;
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  overflow-x: hidden;
+  cursor: none;
+}
+
+/* Custom cursor */
+#cursor {
+  position: fixed;
+  width: 8px; height: 8px;
+  background: #00E5FF;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: width 0.2s, height 0.2s, background 0.2s;
+  mix-blend-mode: difference;
+}
+#cursor-ring {
+  position: fixed;
+  width: 40px; height: 40px;
+  border: 1px solid rgba(0,229,255,0.4);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition: all 0.12s ease-out;
+}
+
+/* Canvas */
+#canvas-wrap {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  z-index: 0;
+}
+
+/* Progress bar */
+#prog {
+  position: fixed;
+  top: 0; left: 0;
+  height: 1px;
+  background: linear-gradient(90deg, #00E5FF, #7B2FFF);
+  z-index: 200;
+  width: 0%;
+  transition: width 0.05s linear;
+}
+
+/* Nav */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 28px 5vw;
+  mix-blend-mode: normal;
+}
+.nav-logo {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  letter-spacing: 0.15em;
+  color: rgba(255,255,255,0.9);
+}
+.nav-logo span { color: #00E5FF; }
+.nav-links {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+}
+.nav-links a {
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: #00E5FF; }
+.nav-cta {
+  font-size: 12px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #00E5FF;
+  text-decoration: none;
+  border: 1px solid rgba(0,229,255,0.3);
+  padding: 10px 20px;
+  transition: all 0.2s;
+}
+.nav-cta:hover {
+  background: rgba(0,229,255,0.08);
+  border-color: #00E5FF;
+}
+
+/* Scroll content */
+.scroll-wrap {
+  position: relative;
+  z-index: 1;
+}
+
+/* Hero */
+.hero {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 5vw;
+  position: relative;
+}
+.hero-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.5em;
+  color: #00E5FF;
+  text-transform: uppercase;
+  margin-bottom: 28px;
+  opacity: 0;
+  animation: fadeUp 1s ease 0.3s forwards;
+}
+.hero-title {
+  font-size: clamp(48px, 8vw, 110px);
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  margin-bottom: 28px;
+  opacity: 0;
+  animation: fadeUp 1s ease 0.5s forwards;
+}
+.hero-title .line1 { display: block; color: #ffffff; }
+.hero-title .line2 {
+  display: block;
+  background: linear-gradient(135deg, #00E5FF 0%, #7B2FFF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero-sub {
+  font-size: clamp(15px, 1.8vw, 19px);
+  color: rgba(255,255,255,0.38);
+  max-width: 480px;
+  line-height: 1.65;
+  font-weight: 300;
+  opacity: 0;
+  animation: fadeUp 1s ease 0.7s forwards;
+}
+.scroll-hint {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  opacity: 0;
+  animation: fadeUp 1s ease 1.2s forwards;
+}
+.scroll-hint span {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.3em;
+  color: rgba(255,255,255,0.2);
+  text-transform: uppercase;
+}
+.scroll-line {
+  width: 1px;
+  height: 56px;
+  background: linear-gradient(to bottom, transparent, rgba(0,229,255,0.5));
+  animation: scrollPulse 2.5s ease-in-out infinite;
+}
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.3; transform: scaleY(0.6) translateY(-10px); }
+  50% { opacity: 1; transform: scaleY(1) translateY(0); }
+}
+
+/* Service sections */
+.service-section {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.service-section:nth-child(odd) { justify-content: flex-end; padding-right: 6vw; }
+.service-section:nth-child(even) { justify-content: flex-start; padding-left: 6vw; }
+
+.service-card {
+  max-width: 420px;
+  opacity: 0;
+  transform: translateY(40px) translateX(20px);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.service-card.active {
+  opacity: 1;
+  transform: translateY(0) translateX(0);
+}
+
+.service-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.4em;
+  color: rgba(0,229,255,0.6);
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.service-num::after {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 1px;
+  background: rgba(0,229,255,0.3);
+}
+.service-title {
+  font-size: clamp(32px, 3.5vw, 52px);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin-bottom: 20px;
+  color: #fff;
+}
+.service-title em {
+  font-style: normal;
+  color: #00E5FF;
+}
+.service-desc {
+  font-size: 15px;
+  line-height: 1.75;
+  color: rgba(255,255,255,0.42);
+  font-weight: 300;
+  margin-bottom: 32px;
+  border-left: 1px solid rgba(0,229,255,0.2);
+  padding-left: 20px;
+}
+.service-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 32px;
+}
+.tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: rgba(0,229,255,0.7);
+  border: 1px solid rgba(0,229,255,0.2);
+  padding: 5px 12px;
+  border-radius: 2px;
+  text-transform: uppercase;
+}
+.service-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #00E5FF;
+  text-decoration: none;
+  position: relative;
+}
+.service-link::after {
+  content: '';
+  position: absolute;
+  bottom: -3px; left: 0;
+  width: 100%;
+  height: 1px;
+  background: rgba(0,229,255,0.3);
+  transition: background 0.2s;
+}
+.service-link:hover::after { background: #00E5FF; }
+
+/* Object label that floats near 3D object */
+.obj-label {
+  position: fixed;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: rgba(0,229,255,0.5);
+  pointer-events: none;
+  z-index: 10;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.obj-label::before {
+  content: '';
+  width: 20px;
+  height: 1px;
+  background: rgba(0,229,255,0.4);
+}
+
+/* Scan lines overlay */
+.scanlines {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0,0,0,0.03) 2px,
+    rgba(0,0,0,0.03) 4px
+  );
+  pointer-events: none;
+  z-index: 5;
+  opacity: 0.5;
+}
+
+/* Grain overlay */
+.grain {
+  position: fixed;
+  top: -50%; left: -50%;
+  width: 200%; height: 200%;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 4;
+  opacity: 0.025;
+  animation: grainMove 0.5s steps(1) infinite;
+}
+@keyframes grainMove {
+  0%   { transform: translate(0,0); }
+  10%  { transform: translate(-5%,-5%); }
+  20%  { transform: translate(-10%, 5%); }
+  30%  { transform: translate(5%, -10%); }
+  40%  { transform: translate(-5%, 15%); }
+  50%  { transform: translate(-10%, 5%); }
+  60%  { transform: translate(15%, 0); }
+  70%  { transform: translate(0, 10%); }
+  80%  { transform: translate(-15%, 0); }
+  90%  { transform: translate(10%, 5%); }
+  100% { transform: translate(5%, 0); }
+}
+
+/* Fade in animation */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Bottom CTA section */
+.cta-section {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 5vw;
+}
+.cta-title {
+  font-size: clamp(36px, 5vw, 72px);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  margin-bottom: 24px;
+}
+.cta-sub {
+  font-size: 16px;
+  color: rgba(255,255,255,0.35);
+  max-width: 400px;
+  line-height: 1.7;
+  margin-bottom: 48px;
+}
+.cta-btn {
+  display: inline-block;
+  padding: 18px 48px;
+  background: transparent;
+  border: 1px solid rgba(0,229,255,0.5);
+  color: #00E5FF;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+.cta-btn::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0,229,255,0.1), transparent);
+  transition: left 0.5s;
+}
+.cta-btn:hover::before { left: 100%; }
+.cta-btn:hover {
+  background: rgba(0,229,255,0.06);
+  border-color: #00E5FF;
+  box-shadow: 0 0 30px rgba(0,229,255,0.15);
+}
+</style>
+</head>
+<body>
+
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+<div id="prog"></div>
+<div class="scanlines"></div>
+<div class="grain"></div>
+
+<canvas id="c"></canvas>
+
+<nav>
+  <div class="nav-logo">AETHER<span>.</span>LABS</div>
+  <ul class="nav-links">
+    <li><a href="#">Servicios</a></li>
+    <li><a href="#">Nosotros</a></li>
+    <li><a href="#">Casos</a></li>
+  </ul>
+  <a href="#" class="nav-cta">Hablemos →</a>
+</nav>
+
+<div class="scroll-wrap">
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-eyebrow">Aether Labs — 2025</div>
+    <h1 class="hero-title">
+      <span class="line1">Tu departamento</span>
+      <span class="line2">externo de IA</span>
+    </h1>
+    <p class="hero-sub">El puente entre la tecnología de hoy y el negocio que quieres ser mañana.</p>
+    <div class="scroll-hint">
+      <div class="scroll-line"></div>
+      <span>Explorar</span>
+    </div>
+  </section>
+
+  <!-- 01 Consultoría -->
+  <section class="service-section" id="s1">
+    <div class="service-card" id="c1">
+      <div class="service-num">01 — Consultoría</div>
+      <h2 class="service-title">AI Implementation<br>&amp; <em>Consulting</em></h2>
+      <p class="service-desc">Diagnóstico, selección de herramientas e implementación. Copilot, agentes, CRM con IA — lo que encaja con tu momento actual. Sin desarrollar nada, aprovechando lo mejor que ya existe.</p>
+      <div class="service-tags">
+        <span class="tag">Copilot</span>
+        <span class="tag">Agentes IA</span>
+        <span class="tag">CRM</span>
+        <span class="tag">Auditoría</span>
+      </div>
+      <a href="#" class="service-link">Explorar servicio →</a>
+    </div>
+  </section>
+
+  <!-- 02 Contenido -->
+  <section class="service-section" id="s2">
+    <div class="service-card" id="c2">
+      <div class="service-num">02 — Producción</div>
+      <h2 class="service-title">AI Content<br><em>Production</em></h2>
+      <p class="service-desc">Vídeos con avatar, posts, dossieres, presentaciones. Sin rodajes ni equipos de producción. Material de marketing de alta calidad entregado en días, no en semanas.</p>
+      <div class="service-tags">
+        <span class="tag">Avatar IA</span>
+        <span class="tag">Vídeo</span>
+        <span class="tag">Dossier</span>
+        <span class="tag">Social</span>
+      </div>
+      <a href="#" class="service-link">Explorar servicio →</a>
+    </div>
+  </section>
+
+  <!-- 03 Web -->
+  <section class="service-section" id="s3">
+    <div class="service-card" id="c3">
+      <div class="service-num">03 — Digital</div>
+      <h2 class="service-title">Web &amp; Identidad<br><em>Digital</em></h2>
+      <p class="service-desc">Webs que comunican lo que eres. Landings, branding, presencia digital. La estética como herramienta de conversión — no como decoración.</p>
+      <div class="service-tags">
+        <span class="tag">Web</span>
+        <span class="tag">Branding</span>
+        <span class="tag">Landing</span>
+        <span class="tag">UI/UX</span>
+      </div>
+      <a href="#" class="service-link">Explorar servicio →</a>
+    </div>
+  </section>
+
+  <!-- 04 Sistemas -->
+  <section class="service-section" id="s4">
+    <div class="service-card" id="c4">
+      <div class="service-num">04 — Sistemas</div>
+      <h2 class="service-title">Agentes &amp;<br><em>Automatización</em></h2>
+      <p class="service-desc">Flujos inteligentes y sistemas que trabajan solos. La parte invisible que decide si vendes o no: conversaciones que se cierran, seguimientos que no se pierden.</p>
+      <div class="service-tags">
+        <span class="tag">Agentes</span>
+        <span class="tag">Automatización</span>
+        <span class="tag">Flows</span>
+        <span class="tag">Closius</span>
+      </div>
+      <a href="#" class="service-link">Explorar servicio →</a>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <p style="font-family:monospace;font-size:10px;letter-spacing:0.4em;color:rgba(0,229,255,0.5);text-transform:uppercase;margin-bottom:24px">¿Empezamos?</p>
+    <h2 class="cta-title">El puente entre<br>tecnología y mercado</h2>
+    <p class="cta-sub">Primera sesión de diagnóstico gratuita. Sin compromisos, con criterio.</p>
+    <a href="#" class="cta-btn">Reservar sesión →</a>
+  </section>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+// ─── CURSOR ────────────────────────────────────────────────────────────────
+const cur = document.getElementById('cursor');
+const ring = document.getElementById('cursor-ring');
+let cx=0,cy=0,rx=0,ry=0;
+document.addEventListener('mousemove', e => { cx=e.clientX; cy=e.clientY; });
+(function cursorLoop(){
+  requestAnimationFrame(cursorLoop);
+  rx += (cx-rx)*0.12; ry += (cy-ry)*0.12;
+  cur.style.left = cx+'px'; cur.style.top = cy+'px';
+  ring.style.left = rx+'px'; ring.style.top = ry+'px';
+})();
+
+// ─── THREE.JS SCENE ────────────────────────────────────────────────────────
+const canvas = document.getElementById('c');
+const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: false });
+renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+renderer.setClearColor(0x050508);
+renderer.shadowMap.enabled = true;
+
+const scene = new THREE.Scene();
+scene.fog = new THREE.FogExp2(0x050508, 0.028);
+
+const camera = new THREE.PerspectiveCamera(50, innerWidth/innerHeight, 0.1, 120);
+camera.position.set(0, 0, 7);
+
+function resize() {
+  renderer.setSize(innerWidth, innerHeight);
+  camera.aspect = innerWidth/innerHeight;
+  camera.updateProjectionMatrix();
+}
+resize();
+window.addEventListener('resize', resize);
+
+// ─── LIGHTS ────────────────────────────────────────────────────────────────
+scene.add(new THREE.AmbientLight(0x111133, 1.2));
+
+const keyLight = new THREE.DirectionalLight(0xffffff, 0.6);
+keyLight.position.set(5, 8, 5);
+scene.add(keyLight);
+
+const cyanPt = new THREE.PointLight(0x00E5FF, 3, 30);
+cyanPt.position.set(4, 4, 4);
+scene.add(cyanPt);
+
+const purplePt = new THREE.PointLight(0x7B2FFF, 2, 25);
+purplePt.position.set(-5, 2, 3);
+scene.add(purplePt);
+
+// ─── MATERIALS ─────────────────────────────────────────────────────────────
+const mDark   = () => new THREE.MeshPhongMaterial({ color:0x0d0d14, shininess:40 });
+const mMid    = () => new THREE.MeshPhongMaterial({ color:0x16162a, shininess:60 });
+const mLight  = () => new THREE.MeshPhongMaterial({ color:0x22223a, shininess:80 });
+const mBeige  = () => new THREE.MeshPhongMaterial({ color:0xd4c8a0, shininess:20 });
+const mGrey   = () => new THREE.MeshStandardMaterial({ color:0x888890, metalness:0.5, roughness:0.4 });
+const mCyan   = () => new THREE.MeshPhongMaterial({ color:0x00E5FF, emissive:0x00E5FF, emissiveIntensity:0.5, shininess:120 });
+const mGreen  = () => new THREE.MeshPhongMaterial({ color:0x00FF41, emissive:0x00FF41, emissiveIntensity:0.7 });
+const mBlue   = () => new THREE.MeshPhongMaterial({ color:0x1a6fff, emissive:0x0033cc, emissiveIntensity:0.6 });
+const mMetal  = () => new THREE.MeshStandardMaterial({ color:0xcccccc, metalness:0.85, roughness:0.15 });
+const mPCB    = () => new THREE.MeshPhongMaterial({ color:0x0a2b1e, shininess:15 });
+const mChip   = () => new THREE.MeshPhongMaterial({ color:0x080808, shininess:100 });
+const mLens   = () => new THREE.MeshPhongMaterial({ color:0x050a20, emissive:0x000533, shininess:200 });
+
+function B(w,h,d,mat) {
+  return new THREE.Mesh(new THREE.BoxGeometry(w,h,d), mat);
+}
+function C(rt,rb,h,s,mat) {
+  return new THREE.Mesh(new THREE.CylinderGeometry(rt,rb,h,s), mat);
+}
+
+// ─── OBJECT 1 — CRT TERMINAL ──────────────────────────────────────────────
+const crt = new THREE.Group();
+
+// Main housing (boxy 80s terminal style)
+const housing = B(2.4, 2.0, 1.8, mBeige());
+housing.position.set(0,0.1,0);
+crt.add(housing);
+
+// Housing chamfer top
+const chamferTop = B(2.2, 0.3, 1.6, mBeige());
+chamferTop.position.set(0, 1.15, 0);
+crt.add(chamferTop);
+
+// Front face slightly darker
+const frontFace = B(2.35, 1.95, 0.06, mDark());
+frontFace.position.set(0, 0.1, 0.93);
+crt.add(frontFace);
+
+// Bezel
+const bezel = B(2.0, 1.5, 0.05, new THREE.MeshPhongMaterial({color:0x0a0a12, shininess:20}));
+bezel.position.set(0, 0.2, 0.96);
+crt.add(bezel);
+
+// Screen (phosphor green glow)
+const screen = B(1.75, 1.28, 0.02, mGreen());
+screen.position.set(0, 0.2, 0.99);
+crt.add(screen);
+
+// Screen light
+const sLight = new THREE.PointLight(0x00FF41, 2.5, 3.5);
+sLight.position.set(0, 0.2, 1.6);
+crt.add(sLight);
+
+// Scanline strips (simulate CRT lines)
+for(let i=0; i<8; i++) {
+  const sl = B(1.72, 0.04, 0.015, new THREE.MeshPhongMaterial({color:0x003a0a, transparent:true, opacity:0.6}));
+  sl.position.set(0, -0.48 + i*0.16, 1.005);
+  crt.add(sl);
+}
+
+// Control panel bottom
+const ctrlPanel = B(2.35, 0.3, 0.6, mDark());
+ctrlPanel.position.set(0, -0.88, 0.7);
+crt.add(ctrlPanel);
+
+// Buttons row
+const btnColors = [0x00FF41, 0xff8800, 0xaaaaaa, 0xaaaaaa, 0xaaaaaa];
+btnColors.forEach((col, i) => {
+  const btn = B(0.14, 0.08, 0.08, new THREE.MeshPhongMaterial({color:col, shininess:80}));
+  btn.position.set(-0.5 + i*0.26, -0.88, 1.02);
+  crt.add(btn);
+});
+
+// Vent slots on side
+for(let i=0; i<5; i++) {
+  const vent = B(0.04, 0.6, 0.9, mDark());
+  vent.position.set(1.22 - i*0.03, 0.3, 0);
+  crt.add(vent);
+}
+
+// Neck & base
+const neck = B(0.6, 0.35, 0.5, mDark());
+neck.position.set(0, -1.2, -0.2);
+crt.add(neck);
+const base = B(1.8, 0.1, 1.0, mDark());
+base.position.set(0, -1.42, -0.1);
+crt.add(base);
+
+crt.position.set(2.0, 0.3, 0);
+scene.add(crt);
+
+// ─── OBJECT 2 — RETRO FILM CAMERA ─────────────────────────────────────────
+const camObj = new THREE.Group();
+
+// Body
+const body = B(2.6, 1.5, 1.1, mBlack = new THREE.MeshPhongMaterial({color:0x0c0c10, shininess:20}));
+camObj.add(body);
+
+// Leatherette texture panels
+const lPanel = B(2.55, 1.4, 0.06, new THREE.MeshPhongMaterial({color:0x111118, shininess:5}));
+lPanel.position.set(0, 0, 0.58);
+camObj.add(lPanel);
+
+// Top plate (metal)
+const topPlate = B(2.55, 0.25, 1.05, mMetal());
+topPlate.position.set(0, 0.875, 0);
+camObj.add(topPlate);
+
+// Lens mount ring outer
+const lensMount = C(0.6, 0.65, 0.15, 32, mMetal());
+lensMount.rotation.x = Math.PI/2;
+lensMount.position.set(-0.5, 0.05, 0.63);
+camObj.add(lensMount);
+
+// Lens barrel segments
+const lensB1 = C(0.55, 0.52, 0.5, 32, new THREE.MeshStandardMaterial({color:0x222228, metalness:0.7, roughness:0.3}));
+lensB1.rotation.x = Math.PI/2;
+lensB1.position.set(-0.5, 0.05, 0.92);
+camObj.add(lensB1);
+
+const lensB2 = C(0.48, 0.46, 0.4, 32, mGrey());
+lensB2.rotation.x = Math.PI/2;
+lensB2.position.set(-0.5, 0.05, 1.18);
+camObj.add(lensB2);
+
+// Lens glass (deep blue/black)
+const lensGlass = C(0.38, 0.38, 0.06, 32, mLens());
+lensGlass.rotation.x = Math.PI/2;
+lensGlass.position.set(-0.5, 0.05, 1.4);
+camObj.add(lensGlass);
+
+// Lens flare light
+const lensGlow = new THREE.PointLight(0x0044ff, 2.5, 3);
+lensGlow.position.set(-0.5, 0.05, 2.0);
+camObj.add(lensGlow);
+
+// Rangefinder window
+const rf = B(0.35, 0.2, 0.04, mBlue());
+rf.position.set(0.85, 0.25, 0.57);
+camObj.add(rf);
+const rfLight = new THREE.PointLight(0x0088ff, 0.8, 1.5);
+rfLight.position.set(0.85, 0.25, 1.0);
+camObj.add(rfLight);
+
+// Viewfinder
+const vf = B(0.25, 0.18, 0.03, mLens());
+vf.position.set(0.5, 0.25, 0.57);
+camObj.add(vf);
+
+// Shutter button (cyan)
+const shutter = C(0.08, 0.08, 0.12, 12, mCyan());
+shutter.position.set(0.7, 1.0, 0.3);
+camObj.add(shutter);
+
+// Film advance lever
+const leverBase = B(0.08, 0.55, 0.08, mMetal());
+leverBase.position.set(1.15, 0.92, 0.35);
+camObj.add(leverBase);
+const leverArm = B(0.4, 0.06, 0.06, mMetal());
+leverArm.position.set(1.1, 1.2, 0.35);
+leverArm.rotation.z = -0.4;
+camObj.add(leverArm);
+
+// Hot shoe (top metal rail)
+const hotShoe = B(0.7, 0.06, 0.25, mMetal());
+hotShoe.position.set(-0.2, 0.99, 0.15);
+camObj.add(hotShoe);
+
+// Film door (right side panel line)
+const filmLine = B(0.015, 1.45, 1.05, mMetal());
+filmLine.position.set(1.31, 0, 0.01);
+camObj.add(filmLine);
+
+// Bottom tripod mount
+const tripod = C(0.1, 0.1, 0.08, 12, mMetal());
+tripod.position.set(0, -0.82, 0.2);
+camObj.add(tripod);
+
+camObj.position.set(-2.0, -8.5, 0);
+scene.add(camObj);
+
+// ─── OBJECT 3 — MACINTOSH 128K ─────────────────────────────────────────────
+const mac = new THREE.Group();
+
+// Main body (tall cream-colored box)
+const macBody = B(1.7, 2.4, 1.4, new THREE.MeshPhongMaterial({color:0xcec5a0, shininess:20}));
+mac.add(macBody);
+
+// Top curve simulation
+const macTopR = B(1.5, 0.5, 1.2, new THREE.MeshPhongMaterial({color:0xc8bf9a, shininess:15}));
+macTopR.position.set(0, 1.35, 0);
+mac.add(macTopR);
+
+// Handle cutout (top)
+const handle = B(0.9, 0.22, 0.4, new THREE.MeshPhongMaterial({color:0xb8af8a, shininess:10}));
+handle.position.set(0, 1.68, -0.35);
+mac.add(handle);
+
+// Screen area bezel
+const macBezel = B(1.3, 1.05, 0.06, new THREE.MeshPhongMaterial({color:0x0a0a0a, shininess:10}));
+macBezel.position.set(0, 0.45, 0.73);
+mac.add(macBezel);
+
+// CRT screen
+const macScreen = B(1.08, 0.85, 0.025, mBlue());
+macScreen.position.set(0, 0.45, 0.76);
+mac.add(macScreen);
+
+// Screen reflection highlight
+const reflection = B(0.4, 0.25, 0.01, new THREE.MeshPhongMaterial({color:0x88aeff, transparent:true, opacity:0.15}));
+reflection.position.set(0.25, 0.65, 0.77);
+mac.add(reflection);
+
+// Screen light
+const macLight = new THREE.PointLight(0x2255ff, 2.0, 3);
+macLight.position.set(0, 0.45, 1.5);
+mac.add(macLight);
+
+// Floppy slot
+const floppySlot = B(0.75, 0.055, 0.03, new THREE.MeshPhongMaterial({color:0x0a0a0a}));
+floppySlot.position.set(0, -0.75, 0.72);
+mac.add(floppySlot);
+
+// LED indicator
+const macLED = C(0.035, 0.035, 0.025, 8, mGreen());
+macLED.rotation.x = Math.PI/2;
+macLED.position.set(0.45, -0.75, 0.73);
+mac.add(macLED);
+const macLEDLight = new THREE.PointLight(0x00FF41, 0.6, 1);
+macLEDLight.position.set(0.45, -0.75, 1);
+mac.add(macLEDLight);
+
+// Speaker grill
+for(let r=0; r<4; r++) {
+  for(let c=0; c<4; c++) {
+    const dot = C(0.022, 0.022, 0.025, 6, new THREE.MeshPhongMaterial({color:0x0a0a0a}));
+    dot.rotation.x = Math.PI/2;
+    dot.position.set(-0.56 + c*0.17, 0.0 + r*0.14, 0.72);
+    mac.add(dot);
+  }
+}
+
+// Signature logo area (small rectangle)
+const logoRect = B(0.35, 0.08, 0.01, new THREE.MeshPhongMaterial({color:0xaaa080, shininess:60}));
+logoRect.position.set(0, -0.45, 0.72);
+mac.add(logoRect);
+
+// Base stand
+const macBase = B(1.5, 0.1, 1.2, new THREE.MeshPhongMaterial({color:0xb8af8a}));
+macBase.position.set(0, -1.3, 0);
+mac.add(macBase);
+
+mac.position.set(2.0, -16.3, 0);
+scene.add(mac);
+
+// ─── OBJECT 4 — PCB / CIRCUIT BOARD ────────────────────────────────────────
+const pcb = new THREE.Group();
+
+// Main PCB board
+const board = B(3.2, 2.2, 0.08, mPCB());
+pcb.add(board);
+
+// Board edge glow
+const boardGlow = B(3.18, 2.18, 0.01, new THREE.MeshPhongMaterial({
+  color:0x00E5FF, emissive:0x00E5FF, emissiveIntensity:0.3, transparent:true, opacity:0.15
+}));
+boardGlow.position.set(0,0,0.045);
+pcb.add(boardGlow);
+
+// Mounting holes
+[[-1.4,0.95],[1.4,0.95],[-1.4,-0.95],[1.4,-0.95]].forEach(([x,y]) => {
+  const hole = C(0.08, 0.08, 0.1, 12, new THREE.MeshPhongMaterial({color:0x050508}));
+  hole.position.set(x, y, 0);
+  pcb.add(hole);
+  // Ring
+  const ring2 = C(0.12, 0.12, 0.06, 12, mMetal());
+  ring2.position.set(x, y, 0.04);
+  pcb.add(ring2);
+});
+
+// Main CPU die (large BGA)
+const cpuPkg = B(0.95, 0.95, 0.12, mChip());
+cpuPkg.position.set(-0.2, 0.2, 0.1);
+pcb.add(cpuPkg);
+
+// CPU heatspreader
+const ihs = B(0.85, 0.85, 0.06, mMetal());
+ihs.position.set(-0.2, 0.2, 0.17);
+pcb.add(ihs);
+
+// CPU label text plane
+const cpuLabel = B(0.6, 0.15, 0.01, new THREE.MeshPhongMaterial({color:0x333340, shininess:20}));
+cpuLabel.position.set(-0.2, 0.2, 0.23);
+pcb.add(cpuLabel);
+
+// Cyan underglow (PCB backlight effect)
+const cpuUnderglow = new THREE.PointLight(0x00E5FF, 3.5, 3);
+cpuUnderglow.position.set(-0.2, 0.2, 0.8);
+pcb.add(cpuUnderglow);
+
+// BGA solder balls visible around CPU
+for(let bx=-2; bx<=2; bx++) {
+  for(let by=-2; by<=2; by++) {
+    if(Math.abs(bx)===2 || Math.abs(by)===2) {
+      const ball = C(0.03, 0.03, 0.04, 6, new THREE.MeshStandardMaterial({color:0xaaaaaa, metalness:0.9, roughness:0.1}));
+      ball.position.set(-0.2 + bx*0.17, 0.2 + by*0.17, 0.07);
+      pcb.add(ball);
+    }
+  }
+}
+
+// RAM modules (side by side)
+for(let i=0; i<2; i++) {
+  const ramPCB = B(0.28, 0.95, 0.06, new THREE.MeshPhongMaterial({color:0x0d3e2a}));
+  ramPCB.position.set(0.85 + i*0.35, 0.15, 0.07);
+  pcb.add(ramPCB);
+  // Chips on RAM
+  for(let j=0; j<4; j++) {
+    const rchip = B(0.16, 0.16, 0.08, mChip());
+    rchip.position.set(0.85 + i*0.35, 0.4 - j*0.2, 0.12);
+    pcb.add(rchip);
+  }
+  // RAM light
+  const ramLight = new THREE.PointLight(0x00E5FF, 0.8, 1.5);
+  ramLight.position.set(0.85 + i*0.35, 0.15, 0.6);
+  pcb.add(ramLight);
+}
+
+// Capacitors (electrolytic)
+const capPositions = [[-0.8, 0.9],[-0.55, 0.9],[-0.3, 0.9],[0.1, 0.9],[0.4, -0.8],[0.7, -0.8]];
+capPositions.forEach(([x, y]) => {
+  const capBody = C(0.07, 0.07, 0.32, 10, new THREE.MeshPhongMaterial({color:0x0f3020, shininess:40}));
+  capBody.position.set(x, y, 0.2);
+  pcb.add(capBody);
+  const capTop2 = C(0.065, 0.065, 0.025, 10, mMetal());
+  capTop2.position.set(x, y, 0.38);
+  pcb.add(capTop2);
+  // Stripe on capacitor
+  const stripe = C(0.072, 0.072, 0.05, 10, new THREE.MeshPhongMaterial({color:0x1a4a2a}));
+  stripe.position.set(x, y, 0.3);
+  pcb.add(stripe);
+});
+
+// Resistors
+for(let i=0; i<6; i++) {
+  const res = B(0.25, 0.07, 0.07, new THREE.MeshPhongMaterial({color:0x6b4c2a, shininess:10}));
+  res.position.set(-1.3 + i*0.18, -0.4, 0.08);
+  pcb.add(res);
+  // Resistor bands
+  const band = B(0.04, 0.075, 0.075, new THREE.MeshPhongMaterial({color:0xff6600}));
+  band.position.set(-1.32 + i*0.18, -0.4, 0.08);
+  pcb.add(band);
+}
+
+// Edge connector fingers
+for(let i=0; i<12; i++) {
+  const finger = B(0.12, 0.32, 0.025, mMetal());
+  finger.position.set(-1.45 + i*0.24, -1.25, 0.04);
+  pcb.add(finger);
+}
+
+// PCB trace lines (glowing)
+const traceMat = new THREE.LineBasicMaterial({color:0x00E5FF, transparent:true, opacity:0.5});
+const traceData = [
+  [[-0.2,0.2,0.05], [-0.2,-0.8,0.05]],
+  [[-0.2,0.2,0.05], [0.85,0.15,0.05]],
+  [[-0.2,-0.2,0.05],[-1.3,-0.4,0.05]],
+  [[0.85,0.15,0.05],[0.85,-0.8,0.05]],
+  [[-0.8,0.9,0.05], [-0.8,0.6,0.05]],
+];
+traceData.forEach(pts => {
+  const geom = new THREE.BufferGeometry().setFromPoints(pts.map(p=>new THREE.Vector3(...p)));
+  pcb.add(new THREE.Line(geom, traceMat));
+});
+
+// LEDs
+[{x:1.35,y:0.6,c:0x00FF41},{x:1.35,y:0.3,c:0x00E5FF},{x:1.35,y:0.0,c:0xff4422}].forEach(({x,y,c})=>{
+  const led = C(0.05, 0.05, 0.14, 8, new THREE.MeshPhongMaterial({color:c,emissive:c,emissiveIntensity:0.9}));
+  led.position.set(x, y, 0.12);
+  pcb.add(led);
+  const lLight = new THREE.PointLight(c, 1.5, 2);
+  lLight.position.set(x, y, 0.6);
+  pcb.add(lLight);
+});
+
+pcb.rotation.x = 0.35;
+pcb.position.set(-2.0, -24.5, 0);
+scene.add(pcb);
+
+// ─── PARTICLES ─────────────────────────────────────────────────────────────
+const PCOUNT = 1200;
+const ppos = new Float32Array(PCOUNT*3);
+const pspeeds = new Float32Array(PCOUNT);
+for(let i=0; i<PCOUNT; i++) {
+  ppos[i*3]   = (Math.random()-0.5)*50;
+  ppos[i*3+1] = (Math.random()-0.5)*50;
+  ppos[i*3+2] = (Math.random()-0.5)*25 - 8;
+  pspeeds[i]  = Math.random()*0.01+0.003;
+}
+const pGeom = new THREE.BufferGeometry();
+pGeom.setAttribute('position', new THREE.BufferAttribute(ppos, 3));
+const pMat = new THREE.PointsMaterial({color:0x00E5FF, size:0.035, transparent:true, opacity:0.55, sizeAttenuation:true});
+const particles = new THREE.Points(pGeom, pMat);
+scene.add(particles);
+
+// ─── GRID ──────────────────────────────────────────────────────────────────
+const grid = new THREE.GridHelper(60, 60, 0x00E5FF, 0x0a0a1a);
+grid.position.set(0, -32, 0);
+grid.material.transparent = true;
+grid.material.opacity = 0.18;
+scene.add(grid);
+
+// ─── SCROLL ────────────────────────────────────────────────────────────────
+let targetCamY = 0, currentCamY = 0;
+let mouseX = 0, mouseY2 = 0;
+
+window.addEventListener('mousemove', e => {
+  mouseX  = (e.clientX/innerWidth  - 0.5)*2;
+  mouseY2 = (e.clientY/innerHeight - 0.5)*2;
+});
+
+window.addEventListener('scroll', () => {
+  const totalH = document.body.scrollHeight - innerHeight;
+  const frac = Math.min(1, window.scrollY / totalH);
+  targetCamY = -frac * 29;
+
+  document.getElementById('prog').style.width = (frac*100)+'%';
+
+  // Card reveals
+  ['c1','c2','c3','c4'].forEach((id, i) => {
+    const el = document.getElementById(id);
+    const threshold = i * innerHeight * 0.85;
+    if(window.scrollY > threshold) el.classList.add('active');
+  });
+});
+
+// ─── ANIMATION LOOP ────────────────────────────────────────────────────────
+const clock = new THREE.Clock();
+
+(function loop() {
+  requestAnimationFrame(loop);
+  const t = clock.getElapsedTime();
+
+  // Smooth camera
+  currentCamY += (targetCamY - currentCamY) * 0.075;
+  camera.position.y = currentCamY;
+  camera.position.x = mouseX * 0.35;
+  camera.lookAt(new THREE.Vector3(mouseX*0.15, currentCamY, 0));
+
+  // Object rotations & floats
+  crt.rotation.y = Math.sin(t*0.28)*0.28 + mouseX*0.12;
+  crt.rotation.x = -mouseY2*0.05;
+  crt.position.y = Math.sin(t*0.5)*0.12;
+
+  camObj.rotation.y = Math.sin(t*0.23+1)*0.3 + mouseX*0.12;
+  camObj.rotation.x = -mouseY2*0.05;
+  camObj.position.y = -8.5 + Math.sin(t*0.44+1.5)*0.14;
+
+  mac.rotation.y = Math.sin(t*0.19+2)*0.25 + mouseX*0.12;
+  mac.rotation.x = -mouseY2*0.05;
+  mac.position.y = -16.3 + Math.sin(t*0.38+3)*0.12;
+
+  pcb.rotation.y = Math.sin(t*0.22+3)*0.2 + mouseX*0.12;
+  pcb.rotation.x = 0.35 - mouseY2*0.04;
+  pcb.position.y = -24.5 + Math.sin(t*0.33+4)*0.1;
+
+  // Particle drift
+  particles.rotation.y = t*0.018;
+  particles.rotation.x = t*0.006;
+
+  // Pulsing cyan light
+  cyanPt.intensity = 2.5 + Math.sin(t*1.8)*0.8;
+  cyanPt.position.x = 4 + Math.sin(t*0.5)*1;
+
+  // PCB CPU glow pulse
+  cpuUnderglow.intensity = 3 + Math.sin(t*3)*1.2;
+
+  renderer.render(scene, camera);
+})();
+
+console.log('%cAether Labs — 3D Experience', 'color:#00E5FF;font-size:14px;font-weight:bold');
+</script>
+</body>
+</html>

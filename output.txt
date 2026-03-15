@@ -1,0 +1,989 @@
+
+--- Web 4.0\AetherLabs_CreativeLab_v1.docx ---
+AETHER LABS
+CREATIVE LAB
+Brief completo de web + Prompts para Antigravity
+Web · Vídeo IA · Branding · Presentaciones · Material corporativo · Anuncios
+00. ESTRUCTURA COMPLETA DEL CREATIVE LAB
+El Creative Lab es la sección que demuestra que sabemos hacer que una empresa se vea bien. No vendemos 'diseño' — vendemos presencia, credibilidad y conversión. Cada servicio tiene su propia página con casos, proceso y CTA.
+Sitemap del Creative Lab
+/creative-lab                  — Hub principal (overview de servicios)
+/creative-lab/web              — Web corporativa y landing pages
+/creative-lab/video            — Vídeo con IA (avatar, explicativos, reels)
+/creative-lab/branding         — Branding e identidad visual
+/creative-lab/presentaciones   — Presentaciones y pitch decks
+/creative-lab/material         — Material corporativo (dossieres, one-pagers)
+/creative-lab/anuncios         — Creatividades para anuncios
+Colores por servicio
+Web:            #0891B2  (cyan)
+Vídeo:          #7C3AED  (violet)
+Branding:       #DB2777  (pink)
+Presentaciones: #D97706  (amber)
+Material:       #059669  (emerald)
+Anuncios:       #DC2626  (red)
+Principio del Creative Lab
+La web del Creative Lab tiene que ser el mejor portfolio posible. Cada sección tiene que hacer que el visitante piense: 'Quiero que me hagan algo así a mí.' El copy no explica lo que hacemos — lo demuestra con ejemplos reales o mockups de alta calidad.
+01. HUB DEL CREATIVE LAB — PÁGINA PRINCIPAL
+Concepto
+El hub es una galería de capacidades. A diferencia del Systems Lab (que es más técnico y funcional), el Creative Lab tiene que ser visualmente impactante desde el primer scroll. Es el lugar donde el cliente entiende 'esto es lo que me pueden hacer'.
+Hero del hub
+Label mono:   'CREATIVE LAB'
+H1:           'Haz que tu empresa
+               se vea, se entienda
+               y se elija'
+Subtítulo:    'Producimos todo el material de marketing que necesitas.
+               Web, vídeo, branding, presentaciones y anuncios.
+               Con IA: más rápido, más barato, sin sacrificar calidad.'
+El H1 tiene 3 líneas — es intencionado. En desktop es enorme (96px) y ocupa todo el ancho. El salto de línea está definido con <br> o con clases CSS.
+Grid de servicios — diseño de cards
+Bento grid asimétrico de 12 columnas. Mezcla de cards grandes y pequeñas. Cada card tiene un fondo con gradiente sutil del color del servicio, una imagen o mockup representativo, y el nombre del servicio.
+Layout del bento (desktop)
+Fila 1: Web (8 cols) | Vídeo (4 cols)
+Fila 2: Branding (4 cols) | Presentaciones (4 cols) | Material (4 cols)
+Fila 3: Anuncios (12 cols — full width, card horizontal)
+Contenido de cada card
+Card Web (grande):
+  Visual: mockup de web oscura en laptop/monitor
+  Label: 'WEB CORPORATIVA Y LANDINGS'
+  Frase: 'Tu web que convierte, no que informa'
+  CTA: 'Ver servicio →'
+Card Vídeo:
+  Visual: fotograma de un vídeo de avatar IA (placeholder elegante)
+  Label: 'VÍDEO CON IA'
+  Frase: 'Sin cámara. Sin rodaje. Sin esperas.'
+Card Branding:
+  Visual: logo + paleta de colores + tipografía en negro
+  Label: 'BRANDING E IDENTIDAD'
+  Frase: 'Una marca que se recuerda'
+Card Presentaciones:
+  Visual: slide en oscuro con gráfico elegante
+  Label: 'PRESENTACIONES Y PITCH DECKS'
+  Frase: 'Decks que cierran reuniones'
+Card Material:
+  Visual: dossier corporativo mockup
+  Label: 'MATERIAL CORPORATIVO'
+  Frase: 'Documentos que abren puertas'
+Card Anuncios (full width):
+  Visual: 3 creatividades de anuncios side by side (mockup de Facebook/Instagram ads)
+  Label: 'CREATIVIDADES PARA ANUNCIOS'
+  Frase: 'Anuncios que paran el scroll'
+Sección de diferenciación — 'Por qué con IA'
+Esta sección explica la propuesta de valor de usar IA para contenido creativo. Tres columnas con comparativa implícita.
+Columna 1 — VELOCIDAD
+  'Lo que antes tardaba 4 semanas, ahora tarda 4 días.'
+  Icono: rayo
+Columna 2 — COSTE
+  'Sin productoras, fotógrafos ni estudios de diseño externos.'
+  Icono: precio
+Columna 3 — ITERACIÓN
+  'Cambios en horas, no en semanas. Sin coste adicional.'
+  Icono: ciclo
+CTA inferior del hub
+H2: '¿No sabes qué necesitas primero?'
+Desc: 'Cuéntanos dónde estás y te decimos qué tiene más impacto para tu empresa ahora mismo.'
+CTA: [Hablar con Víctor →]  (cyan)
+02. WEB CORPORATIVA Y LANDING PAGES — PÁGINA
+Este es el servicio más visible de Aether Labs. La propia web de Aether Labs ES el portfolio de este servicio. Lo que el cliente ve aquí tiene que ser exactamente lo que puede esperar para su empresa.
+Hero
+Label:     'WEB CORPORATIVA Y LANDINGS'  (cyan #0891B2)
+H1:        'Tu web que convierte,
+            no que informa'
+Subtítulo: 'El 70% de las webs corporativas son catálogos que nadie lee.
+            Las nuestras están diseñadas para convertir visitas en contactos.'
+El problema que resolvemos
+Sección de pain points. Tres columnas, formato similar al Systems Lab pero más visual (con iconos más grandes y copy más emocional).
+Pain 1 — 'Tu web no aparece en Google'
+  'Construimos con SEO técnico desde el primer día. No como añadido después.'
+Pain 2 — 'Los visitantes llegan y no hacen nada'
+  'Cada sección tiene un objetivo. Cada CTA tiene un motivo.'
+Pain 3 — 'No puedes actualizarla sin llamar a un desarrollador'
+  'Antigravity, Framer o Webflow. Tú tienes el control.'
+Tipos de web que hacemos
+Web corporativa
+Para qué: presentar la empresa, generar confianza, recibir leads
+Tiempo: 2-3 semanas desde brief aprobado
+Tecnología: Antigravity, Framer, Webflow o HTML/CSS puro
+Incluye: diseño, copy, SEO básico, formulario de contacto, responsive
+Precio orientativo: desde 1.500€
+Landing page de producto/servicio
+Para qué: vender un producto o servicio específico. Maximizar conversión.
+Tiempo: 1 semana
+Tecnología: mismas opciones + opción de landing de alta velocidad en HTML/Tailwind
+Incluye: diseño, copy persuasivo (Hormozi framework), A/B test básico
+Precio orientativo: desde 800€
+Web de campaña / evento
+Para qué: lanzamientos, webinars, eventos. Viven pocas semanas.
+Tiempo: 3-5 días
+Precio orientativo: desde 500€
+Proceso paso a paso
+Paso 1 — Brief (1h)
+  Rellenáis nuestro brief de web. 20 preguntas. 30 minutos.
+  Si no tenéis todo claro, primero hacemos Sesión de Claridad.
+Paso 2 — Propuesta visual (3 días)
+  3 opciones de estética. Paleta, tipografías, mood. No mockup completo.
+  Elegís dirección. Empezamos.
+Paso 3 — Diseño y desarrollo (7-14 días)
+  Construimos en el CMS elegido. Os damos acceso para ir viendo.
+  1 ronda de revisión incluida.
+Paso 4 — Revisión y ajustes (3 días)
+  Vuestro feedback. Ajustamos. Segunda ronda opcional (+200€).
+Paso 5 — Publicación y formación (1 día)
+  Publicamos. Os enseñamos a editar cualquier texto sin tocar código.
+Lo que NO hacemos (importante)
+No hacemos e-commerce. No gestionamos hosting a largo plazo. No desarrollamos funcionalidades custom complejas (eso es otro presupuesto). No hacemos SEO ongoing — solo técnico de base.
+Portfolio (placeholders para MVP)
+Grid de 3 proyectos en cards con: nombre del cliente / tipo de web / screenshot mockup / resultado ('leads +40% en 3 meses'). Para MVP se pueden usar mockups internos o proyectos propios.
+FAQ
+¿Cuánto tarda? Dependiendo del tipo: 5 días (landing simple) a 3 semanas (web corporativa completa). El 80% del tiempo depende de que nos entreguéis el contenido a tiempo.
+¿Puedo editar la web yo mismo? Sí. Trabajamos con Antigravity, Framer o Webflow — todos editables sin código. Te formamos en la entrega.
+¿Incluye el dominio y hosting? No. El hosting y dominio lo contratas tú. Nosotros lo configuramos y apuntamos. Recomendamos Hostinger o Vercel.
+¿Y el SEO? Incluimos SEO técnico básico: estructura semántica H1/H2/H3, meta tags, sitemap, velocidad. SEO de contenido ongoing no está incluido.
+03. VÍDEO CON IA — PÁGINA
+Este es el servicio más diferenciador del Creative Lab. La mayoría de empresas no saben que pueden tener vídeos profesionales sin cámara ni rodaje. El que lo ve por primera vez siempre quiere uno.
+Hero
+Label:     'VÍDEO CON IA'  (violet #7C3AED)
+H1:        'Vídeos profesionales
+            sin cámara,
+            sin rodaje,
+            sin esperas'
+Subtítulo: 'Con IA generamos vídeos corporativos, explicativos, testimoniales
+            y reels en días, no en semanas. Sin productora. Sin presupuesto de cine.'
+Demo reel — elemento central de la página
+VIDEO DEMO AUTOPLAY (sin sonido, loop): secuencia de 4-5 ejemplos de vídeos IA. Avatar hablando / explicativo animado / reel de producto / vídeo corporativo. 30-45 segundos. Este es el elemento que vende solo.
+Texto bajo el vídeo: 'Todo esto generado con IA. Sin cámara. Sin actores. Sin estudio.'
+Los cuatro tipos de vídeo que hacemos
+1 — Vídeo con avatar IA (spokesperson)
+Un presentador digital que habla por tu empresa. Tú escribes el guión, nosotros generamos el vídeo. El avatar puede ser una persona real (con consentimiento) o un avatar diseñado desde cero.
+Herramientas: HeyGen, Synthesia, D-ID
+Duración típica: 60-180 segundos
+Casos de uso: presentación de empresa, explainer de producto, formación interna
+Tiempo de producción: 3-5 días
+Precio orientativo: desde 300€
+2 — Vídeo explicativo animado
+Motion graphics y animación para explicar conceptos, procesos o productos. Sin filmar nada. Todo generado o animado.
+Herramientas: Runway, Kling, Sora + After Effects / CapCut
+Duración típica: 60-120 segundos
+Casos de uso: explainer de producto, proceso de empresa, presentación de inversión
+Tiempo de producción: 5-7 días
+Precio orientativo: desde 500€
+3 — Reels y contenido para redes
+Vídeos cortos (15-60s) para Instagram, LinkedIn, TikTok. Guión + generación IA + edición + subtítulos automáticos.
+Herramientas: Runway, CapCut, Captions.ai, ElevenLabs (voz)
+Packs: 4 reels / 8 reels / 12 reels por mes
+Tiempo de producción: 1-2 días por reel
+Precio orientativo: desde 150€/reel, descuento por pack
+4 — Vídeo corporativo completo
+Combina footage real (si el cliente lo tiene), imágenes IA y motion graphics. Narración en voz IA o locución profesional. El más cercano al vídeo corporativo tradicional, a fracción del coste.
+Herramientas: Runway + Kling + Sora + ElevenLabs + DaVinci Resolve
+Duración típica: 2-4 minutos
+Tiempo de producción: 7-10 días
+Precio orientativo: desde 800€
+Proceso de producción
+Paso 1 — Brief de vídeo (formulario):
+  Objetivo del vídeo / público objetivo / tono /
+  duración aproximada / referencias visuales / plazo
+Paso 2 — Guión y storyboard (2 días):
+  Escribimos el guión con Claude. Os lo enviamos para aprobación.
+  Incluye descripción de cada escena.
+Paso 3 — Producción (3-7 días según tipo):
+  Generamos el vídeo. Primera versión sin música.
+  Os la enviamos para revisión.
+Paso 4 — Revisión y entrega (2 días):
+  Ajustamos según feedback. Añadimos música de librería libre.
+  Entregamos MP4 en resolución 1080p y 4K si aplicable.
+Lo que NO hacemos
+No filmamos en cámara (a menos que el cliente aporte el footage). No producimos vídeos de más de 5 minutos en formato explicativo. No hacemos deepfakes de personas reales sin consentimiento. No garantizamos 100% de realismo en vídeos de avatar (las herramientas tienen limitaciones).
+FAQ
+¿Se nota que es con IA? Depende del tipo. Los avatares IA son reconocibles para ojo entrenado pero funcionan perfectamente para comunicación corporativa, formación y redes sociales. Los vídeos explicativos animados son indistinguibles del motion design tradicional.
+¿Puedo usar la voz de mi equipo? Sí. Con ElevenLabs podemos clonar una voz con 1 minuto de audio. Solo necesitamos consentimiento firmado.
+¿Los derechos son míos? Sí. Todo el contenido producido es tuyo. Te entregamos los archivos originales.
+04. BRANDING E IDENTIDAD VISUAL — PÁGINA
+Hero
+Label:     'BRANDING E IDENTIDAD VISUAL'  (pink #DB2777)
+H1:        'Una marca que
+            se recuerda'
+Subtítulo: 'No solo un logo. Un sistema de identidad completo que funciona
+            en todos los formatos: digital, impreso, vídeo y presentaciones.'
+Por qué el branding importa — sección de posicionamiento
+Risto Mejide: 'Una marca que no genera rechazo en nadie, no le gusta a nadie.' Esta sección tiene que hacer que el visitante entienda que una marca mediocre cuesta más que una buena.
+Estadística 1: 'Las empresas con identidad visual consistente
+                generan un 33% más de ingresos'
+Estadística 2: 'El 80% de los consumidores reconoce una marca
+                por su color'
+Estadística 3: 'Tienes 0.05 segundos para causar primera impresión'
+Qué incluye el pack de branding
+Pack Básico — desde 800€
+Logo principal (3 versiones: color / blanco / negro)
+Paleta de colores primaria (3-5 colores con códigos HEX, RGB, CMYK)
+Tipografías (1 display + 1 body, con instrucciones de uso)
+Guía de marca básica (8-12 páginas PDF)
+Favicon y assets para redes sociales
+Tiempo: 5-7 días hábiles
+Pack Profesional — desde 1.500€
+Todo lo del Pack Básico +
+Logotipo + isotipo + imagotipo (las 3 variantes)
+Sistema de iconos personalizado (10-15 iconos)
+Plantilla de presentación (PowerPoint/Google Slides)
+Plantilla de documento Word/PDF
+Portada y banners para LinkedIn/Instagram
+Guía de marca completa (20-30 páginas)
+Tiempo: 10-14 días hábiles
+Pack Completo — desde 2.500€
+Todo lo del Pack Profesional +
+Diseño de tarjetas de visita
+Papelería corporativa (letterhead, sobre, firma email)
+Kit de redes sociales (20 plantillas Canva/Figma editables)
+Vídeo de marca 30s (con identidad motion)
+Manual de marca extendido (40+ páginas)
+Tiempo: 20-25 días hábiles
+Proceso de branding
+Paso 1 — Brand Discovery (2h):
+  Cuestionario de marca. Análisis de competencia. Referencias.
+  Definimos: personalidad, valores, público, territorio.
+Paso 2 — Concepto visual (3 días):
+  2-3 propuestas de dirección visual (mood boards, no logos finales).
+  Elegís una dirección. Continuamos.
+Paso 3 — Diseño (5-15 días según pack):
+  Logo, paleta, tipografías, sistema completo.
+  1 ronda de revisión incluida por cada entregable.
+Paso 4 — Manual de marca y entrega:
+  PDF de la guía. Archivos en AI, EPS, SVG, PNG y PDF.
+  Formación de 1h para que sepáis aplicarla.
+FAQ
+¿Hacéis rebranding de marcas existentes? Sí. Es el 40% de nuestros proyectos. El proceso es el mismo pero empezamos con auditoría de la marca actual.
+¿Usáis IA para generar los logos? La IA es una herramienta de ideación y exploración, no el entregable final. El diseño final es trabajo humano revisado y refinado. Usamos Midjourney, Ideogram y Firefly para explorar conceptos, y Adobe Illustrator para el logo final vectorial.
+¿Qué pasa si no me gusta ninguna propuesta? Hacemos una segunda ronda de conceptos (+300€). Si sigue sin convencer, reembolsamos el 50% del coste del pack.
+05. PRESENTACIONES Y PITCH DECKS — PÁGINA
+Hero
+Label:     'PRESENTACIONES Y PITCH DECKS'  (amber #D97706)
+H1:        'Decks que cierran
+            reuniones'
+Subtítulo: 'No hacemos presentaciones bonitas. Hacemos presentaciones
+            que convencen, que cierran inversión, que ganan concursos.'
+Tipos de presentación
+Pitch deck para inversión
+Estructura: Problem / Solution / Market / Product / Business model /
+            Traction / Team / Ask
+Diapositivas: 10-15
+Formato: PowerPoint + PDF + Google Slides
+Precio orientativo: desde 800€
+Tiempo: 5-7 días
+Presentación corporativa
+Para qué: presentar la empresa a clientes, partners o proveedores
+Diapositivas: 15-30
+Incluye: diseño maestro reutilizable, plantilla de departamentos
+Precio orientativo: desde 600€
+Tiempo: 4-6 días
+One-page executive summary
+Para qué: enviar por email antes de una reunión. 1 sola página.
+Formatos: PDF + PNG
+Precio orientativo: desde 200€
+Tiempo: 1-2 días
+Presentación de ventas
+Para qué: que tu equipo comercial cierre más. Con storytelling de producto.
+Incluye: plantilla editable que el equipo puede personalizar para cada cliente
+Precio orientativo: desde 500€
+Tiempo: 3-5 días
+Proceso
+Paso 1 — Brief (formulario, 20 min):
+  Objetivo / público / mensajes clave / datos disponibles / formato final
+Paso 2 — Estructura y copywriting (2 días):
+  Definimos la narrativa. Os enviamos la estructura en texto plano.
+  Aprobáis antes de diseñar.
+Paso 3 — Diseño (3-5 días):
+  Diseñamos en PowerPoint o Figma según preferencia.
+  Primera versión completa para revisión.
+Paso 4 — Revisión y entrega:
+  1 ronda de cambios incluida. Entrega en PPTX + PDF.
+Lo que diferencia nuestros decks
+Copy primero — definimos el mensaje antes de diseñar. La mayoría diseña primero y pone texto después. Eso es al revés.
+Narrativa de Hormozi — cada deck tiene un hook, desarrollo del problema, solución irresistible y CTA claro.
+Diseño editorial — nada de plantillas de PowerPoint del 2015. Cada deck tiene una identidad visual propia.
+Editable por el cliente — entregamos el archivo fuente. Tu equipo puede editar sin diseñador.
+06. MATERIAL CORPORATIVO — PÁGINA
+Hero
+Label:     'MATERIAL CORPORATIVO'  (emerald #059669)
+H1:        'Documentos que
+            abren puertas'
+Subtítulo: 'Dossieres, one-pagers, propuestas y catálogos.
+            Todo con el mismo nivel de diseño que tu web.'
+Qué producimos
+Dossier de empresa
+El documento que envías cuando alguien pregunta '¿me mandas algo sobre vuestra empresa?'
+Formato: PDF de 8-16 páginas + versión imprimible
+Incluye: presentación de empresa, servicios, equipo, casos de éxito, contacto
+Precio orientativo: desde 500€
+Tiempo: 5-7 días
+One-pager
+Una sola cara que cuenta todo lo que necesitan saber.
+Formatos: A4 / A3 / formato digital 16:9
+Precio orientativo: desde 200€
+Tiempo: 1-2 días
+Propuesta comercial plantilla
+Un template profesional que tu equipo rellena para cada cliente.
+Incluye: portada, índice, secciones editables, páginas de precio
+Herramienta: Notion, Word, Canva o PDF interactivo
+Precio orientativo: desde 400€
+Tiempo: 3-4 días
+Catálogo de productos/servicios
+Visual y estructurado. Para enviar por email o imprimir.
+Formato: PDF de 12-30 páginas
+Precio orientativo: desde 600€
+Tiempo: 5-8 días
+Email signature
+Firma de email profesional con logo, datos y links.
+Compatible con Gmail, Outlook y Apple Mail
+Precio orientativo: 80€ por firma (descuento por volumen)
+Tiempo: 1 día
+Lo que NO hacemos
+No hacemos diseño editorial de revistas o libros. No hacemos campañas de print extensas. No diseñamos packaging físico.
+07. CREATIVIDADES PARA ANUNCIOS — PÁGINA
+Hero
+Label:     'CREATIVIDADES PARA ANUNCIOS'  (red #DC2626)
+H1:        'Anuncios que
+            paran el scroll'
+Subtítulo: 'Diseñamos las creatividades para tus campañas de Meta, Google,
+            LinkedIn y TikTok. Con IA generamos más variantes, más rápido.'
+Por qué la creatividad importa más que la segmentación
+Gary Vee y todo el marketing moderno lo confirma: el 70% del rendimiento de un anuncio depende de la creatividad, no de la segmentación. Un buen anuncio con segmentación mediocre supera a un mal anuncio con segmentación perfecta.
+'La creatividad ES la segmentación.'
+— Gary Vaynerchuk
+Formatos que producimos
+Meta (Facebook / Instagram)
+Feed estático: 1:1 y 4:5 — imagen estática con copy superpuesto
+Stories / Reels: 9:16 — vídeo vertical (15-30s)
+Carrusel: 1:1 x 4-10 slides
+Google Display
+Banners estáticos en formatos estándar: 300x250, 728x90, 160x600, 320x50
+Variantes HTML5 animadas (básico)
+LinkedIn
+Single image: 1200x627
+Video: 16:9 (15-30s)
+Document ad: PDF carousel de 3-8 slides
+TikTok
+Video vertical: 9:16 (15-60s) — generado con IA (Runway/Kling)
+Spark ads: optimización de contenido orgánico existente
+Packs de creatividades
+Pack Lanzamiento:
+  5 creatividades estáticas (Meta feed) + 2 stories + copy para todos
+  Precio: 600€
+Pack Campaña completa:
+  10 creatividades estáticas + 4 vídeos (15-30s) + variantes A/B
+  Cubre Meta + Google + LinkedIn
+  Precio: 1.200€
+Pack Mensual:
+  20 creatividades por mes (mix estático + vídeo)
+  Iteración mensual según resultados
+  Precio: 800€/mes
+Proceso
+Paso 1 — Brief de campaña:
+  Objetivo / público / oferta / mensajes clave / referencias visuales
+Paso 2 — Propuesta de creatividades (2 días):
+  Conceptos de anuncio. Ángulos de mensaje. Aprobáis antes de producir.
+Paso 3 — Producción (3-5 días):
+  Diseño + copy + variantes A/B
+Paso 4 — Entrega:
+  Archivos en los formatos exactos de cada plataforma
+  + guía de uso y sugerencias de segmentación
+Lo que NO hacemos
+No gestionamos las campañas publicitarias. No compramos medios. Solo producimos las creatividades. Para gestión de ads, trabajamos con socios externos.
+08. MEGA PROMPT ANTIGRAVITY — CREATIVE LAB
+Mismo sistema que el Systems Lab: 3 sesiones separadas para no saturar el contexto. Empezar por Hub + Web → Vídeo + Branding → Presentaciones + Material + Anuncios.
+Reglas globales para TODAS las sesiones del Creative Lab
+Estética: dark premium startup tech
+Fondo base:        #0A0F1E
+Superficie cards:  #0F172A
+Texto primario:    #F8FAFC
+Texto secundario:  #94A3B8
+Acento global:     #6366F1 (indigo) — botones y CTAs
+Acento Creative:   #0891B2 (cyan) — labels del Creative Lab
+Fuentes: Bricolage Grotesque + DM Sans + JetBrains Mono
+GSAP + ScrollTrigger. CSS puro. Todo en español.
+=== PROMPT SESIÓN 1 — Hub + Web (/creative-lab + /creative-lab/web) ===
+Construye las páginas /creative-lab y /creative-lab/web para aetherlabs.es. Misma estética dark premium de la landing principal.
+HUB (/creative-lab)
+Label: 'CREATIVE LAB'
+H1 (3 líneas, enorme): 'Haz que tu empresa / se vea, se entienda / y se elija'
+Subtítulo: 'Web, vídeo, branding, presentaciones y anuncios. Con IA: más rápido, más barato.'
+BENTO GRID ASIMÉTRICO (12 cols):
+  Fila 1: Card Web (8 cols, alto 320px) | Card Vídeo (4 cols, alto 320px)
+  Fila 2: Card Branding (4 cols, alto 240px) | Card Presentaciones (4 cols) | Card Material (4 cols)
+  Fila 3: Card Anuncios (12 cols, alto 200px, horizontal)
+Estilos de card:
+  background: #0F172A
+  border: 1px solid rgba(255,255,255,0.06)
+  border-radius: 20px, overflow hidden
+  hover: border-color rgba(255,255,255,0.12) + translateY(-3px)
+  Zona visual (60% de la card): fondo con gradiente del color del servicio
+  Zona texto (40%): label mono + frase + CTA link
+Cards con sus colores:
+  Web (cyan #0891B2): 'Tu web que convierte, no que informa'
+  Vídeo (violet #7C3AED): 'Sin cámara. Sin rodaje. Sin esperas.'
+  Branding (pink #DB2777): 'Una marca que se recuerda'
+  Presentaciones (amber #D97706): 'Decks que cierran reuniones'
+  Material (emerald #059669): 'Documentos que abren puertas'
+  Anuncios (red #DC2626): 'Anuncios que paran el scroll'
+Sección Por qué con IA (3 cols):
+  VELOCIDAD — 'Lo que tardaba 4 semanas, ahora tarda 4 días'
+  COSTE — 'Sin productoras ni estudios de diseño externos'
+  ITERACIÓN — 'Cambios en horas, sin coste adicional'
+CTA inferior:
+  H2: '¿No sabes qué necesitas primero?'
+  CTA: [Hablar con Víctor →] (cyan)
+WEB (/creative-lab/web)
+Label: 'WEB CORPORATIVA Y LANDINGS' (cyan)
+H1: 'Tu web que convierte, / no que informa'
+Subtítulo: 'El 70% de las webs corporativas son catálogos que nadie lee.'
+3 PAIN POINTS (cols):
+  'Tu web no aparece en Google' + descripción
+  'Los visitantes llegan y no hacen nada' + descripción
+  'No puedes actualizarla sin llamar a un desarrollador' + descripción
+3 TIPOS DE WEB (cards con precio):
+  Web corporativa — desde 1.500€ — 2-3 semanas
+  Landing page — desde 800€ — 1 semana
+  Web de campaña — desde 500€ — 3-5 días
+  Cada card: tipo, para qué sirve, qué incluye, precio, tiempo, CTA
+PROCESO (timeline 5 pasos, numerados 01-05):
+  01 Brief (1h) → 02 Propuesta visual (3d) → 03 Diseño (7-14d)
+  → 04 Revisión (3d) → 05 Publicación (1d)
+  Línea conectora horizontal entre pasos. Números gigantes en background opacity 0.04
+FAQ ACCORDION (4 preguntas):
+  ¿Cuánto tarda? / ¿Puedo editar yo? / ¿Incluye dominio? / ¿Y el SEO?
+CTA final: [Empezar mi web →] (cyan, grande)
+=== PROMPT SESIÓN 2 — Vídeo + Branding ===
+VÍDEO (/creative-lab/video)
+Label: 'VÍDEO CON IA' (violet #7C3AED)
+H1: 'Vídeos profesionales / sin cámara, / sin rodaje, / sin esperas'
+DEMO REEL (elemento central):
+  Video autoplay muted loop, ancho completo, border-radius 16px
+  Placeholder: div con fondo oscuro + gradiente violet + texto 'DEMO REEL'
+  Texto bajo: 'Todo generado con IA. Sin cámara. Sin actores. Sin estudio.'
+4 TIPOS DE VÍDEO (tabs o grid 2x2):
+  TAB 1: Avatar IA — HeyGen/Synthesia — desde 300€ — 3-5 días
+  TAB 2: Vídeo explicativo animado — Runway/Kling — desde 500€ — 5-7 días
+  TAB 3: Reels y contenido redes — packs disponibles — desde 150€/reel
+  TAB 4: Vídeo corporativo completo — desde 800€ — 7-10 días
+  Cada tab: descripción, herramientas usadas, casos de uso, precio, tiempo
+PROCESO (4 pasos):
+  Brief → Guión (2d) → Producción (3-7d) → Revisión y entrega
+FAQ (3 preguntas): ¿Se nota que es IA? / ¿Puedo usar mi voz? / ¿Los derechos?
+CTA: [Pedir mi vídeo →] (violet)
+BRANDING (/creative-lab/branding)
+Label: 'BRANDING E IDENTIDAD VISUAL' (pink #DB2777)
+H1: 'Una marca que / se recuerda'
+3 ESTADÍSTICAS (grid 3 cols con números grandes):
+  33% más ingresos con identidad consistente
+  80% de consumidores reconoce marca por su color
+  0.05s para causar primera impresión
+3 PACKS (cards con precio y lista de entregables):
+  Pack Básico — 800€ — 5-7 días
+    Logo (3 versiones) / Paleta / Tipografías / Guía básica / Favicon
+  Pack Profesional — 1.500€ — 10-14 días
+    Todo básico + Isotipo / Iconos / Plantilla presentación / Guía completa
+  Pack Completo — 2.500€ — 20-25 días
+    Todo profesional + Papelería / Kit redes / Vídeo de marca / Manual extendido
+  Cada pack: badge con 'MÁS POPULAR' en el Pack Profesional
+PROCESO (4 pasos):
+  Brand Discovery (2h) → Concepto visual (3d) → Diseño → Manual y entrega
+FAQ: ¿Hacéis rebranding? / ¿Usáis IA? / ¿Qué pasa si no me gusta?
+CTA: [Pedir presupuesto de branding →] (pink)
+=== PROMPT SESIÓN 3 — Presentaciones + Material + Anuncios ===
+PRESENTACIONES (/creative-lab/presentaciones)
+Label: 'PRESENTACIONES Y PITCH DECKS' (amber #D97706)
+H1: 'Decks que cierran / reuniones'
+4 TIPOS (grid 2x2 o tabs):
+  Pitch deck inversión — 800€ — 10-15 slides — 5-7 días
+  Presentación corporativa — 600€ — 15-30 slides — 4-6 días
+  One-page executive summary — 200€ — 1 página — 1-2 días
+  Presentación de ventas — 500€ — editable por equipo — 3-5 días
+DIFERENCIADORES (4 bullets con icono):
+  Copy primero / Narrativa Hormozi / Diseño editorial / Editable
+PROCESO (4 pasos): Brief → Estructura y copy → Diseño → Revisión
+CTA: [Solicitar presupuesto →] (amber)
+MATERIAL CORPORATIVO (/creative-lab/material)
+Label: 'MATERIAL CORPORATIVO' (emerald #059669)
+H1: 'Documentos que / abren puertas'
+5 TIPOS EN GRID (cards):
+  Dossier de empresa — 500€ — 5-7 días
+  One-pager — 200€ — 1-2 días
+  Propuesta comercial plantilla — 400€ — 3-4 días
+  Catálogo de productos — 600€ — 5-8 días
+  Email signature — 80€ — 1 día
+CTA: [Solicitar presupuesto →] (emerald)
+ANUNCIOS (/creative-lab/anuncios)
+Label: 'CREATIVIDADES PARA ANUNCIOS' (red #DC2626)
+H1: 'Anuncios que / paran el scroll'
+QUOTE DE GARY VEE (grande, en itálica):
+  'La creatividad ES la segmentación.'
+  — Gary Vaynerchuk
+FORMATOS POR PLATAFORMA (tabs: Meta / Google / LinkedIn / TikTok):
+  Cada tab: formatos disponibles + specs técnicas
+3 PACKS (cards con precio):
+  Pack Lanzamiento — 600€ — 5 estáticas + 2 stories + copy
+  Pack Campaña completa — 1.200€ — 10 estáticas + 4 vídeos + A/B
+  Pack Mensual — 800€/mes — 20 creatividades + iteración según resultados
+  Badge 'RECOMENDADO' en Pack Mensual
+PROCESO (4 pasos): Brief → Conceptos → Producción → Entrega con guía
+CTA: [Solicitar creatividades →] (red)
+=== FIN DE LOS PROMPTS ===
+--- Web 4.0\AetherLabs_SchoolLab_v1.docx ---
+AETHER LABS
+SCHOOL LAB
+Brief completo de web + Prompts para Antigravity
+Basado en aetherschool.es · 9 programas reales · Fuente: web viva + histórico de conversaciones
+00. CONTEXTO — DE DÓNDE VIENE EL SCHOOL LAB
+El School Lab nació antes de que existiera como categoría. Nació de un taller para mujeres en Badalona. Víctor vio que había un mercado enorme de personas que querían aprender IA pero para quienes toda la formación existente era cara, técnica o para empresas grandes. Esa frustración es el alma del School Lab.
+La idea original: llevar formación práctica en IA a personas reales. Mujeres de 40-60, personas mayores, jóvenes sin orientación, hosteleros, médicos, profesores. Gente que nadie estaba mirando. Gente que el mercado de formación IA estaba ignorando completamente.
+Aether School ya existe como marca separada (aetherschool.es). El School Lab dentro de aetherlabs.es es la puerta de entrada al ecosistema Aether School desde la web corporativa.
+La relación entre School Lab (aetherlabs.es) y Aether School (aetherschool.es)
+School Lab en aetherlabs.es — presenta la propuesta, los 9 programas y los 3 formatos. CTA final dirige a aetherschool.es o a contacto directo.
+aetherschool.es — la web completa de la academia. Programas detallados, inscripciones, instituciones, sobre nosotros, impacto, blog.
+Estrategia: El School Lab en aetherlabs.es habla al ICP empresarial (quiero formar a mi equipo) y al ICP individual (quiero aprender IA). aetherschool.es es la web de conversion final.
+Instituciones ya asociadas (datos reales de la web)
+UAB — Universitat Autònoma de Barcelona
+Colegio Virolai
+Fundació Pere Tarrés
+Ajuntament de Badalona
+01. ESTRUCTURA COMPLETA DEL SCHOOL LAB
+Sitemap
+/school-lab                        — Hub principal
+/school-lab/programas              — Grid de los 9 programas
+/school-lab/empoderate-con-ia      — Mujeres 40-60
+/school-lab/conectate-con-el-mundo — Personas mayores 65+
+/school-lab/aprende-a-crear        — Niños 6-12
+/school-lab/descubre-tu-futuro     — Jóvenes 13-18
+/school-lab/monta-tu-negocio       — Emprendedores
+/school-lab/mejora-tu-material     — Profesores
+/school-lab/mas-tiempo-para-cocina — Hostelería
+/school-lab/dedicate-a-la-medicina — Médicos y Sanidad
+/school-lab/prepara-tu-equipo      — Empresas ← ICP PRINCIPAL para aetherlabs.es
+/school-lab/instituciones          — Para fundaciones, asociaciones, ayuntamientos
+/school-lab/metodologia            — Cómo enseñamos
+Los 3 formatos de aprendizaje (ya existentes en la web)
+Taller de Descubrimiento: 90 min — gratuito/simbólico — primer paso, sin instalar nada
+Programa Intensivo:       1 semana / 10h — desde 60€ — 5 sesiones de 2h, proyecto final
+Comunidad Aether:         mensual — precio reducido — alumni del intensivo, soporte continuo
+Color del School Lab
+Verde: #00FF41 (en el contexto de aetherlabs.es, el color del School Lab)
+Verde semántico: #059669 (para labels y UI dentro del School Lab)
+Verde claro: #D1FAE5 (fondos de cards)
+02. HUB DEL SCHOOL LAB — /school-lab
+Concepto
+El hub del School Lab tiene una doble audiencia que no existe en los otros Labs: los individuos (personas que quieren aprender por sí mismas) y las empresas e instituciones (que quieren formar a sus equipos o colectivos). El diseño tiene que hacer que ambos se sientan identificados.
+Hero del hub
+Label:     'SCHOOL LAB'  (verde #059669)
+H1:        'Aprende a usar la IA
+            antes de que sea tarde'
+Subtítulo: 'El 39% de las habilidades laborales actuales serán obsoletas antes de 2030.
+            La IA no va a esperar. Nosotros tampoco.'
+Fuente del dato: WEF Future of Jobs 2025 (dato ya usado en la web real)
+CTAs:
+  [Ver programas →]       (verde, principal — para individuos)
+  [Soy empresa o institución →]  (ghost — para B2B)
+Sección — Para quién es
+Dos columnas grandes con distinta propuesta de valor:
+Columna B2C (izquierda):
+  'Para ti, si quieres aprender'
+  9 programas, cada uno para un perfil concreto.
+  Desde mujeres de 40-60 hasta médicos. Sin tecnicismos.
+  CTA: [Ver todos los programas →]
+Columna B2B (derecha):
+  'Para tu empresa o institución'
+  Formamos equipos en IA aplicada a su trabajo real.
+  También colaboramos con fundaciones, colegios y ayuntamientos.
+  CTA: [Hablar con nosotros →]
+Grid de programas — los 9 (cards)
+Grid de 3 columnas en desktop. Cada card: imagen representativa del colectivo / badge de audiencia / nombre del programa / frase de 1 línea / link 'Ver programa'.
+1. Empodérate con IA         — MUJERES 40-60    — verde
+2. Conéctate con el mundo    — PERSONAS MAYORES 65+ — azul cálido
+3. Aprende a crear           — NIÑOS 6-12       — naranja
+4. Descubre tu futuro        — JÓVENES 13-18    — violet
+5. Monta tu negocio          — EMPRENDEDORES    — amber
+6. Mejora tu material        — PROFESORES       — cyan
+7. Más tiempo para tu cocina — HOSTELERÍA       — rojo cálido
+8. Dedícate a la medicina    — MÉDICOS/SANIDAD  — azul
+9. Prepara tu equipo         — EMPRESAS         — verde oscuro [DESTACADO]
+La card de Empresas debe ser visualmente más grande o destacada en el contexto de aetherlabs.es, ya que es el ICP principal de la web corporativa.
+Sección — Metodología en 3 ejes (ya definida en la web real)
+Eje 1 — DESCÚBRETE
+  'La tecnología no tiene sentido si no sabes qué quieres amplificar.
+   Empezamos por romper el muro del yo no puedo.'
+Eje 2 — APRENDE LO QUE IMPORTA
+  'No teoría de libro. Habilidades reales de vida.
+   Aprenderás resolviendo tus propios problemas, no ejercicios inventados.'
+Eje 3 — EXPÁNDETE CON TECNOLOGÍA
+  'La IA no te reemplaza. Multiplica lo que ya eres.
+   Aquí aprendes a usarla como un superpoder, no como una muleta.'
+Nota técnica: la metodología está respaldada por meta-análisis SAGA 2025 (350 estudios), curva del olvido de Ebbinghaus y neuroplasticidad adulta documentada. Usar esta credencial en la sección.
+Sección — Los 3 formatos
+Card 1 — TALLER DE DESCUBRIMIENTO
+  Duración: 90 min
+  Precio: Gratuito o simbólico
+  Para qué: el primer paso. Sales habiendo creado algo con IA.
+  Desde el móvil que ya tienes.
+Card 2 — PROGRAMA INTENSIVO  [MÁS POPULAR]
+  Duración: 1 semana — 5 sesiones de 2h
+  Precio: desde 60€
+  Para qué: proyecto real terminado al final.
+  Para quien quiere ir en serio.
+Card 3 — COMUNIDAD AETHER
+  Duración: mensual — acceso continuo
+  Precio: baja mensualidad
+  Para qué: seguir aprendiendo después del Intensivo.
+  Novedades, soporte, comunidad.
+Sección — Instituciones asociadas
+UAB · Colegio Virolai · Fundació Pere Tarrés · Ajuntament de Badalona
+Logos en escala de grises, fila horizontal. Texto: 'Ya confían en Aether School'.
+Testimonios (de la web real)
+Diana Martínez (Emprendedora): 'En un taller aprendí más que en meses viendo vídeos.'
+Carmen López (Mujer 50 años): 'Pensaba que esto era solo para jóvenes o informáticos.'
+Roberto Fernández (Hostelero): 'Todo muy práctico y adaptado a lo que necesita alguien como yo.'
+Julián y Rosa (Jubilados 70+): 'Pensábamos que esto nos venía grande. Al final aprendimos en dos tardes.'
+03. LOS 9 PROGRAMAS — PÁGINAS INDIVIDUALES
+Cada programa tiene su propia página en aetherlabs.es/school-lab/[slug]. El contenido completo ya existe en aetherschool.es — aquí se adapta para el contexto de aetherlabs.es (más orientado a conversión B2C directa o derivar a aetherschool.es).
+Estructura común de cada página de programa
+Label mono:    badge de audiencia (ej: 'MUJERES 40-60')
+H1:            nombre del programa
+Subtítulo:     promesa de transformación en 2 líneas
+El problema:   qué pasa si no aprenden IA (pain point del colectivo)
+La solución:   qué aprenden específicamente
+3 bloques de contenido (tabs o grid): lo que aprenden
+Proceso:       cómo funciona (Taller / Intensivo / Comunidad)
+CTA:           [Reservar plaza →] o [Pedir más info →]
+Link footer:   '← Volver a todos los programas'
+1 — Empodérate con IA  (/school-lab/empoderate-con-ia)
+Audiencia:  Mujeres 40-60
+H1: 'Usa la IA para lo que más te importa'
+Subtítulo: 'Salud, creatividad, recuerdos, comunicación.
+            Sin necesitar saber nada de tecnología.'
+Pain: 'La tecnología avanza y a veces parece que no es para ti.'
+Aprenden:
+  — Crear imágenes y vídeos personales con IA generativa
+  — Organizar información de salud y crear GPTs personalizados
+  — Comunicarse mejor (redactar emails, mensajes, resúmenes)
+  — Recuperar y organizar recuerdos y fotos antiguas
+  — Aprender a preguntar bien a la IA para obtener lo que necesitan
+2 — Conéctate con el mundo  (/school-lab/conectate-con-el-mundo)
+Audiencia:  Personas mayores 65+
+H1: 'La IA puede ayudarte a estar más cerca de tu familia'
+Subtítulo: 'A sentirte acompañada y a vivir mejor el día a día.'
+Origin note: Este programa es el origen de Aether School.
+Nació de los talleres en asociaciones de mujeres de Badalona.
+Pain: 'La tecnología avanza y parece que te deja atrás.'
+Aprenden:
+  — Usar el móvil con asistentes de IA (preguntar, buscar, recordar)
+  — Videollamar con facilidad y estar en contacto con la familia
+  — Pedir recetas, consejos de salud y actividades adaptadas
+  — Entender noticias y contenidos con resúmenes fáciles
+  — Crear fotos y recuerdos con IA generativa
+3 — Aprende a crear lo que imaginas  (/school-lab/aprende-a-crear)
+Audiencia:  Niños 6-12
+H1: 'Los niños tienen ideas increíbles. La IA les da las herramientas.'
+Subtítulo: 'Cuentos, personajes, música, mundos inventados.'
+Aprenden:
+  — Crear cuentos ilustrados con IA
+  — Inventar personajes y darles voz
+  — Componer música simple con IA
+  — Construir mundos y historias visuales
+  — Usar la IA como herramienta de creatividad, no de sustitución
+4 — Descubre tu futuro  (/school-lab/descubre-tu-futuro)
+Audiencia:  Jóvenes 13-18
+H1: 'El sistema educativo no te enseña las profesiones del futuro. Nosotros sí.'
+Subtítulo: 'Descubre qué se te da bien, qué salidas tiene,
+            y cómo la IA puede llevarte más lejos.'
+Pain: 'Siguen existiendo carreras que ya no tienen empleo.'
+Aprenden:
+  — Qué profesiones tienen futuro real con IA
+  — Cómo usar la IA para potenciar lo que ya se les da bien
+  — Crear proyectos propios (apps, contenidos, negocios pequeños)
+  — Emprender con IA desde los 13 años
+  — Separar el hype del valor real de la tecnología
+5 — Monta tu negocio  (/school-lab/monta-tu-negocio)
+Audiencia:  Emprendedores
+H1: 'Con IA puedes crear tu logo, tu web, tus vídeos y tus textos de venta.'
+Subtítulo: 'Sin contratar a nadie. Sin saber diseño ni programación. Tú solo.'
+Aprenden:
+  — Crear identidad visual completa con IA (logo, paleta, tipografías)
+  — Construir una landing page funcional sin código
+  — Generar vídeos y contenido para redes sin cámara
+  — Escribir textos de venta y propuestas comerciales
+  — Automatizar procesos básicos del negocio
+6 — Mejora tu material educativo  (/school-lab/mejora-tu-material)
+Audiencia:  Profesores
+H1: 'Menos tiempo preparando y corrigiendo. Más tiempo enseñando.'
+Subtítulo: 'La IA te ayuda a crear mejores materiales, personalizar
+            contenido y reducir la carga burocrática.'
+Aprenden:
+  — Generar materiales didácticos adaptados a diferentes niveles
+  — Crear ejercicios, exámenes y rúbricas con IA
+  — Reducir el tiempo de corrección con asistentes IA
+  — Personalizar contenido para alumnos con necesidades especiales
+  — Usar Claude y otras herramientas en el aula de forma segura
+7 — Más tiempo para tu cocina  (/school-lab/mas-tiempo-para-tu-cocina)
+Audiencia:  Hostelería
+H1: 'Gestiona las reseñas, crea contenido para redes y atrae más clientes.'
+Subtítulo: 'Sin agencias. Sin presupuestos grandes. Con la IA haciendo el trabajo pesado.'
+Aprenden:
+  — Responder reseñas de Google y TripAdvisor con IA
+  — Crear contenido para Instagram y redes (fotos, textos, stories)
+  — Gestionar la carta digital y actualizarla fácilmente
+  — Crear promociones y ofertas con IA
+  — Automatizar respuestas a reservas y preguntas frecuentes
+8 — Dedícate a lo que importa, la medicina  (/school-lab/dedicate-a-la-medicina)
+Audiencia:  Médicos y Sanidad
+H1: 'La burocracia clínica te roba tiempo de medicina real.'
+Subtítulo: 'La IA puede transcribir consultas, organizar historiales
+            y filtrar información para que tú te centres en el paciente.'
+Aprenden:
+  — Transcripción automática de consultas con IA
+  — Organización y resumen de historiales clínicos
+  — Búsqueda de evidencia médica con asistentes IA
+  — Redacción de informes y documentación clínica
+  — Privacidad y cumplimiento normativo con IA en salud
+9 — Prepara tu equipo  (/school-lab/prepara-tu-equipo)  ← PÁGINA DESTACADA
+Esta es la página más importante del School Lab en el contexto de aetherlabs.es. Es B2B. El cliente aquí es la empresa, no el individuo. El tono cambia.
+Audiencia:  Empresas y pymes
+H1: 'Tu equipo puede trabajar más rápido,
+     cometer menos errores
+     y centrarse en lo que importa.'
+Subtítulo: 'Solo necesita saber cómo usar la IA en su día a día.'
+El problema (copy real de la web):
+  'Las empresas pagan suscripciones de IA caras,
+   pero los empleados no saben cómo usarlas.
+   El resultado es que nadie cambia su forma de trabajar.'
+La solución:
+  'No enseñamos qué es un LLM.
+   Enseñamos cómo reducir informes de 4 horas a 15 minutos
+   en el caso concreto de tu empresa.'
+4 bloques de contenido (tabs, ya definidos en web real):
+  Eficiencia por Área — cuellos de botella en marketing/ventas/admin
+  Prompts Corporativos — biblioteca de instrucciones de tu empresa
+  Proyectos en Caliente — tareas reales automatizadas el día 1
+  Adaptación de Sector — casos específicos de tu industria
+Para quien es (3 perfiles):
+  Empresas que quieren que el equipo adopte la IA de verdad
+  Las que han comprado herramientas pero nadie las usa
+  Las que quieren diferenciarse antes que su competencia
+Proceso (3 pasos):
+  1. Nos contactas — WhatsApp, formulario o email. Sin compromiso.
+  2. Diseñamos el plan — adaptamos contenido, duración y formato.
+  3. Empiezas a crear — presencial u online. Te llevas resultados.
+CTA: [Preparar mi equipo →]  (verde)
+04. INSTITUCIONES — /school-lab/instituciones
+Concepto
+La página de instituciones es la puerta de entrada B2B para el sector no empresarial: fundaciones, asociaciones, ayuntamientos, colegios. El tono es diferente al de Empresas — más social, más de impacto, menos de ROI.
+Copy de la página
+Label:     'PARA INSTITUCIONES'
+H1:        '¿Quieres llevar la IA
+            a tu comunidad?'
+Subtítulo: 'Diseñamos talleres y programas a medida para fundaciones,
+            asociaciones, centros educativos y ayuntamientos.
+            Llevamos la formación nosotros. Tú pones el espacio y las personas.'
+Con quién trabajamos (ya en la web)
+Fundaciones y asociaciones sociales
+Asociaciones de mujeres y colectivos
+Centros educativos: colegios e institutos
+Ayuntamientos y entidades públicas
+Empresas y pymes
+Centros de día y asociaciones de mayores
+Cómo trabajamos — 3 pasos
+1. Nos dices quiénes son
+   Tu colectivo, cuántas personas, qué necesidades específicas tienen.
+2. Diseñamos el programa
+   Contenidos, duración, actividades, formato.
+3. Lo impartimos nosotros
+   Presencial o en remoto. Con materiales incluidos.
+Por qué Aether School para instituciones
+No somos una academia online. Venimos a vosotros.
+Adaptamos el programa a tu colectivo, no al revés.
+Programas para todos: mayores, jóvenes, mujeres, profesionales.
+Resultados visibles desde el primer taller.
+Acompañamiento post-talleres.
+Materiales didácticos simplificados y accesibles.
+Formulario de contacto
+Campos: Nombre / Organización / Email / Teléfono
+  ¿A qué colectivo va dirigido? / ¿Cuántas personas? / Mensaje
+CTA: [Enviar solicitud]
+05. METODOLOGÍA — /school-lab/metodologia
+Concepto
+La página de metodología es el argumento de credibilidad. Justifica por qué Aether School es diferente de los miles de cursos de IA que existen. Tiene que ser científicamente sólida sin ser aburrida.
+Copy principal
+Label:     'NUESTRA METODOLOGÍA'
+H1:        'No enseñamos IA.
+            Enseñamos personas.'
+Subtítulo: 'Cada programa de Aether School se construye sobre tres ejes
+            que el sistema educativo tradicional ignora completamente.'
+Los 3 ejes con detalle
+EJE 1 — DESCÚBRETE
+  'La tecnología no tiene sentido si no sabes qué quieres amplificar.'
+  'Empezamos por romper el muro del yo no puedo.'
+  Visual: icono de espejo o reflejo
+EJE 2 — APRENDE LO QUE IMPORTA
+  'No teoría de libro. Habilidades reales de vida.'
+  'Aprenderás resolviendo tus propios problemas, no ejercicios inventados.'
+  Visual: icono de práctica / herramienta
+EJE 3 — EXPÁNDETE CON TECNOLOGÍA
+  'La IA no te reemplaza. Multiplica lo que ya eres.'
+  'Aquí aprendes a usarla como un superpoder, no como una muleta.'
+  Visual: icono de expansión / crecimiento
+Respaldo científico — sección de credibilidad
+Titulo: 'No enseñamos de oídas'
+Dato 1: Meta-análisis SAGA 2025 — 350 estudios
+  Nuestra metodología está basada en la investigación más amplia
+  sobre aprendizaje efectivo en adultos.
+Dato 2: Curva del olvido de Ebbinghaus
+  El 80% de la información se olvida en 24h sin práctica.
+  Por eso el 90% de nuestro tiempo es práctica, no escuchar.
+Dato 3: WEF Future of Jobs 2025
+  El 39% de las habilidades actuales serán obsoletas antes de 2030.
+  El 63% de empleadores cita la brecha de habilidades como barrera.
+  Enseñamos lo que el mercado va a necesitar, no lo que ya existe.
+La diferencia con otros cursos
+Comparativa visual (tabla simple):
+                    AETHER SCHOOL    OTROS CURSOS IA
+Diseñado para ti:   SÍ — por perfil   No (todos igual)
+Práctica real:      SÍ — 90%          20-40% práctica
+Presencial:         SÍ                Solo online
+Comunidad:          SÍ — alumni       No incluida
+Respaldo científico: SÍ               Raramente
+Precio justo:       SÍ — desde 60€    200-3.000€
+06. MEGA PROMPT ANTIGRAVITY — SCHOOL LAB
+El School Lab tiene más páginas que los otros Labs (11 URLs). Dividido en 4 sesiones. Empezar por Hub + Empresas — son las más importantes para conversión. Los programas individuales en sesiones separadas.
+Reglas globales del School Lab
+Estética: dark premium startup tech — igual que el resto de aetherlabs.es
+Fondo base:        #0A0F1E
+Superficie cards:  #0F172A
+Texto primario:    #F8FAFC
+Texto secundario:  #94A3B8
+Acento global:     #6366F1 (indigo) — botones principales
+Acento School:     #059669 (verde) — labels y acentos del School Lab
+Verde claro:       #D1FAE5 — fondos de badges de programa
+Fuentes: Bricolage Grotesque + DM Sans + JetBrains Mono
+GSAP + ScrollTrigger. CSS puro. Todo en español.
+=== SESIÓN 1 — Hub + Empresas (las más importantes) ===
+Construye /school-lab y /school-lab/prepara-tu-equipo para aetherlabs.es. La página de Empresas es la más importante — es el ICP principal de la web corporativa.
+HUB (/school-lab)
+Label: 'SCHOOL LAB' (verde #059669)
+H1: 'Aprende a usar la IA / antes de que sea tarde'
+Subtítulo con dato WEF: 'El 39% de las habilidades laborales actuales serán
+obsoletas antes de 2030. La IA no va a esperar. Nosotros tampoco.'
+Fuente del dato en texto pequeño: 'Fuente: WEF Future of Jobs 2025'
+CTAs: [Ver programas →] (verde) | [Soy empresa o institución →] (ghost)
+DOS COLUMNAS (B2C y B2B):
+  Izquierda: 'Para ti, si quieres aprender'
+    9 programas, cada uno para un perfil concreto. CTA: [Ver programas]
+  Derecha: 'Para tu empresa o institución'
+    Formamos equipos en IA aplicada. Colaboramos con instituciones. CTA: [Hablar]
+GRID DE 9 PROGRAMAS (3 cols desktop):
+  Cada card: badge coloreado de audiencia + nombre + frase 1 línea + link
+  Card de Empresas: más grande (2 cols) o con badge [DESTACADO]
+  Colores de cards (fondos sutiles):
+    Mujeres 40-60:    rose #FFF1F2
+    Personas Mayores: sky #F0F9FF
+    Niños:            orange #FFF7ED
+    Jóvenes:          violet #F5F3FF
+    Emprendedores:    amber #FFFBEB
+    Profesores:       cyan #ECFEFF
+    Hostelería:       red #FEF2F2
+    Médicos:          blue #EFF6FF
+    Empresas:         green #F0FDF4 [DESTACADO]
+METODOLOGÍA (3 ejes, cards oscuras):
+  DESCÚBRETE | APRENDE LO QUE IMPORTA | EXPÁNDETE CON TECNOLOGÍA
+  Cada eje: icono Lucide + título + 2 líneas de descripción
+LOS 3 FORMATOS:
+  Card 1: Taller Descubrimiento — 90 min — Gratuito/Simbólico
+  Card 2: Programa Intensivo — 1 semana / 10h — desde 60€  [MÁS POPULAR]
+  Card 3: Comunidad Aether — mensual — baja mensualidad
+LOGOS INSTITUCIONES (fila horizontal, grayscale, opacity 0.5):
+  UAB · Colegio Virolai · Fundació Pere Tarrés · Ajuntament de Badalona
+TESTIMONIOS (3 cards, border verde izquierdo):
+  Diana Martínez — Carmen López — Roberto Fernández
+PREPARA TU EQUIPO (/school-lab/prepara-tu-equipo)
+Label: 'EMPRESAS' (verde oscuro #065F46)
+H1 (3 líneas): 'Tu equipo puede trabajar más rápido, / cometer menos errores /
+               y centrarse en lo que importa.'
+Subtítulo: 'Solo necesita saber cómo usar la IA en su día a día.'
+EL PROBLEMA (caja con borde izquierdo rojo):
+  'Las empresas pagan suscripciones de IA caras, pero los empleados
+   no saben cómo usarlas. El resultado es que nadie cambia su forma de trabajar.'
+LA SOLUCIÓN (caja con borde izquierdo verde):
+  'No enseñamos qué es un LLM. Enseñamos cómo reducir informes de 4 horas
+   a 15 minutos en el caso concreto de tu empresa.'
+4 TABS DE CONTENIDO:
+  Eficiencia por Área: cuellos de botella en marketing, ventas, admin
+  Prompts Corporativos: biblioteca de instrucciones de tu empresa
+  Proyectos en Caliente: tareas reales automatizadas desde el primer día
+  Adaptación de Sector: ejemplos con tu industria real
+3 PERFILES (cards):
+  'Queremos que el equipo adopte la IA de verdad'
+  'Hemos comprado herramientas pero nadie las usa'
+  'Queremos diferenciarnos antes de que lo haga la competencia'
+PROCESO (3 pasos numerados 01-03):
+  01 Nos contactas — sin compromiso
+  02 Diseñamos el plan — adaptado a vuestras necesidades
+  03 Empezáis a crear — presencial u online, resultados reales
+CTA: [Preparar mi equipo →] (verde, grande)
+=== SESIÓN 2 — Instituciones + Metodología ===
+INSTITUCIONES (/school-lab/instituciones)
+Label: 'PARA INSTITUCIONES'
+H1: '¿Quieres llevar la IA / a tu comunidad?'
+Subtítulo: 'Talleres y programas a medida para fundaciones, asociaciones,
+  centros educativos y ayuntamientos. Llevamos la formación nosotros.'
+CON QUIÉN TRABAJAMOS (grid de 6 cards con icono Lucide):
+  Fundaciones y asociaciones sociales
+  Asociaciones de mujeres y colectivos
+  Centros educativos: colegios e institutos
+  Ayuntamientos y entidades públicas
+  Empresas y pymes
+  Centros de día y asociaciones de mayores
+PROCESO (3 pasos, ya en web real):
+  1. Nos dices quiénes son
+  2. Diseñamos el programa
+  3. Lo impartimos nosotros
+6 DIFERENCIADORES:
+  No somos academia online. Venimos a vosotros.
+  Adaptamos a tu colectivo. / Resultados desde el primer taller.
+  Acompañamiento post-talleres. / Materiales incluidos.
+FORMULARIO:
+  Nombre / Organización / Email / Teléfono / Colectivo / Nº personas / Mensaje
+  CTA: [Enviar solicitud]
+METODOLOGÍA (/school-lab/metodologia)
+Label: 'NUESTRA METODOLOGÍA'
+H1: 'No enseñamos IA. / Enseñamos personas.'
+3 EJES (cards grandes oscuras con número gigante de fondo opacity 0.04):
+  01 DESCÚBRETE — icono Lucide mirror/user
+  02 APRENDE LO QUE IMPORTA — icono Lucide book/target
+  03 EXPÁNDETE CON TECNOLOGÍA — icono Lucide zap/expand
+RESPALDO CIENTÍFICO (3 stats con counter animation):
+  350 estudios — meta-análisis SAGA 2025
+  39% habilidades obsoletas antes de 2030 — WEF 2025
+  90% de retención con práctica inmediata — Ebbinghaus
+COMPARATIVA vs otros cursos (tabla 2 cols):
+  Diseñado para ti / Práctica real / Presencial / Comunidad / Precio
+  Aether School SÍ en todo. Otros cursos NO o parcialmente.
+=== SESIÓN 3 — Programas B2C (individuales, 1 al 5) ===
+Construye las páginas de los 5 primeros programas siguiendo el patrón común:
+  Label con badge de audiencia
+  H1 con la transformación principal
+  Subtítulo 2 líneas
+  El problema del colectivo (1 párrafo)
+  Qué aprenden (5-6 bullets con icono Lucide)
+  Los 3 formatos disponibles (Taller / Intensivo / Comunidad)
+  CTA: [Reservar plaza →] o [Pedir más info →]
+PROGRAMAS SESIÓN 3:
+  /school-lab/empoderate-con-ia     (Mujeres 40-60)
+  /school-lab/conectate-con-el-mundo (Mayores 65+)
+  /school-lab/aprende-a-crear        (Niños 6-12)
+  /school-lab/descubre-tu-futuro     (Jóvenes 13-18)
+  /school-lab/monta-tu-negocio       (Emprendedores)
+=== SESIÓN 4 — Programas B2C (del 6 al 9, excepto Empresas ya hecha) ===
+PROGRAMAS SESIÓN 4:
+  /school-lab/mejora-tu-material     (Profesores)
+  /school-lab/mas-tiempo-para-cocina (Hostelería)
+  /school-lab/dedicate-a-la-medicina (Médicos)
+Mismo patrón que sesión 3.
+NOTA IMPORTANTE para todos los programas individuales:
+  Añadir siempre al final: 'También disponible como programa para empresas e instituciones.'
+  Link: '← Ver todos los programas'
+  CTA secundario: 'Quiero esto para mi empresa' → /school-lab/prepara-tu-equipo
+=== FIN DE LOS PROMPTS ===

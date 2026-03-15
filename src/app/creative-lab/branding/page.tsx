@@ -1,0 +1,128 @@
+'use client';
+
+import React from 'react';
+import Link from 'next/link';
+import Navbar from '@/components/v5/Navbar';
+import Footer from '@/components/v5/Footer';
+import FinalCtaSection from '@/components/v5/FinalCtaSection';
+
+export default function BrandingServicePage() {
+    return (
+        <main className="v5-page min-h-screen bg-black text-[#F5F5F5]">
+            <Navbar />
+
+            {/* Hero Section */}
+            <section className="relative pt-40 pb-20 overflow-hidden bg-black">
+                <div className="v5-container relative z-10 text-center flex flex-col items-center">
+                    <span className="v5-label mb-6 text-[#DB2777]">BRANDING E IDENTIDAD VISUAL</span>
+                    <h1 className="v5-h1 mb-8 max-w-4xl mx-auto leading-[0.9]">
+                        Una marca que<br />
+                        <span className="text-white/40 italic">se recuerda.</span>
+                    </h1>
+                    <p className="v5-body-large max-w-2xl mx-auto mb-10 text-white/60">
+                        No solo un logo. Un sistema de identidad completo que funciona en todos los formatos: digital, impreso, vídeo y presentaciones.
+                    </p>
+                    <div className="flex gap-4">
+                        <Link href="#tipos" className="v5-btn-primary !bg-[#DB2777] !text-white hover:!bg-[#BE185D]">
+                            Ver Packs
+                        </Link>
+                    </div>
+                </div>
+            </section>
+
+            {/* Philosophy Section */}
+            <section className="v5-section bg-black border-t border-white/5">
+                <div className="v5-container text-center">
+                    <blockquote className="font-display italic text-2xl md:text-3xl max-w-4xl mx-auto mb-16 text-white/80">
+                        "Una marca que no genera rechazo en nadie, no le gusta a nadie."
+                    </blockquote>
+
+                    <div className="grid md:grid-cols-3 gap-12 text-left">
+                        <div className="border border-white/10 p-8 rounded-2xl bg-white/5">
+                            <span className="text-4xl mb-4 block">📈</span>
+                            <p className="text-white/80 font-bold">Las empresas con identidad visual consistente generan un 33% más de ingresos.</p>
+                        </div>
+                        <div className="border border-white/10 p-8 rounded-2xl bg-white/5">
+                            <span className="text-4xl mb-4 block">🎨</span>
+                            <p className="text-white/80 font-bold">El 80% de los consumidores reconoce una marca exclusivamente por su color.</p>
+                        </div>
+                        <div className="border border-white/10 p-8 rounded-2xl bg-white/5">
+                            <span className="text-4xl mb-4 block">⏱</span>
+                            <p className="text-white/80 font-bold">Tienes exactamente 0.05 segundos para causar una primera impresión online.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Pricing / Packs Section */}
+            <section id="tipos" className="v5-section bg-white text-black">
+                <div className="v5-container">
+                    <div className="text-center mb-16">
+                        <h2 className="v5-h2">Modelos de Trabajo</h2>
+                    </div>
+
+                    <div className="grid md:grid-cols-3 gap-8">
+                        {/* Pack Básico */}
+                        <div className="p-8 border border-black/10 rounded-2xl flex flex-col justify-between">
+                            <div>
+                                <h3 className="font-display text-2xl font-bold mb-4">Pack Básico</h3>
+                                <p className="text-sm opacity-60 mb-6 min-h-[40px]">Para arrancar proyectos rápido con solidez profesional.</p>
+                                <ul className="text-xs space-y-3 opacity-80 mb-8 border-t border-black/10 pt-6">
+                                    <li className="flex gap-2"><span>•</span> Logo principal (Color, B/N)</li>
+                                    <li className="flex gap-2"><span>•</span> Paleta de colores primaria</li>
+                                    <li className="flex gap-2"><span>•</span> Selección tipográfica</li>
+                                    <li className="flex gap-2"><span>•</span> Guía de marca (8-12 págs)</li>
+                                    <li className="flex gap-2 mt-4 font-bold"><span>⏱</span> 5-7 días hábiles</li>
+                                </ul>
+                            </div>
+                            <div className="font-mono text-sm font-bold pt-4 border-t border-black/10">
+                                Desde 800€
+                            </div>
+                        </div>
+
+                        {/* Pack Profesional */}
+                        <div className="p-8 border border-black/10 rounded-2xl flex flex-col justify-between bg-black text-white relative overflow-hidden group">
+                            <div className="absolute top-0 right-0 w-32 h-32 bg-[#DB2777]/20 blur-3xl rounded-full"></div>
+                            <div className="relative z-10">
+                                <span className="inline-block bg-[#DB2777] text-white text-[10px] font-bold px-2 py-1 uppercase tracking-widest mb-4 rounded-sm">Estándar</span>
+                                <h3 className="font-display text-2xl font-bold mb-4">Pack Profesional</h3>
+                                <p className="text-sm opacity-80 mb-6 min-h-[40px]">Todo lo básico más el ecosistema visual necesario para operar.</p>
+                                <ul className="text-xs space-y-3 opacity-80 mb-8 border-t border-white/10 pt-6">
+                                    <li className="flex gap-2"><span>•</span> Logo + Isotipo + Imagotipo</li>
+                                    <li className="flex gap-2"><span>•</span> Sistema de 10-15 iconos</li>
+                                    <li className="flex gap-2"><span>•</span> Plantilla presentaciones PowerPoint</li>
+                                    <li className="flex gap-2"><span>•</span> Guía completa (20-30 págs)</li>
+                                    <li className="flex gap-2 mt-4 font-bold text-[#F9A8D4]"><span>⏱</span> 10-14 días hábiles</li>
+                                </ul>
+                            </div>
+                            <div className="font-mono text-[10px] font-bold pt-4 border-t border-white/10 relative z-10 flex justify-between items-center text-[#F9A8D4]">
+                                <span className="text-sm">Desde 1.500€</span>
+                            </div>
+                        </div>
+
+                        {/* Pack Completo */}
+                        <div className="p-8 border border-black/10 rounded-2xl flex flex-col justify-between">
+                            <div>
+                                <h3 className="font-display text-2xl font-bold mb-4">Pack Completo</h3>
+                                <p className="text-sm opacity-60 mb-6 min-h-[40px]">El sistema corporativo full-stack.</p>
+                                <ul className="text-xs space-y-3 opacity-80 mb-8 border-t border-black/10 pt-6">
+                                    <li className="flex gap-2"><span>•</span> Todo lo del Pack Profesional</li>
+                                    <li className="flex gap-2"><span>•</span> Papelería y Tarjetas</li>
+                                    <li className="flex gap-2"><span>•</span> 20 Plantillas Redes (Canva)</li>
+                                    <li className="flex gap-2"><span>•</span> Vídeo de marca (30s)</li>
+                                    <li className="flex gap-2 mt-4 font-bold"><span>⏱</span> 20-25 días hábiles</li>
+                                </ul>
+                            </div>
+                            <div className="font-mono text-sm font-bold pt-4 border-t border-black/10">
+                                Desde 2.500€
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <FinalCtaSection />
+            <Footer />
+        </main>
+    );
+}

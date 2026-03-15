@@ -1,8 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=DM+Sans:ital,opsz,wght@0,9..40,300..500;1,9..40,300..500&display=swap');
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Manrope", sans-serif;
+  --font-body: "Manrope", sans-serif;
+  --font-serif: "Instrument Serif", serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  --color-v5-bg-base: #0A0A0A;
+  --color-v5-bg-card: #111111;
+  --color-v5-text-primary: #F5F5F5;
+  --color-v5-text-secondary: #9ca3af;
+  --color-v5-accent: #00E5FF;
+}
 
 /* ─────────────────────────────────────
    ROOT & DESIGN TOKENS
@@ -88,7 +100,7 @@ body.touch-device {
   background-repeat: repeat;
   pointer-events: none;
   z-index: 1;
-  opacity: 0.4;
+  opacity: 0.15;
 }
 
 /* ─────────────────────────────────────
@@ -109,7 +121,7 @@ body.touch-device {
    DOT GRID BACKGROUND
 ───────────────────────────────────── */
 .dot-grid {
-  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
   background-size: 32px 32px;
 }
 
@@ -495,5 +507,418 @@ body.touch-device {
 
   #entry-flash {
     display: none;
+  }
+}
+
+/* ─────────────────────────────────────
+   V5 DESIGN TOKENS
+───────────────────────────────────── */
+:root {
+  --v5-bg-base: #000000;
+  --v5-bg-surface: rgba(255, 255, 255, 0.03);
+  --v5-bg-surface2: rgba(255, 255, 255, 0.05);
+  --v5-text-primary: #F5F5F5;
+  --v5-text-secondary: #A3A3A3;
+  --v5-text-muted: #525252;
+  --v5-accent: #00E5FF;
+  --v5-accent-hover: #00B8D9;
+  --v5-border: rgba(255, 255, 255, 0.08);
+  --v5-border-hover: rgba(255, 255, 255, 0.15);
+  --v5-radius-sm: 8px;
+  --v5-radius-md: 12px;
+  --v5-radius-lg: 20px;
+  --v5-transition: 300ms cubic-bezier(0.16, 1, 0.3, 1);
+  --v5-font-display: 'Bricolage Grotesque', sans-serif;
+  --v5-font-body: 'DM Sans', sans-serif;
+  --v5-font-mono: 'JetBrains Mono', monospace;
+  --v5-glass-blur: blur(12px);
+}
+
+/* ─────────────────────────────────────
+   V5 BASE (scoped)
+───────────────────────────────────── */
+.v5-page {
+  background-color: #000000;
+  color: #F5F5F5;
+  font-family: var(--v5-font-body);
+  cursor: auto;
+}
+
+/* ─────────────────────────────────────
+   V5 TYPOGRAPHY
+───────────────────────────────────── */
+.v5-label {
+  font-family: var(--v5-font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--v5-accent);
+}
+
+.v5-h1 {
+  font-family: var(--v5-font-display);
+  font-size: clamp(52px, 7vw, 96px);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1.0;
+  color: var(--v5-text-primary);
+}
+
+.v5-h2 {
+  font-family: var(--v5-font-display);
+  font-size: clamp(32px, 4vw, 56px);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  color: var(--v5-text-primary);
+}
+
+.v5-h3 {
+  font-family: var(--v5-font-display);
+  font-size: clamp(18px, 2vw, 24px);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--v5-text-primary);
+}
+
+.v5-body-large {
+  font-family: var(--v5-font-body);
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.75;
+  color: var(--v5-text-secondary);
+}
+
+/* ─────────────────────────────────────
+   V5 BUTTONS
+───────────────────────────────────── */
+.v5-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  background: var(--v5-text-primary);
+  color: var(--v5-bg-base);
+  border-radius: var(--v5-radius-md);
+  font-family: var(--v5-font-body);
+  font-size: 16px;
+  font-weight: 700;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: all var(--v5-transition);
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.v5-btn-primary::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.15), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.5s;
+}
+
+.v5-btn-primary:hover {
+  background: white;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 30px rgba(255, 255, 255, 0.2);
+}
+
+.v5-btn-primary:hover::after {
+  transform: translateX(100%);
+}
+
+.v5-btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 24px;
+  background: transparent;
+  color: var(--v5-text-secondary);
+  border-radius: var(--v5-radius-md);
+  font-family: var(--v5-font-body);
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+  border: 1px solid var(--v5-border-hover);
+  cursor: pointer;
+  transition: all var(--v5-transition);
+  white-space: nowrap;
+}
+
+/* ─────────────────────────────────────
+   EXPLICIT RESPONSIVE UTILITIES (To bypass Tailwind v4 compilation sync)
+───────────────────────────────────── */
+.v5-hero-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.v5-hero-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+}
+
+.v5-hide-on-mobile {
+  display: none;
+  position: relative;
+}
+
+@media (min-width: 640px) {
+  .v5-hero-buttons {
+    flex-direction: row;
+    width: auto;
+  }
+}
+
+@media (min-width: 1024px) {
+  .v5-hero-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+  }
+
+  .v5-hide-on-mobile {
+    display: block;
+  }
+}
+
+.v5-btn-ghost:hover {
+  color: var(--v5-text-primary);
+  border-color: rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* ─────────────────────────────────────
+   V5 SECTION + CONTAINER
+───────────────────────────────────── */
+.v5-section {
+  padding: 96px 0;
+}
+
+.v5-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 48px;
+}
+
+@media (max-width: 768px) {
+  .v5-section {
+    padding: 64px 0;
+  }
+
+  .v5-container {
+    padding: 0 20px;
+  }
+}
+
+/* ─────────────────────────────────────
+   V5 REVEAL (GSAP target)
+───────────────────────────────────── */
+.v5-reveal {
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+/* ─────────────────────────────────────
+   V5 GRADIENT TEXT
+───────────────────────────────────── */
+.v5-gradient-text {
+  background: linear-gradient(135deg, #00E5FF 0%, #00B8D9 50%, #4DD0E1 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ─────────────────────────────────────
+   V5 LAB CARD
+───────────────────────────────────── */
+.v5-lab-card {
+  background: var(--v5-bg-surface);
+  backdrop-filter: var(--v5-glass-blur);
+  -webkit-backdrop-filter: var(--v5-glass-blur);
+  border: 1px solid var(--v5-border);
+  border-radius: var(--v5-radius-lg);
+  padding: 40px;
+  transition: border-color var(--v5-transition), transform var(--v5-transition), box-shadow var(--v5-transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.v5-lab-card:hover {
+  border-color: var(--v5-border-hover);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+}
+
+.v5-lab-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 220px;
+  height: 220px;
+  background: radial-gradient(circle at top right, rgba(0, 229, 255, 0.1) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* ─────────────────────────────────────
+   V5 BENTO GRID
+───────────────────────────────────── */
+.v5-bento-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 16px;
+}
+
+.v5-bento-large {
+  grid-column: span 7;
+  min-height: 480px;
+}
+
+.v5-bento-small {
+  grid-column: span 5;
+  min-height: 232px;
+}
+
+@media (max-width: 1024px) {
+
+  .v5-bento-large,
+  .v5-bento-small {
+    grid-column: span 12;
+    min-height: auto;
+  }
+}
+
+/* ─────────────────────────────────────
+   V5 CREATIVE LAB DIAGONAL ANIMATION
+───────────────────────────────────── */
+@keyframes v5DiagonalShimmer {
+  0% {
+    transform: translateX(-100%) translateY(-100%);
+  }
+
+  100% {
+    transform: translateX(100%) translateY(100%);
+  }
+}
+
+.v5-creative-bg::after {
+  content: '';
+  position: absolute;
+  inset: -50%;
+  background: repeating-linear-gradient(135deg,
+      transparent 0px,
+      transparent 38px,
+      rgba(0, 229, 255, 0.03) 38px,
+      rgba(0, 229, 255, 0.03) 40px);
+  animation: v5DiagonalShimmer 15s linear infinite;
+  pointer-events: none;
+}
+
+/* ─────────────────────────────────────
+   V5 SCROLL HINT
+───────────────────────────────────── */
+@keyframes v5ScrollDrop {
+  0% {
+    height: 0;
+    opacity: 1;
+  }
+
+  50% {
+    height: 48px;
+    opacity: 1;
+  }
+
+  100% {
+    height: 0;
+    opacity: 0;
+  }
+}
+
+/* ─────────────────────────────────────
+   V5 STATS GRID
+───────────────────────────────────── */
+.v5-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--v5-border);
+  border: 1px solid var(--v5-border);
+  border-radius: var(--v5-radius-lg);
+  overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  .v5-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ─────────────────────────────────────
+   V5 TOOL CARD (Systems Lab)
+───────────────────────────────────── */
+.v5-tool-card {
+  background: var(--v5-bg-surface);
+  backdrop-filter: var(--v5-glass-blur);
+  -webkit-backdrop-filter: var(--v5-glass-blur);
+  border: 1px solid var(--v5-border);
+  border-radius: var(--v5-radius-md);
+  padding: 32px;
+  transition: border-color var(--v5-transition), transform var(--v5-transition), box-shadow var(--v5-transition);
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+  display: block;
+  color: inherit;
+}
+
+.v5-tool-card:hover {
+  border-color: var(--v5-border-hover);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+}
+
+/* ─────────────────────────────────────
+   V5 FAQ ACCORDION
+───────────────────────────────────── */
+.v5-faq-item {
+  border-bottom: 1px solid var(--v5-border);
+}
+
+.v5-faq-answer {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.35s ease;
+}
+
+.v5-faq-answer.v5-open {
+  max-height: 400px;
+}
+
+/* ─────────────────────────────────────
+   V5 STEPS CONNECTOR
+───────────────────────────────────── */
+.v5-steps-connector {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, var(--v5-accent), rgba(99, 102, 241, 0.2));
+  margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+  .v5-steps-connector {
+    width: 1px;
+    height: 40px;
+    flex: none;
+    margin: 0 auto;
+    background: linear-gradient(180deg, var(--v5-accent), rgba(99, 102, 241, 0.2));
   }
 }

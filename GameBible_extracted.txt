@@ -1,0 +1,535 @@
+AETHER LABS
+GAME BIBLE v1.0
+Documento de Diseno del Juego — Marzo 2026
+Para Claude Code / Antigravity / Gemini
+00. VISION GENERAL Y PROPOSITO
+La web de Aether Labs ES un juego de Game Boy. El usuario no navega una web corporativa — juega un videojuego retro pixel art que le guia desde su problema hasta la solucion, y al final reserva una reunion con Victor Torres (Aether Labs).
+El juego cumple tres objetivos comerciales simultaneos:
+Diferenciacion radical — nadie en el mercado espanol de servicios IA tiene una web asi
+Prueba de capacidad — si esta web funciona asi, el cliente piensa: si me hacen esto a mi, voy a quedar de puta madre
+Claridad sin ruido — el juego fuerza al usuario a identificarse con su problema antes de ver servicios
+Los tres Labs del juego
+CREATIVE LAB — Cyan #00E5FF — Para empresas que necesitan ser vistas. Mundo: El Vacio.
+SYSTEMS LAB — Azul #0088FF — Para empresas que quieren automatizar e implementar IA. Mundo: El Bucle.
+SCHOOL LAB — Verde #00FF41 — Para personas y equipos que quieren aprender IA. Mundo: El Umbral.
+01. NARRATIVA Y UNIVERSO
+El universo Aether
+Aether es el eter — el espacio entre dimensiones, lo invisible que existe antes de que las cosas tomen forma. Aether Labs convierte eso etero en algo real y palpable. La web lo demuestra viviendo el proceso.
+El jugador entra en el eter. Su mision es atravesarlo y llegar al otro lado — donde las cosas se vuelven reales y ejecutables.
+El arco narrativo completo
+BOOT SCREEN — El logo de Aether Labs aparece. El mundo se enciende.
+LAB SELECT — Tres puertas. El jugador elige su mundo.
+ENTRADA AL MAPA — Aparece en el borde del mundo. Oscuro, caotico o silencioso.
+EXPLORACION — Encuentra NPCs. Escucha sus problemas. Reconoce el suyo.
+AVANCE — El mundo cambia a su paso. Se ilumina, se ordena, se abre.
+EL COFRE — Llega al final. Abre el cofre. Ve la solucion concreta.
+CTA — Mision completada. Reserva reunion. Sale con algo real.
+Los tres mundos
+El Vacio — Creative Lab
+Ciudad nocturna abandonada donde las empresas existen pero son invisibles. Pantallas apagadas, logos borrosos, senales sin luz. A medida que el jugador avanza y activa los NPCs, la ciudad se va iluminando.
+El Bucle — Systems Lab
+Fabrica industrial atrapada en un loop eterno. Los mismos informes, las mismas tareas manuales, los mismos procesos repetidos. Engranajes que giran pero no avanzan. El jugador rompe el loop conectando sistemas.
+El Umbral — School Lab
+Escuela abandonada llena de potencial dormido. Puertas cerradas, pizarras con informacion valiosa, ordenadores con demos. El jugador abre puertas y activa el conocimiento dormido.
+Los NPCs — reglas
+Los NPCs no son personajes de fantasia. Son arquetipos reales de clientes de Aether Labs. Cada uno verbaliza su problema en primera persona. Maximo 3 lineas de dialogo. Lenguaje coloquial, sin tecnicismos. Nunca venden, nunca explican servicios.
+02. ESTRUCTURA DE PANTALLAS Y FLUJO
+Flujo completo
+BOOT SCREEN → LAB SELECT → MAPA (x3) → COFRE → CTA SCREEN → CALENDLY/WHATSAPP
+El jugador puede volver al Lab Select desde cualquier mapa pulsando START.
+Boot Screen
+Duracion: 3-4s antes de PRESS START. Auto-skip a los 8s si no hay input.
+Fondo negro #050508 absoluto
+Flash blanco 80ms al inicio (efecto encendido Game Boy)
+Logo Aether Labs pixel art aparece con fade-in 1.2s desde el centro
+Texto PRESS START parpadeando — Press Start 2P, 14px, #00E5FF — ciclo 1s
+Scanlines overlay CSS (opacidad 0.04) sobre toda la pantalla
+Sonido boot: tono chiptune C5-G5-C6, 200ms cada nota (Web Audio API, onda square)
+Transicion: click o tecla → flash blanco 80ms → slide horizontal 300ms → Lab Select fade-in
+Lab Select
+Tres bloques verticales centrados. Cursor triangular a la izquierda del bloque seleccionado. Controles: flechas izquierda/derecha + Enter/Space para confirmar.
+Titulo: ELIGE TU LABORATORIO — Press Start 2P, 12px, blanco, centrado.
+Cada bloque contiene: objeto pixel art 64x64px con animacion idle loop | nombre del Lab 10px color del Lab | frase de una linea 8px gris #AAAAAA.
+CREATIVE LAB (#00E5FF): camara de cine pixel art | 'Haz que tu empresa se vea y se elija'
+SYSTEMS LAB (#0088FF): PCB/chip pixel art | 'Automatiza como opera tu negocio con IA'
+SCHOOL LAB (#00FF41): ordenador retro pixel art | 'Aprende a usar la IA en tu vida o empresa'
+Al confirmar: objeto del Lab escala 1 a 20 en 400ms + flash del color del Lab + transicion al mapa.
+Dialogo NPC
+Panel inferior fijo: 800x80px, y:520, fondo #050508, borde superior 2px color del Lab
+Sprite del NPC (32x32px) en esquina izquierda de la caja
+Texto: Press Start 2P 8px blanco, efecto typewriter 30ms por caracter
+Flecha parpadeando en esquina inferior derecha cuando texto completo
+Space/click para continuar. Maximo 3 lineas por pagina. Indicador pagina si hay mas.
+Pantalla de cofre
+Animacion apertura: 4 frames 100ms + destello del color del Lab + fanfare 4 notas + 20 particulas.
+Panel superpuesto: overlay negro opacity 0.9 + panel 480x300px borde 2px color del Lab.
+Contenido: titulo HAS ENCONTRADO + nombre Lab + descripcion 2-3 lineas + boton [VER QUE INCLUYE] + boton [HABLAR CON VICTOR].
+HABLAR CON VICTOR abre CTA Screen. VER QUE INCLUYE desliza panel lateral con lista de servicios.
+CTA Screen
+MISION COMPLETADA — Press Start 2P 10px color del Lab
+El siguiente paso es una sesion de 30 min. Sin compromiso. Gratis.
+Boton [RESERVAR SESION] → abre Calendly nueva pestana
+Boton [VOLVER AL MAPA] → regresa al mapa del Lab
+Melodia de victoria chiptune al entrar (8 notas ascendentes)
+03. MECANICAS DE JUEGO
+Core Loop
+1. Jugador se mueve por el mapa
+2. Encuentra NPCs y los activa (Espacio cuando esta cerca)
+3. Lee el dialogo (se identifica con el problema)
+4. Barra de progreso HUD avanza
+5. Camino al cofre se desbloquea cuando progreso = 100%
+6. Llega al cofre, lo activa
+7. Ve los servicios del Lab
+8. Hace clic en HABLAR CON VICTOR
+Movimiento del jugador
+Motor: Phaser Arcade Physics (AABB collision, sin gravedad). Teclas: WASD o flechas. Velocidad: 120px/s. Direcciones: 4 (arriba, abajo, izquierda, derecha). Sin diagonal en v1.
+Colisiones con capa collision del tilemap. El sprite siempre mira la ultima direccion de movimiento cuando esta quieto.
+Interaccion con NPCs
+Zona de proximidad: 48px alrededor del NPC (overlap zone)
+Indicador: burbuja '!' sobre el NPC cuando jugador entra en zona (animacion bounce)
+Activacion: Espacio o click sobre el NPC
+Solo un NPC activo a la vez
+NPC activado muestra checkmark verde y deja de mostrar el '!'
+Sistema de progreso
+La barra del HUD representa NPCs activados / total NPCs del mapa.
+El cofre SOLO se puede abrir cuando la barra llega al 100%. Si el jugador llega antes: cofre con candado + mensaje ENCUENTRA TODAS LAS SENALES.
+Al completar: texto TODAS LAS SENALES ENCONTRADAS! aparece 1.5s y desaparece + fanfare.
+Estructura del tilemap
+Cada mapa: 25x18 tiles de 32x32px = 800x576px. Offset vertical de 24px para el HUD.
+Capas (orden de renderizado): background / decoracion / collision (invisible, solo logica) / objects (NPCs, cofre) / foreground.
+Punto de inicio jugador: siempre borde inferior del mapa. Cofre: siempre extremo superior.
+Objetos interactivos adicionales
+Pizarras, pantallas, ordenadores y documentos en el mapa son activables con Espacio. Muestran informacion sobre herramientas, servicios o casos de trabajo de Aether Labs. NO cuentan para la barra de progreso — son bonus de contenido.
+Mobile
+En pantallas menores de 768px: mensaje ESTE JUEGO ES MEJOR EN ESCRITORIO + opcion CONTINUAR EN MOVIL con D-pad tactil (4 botones 44px en esquina inferior izquierda, boton de accion en derecha).
+04. DISENO VISUAL — ESTETICA Y ARTE
+Estetica global
+Game Boy Color / SNES era. Pixel art de 16 bits con paleta restringida, sprites pequenos y tilemaps simples. Debe parecer autentico, no una parodia.
+Referencias: Game Boy Color modo oscuro / Zelda Links Awakening (vista top-down) / Hyper Light Drifter (paleta de neones sobre negro) / EarthBound (dialogos con personalidad).
+Resolucion y escala
+Canvas interno: 800x600px (coordenadas del juego)
+Tiles: 32x32px
+Sprites personaje: 16x24px nativos, escalados a 32x48px en juego
+Sprites NPC: 16x16px nativos, escalados a 32x32px
+Canvas escala con CSS para ocupar 100% del viewport (letterbox negro)
+Paleta de colores global
+FONDO BASE:   #050508 (negro casi puro)
+Creative Lab: #00E5FF (cyan) | #0099AA (secundario) | #B3F6FF (highlight)
+Systems Lab:  #0088FF (azul) | #004488 (secundario) | #99CCFF (highlight)
+School Lab:   #00FF41 (verde) | #007A1E (secundario) | #AAFFBB (highlight)
+Texto UI:     #FFFFFF (principal) | #AAAAAA (secundario)
+UI bordes:    color del Lab activo
+Progreso vacio: #333344
+Tipografia — REGLA ABSOLUTA
+TODO el texto visible en el juego usa Press Start 2P de Google Fonts. Sin excepciones. Cero fuentes modernas. Ni una sola.
+Jerarquia de tamaños: titulos 12-14px / dialogo NPC 8px / labels HUD 7-8px / cofre principal 10-12px / cofre secundario 7-8px / botones 8-9px.
+Minimo legible: 8px. No usar menos.
+Tilesets por Lab
+Creative Lab — El Vacio
+Fondos: #0a0a14 y #111122. Tiles: adoquin oscuro, pared ladrillo negro con cables neon desconectados, pantallas apagadas (se encienden con animacion al pasar), logotipos borrosos, senales sin electricidad.
+Atmosfera: niebla en las esquinas del mapa (particulas Phaser, opacidad 0.3).
+Systems Lab — El Bucle
+Fondos: #0a0a1a y #0d1020. Tiles: metal rayado, rejillas industriales, hormigon gris azulado, tuberias, paneles de control, engranajes girando (8 frames), relojes con agujas moviendose, cajas de documentos apiladas.
+Atmosfera: luces de emergencia parpadeando (luz azul tenue, ciclo 3s).
+School Lab — El Umbral
+Fondos: #0a1a0a y #0f1f0f. Tiles: parquet de madera vieja, pizarras en las paredes, estanterias, mesas con ordenadores, plantas que crecen entre las grietas, puertas cerradas (animacion de apertura 4 frames).
+Atmosfera: luz que entra por ventanas altas (haz de luz verde, particulas de polvo flotando).
+Sistema de particulas
+Niebla Creative Lab: 50 particulas blancas 2x2px, opacity 0.15-0.25, movimiento aleatorio lento.
+Polvo flotante School Lab: 30 particulas beige 2x2px, opacity 0.1-0.2, movimiento hacia arriba.
+Explosion de cofre: 20 particulas burst del color del Lab, todas direcciones, duran 1s.
+Activacion NPC: 10 particulas burst del color del Lab, duran 0.6s.
+Efectos visuales CSS (aplicados al canvas)
+Scanlines: repeating-linear-gradient horizontal cada 4px, opacidad 0.04
+Vignette: radial-gradient transparente (centro) a negro 70% (bordes), opacidad 0.3
+CRT curve: border-radius leve en el canvas (4px)
+Cursor: cursor: none + sprite pixel art de mano 16x16px generado como data URL
+05. DISENO DEL PERSONAJE PRINCIPAL
+Concepto
+Avatar neutral sin nombre ni historia. Es el propio usuario convertido en sprite. Humanoid minimalista en pixel art Game Boy. Sin rasgos faciales definidos (vista top-down).
+Dimensiones del spritesheet
+Sprite base: 16x24px. Escala en juego: 2x (32x48px renderizados)
+Frames: 4 frames por direccion x 4 direcciones = 16 frames total
+Formato: spritesheet 64x96px (4 columnas x 4 filas)
+Fila 0: caminar hacia abajo (sur) — frames 0,1,2,3
+Fila 1: caminar hacia arriba (norte) — frames 4,5,6,7
+Fila 2: caminar hacia la izquierda (oeste) — frames 8,9,10,11
+Fila 3: caminar hacia la derecha (este) — frames 12,13,14,15
+Descripcion visual del sprite
+Cabeza: circulo 6x6px, color piel neutro #e8c8a0
+Cuerpo: rectangulo 4x8px — color cambia por Lab: Creative=#005566 / Systems=#002244 / School=#002200
+Detalles del color Lab: Creative=#00E5FF / Systems=#0088FF / School=#00FF41
+Brazos: 1px a cada lado del cuerpo, 4px de largo
+Piernas: 2 columnas de 2px, 6px de largo
+Sombra: elipse plana debajo, color negro, opacidad 0.3
+Animaciones del personaje
+Caminar: 4 frames por direccion, 150ms por frame = 600ms ciclo completo. Frame 0: posicion neutral. Frame 1: paso adelante izquierdo. Frame 2: posicion neutral. Frame 3: paso adelante derecho. Bob vertical de 2px en frames 1 y 3.
+Idle: respiracion — escala Y del cuerpo 1.0 a 0.97 y vuelta, ciclo 2 segundos.
+Activar NPC: giro hacia el NPC + animacion brazo sube 3px, 2 frames 200ms cada uno.
+Cofre abierto: salto translateY -8px en 200ms + vuelta en 200ms.
+Camara
+camera.setBounds(0, 0, mapWidth, mapHeight)
+camera.startFollow(player, true, 0.1, 0.1) — lerp suave 0.1
+camera.setZoom(1) — sin zoom en desktop
+El HUD no se mueve con la camara — es una UI layer con setScrollFactor(0).
+06. MAPA 1 — CREATIVE LAB (EL VACIO)
+Concepto
+Ciudad nocturna abandonada. A medida que el jugador activa NPCs, la ciudad se va iluminando. El antes y despues de tener presencia digital. El jugador LO VIVE.
+Layout
+Mapa: 25x18 tiles. Jugador inicia en (12,16). Cofre en (12,1).
+Camino: vertical central con desviaciones izquierda y derecha para los NPCs.
+ZONA INICIO (filas 14-17): plaza oscura, adoquines, farolas apagadas, senal ENTRADA ilegible.
+ZONA CENTRAL-IZQUIERDA (filas 8-13 cols 1-8): fachada empresa con pantalla estatica. NPC 1 aqui.
+ZONA CENTRAL-DERECHA (filas 8-13 cols 16-24): set de filmacion abandonado, tripode caido, camara vieja. NPC 2 aqui.
+ZONA CENTRAL (filas 5-9 cols 8-16): oficina de diseno, ordenador con logo borroso. NPC 3 aqui.
+ZONA COFRE (filas 0-4): escenario iluminado, cofre sobre plataforma elevada, particulas cyan permanentes.
+NPCs
+NPC 1 — El CEO invisible (tile 6,10)
+Sprite: hombre de negocios, traje oscuro. Idle: se gira izquierda-frente-derecha, ciclo 3s.
+Pag 1: 'Llevamos 2 anos. Nadie sabe / que existimos. / Tenemos el mejor producto.'
+Pag 2: 'Pero nuestra web... / da verguenza.'
+Efecto al activar: pantalla estatica detras empieza a mostrar destellos de imagen (efecto glitch).
+NPC 2 — El que no pudo hacer el video (tile 19,10)
+Sprite: persona con chaqueta casual mirando la camara caida. Idle: se agacha hacia la camara, ciclo 3s.
+Pag 1: 'Queriamos hacer un video. / Contrate una productora. / 30.000 euros. 4 meses.'
+Pag 2: 'Nada.'
+Efecto al activar: la camara en el suelo se ilumina con LED cyan.
+NPC 3 — El logo del sobrino (tile 13,7)
+Sprite: disenador con auriculares mirando pantalla. Idle: cabeza oscila con el ritmo de la musica.
+Pag 1: 'Nuestra marca la hizo / el sobrino. / En PowerPoint.'
+Pag 2: 'Hace 8 anos.'
+Efecto al activar: el logo borroso en la pantalla empieza a tomar forma (4 frames de borroso a nitido).
+Cofre del Creative Lab
+Sprite: caja de luz con destellos cyan, 32x32px, pulsa escala 1.0 a 1.05, ciclo 1.5s.
+HAS ENCONTRADO: [CREATIVE LAB]
+Webs, videos, branding e identidad creados con IA. Rapido. Sin rodajes.
+Servicios al abrir: Web corporativa o landing | Videos con IA (avatar, reels, explicativos) | Branding e identidad visual | Presentaciones y pitch decks | Material corporativo | Creatividades para anuncios.
+Musica del Creative Lab
+80 BPM. La menor. Onda sinusoidal + pad triangular + bass. Loop 32 compases.
+La musica se vuelve mas brillante con cada NPC activado. Al tercer NPC suena completo.
+07. MAPA 2 — SYSTEMS LAB (EL BUCLE)
+Concepto
+Fabrica industrial atrapada en loop eterno. Los engranajes giran pero no producen nada. El jugador rompe el bucle conectando nodos y desbloqueando sistemas.
+Layout
+Mapa: 25x18 tiles. Jugador inicia en (12,16). Cofre en (12,1).
+NOVEDAD: hay 2 PUERTAS BLOQUEADAS en el camino principal.
+PUERTA 1 en fila 13: se abre al activar NPC 1. PUERTA 2 en fila 7: se abre al activar NPC 2.
+ZONA INICIO (filas 14-17): sala de entrada industrial, panel de control, ticker de empresa en suelo scrolleando 'INFORME LUNES... INFORME LUNES...'
+ZONA CENTRAL-INFERIOR (filas 8-12): sala de servidores. Racks en paredes, luces estado verde/rojo en loop, 3 monitores con graficos planos. NPC 1 y NPC 2 aqui.
+ZONA CENTRAL-SUPERIOR (filas 4-7): sala de reuniones caotica, mesa con papeles, pizarra blanca con post-its, reloj con agujas en loop imposible. NPC 3 aqui.
+ZONA COFRE (filas 0-3): sala de control central, panel de mando, luces azules estroboscopicas.
+NPCs
+NPC 1 — El Excel eterno (tile 7,11)
+Sprite: empleado con corbata aflojada, cara cansada. Idle: frota los ojos cada 4s.
+Pag 1: 'Cada lunes: mismo informe. / Copiar Excel. Pegar Excel. / 3 horas. Cada semana.'
+Pag 2: '6 anos.'
+Efecto al activar: monitor empieza a mostrar datos en tiempo real (graficos subiendo). Puerta 1 se abre.
+NPC 2 — El caos de herramientas (tile 17,9)
+Sprite: persona con laptop rodeada de iconos de apps flotando (cuadros de colores 4x4px orbitando). Idle: los iconos orbitan en loop lento.
+Pag 1: 'Tenemos ClickUp. Notion. / Slack. Drive. HubSpot. / Nadie sabe donde esta nada.'
+Pag 2: 'Y seguimos con / el grupo de WhatsApp.'
+Efecto al activar: los iconos que orbitan se ordenan en fila limpia. Puerta 2 se abre.
+NPC 3 — La automatizacion imposible (tile 12,6)
+Sprite: manager junto a la pizarra, expresion frustrada. Idle: senala la pizarra con puntero, 2 frames alternando.
+Pag 1: 'Quiero automatizar / las propuestas. / Le pregunte a IT.'
+Pag 2: 'Me dijeron: en 6 meses. / Lleva 18.'
+Efecto al activar: pizarra desordenada se organiza sola (post-its moviendose a posiciones ordenadas).
+Cofre del Systems Lab
+Sprite: chip/CPU con LED azul pulsante, 32x32px. LED: opacidad 0.5 a 1.0, ciclo 0.8s. Rayos de datos azules hacia arriba.
+HAS ENCONTRADO: [SYSTEMS LAB]
+Implementamos Claude, ClickUp y automatizaciones. Sin desarrollar desde cero.
+Servicios: Sesion de Claridad (diagnostico 90min, precio fijo) | Claude + Copilot + M365 | Automatizacion flujos (n8n, Zapier) | AI Stacks por departamento | Formacion de equipos.
+Musica del Systems Lab
+120 BPM. Sol menor. Onda cuadrada con bass. Loop 24 compases. Patron que se repite cada 4 compases (simboliza el bucle). Al 3er NPC la melodia finalmente avanza en lugar de repetirse.
+08. MAPA 3 — SCHOOL LAB (EL UMBRAL)
+Concepto
+Escuela abandonada llena de potencial dormido. A diferencia de los otros mapas, este es educativo — los NPCs tambien muestran lo que es posible. Es el mapa mas rico en contenido y tiene 4 NPCs en vez de 3.
+Layout
+Mapa: 25x18 tiles. Jugador inicia en (12,16). Cofre en (12,1).
+El mapa simula dos plantas (top-down). Planta baja (filas 8-17): aulas. Planta alta (filas 0-7): laboratorio y cofre.
+ZONA ENTRADA (filas 14-17): pasillo escolar, tablones de anuncios en blanco, taquillas. NPC 1 aqui.
+AULA IZQUIERDA (filas 8-13 cols 1-10): mesas ordenadas, pizarra con '???? ????', ordenador apagado. NPC 2 aqui.
+SALA DE TALLERES (filas 8-13 cols 14-24): herramientas tecnologicas, pantallas con demos, cables. NPC 3 aqui.
+PASILLO (filas 5-8 cols 8-16): ventanas al exterior (estrellas). NPC 4 aqui.
+LABORATORIO (filas 0-5): ordenadores encendidos, cofre sobre pedestal de ladrillos verdes iluminados.
+NPCs
+NPC 1 — La que tiene miedo de quedarse atras (tile 6,15)
+Sprite: mujer adulta con tablet, expresion preocupada. Idle: mira tablet, luego al frente, ciclo 4s.
+Pag 1: 'Todos hablan de IA. / Mi competencia ya la usa. / Yo no se ni por donde empezar.'
+Pag 2: 'Tengo miedo de / hacer el ridiculo.'
+NPC 2 — El que quiere formar a su equipo (tile 5,10)
+Sprite: manager de pie junto a pizarra, marcador en mano. Idle: hace como que escribe, 2 frames.
+Pag 1: 'Mi equipo usa ChatGPT. / Para redactar mails. / Y poco mas.'
+Pag 2: 'Les quiero ensenar / a hacer el doble / en la mitad de tiempo.'
+Efecto al activar: la pizarra '????' se transforma en un diagrama de flujo simple (4 frames).
+NPC 3 — El que quiere hacer videos sin camara (tile 19,10)
+Sprite: creador de contenido con camara selfie. Idle: levanta la camara, la baja, ciclo 2s.
+Pag 1: 'Quiero hacer videos / para mi empresa. / Pero odio grabarme.'
+Pag 2: 'Y no tengo / presupuesto para / una productora.'
+Efecto al activar: monitor del taller muestra video de avatar IA (animacion simple de avatar hablando, 4 frames loop).
+NPC 4 — El joven que no sabe que estudiar (tile 12,6)
+Sprite: joven con mochila mirando ventanas. Idle: mira por la ventana, shoulders bajan 1px (suspiro), ciclo 5s.
+Pag 1: 'No se que estudiar. / Todo lo que me ensenaron / ya no sirve.'
+Pag 2: 'Quiero aprender / cosas que me / den futuro real.'
+Efecto al activar: ventanas se iluminan con amanecer (fondo negro a azul oscuro gradualmente).
+Objetos interactivos especiales del School Lab
+Ordenador demo 1 (tile 8,9): demo de Claude conectado a ClickUp — flujo con iconos pixel art
+Ordenador demo 2 (tile 20,11): demo de video con avatar IA en 2 horas — descripcion del proceso
+Pizarra herramientas (tile 3,8): lista de herramientas que Aether usa e implementa
+Estanteria (tile 22,12): stats curiosas sobre IA y empleo al activar
+Cofre del School Lab
+Sprite: libro magico con luz verde emergiendo, 32x32px. Las paginas pasan solas, ciclo 2s. Esporas verdes flotando hacia arriba.
+HAS ENCONTRADO: [SCHOOL LAB]
+Talleres, formacion y programas para aprender IA desde cero.
+Servicios: Talleres para equipos (medio dia, resultados el mismo dia) | Programa personas no tecnicas | Formacion jovenes | Charlas para instituciones.
+Musica del School Lab
+90 BPM. Do mayor. Onda triangular (piano) + bells. Loop 28 compases. Con cada NPC se añade un instrumento. Empiezas con solo el piano. Al 4o NPC suena resuelto y completo.
+09. UI, HUD Y MENUS
+Principios de UI
+Toda la UI sigue la estetica Game Boy. Press Start 2P en todo. Bordes pixelados. Sin sombras, sin blur, sin gradientes. La UI no interrumpe el juego — es parte de el.
+HUD
+Barra horizontal fija, parte superior del canvas. Altura: 24px. Fondo negro, borde inferior 1px color del Lab.
+Logo 'AL' — Press Start 2P 7px blanco, x:8 y:12
+Separador vertical 1px color del Lab, x:24
+Nombre del Lab — Press Start 2P 7px color del Lab, x:32 y:12
+Label 'SENALES' — Press Start 2P 6px gris, x:360 y:12
+Barra progreso — 80x6px en x:430 y:9, fondo #333344, relleno color del Lab
+Contador NPCs — Press Start 2P 6px blanco, x:520 y:12
+Icono MUTE — 8x8px clickable, x:760 y:12
+Texto START — Press Start 2P 6px gris, x:780 y:12, abre menu de pausa
+Menu de pausa
+Panel centrado 240x160px, fondo negro, borde 2px color del Lab. Lista vertical con cursor triangular: CONTINUAR / CAMBIAR LAB / SONIDO ON-OFF. Controles: flechas + Enter.
+Panel de servicios (al abrir VER QUE INCLUYE)
+Se desliza desde la derecha sobre el mapa. Ancho 280px, alto 100% del canvas menos HUD. Fondo #050508 opacity 0.95, borde izquierdo 2px color del Lab. Icono X para cerrar en esquina superior derecha.
+Notificaciones y feedback visual
+Al activar NPC: texto flotante '+1 SENIAL' sobre el NPC, asciende 20px, se desvanece en 1s
+Al completar 100%: texto centrado en pantalla 'TODAS LAS SENIALES ENCONTRADAS!', 1.5s
+Al intentar cofre sin completar: cofre wiggle (+-3px 3 veces) + texto error rojo + beep error
+10. AUDIO Y MUSICA
+Principio de audio
+TODO el audio se genera con Web Audio API. Cero archivos externos. El juego funciona sin servidor de audio. El audio es chiptune autentico — sintetizado en tiempo real con osciladores, no samples.
+Arquitectura de audio
+let audioCtx = null;
+document.addEventListener('click', () => {
+  if (!audioCtx) audioCtx = new AudioContext();
+}, { once: true });
+Estructura de ganancia: MasterGainNode (0.0-1.0) / MusicGainNode (0.7) / SFXGainNode (1.0).
+Funcion base para reproducir notas
+function playNote(freq, duration, type='square', gain=0.3, delay=0) {
+  const osc = audioCtx.createOscillator();
+  const gainNode = audioCtx.createGain();
+  osc.type = type;
+  osc.frequency.setValueAtTime(freq, audioCtx.currentTime + delay);
+  gainNode.gain.setValueAtTime(gain, audioCtx.currentTime + delay);
+  gainNode.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + delay + duration);
+  osc.connect(gainNode); gainNode.connect(audioCtx.destination);
+  osc.start(audioCtx.currentTime + delay);
+  osc.stop(audioCtx.currentTime + delay + duration);
+}
+Musica por pantalla
+Boot: C5(200ms) G5(200ms) C6(400ms) — onda square, ganancia 0.3
+Lab Select: tema 8 compases 100 BPM Re mayor, onda cuadrada + triangular + noise hi-hat
+Creative Lab: 80 BPM La menor, sinusoidal, loop 32 compases. Capas: melodia / pad / bass / hi-hat
+Systems Lab: 120 BPM Sol menor, cuadrada + bass cuadrado, loop 24 compases. Patron que se repite 4 compases
+School Lab: 90 BPM Do mayor, triangular (piano) + bells, loop 28 compases
+CTA Screen: arpeggio victoria C4-E4-G4-C5-E5-G5-C6, 100ms por nota, 1 vez
+Efectos de sonido (SFX)
+Seleccion Lab Select hover: 880Hz, square, 50ms, ganancia 0.2
+Confirmacion (activar NPC): 1046Hz + 1318Hz, 100ms, ganancia 0.25
+Error (cofre sin completar): 220-150Hz descending, square, 150ms
+Paso del jugador: noise 30ms, ganancia 0.05 (cada 2 pasos, muy sutil)
+Abrir cofre — fanfare: C5-E5-G5-C6, 150ms cada nota, square
+Activar NPC: click — noise 20ms + 440Hz 30ms
+Puerta abriendose (Systems): 440-220Hz descending, square, 400ms
+Texto typewriter: click 10ms 300Hz por caracter, ganancia 0.1
+11. ANIMACIONES COMPLETAS
+Animaciones del personaje
+walk-down/up/left/right: 4 frames, 8fps, loop. Bob vertical 2px en frames 1 y 3
+idle: tween escala Y 1.0 a 0.97, yoyo true, duration 2000ms, loop
+activate: tween brazo +3px Y, yoyo, duration 200ms, 2 repeticiones
+jump (cofre abierto): tween Y -8px, yoyo, duration 200ms
+Animaciones de NPCs por Lab
+Creative Lab
+NPC CEO: rotation tween -10deg a 0 a +10deg, duration 3000ms, yoyo, loop
+NPC filmmaker: tween scaleY 1.0 a 0.95, duration 800ms, yoyo, loop
+NPC designer: tween alpha cabeza 1.0 a 0.8, duration 600ms, yoyo, loop — sincronizado con musica
+Systems Lab
+NPC employee: parpadeo de ojos (alpha 1.0 a 0.0, 100ms on/off), cada 4000ms
+NPC manager apps: rotacion de iconos orbitando — tween circular custom
+NPC manager board: rotation brazo con puntero +5deg a -5deg, duration 1000ms, yoyo, loop
+Engranajes: rotation tween continuo, 30deg/s, loop
+Relojes: rotation 0 a 360deg, 2 segundos, loop
+Ticker texto: tween de x, velocidad constante hacia izquierda, loop
+School Lab
+NPC woman: tween scaleX 1.0 a 0.98, duration 2000ms, yoyo, loop
+NPC teacher: tween posicion marcador 3 posiciones, 800ms cada una, loop
+NPC creator: tween camara arriba-abajo, ciclo 2000ms
+NPC student: tween alpha hombros en el 'suspiro', ciclo 5s
+NPC activado: aparece checkmark verde + wiggle suave (rotation +-2deg, 300ms). Zona de activacion se desactiva.
+Animaciones de transicion entre pantallas
+Boot a Lab Select: fadeOut 200ms + fadeIn 200ms
+Lab Select a Mapa: objeto escala 1 a 20 (400ms ease-in) + flash color Lab + fadeIn 300ms
+Mapa a CTA: fadeOut 300ms + fadeIn 300ms con brillo del color Lab en borde 1s
+Cualquier a Lab Select (START): fadeOut 200ms + fadeIn 200ms
+Animaciones de objetos especiales
+Pizarra ???? a diagrama (School Lab, al activar NPC): 4 frames 400ms entre frames
+Pantalla estatica a imagen (Creative Lab, al activar NPC): parpadeo de frames estatica + fade-in imagen, 1s
+Logo borroso a nitido (Creative Lab, al activar NPC): overlay que desaparece simulando blur, 800ms
+LED del cofre: tween alpha 0.5 a 1.0, duration 800ms, yoyo, loop
+Particulas cofre idle: emitter 5 particulas, lifetime 2000ms, frecuencia 400ms, velocidad hacia arriba
+12. ASSETS — LISTA COMPLETA
+Principio de construccion
+TODOS los assets visuales se generan programaticamente en JavaScript/Phaser. No hay archivos de imagen externos. No hay spritesheets descargados. Todo se construye con Phaser Graphics y canvas 2D.
+Metodo de generacion de sprites
+const graphics = this.add.graphics();
+// Dibujar pixel a pixel con fillRect(x, y, 1, 1)
+const texture = graphics.generateTexture('nombre', width, height);
+graphics.destroy();
+// Para spritesheets animados: canvas HTML + canvas.toDataURL() + textures.addBase64()
+Lista completa de assets
+Personaje jugador
+player_spritesheet: 64x96px, 16 frames, 3 variantes de color (una por Lab)
+Objetos Lab Select
+creative_lab_object: camara de cine pixel art, 64x64px, 4 frames idle
+systems_lab_object: PCB/chip pixel art, 64x64px, 4 frames idle
+school_lab_object: ordenador retro pixel art, 64x64px, 4 frames idle
+cursor_triangle: 8x8px, estatico
+NPC Sprites (todos 16x16px, 2-3 frames idle)
+npc_ceo, npc_filmmaker, npc_designer — Creative Lab
+npc_employee, npc_manager_apps, npc_manager_board — Systems Lab
+npc_woman, npc_teacher, npc_creator, npc_student — School Lab
+Burbuja de activacion y checkmark
+activation_bubble: '!' sobre fondo negro, 16x16px, 2 frames
+checkmark: tick verde, 8x8px, estatico
+Cofres
+chest_creative: caja de luz cyan, 32x32px, 4 frames idle + 4 frames apertura
+chest_systems: chip LED azul, 32x32px, 4 frames idle + 4 frames apertura
+chest_school: libro magico verde, 32x32px, 4 frames idle + 4 frames apertura
+Tilesets (128x128px, 16 tiles de 32x32px cada uno)
+tileset_creative: adoquin, pared ladrillo negro, pantalla apagada, farola, cable neon...
+tileset_systems: metal rayado, rejilla, hormigon, rack servidor, tuberia, engranaje, reloj...
+tileset_school: parquet, linoleum, ladrillo, pizarra, estanteria, mesa, puerta cerrada/abierta...
+Logo y UI
+logo_aether: 160x80px, oval pixel art, AETHER LABS, blanco sobre negro, borde cyan
+cursor_hand: 16x16px mano senalando (CSS cursor, generado como data URL base64)
+cursor_hand_open: 16x16px mano abierta (hover sobre interactivos)
+13. ARQUITECTURA TECNICA
+Stack tecnologico
+Motor: Phaser 3.88.2
+CDN: https://cdnjs.cloudflare.com/ajax/libs/phaser/3.88.2/phaser.min.js
+Fuente: Google Fonts — Press Start 2P
+Audio: Web Audio API (nativo)
+Entregable: un unico archivo HTML autocontenido
+Configuracion Phaser
+const config = {
+  type: Phaser.AUTO,
+  width: 800, height: 600,
+  backgroundColor: '#050508',
+  pixelArt: true,       // CRITICO: sin antialiasing
+  roundPixels: true,    // Evita blur en movimiento
+  physics: {
+    default: 'arcade',
+    arcade: { gravity: { y: 0 }, debug: false }
+  },
+  scale: { mode: Phaser.Scale.FIT, autoCenter: Phaser.Scale.CENTER_BOTH },
+  scene: [PreloadScene, BootScene, LabSelectScene, CreativeMapScene,
+          SystemsMapScene, SchoolMapScene, ChestScene, CTAScene]
+};
+Estructura de escenas
+PreloadScene: genera todos los assets programaticamente
+BootScene: logo + PRESS START
+LabSelectScene: seleccion de Lab
+CreativeMapScene: mapa del Creative Lab
+SystemsMapScene: mapa del Systems Lab
+SchoolMapScene: mapa del School Lab
+ChestScene: pantalla del cofre (scene launch adicional sobre el mapa)
+CTAScene: pantalla final
+Comunicacion entre escenas via game.registry: 'selectedLab' y 'labProgress'.
+Sistema de tilemaps
+Los tilemaps se definen como arrays 2D en el codigo. No hay archivos .tmx ni .json externos.
+// 0 = suelo transitable, 1 = pared (colision), 2 = decorativo, 3 = especial
+const CREATIVE_MAP = [
+  [1,1,1,1,1,...], // fila 0
+  [1,0,0,0,0,...], // fila 1
+  // 18 filas total
+];
+Sistema de camara
+this.cameras.main.setBounds(0, 24, mapWidth, mapHeight);
+this.cameras.main.startFollow(this.player, true, 0.1, 0.1);
+El HUD no se mueve con la camara — todos los elementos HUD tienen setScrollFactor(0).
+CSS critico
+body { margin: 0; background: #050508; overflow: hidden; cursor: none; }
+#game {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  max-width: 100%; max-height: 100%;
+}
+Estructura del archivo HTML
+<head>
+  Google Fonts import (Press Start 2P)
+  <style> CSS global + overlays + cursor </style>
+</head>
+<body>
+  <div id='game-container'>
+    <canvas id='game'></canvas>
+    <!-- Overlays CSS: scanlines, vignette, grain -->
+  </div>
+  <script src='phaser CDN'></script>
+  <script>
+    // 1. Configuracion del juego
+    // 2. Escenas de Phaser
+    // 3. Tilemap data (arrays)
+    // 4. Sprite generation functions
+    // 5. Audio engine (Web Audio API)
+    // 6. Game logic
+  </script>
+</body>
+14. MEGA PROMPT PARA CLAUDE CODE / ANTIGRAVITY
+RECOMENDACION: Claude Code es superior para este proyecto. Dale el prompt y pidele que construya primero Boot + Lab Select + Creative Lab completo. Valida ese primer mapa antes de pedir los otros dos. En Antigravity: pega el prompt completo en una sola sesion con el maximo contexto posible.
+=== INICIO DEL PROMPT — COPIAR DESDE AQUI ===
+Construye un juego web completo con Phaser.js 3 para la empresa Aether Labs (aetherlabs.es). Este juego ES la web principal de la empresa. No hay pagina corporativa — el juego es la experiencia completa. El objetivo del juego es que el usuario juegue, se identifique con su problema, llegue al cofre de su Lab y acabe reservando una reunion con Victor Torres.
+REGLAS ABSOLUTAS — NO VIOLAR NINGUNA
+TODO el texto visible usa la fuente Press Start 2P de Google Fonts. Sin excepciones.
+CERO imagenes externas. CERO archivos de audio. CERO dependencias salvo Phaser CDN y Google Fonts.
+TODO el juego en un UNICO archivo HTML autocontenido.
+Todos los sprites se generan programaticamente con Phaser Graphics. Sin importar imagenes.
+Todo el audio se genera con Web Audio API. Sin archivos mp3, wav u ogg.
+Phaser configurado con pixelArt: true y roundPixels: true — CRITICO para pixel art.
+Canvas escalable con image-rendering: pixelated en CSS.
+Sin frameworks CSS externos. Sin Bootstrap. Sin Tailwind.
+STACK TECNICO
+Motor: Phaser 3.88.2
+CDN: https://cdnjs.cloudflare.com/ajax/libs/phaser/3.88.2/phaser.min.js
+Fuente: https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap
+Audio: Web Audio API nativo
+Canvas: 800x600px, image-rendering: pixelated, scale FIT + CENTER_BOTH
+FASES DE IMPLEMENTACION — CONSTRUIR EN ESTE ORDEN
+FASE 1 (construir y validar primero):
+Estructura HTML + CSS overlays (scanlines, vignette, cursor)
+PreloadScene: generar todos los assets programaticamente (logo, personaje, NPCs, cofres, tilesets, objetos Lab Select)
+BootScene: logo + PRESS START con audio de boot
+LabSelectScene: tres Labs con cursor, animaciones idle, sonido de seleccion y transicion
+CreativeMapScene COMPLETO: mapa 25x18 tiles, jugador con movimiento, 3 NPCs con dialogos, cofre, sistema de progreso, musica
+ChestScene: panel del cofre con animacion de apertura
+CTAScene: pantalla final con boton de Calendly
+FASE 2 (despues de validar fase 1):
+SystemsMapScene completo con puertas bloqueadas
+SchoolMapScene completo con 4 NPCs
+FASE 3:
+Pulir animaciones y audio
+Responsive / mobile fallback
+DETALLE TECNICO COMPLETO
+Ver paginas 01-13 de este documento para todas las especificaciones de: narrativa, pantallas, mecanicas, visual, personaje, mapas (tile a tile, NPCs con dialogos exactos), UI/HUD, audio (notas y BPM), animaciones (tweens exactos) y assets (metodo de generacion).
+PALETA GLOBAL
+Fondo:         #050508
+Creative Lab:  #00E5FF (cyan)
+Systems Lab:   #0088FF (azul)
+School Lab:    #00FF41 (verde)
+Texto UI:      #FFFFFF principal | #AAAAAA secundario
+Progreso vacio: #333344
+CONTENIDO COMERCIAL DE LOS COFRES
+CREATIVE LAB: 'Webs, videos, branding e identidad creados con IA. Rapido. Sin rodajes.' Servicios: Web corporativa | Videos con IA | Branding | Presentaciones | Material corporativo | Creatividades ads.
+SYSTEMS LAB: 'Implementamos Claude, ClickUp y automatizaciones en tu empresa. Sin desarrollar desde cero.' Servicios: Sesion de Claridad (diagnostico 90min) | Claude + Copilot | Automatizacion flujos | AI Stacks | Formacion equipos.
+SCHOOL LAB: 'Talleres, formacion y programas para aprender IA desde cero. Para ti, tu equipo o empresa.' Servicios: Talleres para equipos | Programa no tecnicos | Formacion jovenes | Charlas instituciones.
+El boton HABLAR CON VICTOR en todos los cofres lleva a CTA Screen. El boton RESERVAR SESION en CTA Screen abre: window.open('https://calendly.com/victor-aetherlabs', '_blank')
+=== FIN DEL PROMPT ===

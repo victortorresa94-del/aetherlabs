@@ -1,16 +1,16 @@
 'use client';
 
 import React from 'react';
-import HeaderNavigation from "@/components/sections/header-navigation";
-import Footer from "@/components/sections/footer";
+import Navbar from "@/components/v5/Navbar";
+import Footer from "@/components/v5/Footer";
 import Image from "next/image";
 import { ArrowRight, MapPin } from "lucide-react";
 import Link from 'next/link';
 
 export default function SobreNosotros() {
   return (
-    <main className="bg-zinc-50 dark:bg-black text-slate-900 dark:text-slate-100 font-sans selection:bg-[#82ff1f] selection:text-black">
-      <HeaderNavigation />
+    <main className="bg-black text-white font-sans selection:bg-white/10">
+      <Navbar />
 
       {/* Hero Section */}
       <section className="min-h-screen flex items-center justify-center bg-black pt-20 px-6 relative overflow-hidden">

@@ -1,29 +1,31 @@
-import Navbar from '@/components/v4/Navbar';
-import HeroSection from '@/components/v4/HeroSection';
-import GapSection from '@/components/v4/GapSection';
-import BridgeSection from '@/components/v4/BridgeSection';
-import ProductsSection from '@/components/v4/ProductsSection';
-import CredentialsSection from '@/components/v4/CredentialsSection';
-import ExtendedServicesSection from '@/components/v4/ExtendedServicesSection';
-import CtaSection from '@/components/v4/CtaSection';
-import Footer from '@/components/v4/Footer';
-import GlobalInteractivity from '@/components/v4/GlobalInteractivity';
+import Navbar from '@/components/v5/Navbar';
+import HeroSection from '@/components/v5/HeroSection';
+import ProblemSection from '@/components/v5/ProblemSection';
+import SolutionSection from '@/components/v5/SolutionSection';
+import HowItWorksSection from '@/components/v5/HowItWorksSection';
+import LabsSection from '@/components/v5/LabsSection';
+import ClaritySessionSection from '@/components/v5/ClaritySessionSection';
+import SocialProofSection from '@/components/v5/SocialProofSection';
+import FinalCtaSection from '@/components/v5/FinalCtaSection';
+import Footer from '@/components/v5/Footer';
+import ScrollAnimations from '@/components/v5/ScrollAnimations';
 
 export default function HomePage() {
   return (
-    <>
-      <GlobalInteractivity />
+    <div className="v5-page">
+      <ScrollAnimations />
       <Navbar />
       <main>
         <HeroSection />
-        <GapSection />
-        <BridgeSection />
-        <ProductsSection />
-        <CredentialsSection />
-        <ExtendedServicesSection />
-        <CtaSection />
+        <ProblemSection />
+        <SolutionSection />
+        <HowItWorksSection />
+        <LabsSection />
+        <ClaritySessionSection />
+        <SocialProofSection />
+        <FinalCtaSection />
       </main>
       <Footer />
-    </>
+    </div>
   );
 }

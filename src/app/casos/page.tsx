@@ -3,8 +3,8 @@
 import React from "react";
 import Link from 'next/link';
 import { ArrowRight, Activity, Building, Wrench, GraduationCap, ArrowUpRight } from "lucide-react";
-import HeaderNavigation from "@/components/sections/header-navigation";
-import Footer from "@/components/sections/footer";
+import Navbar from "@/components/v5/Navbar";
+import Footer from "@/components/v5/Footer";
 import { motion } from "framer-motion";
 
 const cases = [
@@ -52,8 +52,8 @@ const cases = [
 
 export default function CasesPage() {
     return (
-        <main className="min-h-screen bg-black text-white selection:bg-[#82ff1f] selection:text-black font-sans">
-            <HeaderNavigation />
+        <main className="min-h-screen bg-black text-white selection:bg-white/20 font-sans">
+            <Navbar />
 
             {/* Hero Section */}
             <section className="pt-40 pb-20 px-6 border-b border-white/10">
