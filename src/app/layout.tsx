@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import "./globals.css";
+import "./globals.css"; // V5 Design System Optimized
 import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next";
 import type { Viewport } from "next";
