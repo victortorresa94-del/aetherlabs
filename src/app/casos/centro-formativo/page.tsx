@@ -3,13 +3,13 @@
 import React from 'react';
 import Link from 'next/link';
 import { ArrowLeft, Check, GraduationCap, Users, BookOpen, Clock, CalendarCheck, Clipboard } from 'lucide-react';
-import HeaderNavigation from '@/components/sections/header-navigation';
-import Footer from '@/components/sections/footer';
+import Navbar from '@/components/v5/Navbar';
+import Footer from '@/components/v5/Footer';
 
 export default function CentroFormativoPage() {
     return (
-        <main className="min-h-screen bg-black text-white selection:bg-[#82ff1f] selection:text-black font-sans">
-            <HeaderNavigation />
+        <main className="min-h-screen bg-black text-white selection:bg-white/20 font-sans">
+            <Navbar />
 
             {/* Hero Case */}
             <section className="pt-40 pb-20 px-6 border-b border-white/10 relative overflow-hidden">
@@ -20,7 +20,7 @@ export default function CentroFormativoPage() {
                     </Link>
                     <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
                         <div>
-                            <span className="text-[#82ff1f] font-mono text-sm tracking-widest uppercase mb-4 block">CASE 04</span>
+                            <span className="text-white/40 font-mono text-sm tracking-widest uppercase mb-4 block">CASE 04</span>
                             <h1 className="text-5xl md:text-7xl font-bold tracking-tighter mb-4 font-display">Centro Formativo <br /><span className="text-zinc-500">Privado</span></h1>
                         </div>
                         <div className="flex gap-4">
@@ -97,22 +97,22 @@ export default function CentroFormativoPage() {
             {/* Benefits */}
             <section className="py-24 px-6 border-t border-white/10">
                 <div className="max-w-5xl mx-auto">
-                    <h3 className="text-sm font-mono text-[#82ff1f] tracking-[0.3em] uppercase mb-8 text-center">Resultados Operativos</h3>
+                    <h3 className="text-sm font-mono text-white/40 tracking-[0.3em] uppercase mb-8 text-center">Resultados Operativos</h3>
                     <div className="grid md:grid-cols-2 gap-4">
                         <div className="flex items-center p-6 bg-white/5 rounded-xl border border-white/5">
-                            <Check className="text-[#82ff1f] w-6 h-6 mr-4" />
+                            <Check className="text-white/40 w-6 h-6 mr-4" />
                             <span className="text-zinc-200">Respuesta inmediata al interés del estudiante</span>
                         </div>
                         <div className="flex items-center p-6 bg-white/5 rounded-xl border border-white/5">
-                            <Check className="text-[#82ff1f] w-6 h-6 mr-4" />
+                            <Check className="text-white/40 w-6 h-6 mr-4" />
                             <span className="text-zinc-200">Seguimiento constante durante todo el proceso</span>
                         </div>
                         <div className="flex items-center p-6 bg-white/5 rounded-xl border border-white/5">
-                            <Check className="text-[#82ff1f] w-6 h-6 mr-4" />
+                            <Check className="text-white/40 w-6 h-6 mr-4" />
                             <span className="text-zinc-200">Mayor organización de equipo de admisiones</span>
                         </div>
                         <div className="flex items-center p-6 bg-white/5 rounded-xl border border-white/5">
-                            <Check className="text-[#82ff1f] w-6 h-6 mr-4" />
+                            <Check className="text-white/40 w-6 h-6 mr-4" />
                             <span className="text-zinc-200">Mayor probabilidad de conversión a matrícula</span>
                         </div>
                     </div>
