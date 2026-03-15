@@ -3,13 +3,13 @@
 const steps = [
   {
     number: '01',
-    title: 'Sesión de Claridad (gratuita)',
-    description: '90 minutos. Te decimos exactamente qué necesitas y qué no necesitas. Sin compromiso.',
+    title: 'Sesión de Claridad',
+    description: '90 minutos. Te decimos exactamente qué necesitas y qué no. Sin compromiso. 150€ o gratis en sesiones de lanzamiento.',
   },
   {
     number: '02',
     title: 'Propuesta a medida',
-    description: 'Un plan concreto con entregables, plazos y precio. Sin letra pequeña.',
+    description: 'Un plan concreto con entregables, plazos y precio. Sin letra pequeña. Sin sorpresas.',
   },
   {
     number: '03',
@@ -20,60 +20,113 @@ const steps = [
 
 export default function HowItWorksSection() {
   return (
-    <section id="como-funciona" className="v5-section relative overflow-hidden bg-black pb-32">
+    <section id="como-funciona" className="v5-section" style={{ backgroundColor: '#FFFFFF' }}>
       <div className="v5-container">
-        {/* Header */}
-        <div className="text-center mb-20">
-          <span className="v5-label mb-5 block">
+
+        {/* Heading */}
+        <div className="text-center mb-20 v5-reveal">
+          <span
+            style={{
+              display: 'block',
+              marginBottom: '16px',
+              fontFamily: 'var(--v5-font-mono)',
+              fontSize: '11px',
+              fontWeight: 400,
+              letterSpacing: '0.15em',
+              textTransform: 'uppercase',
+              color: '#999999',
+            }}
+          >
             Cómo funciona
           </span>
-          <h2 className="v5-h2">
-            En tres pasos, de donde estás<br />
-            a donde quieres ir
+          <h2
+            style={{
+              fontFamily: 'var(--v5-font-display)',
+              fontSize: 'clamp(28px, 3.5vw, 48px)',
+              fontWeight: 300,
+              letterSpacing: '-0.02em',
+              lineHeight: 1.05,
+              color: '#111111',
+            }}
+          >
+            Tres pasos. Sin fricciones.
           </h2>
         </div>
 
         {/* Steps */}
-        <div className="flex flex-col md:flex-row items-start gap-0 relative">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {steps.map((step, i) => (
             <div
               key={i}
-              className="flex items-start flex-1 w-full md:w-auto flex-col md:flex-row"
+              className="v5-reveal relative flex flex-col gap-5 p-10"
+              style={{
+                background: '#F8F8F8',
+                border: '1px solid #EBEBEB',
+                borderRadius: '16px',
+                transitionDelay: `${i * 80}ms`,
+              }}
             >
-              {/* Step */}
-              <div
-                className="v5-reveal flex-1 flex flex-col items-center text-center relative pt-5"
+              {/* Large background number */}
+              <span
+                className="absolute top-6 right-8 select-none pointer-events-none"
+                style={{
+                  fontFamily: 'var(--v5-font-display)',
+                  fontSize: '80px',
+                  fontWeight: 300,
+                  letterSpacing: '-0.05em',
+                  lineHeight: 1,
+                  color: '#E8E8E8',
+                }}
               >
-                {/* Background number */}
-                <span className="absolute -top-5 left-1/2 -translate-x-1/2 font-display font-extrabold text-[80px] md:text-[140px] text-white/5 leading-none select-none pointer-events-none tracking-tighter">
-                  {step.number}
-                </span>
+                {step.number}
+              </span>
 
-                {/* Number badge */}
-                <div className="w-12 h-12 rounded-full bg-[#00E5FF]/15 border border-[#00E5FF]/30 flex items-center justify-center font-mono text-xs font-bold text-[#00E5FF] mb-5 relative z-10">
-                  {step.number}
-                </div>
+              <span
+                style={{
+                  fontFamily: 'var(--v5-font-mono)',
+                  fontSize: '11px',
+                  fontWeight: 400,
+                  color: '#AAAAAA',
+                  letterSpacing: '0.10em',
+                  position: 'relative',
+                  zIndex: 1,
+                }}
+              >
+                Paso {step.number}
+              </span>
 
-                <h3 className="font-display font-semibold text-xl text-white mb-3 tracking-tight relative z-10 max-w-[260px]">
-                  {step.title}
-                </h3>
+              <h3
+                style={{
+                  fontFamily: 'var(--v5-font-display)',
+                  fontSize: '20px',
+                  fontWeight: 400,
+                  letterSpacing: '-0.02em',
+                  color: '#111111',
+                  position: 'relative',
+                  zIndex: 1,
+                }}
+              >
+                {step.title}
+              </h3>
 
-                <p className="font-body text-sm text-white/50 leading-relaxed max-w-[260px] relative z-10">
-                  {step.description}
-                </p>
-              </div>
-
-              {/* Connector line (not after last) */}
-              {i < steps.length - 1 && (
-                <div
-                  className="w-[1px] h-10 md:w-20 md:h-[1px] bg-gradient-to-b md:bg-gradient-to-r from-[#00E5FF]/40 to-[#00E5FF]/10 mt-5 md:mt-11 flex-shrink-0 mx-auto md:mx-0"
-                />
-              )}
+              <p
+                style={{
+                  fontFamily: 'var(--v5-font-body)',
+                  fontSize: '15px',
+                  fontWeight: 300,
+                  lineHeight: 1.8,
+                  color: '#666666',
+                  position: 'relative',
+                  zIndex: 1,
+                }}
+              >
+                {step.description}
+              </p>
             </div>
           ))}
         </div>
-      </div>
 
+      </div>
     </section>
   );
 }

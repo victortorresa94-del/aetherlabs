@@ -1,67 +1,132 @@
 'use client';
 
-import Link from 'next/link';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function HeroSection() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center pt-32 pb-20 overflow-hidden" style={{ backgroundColor: 'var(--v5-bg-base)' }}>
-      {/* CSS for specific animations */}
-      <style>{`
-        @keyframes float-hero {
-          0% { transform: translateY(0px) rotate(0deg); }
-          50% { transform: translateY(-15px) rotate(1deg); }
-          100% { transform: translateY(0px) rotate(0deg); }
-        }
-      `}</style>
-
-      {/* Subtle Background Glows */}
-      <div className="absolute top-1/4 -left-20 w-96 h-96 bg-white/5 rounded-full blur-[120px] pointer-events-none"></div>
-      <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-[#00E5FF]/5 rounded-full blur-[120px] pointer-events-none"></div>
-
-      <div className="v5-container relative z-10 w-full mt-10 lg:mt-0">
+    <section
+      className="relative min-h-screen flex items-center overflow-hidden"
+      style={{ backgroundColor: '#080808', paddingTop: '160px', paddingBottom: '120px' }}
+    >
+      <div className="v5-container relative z-10 w-full">
         <div className="v5-hero-grid items-center">
-          {/* Left Side: Text */}
+
+          {/* Left — Text */}
           <div className="flex flex-col items-start text-left">
-            <span className="v5-label mb-6 text-white/40 border-white/20 bg-white/5 uppercase tracking-widest text-xs px-3 py-1 rounded-full border inline-block">WEB 4.0 ENGINEERING</span>
-            <h1 className="mb-10 leading-[1.1] tracking-tight text-white font-medium text-4xl lg:text-6xl xl:text-[4.5rem]" style={{ fontFamily: 'var(--v5-font-display)' }}>
-              El puente <br />
+            <span
+              className="v5-reveal mb-8"
+              style={{
+                fontFamily: 'var(--v5-font-mono)',
+                fontSize: '11px',
+                fontWeight: 400,
+                letterSpacing: '0.15em',
+                textTransform: 'uppercase',
+                color: '#999999',
+                transitionDelay: '0ms',
+              }}
+            >
+              Implementación de IA · Barcelona
+            </span>
+
+            <h1
+              className="v5-reveal mb-8"
+              style={{
+                fontFamily: 'var(--v5-font-display)',
+                fontSize: 'clamp(48px, 6.8vw, 92px)',
+                fontWeight: 300,
+                letterSpacing: '-0.03em',
+                lineHeight: 0.95,
+                color: '#F5F5F0',
+                transitionDelay: '80ms',
+              }}
+            >
+              El puente<br />
               entre personas<br />
-              <span className="text-white/40 italic font-serif">y tecnología.</span>
+              <span style={{ color: 'rgba(245,245,240,0.38)' }}>y tecnología.</span>
             </h1>
-            <p className="text-lg md:text-xl max-w-lg mb-10 text-white/60 font-body">
-              Construimos software que define categorías. Un estudio de diseño y desarrollo enfocado en la precisión técnica y estética editorial.
+
+            <p
+              className="v5-reveal mb-12"
+              style={{
+                fontFamily: 'var(--v5-font-body)',
+                fontSize: '17px',
+                fontWeight: 300,
+                lineHeight: 1.8,
+                color: 'rgba(245,245,240,0.50)',
+                maxWidth: '420px',
+                transitionDelay: '160ms',
+              }}
+            >
+              Ayudamos a empresas con buen producto a conseguir clientes
+              y operar mejor, usando IA de forma práctica.
             </p>
-            <div className="v5-hero-buttons">
-              {/* Ensure buttons don't stretch on desktop by defining max-width or self-start */}
-              <Link href="#sesion-claridad" className="v5-btn-primary flex justify-center self-start">
-                Agendar Consultoría
+
+            <div
+              className="v5-reveal v5-hero-buttons"
+              style={{ transitionDelay: '220ms' }}
+            >
+              <Link
+                href="/systems-lab/sesion-de-claridad"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  padding: '14px 32px',
+                  background: '#F5F5F0',
+                  color: '#080808',
+                  borderRadius: '100px',
+                  fontFamily: 'var(--v5-font-body)',
+                  fontSize: '14px',
+                  fontWeight: 400,
+                  letterSpacing: '0.01em',
+                  textDecoration: 'none',
+                  transition: 'all 200ms ease',
+                  whiteSpace: 'nowrap',
+                }}
+                onMouseEnter={(e) => {
+                  (e.currentTarget as HTMLElement).style.background = '#FFFFFF';
+                  (e.currentTarget as HTMLElement).style.transform = 'translateY(-1px)';
+                }}
+                onMouseLeave={(e) => {
+                  (e.currentTarget as HTMLElement).style.background = '#F5F5F0';
+                  (e.currentTarget as HTMLElement).style.transform = 'translateY(0)';
+                }}
+              >
+                Reservar sesión
               </Link>
-              <Link href="#proyectos" className="v5-btn-ghost flex justify-center self-start">
-                Ver Portfolio
+              <Link href="#servicios" className="v5-btn-ghost">
+                Ver servicios
               </Link>
             </div>
 
-            {/* Trust logos */}
-            <div className="mt-16 sm:mt-24 flex flex-col items-start gap-5">
-              <span style={{
-                fontFamily: 'var(--v5-font-mono)',
-                fontSize: '10px',
-                letterSpacing: '0.15em',
-                textTransform: 'uppercase',
-                color: 'var(--v5-text-muted)',
-              }}>
-                Empresas que confían en nosotros
+            <div
+              className="v5-reveal mt-16 flex flex-col items-start gap-3"
+              style={{ transitionDelay: '300ms' }}
+            >
+              <span
+                style={{
+                  fontFamily: 'var(--v5-font-mono)',
+                  fontSize: '10px',
+                  letterSpacing: '0.15em',
+                  textTransform: 'uppercase',
+                  color: 'rgba(255,255,255,0.22)',
+                }}
+              >
+                Con quienes trabajamos
               </span>
-              <div className="flex gap-8 items-center flex-wrap grayscale opacity-30">
-                {['KMeleon.Tech', 'Microsoft', 'Tech Barcelona', 'Closius'].map((name) => (
-                  <span key={name} style={{
-                    fontFamily: 'var(--v5-font-display)',
-                    fontWeight: 700,
-                    fontSize: '15px',
-                    color: 'var(--v5-text-primary)',
-                    letterSpacing: '-0.01em',
-                  }}>
+              <div className="flex gap-8 items-center flex-wrap">
+                {['KMeleon', 'Microsoft', 'Tech BCN', 'Closius'].map((name) => (
+                  <span
+                    key={name}
+                    style={{
+                      fontFamily: 'var(--v5-font-display)',
+                      fontSize: '13px',
+                      fontWeight: 300,
+                      letterSpacing: '-0.01em',
+                      color: 'rgba(255,255,255,0.18)',
+                    }}
+                  >
                     {name}
                   </span>
                 ))}
@@ -69,38 +134,84 @@ export default function HeroSection() {
             </div>
           </div>
 
-          {/* Right Side: Ethereal 3D Image */}
-          <div className="v5-hide-on-mobile w-full">
-            <div style={{ animation: 'float-hero 6s ease-in-out infinite' }}>
-              <div className="relative w-full aspect-square max-w-[500px] ml-auto">
-                <div className="absolute inset-0 bg-white/[0.03] backdrop-blur-xl border border-white/10 rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] p-4 overflow-hidden flex items-center justify-center">
+          {/* Right — Warm card */}
+          <div className="v5-hide-on-mobile w-full flex justify-end">
+            <div
+              className="v5-reveal relative w-full max-w-[440px]"
+              style={{
+                animation: 'heroFloat 7s ease-in-out infinite',
+                transitionDelay: '100ms',
+              }}
+            >
+              {/* Card */}
+              <div
+                style={{
+                  background: '#EDE8DF',
+                  borderRadius: '20px',
+                  aspectRatio: '4/5',
+                  overflow: 'hidden',
+                  position: 'relative',
+                  boxShadow: '0 30px 80px rgba(0,0,0,0.55), 0 4px 20px rgba(0,0,0,0.30)',
+                }}
+              >
+                <div className="relative w-full h-full">
                   <Image
-                    src="/ethereal_3d_shape.png"
-                    alt="Ethereal 3D Abstract Shape"
-                    width={600}
-                    height={600}
-                    className="w-[120%] h-[120%] object-cover rounded-2xl grayscale transition-all duration-700 hover:grayscale-0 hover:scale-105"
-                    style={{ filter: 'brightness(1.2) contrast(1.1) saturate(0)' }}
+                    src="/chrome-sculpture.jpeg"
+                    alt="Chrome sculpture"
+                    fill
+                    className="object-cover"
+                    style={{ filter: 'contrast(1.1) brightness(1.05)', mixBlendMode: 'luminosity' }}
                     priority
                   />
-
-                  {/* Floating little UI details */}
-                  <div className="absolute -left-6 top-16 bg-white/[0.04] backdrop-blur-md p-4 rounded-xl border border-white/10 shadow-xl flex items-center gap-3">
-                    <div className="w-2 h-2 rounded-full bg-[#00E5FF] shadow-[0_0_10px_rgba(0,229,255,0.5)]"></div>
-                    <span className="text-[10px] font-mono text-white/50 tracking-wider">SYSTEM NOMINAL</span>
-                  </div>
-
-                  <div className="absolute -right-6 bottom-16 bg-white/[0.04] backdrop-blur-md p-4 rounded-xl border border-white/10 shadow-xl">
-                    <div className="h-1 w-12 bg-white/40 mb-2 rounded-full"></div>
-                    <div className="h-1 w-8 bg-white/20 mb-3 rounded-full"></div>
-                    <span className="text-[10px] font-mono text-white/40 tracking-wider">PERFORMANCE OPTIMIZED</span>
-                  </div>
+                  <div
+                    className="absolute inset-0 pointer-events-none"
+                    style={{ background: 'rgba(237,232,223,0.25)', mixBlendMode: 'color' }}
+                  />
                 </div>
+              </div>
+
+              {/* Pills */}
+              <div
+                className="v5-floating-pill"
+                style={{ top: '10%', right: '-16px' }}
+              >
+                <span className="flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400/90 flex-shrink-0" />
+                  Sistema online
+                </span>
+              </div>
+
+              <div
+                className="v5-floating-pill"
+                style={{ bottom: '16%', left: '-16px' }}
+              >
+                <span className="flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-white/40 flex-shrink-0" />
+                  IA Ready
+                </span>
+              </div>
+
+              <div
+                className="v5-floating-pill"
+                style={{ top: '52%', right: '-16px', fontSize: '10px' }}
+              >
+                v5.0
               </div>
             </div>
           </div>
+
         </div>
       </div>
+
+      {/* Ambient glow */}
+      <div
+        className="absolute top-0 right-0 pointer-events-none"
+        style={{
+          width: '700px',
+          height: '700px',
+          background: 'radial-gradient(circle at 65% 25%, rgba(237,232,223,0.030) 0%, transparent 55%)',
+        }}
+      />
     </section>
   );
 }

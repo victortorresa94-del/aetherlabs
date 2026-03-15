@@ -133,37 +133,38 @@ export default function CreativeLab() {
             </section>
 
             {/* Differentiation Section */}
-            <section className="v5-section bg-white text-black">
+            <section className="v5-section bg-[#0C0C0C] border-t border-white/5 py-24">
                 <div className="v5-container">
-                    <div className="text-center mb-16">
+                    <div className="text-center mb-16 v5-reveal">
+                        <span className="v5-label mb-4 text-white/40">PROCESO CREATIVO</span>
                         <h2 className="v5-h2">Por qué con IA</h2>
-                        <p className="v5-body-large mx-auto max-w-lg mt-4 text-black/60">
+                        <p className="v5-body-large mx-auto max-w-lg mt-4 opacity-50">
                             Transformamos la velocidad de producción y el coste, sin comprometer el estándar de calidad y estética.
                         </p>
                     </div>
 
-                    <div className="grid md:grid-cols-3 gap-12">
-                        <div className="p-8 border border-black/10 hover:bg-black hover:text-white transition-all duration-500 rounded-2xl group cursor-default">
-                            <span className="text-2xl mb-4 block">⚡️</span>
-                            <h3 className="font-display text-2xl font-bold mb-4">Velocidad</h3>
-                            <p className="text-black/60 group-hover:text-white/60">
-                                Lo que antes tardaba 4 semanas, ahora tarda 4 días.
+                    <div className="grid md:grid-cols-3 gap-6">
+                        <div className="p-8 border border-white/5 bg-white/[0.01] rounded-2xl group hover:border-white/10 transition-all duration-500">
+                            <span className="text-2xl mb-6 block grayscale group-hover:grayscale-0 transition-all">⚡️</span>
+                            <h3 className="v5-h3 mb-4">Velocidad real</h3>
+                            <p className="v5-body-large !text-sm opacity-50 group-hover:opacity-80 transition-opacity">
+                                Lo que antes tardaba 4 semanas, ahora tarda 4 días. Iteración continua sin esperas de producción.
                             </p>
                         </div>
 
-                        <div className="p-8 border border-black/10 hover:bg-black hover:text-white transition-all duration-500 rounded-2xl group cursor-default">
-                            <span className="text-2xl mb-4 block">💎</span>
-                            <h3 className="font-display text-2xl font-bold mb-4">Coste</h3>
-                            <p className="text-black/60 group-hover:text-white/60">
-                                Sin productoras, fotógrafos ni estudios de diseño externos.
+                        <div className="p-8 border border-white/5 bg-white/[0.01] rounded-2xl group hover:border-white/10 transition-all duration-500">
+                            <span className="text-2xl mb-6 block grayscale group-hover:grayscale-0 transition-all">💎</span>
+                            <h3 className="v5-h3 mb-4">Coste optimizado</h3>
+                            <p className="v5-body-large !text-sm opacity-50 group-hover:opacity-80 transition-opacity">
+                                Sin productoras, fotógrafos ni estudios externos. La IA es nuestro taller y tú eres el arquitecto.
                             </p>
                         </div>
 
-                        <div className="p-8 border border-black/10 hover:bg-black hover:text-white transition-all duration-500 rounded-2xl group cursor-default">
-                            <span className="text-2xl mb-4 block">🔄</span>
-                            <h3 className="font-display text-2xl font-bold mb-4">Iteración</h3>
-                            <p className="text-black/60 group-hover:text-white/60">
-                                Cambios en horas, no en semanas. Sin coste adicional.
+                        <div className="p-8 border border-white/5 bg-white/[0.01] rounded-2xl group hover:border-white/10 transition-all duration-500">
+                            <span className="text-2xl mb-6 block grayscale group-hover:grayscale-0 transition-all">🔄</span>
+                            <h3 className="v5-h3 mb-4">Flexibilidad total</h3>
+                            <p className="v5-body-large !text-sm opacity-50 group-hover:opacity-80 transition-opacity">
+                                Cambios en horas, no en semanas. Adaptamos el material a cada canal sin costes adicionales por versión.
                             </p>
                         </div>
                     </div>

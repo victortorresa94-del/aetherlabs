@@ -288,17 +288,20 @@ export default function SystemsLabPage() {
         </section>
 
         {/* CTA Sesión de Claridad */}
-        <section className="v5-section bg-white/5 border-t border-white/10">
+        <section className="v5-section bg-[#0C0C0C] border-t border-white/5">
           <div className="v5-container" style={{ textAlign: 'center' }}>
-            <h2 className="v5-h2 v5-reveal" style={{ marginBottom: '16px' }}>
+            <div className="v5-reveal inline-block px-4 py-1.5 bg-cyan-500/10 border border-cyan-500/20 rounded-full mb-8">
+              <span className="font-mono text-[10px] text-cyan-400 tracking-widest uppercase">Diagnóstico Estratégico</span>
+            </div>
+            <h2 className="v5-h2 v5-reveal mb-6">
               ¿No sabes por dónde empezar?
             </h2>
-            <p className="v5-body-large v5-reveal" style={{ maxWidth: '480px', margin: '0 auto 32px' }}>
-              Normal. La mejor decisión es hacer primero la Sesión de Claridad, donde mapeamos
-              tu empresa y decidimos juntos qué herramientas tienen sentido.
+            <p className="v5-body-large v5-reveal max-w-xl mx-auto mb-10 opacity-60">
+              La mejor decisión es hacer primero la Sesión de Claridad, donde mapeamos
+              tu empresa y decidimos juntos qué herramientas tienen sentido real para tu negocio.
             </p>
             <div className="v5-reveal">
-              <Link href="/systems-lab/sesion-de-claridad" className="v5-btn-primary" style={{ fontSize: '17px', padding: '16px 32px' }}>
+              <Link href="/systems-lab/sesion-de-claridad" className="v5-btn-primary">
                 Reservar Sesión de Claridad →
               </Link>
             </div>

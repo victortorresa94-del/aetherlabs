@@ -86,6 +86,10 @@ export default function RootLayout({
         'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
         })(window,document,'script','dataLayer','GTM-T2K2L3NQ');`}
       </Script>
+      {/* Kill any stale service workers from previous Vite/Antigravity builds */}
+      <Script id="sw-cleanup" strategy="beforeInteractive">
+        {`if('serviceWorker' in navigator){navigator.serviceWorker.getRegistrations().then(function(regs){regs.forEach(function(r){r.unregister();});});}`}
+      </Script>
       <body className="antialiased bg-[#0A0A0A] text-[#F5F5F5] overflow-x-hidden">
         <noscript>
           <iframe

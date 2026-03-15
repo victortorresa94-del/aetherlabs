@@ -3,10 +3,10 @@
 import { useEffect, useRef, useState } from 'react';
 
 const stats = [
-  { value: 47, suffix: '+', label: 'Proyectos completados' },
+  { value: 47, suffix: '+', label: 'Proyectos' },
   { value: 3, suffix: '', label: 'Continentes' },
-  { value: 11, suffix: '+', label: 'Años de experiencia' },
-  { value: 100, suffix: '%', label: 'Primera sesión sin coste' },
+  { value: 11, suffix: '+', label: 'Años exp.' },
+  { value: 100, suffix: '%', label: '1ª sesión free' },
 ];
 
 function CounterStat({ value, suffix, label }: { value: number; suffix: string; label: string }) {
@@ -19,7 +19,7 @@ function CounterStat({ value, suffix, label }: { value: number; suffix: string; 
       ([entry]) => {
         if (entry.isIntersecting && !started.current) {
           started.current = true;
-          const duration = 1800;
+          const duration = 1600;
           const start = performance.now();
           const animate = (now: number) => {
             const elapsed = now - start;
@@ -38,11 +38,29 @@ function CounterStat({ value, suffix, label }: { value: number; suffix: string; 
   }, [value]);
 
   return (
-    <div ref={ref} className="bg-white/2 pb-10 flex flex-col gap-2">
-      <span className="font-display font-extrabold text-[40px] md:text-6xl text-white leading-none tracking-tighter">
+    <div ref={ref} style={{ padding: '40px 32px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+      <span
+        style={{
+          fontFamily: 'var(--v5-font-display)',
+          fontSize: 'clamp(40px, 4vw, 56px)',
+          fontWeight: 300,
+          letterSpacing: '-0.04em',
+          lineHeight: 1,
+          color: 'rgba(255,255,255,0.88)',
+        }}
+      >
         {count}{suffix}
       </span>
-      <span className="font-body text-xs text-white/40 uppercase tracking-widest font-bold">
+      <span
+        style={{
+          fontFamily: 'var(--v5-font-mono)',
+          fontSize: '10px',
+          fontWeight: 400,
+          letterSpacing: '0.12em',
+          textTransform: 'uppercase',
+          color: 'rgba(255,255,255,0.30)',
+        }}
+      >
         {label}
       </span>
     </div>
@@ -51,37 +69,70 @@ function CounterStat({ value, suffix, label }: { value: number; suffix: string; 
 
 export default function SocialProofSection() {
   return (
-    <section className="v5-section bg-black mt-20">
+    <section className="v5-section" style={{ backgroundColor: '#080808' }}>
       <div className="v5-container">
+
         {/* Stats grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 v5-reveal">
-          {stats.map((stat) => (
-            <CounterStat key={stat.label} {...stat} />
+        <div
+          className="grid grid-cols-2 md:grid-cols-4 overflow-hidden rounded-2xl v5-reveal"
+          style={{ border: '1px solid rgba(255,255,255,0.07)' }}
+        >
+          {stats.map((stat, i) => (
+            <div
+              key={stat.label}
+              style={{
+                backgroundColor: '#0C0C0C',
+                borderRight: i < stats.length - 1 ? '1px solid rgba(255,255,255,0.06)' : 'none',
+              }}
+            >
+              <CounterStat {...stat} />
+            </div>
           ))}
         </div>
 
-        {/* Founder quote */}
-        <div className="v5-reveal mt-32 p-12 bg-white/5 border border-white/10 rounded-3xl relative overflow-hidden text-center backdrop-blur-sm">
-          {/* Quote mark */}
-          <div className="absolute top-6 left-10 font-display text-[120px] font-black text-white/5 leading-none select-none">
-            &ldquo;
-          </div>
-
-          <div className="relative z-10 max-w-2xl mx-auto">
-            <blockquote className="font-display italic font-medium text-2xl md:text-3xl text-white mb-10 leading-snug tracking-tight">
-              Llevo más de 11 años construyendo proyectos de marketing y tecnología.
-              Aether Labs es lo que me habría gustado tener como cliente cuando trabajaba en agencias.
-            </blockquote>
-            <div className="flex flex-col items-center gap-1">
-              <span className="font-body font-bold text-lg text-white">
-                Víctor Torres
-              </span>
-              <span className="font-mono text-[10px] font-bold tracking-widest uppercase text-[#00E5FF]">
-                Fundador de Aether Labs
-              </span>
-            </div>
+        {/* Quote */}
+        <div className="v5-reveal mt-24 max-w-2xl mx-auto text-center">
+          <blockquote
+            style={{
+              fontFamily: 'var(--v5-font-display)',
+              fontSize: 'clamp(18px, 2.2vw, 26px)',
+              fontWeight: 300,
+              letterSpacing: '-0.02em',
+              lineHeight: 1.55,
+              fontStyle: 'italic',
+              color: 'rgba(255,255,255,0.65)',
+              marginBottom: '32px',
+            }}
+          >
+            &ldquo;Llevo más de 11 años construyendo proyectos de marketing y tecnología.
+            Aether Labs es lo que me habría gustado tener como cliente.&rdquo;
+          </blockquote>
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '6px' }}>
+            <span
+              style={{
+                fontFamily: 'var(--v5-font-display)',
+                fontSize: '15px',
+                fontWeight: 400,
+                color: 'rgba(255,255,255,0.85)',
+              }}
+            >
+              Víctor Torres
+            </span>
+            <span
+              style={{
+                fontFamily: 'var(--v5-font-mono)',
+                fontSize: '10px',
+                fontWeight: 400,
+                letterSpacing: '0.12em',
+                textTransform: 'uppercase',
+                color: 'rgba(255,255,255,0.28)',
+              }}
+            >
+              Fundador
+            </span>
           </div>
         </div>
+
       </div>
     </section>
   );

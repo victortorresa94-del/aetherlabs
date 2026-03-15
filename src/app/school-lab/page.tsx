@@ -80,89 +80,50 @@ export default function SchoolLabPage() {
             </section>
 
             {/* Program Grid */}
-            <section id="programas" className="v5-section bg-white text-black py-24 rounded-t-[3rem]">
+            <section id="programas" className="v5-section bg-black text-white py-24 border-t border-white/5">
                 <div className="v5-container">
-                    <div className="text-center mb-16">
-                        <h2 className="v5-h2 mb-4">9 Programas Especializados</h2>
-                        <p className="text-black/60 max-w-2xl mx-auto">No creemos en los cursos genéricos. Ofrecemos formación hiper-específica para los problemas reales de tu día a día.</p>
+                    <div className="text-center mb-16 v5-reveal">
+                        <span className="v5-label mb-4 text-white/40">PROGRAMAS</span>
+                        <h2 className="v5-h2 mb-4">Especialización Hiper-concreta</h2>
+                        <p className="v5-body-large max-w-2xl mx-auto opacity-60">No creemos en los cursos genéricos. Entrenamos habilidades reales para problemas reales.</p>
                     </div>
 
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
 
                         {/* Empresas (Featured) */}
-                        <Link href="/school-lab/prepara-tu-equipo" className="md:col-span-2 lg:col-span-3 p-8 border-2 border-green-600 bg-green-50 rounded-3xl hover:shadow-xl transition-all duration-300 group overflow-hidden relative">
-                            <div className="absolute top-0 right-0 w-full h-full bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-green-200/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                            <div className="relative z-10 grid lg:grid-cols-2 gap-8 items-center">
+                        <Link href="/school-lab/prepara-tu-equipo" className="md:col-span-2 lg:col-span-3 p-10 border border-white/10 bg-white/[0.02] rounded-[2rem] hover:border-[#00FF41]/30 hover:bg-white/[0.04] transition-all duration-500 group overflow-hidden relative">
+                            <div className="absolute top-0 right-0 w-full h-full bg-[radial-gradient(ellipse_at_top_right,_rgba(0,255,65,0.08),transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                            <div className="relative z-10 grid lg:grid-cols-2 gap-12 items-center">
                                 <div>
-                                    <span className="inline-block bg-green-600 text-white text-[10px] font-bold px-3 py-1.5 uppercase tracking-widest mb-4 rounded-full">B2B • Empresas y PyMEs</span>
-                                    <h3 className="font-display text-3xl font-bold mb-3 text-green-900 group-hover:text-green-700 transition-colors">Prepara tu equipo</h3>
-                                    <p className="text-green-800/70 mb-6 font-medium">Tu equipo puede trabajar más rápido y cometer menos errores si sabe cómo usar la IA corporativa. Casos de uso 100% reales.</p>
-                                    <span className="font-bold text-green-700 underline decoration-2 underline-offset-4">Ver programa corporativo →</span>
+                                    <span className="inline-block bg-[#00FF41]/10 text-[#00FF41] text-[10px] font-bold px-3 py-1 uppercase tracking-widest mb-6 rounded-full border border-[#00FF41]/20">B2B • CORPORATIVO</span>
+                                    <h3 className="v5-h2 !text-3xl mb-4 text-white group-hover:text-[#00FF41] transition-colors">Prepara tu equipo</h3>
+                                    <p className="v5-body-large !text-base mb-8 opacity-60">Tu equipo puede trabajar más rápido y cometer menos errores si sabe cómo usar la IA corporativa. Casos de uso 100% reales.</p>
+                                    <span className="font-mono text-xs text-[#00FF41] tracking-widest uppercase">Ver programa corporativo →</span>
                                 </div>
-                                <div className="hidden lg:block relative h-full min-h-[160px]">
-                                    <div className="absolute inset-0 bg-white/60 rounded-2xl border border-green-200 shadow-sm flex items-center justify-center overflow-hidden">
-                                        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=800" className="w-full h-full object-cover opacity-80 mix-blend-multiply" alt="Equipo trabajando" />
-                                    </div>
+                                <div className="hidden lg:block relative aspect-video rounded-2xl overflow-hidden border border-white/10">
+                                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=800" className="w-full h-full object-cover opacity-60 grayscale group-hover:grayscale-0 group-hover:opacity-80 transition-all duration-700" alt="Equipo trabajando" />
                                 </div>
                             </div>
                         </Link>
 
                         {/* B2C Programs */}
-                        <Link href="/school-lab/empoderate-con-ia" className="p-8 border border-black/10 rounded-3xl hover:border-emerald-500 hover:shadow-lg transition-all group bg-white relative overflow-hidden flex flex-col">
-                            <span className="text-emerald-600 text-[10px] font-bold tracking-widest uppercase mb-3 block">Mujeres 40-60</span>
-                            <h3 className="font-display text-2xl font-bold mb-2 group-hover:text-emerald-600 transition-colors">Empodérate con IA</h3>
-                            <p className="text-sm text-black/60 mb-8 flex-grow">Usa la IA para salud, creatividad y comunicación sin necesitar saber de tecnología.</p>
-                            <span className="text-sm font-bold opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all text-emerald-600">Ver programa →</span>
-                        </Link>
-
-                        <Link href="/school-lab/conectate-con-el-mundo" className="p-8 border border-black/10 rounded-3xl hover:border-blue-500 hover:shadow-lg transition-all group bg-white relative overflow-hidden flex flex-col">
-                            <span className="text-blue-600 text-[10px] font-bold tracking-widest uppercase mb-3 block">Personas mayores 65+</span>
-                            <h3 className="font-display text-2xl font-bold mb-2 group-hover:text-blue-600 transition-colors">Conéctate con el mundo</h3>
-                            <p className="text-sm text-black/60 mb-8 flex-grow">La IA como asistente diario para recordar, contactar familiares y estar activo.</p>
-                            <span className="text-sm font-bold opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all text-blue-600">Ver programa →</span>
-                        </Link>
-
-                        <Link href="/school-lab/aprende-a-crear" className="p-8 border border-black/10 rounded-3xl hover:border-orange-500 hover:shadow-lg transition-all group bg-white relative overflow-hidden flex flex-col">
-                            <span className="text-orange-500 text-[10px] font-bold tracking-widest uppercase mb-3 block">Niños 6-12</span>
-                            <h3 className="font-display text-2xl font-bold mb-2 group-hover:text-orange-500 transition-colors">Aprende a crear</h3>
-                            <p className="text-sm text-black/60 mb-8 flex-grow">Cuentos, mundos e historias potenciando la imaginación infantil con IA segura.</p>
-                            <span className="text-sm font-bold opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all text-orange-500">Ver programa →</span>
-                        </Link>
-
-                        <Link href="/school-lab/descubre-tu-futuro" className="p-8 border border-black/10 rounded-3xl hover:border-purple-500 hover:shadow-lg transition-all group bg-white relative overflow-hidden flex flex-col">
-                            <span className="text-purple-600 text-[10px] font-bold tracking-widest uppercase mb-3 block">Jóvenes 13-18</span>
-                            <h3 className="font-display text-2xl font-bold mb-2 group-hover:text-purple-600 transition-colors">Descubre tu futuro</h3>
-                            <p className="text-sm text-black/60 mb-8 flex-grow">Descubre las profesiones del futuro y crea proyectos propios desde cero.</p>
-                            <span className="text-sm font-bold opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all text-purple-600">Ver programa →</span>
-                        </Link>
-
-                        <Link href="/school-lab/monta-tu-negocio" className="p-8 border border-black/10 rounded-3xl hover:border-amber-500 hover:shadow-lg transition-all group bg-white relative overflow-hidden flex flex-col">
-                            <span className="text-amber-500 text-[10px] font-bold tracking-widest uppercase mb-3 block">Emprendedores</span>
-                            <h3 className="font-display text-2xl font-bold mb-2 group-hover:text-amber-500 transition-colors">Monta tu negocio</h3>
-                            <p className="text-sm text-black/60 mb-8 flex-grow">Web, logo, copies y ventas sin contratar a nadie ni saber programar.</p>
-                            <span className="text-sm font-bold opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all text-amber-500">Ver programa →</span>
-                        </Link>
-
-                        <Link href="/school-lab/mejora-tu-material" className="p-8 border border-black/10 rounded-3xl hover:border-cyan-500 hover:shadow-lg transition-all group bg-white relative overflow-hidden flex flex-col">
-                            <span className="text-cyan-600 text-[10px] font-bold tracking-widest uppercase mb-3 block">Profesores</span>
-                            <h3 className="font-display text-2xl font-bold mb-2 group-hover:text-cyan-600 transition-colors">Mejora tu material</h3>
-                            <p className="text-sm text-black/60 mb-8 flex-grow">Menos tiempo corrigiendo, rúbricas automáticas y materiales hiper-personalizados.</p>
-                            <span className="text-sm font-bold opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all text-cyan-600">Ver programa →</span>
-                        </Link>
-
-                        <Link href="/school-lab/mas-tiempo-para-cocina" className="p-8 border border-black/10 rounded-3xl hover:border-red-500 hover:shadow-lg transition-all group bg-white relative overflow-hidden flex flex-col">
-                            <span className="text-red-500 text-[10px] font-bold tracking-widest uppercase mb-3 block">Hostelería</span>
-                            <h3 className="font-display text-2xl font-bold mb-2 group-hover:text-red-500 transition-colors">Más tiempo para tu cocina</h3>
-                            <p className="text-sm text-black/60 mb-8 flex-grow">Responde reseñas, crea contenido para redes y atrae clientes automáticamente.</p>
-                            <span className="text-sm font-bold opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all text-red-500">Ver programa →</span>
-                        </Link>
-
-                        <Link href="/school-lab/dedicate-a-la-medicina" className="p-8 border border-black/10 rounded-3xl hover:border-blue-700 hover:shadow-lg transition-all group bg-white relative overflow-hidden flex flex-col">
-                            <span className="text-blue-700 text-[10px] font-bold tracking-widest uppercase mb-3 block">Médicos / Sanidad</span>
-                            <h3 className="font-display text-2xl font-bold mb-2 group-hover:text-blue-700 transition-colors">Dedícate a la medicina</h3>
-                            <p className="text-sm text-black/60 mb-8 flex-grow">Delega la burocracia: transcripciones, informes y resúmenes de historiales al instante.</p>
-                            <span className="text-sm font-bold opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all text-blue-700">Ver programa →</span>
-                        </Link>
+                        {[
+                            { title: 'Empodérate con IA', target: 'Mujeres 40-60', desc: 'Salud, creatividad y comunicación sin tecnicismos.', color: '#10B981', href: '/school-lab/empoderate-con-ia' },
+                            { title: 'Conéctate con el mundo', target: 'Personas 65+', desc: 'IA como asistente diario para recordar y contactar.', color: '#3B82F6', href: '/school-lab/conectate-con-el-mundo' },
+                            { title: 'Aprende a crear', target: 'Niños 6-12', desc: 'Cuentos y mundos potenciando la imaginación.', color: '#F97316', href: '/school-lab/aprende-a-crear' },
+                            { title: 'Descubre tu futuro', target: 'Jóvenes 13-18', desc: 'Explora profesiones del futuro y crea proyectos.', color: '#8B5CF6', href: '/school-lab/descubre-tu-futuro' },
+                            { title: 'Monta tu negocio', target: 'Emprendedores', desc: 'Web, logo y ventas sin saber programar.', color: '#F59E0B', href: '/school-lab/monta-tu-negocio' },
+                            { title: 'Mejora tu material', target: 'Profesores', desc: 'Menos tiempo corrigiendo, más personalización.', color: '#06B6D4', href: '/school-lab/mejora-tu-material' },
+                            { title: 'Más tiempo en cocina', target: 'Hostelería', desc: 'Responde reseñas y atrae clientes automáticamente.', color: '#EF4444', href: '/school-lab/mas-tiempo-para-cocina' },
+                            { title: 'Dedícate a la medicina', target: 'Sanidad', desc: 'Delega la burocracia y agiliza informes.', color: '#1D4ED8', href: '/school-lab/dedicate-a-la-medicina' },
+                        ].map((prog) => (
+                            <Link key={prog.title} href={prog.href} className="p-8 border border-white/5 bg-white/[0.01] rounded-[1.5rem] hover:border-white/20 hover:bg-white/[0.03] transition-all group relative overflow-hidden flex flex-col">
+                                <span className="v5-label !text-[9px] mb-3 block" style={{ color: prog.color }}>{prog.target}</span>
+                                <h3 className="v5-h3 !text-xl mb-2 group-hover:text-white transition-colors">{prog.title}</h3>
+                                <p className="v5-body-large !text-sm opacity-40 mb-8 flex-grow">{prog.desc}</p>
+                                <span className="v5-label !text-[9px] !text-white/20 group-hover:!text-white opacity-0 group-hover:opacity-100 transition-all">Ver programa →</span>
+                            </Link>
+                        ))}
 
                     </div>
                 </div>
@@ -198,40 +159,41 @@ export default function SchoolLabPage() {
             </section>
 
             {/* Los 3 Formatos */}
-            <section className="v5-section bg-zinc-900 border-t border-white/5 py-24">
+            <section className="v5-section bg-[#0C0C0C] border-t border-white/5 py-24">
                 <div className="v5-container">
 
-                    <div className="text-center mb-16">
+                    <div className="text-center mb-16 v5-reveal">
+                        <span className="v5-label mb-4 text-white/40">METODOLOGÍA Y FORMATOS</span>
                         <h2 className="v5-h2">Tres formatos, el mismo ADN</h2>
                     </div>
 
-                    <div className="grid md:grid-cols-3 gap-8">
-                        <div className="p-8 border border-white/5 bg-black rounded-3xl flex flex-col justify-between">
+                    <div className="grid md:grid-cols-3 gap-6">
+                        <div className="p-8 border border-white/5 bg-white/[0.01] rounded-3xl flex flex-col justify-between hover:border-white/10 transition-colors">
                             <div>
-                                <h3 className="font-display text-2xl font-bold mb-2">Taller de Descubrimiento</h3>
-                                <p className="text-[#00FF41] font-mono text-sm mb-6">90 min • Gratuito o Simbólico</p>
-                                <p className="text-white/60 text-sm mb-6">El primer paso seguro. Sales habiendo creado algo con IA directamente desde tu móvil o portátil. Sin agobios.</p>
+                                <h3 className="v5-h3 !text-2xl mb-2 text-white">Taller de Descubrimiento</h3>
+                                <p className="font-mono text-[10px] text-[#00FF41] mb-6 tracking-widest uppercase">90 min • Feedback inmediato</p>
+                                <p className="v5-body-large !text-sm opacity-50 mb-6">El primer paso seguro. Sales habiendo creado algo con IA directamente desde tu móvil o portátil. Sin agobios.</p>
                             </div>
-                            <Link href="#contact" className="text-sm font-bold text-white hover:text-[#00FF41] transition-colors border-t border-white/10 pt-4 block text-center">Ver fechas →</Link>
+                            <Link href="#contact" className="text-xs font-mono tracking-widest uppercase text-white/40 hover:text-[#00FF41] transition-colors pt-4 border-t border-white/5 text-center">Ver fechas →</Link>
                         </div>
 
-                        <div className="p-8 border border-[#059669]/30 bg-black/50 backdrop-blur-sm rounded-3xl flex flex-col justify-between relative overflow-hidden shadow-[0_0_30px_rgba(5,150,105,0.1)]">
-                            <div className="absolute top-0 right-0 px-3 py-1 bg-[#059669] text-white text-[10px] font-bold tracking-widest uppercase rounded-bl-xl">MÁS POPULAR</div>
+                        <div className="p-8 border border-[#00FF41]/20 bg-[#00FF41]/[0.02] rounded-3xl flex flex-col justify-between relative overflow-hidden group">
+                            <div className="absolute top-0 right-0 px-3 py-1 bg-[#00FF41] text-[#080808] text-[9px] font-bold tracking-widest uppercase rounded-bl-xl">MÁS POPULAR</div>
                             <div>
-                                <h3 className="font-display text-2xl font-bold mb-2">Programa Intensivo</h3>
-                                <p className="text-[#00FF41] font-mono text-sm mb-6">1 semana (10h) • Desde 60€</p>
-                                <p className="text-white/60 text-sm mb-6">5 sesiones de 2h donde vas en serio. Desarrollas un proyecto real terminado al final de la semana, guiado paso a paso.</p>
+                                <h3 className="v5-h3 !text-2xl mb-2 text-white">Programa Intensivo</h3>
+                                <p className="font-mono text-[10px] text-[#00FF41] mb-6 tracking-widest uppercase">1 semana • Desde 60€</p>
+                                <p className="v5-body-large !text-sm opacity-60 mb-6">5 sesiones de 2h donde vas en serio. Desarrollas un proyecto real terminado al final de la semana, guiado paso a paso.</p>
                             </div>
-                            <Link href="#contact" className="text-sm font-bold text-white bg-white/10 hover:bg-white/20 transition-colors py-3 px-4 rounded-xl text-center">Matricularme</Link>
+                            <Link href="#contact" className="text-xs font-bold text-[#080808] bg-[#F5F5F0] hover:bg-white transition-colors py-3 px-4 rounded-xl text-center">Matricularme</Link>
                         </div>
 
-                        <div className="p-8 border border-white/5 bg-black rounded-3xl flex flex-col justify-between">
+                        <div className="p-8 border border-white/5 bg-white/[0.01] rounded-3xl flex flex-col justify-between hover:border-white/10 transition-colors">
                             <div>
-                                <h3 className="font-display text-2xl font-bold mb-2">Comunidad Aether</h3>
-                                <p className="text-[#00FF41] font-mono text-sm mb-6">Mensual • Precio Reducido</p>
-                                <p className="text-white/60 text-sm mb-6">Para alumni del Intensivo. Novedades, soporte continuo, herramientas probadas y una red de personas aprendiendo igual que tú.</p>
+                                <h3 className="v5-h3 !text-2xl mb-2 text-white">Comunidad Aether</h3>
+                                <p className="font-mono text-[10px] text-[#00FF41] mb-6 tracking-widest uppercase">Mensual • Alumni</p>
+                                <p className="v5-body-large !text-sm opacity-50 mb-6">Novedades, soporte continuo, herramientas probadas y una red de personas aprendiendo igual que tú.</p>
                             </div>
-                            <Link href="#contact" className="text-sm font-bold text-white/50 hover:text-white transition-colors border-t border-white/10 pt-4 block text-center">Acceso Alumni →</Link>
+                            <Link href="#contact" className="text-xs font-mono tracking-widest uppercase text-white/40 hover:text-white transition-colors pt-4 border-t border-white/5 text-center">Acceso Alumni →</Link>
                         </div>
                     </div>
                 </div>

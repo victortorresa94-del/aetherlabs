@@ -4,62 +4,33 @@ import { useEffect } from 'react';
 
 export default function ScrollAnimations() {
   useEffect(() => {
-    // Dynamically import GSAP to avoid SSR issues
-    const initGSAP = async () => {
-      const { gsap } = await import('gsap');
-      const { ScrollTrigger } = await import('gsap/ScrollTrigger');
-      gsap.registerPlugin(ScrollTrigger);
+    const elements = Array.from(document.querySelectorAll<HTMLElement>('.v5-reveal'));
 
-      // Batch all .v5-reveal elements
-      ScrollTrigger.batch('.v5-reveal', {
-        onEnter: (elements) => {
-          gsap.to(elements, {
-            opacity: 1,
-            y: 0,
-            duration: 0.7,
-            ease: 'power2.out',
-            stagger: 0.1,
-          });
-        },
-        start: 'top 85%',
-        once: true,
-      });
-
-      // Hero H1 char-by-char animation on load
-      const h1 = document.querySelector('.v5-page h1');
-      if (h1) {
-        const text = h1.innerHTML;
-        // Animate the whole h1 block on load
-        gsap.from(h1, {
-          opacity: 0,
-          y: 60,
-          duration: 0.8,
-          ease: 'power3.out',
-          delay: 0.3,
-        });
+    // Immediately show hero elements (above the fold)
+    elements.forEach((el) => {
+      const rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight) {
+        el.style.opacity = '1';
+        el.style.transform = 'translateY(0)';
       }
+    });
 
-      // Hero label + subtitle
-      gsap.from('.v5-page .v5-label', {
-        opacity: 0,
-        y: 20,
-        duration: 0.6,
-        ease: 'power2.out',
-        delay: 0.1,
-      });
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const el = entry.target as HTMLElement;
+            el.style.opacity = '1';
+            el.style.transform = 'translateY(0)';
+            observer.unobserve(el);
+          }
+        });
+      },
+      { threshold: 0.06, rootMargin: '0px 0px -30px 0px' }
+    );
 
-      // Refresh triggers
-      ScrollTrigger.refresh();
-    };
-
-    initGSAP();
-
-    return () => {
-      // Cleanup on unmount
-      import('gsap/ScrollTrigger').then(({ ScrollTrigger }) => {
-        ScrollTrigger.getAll().forEach(t => t.kill());
-      });
-    };
+    elements.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
   }, []);
 
   return null;

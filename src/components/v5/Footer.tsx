@@ -1,102 +1,74 @@
 'use client';
 
 import Link from 'next/link';
-import Image from 'next/image';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer style={{
-      backgroundColor: '#050A14',
-      borderTop: '1px solid var(--v5-border)',
-      padding: '48px 0',
-    }}>
+    <footer
+      style={{
+        backgroundColor: '#080808',
+        borderTop: '1px solid rgba(255,255,255,0.06)',
+        paddingTop: '80px',
+        paddingBottom: '40px',
+      }}
+    >
       <div className="v5-container">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
-          {/* Col 1: Logo + tagline */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+
+          {/* Logo + tagline */}
           <div className="md:col-span-2">
-            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '16px' }}>
-              <Image src="/aether-logo-white.png" alt="Aether Labs" width={28} height={28} style={{ objectFit: 'contain' }} />
-              <span style={{
-                fontFamily: 'var(--v5-font-display)',
-                fontWeight: 700,
-                fontSize: '17px',
-                color: 'var(--v5-text-primary)',
-                letterSpacing: '-0.02em',
-              }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '20px' }}>
+              <svg width="20" height="20" viewBox="0 0 32 32" fill="none">
+                <circle cx="16" cy="16" r="14" stroke="rgba(255,255,255,0.40)" strokeWidth="1.5" />
+                <circle cx="16" cy="16" r="5" fill="rgba(255,255,255,0.40)" />
+              </svg>
+              <span
+                style={{
+                  fontFamily: 'var(--v5-font-display)',
+                  fontSize: '15px',
+                  fontWeight: 300,
+                  letterSpacing: '-0.02em',
+                  color: 'rgba(255,255,255,0.50)',
+                }}
+              >
                 Aether Labs
               </span>
             </div>
-            <p style={{
-              fontFamily: 'var(--v5-font-body)',
-              fontSize: '14px',
-              color: 'var(--v5-text-muted)',
-              lineHeight: 1.65,
-              maxWidth: '260px',
-            }}>
-              El puente entre personas y tecnología. Implementación de IA, contenido y presencia digital para empresas españolas.
+            <p
+              style={{
+                fontFamily: 'var(--v5-font-body)',
+                fontSize: '13px',
+                fontWeight: 300,
+                lineHeight: 1.8,
+                color: 'rgba(255,255,255,0.22)',
+                maxWidth: '240px',
+              }}
+            >
+              El puente entre personas y tecnología. IA, contenido y presencia digital para empresas.
             </p>
-            <div style={{ marginTop: '20px', display: 'flex', gap: '12px' }}>
-              {[
-                { href: 'https://linkedin.com', label: 'LinkedIn', icon: 'in' },
-                { href: 'https://instagram.com', label: 'Instagram', icon: 'ig' },
-                { href: 'https://twitter.com', label: 'X/Twitter', icon: 'x' },
-              ].map(({ href, label, icon }) => (
-                <a
-                  key={icon}
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={label}
-                  style={{
-                    width: '36px',
-                    height: '36px',
-                    borderRadius: 'var(--v5-radius-sm)',
-                    border: '1px solid var(--v5-border)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    fontFamily: 'var(--v5-font-mono)',
-                    fontSize: '11px',
-                    fontWeight: 700,
-                    color: 'var(--v5-text-muted)',
-                    textDecoration: 'none',
-                    transition: 'border-color var(--v5-transition), color var(--v5-transition)',
-                  }}
-                  onMouseEnter={e => {
-                    (e.currentTarget as HTMLAnchorElement).style.borderColor = 'var(--v5-border-hover)';
-                    (e.currentTarget as HTMLAnchorElement).style.color = 'var(--v5-text-primary)';
-                  }}
-                  onMouseLeave={e => {
-                    (e.currentTarget as HTMLAnchorElement).style.borderColor = 'var(--v5-border)';
-                    (e.currentTarget as HTMLAnchorElement).style.color = 'var(--v5-text-muted)';
-                  }}
-                >
-                  {icon}
-                </a>
-              ))}
-            </div>
           </div>
 
-          {/* Col 2: Labs */}
+          {/* Labs */}
           <div>
-            <h4 style={{
-              fontFamily: 'var(--v5-font-mono)',
-              fontSize: '10px',
-              fontWeight: 500,
-              letterSpacing: '0.15em',
-              textTransform: 'uppercase',
-              color: 'var(--v5-text-muted)',
-              marginBottom: '20px',
-            }}>
+            <h4
+              style={{
+                fontFamily: 'var(--v5-font-mono)',
+                fontSize: '10px',
+                fontWeight: 400,
+                letterSpacing: '0.14em',
+                textTransform: 'uppercase',
+                color: 'rgba(255,255,255,0.20)',
+                marginBottom: '20px',
+              }}
+            >
               Labs
             </h4>
             {[
               { label: 'Creative Lab', href: '/creative-lab' },
               { label: 'Systems Lab', href: '/systems-lab' },
               { label: 'School Lab', href: '/school-lab' },
-              { label: 'Sesión de Claridad', href: '/systems-lab/sesion-de-claridad' },
             ].map(({ label, href }) => (
               <Link
                 key={href}
@@ -104,38 +76,40 @@ export default function Footer() {
                 style={{
                   display: 'block',
                   fontFamily: 'var(--v5-font-body)',
-                  fontSize: '14px',
-                  color: 'var(--v5-text-secondary)',
+                  fontSize: '13px',
+                  fontWeight: 300,
+                  color: 'rgba(255,255,255,0.28)',
                   textDecoration: 'none',
                   marginBottom: '12px',
-                  transition: 'color var(--v5-transition)',
+                  transition: 'color 200ms ease',
                 }}
-                onMouseEnter={e => (e.target as HTMLAnchorElement).style.color = 'var(--v5-text-primary)'}
-                onMouseLeave={e => (e.target as HTMLAnchorElement).style.color = 'var(--v5-text-secondary)'}
+                onMouseEnter={(e) => { (e.target as HTMLElement).style.color = 'rgba(255,255,255,0.55)'; }}
+                onMouseLeave={(e) => { (e.target as HTMLElement).style.color = 'rgba(255,255,255,0.28)'; }}
               >
                 {label}
               </Link>
             ))}
           </div>
 
-          {/* Col 3: Company */}
+          {/* Company */}
           <div>
-            <h4 style={{
-              fontFamily: 'var(--v5-font-mono)',
-              fontSize: '10px',
-              fontWeight: 500,
-              letterSpacing: '0.15em',
-              textTransform: 'uppercase',
-              color: 'var(--v5-text-muted)',
-              marginBottom: '20px',
-            }}>
+            <h4
+              style={{
+                fontFamily: 'var(--v5-font-mono)',
+                fontSize: '10px',
+                fontWeight: 400,
+                letterSpacing: '0.14em',
+                textTransform: 'uppercase',
+                color: 'rgba(255,255,255,0.20)',
+                marginBottom: '20px',
+              }}
+            >
               Empresa
             </h4>
             {[
-              { label: 'Cómo funciona', href: '#como-funciona' },
-              { label: 'Casos de estudio', href: '/casos' },
-              { label: 'Contacto', href: '/contacto' },
-              { label: 'hola@aetherlabs.es', href: 'mailto:hola@aetherlabs.es' },
+              { label: 'Casos', href: '/casos' },
+              { label: 'Nosotros', href: '/nosotros' },
+              { label: 'Contacto', href: 'mailto:hola@aetherlabs.es' },
             ].map(({ label, href }) => (
               <Link
                 key={href}
@@ -143,37 +117,44 @@ export default function Footer() {
                 style={{
                   display: 'block',
                   fontFamily: 'var(--v5-font-body)',
-                  fontSize: '14px',
-                  color: 'var(--v5-text-secondary)',
+                  fontSize: '13px',
+                  fontWeight: 300,
+                  color: 'rgba(255,255,255,0.28)',
                   textDecoration: 'none',
                   marginBottom: '12px',
-                  transition: 'color var(--v5-transition)',
+                  transition: 'color 200ms ease',
                 }}
-                onMouseEnter={e => (e.target as HTMLAnchorElement).style.color = 'var(--v5-text-primary)'}
-                onMouseLeave={e => (e.target as HTMLAnchorElement).style.color = 'var(--v5-text-secondary)'}
+                onMouseEnter={(e) => { (e.target as HTMLElement).style.color = 'rgba(255,255,255,0.55)'; }}
+                onMouseLeave={(e) => { (e.target as HTMLElement).style.color = 'rgba(255,255,255,0.28)'; }}
               >
                 {label}
               </Link>
             ))}
           </div>
+
         </div>
 
         {/* Bottom bar */}
-        <div style={{
-          borderTop: '1px solid var(--v5-border)',
-          paddingTop: '24px',
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          flexWrap: 'wrap',
-          gap: '12px',
-        }}>
-          <span style={{
-            fontFamily: 'var(--v5-font-body)',
-            fontSize: '13px',
-            color: 'var(--v5-text-muted)',
-          }}>
-            © {currentYear} Aether Labs. Barcelona, España.
+        <div
+          style={{
+            borderTop: '1px solid rgba(255,255,255,0.05)',
+            paddingTop: '24px',
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            flexWrap: 'wrap',
+            gap: '12px',
+          }}
+        >
+          <span
+            style={{
+              fontFamily: 'var(--v5-font-body)',
+              fontSize: '12px',
+              fontWeight: 300,
+              color: 'rgba(255,255,255,0.16)',
+            }}
+          >
+            {currentYear} Aether Labs. Barcelona.
           </span>
           <div style={{ display: 'flex', gap: '24px' }}>
             {[
@@ -185,19 +166,21 @@ export default function Footer() {
                 href={href}
                 style={{
                   fontFamily: 'var(--v5-font-body)',
-                  fontSize: '13px',
-                  color: 'var(--v5-text-muted)',
+                  fontSize: '12px',
+                  fontWeight: 300,
+                  color: 'rgba(255,255,255,0.16)',
                   textDecoration: 'none',
-                  transition: 'color var(--v5-transition)',
+                  transition: 'color 200ms ease',
                 }}
-                onMouseEnter={e => (e.target as HTMLAnchorElement).style.color = 'var(--v5-text-secondary)'}
-                onMouseLeave={e => (e.target as HTMLAnchorElement).style.color = 'var(--v5-text-muted)'}
+                onMouseEnter={(e) => { (e.target as HTMLElement).style.color = 'rgba(255,255,255,0.35)'; }}
+                onMouseLeave={(e) => { (e.target as HTMLElement).style.color = 'rgba(255,255,255,0.16)'; }}
               >
                 {label}
               </Link>
             ))}
           </div>
         </div>
+
       </div>
     </footer>
   );
