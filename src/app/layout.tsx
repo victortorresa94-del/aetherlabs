@@ -6,22 +6,22 @@ import type { Viewport } from "next";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://aetherlabs.es"),
-  title: "Aether Labs — El puente entre la tecnología y tu empresa | Barcelona",
+  title: "Aether Labs — Implementación de IA para empresas | Barcelona",
   description:
-    "Aether Labs distribuye e integra las mejores soluciones de IA del mundo para empresas españolas. Seleccionamos, implementamos y acompañamos. Sin fricciones.",
+    "Ayudamos a empresas con buen producto a conseguir clientes con IA. Implementación, contenido y presencia digital. Primera sesión gratis.",
   keywords: [
-    "inteligencia artificial empresas",
-    "distribuidor IA España",
-    "integración IA pymes",
-    "Closius España",
-    "AchieveApex CRM IA",
-    "consultoría IA Barcelona",
+    "agencia IA empresas España",
+    "implementar IA empresa",
+    "producción contenido IA",
+    "diseño web IA",
+    "consultoría inteligencia artificial Barcelona",
     "Aether Labs",
+    "sistemas IA empresas",
   ],
   openGraph: {
-    title: "Aether Labs — El puente entre la tecnología y tu empresa",
+    title: "Aether Labs — El puente entre personas y tecnología",
     description:
-      "Seleccionamos, distribuimos e implementamos las mejores soluciones de IA del mundo para que tu empresa compita en la nueva economía.",
+      "Implementamos IA, producimos contenido y construimos presencia digital.",
     images: [
       {
         url: "/og-image-black.png",
@@ -36,9 +36,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Aether Labs — El puente entre la tecnología y tu empresa",
+    title: "Aether Labs — El puente entre personas y tecnología",
     description:
-      "Distribuimos e integramos las mejores soluciones de IA para empresas españolas. Basados en Barcelona.",
+      "Ayudamos a empresas con buen producto a conseguir clientes con IA. Implementación, contenido y presencia digital.",
     images: ["/og-image-black.png"],
   },
   robots: {
