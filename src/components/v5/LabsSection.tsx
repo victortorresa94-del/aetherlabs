@@ -1,133 +1,120 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 
 const labs = [
-  {
-    key: 'creative',
-    label: 'Creative Lab',
-    title: 'Haz que te vean, te entiendan y te elijan',
-    description: 'Producimos el material de marketing que tu empresa necesita para existir en el mundo digital.',
-    services: [
-      'Web corporativa y landing pages',
-      'Vídeos con IA (avatar, explicativos, reels)',
-      'Branding e identidad visual',
-      'Presentaciones y material de venta',
-      'Creatividades para anuncios',
-    ],
-    cta: 'Explorar Creative Lab',
-    href: '/creative-lab',
-    span: 7,
-  },
   {
     key: 'systems',
     label: 'Systems Lab',
     title: 'Automatiza cómo opera tu negocio',
-    description: 'Claude, Copilot, n8n. Lo que necesitas, implementado.',
-    services: [
-      'Sesión de Claridad (diagnóstico)',
-      'Implementación de Claude y Copilot',
-      'Automatización de flujos',
-      'AI Stacks por departamento',
-    ],
+    description: 'Implementamos IA como Claude y Copilot. Automatizamos flujos para que el trabajo tedioso desaparezca.',
     cta: 'Explorar Systems Lab',
     href: '/systems-lab',
-    span: 5,
+    image: '/quantum-sculpture.jpeg',
+  },
+  {
+    key: 'creative',
+    label: 'Creative Lab',
+    title: 'Material de marketing que funciona',
+    description: 'Interfaces, landing pages, avatares 3D y diseño. Haz que te vean, te entiendan y te elijan.',
+    cta: 'Explorar Creative Lab',
+    href: '/creative-lab',
+    image: '/crystal-sculpture.jpeg',
   },
   {
     key: 'school',
     label: 'School Lab',
     title: 'Aprende IA desde cero',
-    description: 'Talleres y programas para personas, equipos e instituciones.',
-    services: [
-      'Talleres para equipos de empresa',
-      'Programa para personas no técnicas',
-      'Formación para jóvenes',
-      'Charlas para instituciones',
-    ],
+    description: 'Cursos, talleres y programas presenciales para empresas. Transforma a tu equipo con nueva tecnología.',
     cta: 'Explorar School Lab',
     href: '/school-lab',
-    span: 12,
+    image: '/chrome-sculpture.jpeg',
   },
 ];
 
 export default function LabsSection() {
   return (
-    <section id="servicios" className="v5-section" style={{ backgroundColor: '#080808' }}>
+    <section id="servicios" className="v5-section" style={{ backgroundColor: '#FFFFFF' }}>
       <div className="v5-container">
-
         {/* Header */}
-        <div className="mb-16 v5-reveal">
+        <div className="mb-20 v5-reveal flex flex-col items-start gap-4">
           <span
             style={{
-              display: 'block',
-              marginBottom: '16px',
               fontFamily: 'var(--v5-font-mono)',
               fontSize: '11px',
-              fontWeight: 400,
+              fontWeight: 500,
               letterSpacing: '0.15em',
               textTransform: 'uppercase',
-              color: '#666666',
+              color: '#999999',
             }}
           >
-            Servicios
+            Nuestros Labs
           </span>
           <h2
             style={{
               fontFamily: 'var(--v5-font-display)',
-              fontSize: 'clamp(28px, 3.5vw, 48px)',
+              fontSize: 'clamp(36px, 4vw, 64px)',
               fontWeight: 300,
               letterSpacing: '-0.02em',
               lineHeight: 1.05,
-              color: '#F5F5F0',
+              color: '#111111',
             }}
           >
-            Tres laboratorios.{' '}
-            <span style={{ color: 'rgba(245,245,240,0.22)' }}>Un objetivo.</span>
+            Tres laboratorios.<br />
+            <span style={{ color: '#999999' }}>Un objetivo común.</span>
           </h2>
         </div>
 
-        {/* Bento Grid */}
+        {/* 3 Equal Cards Grid */}
         <div
-          className="grid gap-3"
-          style={{ gridTemplateColumns: 'repeat(12, 1fr)' }}
+          className="grid grid-cols-1 md:grid-cols-3 v5-section-gap"
         >
           {labs.map((lab, i) => (
             <div
               key={lab.key}
-              className="v5-reveal flex flex-col justify-between"
+              className="v5-reveal flex flex-col"
               style={{
-                gridColumn: `span ${lab.span}`,
-                minHeight: lab.span === 12 ? '160px' : '380px',
-                background: 'rgba(255,255,255,0.025)',
-                border: '1px solid rgba(255,255,255,0.07)',
+                transitionDelay: `${i * 100}ms`,
+                background: '#F8F8F8',
+                border: '1px solid #EBEBEB',
                 borderRadius: '16px',
-                padding: lab.span === 12 ? '36px 40px' : '40px',
-                transition: 'border-color 300ms ease, background 300ms ease',
-                transitionDelay: `${i * 80}ms`,
-              }}
-              onMouseEnter={(e) => {
-                const el = e.currentTarget as HTMLElement;
-                el.style.borderColor = 'rgba(255,255,255,0.12)';
-                el.style.background = 'rgba(255,255,255,0.035)';
-              }}
-              onMouseLeave={(e) => {
-                const el = e.currentTarget as HTMLElement;
-                el.style.borderColor = 'rgba(255,255,255,0.07)';
-                el.style.background = 'rgba(255,255,255,0.025)';
+                overflow: 'hidden',
+                textDecoration: 'none',
               }}
             >
-              <div className="flex-1">
+              {/* Image Container */}
+              <div
+                style={{
+                  position: 'relative',
+                  width: '100%',
+                  aspectRatio: '1',
+                  backgroundColor: '#EDE8DF', // Warm card inner bg
+                }}
+              >
+                <Image
+                  src={lab.image}
+                  alt={lab.title}
+                  fill
+                  className="object-cover"
+                  style={{
+                    filter: 'contrast(1.05) brightness(1.02)'
+                  }}
+                />
+              </div>
+
+              {/* Text content */}
+              <div className="flex flex-col flex-1 p-6 md:p-8">
                 <span
                   style={{
                     display: 'block',
-                    marginBottom: '20px',
+                    marginBottom: '16px',
                     fontFamily: 'var(--v5-font-mono)',
-                    fontSize: '10px',
-                    fontWeight: 400,
+                    fontSize: '11px',
+                    fontWeight: 500,
                     letterSpacing: '0.15em',
                     textTransform: 'uppercase',
-                    color: 'rgba(255,255,255,0.30)',
+                    color: '#999999',
                   }}
                 >
                   {lab.label}
@@ -136,111 +123,65 @@ export default function LabsSection() {
                 <h3
                   style={{
                     fontFamily: 'var(--v5-font-display)',
-                    fontSize: lab.span === 12 ? 'clamp(18px, 2vw, 24px)' : 'clamp(20px, 2.2vw, 28px)',
-                    fontWeight: 300,
+                    fontSize: '24px',
+                    fontWeight: 400,
                     letterSpacing: '-0.02em',
                     lineHeight: 1.2,
-                    color: 'rgba(255,255,255,0.88)',
-                    marginBottom: '12px',
+                    color: '#111111',
+                    marginBottom: '16px',
                   }}
                 >
                   {lab.title}
                 </h3>
 
                 <p
+                  className="flex-1"
                   style={{
                     fontFamily: 'var(--v5-font-body)',
-                    fontSize: '14px',
+                    fontSize: '17px',
                     fontWeight: 300,
                     lineHeight: 1.8,
-                    color: 'rgba(255,255,255,0.38)',
-                    marginBottom: '24px',
+                    color: '#666666',
+                    marginBottom: '32px',
                   }}
                 >
                   {lab.description}
                 </p>
 
-                {/* Vertical list for span-7 and span-5 */}
-                {lab.span !== 12 && (
-                  <ul style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginBottom: '32px' }}>
-                    {lab.services.map((service) => (
-                      <li key={service} style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                        <span
-                          style={{
-                            width: '3px',
-                            height: '3px',
-                            borderRadius: '50%',
-                            flexShrink: 0,
-                            backgroundColor: 'rgba(255,255,255,0.22)',
-                          }}
-                        />
-                        <span
-                          style={{
-                            fontFamily: 'var(--v5-font-body)',
-                            fontSize: '13px',
-                            fontWeight: 300,
-                            color: 'rgba(255,255,255,0.42)',
-                          }}
-                        >
-                          {service}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-                )}
-
-                {/* Pills for span-12 */}
-                {lab.span === 12 && (
-                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginBottom: '24px' }}>
-                    {lab.services.map((service) => (
-                      <span
-                        key={service}
-                        style={{
-                          padding: '6px 14px',
-                          borderRadius: '100px',
-                          fontFamily: 'var(--v5-font-body)',
-                          fontSize: '12px',
-                          fontWeight: 300,
-                          color: 'rgba(255,255,255,0.42)',
-                          border: '1px solid rgba(255,255,255,0.08)',
-                        }}
-                      >
-                        {service}
-                      </span>
-                    ))}
-                  </div>
-                )}
+                <Link
+                  href={lab.href}
+                  className="group"
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '8px',
+                    fontFamily: 'var(--v5-font-body)',
+                    fontSize: '15px',
+                    fontWeight: 400,
+                    color: '#111111',
+                    textDecoration: 'none',
+                    transition: 'opacity 200ms ease',
+                  }}
+                  onMouseEnter={(e) => {
+                    (e.currentTarget as HTMLElement).style.opacity = '0.7';
+                  }}
+                  onMouseLeave={(e) => {
+                    (e.currentTarget as HTMLElement).style.opacity = '1';
+                  }}
+                >
+                  {lab.cta}
+                  <svg
+                    width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5}
+                    style={{ transition: 'transform 200ms ease' }}
+                    className="group-hover:translate-x-1"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                  </svg>
+                </Link>
               </div>
-
-              <Link
-                href={lab.href}
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '6px',
-                  fontFamily: 'var(--v5-font-body)',
-                  fontSize: '13px',
-                  fontWeight: 300,
-                  color: 'rgba(255,255,255,0.40)',
-                  textDecoration: 'none',
-                  transition: 'color 200ms ease',
-                }}
-                onMouseEnter={(e) => {
-                  (e.currentTarget as HTMLElement).style.color = 'rgba(255,255,255,0.80)';
-                }}
-                onMouseLeave={(e) => {
-                  (e.currentTarget as HTMLElement).style.color = 'rgba(255,255,255,0.40)';
-                }}
-              >
-                {lab.cta}
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                </svg>
-              </Link>
             </div>
           ))}
         </div>
-
       </div>
     </section>
   );

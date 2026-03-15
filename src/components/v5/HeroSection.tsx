@@ -7,7 +7,7 @@ export default function HeroSection() {
   return (
     <section
       className="relative min-h-screen flex items-center overflow-hidden"
-      style={{ backgroundColor: '#080808', paddingTop: '160px', paddingBottom: '120px' }}
+      style={{ backgroundColor: '#080808', paddingTop: '160px', paddingBottom: '160px' }}
     >
       <div className="v5-container relative z-10 w-full">
         <div className="v5-hero-grid items-center">
@@ -15,11 +15,11 @@ export default function HeroSection() {
           {/* Left — Text */}
           <div className="flex flex-col items-start text-left">
             <span
-              className="v5-reveal mb-8"
+              className="v5-reveal mb-4"
               style={{
                 fontFamily: 'var(--v5-font-mono)',
                 fontSize: '11px',
-                fontWeight: 400,
+                fontWeight: 500,
                 letterSpacing: '0.15em',
                 textTransform: 'uppercase',
                 color: '#999999',
@@ -33,7 +33,7 @@ export default function HeroSection() {
               className="v5-reveal mb-8"
               style={{
                 fontFamily: 'var(--v5-font-display)',
-                fontSize: 'clamp(48px, 6.8vw, 92px)',
+                fontSize: 'clamp(40px, 6vw, 84px)',
                 fontWeight: 300,
                 letterSpacing: '-0.03em',
                 lineHeight: 0.95,
@@ -54,7 +54,7 @@ export default function HeroSection() {
                 fontWeight: 300,
                 lineHeight: 1.8,
                 color: 'rgba(245,245,240,0.50)',
-                maxWidth: '420px',
+                maxWidth: '520px',
                 transitionDelay: '160ms',
               }}
             >
@@ -63,7 +63,7 @@ export default function HeroSection() {
             </p>
 
             <div
-              className="v5-reveal v5-hero-buttons"
+              className="v5-reveal flex flex-col sm:flex-row gap-4"
               style={{ transitionDelay: '220ms' }}
             >
               <Link
@@ -72,12 +72,12 @@ export default function HeroSection() {
                   display: 'inline-flex',
                   alignItems: 'center',
                   gap: '8px',
-                  padding: '14px 32px',
+                  padding: '16px 32px',
                   background: '#F5F5F0',
                   color: '#080808',
-                  borderRadius: '100px',
+                  borderRadius: '0px',
                   fontFamily: 'var(--v5-font-body)',
-                  fontSize: '14px',
+                  fontSize: '15px',
                   fontWeight: 400,
                   letterSpacing: '0.01em',
                   textDecoration: 'none',
@@ -95,19 +95,47 @@ export default function HeroSection() {
               >
                 Reservar sesión
               </Link>
-              <Link href="#servicios" className="v5-btn-ghost">
+              <Link
+                href="#servicios"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  padding: '16px 32px',
+                  background: 'transparent',
+                  color: '#CCCCCC',
+                  border: '1px solid rgba(255,255,255,0.2)',
+                  borderRadius: '0px',
+                  fontFamily: 'var(--v5-font-body)',
+                  fontSize: '15px',
+                  fontWeight: 400,
+                  letterSpacing: '0.01em',
+                  textDecoration: 'none',
+                  transition: 'all 200ms ease',
+                  whiteSpace: 'nowrap',
+                }}
+                onMouseEnter={(e) => {
+                  (e.currentTarget as HTMLElement).style.background = 'rgba(255,255,255,0.05)';
+                  (e.currentTarget as HTMLElement).style.color = '#FFFFFF';
+                }}
+                onMouseLeave={(e) => {
+                  (e.currentTarget as HTMLElement).style.background = 'transparent';
+                  (e.currentTarget as HTMLElement).style.color = '#CCCCCC';
+                }}
+              >
                 Ver servicios
               </Link>
             </div>
 
             <div
-              className="v5-reveal mt-16 flex flex-col items-start gap-3"
+              className="v5-reveal mt-16 flex flex-col items-start gap-4"
               style={{ transitionDelay: '300ms' }}
             >
               <span
                 style={{
                   fontFamily: 'var(--v5-font-mono)',
-                  fontSize: '10px',
+                  fontSize: '11px',
+                  fontWeight: 500,
                   letterSpacing: '0.15em',
                   textTransform: 'uppercase',
                   color: 'rgba(255,255,255,0.22)',
@@ -121,7 +149,7 @@ export default function HeroSection() {
                     key={name}
                     style={{
                       fontFamily: 'var(--v5-font-display)',
-                      fontSize: '13px',
+                      fontSize: '15px',
                       fontWeight: 300,
                       letterSpacing: '-0.01em',
                       color: 'rgba(255,255,255,0.18)',
@@ -134,10 +162,10 @@ export default function HeroSection() {
             </div>
           </div>
 
-          {/* Right — Warm card */}
+          {/* Right — Warm card (3D object) */}
           <div className="v5-hide-on-mobile w-full flex justify-end">
             <div
-              className="v5-reveal relative w-full max-w-[440px]"
+              className="v5-reveal relative w-full max-w-[480px]"
               style={{
                 animation: 'heroFloat 7s ease-in-out infinite',
                 transitionDelay: '100ms',
@@ -145,13 +173,11 @@ export default function HeroSection() {
             >
               {/* Card */}
               <div
+                className="card-3d-object card-3d-object-shadow"
                 style={{
-                  background: '#EDE8DF',
-                  borderRadius: '20px',
                   aspectRatio: '4/5',
-                  overflow: 'hidden',
                   position: 'relative',
-                  boxShadow: '0 30px 80px rgba(0,0,0,0.55), 0 4px 20px rgba(0,0,0,0.30)',
+                  overflow: 'hidden',
                 }}
               >
                 <div className="relative w-full h-full">
@@ -193,7 +219,7 @@ export default function HeroSection() {
 
               <div
                 className="v5-floating-pill"
-                style={{ top: '52%', right: '-16px', fontSize: '10px' }}
+                style={{ top: '52%', right: '-16px' }}
               >
                 v5.0
               </div>

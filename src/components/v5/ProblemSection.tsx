@@ -22,17 +22,17 @@ export default function ProblemSection() {
   return (
     <section className="v5-section" style={{ backgroundColor: '#FFFFFF' }}>
       <div className="v5-container">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-start">
 
           {/* Left — sticky heading */}
           <div className="lg:col-span-5 v5-reveal lg:sticky lg:top-32">
             <span
               style={{
                 display: 'block',
-                marginBottom: '20px',
+                marginBottom: '16px',
                 fontFamily: 'var(--v5-font-mono)',
                 fontSize: '11px',
-                fontWeight: 400,
+                fontWeight: 500,
                 letterSpacing: '0.15em',
                 textTransform: 'uppercase',
                 color: '#999999',
@@ -43,15 +43,15 @@ export default function ProblemSection() {
             <h2
               style={{
                 fontFamily: 'var(--v5-font-display)',
-                fontSize: 'clamp(28px, 3.5vw, 48px)',
+                fontSize: 'clamp(36px, 4vw, 64px)',
                 fontWeight: 300,
                 letterSpacing: '-0.02em',
                 lineHeight: 1.05,
                 color: '#111111',
               }}
             >
-              Tienes un buen producto.{' '}
-              <span style={{ color: '#CCCCCC' }}>El mercado no lo sabe.</span>
+              Tienes un buen producto.<br />
+              <span style={{ color: '#999999' }}>El mercado no lo sabe.</span>
             </h2>
           </div>
 
@@ -60,7 +60,7 @@ export default function ProblemSection() {
             {painPoints.map((pain, i) => (
               <div
                 key={i}
-                className="v5-reveal flex gap-6 py-10"
+                className="v5-reveal flex gap-8 py-10"
                 style={{
                   borderBottom: i < painPoints.length - 1 ? '1px solid #EBEBEB' : 'none',
                   transitionDelay: `${i * 60}ms`,
@@ -69,9 +69,9 @@ export default function ProblemSection() {
                 <span
                   style={{
                     fontFamily: 'var(--v5-font-mono)',
-                    fontSize: '11px',
-                    fontWeight: 400,
-                    marginTop: '3px',
+                    fontSize: '13px',
+                    fontWeight: 500,
+                    marginTop: '5px',
                     flexShrink: 0,
                     color: '#CCCCCC',
                     letterSpacing: '0.05em',
@@ -83,10 +83,10 @@ export default function ProblemSection() {
                   <h3
                     style={{
                       fontFamily: 'var(--v5-font-display)',
-                      fontSize: '18px',
+                      fontSize: '24px',
                       fontWeight: 400,
                       letterSpacing: '-0.02em',
-                      marginBottom: '8px',
+                      marginBottom: '12px',
                       color: '#111111',
                     }}
                   >
@@ -95,7 +95,7 @@ export default function ProblemSection() {
                   <p
                     style={{
                       fontFamily: 'var(--v5-font-body)',
-                      fontSize: '15px',
+                      fontSize: '17px',
                       fontWeight: 300,
                       lineHeight: 1.8,
                       color: '#666666',

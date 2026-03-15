@@ -50,10 +50,10 @@ export default function AutomatizacionPage() {
     <SystemsLabLayout accentColor={PINK}>
       <section className="v5-section bg-black">
         <div className="v5-container">
-          <span className="v5-label v5-reveal" style={{ display: 'block', marginBottom: '20px', color: PINK }}>Automatización de flujos</span>
+          <span className="v5-label v5-reveal" style={{ display: 'block', marginBottom: '20px', color: '#999999' }}>Automatización de flujos</span>
           <h1 className="v5-h1 v5-reveal" style={{ maxWidth: '720px', marginBottom: '20px' }}>
             El trabajo repetitivo que hace tu equipo{' '}
-            <span style={{ background: `linear-gradient(135deg, ${PINK}, #FF6B8E)`, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
+            <span style={{ color: 'rgba(245,245,240,0.38)' }}>
               puede hacerlo una máquina
             </span>
           </h1>
@@ -61,7 +61,7 @@ export default function AutomatizacionPage() {
             Conectamos tus herramientas y automatizamos los procesos que consumen más horas en tu empresa. Sin programar.
           </p>
           <div className="v5-reveal" style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-            <Link href="/systems-lab/sesion-de-claridad" className="v5-btn-primary" style={{ backgroundColor: PINK, fontSize: '16px' }}>
+            <Link href="/systems-lab/sesion-de-claridad" className="v5-btn-primary" style={{ fontSize: '16px' }}>
               Automatizar mi empresa →
             </Link>
           </div>
@@ -129,7 +129,7 @@ export default function AutomatizacionPage() {
         <div className="v5-container">
           <h2 className="v5-h2 v5-reveal" style={{ marginBottom: '32px' }}>Automatizar mi empresa con Aether</h2>
           <div className="v5-reveal">
-            <Link href="/systems-lab/sesion-de-claridad" className="v5-btn-primary" style={{ fontSize: '17px', padding: '16px 32px', backgroundColor: PINK }}>
+            <Link href="/systems-lab/sesion-de-claridad" className="v5-btn-primary" style={{ fontSize: '17px', padding: '16px 32px' }}>
               Reservar Sesión de Claridad →
             </Link>
           </div>

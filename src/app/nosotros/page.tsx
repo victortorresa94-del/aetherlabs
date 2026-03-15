@@ -64,7 +64,7 @@ export default function SobreNosotros() {
           <div className="relative bg-black rounded-[40px] p-12 lg:p-24 overflow-hidden shadow-2xl border border-white/5 w-full">
             {/* Architectural Lines */}
             <div className="absolute inset-0 opacity-20 pointer-events-none">
-              <div className="absolute top-1/2 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[#82ff1f]/40 to-transparent"></div>
+              <div className="absolute top-1/2 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
               <div className="absolute top-[40%] left-[25%] h-48 w-px bg-white/30"></div>
               <div className="absolute bottom-[40%] left-[75%] h-48 w-px bg-white/30"></div>
             </div>

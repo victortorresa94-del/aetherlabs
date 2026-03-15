@@ -55,8 +55,8 @@ export default function Footer() {
             <h4
               style={{
                 fontFamily: 'var(--v5-font-mono)',
-                fontSize: '10px',
-                fontWeight: 400,
+                fontSize: '11px',
+                fontWeight: 500,
                 letterSpacing: '0.14em',
                 textTransform: 'uppercase',
                 color: 'rgba(255,255,255,0.20)',
@@ -96,8 +96,8 @@ export default function Footer() {
             <h4
               style={{
                 fontFamily: 'var(--v5-font-mono)',
-                fontSize: '10px',
-                fontWeight: 400,
+                fontSize: '11px',
+                fontWeight: 500,
                 letterSpacing: '0.14em',
                 textTransform: 'uppercase',
                 color: 'rgba(255,255,255,0.20)',

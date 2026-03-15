@@ -5,25 +5,27 @@ import Link from 'next/link';
 import Navbar from '@/components/v5/Navbar';
 import Footer from '@/components/v5/Footer';
 import FinalCtaSection from '@/components/v5/FinalCtaSection';
+import ScrollAnimations from '@/components/v5/ScrollAnimations';
 
 export default function MaterialServicePage() {
     return (
         <main className="v5-page min-h-screen bg-black text-[#F5F5F5]">
+            <ScrollAnimations />
             <Navbar />
 
             {/* Hero Section */}
             <section className="relative pt-40 pb-20 overflow-hidden bg-black">
                 <div className="v5-container relative z-10 text-center flex flex-col items-center">
-                    <span className="v5-label mb-6 text-[#059669]">MATERIAL CORPORATIVO</span>
-                    <h1 className="v5-h1 mb-8 max-w-4xl mx-auto leading-[0.9]">
+                    <span className="v5-label mb-6 v5-reveal" style={{ color: '#999999' }}>MATERIAL CORPORATIVO</span>
+                    <h1 className="v5-h1 mb-8 max-w-4xl mx-auto leading-[0.9] v5-reveal" style={{ transitionDelay: '80ms' }}>
                         Documentos que<br />
-                        <span className="text-white/40 italic">abren puertas.</span>
+                        <span style={{ color: 'rgba(245,245,240,0.38)' }}>abren puertas.</span>
                     </h1>
-                    <p className="v5-body-large max-w-2xl mx-auto mb-10 text-white/60">
+                    <p className="v5-body-large max-w-2xl mx-auto mb-10 v5-reveal" style={{ transitionDelay: '160ms' }}>
                         Dossieres, one-pagers, propuestas y catálogos. Todo con el mismo nivel de diseño y precisión narrativa que tu web principal.
                     </p>
-                    <div className="flex gap-4">
-                        <Link href="#tipos" className="v5-btn-primary !bg-[#059669] !text-white hover:!bg-[#047857]">
+                    <div className="flex gap-4 v5-reveal" style={{ transitionDelay: '220ms' }}>
+                        <Link href="#tipos" className="v5-btn-primary" style={{ background: '#F5F5F0', color: '#080808', borderRadius: '0px' }}>
                             Ver Opciones
                         </Link>
                     </div>
@@ -56,16 +58,15 @@ export default function MaterialServicePage() {
             {/* Pricing / Types Section */}
             <section id="tipos" className="v5-section bg-white text-black">
                 <div className="v5-container">
-                    <div className="text-center mb-16">
-                        <h2 className="v5-h2">Modelos de Trabajo</h2>
+                    <div className="text-center mb-16 v5-reveal">
+                        <h2 className="v5-h2" style={{ color: '#111111' }}>Modelos de Trabajo</h2>
                     </div>
 
                     <div className="grid md:grid-cols-3 gap-8">
                         {/* Dossier de empresa */}
-                        <div className="p-8 border border-black/10 rounded-2xl flex flex-col justify-between bg-black text-white relative overflow-hidden group">
-                            <div className="absolute top-0 right-0 w-32 h-32 bg-[#059669]/20 blur-3xl rounded-full"></div>
+                        <div className="p-8 border border-black/10 rounded-2xl flex flex-col justify-between bg-black text-white relative overflow-hidden group v5-reveal">
                             <div className="relative z-10">
-                                <span className="inline-block bg-[#059669] text-white text-[10px] font-bold px-2 py-1 uppercase tracking-widest mb-4 rounded-sm">Institucional</span>
+                                <span className="v5-label mb-4" style={{ color: '#999999' }}>Institucional</span>
                                 <h3 className="font-display text-2xl font-bold mb-4">Dossier de Empresa</h3>
                                 <p className="text-sm opacity-80 mb-6 min-h-[40px]">Para inversores o nuevos grandes clientes corporativos.</p>
                                 <ul className="text-xs space-y-3 opacity-80 mb-8 border-t border-white/10 pt-6">
@@ -74,7 +75,7 @@ export default function MaterialServicePage() {
                                     <li className="flex gap-2"><span>⏱</span> 5-7 días hábiles</li>
                                 </ul>
                             </div>
-                            <div className="font-mono text-sm font-bold pt-4 border-t border-white/10 relative z-10 text-[#6EE7B7]">
+                            <div className="font-mono text-sm font-bold pt-4 border-t border-white/10 relative z-10">
                                 Desde 500€
                             </div>
                         </div>

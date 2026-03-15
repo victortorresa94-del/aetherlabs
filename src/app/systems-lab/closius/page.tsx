@@ -15,7 +15,7 @@ export default function ClosiusPage() {
       <section className="v5-section" style={{ backgroundColor: 'var(--v5-bg-base)' }}>
         <div className="v5-container">
           <div style={{ display: 'flex', gap: '12px', marginBottom: '24px', flexWrap: 'wrap', alignItems: 'center' }}>
-            <span className="v5-label" style={{ color: SKY }}>Closius</span>
+            <span className="v5-label" style={{ color: '#999999' }}>Closius</span>
             <span style={{
               padding: '3px 12px',
               borderRadius: '100px',
@@ -33,7 +33,7 @@ export default function ClosiusPage() {
           </div>
           <h1 className="v5-h1 v5-reveal" style={{ maxWidth: '680px', marginBottom: '20px' }}>
             El coach de ventas con IA que{' '}
-            <span style={{ background: `linear-gradient(135deg, ${SKY}, #38BDF8)`, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
+            <span style={{ color: 'rgba(245,245,240,0.38)' }}>
               entrena a tu equipo comercial
             </span>
           </h1>
@@ -42,7 +42,7 @@ export default function ClosiusPage() {
             exactamente qué está haciendo bien y qué tiene que mejorar.
           </p>
           <div className="v5-reveal" style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-            <Link href="/systems-lab/sesion-de-claridad" className="v5-btn-primary" style={{ backgroundColor: SKY, fontSize: '16px' }}>
+            <Link href="/systems-lab/sesion-de-claridad" className="v5-btn-primary" style={{ fontSize: '16px' }}>
               Implementar Closius →
             </Link>
           </div>
@@ -154,7 +154,7 @@ export default function ClosiusPage() {
         <div className="v5-container">
           <h2 className="v5-h2 v5-reveal" style={{ marginBottom: '32px' }}>Implementar Closius con Aether</h2>
           <div className="v5-reveal">
-            <Link href="/systems-lab/sesion-de-claridad" className="v5-btn-primary" style={{ fontSize: '17px', padding: '16px 32px', backgroundColor: SKY }}>
+            <Link href="/systems-lab/sesion-de-claridad" className="v5-btn-primary" style={{ fontSize: '17px', padding: '16px 32px' }}>
               Reservar Sesión de Claridad →
             </Link>
           </div>

@@ -20,21 +20,21 @@ const pillars = [
 
 export default function SolutionSection() {
   return (
-    <section className="v5-section" style={{ backgroundColor: '#080808' }}>
+    <section className="v5-section" style={{ backgroundColor: '#FFFFFF' }}>
       <div className="v5-container">
 
         {/* Heading */}
-        <div className="text-center mb-20 v5-reveal">
+        <div className="text-center mb-20 v5-reveal flex flex-col items-center">
           <span
             style={{
               display: 'block',
               marginBottom: '16px',
               fontFamily: 'var(--v5-font-mono)',
               fontSize: '11px',
-              fontWeight: 400,
+              fontWeight: 500,
               letterSpacing: '0.15em',
               textTransform: 'uppercase',
-              color: '#666666',
+              color: '#999999',
             }}
           >
             La solución
@@ -42,40 +42,38 @@ export default function SolutionSection() {
           <h2
             style={{
               fontFamily: 'var(--v5-font-display)',
-              fontSize: 'clamp(28px, 3.5vw, 48px)',
+              fontSize: 'clamp(36px, 4vw, 64px)',
               fontWeight: 300,
               letterSpacing: '-0.02em',
               lineHeight: 1.05,
-              color: '#F5F5F0',
-              maxWidth: '560px',
+              color: '#111111',
+              maxWidth: '720px',
               margin: '0 auto',
             }}
           >
-            Un equipo externo de IA que actúa como si fuera interno
+            Un equipo de IA que actúa como si fuera interno
           </h2>
         </div>
 
         {/* Pillars grid */}
-        <div
-          className="grid grid-cols-1 md:grid-cols-3 overflow-hidden rounded-2xl"
-          style={{ border: '1px solid rgba(255,255,255,0.07)' }}
-        >
+        <div className="grid grid-cols-1 md:grid-cols-3 v5-section-gap">
           {pillars.map((pillar, i) => (
             <div
               key={i}
-              className="v5-reveal flex flex-col gap-6 p-10 md:p-12"
+              className="v5-reveal flex flex-col gap-6 p-6 md:p-8"
               style={{
-                backgroundColor: '#0D0D0D',
-                borderRight: i < pillars.length - 1 ? '1px solid rgba(255,255,255,0.06)' : 'none',
+                backgroundColor: '#F8F8F8',
+                border: '1px solid #EBEBEB',
+                borderRadius: '16px',
                 transitionDelay: `${i * 80}ms`,
               }}
             >
               <span
                 style={{
                   fontFamily: 'var(--v5-font-mono)',
-                  fontSize: '11px',
-                  fontWeight: 400,
-                  color: 'rgba(255,255,255,0.20)',
+                  fontSize: '13px',
+                  fontWeight: 500,
+                  color: '#CCCCCC',
                   letterSpacing: '0.05em',
                 }}
               >
@@ -84,10 +82,10 @@ export default function SolutionSection() {
               <h3
                 style={{
                   fontFamily: 'var(--v5-font-display)',
-                  fontSize: '22px',
-                  fontWeight: 300,
+                  fontSize: '24px',
+                  fontWeight: 400,
                   letterSpacing: '-0.02em',
-                  color: 'rgba(255,255,255,0.88)',
+                  color: '#111111',
                 }}
               >
                 {pillar.title}
@@ -95,10 +93,10 @@ export default function SolutionSection() {
               <p
                 style={{
                   fontFamily: 'var(--v5-font-body)',
-                  fontSize: '15px',
+                  fontSize: '17px',
                   fontWeight: 300,
                   lineHeight: 1.8,
-                  color: 'rgba(255,255,255,0.42)',
+                  color: '#666666',
                 }}
               >
                 {pillar.description}

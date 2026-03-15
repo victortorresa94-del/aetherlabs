@@ -20,10 +20,10 @@ export default function ClickUpPage() {
     <SystemsLabLayout accentColor={PURPLE}>
       <section className="v5-section" style={{ backgroundColor: 'var(--v5-bg-base)' }}>
         <div className="v5-container">
-          <span className="v5-label v5-reveal" style={{ display: 'block', marginBottom: '20px', color: PURPLE }}>ClickUp</span>
+          <span className="v5-label v5-reveal" style={{ display: 'block', marginBottom: '20px', color: '#999999' }}>ClickUp</span>
           <h1 className="v5-h1 v5-reveal" style={{ maxWidth: '680px', marginBottom: '20px' }}>
             Gestiona proyectos, equipos y procesos{' '}
-            <span style={{ background: `linear-gradient(135deg, ${PURPLE}, #9B88FF)`, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
+            <span style={{ color: 'rgba(245,245,240,0.38)' }}>
               con IA integrada
             </span>
           </h1>
@@ -32,7 +32,7 @@ export default function ClickUpPage() {
             con IA que automatiza el 40% del trabajo manual.
           </p>
           <div className="v5-reveal" style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-            <Link href="/systems-lab/sesion-de-claridad" className="v5-btn-primary" style={{ backgroundColor: PURPLE, fontSize: '16px' }}>
+            <Link href="/systems-lab/sesion-de-claridad" className="v5-btn-primary" style={{ fontSize: '16px' }}>
               Implementar ClickUp →
             </Link>
           </div>
@@ -98,7 +98,7 @@ export default function ClickUpPage() {
         <div className="v5-container">
           <h2 className="v5-h2 v5-reveal" style={{ marginBottom: '32px' }}>Implementar ClickUp con Aether</h2>
           <div className="v5-reveal">
-            <Link href="/systems-lab/sesion-de-claridad" className="v5-btn-primary" style={{ fontSize: '17px', padding: '16px 32px', backgroundColor: PURPLE }}>
+            <Link href="/systems-lab/sesion-de-claridad" className="v5-btn-primary" style={{ fontSize: '17px', padding: '16px 32px' }}>
               Reservar Sesión de Claridad →
             </Link>
           </div>

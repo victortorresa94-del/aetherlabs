@@ -24,7 +24,7 @@ export default function PreparaTuEquipoPage() {
                             Solo necesita saber cómo usar la IA en su día a día. De forma práctica, segura y adaptada a sus procesos actuales.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4">
-                            <Link href="#contacto" className="v5-btn-primary !bg-green-600 !text-white hover:!bg-green-600/80">
+                            <Link href="#contacto" className="v5-btn-primary" style={{ background: '#F5F5F0', color: '#080808', borderRadius: '0px' }}>
                                 Preparar a mi equipo
                             </Link>
                         </div>
@@ -147,7 +147,7 @@ export default function PreparaTuEquipoPage() {
                         </div>
                     </div>
 
-                    <button className="v5-btn-primary !bg-green-600 !text-white hover:!bg-green-500 w-full sm:w-auto">
+                    <button className="v5-btn-primary w-full sm:w-auto" style={{ background: '#F5F5F0', color: '#080808', borderRadius: '0px' }}>
                         Contactar vía WhatsApp o Email
                     </button>
                 </div>

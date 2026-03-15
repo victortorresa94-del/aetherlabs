@@ -24,14 +24,14 @@ export default function HowItWorksSection() {
       <div className="v5-container">
 
         {/* Heading */}
-        <div className="text-center mb-20 v5-reveal">
+        <div className="text-center mb-20 v5-reveal flex flex-col items-center">
           <span
             style={{
               display: 'block',
               marginBottom: '16px',
               fontFamily: 'var(--v5-font-mono)',
               fontSize: '11px',
-              fontWeight: 400,
+              fontWeight: 500,
               letterSpacing: '0.15em',
               textTransform: 'uppercase',
               color: '#999999',
@@ -42,7 +42,7 @@ export default function HowItWorksSection() {
           <h2
             style={{
               fontFamily: 'var(--v5-font-display)',
-              fontSize: 'clamp(28px, 3.5vw, 48px)',
+              fontSize: 'clamp(36px, 4vw, 64px)',
               fontWeight: 300,
               letterSpacing: '-0.02em',
               lineHeight: 1.05,
@@ -54,11 +54,11 @@ export default function HowItWorksSection() {
         </div>
 
         {/* Steps */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 v5-section-gap">
           {steps.map((step, i) => (
             <div
               key={i}
-              className="v5-reveal relative flex flex-col gap-5 p-10"
+              className="v5-reveal relative flex flex-col gap-5 p-6 md:p-8"
               style={{
                 background: '#F8F8F8',
                 border: '1px solid #EBEBEB',
@@ -71,11 +71,11 @@ export default function HowItWorksSection() {
                 className="absolute top-6 right-8 select-none pointer-events-none"
                 style={{
                   fontFamily: 'var(--v5-font-display)',
-                  fontSize: '80px',
+                  fontSize: 'clamp(60px, 8vw, 80px)',
                   fontWeight: 300,
                   letterSpacing: '-0.05em',
                   lineHeight: 1,
-                  color: '#E8E8E8',
+                  color: '#EEEEEE',
                 }}
               >
                 {step.number}
@@ -85,11 +85,12 @@ export default function HowItWorksSection() {
                 style={{
                   fontFamily: 'var(--v5-font-mono)',
                   fontSize: '11px',
-                  fontWeight: 400,
+                  fontWeight: 500,
                   color: '#AAAAAA',
                   letterSpacing: '0.10em',
                   position: 'relative',
                   zIndex: 1,
+                  textTransform: 'uppercase',
                 }}
               >
                 Paso {step.number}
@@ -98,7 +99,7 @@ export default function HowItWorksSection() {
               <h3
                 style={{
                   fontFamily: 'var(--v5-font-display)',
-                  fontSize: '20px',
+                  fontSize: '24px',
                   fontWeight: 400,
                   letterSpacing: '-0.02em',
                   color: '#111111',
@@ -112,7 +113,7 @@ export default function HowItWorksSection() {
               <p
                 style={{
                   fontFamily: 'var(--v5-font-body)',
-                  fontSize: '15px',
+                  fontSize: '17px',
                   fontWeight: 300,
                   lineHeight: 1.8,
                   color: '#666666',

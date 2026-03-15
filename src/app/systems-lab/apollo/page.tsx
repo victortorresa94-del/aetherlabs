@@ -14,10 +14,10 @@ export default function ApolloPage() {
     <SystemsLabLayout accentColor={DBLUE}>
       <section className="v5-section" style={{ backgroundColor: 'var(--v5-bg-base)' }}>
         <div className="v5-container">
-          <span className="v5-label v5-reveal" style={{ display: 'block', marginBottom: '20px', color: DBLUE }}>Apollo.io</span>
+          <span className="v5-label v5-reveal" style={{ display: 'block', marginBottom: '20px', color: '#999999' }}>Apollo.io</span>
           <h1 className="v5-h1 v5-reveal" style={{ maxWidth: '680px', marginBottom: '20px' }}>
             Encuentra a tu cliente ideal{' '}
-            <span style={{ background: `linear-gradient(135deg, ${DBLUE}, #3B82F6)`, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
+            <span style={{ color: 'rgba(245,245,240,0.38)' }}>
               antes de que él te encuentre
             </span>
           </h1>
@@ -26,7 +26,7 @@ export default function ApolloPage() {
             Base de datos de 275M+ contactos + automatización de outreach.
           </p>
           <div className="v5-reveal" style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-            <Link href="/systems-lab/sesion-de-claridad" className="v5-btn-primary" style={{ backgroundColor: DBLUE, fontSize: '16px' }}>
+            <Link href="/systems-lab/sesion-de-claridad" className="v5-btn-primary" style={{ fontSize: '16px' }}>
               Implementar Apollo con Aether →
             </Link>
           </div>
@@ -92,7 +92,7 @@ export default function ApolloPage() {
         <div className="v5-container">
           <h2 className="v5-h2 v5-reveal" style={{ marginBottom: '32px' }}>Implementar Apollo con Aether</h2>
           <div className="v5-reveal">
-            <Link href="/systems-lab/sesion-de-claridad" className="v5-btn-primary" style={{ fontSize: '17px', padding: '16px 32px', backgroundColor: DBLUE }}>
+            <Link href="/systems-lab/sesion-de-claridad" className="v5-btn-primary" style={{ fontSize: '17px', padding: '16px 32px' }}>
               Reservar Sesión de Claridad →
             </Link>
           </div>

@@ -115,12 +115,12 @@ export default function SystemsLabPage() {
         <section className="v5-section bg-black pb-20 pt-10">
           <div className="v5-container">
             <div className="max-w-3xl">
-              <span className="v5-label mb-6 block text-cyan-400">
+              <span className="v5-label mb-6 block" style={{ color: '#999999' }}>
                 SYSTEMS LAB
               </span>
               <h1 className="v5-h1 mb-6">
                 Todas las herramientas de IA que tu empresa
-                {' '}<span className="v5-gradient-text">debería estar usando</span>
+                {' '}<span style={{ color: 'rgba(245,245,240,0.38)' }}>debería estar usando</span>
               </h1>
               <p className="v5-body-large v5-reveal" style={{ marginTop: '20px' }}>
                 Las seleccionamos, las implementamos y te enseñamos a sacarles partido.
@@ -135,7 +135,7 @@ export default function SystemsLabPage() {
                   key={tab}
                   onClick={() => setActiveTab(tab)}
                   className={`px-5 py-2 rounded-full border transition-all duration-300 text-sm font-medium ${activeTab === tab
-                    ? 'border-cyan-500 bg-cyan-500/10 text-cyan-400'
+                    ? 'border-white/40 bg-white/10 text-white'
                     : 'border-white/10 text-white/50 hover:border-white/20 hover:text-white'
                     }`}
                 >
@@ -290,8 +290,8 @@ export default function SystemsLabPage() {
         {/* CTA Sesión de Claridad */}
         <section className="v5-section bg-[#0C0C0C] border-t border-white/5">
           <div className="v5-container" style={{ textAlign: 'center' }}>
-            <div className="v5-reveal inline-block px-4 py-1.5 bg-cyan-500/10 border border-cyan-500/20 rounded-full mb-8">
-              <span className="font-mono text-[10px] text-cyan-400 tracking-widest uppercase">Diagnóstico Estratégico</span>
+            <div className="v5-reveal inline-block px-4 py-1.5 bg-white/10 border border-white/20 rounded-full mb-8">
+              <span className="font-mono text-[10px] text-white/60 tracking-widest uppercase">Diagnóstico Estratégico</span>
             </div>
             <h2 className="v5-h2 v5-reveal mb-6">
               ¿No sabes por dónde empezar?

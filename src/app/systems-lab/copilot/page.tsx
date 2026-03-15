@@ -25,12 +25,12 @@ export default function CopilotPage() {
     <SystemsLabLayout accentColor={BLUE}>
       <section className="v5-section" style={{ backgroundColor: 'var(--v5-bg-base)' }}>
         <div className="v5-container">
-          <span className="v5-label v5-reveal" style={{ display: 'block', marginBottom: '20px', color: BLUE }}>
+          <span className="v5-label v5-reveal" style={{ display: 'block', marginBottom: '20px', color: '#999999' }}>
             Microsoft Copilot
           </span>
           <h1 className="v5-h1 v5-reveal" style={{ maxWidth: '640px', marginBottom: '20px' }}>
             La IA ya está en tu{' '}
-            <span style={{ background: `linear-gradient(135deg, ${BLUE}, #00BCF2)`, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
+            <span style={{ color: 'rgba(245,245,240,0.38)' }}>
               Microsoft 365
             </span>
             .<br />Solo hay que activarla.
@@ -40,7 +40,7 @@ export default function CopilotPage() {
             Nosotros lo configuramos, lo conectamos y formamos al equipo.
           </p>
           <div className="v5-reveal" style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-            <Link href="/systems-lab/sesion-de-claridad" className="v5-btn-primary" style={{ backgroundColor: BLUE, fontSize: '16px' }}>
+            <Link href="/systems-lab/sesion-de-claridad" className="v5-btn-primary" style={{ fontSize: '16px' }}>
               Activar Copilot con Aether →
             </Link>
             <Link href="/systems-lab" className="v5-btn-ghost" style={{ fontSize: '16px' }}>
@@ -135,7 +135,7 @@ export default function CopilotPage() {
             Empieza con una Sesión de Claridad y vemos juntos cómo sacarle partido.
           </p>
           <div className="v5-reveal">
-            <Link href="/systems-lab/sesion-de-claridad" className="v5-btn-primary" style={{ fontSize: '17px', padding: '16px 32px', backgroundColor: BLUE }}>
+            <Link href="/systems-lab/sesion-de-claridad" className="v5-btn-primary" style={{ fontSize: '17px', padding: '16px 32px' }}>
               Reservar Sesión de Claridad →
             </Link>
           </div>

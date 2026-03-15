@@ -14,10 +14,10 @@ export default function HubSpotPage() {
     <SystemsLabLayout accentColor={ORANGE}>
       <section className="v5-section" style={{ backgroundColor: 'var(--v5-bg-base)' }}>
         <div className="v5-container">
-          <span className="v5-label v5-reveal" style={{ display: 'block', marginBottom: '20px', color: ORANGE }}>HubSpot con IA</span>
+          <span className="v5-label v5-reveal" style={{ display: 'block', marginBottom: '20px', color: '#999999' }}>HubSpot con IA</span>
           <h1 className="v5-h1 v5-reveal" style={{ maxWidth: '680px', marginBottom: '20px' }}>
             Tu CRM que trabaja{' '}
-            <span style={{ background: `linear-gradient(135deg, ${ORANGE}, #FFB347)`, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
+            <span style={{ color: 'rgba(245,245,240,0.38)' }}>
               contigo, no al revés
             </span>
           </h1>
@@ -26,7 +26,7 @@ export default function HubSpotPage() {
             Conectado con Claude, se convierte en el sistema comercial más potente del mercado.
           </p>
           <div className="v5-reveal" style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-            <Link href="/systems-lab/sesion-de-claridad" className="v5-btn-primary" style={{ backgroundColor: ORANGE, fontSize: '16px' }}>
+            <Link href="/systems-lab/sesion-de-claridad" className="v5-btn-primary" style={{ fontSize: '16px' }}>
               Implementar HubSpot con Aether →
             </Link>
           </div>
@@ -56,7 +56,7 @@ export default function HubSpotPage() {
                 borderRadius: 'var(--v5-radius-lg)',
                 padding: '24px',
               }}>
-                <h3 style={{ fontFamily: 'var(--v5-font-display)', fontWeight: 600, fontSize: '16px', color: ORANGE, marginBottom: '8px' }}>{item.title}</h3>
+                <h3 style={{ fontFamily: 'var(--v5-font-display)', fontWeight: 600, fontSize: '16px', color: 'var(--v5-text-primary)', marginBottom: '8px' }}>{item.title}</h3>
                 <p style={{ fontFamily: 'var(--v5-font-body)', fontSize: '14px', color: 'var(--v5-text-secondary)', lineHeight: 1.55 }}>{item.desc}</p>
               </div>
             ))}
@@ -84,7 +84,7 @@ export default function HubSpotPage() {
                 gap: '24px',
                 flexWrap: 'wrap',
               }}>
-                <span style={{ fontFamily: 'var(--v5-font-mono)', fontSize: '11px', fontWeight: 700, color: ORANGE, minWidth: '200px', letterSpacing: '0.05em', textTransform: 'uppercase' }}>{title}</span>
+                <span style={{ fontFamily: 'var(--v5-font-mono)', fontSize: '11px', fontWeight: 700, color: 'var(--v5-text-primary)', minWidth: '200px', letterSpacing: '0.05em', textTransform: 'uppercase' }}>{title}</span>
                 <span style={{ fontFamily: 'var(--v5-font-body)', fontSize: '15px', color: 'var(--v5-text-secondary)', lineHeight: 1.5 }}>{desc}</span>
               </div>
             ))}
@@ -96,7 +96,7 @@ export default function HubSpotPage() {
         <div className="v5-container">
           <h2 className="v5-h2 v5-reveal" style={{ marginBottom: '32px' }}>Implementar HubSpot con Aether</h2>
           <div className="v5-reveal">
-            <Link href="/systems-lab/sesion-de-claridad" className="v5-btn-primary" style={{ fontSize: '17px', padding: '16px 32px', backgroundColor: ORANGE }}>
+            <Link href="/systems-lab/sesion-de-claridad" className="v5-btn-primary" style={{ fontSize: '17px', padding: '16px 32px' }}>
               Reservar Sesión de Claridad →
             </Link>
           </div>

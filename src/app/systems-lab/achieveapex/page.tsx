@@ -15,7 +15,7 @@ export default function AchieveApexPage() {
       <section className="v5-section" style={{ backgroundColor: 'var(--v5-bg-base)' }}>
         <div className="v5-container">
           <div style={{ display: 'flex', gap: '12px', marginBottom: '24px', flexWrap: 'wrap', alignItems: 'center' }}>
-            <span className="v5-label" style={{ color: GREEN }}>AchieveApex</span>
+            <span className="v5-label" style={{ color: '#999999' }}>AchieveApex</span>
             <span style={{
               padding: '3px 12px',
               borderRadius: '100px',
@@ -33,7 +33,7 @@ export default function AchieveApexPage() {
           </div>
           <h1 className="v5-h1 v5-reveal" style={{ maxWidth: '680px', marginBottom: '20px' }}>
             El CRM que habla con tus clientes{' '}
-            <span style={{ background: `linear-gradient(135deg, ${GREEN}, #10B981)`, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
+            <span style={{ color: 'rgba(245,245,240,0.38)' }}>
               por ti
             </span>
           </h1>
@@ -42,7 +42,7 @@ export default function AchieveApexPage() {
             Convierte mensajes en oportunidades de venta automáticamente.
           </p>
           <div className="v5-reveal" style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-            <Link href="/systems-lab/sesion-de-claridad" className="v5-btn-primary" style={{ backgroundColor: GREEN, fontSize: '16px' }}>
+            <Link href="/systems-lab/sesion-de-claridad" className="v5-btn-primary" style={{ fontSize: '16px' }}>
               Implementar AchieveApex →
             </Link>
           </div>
@@ -118,7 +118,7 @@ export default function AchieveApexPage() {
         <div className="v5-container">
           <h2 className="v5-h2 v5-reveal" style={{ marginBottom: '32px' }}>Implementar AchieveApex con Aether</h2>
           <div className="v5-reveal">
-            <Link href="/systems-lab/sesion-de-claridad" className="v5-btn-primary" style={{ fontSize: '17px', padding: '16px 32px', backgroundColor: GREEN }}>
+            <Link href="/systems-lab/sesion-de-claridad" className="v5-btn-primary" style={{ fontSize: '17px', padding: '16px 32px' }}>
               Reservar Sesión de Claridad →
             </Link>
           </div>

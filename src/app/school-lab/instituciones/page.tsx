@@ -115,7 +115,7 @@ export default function InstitucionesPage() {
                                 <label className="block text-sm font-bold mb-2 text-zinc-700">Mensaje (Asunto del taller, nº aproximado de personas)</label>
                                 <textarea rows={4} className="w-full bg-white border border-zinc-300 rounded-lg px-4 py-3 focus:outline-none focus:border-[#059669] resize-none"></textarea>
                             </div>
-                            <button type="button" className="v5-btn-primary !bg-[#059669] !text-white hover:!bg-[#047857] w-full flex justify-center py-4 text-center">
+                            <button type="button" className="v5-btn-primary w-full flex justify-center py-4 text-center" style={{ background: '#F5F5F0', color: '#080808', borderRadius: '0px' }}>
                                 Enviar Solicitud
                             </button>
                         </form>

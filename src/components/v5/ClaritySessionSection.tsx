@@ -17,14 +17,14 @@ export default function ClaritySessionSection() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
 
           {/* Left: Text */}
-          <div className="v5-reveal">
+          <div className="v5-reveal flex flex-col items-start text-left">
             <span
               style={{
                 display: 'block',
-                marginBottom: '20px',
+                marginBottom: '16px',
                 fontFamily: 'var(--v5-font-mono)',
                 fontSize: '11px',
-                fontWeight: 400,
+                fontWeight: 500,
                 letterSpacing: '0.15em',
                 textTransform: 'uppercase',
                 color: '#999999',
@@ -35,12 +35,12 @@ export default function ClaritySessionSection() {
             <h2
               style={{
                 fontFamily: 'var(--v5-font-display)',
-                fontSize: 'clamp(28px, 3.5vw, 48px)',
+                fontSize: 'clamp(36px, 4vw, 64px)',
                 fontWeight: 300,
                 letterSpacing: '-0.02em',
                 lineHeight: 1.05,
                 color: '#111111',
-                marginBottom: '20px',
+                marginBottom: '24px',
               }}
             >
               Sesión de Claridad
@@ -48,12 +48,12 @@ export default function ClaritySessionSection() {
             <p
               style={{
                 fontFamily: 'var(--v5-font-display)',
-                fontSize: '19px',
+                fontSize: '20px',
                 fontWeight: 300,
                 letterSpacing: '-0.01em',
                 lineHeight: 1.5,
                 color: '#666666',
-                marginBottom: '20px',
+                marginBottom: '24px',
               }}
             >
               Una sola sesión para saber exactamente dónde estás y dónde necesitas llegar.
@@ -61,7 +61,7 @@ export default function ClaritySessionSection() {
             <p
               style={{
                 fontFamily: 'var(--v5-font-body)',
-                fontSize: '15px',
+                fontSize: '17px',
                 fontWeight: 300,
                 lineHeight: 1.8,
                 color: '#888888',
@@ -74,16 +74,16 @@ export default function ClaritySessionSection() {
             </p>
           </div>
 
-          {/* Right: Product card — warm card on white bg */}
+          {/* Right: Product card */}
           <div className="v5-reveal" style={{ transitionDelay: '100ms' }}>
             <div
               style={{
                 position: 'relative',
                 overflow: 'hidden',
-                borderRadius: '20px',
+                borderRadius: '16px',
                 padding: '40px',
-                background: '#EDE8DF',
-                boxShadow: '0 20px 60px rgba(0,0,0,0.12), 0 4px 16px rgba(0,0,0,0.07)',
+                background: '#F8F8F8',
+                border: '1px solid #EBEBEB',
               }}
             >
               {/* Badge */}
@@ -94,11 +94,11 @@ export default function ClaritySessionSection() {
                   borderRadius: '100px',
                   fontFamily: 'var(--v5-font-mono)',
                   fontSize: '10px',
-                  fontWeight: 400,
+                  fontWeight: 500,
                   letterSpacing: '0.10em',
                   textTransform: 'uppercase',
-                  background: 'rgba(0,0,0,0.08)',
-                  color: 'rgba(0,0,0,0.42)',
+                  background: 'rgba(0,0,0,0.05)',
+                  color: '#666666',
                   marginBottom: '28px',
                 }}
               >
@@ -106,15 +106,15 @@ export default function ClaritySessionSection() {
               </span>
 
               {/* Price */}
-              <div style={{ display: 'flex', alignItems: 'baseline', gap: '12px', marginBottom: '28px' }}>
+              <div style={{ display: 'flex', alignItems: 'baseline', gap: '12px', marginBottom: '32px' }}>
                 <span
                   style={{
                     fontFamily: 'var(--v5-font-display)',
-                    fontSize: '64px',
+                    fontSize: 'clamp(48px, 6vw, 64px)',
                     fontWeight: 300,
                     letterSpacing: '-0.04em',
                     lineHeight: 1,
-                    color: 'rgba(0,0,0,0.88)',
+                    color: '#111111',
                   }}
                 >
                   150€
@@ -125,7 +125,7 @@ export default function ClaritySessionSection() {
                     fontSize: '20px',
                     fontWeight: 300,
                     textDecoration: 'line-through',
-                    color: 'rgba(0,0,0,0.28)',
+                    color: '#AAAAAA',
                   }}
                 >
                   300€
@@ -133,18 +133,18 @@ export default function ClaritySessionSection() {
               </div>
 
               {/* Includes */}
-              <ul style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginBottom: '28px' }}>
+              <ul style={{ display: 'flex', flexDirection: 'column', gap: '16px', marginBottom: '32px' }}>
                 {includes.map((item) => (
-                  <li key={item} style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(0,0,0,0.40)" strokeWidth={2.5}>
+                  <li key={item} style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#666666" strokeWidth={2.5}>
                       <polyline points="20 6 9 17 4 12" />
                     </svg>
                     <span
                       style={{
                         fontFamily: 'var(--v5-font-body)',
-                        fontSize: '14px',
+                        fontSize: '15px',
                         fontWeight: 300,
-                        color: 'rgba(0,0,0,0.62)',
+                        color: '#444444',
                       }}
                     >
                       {item}
@@ -157,11 +157,11 @@ export default function ClaritySessionSection() {
               <p
                 style={{
                   fontFamily: 'var(--v5-font-body)',
-                  fontSize: '12px',
+                  fontSize: '13px',
                   fontWeight: 300,
                   lineHeight: 1.7,
-                  color: 'rgba(0,0,0,0.35)',
-                  marginBottom: '28px',
+                  color: '#999999',
+                  marginBottom: '32px',
                 }}
               >
                 Si decides contratar algo después, el precio de la sesión se descuenta del proyecto.
@@ -175,21 +175,21 @@ export default function ClaritySessionSection() {
                   alignItems: 'center',
                   justifyContent: 'center',
                   width: '100%',
-                  padding: '15px 24px',
-                  borderRadius: '100px',
+                  padding: '16px 24px',
+                  borderRadius: '0px',
                   fontFamily: 'var(--v5-font-body)',
-                  fontSize: '14px',
+                  fontSize: '15px',
                   fontWeight: 400,
                   textDecoration: 'none',
-                  background: 'rgba(0,0,0,0.88)',
-                  color: 'rgba(255,255,255,0.90)',
+                  background: '#111111',
+                  color: '#FFFFFF',
                   transition: 'background 200ms ease',
                 }}
                 onMouseEnter={(e) => {
-                  (e.currentTarget as HTMLElement).style.background = '#000000';
+                  (e.currentTarget as HTMLElement).style.background = '#333333';
                 }}
                 onMouseLeave={(e) => {
-                  (e.currentTarget as HTMLElement).style.background = 'rgba(0,0,0,0.88)';
+                  (e.currentTarget as HTMLElement).style.background = '#111111';
                 }}
               >
                 Reservar mi sesión

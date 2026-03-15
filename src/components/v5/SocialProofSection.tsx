@@ -38,7 +38,7 @@ function CounterStat({ value, suffix, label }: { value: number; suffix: string; 
   }, [value]);
 
   return (
-    <div ref={ref} style={{ padding: '40px 32px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+    <div ref={ref} className="p-6 md:p-8" style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
       <span
         style={{
           fontFamily: 'var(--v5-font-display)',
@@ -46,7 +46,7 @@ function CounterStat({ value, suffix, label }: { value: number; suffix: string; 
           fontWeight: 300,
           letterSpacing: '-0.04em',
           lineHeight: 1,
-          color: 'rgba(255,255,255,0.88)',
+          color: '#F5F5F0',
         }}
       >
         {count}{suffix}
@@ -54,8 +54,8 @@ function CounterStat({ value, suffix, label }: { value: number; suffix: string; 
       <span
         style={{
           fontFamily: 'var(--v5-font-mono)',
-          fontSize: '10px',
-          fontWeight: 400,
+          fontSize: '11px',
+          fontWeight: 500,
           letterSpacing: '0.12em',
           textTransform: 'uppercase',
           color: 'rgba(255,255,255,0.30)',
@@ -74,14 +74,14 @@ export default function SocialProofSection() {
 
         {/* Stats grid */}
         <div
-          className="grid grid-cols-2 md:grid-cols-4 overflow-hidden rounded-2xl v5-reveal"
+          className="grid grid-cols-2 md:grid-cols-4 overflow-hidden rounded-sm v5-reveal"
           style={{ border: '1px solid rgba(255,255,255,0.07)' }}
         >
           {stats.map((stat, i) => (
             <div
               key={stat.label}
               style={{
-                backgroundColor: '#0C0C0C',
+                backgroundColor: 'rgba(255,255,255,0.02)',
                 borderRight: i < stats.length - 1 ? '1px solid rgba(255,255,255,0.06)' : 'none',
               }}
             >
@@ -91,11 +91,11 @@ export default function SocialProofSection() {
         </div>
 
         {/* Quote */}
-        <div className="v5-reveal mt-24 max-w-2xl mx-auto text-center">
+        <div className="v5-reveal mt-24 max-w-3xl mx-auto text-center">
           <blockquote
             style={{
               fontFamily: 'var(--v5-font-display)',
-              fontSize: 'clamp(18px, 2.2vw, 26px)',
+              fontSize: 'clamp(24px, 3.5vw, 42px)',
               fontWeight: 300,
               letterSpacing: '-0.02em',
               lineHeight: 1.55,
@@ -107,7 +107,7 @@ export default function SocialProofSection() {
             &ldquo;Llevo más de 11 años construyendo proyectos de marketing y tecnología.
             Aether Labs es lo que me habría gustado tener como cliente.&rdquo;
           </blockquote>
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '6px' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
             <span
               style={{
                 fontFamily: 'var(--v5-font-display)',
@@ -121,8 +121,8 @@ export default function SocialProofSection() {
             <span
               style={{
                 fontFamily: 'var(--v5-font-mono)',
-                fontSize: '10px',
-                fontWeight: 400,
+                fontSize: '11px',
+                fontWeight: 500,
                 letterSpacing: '0.12em',
                 textTransform: 'uppercase',
                 color: 'rgba(255,255,255,0.28)',

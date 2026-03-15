@@ -5,26 +5,28 @@ import Link from 'next/link';
 import Navbar from '@/components/v5/Navbar';
 import Footer from '@/components/v5/Footer';
 import FinalCtaSection from '@/components/v5/FinalCtaSection';
+import ScrollAnimations from '@/components/v5/ScrollAnimations';
 
 export default function WebServicePage() {
     return (
         <main className="v5-page min-h-screen bg-black text-[#F5F5F5]">
+            <ScrollAnimations />
             <Navbar />
 
             {/* Hero Section */}
             <section className="relative pt-40 pb-20 overflow-hidden bg-black">
                 <div className="v5-container relative z-10 text-center flex flex-col items-center">
-                    <span className="v5-label mb-6 text-[#00E5FF]">WEB CORPORATIVA Y LANDINGS</span>
-                    <h1 className="v5-h1 mb-8 max-w-4xl mx-auto leading-[0.9]">
+                    <span className="v5-label mb-6 v5-reveal" style={{ color: '#999999' }}>WEB CORPORATIVA Y LANDINGS</span>
+                    <h1 className="v5-h1 mb-8 max-w-4xl mx-auto leading-[0.9] v5-reveal" style={{ transitionDelay: '80ms' }}>
                         Tu web que convierte,<br />
-                        <span className="text-white/40 italic">no que informa.</span>
+                        <span style={{ color: 'rgba(245,245,240,0.38)' }}>no que informa.</span>
                     </h1>
-                    <p className="v5-body-large max-w-2xl mx-auto mb-10 text-white/60">
+                    <p className="v5-body-large max-w-2xl mx-auto mb-10 v5-reveal" style={{ transitionDelay: '160ms' }}>
                         El 70% de las webs corporativas son catálogos que nadie lee.<br />
                         Las nuestras están diseñadas para convertir visitas en contactos.
                     </p>
-                    <div className="flex gap-4">
-                        <Link href="#tipos" className="v5-btn-primary bg-[#00E5FF] text-black hover:bg-[#00B8D9]">
+                    <div className="flex gap-4 v5-reveal" style={{ transitionDelay: '220ms' }}>
+                        <Link href="#tipos" className="v5-btn-primary" style={{ background: '#F5F5F0', color: '#080808', borderRadius: '0px' }}>
                             Ver Opciones
                         </Link>
                     </div>
@@ -57,8 +59,8 @@ export default function WebServicePage() {
             {/* Types of Web Section */}
             <section id="tipos" className="v5-section bg-white text-black">
                 <div className="v5-container">
-                    <div className="text-center mb-16">
-                        <h2 className="v5-h2">Modelos de Trabajo</h2>
+                    <div className="text-center mb-16 v5-reveal">
+                        <h2 className="v5-h2" style={{ color: '#111111' }}>Modelos de Trabajo</h2>
                     </div>
 
                     <div className="grid md:grid-cols-3 gap-8">
@@ -79,10 +81,9 @@ export default function WebServicePage() {
                         </div>
 
                         {/* Landing Page */}
-                        <div className="p-8 border border-black/10 rounded-2xl flex flex-col justify-between bg-black text-white relative overflow-hidden group">
-                            <div className="absolute top-0 right-0 w-32 h-32 bg-[#00E5FF]/20 blur-3xl rounded-full"></div>
+                        <div className="p-8 border border-black/10 rounded-2xl flex flex-col justify-between bg-black text-white relative overflow-hidden group v5-reveal">
                             <div className="relative z-10">
-                                <span className="inline-block bg-[#00E5FF] text-black text-[10px] font-bold px-2 py-1 uppercase tracking-widest mb-4 rounded-sm">Más popular</span>
+                                <span className="v5-label mb-4" style={{ color: '#999999' }}>Más popular</span>
                                 <h3 className="font-display text-2xl font-bold mb-4">Landing Page</h3>
                                 <p className="text-sm opacity-80 mb-6 min-h-[60px]">Para vender un producto o servicio específico. Maximizar conversión.</p>
                                 <ul className="text-xs space-y-3 opacity-80 mb-8 border-t border-white/10 pt-6">
@@ -91,8 +92,8 @@ export default function WebServicePage() {
                                     <li className="flex gap-2"><span>✅</span> Copy persuasivo y A/B test</li>
                                 </ul>
                             </div>
-                            <div className="font-mono text-[10px] font-bold pt-4 border-t border-white/10 relative z-10 flex justify-between items-center text-[#00E5FF]">
-                                <span className="text-sm">Desde 800€</span>
+                            <div className="font-mono text-sm font-bold pt-4 border-t border-white/10 relative z-10">
+                                Desde 800€
                             </div>
                         </div>
 
@@ -121,28 +122,28 @@ export default function WebServicePage() {
                     <h2 className="v5-h2 mb-16">El Proceso</h2>
                     <div className="space-y-6 max-w-3xl">
                         <div className="flex gap-6 border border-white/10 p-6 rounded-xl bg-white/5">
-                            <span className="font-display text-2xl font-bold text-[#00E5FF]">01</span>
+                            <span className="v5-label" style={{ color: '#CCCCCC' }}>01</span>
                             <div>
                                 <h4 className="font-bold text-lg mb-1">Brief (1h)</h4>
                                 <p className="text-white/60 text-sm">Rellenáis nuestro brief de 20 preguntas en 30 min. Si hay dudas, hacemos sesión de claridad.</p>
                             </div>
                         </div>
                         <div className="flex gap-6 border border-white/10 p-6 rounded-xl bg-white/5">
-                            <span className="font-display text-2xl font-bold text-[#00E5FF]">02</span>
+                            <span className="v5-label" style={{ color: '#CCCCCC' }}>02</span>
                             <div>
                                 <h4 className="font-bold text-lg mb-1">Propuesta visual (3 días)</h4>
                                 <p className="text-white/60 text-sm">Os presentamos 3 estéticas (paleta, tipo, mood). Elegís y empezamos.</p>
                             </div>
                         </div>
                         <div className="flex gap-6 border border-white/10 p-6 rounded-xl bg-white/5">
-                            <span className="font-display text-2xl font-bold text-[#00E5FF]">03</span>
+                            <span className="v5-label" style={{ color: '#CCCCCC' }}>03</span>
                             <div>
                                 <h4 className="font-bold text-lg mb-1">Diseño y desarrollo (7-14 días)</h4>
                                 <p className="text-white/60 text-sm">Construimos en el CMS elegido con acceso en tiempo real a los avances.</p>
                             </div>
                         </div>
                         <div className="flex gap-6 border border-white/10 p-6 rounded-xl bg-white/5">
-                            <span className="font-display text-2xl font-bold text-[#00E5FF]">04</span>
+                            <span className="v5-label" style={{ color: '#CCCCCC' }}>04</span>
                             <div>
                                 <h4 className="font-bold text-lg mb-1">Revisión (3 días)</h4>
                                 <p className="text-white/60 text-sm">Ronda de feedback. Ajustes finales para un lanzamiento impecable.</p>

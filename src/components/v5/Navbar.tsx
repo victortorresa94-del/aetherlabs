@@ -1,11 +1,15 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [labsOpen, setLabsOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+  const pathname = usePathname();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 80);
@@ -20,11 +24,31 @@ export default function Navbar() {
     return () => window.removeEventListener('resize', onResize);
   }, []);
 
-  const navLinks = [
-    { label: 'Servicios', href: '/#servicios' },
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setLabsOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  const labsLinks = [
+    { label: 'Systems Lab', href: '/systems-lab' },
+    { label: 'Creative Lab', href: '/creative-lab' },
+    { label: 'School Lab', href: '/school-lab' },
+  ];
+
+  const otherLinks = [
     { label: 'Nosotros', href: '/nosotros' },
     { label: 'Casos', href: '/casos' },
   ];
+
+  const getTextColor = (base: string, hovered: string) => {
+    // If not scrolled but white hover
+    return base;
+  };
 
   return (
     <>
@@ -39,10 +63,11 @@ export default function Navbar() {
           display: 'flex',
           alignItems: 'center',
           transition: 'background 400ms ease, border-color 400ms ease',
-          background: scrolled ? 'rgba(8, 8, 8, 0.72)' : 'transparent',
-          backdropFilter: scrolled ? 'blur(20px) saturate(180%)' : 'none',
-          WebkitBackdropFilter: scrolled ? 'blur(20px) saturate(180%)' : 'none',
-          borderBottom: scrolled ? '1px solid rgba(255, 255, 255, 0.08)' : '1px solid transparent',
+          background: scrolled ? 'rgba(255, 255, 255, 0.85)' : 'transparent',
+          backdropFilter: scrolled ? 'blur(20px)' : 'none',
+          WebkitBackdropFilter: scrolled ? 'blur(20px)' : 'none',
+          borderBottom: 'none',
+          boxShadow: 'none',
         }}
       >
         <div className="v5-container w-full flex items-center justify-between">
@@ -51,13 +76,13 @@ export default function Navbar() {
             <svg width="22" height="22" viewBox="0 0 32 32" fill="none">
               <circle
                 cx="16" cy="16" r="14"
-                stroke={scrolled ? 'rgba(255,255,255,0.9)' : 'rgba(255,255,255,0.85)'}
+                stroke={scrolled ? '#111111' : 'rgba(255,255,255,0.85)'}
                 strokeWidth="1.5"
                 style={{ transition: 'stroke 400ms ease' }}
               />
               <circle
                 cx="16" cy="16" r="5"
-                fill={scrolled ? 'rgba(255,255,255,0.9)' : 'rgba(255,255,255,0.85)'}
+                fill={scrolled ? '#111111' : 'rgba(255,255,255,0.85)'}
                 style={{ transition: 'fill 400ms ease' }}
               />
             </svg>
@@ -67,7 +92,7 @@ export default function Navbar() {
                 fontSize: '15px',
                 fontWeight: 400,
                 letterSpacing: '-0.02em',
-                color: scrolled ? 'rgba(255,255,255,0.95)' : 'rgba(255,255,255,0.85)',
+                color: scrolled ? '#111111' : 'rgba(255,255,255,0.85)',
                 transition: 'color 400ms ease',
               }}
             >
@@ -77,25 +102,108 @@ export default function Navbar() {
 
           {/* Desktop links */}
           <div className="hidden md:flex items-center gap-10">
-            {navLinks.map((link) => (
+            {/* Labs dropdown */}
+            <div className="relative" ref={dropdownRef}>
+              <button
+                onClick={() => setLabsOpen(!labsOpen)}
+                style={{
+                  fontFamily: 'var(--v5-font-body)',
+                  fontSize: '15px',
+                  fontWeight: 300,
+                  color: scrolled ? '#555555' : 'rgba(255,255,255,0.6)',
+                  background: 'none',
+                  border: 'none',
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '4px',
+                  transition: 'color 200ms ease',
+                }}
+                onMouseEnter={(e) => {
+                  (e.target as HTMLElement).style.color = scrolled ? '#111111' : '#FFFFFF';
+                }}
+                onMouseLeave={(e) => {
+                  (e.target as HTMLElement).style.color = scrolled ? '#555555' : 'rgba(255,255,255,0.6)';
+                }}
+              >
+                Labs
+                <svg width="10" height="6" viewBox="0 0 10 6" fill="none" style={{ transform: labsOpen ? 'rotate(180deg)' : 'none', transition: 'transform 200ms ease' }}>
+                  <path d="M1 1L5 5L9 1" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </button>
+              
+              {/* Dropdown menu */}
+              <div 
+                style={{
+                  position: 'absolute',
+                  top: '100%',
+                  left: '50%',
+                  transform: 'translateX(-50%)',
+                  marginTop: '16px',
+                  background: '#FFFFFF',
+                  border: '1px solid #E8E8E8',
+                  borderRadius: '12px',
+                  padding: '12px',
+                  minWidth: '180px',
+                  opacity: labsOpen ? 1 : 0,
+                  visibility: labsOpen ? 'visible' : 'hidden',
+                  transition: 'all 200ms ease',
+                  boxShadow: '0 10px 30px rgba(0,0,0,0.05)',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '4px',
+                }}
+              >
+                {labsLinks.map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    onClick={() => setLabsOpen(false)}
+                    style={{
+                      fontFamily: 'var(--v5-font-body)',
+                      fontSize: '14px',
+                      fontWeight: 300,
+                      color: '#555555',
+                      textDecoration: 'none',
+                      padding: '8px 12px',
+                      borderRadius: '6px',
+                      transition: 'all 200ms ease',
+                    }}
+                    onMouseEnter={(e) => {
+                      const el = e.target as HTMLElement;
+                      el.style.color = '#111111';
+                      el.style.background = '#F8F8F8';
+                    }}
+                    onMouseLeave={(e) => {
+                      const el = e.target as HTMLElement;
+                      el.style.color = '#555555';
+                      el.style.background = 'transparent';
+                    }}
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            {otherLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 style={{
                   fontFamily: 'var(--v5-font-body)',
-                  fontSize: '13px',
+                  fontSize: '15px',
                   fontWeight: 300,
                   letterSpacing: '0.01em',
-                  color: scrolled ? 'rgba(255,255,255,0.6)' : 'rgba(255,255,255,0.50)',
+                  color: scrolled ? '#555555' : 'rgba(255,255,255,0.6)',
                   textDecoration: 'none',
-                  transition: 'color 300ms ease',
+                  transition: 'color 200ms ease',
                 }}
                 onMouseEnter={(e) => {
-                  (e.target as HTMLElement).style.color = 'rgba(255,255,255,1)';
+                  (e.target as HTMLElement).style.color = scrolled ? '#111111' : '#FFFFFF';
                 }}
                 onMouseLeave={(e) => {
-                  const el = e.target as HTMLElement;
-                  el.style.color = scrolled ? 'rgba(255,255,255,0.6)' : 'rgba(255,255,255,0.50)';
+                  (e.target as HTMLElement).style.color = scrolled ? '#555555' : 'rgba(255,255,255,0.6)';
                 }}
               >
                 {link.label}
@@ -107,25 +215,25 @@ export default function Navbar() {
           <div className="flex items-center gap-5">
             <Link
               href="/systems-lab/sesion-de-claridad"
-              className="hidden sm:inline-flex items-center no-underline"
+              className="hidden sm:inline-flex items-center no-underline v5-btn-primary"
               style={{
-                fontFamily: 'var(--v5-font-body)',
+                background: scrolled ? '#111111' : '#FFFFFF',
+                color: scrolled ? '#FFFFFF' : '#111111',
+                borderRadius: '0px',
+                padding: '10px 24px',
                 fontSize: '13px',
-                fontWeight: 400,
-                padding: '8px 20px',
-                borderRadius: '100px',
-                transition: 'all 300ms ease',
-                background: scrolled ? '#F5F5F0' : 'rgba(255,255,255,0.08)',
-                color: scrolled ? '#080808' : 'rgba(255,255,255,0.85)',
-                border: scrolled ? 'none' : '1px solid rgba(255,255,255,0.15)',
               }}
               onMouseEnter={(e) => {
                 const el = e.currentTarget as HTMLElement;
-                el.style.background = scrolled ? '#FFFFFF' : 'rgba(255,255,255,0.15)';
+                if (scrolled) {
+                  el.style.background = '#333333';
+                } else {
+                  el.style.background = '#F0F0F0';
+                }
               }}
               onMouseLeave={(e) => {
                 const el = e.currentTarget as HTMLElement;
-                el.style.background = scrolled ? '#F5F5F0' : 'rgba(255,255,255,0.08)';
+                el.style.background = scrolled ? '#111111' : '#FFFFFF';
               }}
             >
               Sesión gratuita
@@ -135,7 +243,7 @@ export default function Navbar() {
               onClick={() => setMobileOpen(!mobileOpen)}
               className="md:hidden p-1 bg-transparent border-none cursor-pointer"
               aria-label="Menu"
-              style={{ color: scrolled ? '#444444' : 'rgba(255,255,255,0.60)' }}
+              style={{ color: scrolled ? '#555555' : 'rgba(255,255,255,0.60)' }}
             >
               <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                 {mobileOpen ? (
@@ -155,54 +263,76 @@ export default function Navbar() {
           position: 'fixed',
           top: 0,
           right: 0,
-          width: '280px',
+          width: '100%',
+          maxWidth: '320px',
           height: '100vh',
-          background: '#FAFAFA',
+          background: '#FFFFFF',
           zIndex: 999,
           transform: mobileOpen ? 'translateX(0)' : 'translateX(100%)',
-          transition: 'transform 480ms cubic-bezier(0.16, 1, 0.3, 1)',
-          borderLeft: '1px solid #EBEBEB',
+          transition: 'transform 400ms cubic-bezier(0.16, 1, 0.3, 1)',
+          borderLeft: '1px solid #E8E8E8',
           padding: '80px 32px 40px',
           display: 'flex',
           flexDirection: 'column',
           gap: 0,
         }}
       >
-        {navLinks.map((link) => (
+        <div style={{ marginBottom: '24px', fontFamily: 'var(--v5-font-mono)', fontSize: '11px', color: '#999', textTransform: 'uppercase', letterSpacing: '0.15em' }}>
+          Labs
+        </div>
+        {labsLinks.map((link) => (
           <Link
             key={link.href}
             href={link.href}
             onClick={() => setMobileOpen(false)}
             style={{
               fontFamily: 'var(--v5-font-body)',
-              fontSize: '16px',
+              fontSize: '18px',
               fontWeight: 300,
-              color: '#666666',
+              color: '#555555',
               textDecoration: 'none',
-              padding: '16px 0',
-              borderBottom: '1px solid #EBEBEB',
-              transition: 'color 200ms ease',
+              padding: '12px 0',
+              borderBottom: '1px solid #E8E8E8',
             }}
-            onMouseEnter={(e) => { (e.target as HTMLElement).style.color = '#111111'; }}
-            onMouseLeave={(e) => { (e.target as HTMLElement).style.color = '#666666'; }}
           >
             {link.label}
           </Link>
         ))}
+        
+        <div style={{ marginTop: '32px', marginBottom: '24px', fontFamily: 'var(--v5-font-mono)', fontSize: '11px', color: '#999', textTransform: 'uppercase', letterSpacing: '0.15em' }}>
+          General
+        </div>
+        {otherLinks.map((link) => (
+          <Link
+            key={link.href}
+            href={link.href}
+            onClick={() => setMobileOpen(false)}
+            style={{
+              fontFamily: 'var(--v5-font-body)',
+              fontSize: '18px',
+              fontWeight: 300,
+              color: '#555555',
+              textDecoration: 'none',
+              padding: '12px 0',
+              borderBottom: '1px solid #E8E8E8',
+            }}
+          >
+            {link.label}
+          </Link>
+        ))}
+        
         <Link
           href="/systems-lab/sesion-de-claridad"
           onClick={() => setMobileOpen(false)}
+          className="v5-btn-primary"
           style={{
-            marginTop: '32px',
-            padding: '14px 0',
+            marginTop: 'auto',
             background: '#111111',
             color: '#FFFFFF',
-            borderRadius: '100px',
+            borderRadius: '0px',
             textAlign: 'center',
-            fontFamily: 'var(--v5-font-body)',
-            fontSize: '14px',
-            fontWeight: 400,
-            textDecoration: 'none',
+            justifyContent: 'center',
+            padding: '16px 0',
           }}
         >
           Sesión gratuita
@@ -215,7 +345,7 @@ export default function Navbar() {
           style={{
             position: 'fixed',
             inset: 0,
-            background: 'rgba(0,0,0,0.3)',
+            background: 'rgba(0,0,0,0.4)',
             zIndex: 998,
             backdropFilter: 'blur(4px)',
           }}

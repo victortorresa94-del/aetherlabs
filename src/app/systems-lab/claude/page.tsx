@@ -106,17 +106,12 @@ export default function ClaudePage() {
       {/* Hero */}
       <section className="v5-section" style={{ backgroundColor: 'var(--v5-bg-base)' }}>
         <div className="v5-container">
-          <span className="v5-label v5-reveal" style={{ display: 'block', marginBottom: '20px', color: AMBER }}>
+          <span className="v5-label v5-reveal" style={{ display: 'block', marginBottom: '20px', color: '#999999' }}>
             Claude — Anthropic
           </span>
           <h1 className="v5-h1 v5-reveal" style={{ maxWidth: '640px', marginBottom: '20px' }}>
             El cerebro que conecta<br />
-            <span style={{
-              background: `linear-gradient(135deg, ${AMBER}, #F59E0B)`,
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text',
-            }}>
+            <span style={{ color: 'rgba(245,245,240,0.38)' }}>
               toda tu empresa
             </span>
           </h1>
@@ -504,7 +499,7 @@ export default function ClaudePage() {
             Empieza con una Sesión de Claridad de 90 minutos.
           </p>
           <div className="v5-reveal">
-            <Link href="/systems-lab/sesion-de-claridad" className="v5-btn-primary" style={{ fontSize: '17px', padding: '16px 32px', backgroundColor: AMBER }}>
+            <Link href="/systems-lab/sesion-de-claridad" className="v5-btn-primary" style={{ fontSize: '17px', padding: '16px 32px' }}>
               Implementar Claude con Aether →
             </Link>
           </div>

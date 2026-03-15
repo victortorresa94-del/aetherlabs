@@ -6,15 +6,15 @@ export default function FinalCtaSection() {
   return (
     <section className="v5-section relative overflow-hidden" style={{ backgroundColor: '#080808' }}>
       <div className="v5-container" style={{ textAlign: 'center', position: 'relative', zIndex: 1 }}>
-        <div className="v5-reveal" style={{ maxWidth: '560px', margin: '0 auto' }}>
+        <div className="v5-reveal" style={{ maxWidth: '640px', margin: '0 auto' }}>
 
           <span
             style={{
               display: 'block',
-              marginBottom: '24px',
+              marginBottom: '16px',
               fontFamily: 'var(--v5-font-mono)',
               fontSize: '11px',
-              fontWeight: 400,
+              fontWeight: 500,
               letterSpacing: '0.15em',
               textTransform: 'uppercase',
               color: 'rgba(255,255,255,0.28)',
@@ -26,12 +26,12 @@ export default function FinalCtaSection() {
           <h2
             style={{
               fontFamily: 'var(--v5-font-display)',
-              fontSize: 'clamp(28px, 3.8vw, 52px)',
+              fontSize: 'clamp(36px, 4vw, 64px)',
               fontWeight: 300,
               letterSpacing: '-0.02em',
               lineHeight: 1.05,
               color: '#F5F5F0',
-              marginBottom: '24px',
+              marginBottom: '28px',
             }}
           >
             Una conversación puede cambiar el rumbo de tu empresa
@@ -40,7 +40,7 @@ export default function FinalCtaSection() {
           <p
             style={{
               fontFamily: 'var(--v5-font-body)',
-              fontSize: '16px',
+              fontSize: '17px',
               fontWeight: 300,
               lineHeight: 1.8,
               color: 'rgba(255,255,255,0.38)',
@@ -57,10 +57,10 @@ export default function FinalCtaSection() {
               display: 'inline-flex',
               alignItems: 'center',
               gap: '8px',
-              padding: '15px 36px',
+              padding: '16px 32px',
               background: '#F5F5F0',
               color: '#080808',
-              borderRadius: '100px',
+              borderRadius: '0px',
               fontFamily: 'var(--v5-font-body)',
               fontSize: '15px',
               fontWeight: 400,
@@ -86,7 +86,7 @@ export default function FinalCtaSection() {
               alignItems: 'center',
               gap: '20px',
               justifyContent: 'center',
-              marginTop: '36px',
+              marginTop: '40px',
               flexWrap: 'wrap',
             }}
           >
@@ -95,7 +95,7 @@ export default function FinalCtaSection() {
               style={{
                 fontFamily: 'var(--v5-font-mono)',
                 fontSize: '12px',
-                fontWeight: 400,
+                fontWeight: 500,
                 letterSpacing: '0.02em',
                 color: 'rgba(255,255,255,0.28)',
                 textDecoration: 'none',
