@@ -20,7 +20,7 @@ const steps = [
 
 export default function HowItWorksSection() {
   return (
-    <section id="como-funciona" className="v5-section" style={{ backgroundColor: '#FFFFFF' }}>
+    <section id="como-funciona" className="v5-section" style={{ backgroundColor: '#F7F7F5' }}>
       <div className="v5-container">
 
         {/* Heading */}
@@ -58,7 +58,7 @@ export default function HowItWorksSection() {
           {steps.map((step, i) => (
             <div
               key={i}
-              className="v5-reveal relative flex flex-col gap-5 p-6 md:p-8"
+              className="v5-reveal relative flex flex-col gap-5 p-10 md:p-12"
               style={{
                 background: '#F8F8F8',
                 border: '1px solid #EBEBEB',
@@ -71,11 +71,12 @@ export default function HowItWorksSection() {
                 className="absolute top-6 right-8 select-none pointer-events-none"
                 style={{
                   fontFamily: 'var(--v5-font-display)',
-                  fontSize: 'clamp(60px, 8vw, 80px)',
+                  fontSize: '72px',
                   fontWeight: 300,
                   letterSpacing: '-0.05em',
                   lineHeight: 1,
-                  color: '#EEEEEE',
+                  color: '#E0E0E0',
+                  opacity: 0.06,
                 }}
               >
                 {step.number}
@@ -93,7 +94,7 @@ export default function HowItWorksSection() {
                   textTransform: 'uppercase',
                 }}
               >
-                Paso {step.number}
+                {step.number}
               </span>
 
               <h3

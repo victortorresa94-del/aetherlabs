@@ -81,9 +81,10 @@ export default function ClaritySessionSection() {
                 position: 'relative',
                 overflow: 'hidden',
                 borderRadius: '16px',
-                padding: '40px',
+                padding: '48px',
                 background: '#F8F8F8',
                 border: '1px solid #EBEBEB',
+                minHeight: '400px',
               }}
             >
               {/* Badge */}

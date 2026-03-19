@@ -1,6 +1,5 @@
 'use client';
 
-import React from 'react';
 import Link from 'next/link';
 import Navbar from '@/components/v5/Navbar';
 import Footer from '@/components/v5/Footer';
@@ -12,42 +11,42 @@ const services = [
         desc: 'Tu web que convierte, no que informa',
         link: '/creative-lab/web',
         colSpan: 'md:col-span-8',
-        img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuA3Yz6EYh640hkqpiMo4N57NJwyGwewp4itTV9jryOouHbjAFrC1zHP8RK0GzwqqGnNeTH-U1TzqpMjUO47xoJOqQtRHWlkLfmQvCYDLKZ6BjpzFrY6Vxst6XA0TEL4wImq3cniIVORF1kwK4HhM5e_BDFQIQbVbE3AUSEsEyeBLokViJQ8EXjs9FvUpPqVxt--93ain9DuszPCGs4G1rNYph78_-99ZCn9ucyyf8YIFvFFzruUh9SVhFF3STEoKSTMG2WZ3ukyghw'
+        img: '/images/3d/web corporativa.jpeg'
     },
     {
         title: 'VÍDEO CON IA',
         desc: 'Sin cámara. Sin rodaje. Sin esperas.',
         link: '/creative-lab/video',
         colSpan: 'md:col-span-4',
-        img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDBUXtxUx1h49lQ4D9UM2_WAvICuABPqHdT7__O5dWgorS40Xd0Z39-kG9LYFbZVIv2vXf00952cXyEzoyOYjfFYN4t1AWW1oBpWRdegJ3XERpi8CUzB3MeoWIvcs95dIbxxVIprsZ6AQR4I_M1eC6WYhUnPazJb10CAhZtf68SmlL9FxAjpYMl_gypbFcpbOWEMrbPA6sbuw4u83b55K4HosbByV3fvTOHLOr_RAyGJ__hUJ299eOKpwMhxyq2Ly2R_aplyquWXlc'
+        img: '/images/creative-lab/video.jpg'
     },
     {
         title: 'BRANDING',
         desc: 'Una marca que se recuerda',
         link: '/creative-lab/branding',
         colSpan: 'md:col-span-4',
-        img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAsDYWqpmjXfe_qXJd_U644ce5U-ULybdWAzjmwTRXtgwqbVJrc7UDvGzdppT9a7BWNRGvtDljerQ29Ur4JjEt_rS_9bR54YS5pRxJvjVmHAMTLjrCcYQLOvxg_fxNcFCnnpAW0SjpayMtkHI-2kusO0ZOAXyOaJTP5IpNS1556X6XnHYBuykwRekKdCH0pb93ZdNeAtI-0bgKX8BhbKHZgofFN2q1DOxVXF2-W_NFIceTZRweJrLScdJoQImZvt3vG2eBm4Kh6o_M'
+        img: '/images/3d/branding.jpeg'
     },
     {
         title: 'PITCH DECKS',
         desc: 'Decks que cierran reuniones',
         link: '/creative-lab/presentaciones',
         colSpan: 'md:col-span-4',
-        img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBdMGKFFloLFp3WQAtnrmbxPs9sStZfjFEUVMjkOTbitkUA3llGHlqjXeASwFiPfSlD7D-w8C_h5T_RKsErrjXmRiZjvXikZkbQdbSvCEjO0FPTgsMIkhCQugTQjbgrYXRTePtx5mJcDOEySVjq3KkJ6X4QzCZmdpkehoZ0Oe7i6uMRifvVJ-mwvYM8vPVNGarpjUiQhRtLiXnn6VDKK5RbUShJVAruiTiyUEvtROUjlKauUu3km6bNd4Bax6ZM0IZnO9cdVZDfq2k'
+        img: '/images/3d/presentaciones.jpeg'
     },
     {
-        title: 'LITERATURA',
+        title: 'MATERIAL CORPORATIVO',
         desc: 'Documentos que abren puertas',
         link: '/creative-lab/material',
         colSpan: 'md:col-span-4',
-        img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuA3Yz6EYh640hkqpiMo4N57NJwyGwewp4itTV9jryOouHbjAFrC1zHP8RK0GzwqqGnNeTH-U1TzqpMjUO47xoJOqQtRHWlkLfmQvCYDLKZ6BjpzFrY6Vxst6XA0TEL4wImq3cniIVORF1kwK4HhM5e_BDFQIQbVbE3AUSEsEyeBLokViJQ8EXjs9FvUpPqVxt--93ain9DuszPCGs4G1rNYph78_-99ZCn9ucyyf8YIFvFFzruUh9SVhFF3STEoKSTMG2WZ3ukyghw'
+        img: '/images/3d/material corporativo.jpeg'
     },
     {
         title: 'ANUNCIOS CREATIVOS',
         desc: 'Anuncios que paran el scroll',
         link: '/creative-lab/anuncios',
         colSpan: 'md:col-span-12',
-        img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDBUXtxUx1h49lQ4D9UM2_WAvICuABPqHdT7__O5dWgorS40Xd0Z39-kG9LYFbZVIv2vXf00952cXyEzoyOYjfFYN4t1AWW1oBpWRdegJ3XERpi8CUzB3MeoWIvcs95dIbxxVIprsZ6AQR4I_M1eC6WYhUnPazJb10CAhZtf68SmlL9FxAjpYMl_gypbFcpbOWEMrbPA6sbuw4u83b55K4HosbByV3fvTOHLOr_RAyGJ__hUJ299eOKpwMhxyq2Ly2R_aplyquWXlc'
+        img: '/images/3d/anucnios.png'
     }
 ];
 
@@ -100,7 +99,7 @@ export default function CreativeLab() {
                                 <Link
                                     href="/contacto"
                                     className="v5-btn-ghost"
-                                    style={{ borderRadius: '0px' }}
+                                    style={{ borderRadius: '0px', color: 'rgba(245,245,240,0.5)', borderColor: 'rgba(245,245,240,0.15)' }}
                                 >
                                     Contactar ahora
                                 </Link>
@@ -126,43 +125,42 @@ export default function CreativeLab() {
                                     key={idx}
                                     className={`group block relative overflow-hidden v5-reveal ${service.colSpan}`}
                                     style={{
-                                        minHeight: '400px',
                                         background: '#F8F8F8',
                                         border: '1px solid #EBEBEB',
                                         borderRadius: '16px',
                                         transitionDelay: `${idx * 60}ms`,
-                                        textDecoration: 'none'
+                                        textDecoration: 'none',
+                                        transition: 'border-color 200ms ease, transform 200ms ease',
+                                    }}
+                                    onMouseEnter={(e) => {
+                                        (e.currentTarget as HTMLElement).style.borderColor = '#111111';
+                                        (e.currentTarget as HTMLElement).style.transform = 'translateY(-4px)';
+                                    }}
+                                    onMouseLeave={(e) => {
+                                        (e.currentTarget as HTMLElement).style.borderColor = '#EBEBEB';
+                                        (e.currentTarget as HTMLElement).style.transform = 'translateY(0)';
                                     }}
                                 >
-                                    <div className="p-8 h-full flex flex-col justify-between relative z-10 transition-colors duration-500 group-hover:bg-[#F2F2F2]">
-                                        <div className="mb-8">
-                                            <span className="v5-label mb-4" style={{ color: '#AAAAAA' }}>
-                                                {service.title}
-                                            </span>
-                                            <h3
-                                                style={{
-                                                    fontFamily: 'var(--v5-font-display)',
-                                                    fontSize: 'clamp(20px, 2.5vw, 28px)',
-                                                    fontWeight: 400,
-                                                    letterSpacing: '-0.02em',
-                                                    lineHeight: 1.15,
-                                                    color: '#111111',
-                                                    maxWidth: '320px',
-                                                }}
-                                            >
-                                                {service.desc}
-                                            </h3>
-                                        </div>
-
-                                        {/* Image handling with strict positioning and grayscale */}
-                                        <div className="absolute right-0 bottom-0 w-2/3 h-2/3 max-w-[320px] pointer-events-none transition-transform duration-700 translate-x-12 translate-y-12 group-hover:translate-x-6 group-hover:translate-y-6">
-                                            <img
-                                                src={service.img}
-                                                alt={service.title}
-                                                className="w-full h-full object-cover rounded-tl-2xl opacity-40 grayscale group-hover:grayscale-0 group-hover:opacity-80 transition-all duration-700"
-                                                style={{}}
-                                            />
-                                        </div>
+                                    {/* Image on top */}
+                                    <div style={{ position: 'relative', width: '100%', height: '220px', overflow: 'hidden' }}>
+                                        <img
+                                            src={service.img}
+                                            alt={service.title}
+                                            style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 600ms ease' }}
+                                            className="group-hover:scale-105"
+                                        />
+                                    </div>
+                                    {/* Text below */}
+                                    <div style={{ padding: '24px 28px 28px' }}>
+                                        <span style={{ fontFamily: 'var(--v5-font-mono)', fontSize: '11px', fontWeight: 500, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#AAAAAA', display: 'block', marginBottom: '10px' }}>
+                                            {service.title}
+                                        </span>
+                                        <h3 style={{ fontFamily: 'var(--v5-font-display)', fontSize: 'clamp(18px, 2vw, 22px)', fontWeight: 400, letterSpacing: '-0.02em', lineHeight: 1.2, color: '#111111', marginBottom: '16px' }}>
+                                            {service.desc}
+                                        </h3>
+                                        <span style={{ fontFamily: 'var(--v5-font-body)', fontSize: '13px', color: '#999999', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                                            Ver más →
+                                        </span>
                                     </div>
                                 </Link>
                             ))}

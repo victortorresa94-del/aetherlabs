@@ -164,7 +164,7 @@ body {
   font-size: clamp(36px, 4vw, 64px);
   font-weight: 300;
   letter-spacing: -0.02em;
-  line-height: 1.05;
+  line-height: 1.1;
   color: var(--v5-text-primary);
 }
 
@@ -268,8 +268,20 @@ body {
   padding: 120px 0;
 }
 
+/* Section visual rhythm */
+.v5-section-alt {
+  padding: 120px 0;
+  background-color: #FAFAFA;
+}
+
+@media (max-width: 768px) {
+  .v5-section-alt {
+    padding: 80px 0;
+  }
+}
+
 .v5-container {
-  max-width: 1100px;
+  max-width: 1280px;
   margin: 0 auto;
   padding: 0 clamp(24px, 6vw, 120px);
 }

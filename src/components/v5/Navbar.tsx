@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 
 export default function Navbar() {
@@ -72,32 +73,19 @@ export default function Navbar() {
       >
         <div className="v5-container w-full flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2.5 no-underline group">
-            <svg width="22" height="22" viewBox="0 0 32 32" fill="none">
-              <circle
-                cx="16" cy="16" r="14"
-                stroke={scrolled ? '#111111' : 'rgba(255,255,255,0.85)'}
-                strokeWidth="1.5"
-                style={{ transition: 'stroke 400ms ease' }}
-              />
-              <circle
-                cx="16" cy="16" r="5"
-                fill={scrolled ? '#111111' : 'rgba(255,255,255,0.85)'}
-                style={{ transition: 'fill 400ms ease' }}
-              />
-            </svg>
-            <span
+          <Link href="/" className="flex items-center no-underline group">
+            <Image
+              src="/aether-logo-white.png"
+              alt="Aether Labs"
+              height={20}
+              width={78}
               style={{
-                fontFamily: 'var(--v5-font-display)',
-                fontSize: '15px',
-                fontWeight: 400,
-                letterSpacing: '-0.02em',
-                color: scrolled ? '#111111' : 'rgba(255,255,255,0.85)',
-                transition: 'color 400ms ease',
+                objectFit: 'contain',
+                transition: 'filter 400ms ease',
+                filter: scrolled ? 'invert(1)' : 'none',
               }}
-            >
-              Aether Labs
-            </span>
+              priority
+            />
           </Link>
 
           {/* Desktop links */}
@@ -128,12 +116,12 @@ export default function Navbar() {
               >
                 Labs
                 <svg width="10" height="6" viewBox="0 0 10 6" fill="none" style={{ transform: labsOpen ? 'rotate(180deg)' : 'none', transition: 'transform 200ms ease' }}>
-                  <path d="M1 1L5 5L9 1" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M1 1L5 5L9 1" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </button>
-              
+
               {/* Dropdown menu */}
-              <div 
+              <div
                 style={{
                   position: 'absolute',
                   top: '100%',
@@ -236,7 +224,7 @@ export default function Navbar() {
                 el.style.background = scrolled ? '#111111' : '#FFFFFF';
               }}
             >
-              Sesión gratuita
+              Reservar sesión →
             </Link>
 
             <button
@@ -298,7 +286,7 @@ export default function Navbar() {
             {link.label}
           </Link>
         ))}
-        
+
         <div style={{ marginTop: '32px', marginBottom: '24px', fontFamily: 'var(--v5-font-mono)', fontSize: '11px', color: '#999', textTransform: 'uppercase', letterSpacing: '0.15em' }}>
           General
         </div>
@@ -320,7 +308,7 @@ export default function Navbar() {
             {link.label}
           </Link>
         ))}
-        
+
         <Link
           href="/systems-lab/sesion-de-claridad"
           onClick={() => setMobileOpen(false)}

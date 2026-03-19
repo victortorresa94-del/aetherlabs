@@ -1,220 +1,649 @@
 'use client';
 
-import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import Navbar from '@/components/v5/Navbar';
 import Footer from '@/components/v5/Footer';
 import ScrollAnimations from '@/components/v5/ScrollAnimations';
 
+const programs = [
+    { title: 'Empodérate con IA', target: 'Mujeres 40-60', desc: 'Salud, creatividad y comunicación sin tecnicismos. Desde tu móvil.', href: '/school-lab/empoderate-con-ia' },
+    { title: 'Conéctate con el mundo', target: 'Personas 65+', desc: 'IA como asistente diario para recordar, contactar y simplificar.', href: '/school-lab/conectate-con-el-mundo' },
+    { title: 'Aprende a crear', target: 'Niños 6-12', desc: 'Cuentos, mundos e historias potenciando la imaginación con IA.', href: '/school-lab/aprende-a-crear' },
+    { title: 'Descubre tu futuro', target: 'Jóvenes 13-18', desc: 'Explora profesiones del futuro y crea proyectos reales con tecnología.', href: '/school-lab/descubre-tu-futuro' },
+    { title: 'Monta tu negocio', target: 'Emprendedores', desc: 'Web, logo, contenido y ventas — sin saber programar.', href: '/school-lab/monta-tu-negocio' },
+    { title: 'Mejora tu material', target: 'Profesores', desc: 'Menos tiempo corrigiendo, más tiempo personalizando la enseñanza.', href: '/school-lab/mejora-tu-material' },
+    { title: 'Más tiempo en cocina', target: 'Hostelería', desc: 'Responde reseñas, gestiona reservas y atrae clientes automáticamente.', href: '/school-lab/mas-tiempo-para-cocina' },
+    { title: 'Dedícate a la medicina', target: 'Sanidad', desc: 'Delega la burocracia clínica y agiliza informes con IA.', href: '/school-lab/dedicate-a-la-medicina' },
+];
+
 export default function SchoolLabPage() {
     return (
-        <main className="v5-page min-h-screen bg-black text-[#F5F5F5]">
+        <div className="v5-page">
             <ScrollAnimations />
             <Navbar />
 
-            {/* Hero Section */}
-            <section className="relative pt-40 pb-20 overflow-hidden bg-black">
-                {/* Subtle grid background */}
-                <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none"></div>
+            <main>
 
-                {/* Subtle glow */}
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-white/5 blur-[120px] rounded-full pointer-events-none"></div>
+                {/* ── HERO ── */}
+                <section
+                    className="relative flex items-center overflow-hidden"
+                    style={{ backgroundColor: '#080808', paddingTop: '160px', paddingBottom: '120px' }}
+                >
+                    {/* Ambient glow */}
+                    <div
+                        className="absolute top-0 right-0 pointer-events-none"
+                        style={{
+                            width: '800px',
+                            height: '800px',
+                            background: 'radial-gradient(circle at 60% 20%, rgba(237,232,223,0.03) 0%, transparent 55%)',
+                        }}
+                    />
 
-                <div className="v5-container relative z-10 text-center flex flex-col items-center">
-                    <span className="v5-label mb-6 v5-reveal" style={{ color: '#999999' }}>SCHOOL LAB</span>
-                    <h1 className="v5-h1 mb-6 max-w-4xl mx-auto leading-[0.95] tracking-tight text-white" style={{ fontWeight: 400 }}>
-                        Aprende a usar la IA<br />
-                        <span style={{ color: 'rgba(245,245,240,0.38)' }}>antes de que sea tarde.</span>
-                    </h1>
-                    <p className="v5-body-large max-w-2xl mx-auto mb-10 text-white/60">
-                        El 39% de las habilidades laborales actuales serán obsoletas antes de 2030. La IA no va a esperar. Nosotros tampoco.
-                    </p>
-                    <div className="flex flex-col sm:flex-row gap-4">
-                        <Link href="#programas" className="v5-btn-primary" style={{ background: '#F5F5F0', color: '#080808', borderRadius: '0px' }}>
-                            Ver Programas
-                        </Link>
-                        <Link href="#b2b" className="v5-btn-ghost">
-                            Soy empresa o institución
-                        </Link>
+                    <div className="v5-container relative z-10 w-full">
+                        <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_0.8fr] gap-12 lg:gap-24 items-center">
+
+                            {/* Left — Text */}
+                            <div className="flex flex-col items-start text-left">
+                                <span
+                                    className="v5-reveal"
+                                    style={{
+                                        fontFamily: 'var(--v5-font-mono)',
+                                        fontSize: '11px',
+                                        fontWeight: 500,
+                                        letterSpacing: '0.15em',
+                                        textTransform: 'uppercase',
+                                        color: '#666666',
+                                        marginBottom: '28px',
+                                    }}
+                                >
+                                    School Lab · Formación IA
+                                </span>
+
+                                <h1
+                                    className="v5-reveal"
+                                    style={{
+                                        fontFamily: 'var(--v5-font-display)',
+                                        fontSize: 'clamp(40px, 5vw, 72px)',
+                                        fontWeight: 300,
+                                        letterSpacing: '-0.03em',
+                                        lineHeight: 1.08,
+                                        color: '#F5F5F0',
+                                        transitionDelay: '80ms',
+                                        marginBottom: '32px',
+                                    }}
+                                >
+                                    Aprende a usar<br />
+                                    la IA<br />
+                                    <span style={{ color: 'rgba(245,245,240,0.35)' }}>antes de que sea tarde.</span>
+                                </h1>
+
+                                <p
+                                    className="v5-reveal"
+                                    style={{
+                                        fontFamily: 'var(--v5-font-body)',
+                                        fontSize: '18px',
+                                        fontWeight: 300,
+                                        lineHeight: 1.8,
+                                        color: 'rgba(245,245,240,0.48)',
+                                        maxWidth: '480px',
+                                        transitionDelay: '160ms',
+                                        marginBottom: '48px',
+                                    }}
+                                >
+                                    El 39% de las habilidades laborales actuales serán obsoletas antes de 2030.
+                                    La IA no va a esperar. Nosotros tampoco.
+                                </p>
+
+                                <div
+                                    className="v5-reveal flex flex-col sm:flex-row gap-4"
+                                    style={{ transitionDelay: '220ms' }}
+                                >
+                                    <Link
+                                        href="#programas"
+                                        style={{
+                                            display: 'inline-flex', alignItems: 'center', gap: '8px',
+                                            padding: '16px 36px', background: '#F5F5F0', color: '#080808',
+                                            borderRadius: '0px', fontFamily: 'var(--v5-font-body)',
+                                            fontSize: '15px', fontWeight: 500, textDecoration: 'none',
+                                            transition: 'all 200ms ease',
+                                        }}
+                                        onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = '#FFFFFF'; (e.currentTarget as HTMLElement).style.transform = 'translateY(-1px)'; }}
+                                        onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = '#F5F5F0'; (e.currentTarget as HTMLElement).style.transform = 'translateY(0)'; }}
+                                    >
+                                        Ver programas
+                                    </Link>
+                                    <Link
+                                        href="#b2b"
+                                        className="v5-btn-ghost"
+                                        style={{ borderRadius: '0px', padding: '16px 36px' }}
+                                    >
+                                        Soy empresa
+                                    </Link>
+                                </div>
+                            </div>
+
+                            {/* Right — Image */}
+                            <div className="hidden lg:flex w-full justify-end">
+                                <div
+                                    className="v5-reveal relative w-full max-w-[460px]"
+                                    style={{ transitionDelay: '100ms' }}
+                                >
+                                    <div
+                                        className="card-3d-object card-3d-object-shadow"
+                                        style={{ aspectRatio: '4/5', position: 'relative', overflow: 'hidden' }}
+                                    >
+                                        <Image
+                                            src="/images/school-workshop.png"
+                                            alt="Formación IA — School Lab"
+                                            fill
+                                            className="object-cover"
+                                            style={{ filter: 'contrast(1.05) brightness(1.02)', mixBlendMode: 'luminosity' }}
+                                        />
+                                        <div
+                                            className="absolute inset-0 pointer-events-none"
+                                            style={{ background: 'rgba(237,232,223,0.20)', mixBlendMode: 'color' }}
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
                     </div>
-                </div>
-            </section>
+                </section>
 
-            {/* Para Quién Es (Split Section) */}
-            <section className="v5-section bg-black border-t border-white/5 py-24">
-                <div className="v5-container">
-                    <div className="grid lg:grid-cols-2 gap-8 lg:gap-0">
-                        {/* B2C Half */}
-                        <div className="p-12 lg:pr-16 lg:border-r border-white/10 flex flex-col h-full bg-white/[0.02] lg:bg-transparent rounded-3xl lg:rounded-none">
-                            <span className="v5-label mb-6" style={{ color: '#999999' }}>B2C • INDIVIDUOS</span>
-                            <h2 className="font-display text-4xl font-bold mb-6 text-white">Para ti, si quieres aprender</h2>
-                            <p className="text-white/60 text-lg mb-8 leading-relaxed max-w-md">
-                                9 programas, cada uno diseñado para un perfil concreto. Desde mujeres de 40 a 60 años hasta médicos u hosteleros. Explicado sin tecnicismos, orientado a resolver tus problemas reales desde el día 1.
+
+                {/* ── B2C / B2B SPLIT ── */}
+                <section className="v5-section" style={{ backgroundColor: '#FFFFFF' }}>
+                    <div className="v5-container">
+                        <div className="mb-20 v5-reveal flex flex-col items-start gap-4">
+                            <span
+                                style={{
+                                    fontFamily: 'var(--v5-font-mono)', fontSize: '11px', fontWeight: 500,
+                                    letterSpacing: '0.15em', textTransform: 'uppercase', color: '#999999',
+                                }}
+                            >
+                                ¿Para quién?
+                            </span>
+                            <h2
+                                style={{
+                                    fontFamily: 'var(--v5-font-display)', fontSize: 'clamp(36px, 4vw, 64px)',
+                                    fontWeight: 300, letterSpacing: '-0.02em', lineHeight: 1.05, color: '#111111',
+                                }}
+                            >
+                                Dos caminos.<br />
+                                <span style={{ color: '#999999' }}>El mismo destino.</span>
+                            </h2>
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            {/* B2C */}
+                            <div
+                                className="v5-reveal flex flex-col"
+                                style={{
+                                    background: '#F8F8F8', border: '1px solid #EBEBEB', borderRadius: '16px',
+                                    overflow: 'hidden', transition: 'border-color 200ms ease, transform 200ms ease',
+                                }}
+                                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.borderColor = '#CCCCCC'; (e.currentTarget as HTMLElement).style.transform = 'translateY(-2px)'; }}
+                                onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.borderColor = '#EBEBEB'; (e.currentTarget as HTMLElement).style.transform = 'translateY(0)'; }}
+                            >
+                                <div style={{ position: 'relative', width: '100%', height: '280px', overflow: 'hidden' }}>
+                                    <Image
+                                        src="/images/school-individual.png"
+                                        alt="Formación individual"
+                                        fill
+                                        className="object-cover"
+                                        style={{ filter: 'contrast(1.05) brightness(1.02)' }}
+                                    />
+                                </div>
+                                <div className="flex flex-col flex-1" style={{ padding: '40px 32px' }}>
+                                    <span
+                                        style={{
+                                            display: 'block', marginBottom: '16px',
+                                            fontFamily: 'var(--v5-font-mono)', fontSize: '11px', fontWeight: 500,
+                                            letterSpacing: '0.15em', textTransform: 'uppercase', color: '#999999',
+                                        }}
+                                    >
+                                        B2C · Individuos
+                                    </span>
+                                    <h3 style={{ fontFamily: 'var(--v5-font-display)', fontSize: '24px', fontWeight: 400, letterSpacing: '-0.02em', lineHeight: 1.2, color: '#111111', marginBottom: '16px' }}>
+                                        Para ti, si quieres aprender
+                                    </h3>
+                                    <p className="flex-1" style={{ fontFamily: 'var(--v5-font-body)', fontSize: '17px', fontWeight: 300, lineHeight: 1.8, color: '#666666', marginBottom: '32px' }}>
+                                        9 programas diseñados para perfiles concretos. Desde mujeres de 40 a 60 años hasta médicos u hosteleros. Sin tecnicismos, orientado a resolver problemas reales.
+                                    </p>
+                                    <Link
+                                        href="#programas"
+                                        className="group"
+                                        style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', fontFamily: 'var(--v5-font-body)', fontSize: '15px', fontWeight: 400, color: '#111111', textDecoration: 'none', transition: 'opacity 200ms ease' }}
+                                        onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.opacity = '0.7'; }}
+                                        onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.opacity = '1'; }}
+                                    >
+                                        Ver todos los programas
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="group-hover:translate-x-1 transition-transform"><path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
+                                    </Link>
+                                </div>
+                            </div>
+
+                            {/* B2B */}
+                            <div
+                                id="b2b"
+                                className="v5-reveal flex flex-col"
+                                style={{
+                                    background: '#F8F8F8', border: '1px solid #EBEBEB', borderRadius: '16px',
+                                    overflow: 'hidden', transitionDelay: '80ms',
+                                    transition: 'border-color 200ms ease, transform 200ms ease',
+                                }}
+                                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.borderColor = '#CCCCCC'; (e.currentTarget as HTMLElement).style.transform = 'translateY(-2px)'; }}
+                                onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.borderColor = '#EBEBEB'; (e.currentTarget as HTMLElement).style.transform = 'translateY(0)'; }}
+                            >
+                                <div style={{ position: 'relative', width: '100%', height: '280px', overflow: 'hidden' }}>
+                                    <Image
+                                        src="/images/school-workshop.png"
+                                        alt="Formación corporativa"
+                                        fill
+                                        className="object-cover"
+                                        style={{ filter: 'contrast(1.05) brightness(1.02)' }}
+                                    />
+                                </div>
+                                <div className="flex flex-col flex-1" style={{ padding: '40px 32px' }}>
+                                    <span
+                                        style={{
+                                            display: 'block', marginBottom: '16px',
+                                            fontFamily: 'var(--v5-font-mono)', fontSize: '11px', fontWeight: 500,
+                                            letterSpacing: '0.15em', textTransform: 'uppercase', color: '#999999',
+                                        }}
+                                    >
+                                        B2B · Corporativo
+                                    </span>
+                                    <h3 style={{ fontFamily: 'var(--v5-font-display)', fontSize: '24px', fontWeight: 400, letterSpacing: '-0.02em', lineHeight: 1.2, color: '#111111', marginBottom: '16px' }}>
+                                        Para tu empresa o institución
+                                    </h3>
+                                    <p className="flex-1" style={{ fontFamily: 'var(--v5-font-body)', fontSize: '17px', fontWeight: 300, lineHeight: 1.8, color: '#666666', marginBottom: '32px' }}>
+                                        Formamos equipos en IA aplicada a sus flujos de trabajo. Colaboramos con fundaciones, colegios y ayuntamientos para llevar la IA a toda la organización.
+                                    </p>
+                                    <div className="flex flex-col sm:flex-row gap-3">
+                                        <Link
+                                            href="/school-lab/prepara-tu-equipo"
+                                            style={{
+                                                display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+                                                padding: '14px 28px', background: '#111111', color: '#FFFFFF',
+                                                borderRadius: '0px', fontFamily: 'var(--v5-font-body)', fontSize: '14px',
+                                                fontWeight: 400, textDecoration: 'none', transition: 'all 200ms ease',
+                                            }}
+                                            onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = '#333333'; }}
+                                            onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = '#111111'; }}
+                                        >
+                                            Formar a mi equipo
+                                        </Link>
+                                        <Link
+                                            href="/school-lab/instituciones"
+                                            className="v5-btn-ghost-dark"
+                                            style={{ borderRadius: '0px', padding: '14px 28px' }}
+                                        >
+                                            Área Instituciones
+                                        </Link>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+
+                {/* ── PROGRAMS GRID ── */}
+                <section id="programas" className="v5-section" style={{ backgroundColor: '#080808' }}>
+                    <div className="v5-container">
+
+                        <div className="mb-20 v5-reveal flex flex-col items-start gap-4">
+                            <span
+                                style={{
+                                    fontFamily: 'var(--v5-font-mono)', fontSize: '11px', fontWeight: 500,
+                                    letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.32)',
+                                }}
+                            >
+                                Programas
+                            </span>
+                            <h2
+                                style={{
+                                    fontFamily: 'var(--v5-font-display)', fontSize: 'clamp(36px, 4vw, 64px)',
+                                    fontWeight: 300, letterSpacing: '-0.02em', lineHeight: 1.05, color: '#F5F5F0',
+                                }}
+                            >
+                                Especialización<br />
+                                <span style={{ color: 'rgba(245,245,240,0.35)' }}>hiper-concreta.</span>
+                            </h2>
+                            <p
+                                style={{
+                                    fontFamily: 'var(--v5-font-body)', fontSize: '17px', fontWeight: 300,
+                                    lineHeight: 1.8, color: 'rgba(245,245,240,0.45)', maxWidth: '520px',
+                                }}
+                            >
+                                No creemos en cursos genéricos. Cada programa está diseñado para un perfil concreto
+                                con problemas reales y soluciones prácticas.
                             </p>
-                            <div className="mt-auto">
-                                <Link href="#programas" className="inline-flex items-center gap-2 text-white/60 font-bold hover:text-white hover:underline transition-colors">
-                                    Ver todos los programas →
+                        </div>
+
+                        {/* Featured — Prepara tu equipo */}
+                        <Link
+                            href="/school-lab/prepara-tu-equipo"
+                            className="group v5-reveal"
+                            style={{
+                                display: 'grid',
+                                gridTemplateColumns: '1fr',
+                                background: 'rgba(255,255,255,0.025)',
+                                border: '1px solid rgba(255,255,255,0.08)',
+                                borderRadius: '20px',
+                                overflow: 'hidden',
+                                textDecoration: 'none',
+                                color: 'inherit',
+                                marginBottom: '24px',
+                                transition: 'border-color 300ms ease, transform 300ms ease',
+                            }}
+                            onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.18)'; (e.currentTarget as HTMLElement).style.transform = 'translateY(-2px)'; }}
+                            onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.08)'; (e.currentTarget as HTMLElement).style.transform = 'translateY(0)'; }}
+                        >
+                            <div className="grid grid-cols-1 lg:grid-cols-2">
+                                <div className="flex flex-col justify-center" style={{ padding: 'clamp(32px,4vw,56px)' }}>
+                                    <span style={{ fontFamily: 'var(--v5-font-mono)', fontSize: '11px', fontWeight: 500, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.32)', marginBottom: '20px' }}>
+                                        B2B · Corporativo · Destacado
+                                    </span>
+                                    <h3 style={{ fontFamily: 'var(--v5-font-display)', fontSize: 'clamp(28px,3vw,40px)', fontWeight: 300, letterSpacing: '-0.02em', lineHeight: 1.1, color: '#F5F5F0', marginBottom: '16px' }}>
+                                        Prepara tu equipo
+                                    </h3>
+                                    <p style={{ fontFamily: 'var(--v5-font-body)', fontSize: '17px', fontWeight: 300, lineHeight: 1.8, color: 'rgba(245,245,240,0.45)', maxWidth: '420px', marginBottom: '32px' }}>
+                                        Tu equipo puede trabajar más rápido y cometer menos errores si sabe cómo usar la IA corporativa. Casos de uso 100% reales, adaptados a vuestros procesos.
+                                    </p>
+                                    <span className="group-hover:opacity-70 transition-opacity" style={{ fontFamily: 'var(--v5-font-body)', fontSize: '15px', fontWeight: 400, color: '#F5F5F0', display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
+                                        Ver programa corporativo
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="group-hover:translate-x-1 transition-transform"><path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
+                                    </span>
+                                </div>
+                                <div className="hidden lg:block" style={{ position: 'relative', minHeight: '360px' }}>
+                                    <Image
+                                        src="/images/school-workshop.png"
+                                        alt="Formación de equipos"
+                                        fill
+                                        className="object-cover"
+                                        style={{ filter: 'brightness(0.7) contrast(1.1)' }}
+                                    />
+                                </div>
+                            </div>
+                        </Link>
+
+                        {/* B2C Grid */}
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                            {programs.map((prog, i) => (
+                                <Link
+                                    key={prog.title}
+                                    href={prog.href}
+                                    className="v5-lab-card v5-reveal group flex flex-col"
+                                    style={{ transitionDelay: `${i * 50}ms`, textDecoration: 'none', color: 'inherit' }}
+                                >
+                                    <span
+                                        style={{
+                                            fontFamily: 'var(--v5-font-mono)', fontSize: '10px', fontWeight: 500,
+                                            letterSpacing: '0.15em', textTransform: 'uppercase',
+                                            color: 'rgba(245,245,240,0.32)', marginBottom: '16px',
+                                        }}
+                                    >
+                                        {prog.target}
+                                    </span>
+                                    <h3
+                                        style={{
+                                            fontFamily: 'var(--v5-font-display)', fontSize: '20px', fontWeight: 400,
+                                            letterSpacing: '-0.02em', lineHeight: 1.2, color: '#F5F5F0',
+                                            marginBottom: '12px',
+                                        }}
+                                    >
+                                        {prog.title}
+                                    </h3>
+                                    <p
+                                        className="flex-1"
+                                        style={{
+                                            fontFamily: 'var(--v5-font-body)', fontSize: '14px', fontWeight: 300,
+                                            lineHeight: 1.7, color: 'rgba(245,245,240,0.40)', marginBottom: '24px',
+                                        }}
+                                    >
+                                        {prog.desc}
+                                    </p>
+                                    <span
+                                        className="group-hover:opacity-60"
+                                        style={{
+                                            fontFamily: 'var(--v5-font-body)', fontSize: '13px', fontWeight: 400,
+                                            color: 'rgba(245,245,240,0.55)', display: 'inline-flex',
+                                            alignItems: 'center', gap: '6px', transition: 'opacity 200ms ease',
+                                        }}
+                                    >
+                                        Ver programa
+                                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="group-hover:translate-x-1 transition-transform"><path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
+                                    </span>
+                                </Link>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+
+
+                {/* ── METHODOLOGY ── */}
+                <section className="v5-section" style={{ backgroundColor: '#FFFFFF' }}>
+                    <div className="v5-container">
+                        <div className="mb-20 v5-reveal flex flex-col items-center text-center gap-4">
+                            <span style={{ fontFamily: 'var(--v5-font-mono)', fontSize: '11px', fontWeight: 500, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#999999' }}>
+                                Nuestra metodología
+                            </span>
+                            <h2 style={{ fontFamily: 'var(--v5-font-display)', fontSize: 'clamp(36px, 4vw, 64px)', fontWeight: 300, letterSpacing: '-0.02em', lineHeight: 1.05, color: '#111111' }}>
+                                Basada en evidencia,<br />
+                                <span style={{ color: '#999999' }}>diseñada para humanos.</span>
+                            </h2>
+                            <p style={{ fontFamily: 'var(--v5-font-body)', fontSize: '17px', fontWeight: 300, lineHeight: 1.8, color: '#888888', maxWidth: '560px' }}>
+                                Aprobada en base al meta-análisis SAGA 2025.
+                                90% práctica empírica para vencer la curva del olvido.
+                            </p>
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            {[
+                                { num: '01', title: 'Descúbrete', desc: 'La tecnología no tiene sentido si no sabes qué quieres amplificar. Empezamos rompiendo el muro del "yo no puedo".' },
+                                { num: '02', title: 'Aprende lo que importa', desc: 'No teoría de libro. Habilidades reales de vida. Resuelves tus propios problemas, no ejercicios inventados.' },
+                                { num: '03', title: 'Expándete con IA', desc: 'La IA no te reemplaza. Multiplica lo que ya eres. Aprenderás a usarla como un superpoder, no como una muleta.' },
+                            ].map((step, i) => (
+                                <div
+                                    key={step.num}
+                                    className="v5-reveal flex flex-col"
+                                    style={{
+                                        background: '#F8F8F8', border: '1px solid #EBEBEB', borderRadius: '16px',
+                                        padding: 'clamp(32px,4vw,48px)', transitionDelay: `${i * 80}ms`,
+                                    }}
+                                >
+                                    <span style={{ fontFamily: 'var(--v5-font-mono)', fontSize: '11px', fontWeight: 500, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#CCCCCC', marginBottom: '24px' }}>
+                                        {step.num}
+                                    </span>
+                                    <h3 style={{ fontFamily: 'var(--v5-font-display)', fontSize: '24px', fontWeight: 400, letterSpacing: '-0.02em', lineHeight: 1.2, color: '#111111', marginBottom: '16px' }}>
+                                        {step.title}
+                                    </h3>
+                                    <p style={{ fontFamily: 'var(--v5-font-body)', fontSize: '15px', fontWeight: 300, lineHeight: 1.8, color: '#666666' }}>
+                                        {step.desc}
+                                    </p>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+
+
+                {/* ── 3 FORMATS / PRICING ── */}
+                <section className="v5-section" style={{ backgroundColor: '#080808' }}>
+                    <div className="v5-container">
+                        <div className="mb-20 v5-reveal flex flex-col items-center text-center gap-4">
+                            <span style={{ fontFamily: 'var(--v5-font-mono)', fontSize: '11px', fontWeight: 500, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.32)' }}>
+                                Formatos
+                            </span>
+                            <h2 style={{ fontFamily: 'var(--v5-font-display)', fontSize: 'clamp(36px, 4vw, 64px)', fontWeight: 300, letterSpacing: '-0.02em', lineHeight: 1.05, color: '#F5F5F0' }}>
+                                Tres formatos,<br />
+                                <span style={{ color: 'rgba(245,245,240,0.35)' }}>el mismo ADN.</span>
+                            </h2>
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            {/* Taller */}
+                            <div
+                                className="v5-lab-card v5-reveal flex flex-col"
+                            >
+                                <span style={{ fontFamily: 'var(--v5-font-mono)', fontSize: '11px', fontWeight: 500, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.32)', marginBottom: '24px' }}>
+                                    90 min · Primer paso
+                                </span>
+                                <h3 style={{ fontFamily: 'var(--v5-font-display)', fontSize: '24px', fontWeight: 400, letterSpacing: '-0.02em', lineHeight: 1.2, color: '#F5F5F0', marginBottom: '16px' }}>
+                                    Taller de Descubrimiento
+                                </h3>
+                                <p className="flex-1" style={{ fontFamily: 'var(--v5-font-body)', fontSize: '15px', fontWeight: 300, lineHeight: 1.8, color: 'rgba(245,245,240,0.40)', marginBottom: '32px' }}>
+                                    El primer paso seguro. Sales habiendo creado algo con IA directamente desde tu móvil o portátil. Sin agobios.
+                                </p>
+                                <Link
+                                    href="/contacto"
+                                    className="group"
+                                    style={{ fontFamily: 'var(--v5-font-body)', fontSize: '14px', color: 'rgba(245,245,240,0.55)', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '6px', transition: 'opacity 200ms ease' }}
+                                    onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.opacity = '0.7'; }}
+                                    onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.opacity = '1'; }}
+                                >
+                                    Ver fechas →
+                                </Link>
+                            </div>
+
+                            {/* Intensivo — Featured */}
+                            <div
+                                className="v5-reveal flex flex-col relative"
+                                style={{
+                                    background: 'rgba(255,255,255,0.06)',
+                                    border: '1px solid rgba(255,255,255,0.18)',
+                                    borderRadius: '20px',
+                                    padding: '36px 40px',
+                                    overflow: 'hidden',
+                                }}
+                            >
+                                <span
+                                    style={{
+                                        position: 'absolute', top: '0', right: '0',
+                                        padding: '6px 14px', background: '#F5F5F0', color: '#080808',
+                                        fontFamily: 'var(--v5-font-mono)', fontSize: '10px', fontWeight: 500,
+                                        letterSpacing: '0.12em', textTransform: 'uppercase',
+                                        borderBottomLeftRadius: '12px',
+                                    }}
+                                >
+                                    Más popular
+                                </span>
+                                <span style={{ fontFamily: 'var(--v5-font-mono)', fontSize: '11px', fontWeight: 500, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.50)', marginBottom: '24px' }}>
+                                    1 semana · Desde 60€
+                                </span>
+                                <h3 style={{ fontFamily: 'var(--v5-font-display)', fontSize: '24px', fontWeight: 400, letterSpacing: '-0.02em', lineHeight: 1.2, color: '#F5F5F0', marginBottom: '16px' }}>
+                                    Programa Intensivo
+                                </h3>
+                                <p className="flex-1" style={{ fontFamily: 'var(--v5-font-body)', fontSize: '15px', fontWeight: 300, lineHeight: 1.8, color: 'rgba(245,245,240,0.55)', marginBottom: '32px' }}>
+                                    5 sesiones de 2h donde vas en serio. Desarrollas un proyecto real terminado al final de la semana, guiado paso a paso.
+                                </p>
+                                <Link
+                                    href="/contacto"
+                                    style={{
+                                        display: 'flex', alignItems: 'center', justifyContent: 'center',
+                                        width: '100%', padding: '14px 24px', background: '#F5F5F0',
+                                        color: '#080808', borderRadius: '0px', fontFamily: 'var(--v5-font-body)',
+                                        fontSize: '14px', fontWeight: 500, textDecoration: 'none',
+                                        transition: 'background 200ms ease',
+                                    }}
+                                    onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = '#FFFFFF'; }}
+                                    onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = '#F5F5F0'; }}
+                                >
+                                    Matricularme →
+                                </Link>
+                            </div>
+
+                            {/* Comunidad */}
+                            <div
+                                className="v5-lab-card v5-reveal flex flex-col"
+                                style={{ transitionDelay: '100ms' }}
+                            >
+                                <span style={{ fontFamily: 'var(--v5-font-mono)', fontSize: '11px', fontWeight: 500, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.32)', marginBottom: '24px' }}>
+                                    Mensual · Alumni
+                                </span>
+                                <h3 style={{ fontFamily: 'var(--v5-font-display)', fontSize: '24px', fontWeight: 400, letterSpacing: '-0.02em', lineHeight: 1.2, color: '#F5F5F0', marginBottom: '16px' }}>
+                                    Comunidad Aether
+                                </h3>
+                                <p className="flex-1" style={{ fontFamily: 'var(--v5-font-body)', fontSize: '15px', fontWeight: 300, lineHeight: 1.8, color: 'rgba(245,245,240,0.40)', marginBottom: '32px' }}>
+                                    Novedades, soporte continuo, herramientas probadas y una red de personas aprendiendo igual que tú.
+                                </p>
+                                <Link
+                                    href="/contacto"
+                                    className="group"
+                                    style={{ fontFamily: 'var(--v5-font-body)', fontSize: '14px', color: 'rgba(245,245,240,0.55)', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '6px', transition: 'opacity 200ms ease' }}
+                                    onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.opacity = '0.7'; }}
+                                    onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.opacity = '1'; }}
+                                >
+                                    Acceso Alumni →
                                 </Link>
                             </div>
                         </div>
+                    </div>
+                </section>
 
-                        {/* B2B Half */}
-                        <div id="b2b" className="p-12 lg:pl-16 flex flex-col h-full bg-white/[0.02] lg:bg-transparent rounded-3xl lg:rounded-none relative overflow-hidden group">
-                            <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 blur-3xl rounded-full"></div>
-                            <div className="relative z-10">
-                                <span className="text-white/40 text-sm font-mono tracking-widest mb-6 block">B2B • CORPORATIVO</span>
-                                <h2 className="font-display text-4xl font-bold mb-6 text-white">Para tu empresa o institución</h2>
-                                <p className="text-white/60 text-lg mb-8 leading-relaxed max-w-md">
-                                    Formamos equipos en inteligencia artificial aplicada directamente a los flujos de su trabajo real. También colaboramos con fundaciones, colegios y ayuntamientos para llevar la IA a sus colectivos.
-                                </p>
-                                <div className="mt-auto flex flex-col sm:flex-row gap-4">
-                                    <Link href="/school-lab/prepara-tu-equipo" className="v5-btn-primary" style={{ background: '#F5F5F0', color: '#080808', borderRadius: '0px' }}>
-                                        Formar a mi equipo
-                                    </Link>
-                                    <Link href="/school-lab/instituciones" className="v5-btn-ghost">
-                                        Área Instituciones
-                                    </Link>
-                                </div>
-                            </div>
+
+                {/* ── TRUST STRIP ── */}
+                <section style={{ backgroundColor: '#080808', paddingTop: '40px', paddingBottom: '40px', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
+                    <div className="v5-container flex flex-col items-center gap-6">
+                        <span style={{ fontFamily: 'var(--v5-font-mono)', fontSize: '10px', fontWeight: 500, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.18)' }}>
+                            Ya confían en Aether School
+                        </span>
+                        <div className="flex flex-wrap justify-center gap-8">
+                            {['UAB', 'Colegio Virolai', 'Fundació Pere Tarrés', 'Ajuntament de Badalona'].map((name) => (
+                                <span
+                                    key={name}
+                                    style={{
+                                        fontFamily: 'var(--v5-font-display)', fontSize: '14px', fontWeight: 400,
+                                        letterSpacing: '-0.01em', color: 'rgba(255,255,255,0.20)',
+                                        padding: '6px 14px', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '4px',
+                                    }}
+                                >
+                                    {name}
+                                </span>
+                            ))}
                         </div>
                     </div>
-                </div>
-            </section>
+                </section>
 
-            {/* Program Grid */}
-            <section id="programas" className="v5-section bg-black text-white py-24 border-t border-white/5">
-                <div className="v5-container">
-                    <div className="text-center mb-16 v5-reveal">
-                        <span className="v5-label mb-4 text-white/40">PROGRAMAS</span>
-                        <h2 className="v5-h2 mb-4">Especialización Hiper-concreta</h2>
-                        <p className="v5-body-large max-w-2xl mx-auto opacity-60">No creemos en los cursos genéricos. Entrenamos habilidades reales para problemas reales.</p>
-                    </div>
 
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-
-                        {/* Empresas (Featured) */}
-                        <Link href="/school-lab/prepara-tu-equipo" className="md:col-span-2 lg:col-span-3 p-10 border border-white/10 bg-white/[0.02] rounded-[2rem] hover:border-white/20 hover:bg-white/[0.04] transition-all duration-500 group overflow-hidden relative">
-                            <div className="absolute top-0 right-0 w-full h-full bg-[radial-gradient(ellipse_at_top_right,_rgba(255,255,255,0.04),transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                            <div className="relative z-10 grid lg:grid-cols-2 gap-12 items-center">
-                                <div>
-                                    <span className="v5-label mb-6" style={{ color: '#999999' }}>B2B • CORPORATIVO</span>
-                                    <h3 className="v5-h2" style={{ fontSize: 'clamp(1.5rem,3vw,1.875rem)' }}>Prepara tu equipo</h3>
-                                    <p className="v5-body-large !text-base mb-8 opacity-60">Tu equipo puede trabajar más rápido y cometer menos errores si sabe cómo usar la IA corporativa. Casos de uso 100% reales.</p>
-                                    <span className="font-mono text-xs text-white/40 tracking-widest uppercase">Ver programa corporativo →</span>
-                                </div>
-                                <div className="hidden lg:block relative aspect-video rounded-2xl overflow-hidden border border-white/10">
-                                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=800" className="w-full h-full object-cover opacity-60 grayscale group-hover:grayscale-0 group-hover:opacity-80 transition-all duration-700" alt="Equipo trabajando" />
-                                </div>
-                            </div>
-                        </Link>
-
-                        {/* B2C Programs */}
-                        {[
-                            { title: 'Empodérate con IA', target: 'Mujeres 40-60', desc: 'Salud, creatividad y comunicación sin tecnicismos.', color: '#10B981', href: '/school-lab/empoderate-con-ia' },
-                            { title: 'Conéctate con el mundo', target: 'Personas 65+', desc: 'IA como asistente diario para recordar y contactar.', color: '#3B82F6', href: '/school-lab/conectate-con-el-mundo' },
-                            { title: 'Aprende a crear', target: 'Niños 6-12', desc: 'Cuentos y mundos potenciando la imaginación.', color: '#F97316', href: '/school-lab/aprende-a-crear' },
-                            { title: 'Descubre tu futuro', target: 'Jóvenes 13-18', desc: 'Explora profesiones del futuro y crea proyectos.', color: '#8B5CF6', href: '/school-lab/descubre-tu-futuro' },
-                            { title: 'Monta tu negocio', target: 'Emprendedores', desc: 'Web, logo y ventas sin saber programar.', color: '#F59E0B', href: '/school-lab/monta-tu-negocio' },
-                            { title: 'Mejora tu material', target: 'Profesores', desc: 'Menos tiempo corrigiendo, más personalización.', color: '#06B6D4', href: '/school-lab/mejora-tu-material' },
-                            { title: 'Más tiempo en cocina', target: 'Hostelería', desc: 'Responde reseñas y atrae clientes automáticamente.', color: '#EF4444', href: '/school-lab/mas-tiempo-para-cocina' },
-                            { title: 'Dedícate a la medicina', target: 'Sanidad', desc: 'Delega la burocracia y agiliza informes.', color: '#1D4ED8', href: '/school-lab/dedicate-a-la-medicina' },
-                        ].map((prog) => (
-                            <Link key={prog.title} href={prog.href} className="p-8 border border-white/5 bg-white/[0.01] rounded-[1.5rem] hover:border-white/20 hover:bg-white/[0.03] transition-all group relative overflow-hidden flex flex-col">
-                                <span className="v5-label" style={{ fontSize: '9px', color: '#999999' }}>{prog.target}</span>
-                                <h3 className="v5-h3 !text-xl mb-2 group-hover:text-white transition-colors">{prog.title}</h3>
-                                <p className="v5-body-large !text-sm opacity-40 mb-8 flex-grow">{prog.desc}</p>
-                                <span className="v5-label text-white/20 group-hover:text-white opacity-0 group-hover:opacity-100 transition-all" style={{ fontSize: '9px' }}>Ver programa →</span>
+                {/* ── FINAL CTA ── */}
+                <section className="v5-section relative overflow-hidden" style={{ backgroundColor: '#080808' }}>
+                    <div className="v5-container" style={{ textAlign: 'center', position: 'relative', zIndex: 1 }}>
+                        <div className="v5-reveal" style={{ maxWidth: '640px', margin: '0 auto' }}>
+                            <span style={{ display: 'block', marginBottom: '16px', fontFamily: 'var(--v5-font-mono)', fontSize: '11px', fontWeight: 500, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.28)' }}>
+                                ¿Empezamos?
+                            </span>
+                            <h2 style={{ fontFamily: 'var(--v5-font-display)', fontSize: 'clamp(28px, 6vw, 52px)', fontWeight: 300, letterSpacing: '-0.03em', lineHeight: 1.1, color: '#F5F5F0', marginBottom: '28px' }}>
+                                El primer paso siempre es el más difícil
+                            </h2>
+                            <p style={{ fontFamily: 'var(--v5-font-body)', fontSize: '18px', fontWeight: 300, lineHeight: 1.8, color: 'rgba(245,245,240,0.5)', maxWidth: '520px', margin: '0 auto 40px' }}>
+                                ¿No sabes qué programa elegir? Cuéntanos tu situación y te orientamos en menos de 24h. Sin compromiso.
+                            </p>
+                            <Link
+                                href="/contacto"
+                                style={{
+                                    display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+                                    gap: '8px', padding: '16px 32px', background: '#F5F5F0', color: '#080808',
+                                    borderRadius: '0px', fontFamily: 'var(--v5-font-body)', fontSize: '15px',
+                                    fontWeight: 400, textDecoration: 'none', transition: 'all 200ms ease',
+                                }}
+                                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = '#FFFFFF'; (e.currentTarget as HTMLElement).style.transform = 'translateY(-1px)'; }}
+                                onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = '#F5F5F0'; (e.currentTarget as HTMLElement).style.transform = 'translateY(0)'; }}
+                            >
+                                Hablar con nuestro equipo
                             </Link>
-                        ))}
-
-                    </div>
-                </div>
-            </section>
-
-            {/* Methodology Section */}
-            <section className="v5-section bg-black text-white border-t border-white/5 py-24">
-                <div className="v5-container">
-                    <div className="text-center mb-16">
-                        <span className="v5-label mb-4" style={{ color: '#999999' }}>NUESTRA METODOLOGÍA</span>
-                        <h2 className="v5-h2 max-w-2xl mx-auto">Basada en evidencia, <br />diseñada para humanos</h2>
-                        <p className="text-white/50 mt-4 max-w-lg mx-auto">Aprobada en base al meta-análisis SAGA 2025 y orientada 90% a la práctica empírica para vencer la curva del olvido.</p>
-                    </div>
-
-                    <div className="grid md:grid-cols-3 gap-12 max-w-5xl mx-auto">
-                        <div className="text-center md:text-left">
-                            <div className="w-16 h-16 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center text-2xl mb-6 mx-auto md:mx-0">🪞</div>
-                            <h3 className="font-display text-xl font-bold mb-3">01. Descúbrete</h3>
-                            <p className="text-white/60 text-sm leading-relaxed">La tecnología no tiene sentido si no sabes qué quieres amplificar. Empezamos por romper el muro del "yo no puedo".</p>
-                        </div>
-                        <div className="text-center md:text-left">
-                            <div className="w-16 h-16 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center text-2xl mb-6 mx-auto md:mx-0">🛠</div>
-                            <h3 className="font-display text-xl font-bold mb-3">02. Aprende lo que importa</h3>
-                            <p className="text-white/60 text-sm leading-relaxed">No teoría de libro. Habilidades reales de vida. Aprenderás resolviendo tus propios problemas, no ejercicios inventados.</p>
-                        </div>
-                        <div className="text-center md:text-left">
-                            <div className="w-16 h-16 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center text-2xl mb-6 mx-auto md:mx-0">🚀</div>
-                            <h3 className="font-display text-xl font-bold mb-3">03. Expándete con tecnología</h3>
-                            <p className="text-white/60 text-sm leading-relaxed">La IA no te reemplaza. Multiplica lo que ya eres. Aquí aprendes a usarla como un superpoder, no como una muleta.</p>
                         </div>
                     </div>
-                </div>
-            </section>
+                    <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '600px', height: '600px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(237,232,223,0.020) 0%, transparent 65%)', pointerEvents: 'none' }} />
+                </section>
 
-            {/* Los 3 Formatos */}
-            <section className="v5-section bg-[#0C0C0C] border-t border-white/5 py-24">
-                <div className="v5-container">
-
-                    <div className="text-center mb-16 v5-reveal">
-                        <span className="v5-label mb-4 text-white/40">METODOLOGÍA Y FORMATOS</span>
-                        <h2 className="v5-h2">Tres formatos, el mismo ADN</h2>
-                    </div>
-
-                    <div className="grid md:grid-cols-3 gap-6">
-                        <div className="p-8 border border-white/5 bg-white/[0.01] rounded-3xl flex flex-col justify-between hover:border-white/10 transition-colors">
-                            <div>
-                                <h3 className="v5-h3 !text-2xl mb-2 text-white">Taller de Descubrimiento</h3>
-                                <p className="font-mono text-[10px] text-white/40 mb-6 tracking-widest uppercase">90 min • Feedback inmediato</p>
-                                <p className="v5-body-large !text-sm opacity-50 mb-6">El primer paso seguro. Sales habiendo creado algo con IA directamente desde tu móvil o portátil. Sin agobios.</p>
-                            </div>
-                            <Link href="#contact" className="text-xs font-mono tracking-widest uppercase text-white/40 hover:text-white transition-colors pt-4 border-t border-white/5 text-center">Ver fechas →</Link>
-                        </div>
-
-                        <div className="p-8 border border-white/20 bg-white/[0.04] rounded-3xl flex flex-col justify-between relative overflow-hidden group">
-                            <div className="absolute top-0 right-0 px-3 py-1 bg-[#F5F5F0] text-[#080808] text-[9px] font-bold tracking-widest uppercase rounded-bl-xl">MÁS POPULAR</div>
-                            <div>
-                                <h3 className="v5-h3 !text-2xl mb-2 text-white">Programa Intensivo</h3>
-                                <p className="font-mono text-[10px] text-white/40 mb-6 tracking-widest uppercase">1 semana • Desde 60€</p>
-                                <p className="v5-body-large !text-sm opacity-60 mb-6">5 sesiones de 2h donde vas en serio. Desarrollas un proyecto real terminado al final de la semana, guiado paso a paso.</p>
-                            </div>
-                            <Link href="#contact" className="text-xs font-bold text-[#080808] bg-[#F5F5F0] hover:bg-white transition-colors py-3 px-4 rounded-xl text-center">Matricularme</Link>
-                        </div>
-
-                        <div className="p-8 border border-white/5 bg-white/[0.01] rounded-3xl flex flex-col justify-between hover:border-white/10 transition-colors">
-                            <div>
-                                <h3 className="v5-h3 !text-2xl mb-2 text-white">Comunidad Aether</h3>
-                                <p className="font-mono text-[10px] text-white/40 mb-6 tracking-widest uppercase">Mensual • Alumni</p>
-                                <p className="v5-body-large !text-sm opacity-50 mb-6">Novedades, soporte continuo, herramientas probadas y una red de personas aprendiendo igual que tú.</p>
-                            </div>
-                            <Link href="#contact" className="text-xs font-mono tracking-widest uppercase text-white/40 hover:text-white transition-colors pt-4 border-t border-white/5 text-center">Acceso Alumni →</Link>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* Trust */}
-            <section className="v5-section bg-black border-t border-white/5 py-16">
-                <div className="v5-container flex flex-col items-center">
-                    <span className="text-white/30 text-xs font-mono tracking-widest uppercase mb-8">Ya confían en Aether School</span>
-                    <div className="flex flex-wrap justify-center gap-12 opacity-40 grayscale">
-                        <span className="font-display font-bold text-xl">UAB</span>
-                        <span className="font-display font-bold text-xl">Colegio Virolai</span>
-                        <span className="font-display font-bold text-xl">Fundació Pere Tarrés</span>
-                        <span className="font-display font-bold text-xl">Ajuntament de Badalona</span>
-                    </div>
-                </div>
-            </section>
+            </main>
 
             <Footer />
-        </main>
+        </div>
     );
 }

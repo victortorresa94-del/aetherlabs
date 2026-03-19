@@ -26,10 +26,10 @@ export default function FinalCtaSection() {
           <h2
             style={{
               fontFamily: 'var(--v5-font-display)',
-              fontSize: 'clamp(36px, 4vw, 64px)',
+              fontSize: 'clamp(28px, 6vw, 52px)',
               fontWeight: 300,
-              letterSpacing: '-0.02em',
-              lineHeight: 1.05,
+              letterSpacing: '-0.03em',
+              lineHeight: 1.1,
               color: '#F5F5F0',
               marginBottom: '28px',
             }}
@@ -40,45 +40,49 @@ export default function FinalCtaSection() {
           <p
             style={{
               fontFamily: 'var(--v5-font-body)',
-              fontSize: '17px',
+              fontSize: '18px',
               fontWeight: 300,
               lineHeight: 1.8,
-              color: 'rgba(255,255,255,0.38)',
-              maxWidth: '400px',
+              color: 'rgba(245,245,240,0.5)',
+              maxWidth: '520px',
               margin: '0 auto 40px',
+              textAlign: 'center',
             }}
           >
             Sin compromiso. Sin presentación de ventas. Solo para ver si tiene sentido trabajar juntos.
           </p>
 
-          <Link
-            href="/systems-lab/sesion-de-claridad"
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '8px',
-              padding: '16px 32px',
-              background: '#F5F5F0',
-              color: '#080808',
-              borderRadius: '0px',
-              fontFamily: 'var(--v5-font-body)',
-              fontSize: '15px',
-              fontWeight: 400,
-              letterSpacing: '0.01em',
-              textDecoration: 'none',
-              transition: 'all 200ms ease',
-            }}
-            onMouseEnter={(e) => {
-              (e.currentTarget as HTMLElement).style.background = '#FFFFFF';
-              (e.currentTarget as HTMLElement).style.transform = 'translateY(-1px)';
-            }}
-            onMouseLeave={(e) => {
-              (e.currentTarget as HTMLElement).style.background = '#F5F5F0';
-              (e.currentTarget as HTMLElement).style.transform = 'translateY(0)';
-            }}
-          >
-            Reservar sesión gratuita
-          </Link>
+          <div className="v5-cta-buttons">
+            <Link
+              href="/systems-lab/sesion-de-claridad"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '8px',
+                padding: '16px 32px',
+                background: '#F5F5F0',
+                color: '#080808',
+                borderRadius: '0px',
+                fontFamily: 'var(--v5-font-body)',
+                fontSize: '15px',
+                fontWeight: 400,
+                letterSpacing: '0.01em',
+                textDecoration: 'none',
+                transition: 'all 200ms ease',
+              }}
+              onMouseEnter={(e) => {
+                (e.currentTarget as HTMLElement).style.background = '#FFFFFF';
+                (e.currentTarget as HTMLElement).style.transform = 'translateY(-1px)';
+              }}
+              onMouseLeave={(e) => {
+                (e.currentTarget as HTMLElement).style.background = '#F5F5F0';
+                (e.currentTarget as HTMLElement).style.transform = 'translateY(0)';
+              }}
+            >
+              Reservar sesión gratuita
+            </Link>
+          </div>
 
           <div
             style={{
@@ -108,7 +112,7 @@ export default function FinalCtaSection() {
             </a>
             <span style={{ color: 'rgba(255,255,255,0.10)' }}>|</span>
             <a
-              href="https://wa.me/34600000000"
+              href="https://wa.me/34627281459"
               target="_blank"
               rel="noopener noreferrer"
               style={{

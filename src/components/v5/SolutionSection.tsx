@@ -20,7 +20,7 @@ const pillars = [
 
 export default function SolutionSection() {
   return (
-    <section className="v5-section" style={{ backgroundColor: '#FFFFFF' }}>
+    <section className="v5-section" style={{ backgroundColor: '#F7F7F5' }}>
       <div className="v5-container">
 
         {/* Heading */}
@@ -60,12 +60,14 @@ export default function SolutionSection() {
           {pillars.map((pillar, i) => (
             <div
               key={i}
-              className="v5-reveal flex flex-col gap-6 p-6 md:p-8"
+              className="v5-reveal flex flex-col"
               style={{
                 backgroundColor: '#F8F8F8',
                 border: '1px solid #EBEBEB',
                 borderRadius: '16px',
                 transitionDelay: `${i * 80}ms`,
+                padding: '48px',
+                minHeight: '200px',
               }}
             >
               <span
@@ -75,6 +77,7 @@ export default function SolutionSection() {
                   fontWeight: 500,
                   color: '#CCCCCC',
                   letterSpacing: '0.05em',
+                  marginBottom: '24px',
                 }}
               >
                 {pillar.number}
@@ -86,6 +89,7 @@ export default function SolutionSection() {
                   fontWeight: 400,
                   letterSpacing: '-0.02em',
                   color: '#111111',
+                  marginBottom: '16px',
                 }}
               >
                 {pillar.title}

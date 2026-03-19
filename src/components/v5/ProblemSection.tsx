@@ -60,7 +60,7 @@ export default function ProblemSection() {
             {painPoints.map((pain, i) => (
               <div
                 key={i}
-                className="v5-reveal flex gap-8 py-10"
+                className="v5-reveal flex gap-8 py-12"
                 style={{
                   borderBottom: i < painPoints.length - 1 ? '1px solid #EBEBEB' : 'none',
                   transitionDelay: `${i * 60}ms`,

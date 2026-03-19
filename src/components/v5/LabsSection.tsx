@@ -11,7 +11,7 @@ const labs = [
     description: 'Implementamos IA como Claude y Copilot. Automatizamos flujos para que el trabajo tedioso desaparezca.',
     cta: 'Explorar Systems Lab',
     href: '/systems-lab',
-    image: '/quantum-sculpture.jpeg',
+    image: '/images/aether-office.jpg',
   },
   {
     key: 'creative',
@@ -20,7 +20,7 @@ const labs = [
     description: 'Interfaces, landing pages, avatares 3D y diseño. Haz que te vean, te entiendan y te elijan.',
     cta: 'Explorar Creative Lab',
     href: '/creative-lab',
-    image: '/crystal-sculpture.jpeg',
+    image: '/images/3d/branding.jpeg',
   },
   {
     key: 'school',
@@ -29,7 +29,7 @@ const labs = [
     description: 'Cursos, talleres y programas presenciales para empresas. Transforma a tu equipo con nueva tecnología.',
     cta: 'Explorar School Lab',
     href: '/school-lab',
-    image: '/chrome-sculpture.jpeg',
+    image: '/images/school-workshop.png',
   },
 ];
 
@@ -38,7 +38,7 @@ export default function LabsSection() {
     <section id="servicios" className="v5-section" style={{ backgroundColor: '#FFFFFF' }}>
       <div className="v5-container">
         {/* Header */}
-        <div className="mb-20 v5-reveal flex flex-col items-start gap-4">
+        <div className="mb-20 lg:mb-48 v5-reveal flex flex-col items-center text-center gap-4">
           <span
             style={{
               fontFamily: 'var(--v5-font-mono)',
@@ -104,7 +104,7 @@ export default function LabsSection() {
               </div>
 
               {/* Text content */}
-              <div className="flex flex-col flex-1 p-6 md:p-8">
+              <div className="flex flex-col flex-1" style={{ padding: '40px 32px' }}>
                 <span
                   style={{
                     display: 'block',

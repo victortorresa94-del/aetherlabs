@@ -3,68 +3,91 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
+const partners = [
+  { name: 'KMeleon', logo: null },
+  { name: 'Microsoft', logo: null },
+  { name: 'Tech BCN', logo: null },
+  { name: 'Closius', logo: null },
+];
+
 export default function HeroSection() {
   return (
     <section
       className="relative min-h-screen flex items-center overflow-hidden"
-      style={{ backgroundColor: '#080808', paddingTop: '160px', paddingBottom: '160px' }}
+      style={{ backgroundColor: '#080808', paddingTop: '120px', paddingBottom: '120px' }}
     >
       <div className="v5-container relative z-10 w-full">
-        <div className="v5-hero-grid items-center">
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: '1fr',
+            gap: '3rem',
+            alignItems: 'center',
+          }}
+          className="lg:!grid-cols-[1.3fr_0.7fr] lg:!gap-[12rem]"
+        >
 
           {/* Left — Text */}
           <div className="flex flex-col items-start text-left">
+
+            {/* Eyebrow label */}
             <span
-              className="v5-reveal mb-4"
+              className="v5-reveal"
               style={{
                 fontFamily: 'var(--v5-font-mono)',
                 fontSize: '11px',
                 fontWeight: 500,
                 letterSpacing: '0.15em',
                 textTransform: 'uppercase',
-                color: '#999999',
+                color: '#666666',
                 transitionDelay: '0ms',
+                marginBottom: '28px',
               }}
             >
               Implementación de IA · Barcelona
             </span>
 
+            {/* H1 */}
             <h1
-              className="v5-reveal mb-8"
+              className="v5-reveal"
               style={{
                 fontFamily: 'var(--v5-font-display)',
-                fontSize: 'clamp(40px, 6vw, 84px)',
+                fontSize: 'clamp(40px, 5vw, 72px)',
                 fontWeight: 300,
                 letterSpacing: '-0.03em',
-                lineHeight: 0.95,
+                lineHeight: 1.08,
                 color: '#F5F5F0',
                 transitionDelay: '80ms',
+                marginBottom: '32px',
               }}
             >
               El puente<br />
               entre personas<br />
-              <span style={{ color: 'rgba(245,245,240,0.38)' }}>y tecnología.</span>
+              <span style={{ color: 'rgba(245,245,240,0.35)' }}>y tecnología.</span>
             </h1>
 
+            {/* Subtitle */}
             <p
-              className="v5-reveal mb-12"
+              className="v5-reveal"
               style={{
                 fontFamily: 'var(--v5-font-body)',
-                fontSize: '17px',
+                fontSize: '18px',
                 fontWeight: 300,
                 lineHeight: 1.8,
-                color: 'rgba(245,245,240,0.50)',
-                maxWidth: '520px',
+                color: 'rgba(245,245,240,0.48)',
+                maxWidth: '500px',
                 transitionDelay: '160ms',
+                marginBottom: '48px',
               }}
             >
               Ayudamos a empresas con buen producto a conseguir clientes
               y operar mejor, usando IA de forma práctica.
             </p>
 
+            {/* CTAs */}
             <div
               className="v5-reveal flex flex-col sm:flex-row gap-4"
-              style={{ transitionDelay: '220ms' }}
+              style={{ transitionDelay: '220ms', marginBottom: '72px' }}
             >
               <Link
                 href="/systems-lab/sesion-de-claridad"
@@ -72,13 +95,13 @@ export default function HeroSection() {
                   display: 'inline-flex',
                   alignItems: 'center',
                   gap: '8px',
-                  padding: '16px 32px',
+                  padding: '16px 36px',
                   background: '#F5F5F0',
                   color: '#080808',
                   borderRadius: '0px',
                   fontFamily: 'var(--v5-font-body)',
                   fontSize: '15px',
-                  fontWeight: 400,
+                  fontWeight: 500,
                   letterSpacing: '0.01em',
                   textDecoration: 'none',
                   transition: 'all 200ms ease',
@@ -101,10 +124,10 @@ export default function HeroSection() {
                   display: 'inline-flex',
                   alignItems: 'center',
                   gap: '8px',
-                  padding: '16px 32px',
+                  padding: '16px 36px',
                   background: 'transparent',
-                  color: '#CCCCCC',
-                  border: '1px solid rgba(255,255,255,0.2)',
+                  color: 'rgba(255,255,255,0.50)',
+                  border: '1px solid rgba(255,255,255,0.15)',
                   borderRadius: '0px',
                   fontFamily: 'var(--v5-font-body)',
                   fontSize: '15px',
@@ -117,42 +140,48 @@ export default function HeroSection() {
                 onMouseEnter={(e) => {
                   (e.currentTarget as HTMLElement).style.background = 'rgba(255,255,255,0.05)';
                   (e.currentTarget as HTMLElement).style.color = '#FFFFFF';
+                  (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.3)';
                 }}
                 onMouseLeave={(e) => {
                   (e.currentTarget as HTMLElement).style.background = 'transparent';
-                  (e.currentTarget as HTMLElement).style.color = '#CCCCCC';
+                  (e.currentTarget as HTMLElement).style.color = 'rgba(255,255,255,0.50)';
+                  (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.15)';
                 }}
               >
                 Ver servicios
               </Link>
             </div>
 
+            {/* Partner logos */}
             <div
-              className="v5-reveal mt-16 flex flex-col items-start gap-4"
+              className="v5-reveal flex flex-col items-start gap-5"
               style={{ transitionDelay: '300ms' }}
             >
               <span
                 style={{
                   fontFamily: 'var(--v5-font-mono)',
-                  fontSize: '11px',
+                  fontSize: '10px',
                   fontWeight: 500,
-                  letterSpacing: '0.15em',
+                  letterSpacing: '0.18em',
                   textTransform: 'uppercase',
-                  color: 'rgba(255,255,255,0.22)',
+                  color: 'rgba(255,255,255,0.18)',
                 }}
               >
                 Con quienes trabajamos
               </span>
-              <div className="flex gap-8 items-center flex-wrap">
-                {['KMeleon', 'Microsoft', 'Tech BCN', 'Closius'].map((name) => (
+              <div className="flex gap-6 items-center flex-wrap">
+                {partners.map(({ name }) => (
                   <span
                     key={name}
                     style={{
                       fontFamily: 'var(--v5-font-display)',
-                      fontSize: '15px',
-                      fontWeight: 300,
+                      fontSize: '14px',
+                      fontWeight: 400,
                       letterSpacing: '-0.01em',
-                      color: 'rgba(255,255,255,0.18)',
+                      color: 'rgba(255,255,255,0.20)',
+                      padding: '6px 14px',
+                      border: '1px solid rgba(255,255,255,0.07)',
+                      borderRadius: '4px',
                     }}
                   >
                     {name}
@@ -160,18 +189,18 @@ export default function HeroSection() {
                 ))}
               </div>
             </div>
+
           </div>
 
-          {/* Right — Warm card (3D object) */}
-          <div className="v5-hide-on-mobile w-full flex justify-end">
+          {/* Right — 3D card */}
+          <div className="hidden lg:flex w-full justify-end">
             <div
-              className="v5-reveal relative w-full max-w-[480px]"
+              className="v5-reveal relative w-full max-w-[460px]"
               style={{
                 animation: 'heroFloat 7s ease-in-out infinite',
                 transitionDelay: '100ms',
               }}
             >
-              {/* Card */}
               <div
                 className="card-3d-object card-3d-object-shadow"
                 style={{
@@ -183,7 +212,7 @@ export default function HeroSection() {
                 <div className="relative w-full h-full">
                   <Image
                     src="/chrome-sculpture.jpeg"
-                    alt="Chrome sculpture"
+                    alt="Aether Labs"
                     fill
                     className="object-cover"
                     style={{ filter: 'contrast(1.1) brightness(1.05)', mixBlendMode: 'luminosity' }}
@@ -191,37 +220,9 @@ export default function HeroSection() {
                   />
                   <div
                     className="absolute inset-0 pointer-events-none"
-                    style={{ background: 'rgba(237,232,223,0.25)', mixBlendMode: 'color' }}
+                    style={{ background: 'rgba(237,232,223,0.20)', mixBlendMode: 'color' }}
                   />
                 </div>
-              </div>
-
-              {/* Pills */}
-              <div
-                className="v5-floating-pill"
-                style={{ top: '10%', right: '-16px' }}
-              >
-                <span className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400/90 flex-shrink-0" />
-                  Sistema online
-                </span>
-              </div>
-
-              <div
-                className="v5-floating-pill"
-                style={{ bottom: '16%', left: '-16px' }}
-              >
-                <span className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-white/40 flex-shrink-0" />
-                  IA Ready
-                </span>
-              </div>
-
-              <div
-                className="v5-floating-pill"
-                style={{ top: '52%', right: '-16px' }}
-              >
-                v5.0
               </div>
             </div>
           </div>
@@ -235,7 +236,7 @@ export default function HeroSection() {
         style={{
           width: '700px',
           height: '700px',
-          background: 'radial-gradient(circle at 65% 25%, rgba(237,232,223,0.030) 0%, transparent 55%)',
+          background: 'radial-gradient(circle at 65% 25%, rgba(237,232,223,0.025) 0%, transparent 55%)',
         }}
       />
     </section>

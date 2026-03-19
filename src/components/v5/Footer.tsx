@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -15,26 +16,53 @@ export default function Footer() {
       }}
     >
       <div className="v5-container">
+
+        {/* CTA row — Sesión de Claridad */}
+        <div style={{
+          borderBottom: '1px solid rgba(255,255,255,0.06)',
+          paddingBottom: '60px',
+          marginBottom: '60px',
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          flexWrap: 'wrap',
+          gap: '24px',
+        }}>
+          <div>
+            <p style={{ fontFamily: 'var(--v5-font-display)', fontSize: '24px', fontWeight: 300, letterSpacing: '-0.02em', color: 'rgba(255,255,255,0.70)', marginBottom: '8px' }}>
+              ¿Listo para empezar?
+            </p>
+            <p style={{ fontFamily: 'var(--v5-font-body)', fontSize: '14px', fontWeight: 300, color: 'rgba(255,255,255,0.30)' }}>
+              Reserva una sesión de claridad gratuita.
+            </p>
+          </div>
+          <Link href="/systems-lab/sesion-de-claridad" style={{
+            display: 'inline-flex', alignItems: 'center', gap: '8px',
+            padding: '14px 28px', background: 'rgba(255,255,255,0.08)',
+            border: '1px solid rgba(255,255,255,0.15)', color: 'rgba(255,255,255,0.70)',
+            fontFamily: 'var(--v5-font-body)', fontSize: '14px', fontWeight: 400,
+            textDecoration: 'none', borderRadius: '0px',
+            transition: 'all 200ms ease',
+          }}
+            onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = 'rgba(255,255,255,0.12)'; }}
+            onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = 'rgba(255,255,255,0.08)'; }}>
+            Reservar sesión →
+          </Link>
+        </div>
+
+        {/* 4-column grid */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
 
-          {/* Logo + tagline */}
+          {/* Logo + tagline + social links */}
           <div className="md:col-span-2">
-            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '20px' }}>
-              <svg width="20" height="20" viewBox="0 0 32 32" fill="none">
-                <circle cx="16" cy="16" r="14" stroke="rgba(255,255,255,0.40)" strokeWidth="1.5" />
-                <circle cx="16" cy="16" r="5" fill="rgba(255,255,255,0.40)" />
-              </svg>
-              <span
-                style={{
-                  fontFamily: 'var(--v5-font-display)',
-                  fontSize: '15px',
-                  fontWeight: 300,
-                  letterSpacing: '-0.02em',
-                  color: 'rgba(255,255,255,0.50)',
-                }}
-              >
-                Aether Labs
-              </span>
+            <div style={{ marginBottom: '20px' }}>
+              <Image
+                src="/aether-logo-new.png"
+                alt="Aether Labs"
+                height={32}
+                width={96}
+                style={{ objectFit: 'contain', filter: 'brightness(0) invert(1)', opacity: 0.4 }}
+              />
             </div>
             <p
               style={{
@@ -48,6 +76,23 @@ export default function Footer() {
             >
               El puente entre personas y tecnología. IA, contenido y presencia digital para empresas.
             </p>
+            <div style={{ display: 'flex', gap: '16px', marginTop: '16px' }}>
+              <a href="https://www.linkedin.com/company/aetherlabs" target="_blank" rel="noopener" style={{ color: 'rgba(255,255,255,0.25)', textDecoration: 'none', fontSize: '12px', fontFamily: 'var(--v5-font-mono)', letterSpacing: '0.1em', transition: 'color 200ms ease' }}
+                onMouseEnter={(e) => { (e.target as HTMLElement).style.color = 'rgba(255,255,255,0.55)'; }}
+                onMouseLeave={(e) => { (e.target as HTMLElement).style.color = 'rgba(255,255,255,0.25)'; }}>
+                LinkedIn
+              </a>
+              <a href="https://wa.me/34627281459" target="_blank" rel="noopener" style={{ color: 'rgba(255,255,255,0.25)', textDecoration: 'none', fontSize: '12px', fontFamily: 'var(--v5-font-mono)', letterSpacing: '0.1em', transition: 'color 200ms ease' }}
+                onMouseEnter={(e) => { (e.target as HTMLElement).style.color = 'rgba(255,255,255,0.55)'; }}
+                onMouseLeave={(e) => { (e.target as HTMLElement).style.color = 'rgba(255,255,255,0.25)'; }}>
+                WhatsApp
+              </a>
+              <a href="mailto:hola@aetherlabs.es" style={{ color: 'rgba(255,255,255,0.25)', textDecoration: 'none', fontSize: '12px', fontFamily: 'var(--v5-font-mono)', letterSpacing: '0.1em', transition: 'color 200ms ease' }}
+                onMouseEnter={(e) => { (e.target as HTMLElement).style.color = 'rgba(255,255,255,0.55)'; }}
+                onMouseLeave={(e) => { (e.target as HTMLElement).style.color = 'rgba(255,255,255,0.25)'; }}>
+                Email
+              </a>
+            </div>
           </div>
 
           {/* Labs */}
@@ -154,7 +199,7 @@ export default function Footer() {
               color: 'rgba(255,255,255,0.16)',
             }}
           >
-            {currentYear} Aether Labs. Barcelona.
+            © {currentYear} Aether Labs · aetherlabs.es · Barcelona.
           </span>
           <div style={{ display: 'flex', gap: '24px' }}>
             {[

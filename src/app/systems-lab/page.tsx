@@ -18,7 +18,7 @@ const tools = [
     partner: false,
     accentColor: '#D97706',
     href: '/systems-lab/claude',
-    logo: 'C',
+    logo: 'Cl',
   },
   {
     name: 'Microsoft Copilot',
@@ -29,7 +29,7 @@ const tools = [
     partner: false,
     accentColor: '#0078D4',
     href: '/systems-lab/copilot',
-    logo: 'M',
+    logo: 'Co',
   },
   {
     name: 'ClickUp',
@@ -51,7 +51,7 @@ const tools = [
     partner: false,
     accentColor: '#EA4B71',
     href: '/systems-lab/automatizacion',
-    logo: '∞',
+    logo: 'n8',
   },
   {
     name: 'AchieveApex',
@@ -62,7 +62,7 @@ const tools = [
     partner: true,
     accentColor: '#059669',
     href: '/systems-lab/achieveapex',
-    logo: 'AA',
+    logo: 'Ax',
   },
   {
     name: 'Closius',
@@ -73,7 +73,7 @@ const tools = [
     partner: true,
     accentColor: '#0EA5E9',
     href: '/systems-lab/closius',
-    logo: 'CL',
+    logo: 'Cs',
   },
   {
     name: 'Apollo.io',
@@ -84,7 +84,7 @@ const tools = [
     partner: false,
     accentColor: '#1D4ED8',
     href: '/systems-lab/apollo',
-    logo: 'AP',
+    logo: 'Ap',
   },
   {
     name: 'HubSpot AI',
@@ -154,10 +154,7 @@ export default function SystemsLabPage() {
                 <Link
                   key={tool.name}
                   href={tool.href}
-                  className="v5-tool-card"
-                  style={{
-                    gridColumn: tool.featured ? 'span 2' : 'span 1',
-                  }}
+                  className={`v5-tool-card ${tool.featured ? 'md:col-span-2' : ''}`}
                 >
                   {/* Accent glow */}
                   <div style={{
@@ -311,19 +308,8 @@ export default function SystemsLabPage() {
       <Footer />
 
       <style>{`
-        @media (max-width: 1024px) {
-          .v5-tools-grid {
-            grid-template-columns: repeat(2, 1fr) !important;
-          }
-          .v5-tool-card[style*="span 2"] {
-            grid-column: span 2 !important;
-          }
-        }
         @media (max-width: 640px) {
-          .v5-tools-grid {
-            grid-template-columns: 1fr !important;
-          }
-          .v5-tool-card[style*="span 2"] {
+          .md\:col-span-2 {
             grid-column: span 1 !important;
           }
         }
