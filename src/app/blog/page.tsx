@@ -13,41 +13,50 @@ const articulos = [
     slug: 'claude-vs-chatgpt-empresas',
     label: 'Comparativa',
     title: 'Claude vs ChatGPT para empresas: cuál es mejor en 2026',
-    desc: 'Alta búsqueda, comparativa directa e intención de compra. Analizamos ambas herramientas para uso corporativo real.',
+    desc: 'Privacidad, contexto, precio y casos de uso reales. Analizamos ambas herramientas para uso corporativo y te ayudamos a elegir.',
     tiempo: '8 min',
-    proximamente: true,
   },
   {
-    slug: 'claude-cowork-que-es',
-    label: 'Guía',
-    title: 'Qué es Claude Cowork y cómo usarlo en tu empresa',
-    desc: 'El agente de escritorio de Anthropic que trabaja con tus archivos locales. Zero competencia en Google ahora mismo.',
-    tiempo: '6 min',
-    proximamente: true,
+    slug: 'copilot-vs-claude',
+    label: 'Comparativa',
+    title: 'Microsoft Copilot vs Claude: qué IA conviene a tu empresa',
+    desc: 'Copilot está en Microsoft 365. Claude es mejor IA. ¿Cuál conviene? Analizamos precios, capacidades e integración.',
+    tiempo: '7 min',
   },
   {
     slug: 'casos-uso-claude-empresa',
     label: 'Casos de uso',
     title: '15 casos de uso reales de Claude en empresas españolas',
-    desc: 'Marketing, RRHH, finanzas, ventas y operaciones. Casos documentados con antes y después.',
+    desc: 'Marketing, RRHH, finanzas, ventas y operaciones. Casos documentados con antes y después y métricas reales.',
     tiempo: '12 min',
-    proximamente: true,
-  },
-  {
-    slug: 'cuanto-cuesta-implementar-claude',
-    label: 'Pricing',
-    title: 'Cuánto cuesta implementar Claude en una empresa',
-    desc: 'Licencias, formación, implementación. Desglose completo sin letra pequeña.',
-    tiempo: '5 min',
-    proximamente: true,
   },
   {
     slug: 'prompts-claude-marketing',
     label: 'Prompts',
     title: '30 prompts de Claude para equipos de marketing',
-    desc: 'Briefs, copy, análisis de resultados, adaptación de contenido. Listos para copiar y usar.',
+    desc: 'Briefs, copy, análisis de campañas, contenido para redes y email marketing. Listos para copiar y usar con Claude.',
     tiempo: '10 min',
-    proximamente: true,
+  },
+  {
+    slug: 'claude-recursos-humanos',
+    label: 'Guía',
+    title: 'Cómo usar Claude en Recursos Humanos: guía práctica 2026',
+    desc: 'Criba de CVs, onboarding personalizado, clima laboral y comunicación interna. Guía práctica con prompts reales.',
+    tiempo: '9 min',
+  },
+  {
+    slug: 'claude-cowork-que-es',
+    label: 'Guía',
+    title: 'Qué es Claude Cowork y cómo usarlo en tu empresa',
+    desc: 'El agente de escritorio de Anthropic que controla tu ordenador. Todo lo que necesitas saber para implementarlo.',
+    tiempo: '6 min',
+  },
+  {
+    slug: 'cuanto-cuesta-implementar-claude',
+    label: 'Pricing',
+    title: 'Cuánto cuesta implementar Claude en una empresa',
+    desc: 'Licencias, formación, integración y ROI. Desglose completo sin letra pequeña. Con cálculo de amortización.',
+    tiempo: '5 min',
   },
 ];
 
@@ -109,52 +118,11 @@ export default function BlogPage() {
         {/* ── ARTÍCULOS ── */}
         <section className="v5-section" style={{ backgroundColor: '#F7F7F5' }}>
           <div className="v5-container">
-
-            {/* Próximamente notice */}
-            <div
-              style={{
-                background: '#FFFFFF',
-                border: '1px solid #E0E0E0',
-                borderLeft: '4px solid #111111',
-                borderRadius: '12px',
-                padding: '24px 32px',
-                marginBottom: '64px',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '16px',
-              }}
-            >
-              <span
-                style={{
-                  fontFamily: 'var(--v5-font-mono)',
-                  fontSize: '11px',
-                  fontWeight: 500,
-                  letterSpacing: '0.12em',
-                  textTransform: 'uppercase',
-                  color: '#999999',
-                  flexShrink: 0,
-                }}
-              >
-                En construcción
-              </span>
-              <p
-                style={{
-                  fontFamily: 'var(--v5-font-body)',
-                  fontSize: '15px',
-                  fontWeight: 300,
-                  color: '#666666',
-                  margin: 0,
-                  lineHeight: 1.6,
-                }}
-              >
-                Estos artículos están en proceso de publicación. Volveremos pronto con contenido de calidad sobre IA para empresas.
-              </p>
-            </div>
-
             <div className="flex flex-col gap-4">
-              {articulos.map((art, i) => (
-                <div
+              {articulos.map((art) => (
+                <Link
                   key={art.slug}
+                  href={`/blog/${art.slug}`}
                   style={{
                     background: '#FFFFFF',
                     border: '1px solid #E0E0E0',
@@ -163,8 +131,18 @@ export default function BlogPage() {
                     display: 'flex',
                     flexDirection: 'column',
                     gap: '12px',
-                    opacity: art.proximamente ? 0.6 : 1,
-                    position: 'relative',
+                    textDecoration: 'none',
+                    transition: 'border-color 200ms ease, box-shadow 200ms ease',
+                  }}
+                  onMouseEnter={(e) => {
+                    const el = e.currentTarget as HTMLElement;
+                    el.style.borderColor = '#111111';
+                    el.style.boxShadow = '0 4px 16px rgba(0,0,0,0.06)';
+                  }}
+                  onMouseLeave={(e) => {
+                    const el = e.currentTarget as HTMLElement;
+                    el.style.borderColor = '#E0E0E0';
+                    el.style.boxShadow = 'none';
                   }}
                 >
                   <div className="flex items-center gap-3">
@@ -191,24 +169,6 @@ export default function BlogPage() {
                     >
                       {art.tiempo} lectura
                     </span>
-                    {art.proximamente && (
-                      <span
-                        style={{
-                          marginLeft: 'auto',
-                          fontFamily: 'var(--v5-font-mono)',
-                          fontSize: '9px',
-                          fontWeight: 600,
-                          letterSpacing: '0.12em',
-                          textTransform: 'uppercase',
-                          color: '#CCCCCC',
-                          border: '1px solid #E0E0E0',
-                          padding: '3px 8px',
-                          borderRadius: '4px',
-                        }}
-                      >
-                        Próximamente
-                      </span>
-                    )}
                   </div>
                   <h2
                     style={{
@@ -235,14 +195,13 @@ export default function BlogPage() {
                   >
                     {art.desc}
                   </p>
-                </div>
+                </Link>
               ))}
             </div>
-
           </div>
         </section>
 
-        {/* ── CTA — Newsletter / Aviso ── */}
+        {/* ── CTA ── */}
         <section className="v5-section" style={{ backgroundColor: '#080808' }}>
           <div className="v5-container flex flex-col items-center text-center">
             <span
@@ -256,7 +215,7 @@ export default function BlogPage() {
                 marginBottom: '24px',
               }}
             >
-              Mientras tanto
+              Forma a tu equipo
             </span>
             <h2
               style={{
@@ -270,7 +229,7 @@ export default function BlogPage() {
                 maxWidth: '560px',
               }}
             >
-              ¿Quieres saber cómo usamos Claude en Aether Labs?
+              ¿Listo para que tu empresa use Claude de verdad?
             </h2>
             <p
               style={{
@@ -283,10 +242,10 @@ export default function BlogPage() {
                 maxWidth: '420px',
               }}
             >
-              Reserva una sesión gratuita y te lo mostramos en directo con tus procesos reales.
+              Formación práctica para equipos reales. Talleres, programas intensivos y acompañamiento continuo.
             </p>
             <Link
-              href="/systems-lab/sesion-de-claridad"
+              href="/school-lab/formacion-claude-empresas"
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
@@ -302,7 +261,7 @@ export default function BlogPage() {
                 transition: 'opacity 200ms ease',
               }}
             >
-              Reservar sesión gratuita →
+              Ver formación en Claude →
             </Link>
           </div>
         </section>
