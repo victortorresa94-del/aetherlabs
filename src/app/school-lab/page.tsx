@@ -332,26 +332,26 @@ export default function SchoolLabPage() {
 
 
                 {/* ── BANNER CLAUDE CORPORATIVO ── */}
-                <section style={{ backgroundColor: '#FFFFFF', padding: '0 0 0 0' }}>
+                <section style={{ backgroundColor: '#FFFFFF' }}>
                     <div className="v5-container" style={{ paddingTop: '48px', paddingBottom: '0' }}>
                         <Link
                             href="/school-lab/prepara-tu-equipo"
+                            className="v5-reveal"
                             style={{
-                                display: 'flex',
-                                flexDirection: 'column',
-                                gap: '16px',
-                                background: '#0F172A',
-                                border: '1px solid rgba(217,119,6,0.3)',
+                                display: 'block',
+                                background: '#FFFFFF',
+                                border: '1px solid #E0E0E0',
+                                borderLeft: '4px solid #EA580C',
                                 borderRadius: '16px',
-                                padding: 'clamp(24px,4vw,32px)',
+                                padding: 'clamp(28px,4vw,40px)',
                                 textDecoration: 'none',
-                                transition: 'border-color 200ms ease',
+                                transition: 'border-color 200ms ease, transform 200ms ease',
                             }}
-                            onMouseEnter={e => (e.currentTarget as HTMLElement).style.borderColor = 'rgba(217,119,6,0.6)'}
-                            onMouseLeave={e => (e.currentTarget as HTMLElement).style.borderColor = 'rgba(217,119,6,0.3)'}
+                            onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = '#EA580C'; (e.currentTarget as HTMLElement).style.transform = 'translateY(-2px)'; }}
+                            onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderLeftColor = '#EA580C'; (e.currentTarget as HTMLElement).style.borderColor = '#E0E0E0'; (e.currentTarget as HTMLElement).style.borderLeftColor = '#EA580C'; (e.currentTarget as HTMLElement).style.transform = 'translateY(0)'; }}
                         >
                             <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
-                                <div className="flex flex-col gap-4">
+                                <div className="flex flex-col gap-3">
                                     <span
                                         style={{
                                             fontFamily: 'var(--v5-font-mono)',
@@ -359,7 +359,7 @@ export default function SchoolLabPage() {
                                             fontWeight: 600,
                                             letterSpacing: '0.15em',
                                             textTransform: 'uppercase',
-                                            color: '#D97706',
+                                            color: '#EA580C',
                                         }}
                                     >
                                         ★ Nuevo
@@ -368,15 +368,15 @@ export default function SchoolLabPage() {
                                         style={{
                                             fontFamily: 'var(--v5-font-display)',
                                             fontSize: 'clamp(20px, 2.5vw, 28px)',
-                                            fontWeight: 300,
+                                            fontWeight: 400,
                                             letterSpacing: '-0.02em',
-                                            lineHeight: 1.1,
-                                            color: '#FFFFFF',
+                                            lineHeight: 1.15,
+                                            color: '#111111',
                                             margin: 0,
                                         }}
                                     >
                                         Forma a tu equipo en Claude.{' '}
-                                        <span style={{ color: '#94A3B8' }}>La IA más potente del mercado.</span>
+                                        <span style={{ color: '#999999' }}>La IA más potente del mercado.</span>
                                     </h3>
                                     <p
                                         style={{
@@ -384,7 +384,7 @@ export default function SchoolLabPage() {
                                             fontSize: '15px',
                                             fontWeight: 300,
                                             lineHeight: 1.6,
-                                            color: '#64748B',
+                                            color: '#666666',
                                             margin: 0,
                                         }}
                                     >
@@ -396,14 +396,13 @@ export default function SchoolLabPage() {
                                         display: 'inline-flex',
                                         alignItems: 'center',
                                         gap: '8px',
-                                        padding: '12px 24px',
-                                        background: 'rgba(217,119,6,0.15)',
-                                        border: '1px solid rgba(217,119,6,0.4)',
-                                        borderRadius: '8px',
+                                        padding: '14px 28px',
+                                        background: '#111111',
+                                        borderRadius: '0px',
                                         fontFamily: 'var(--v5-font-body)',
                                         fontSize: '14px',
-                                        fontWeight: 500,
-                                        color: '#D97706',
+                                        fontWeight: 400,
+                                        color: '#FFFFFF',
                                         whiteSpace: 'nowrap',
                                         flexShrink: 0,
                                     }}

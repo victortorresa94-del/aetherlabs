@@ -45,6 +45,7 @@ export default function Navbar() {
   const otherLinks = [
     { label: 'Nosotros', href: '/nosotros' },
     { label: 'Casos', href: '/casos' },
+    { label: 'Learn', href: '/blog' },
   ];
 
   const getTextColor = (base: string, hovered: string) => {
@@ -291,7 +292,7 @@ export default function Navbar() {
         <div style={{ marginTop: '32px', marginBottom: '24px', fontFamily: 'var(--v5-font-mono)', fontSize: '11px', color: '#999', textTransform: 'uppercase', letterSpacing: '0.15em' }}>
           General
         </div>
-        {otherLinks.map((link) => (
+        {[...otherLinks].map((link) => (
           <Link
             key={link.href}
             href={link.href}
