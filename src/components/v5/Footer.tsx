@@ -1,7 +1,6 @@
 'use client';
 
 import Link from 'next/link';
-import Image from 'next/image';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -56,12 +55,11 @@ export default function Footer() {
           {/* Logo + tagline + social links */}
           <div className="md:col-span-2">
             <div style={{ marginBottom: '20px' }}>
-              <Image
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
                 src="/aether-logo-new.png"
                 alt="Aether Labs"
-                height={32}
-                width={96}
-                style={{ objectFit: 'contain', filter: 'brightness(0) invert(1)', opacity: 0.4 }}
+                style={{ height: '32px', width: 'auto', objectFit: 'contain', filter: 'brightness(0) invert(1)', opacity: 0.5 }}
               />
             </div>
             <p
@@ -77,7 +75,7 @@ export default function Footer() {
               El puente entre personas y tecnología. IA, contenido y presencia digital para empresas.
             </p>
             <div style={{ display: 'flex', gap: '16px', marginTop: '16px' }}>
-              <a href="https://www.linkedin.com/company/aetherlabs" target="_blank" rel="noopener" style={{ color: 'rgba(255,255,255,0.25)', textDecoration: 'none', fontSize: '12px', fontFamily: 'var(--v5-font-mono)', letterSpacing: '0.1em', transition: 'color 200ms ease' }}
+              <a href="https://www.linkedin.com/company/aether-labs-tech/?viewAsMember=true" target="_blank" rel="noopener" style={{ color: 'rgba(255,255,255,0.25)', textDecoration: 'none', fontSize: '12px', fontFamily: 'var(--v5-font-mono)', letterSpacing: '0.1em', transition: 'color 200ms ease' }}
                 onMouseEnter={(e) => { (e.target as HTMLElement).style.color = 'rgba(255,255,255,0.55)'; }}
                 onMouseLeave={(e) => { (e.target as HTMLElement).style.color = 'rgba(255,255,255,0.25)'; }}>
                 LinkedIn

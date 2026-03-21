@@ -11,7 +11,7 @@ const proyectos = [
     desc: 'Estrategia de lanzamiento, reels, lead magnets y funnel completo con ManyChat.',
     metrica: '+20.000€',
     metricaLabel: 'en ventas · ~200 alumnos inscritos',
-    image: '/images/creative-lab/video.jpg',
+    image: '/images/creative/94music-bot.png',
   },
   {
     badge: 'Systems Lab',
@@ -20,7 +20,7 @@ const proyectos = [
     desc: 'ClickUp desde cero, +40 SOPs documentados, formación del equipo completo.',
     metrica: '+40 proyectos',
     metricaLabel: 'gestionados simultáneamente',
-    image: '/images/aether-office.jpg',
+    image: '/images/creative/business-consultant.png',
   },
 ];
 

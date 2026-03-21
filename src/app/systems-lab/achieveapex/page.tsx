@@ -1,130 +1,384 @@
-import type { Metadata } from 'next';
+'use client';
+
 import Link from 'next/link';
-import SystemsLabLayout from '@/components/v5/SystemsLabLayout';
+import Navbar from '@/components/v5/Navbar';
+import Footer from '@/components/v5/Footer';
+import ScrollAnimations from '@/components/v5/ScrollAnimations';
 
-export const metadata: Metadata = {
-  title: 'AchieveApex — Systems Lab | Aether Labs',
-  description: 'El CRM conversacional omnicanal con IA. WhatsApp, email e Instagram en una bandeja. Partner oficial Aether Labs.',
-};
+const features = [
+  {
+    title: 'Omnicanalidad real',
+    desc: 'WhatsApp, email y web chat en una sola bandeja unificada. Nunca más perder un lead porque llegó por un canal que nadie estaba mirando.',
+  },
+  {
+    title: 'IA de respuesta automática',
+    desc: 'Responde preguntas frecuentes 24/7 con el tono de la empresa. La IA cualifica el lead, detecta su intención y lo mueve al paso correcto del funnel.',
+  },
+  {
+    title: 'Nurturing de leads',
+    desc: 'Pipeline automático que mueve los contactos en el funnel sin intervención manual. Seguimiento inteligente hasta que el lead está listo para hablar con ventas.',
+  },
+  {
+    title: 'Panel de control',
+    desc: 'Visibilidad total de todas las conversaciones, etapas del funnel y métricas de conversión por canal. Decisiones basadas en datos reales.',
+  },
+];
 
-const GREEN = '#059669';
+const casos = [
+  {
+    num: '01',
+    title: 'Empresa con 50+ mensajes diarios sin sistema',
+    desc: 'Una empresa de servicios recibía mensajes por WhatsApp, email e Instagram sin ningún sistema. Leads perdidos, respuestas tardías, equipo desbordado. AchieveApex unificó todo en una bandeja y automatizó la primera respuesta. Cero leads perdidos.',
+  },
+  {
+    num: '02',
+    title: 'Respuesta automática que cualifica leads',
+    desc: 'Un negocio con alto volumen de consultas repetitivas. La IA de AchieveApex responde el 80% de los mensajes sin intervención humana, cualifica los leads con preguntas clave y pasa a ventas solo los que cumplen el perfil.',
+  },
+  {
+    num: '03',
+    title: 'WhatsApp como canal principal de ventas',
+    desc: 'Una empresa con toda su captación por WhatsApp pero sin CRM. Implementamos AchieveApex como CRM conversacional nativo. Ahora cada conversación de WhatsApp es una oportunidad trazable con historial completo.',
+  },
+];
 
 export default function AchieveApexPage() {
   return (
-    <SystemsLabLayout accentColor={GREEN}>
-      <section className="v5-section" style={{ backgroundColor: 'var(--v5-bg-base)' }}>
-        <div className="v5-container">
-          <div style={{ display: 'flex', gap: '12px', marginBottom: '24px', flexWrap: 'wrap', alignItems: 'center' }}>
-            <span className="v5-label" style={{ color: '#999999' }}>AchieveApex</span>
-            <span style={{
-              padding: '3px 12px',
-              borderRadius: '100px',
-              border: `1px solid ${GREEN}40`,
-              backgroundColor: `${GREEN}15`,
-              fontFamily: 'var(--v5-font-mono)',
-              fontSize: '9px',
-              fontWeight: 600,
-              letterSpacing: '0.1em',
-              color: GREEN,
-              textTransform: 'uppercase',
-            }}>
-              Partner Oficial Aether Labs
-            </span>
-          </div>
-          <h1 className="v5-h1 v5-reveal" style={{ maxWidth: '680px', marginBottom: '20px' }}>
-            El CRM que habla con tus clientes{' '}
-            <span style={{ color: 'rgba(245,245,240,0.38)' }}>
-              por ti
-            </span>
-          </h1>
-          <p className="v5-body-large v5-reveal" style={{ maxWidth: '540px', marginBottom: '32px' }}>
-            AchieveApex es el CRM conversacional omnicanal con IA nativa.
-            Convierte mensajes en oportunidades de venta automáticamente.
-          </p>
-          <div className="v5-reveal" style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-            <Link href="/systems-lab/sesion-de-claridad" className="v5-btn-primary" style={{ fontSize: '16px' }}>
-              Implementar AchieveApex →
-            </Link>
-          </div>
-        </div>
-      </section>
+    <div className="v5-page">
+      <ScrollAnimations />
+      <Navbar />
+      <main>
 
-      <section className="v5-section" style={{ backgroundColor: 'var(--v5-bg-surface)' }}>
-        <div className="v5-container">
-          <h2 className="v5-h2 v5-reveal" style={{ marginBottom: '40px' }}>Qué es AchieveApex</h2>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px' }}
-            className="v5-aa-grid"
-          >
-            {[
-              { title: 'Omnicanal real', desc: 'WhatsApp, email, web chat, Instagram DM — todo en una sola bandeja.' },
-              { title: 'IA que cualifica', desc: 'Detecta la intención del mensaje y lo clasifica automáticamente.' },
-              { title: 'Pipeline automático', desc: 'Mueve los contactos en el funnel sin que nadie lo haga manualmente.' },
-              { title: 'Respuestas automáticas', desc: 'Responde preguntas frecuentes 24/7 con el tono de la empresa.' },
-              { title: 'Analytics de conversación', desc: 'Mide qué mensajes convierten y cuáles no.' },
-              { title: 'IA nativa', desc: 'No es un CRM al que le pones IA encima — la IA es parte de su arquitectura.' },
-            ].map((item, i) => (
-              <div key={i} className="v5-reveal" style={{
-                backgroundColor: 'var(--v5-bg-base)',
-                border: `1px solid ${GREEN}20`,
-                borderRadius: 'var(--v5-radius-lg)',
-                padding: '24px',
-              }}>
-                <h3 style={{ fontFamily: 'var(--v5-font-display)', fontWeight: 600, fontSize: '16px', color: GREEN, marginBottom: '8px' }}>{item.title}</h3>
-                <p style={{ fontFamily: 'var(--v5-font-body)', fontSize: '14px', color: 'var(--v5-text-secondary)', lineHeight: 1.55 }}>{item.desc}</p>
-              </div>
-            ))}
+        {/* Hero */}
+        <section
+          style={{ backgroundColor: '#080808', paddingTop: '160px', paddingBottom: '120px' }}
+        >
+          <div className="v5-container">
+            <div className="v5-reveal" style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '24px', flexWrap: 'wrap' }}>
+              <span
+                style={{
+                  fontFamily: 'var(--v5-font-mono)',
+                  fontSize: '11px',
+                  fontWeight: 500,
+                  letterSpacing: '0.15em',
+                  textTransform: 'uppercase',
+                  color: '#999999',
+                }}
+              >
+                💬 AchieveApex
+              </span>
+              <span
+                style={{
+                  padding: '3px 12px',
+                  borderRadius: '100px',
+                  border: '1px solid rgba(255,255,255,0.15)',
+                  fontFamily: 'var(--v5-font-mono)',
+                  fontSize: '9px',
+                  fontWeight: 600,
+                  letterSpacing: '0.1em',
+                  color: 'rgba(245,245,240,0.5)',
+                  textTransform: 'uppercase',
+                }}
+              >
+                Partner Oficial Aether Labs
+              </span>
+            </div>
+            <h1
+              className="v5-reveal"
+              style={{
+                fontFamily: 'var(--v5-font-display)',
+                fontSize: 'clamp(40px, 6vw, 80px)',
+                fontWeight: 300,
+                letterSpacing: '-0.03em',
+                lineHeight: 0.95,
+                color: '#F5F5F0',
+                maxWidth: '800px',
+                marginBottom: '28px',
+                transitionDelay: '80ms',
+              }}
+            >
+              CRM conversacional omnicanal.<br />
+              <span style={{ color: 'rgba(245,245,240,0.38)' }}>WhatsApp, email y web en un sistema unificado.</span>
+            </h1>
+            <p
+              className="v5-reveal"
+              style={{
+                fontFamily: 'var(--v5-font-body)',
+                fontSize: '17px',
+                fontWeight: 300,
+                lineHeight: 1.8,
+                color: 'rgba(245,245,240,0.45)',
+                maxWidth: '520px',
+                marginBottom: '40px',
+                transitionDelay: '160ms',
+              }}
+            >
+              AchieveApex capta leads por todos los canales, los cualifica con IA y los mueve
+              en el funnel automáticamente. Sin perder ninguno.
+            </p>
+            <div className="v5-reveal" style={{ transitionDelay: '240ms' }}>
+              <Link
+                href="/systems-lab/sesion-de-claridad"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  padding: '16px 32px',
+                  background: '#F5F5F0',
+                  color: '#080808',
+                  fontFamily: 'var(--v5-font-body)',
+                  fontSize: '15px',
+                  fontWeight: 400,
+                  textDecoration: 'none',
+                  transition: 'background 200ms ease',
+                }}
+                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = '#FFFFFF'; }}
+                onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = '#F5F5F0'; }}
+              >
+                Implementar AchieveApex con Aether →
+              </Link>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section className="v5-section" style={{ backgroundColor: 'var(--v5-bg-base)' }}>
-        <div className="v5-container">
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '64px' }}
-            className="v5-aa-bottom"
-          >
-            <div>
-              <h2 className="v5-h2 v5-reveal" style={{ marginBottom: '24px' }}>Para quién es</h2>
-              {[
-                'Empresas con volumen de mensajes entrantes (+50/día)',
-                'Equipos de ventas que pierden leads por falta de seguimiento',
-                'Negocios con presencia en WhatsApp como canal principal',
-                'Empresas que quieren automatizar la primera respuesta sin perder el toque humano',
-              ].map((item, i) => (
-                <div key={i} className="v5-reveal" style={{ display: 'flex', gap: '12px', marginBottom: '14px' }}>
-                  <div style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: GREEN, marginTop: '8px', flexShrink: 0 }} />
-                  <span style={{ fontFamily: 'var(--v5-font-body)', fontSize: '15px', color: 'var(--v5-text-secondary)', lineHeight: 1.6 }}>{item}</span>
+        {/* Qué implementamos */}
+        <section
+          style={{ backgroundColor: '#FFFFFF', paddingTop: '120px', paddingBottom: '120px' }}
+        >
+          <div className="v5-container">
+            <div className="v5-reveal" style={{ marginBottom: '64px' }}>
+              <span
+                style={{
+                  display: 'block',
+                  marginBottom: '20px',
+                  fontFamily: 'var(--v5-font-mono)',
+                  fontSize: '11px',
+                  fontWeight: 500,
+                  letterSpacing: '0.15em',
+                  textTransform: 'uppercase',
+                  color: '#999999',
+                }}
+              >
+                Qué implementamos
+              </span>
+              <h2
+                style={{
+                  fontFamily: 'var(--v5-font-display)',
+                  fontSize: 'clamp(28px, 4vw, 48px)',
+                  fontWeight: 300,
+                  letterSpacing: '-0.02em',
+                  lineHeight: 1.1,
+                  color: '#111111',
+                }}
+              >
+                Un CRM que habla con tus clientes por ti
+              </h2>
+            </div>
+            <div
+              style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
+                gap: '24px',
+              }}
+            >
+              {features.map((f, i) => (
+                <div
+                  key={i}
+                  className="v5-reveal"
+                  style={{
+                    background: '#F8F8F8',
+                    border: '1px solid #EBEBEB',
+                    borderRadius: '16px',
+                    padding: '32px',
+                    transitionDelay: `${i * 80}ms`,
+                  }}
+                >
+                  <h3
+                    style={{
+                      fontFamily: 'var(--v5-font-display)',
+                      fontSize: '18px',
+                      fontWeight: 400,
+                      letterSpacing: '-0.02em',
+                      color: '#111111',
+                      marginBottom: '12px',
+                    }}
+                  >
+                    {f.title}
+                  </h3>
+                  <p
+                    style={{
+                      fontFamily: 'var(--v5-font-body)',
+                      fontSize: '15px',
+                      fontWeight: 300,
+                      lineHeight: 1.8,
+                      color: '#666666',
+                    }}
+                  >
+                    {f.desc}
+                  </p>
                 </div>
               ))}
             </div>
-            <div>
-              <h2 className="v5-h2 v5-reveal" style={{ marginBottom: '24px' }}>Cómo lo implementamos</h2>
-              {[
-                ['Implementación', '1.000€ (setup, configuración e integración con CRM existente)'],
-                ['Suscripción', 'Plan anual gestionado por Aether Labs'],
-                ['Formación', 'Sesión de 2h para el equipo de ventas'],
-                ['Soporte', 'AchieveApex implementa, Aether Labs de intermediario'],
-              ].map(([title, desc], i) => (
-                <div key={i} className="v5-reveal" style={{ marginBottom: '20px' }}>
-                  <span style={{ fontFamily: 'var(--v5-font-mono)', fontSize: '11px', fontWeight: 600, color: GREEN, letterSpacing: '0.1em', textTransform: 'uppercase' }}>{title}</span>
-                  <p style={{ fontFamily: 'var(--v5-font-body)', fontSize: '15px', color: 'var(--v5-text-secondary)', marginTop: '4px', lineHeight: 1.5 }}>{desc}</p>
+          </div>
+        </section>
+
+        {/* Casos de uso reales */}
+        <section
+          style={{
+            backgroundColor: '#F8F8F8',
+            borderTop: '1px solid #EBEBEB',
+            borderBottom: '1px solid #EBEBEB',
+            paddingTop: '120px',
+            paddingBottom: '120px',
+          }}
+        >
+          <div className="v5-container">
+            <div className="v5-reveal" style={{ marginBottom: '64px' }}>
+              <span
+                style={{
+                  display: 'block',
+                  marginBottom: '20px',
+                  fontFamily: 'var(--v5-font-mono)',
+                  fontSize: '11px',
+                  fontWeight: 500,
+                  letterSpacing: '0.15em',
+                  textTransform: 'uppercase',
+                  color: '#999999',
+                }}
+              >
+                Casos de uso reales
+              </span>
+              <h2
+                style={{
+                  fontFamily: 'var(--v5-font-display)',
+                  fontSize: 'clamp(28px, 4vw, 48px)',
+                  fontWeight: 300,
+                  letterSpacing: '-0.02em',
+                  lineHeight: 1.1,
+                  color: '#111111',
+                }}
+              >
+                AchieveApex en negocios con volumen real
+              </h2>
+            </div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+              {casos.map((c, i) => (
+                <div
+                  key={i}
+                  className="v5-reveal"
+                  style={{
+                    background: '#FFFFFF',
+                    border: '1px solid #EBEBEB',
+                    borderTop: '2px solid #111111',
+                    borderRadius: '16px',
+                    padding: '32px 40px',
+                    display: 'flex',
+                    gap: '32px',
+                    alignItems: 'flex-start',
+                    transitionDelay: `${i * 80}ms`,
+                  }}
+                >
+                  <span
+                    style={{
+                      fontFamily: 'var(--v5-font-mono)',
+                      fontSize: '13px',
+                      fontWeight: 700,
+                      color: '#AAAAAA',
+                      minWidth: '28px',
+                      flexShrink: 0,
+                    }}
+                  >
+                    {c.num}
+                  </span>
+                  <div>
+                    <h3
+                      style={{
+                        fontFamily: 'var(--v5-font-display)',
+                        fontSize: '20px',
+                        fontWeight: 400,
+                        letterSpacing: '-0.02em',
+                        color: '#111111',
+                        marginBottom: '10px',
+                      }}
+                    >
+                      {c.title}
+                    </h3>
+                    <p
+                      style={{
+                        fontFamily: 'var(--v5-font-body)',
+                        fontSize: '15px',
+                        fontWeight: 300,
+                        lineHeight: 1.8,
+                        color: '#666666',
+                      }}
+                    >
+                      {c.desc}
+                    </p>
+                  </div>
                 </div>
               ))}
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section className="v5-section" style={{ backgroundColor: 'var(--v5-bg-surface)', textAlign: 'center' }}>
-        <div className="v5-container">
-          <h2 className="v5-h2 v5-reveal" style={{ marginBottom: '32px' }}>Implementar AchieveApex con Aether</h2>
-          <div className="v5-reveal">
-            <Link href="/systems-lab/sesion-de-claridad" className="v5-btn-primary" style={{ fontSize: '17px', padding: '16px 32px' }}>
-              Reservar Sesión de Claridad →
-            </Link>
+        {/* CTA */}
+        <section
+          style={{ backgroundColor: '#080808', paddingTop: '120px', paddingBottom: '120px', textAlign: 'center' }}
+        >
+          <div className="v5-container">
+            <div
+              className="v5-reveal"
+              style={{ maxWidth: '640px', margin: '0 auto', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '24px' }}
+            >
+              <h2
+                style={{
+                  fontFamily: 'var(--v5-font-display)',
+                  fontSize: 'clamp(28px, 4vw, 48px)',
+                  fontWeight: 300,
+                  letterSpacing: '-0.02em',
+                  lineHeight: 1.1,
+                  color: '#F5F5F0',
+                }}
+              >
+                ¿Cuántos leads estás perdiendo por falta de seguimiento?
+              </h2>
+              <p
+                style={{
+                  fontFamily: 'var(--v5-font-body)',
+                  fontSize: '17px',
+                  fontWeight: 300,
+                  lineHeight: 1.8,
+                  color: 'rgba(245,245,240,0.45)',
+                }}
+              >
+                Empieza con una Sesión de Claridad de 90 minutos.
+              </p>
+              <Link
+                href="/systems-lab/sesion-de-claridad"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  padding: '16px 32px',
+                  background: '#F5F5F0',
+                  color: '#080808',
+                  fontFamily: 'var(--v5-font-body)',
+                  fontSize: '15px',
+                  fontWeight: 400,
+                  textDecoration: 'none',
+                  transition: 'background 200ms ease',
+                }}
+                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = '#FFFFFF'; }}
+                onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = '#F5F5F0'; }}
+              >
+                Reservar Sesión de Claridad →
+              </Link>
+            </div>
           </div>
-        </div>
-      </section>
-      <style>{`@media (max-width: 768px) { .v5-aa-grid { grid-template-columns: 1fr !important; } .v5-aa-bottom { grid-template-columns: 1fr !important; } }`}</style>
-    </SystemsLabLayout>
+        </section>
+
+      </main>
+      <Footer />
+    </div>
   );
 }

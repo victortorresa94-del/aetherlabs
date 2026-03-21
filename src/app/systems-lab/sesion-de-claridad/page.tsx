@@ -1,296 +1,510 @@
-import type { Metadata } from 'next';
+'use client';
 import Link from 'next/link';
-import SystemsLabLayout from '@/components/v5/SystemsLabLayout';
+import Navbar from '@/components/v5/Navbar';
+import Footer from '@/components/v5/Footer';
+import ScrollAnimations from '@/components/v5/ScrollAnimations';
 
-export const metadata: Metadata = {
-  title: 'Sesión de Claridad — Aether Labs | Barcelona',
-  description: '90 minutos para saber exactamente qué IA necesita tu empresa y por dónde empezar. Primera sesión desde 150€.',
-};
-
-const includes = [
-  'Sesión de 90 min (presencial o videollamada)',
-  'Documento de diagnóstico (PDF)',
-  'Mapa de herramientas recomendadas',
-  'Hoja de ruta de 90 días',
-  'Grabación de la sesión',
-  'Si contratas, el coste se descuenta',
+const checklistItems = [
+  'Análisis de procesos actuales',
+  'Identificación de oportunidades de IA',
+  'Priorización por impacto y esfuerzo',
+  'Herramientas específicas recomendadas',
+  'Plan de acción con siguientes pasos',
+  'Documento resumen post-sesión (PDF)',
 ];
 
-const profiles = [
+const audienceCards = [
   {
-    quote: '"No sé ni qué herramientas existen"',
-    description: 'Empresas que oyen hablar de IA pero no saben por dónde empezar.',
+    title: 'Empresas de 2-20 personas',
+    desc: 'Con estructura mínima pero sin tiempo para explorar herramientas.',
   },
   {
-    quote: '"Tenemos herramientas pero no las usamos bien"',
-    description: 'Empresas con Copilot, HubSpot o ClickUp que no sacan partido.',
+    title: 'Fundadores con poco tiempo',
+    desc: 'Que saben que la IA puede ayudarles pero no saben por dónde empezar.',
   },
   {
-    quote: '"Quiero automatizar pero no sé qué se puede automatizar"',
-    description: 'Empresas con procesos manuales que quieren eficiencia.',
+    title: 'Equipos que ya usan IA',
+    desc: 'Pero de forma desordenada, sin sistema ni estrategia clara.',
   },
 ];
 
-export default function ClaritySessionPage() {
+const faqs = [
+  {
+    q: '¿Tengo que contratar algo después?',
+    a: 'No. La sesión es independiente. Si tiene sentido seguir trabajando juntos, lo proponemos. Si no, te vas con el informe.',
+  },
+  {
+    q: '¿Cómo es el formato?',
+    a: 'Videollamada de 90 minutos. Te pedimos que vengas con información básica de tu empresa y tus principales dolores.',
+  },
+  {
+    q: '¿Los 150€ se descuentan si contrato?',
+    a: 'Sí. Si decides trabajar con nosotros, los 150€ se aplican al primer proyecto.',
+  },
+  {
+    q: '¿En cuánto tiempo tengo el informe?',
+    a: 'En menos de 48h después de la sesión.',
+  },
+];
+
+export default function SesionDeClaridadPage() {
   return (
-    <SystemsLabLayout accentColor="#6366F1">
-      {/* Hero */}
-      <section className="v5-section" style={{ backgroundColor: 'var(--v5-bg-base)' }}>
-        <div className="v5-container">
-          <span className="v5-label v5-reveal" style={{ display: 'block', marginBottom: '20px' }}>
-            El punto de partida
-          </span>
-          <h1 className="v5-h1 v5-reveal" style={{ maxWidth: '680px', marginBottom: '20px' }}>
-            Sesión de Claridad
-          </h1>
-          <p style={{
-            fontFamily: 'var(--v5-font-display)',
-            fontWeight: 500,
-            fontSize: 'clamp(20px, 2.5vw, 28px)',
-            color: 'var(--v5-text-secondary)',
-            lineHeight: 1.4,
-            maxWidth: '560px',
-            letterSpacing: '-0.02em',
-          }}
-            className="v5-reveal"
-          >
-            90 minutos para saber exactamente qué IA necesita tu empresa y por dónde empezar
-          </p>
-        </div>
-      </section>
+    <div className="v5-page">
+      <ScrollAnimations />
+      <Navbar />
+      <main>
 
-      {/* Main content: 2 cols */}
-      <section className="v5-section" style={{ backgroundColor: 'var(--v5-bg-base)', paddingTop: '0' }}>
-        <div className="v5-container">
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: '1fr 1fr',
-            gap: '80px',
-            alignItems: 'start',
-          }}
-            className="v5-clarity-page-grid"
-          >
-            {/* Left */}
-            <div>
-              <p className="v5-reveal" style={{
+        {/* Section 1 — Hero */}
+        <section
+          className="v5-section"
+          style={{ backgroundColor: '#080808', paddingTop: '160px', paddingBottom: '100px' }}
+        >
+          <div className="v5-container">
+            <span
+              className="v5-reveal"
+              style={{
+                display: 'block',
+                marginBottom: '24px',
+                fontFamily: 'var(--v5-font-mono)',
+                fontSize: '11px',
+                fontWeight: 500,
+                letterSpacing: '0.15em',
+                textTransform: 'uppercase',
+                color: '#999999',
+              }}
+            >
+              Sesión de Claridad
+            </span>
+
+            <h1
+              className="v5-reveal"
+              style={{
+                fontFamily: 'var(--v5-font-display)',
+                fontSize: 'clamp(40px, 6vw, 80px)',
+                fontWeight: 300,
+                letterSpacing: '-0.03em',
+                lineHeight: 0.95,
+                color: '#F5F5F0',
+                maxWidth: '700px',
+                marginBottom: '28px',
+                whiteSpace: 'pre-line',
+              }}
+            >
+              {'90 minutos.\nTodo claro.'}
+            </h1>
+
+            <p
+              className="v5-reveal"
+              style={{
                 fontFamily: 'var(--v5-font-body)',
                 fontSize: '17px',
-                color: 'var(--v5-text-secondary)',
-                lineHeight: 1.75,
-                marginBottom: '40px',
-              }}>
-                La mayoría de empresas que nos contactan tienen el mismo problema: saben que la IA
-                puede ayudarles, pero no saben qué herramienta necesitan, ni si lo que tienen vale,
-                ni si están perdiendo tiempo y dinero en algo que no funciona. La Sesión de Claridad resuelve eso.
-              </p>
-
-              <h2 style={{
-                fontFamily: 'var(--v5-font-display)',
-                fontWeight: 600,
-                fontSize: '22px',
-                color: 'var(--v5-text-primary)',
-                letterSpacing: '-0.02em',
-                marginBottom: '24px',
+                fontWeight: 300,
+                lineHeight: 1.8,
+                color: 'rgba(245,245,240,0.45)',
+                maxWidth: '520px',
+                marginBottom: '32px',
               }}
-                className="v5-reveal"
+            >
+              Analizamos tu empresa, identificamos las oportunidades de IA más rentables y te decimos exactamente qué hacer. Sin humo. Sin compromiso.
+            </p>
+
+            <div
+              className="v5-reveal"
+              style={{
+                display: 'flex',
+                flexWrap: 'wrap',
+                alignItems: 'center',
+                gap: '16px',
+              }}
+            >
+              <span
+                style={{
+                  borderRadius: '100px',
+                  border: '1px solid rgba(255,255,255,0.12)',
+                  padding: '8px 20px',
+                  fontFamily: 'var(--v5-font-body)',
+                  fontSize: '14px',
+                  fontWeight: 300,
+                  color: 'rgba(245,245,240,0.6)',
+                }}
               >
-                Lo que hacemos en la sesión
-              </h2>
+                150€ · o gratis en sesiones de lanzamiento
+              </span>
 
-              <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '16px' }}
-                className="v5-reveal"
-              >
-                {[
-                  'Mapeamos tus procesos actuales',
-                  'Identificamos dónde la IA puede ayudar de verdad',
-                  'Revisamos las herramientas que ya tienes y si las usas bien',
-                  'Detectamos las que te faltan y cuál encaja con tu situación',
-                  'Te entregamos un documento de hallazgos y recomendaciones',
-                ].map((item) => (
-                  <li key={item} style={{ display: 'flex', alignItems: 'flex-start', gap: '14px' }}>
-                    <div style={{
-                      width: '24px',
-                      height: '24px',
-                      borderRadius: '50%',
-                      backgroundColor: 'rgba(99,102,241,0.15)',
-                      border: '1px solid rgba(99,102,241,0.3)',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      flexShrink: 0,
-                      marginTop: '1px',
-                    }}>
-                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--v5-accent)" strokeWidth={2.5}>
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-                      </svg>
-                    </div>
-                    <span style={{
-                      fontFamily: 'var(--v5-font-body)',
-                      fontSize: '16px',
-                      color: 'var(--v5-text-secondary)',
-                      lineHeight: 1.55,
-                    }}>
-                      {item}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Right: Product card */}
-            <div className="v5-reveal">
-              <div style={{
-                backgroundColor: 'var(--v5-bg-surface2)',
-                border: '1px solid var(--v5-border)',
-                borderRadius: 'var(--v5-radius-lg)',
-                padding: '40px',
-                position: 'relative',
-                overflow: 'hidden',
-              }}>
-                <div style={{
-                  position: 'absolute',
-                  top: 0, left: 0, right: 0,
-                  height: '1px',
-                  background: 'linear-gradient(90deg, transparent, var(--v5-accent), transparent)',
-                }} />
-
-                <span style={{
+              <Link
+                href="/contacto"
+                style={{
                   display: 'inline-flex',
                   alignItems: 'center',
-                  gap: '6px',
-                  padding: '4px 12px',
-                  backgroundColor: 'rgba(99,102,241,0.15)',
-                  border: '1px solid rgba(99,102,241,0.3)',
-                  borderRadius: '100px',
-                  fontFamily: 'var(--v5-font-mono)',
-                  fontSize: '10px',
-                  fontWeight: 500,
-                  letterSpacing: '0.1em',
-                  color: 'var(--v5-accent)',
-                  textTransform: 'uppercase',
-                  marginBottom: '20px',
-                }}>
-                  <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: 'var(--v5-accent)' }} />
-                  Sesiones de lanzamiento — plazas limitadas
-                </span>
+                  gap: '8px',
+                  padding: '16px 40px',
+                  background: '#FFFFFF',
+                  color: '#080808',
+                  fontFamily: 'var(--v5-font-body)',
+                  fontSize: '15px',
+                  fontWeight: 400,
+                  textDecoration: 'none',
+                  borderRadius: '0px',
+                  transition: 'background 200ms ease',
+                }}
+                onMouseEnter={(e) => {
+                  (e.currentTarget as HTMLElement).style.background = '#E8E8E0';
+                }}
+                onMouseLeave={(e) => {
+                  (e.currentTarget as HTMLElement).style.background = '#FFFFFF';
+                }}
+              >
+                Reservar sesión →
+              </Link>
+            </div>
+          </div>
+        </section>
 
-                <div style={{ display: 'flex', alignItems: 'baseline', gap: '12px', marginBottom: '28px' }}>
-                  <span style={{
+        {/* Section 2 — Qué incluye */}
+        <section className="v5-section" style={{ backgroundColor: '#FFFFFF' }}>
+          <div className="v5-container">
+            <div
+              className="sdc-two-col"
+              style={{
+                display: 'grid',
+                gridTemplateColumns: '5fr 7fr',
+                gap: '80px',
+                alignItems: 'start',
+              }}
+            >
+              {/* Left */}
+              <div>
+                <h2
+                  className="v5-reveal"
+                  style={{
                     fontFamily: 'var(--v5-font-display)',
-                    fontWeight: 800,
-                    fontSize: '64px',
-                    color: 'var(--v5-text-primary)',
-                    letterSpacing: '-0.04em',
-                    lineHeight: 1,
-                  }}>
-                    150€
-                  </span>
-                  <span style={{
-                    fontFamily: 'var(--v5-font-body)',
-                    fontSize: '22px',
-                    color: 'var(--v5-text-muted)',
-                    textDecoration: 'line-through',
-                  }}>
-                    300€
-                  </span>
-                </div>
+                    fontSize: 'clamp(24px, 3vw, 40px)',
+                    fontWeight: 300,
+                    letterSpacing: '-0.02em',
+                    lineHeight: 1.1,
+                    color: '#111111',
+                    marginBottom: '24px',
+                    whiteSpace: 'pre-line',
+                  }}
+                >
+                  {'Una conversación honesta\nsobre tu empresa.'}
+                </h2>
 
-                <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '14px', marginBottom: '32px' }}>
-                  {includes.map((item) => (
+                <p
+                  className="v5-reveal"
+                  style={{
+                    fontFamily: 'var(--v5-font-body)',
+                    fontSize: '17px',
+                    fontWeight: 300,
+                    lineHeight: 1.9,
+                    color: '#555555',
+                    marginBottom: '20px',
+                  }}
+                >
+                  90 minutos contigo. Sin presentación de ventas. Hablamos de cómo funciona tu empresa, dónde se pierde tiempo y dinero, y qué haríamos exactamente para mejorarlo con IA.
+                </p>
+
+                <p
+                  className="v5-reveal"
+                  style={{
+                    fontFamily: 'var(--v5-font-body)',
+                    fontSize: '17px',
+                    fontWeight: 300,
+                    lineHeight: 1.9,
+                    color: '#555555',
+                  }}
+                >
+                  Al acabar tienes un documento con las 3-5 acciones concretas que recomendamos. Sin compromiso de contratar.
+                </p>
+              </div>
+
+              {/* Right */}
+              <div className="v5-reveal">
+                <h3
+                  style={{
+                    fontFamily: 'var(--v5-font-display)',
+                    fontSize: '18px',
+                    fontWeight: 500,
+                    letterSpacing: '-0.01em',
+                    color: '#111111',
+                    marginBottom: '24px',
+                  }}
+                >
+                  Lo que incluye:
+                </h3>
+
+                <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '16px' }}>
+                  {checklistItems.map((item) => (
                     <li key={item} style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                      <div style={{
-                        width: '20px', height: '20px',
-                        borderRadius: '50%',
-                        backgroundColor: 'rgba(99,102,241,0.15)',
-                        display: 'flex', alignItems: 'center', justifyContent: 'center',
-                        flexShrink: 0,
-                      }}>
-                        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="var(--v5-accent)" strokeWidth={3}>
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-                        </svg>
-                      </div>
-                      <span style={{ fontFamily: 'var(--v5-font-body)', fontSize: '15px', color: 'var(--v5-text-secondary)' }}>
+                      <svg
+                        width="16"
+                        height="16"
+                        viewBox="0 0 16 16"
+                        fill="none"
+                        style={{ flexShrink: 0 }}
+                      >
+                        <circle cx="8" cy="8" r="7.5" stroke="#111111" strokeOpacity="0.15" />
+                        <path
+                          d="M4.5 8.5L6.5 10.5L11.5 5.5"
+                          stroke="#111111"
+                          strokeWidth="1.5"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                      <span
+                        style={{
+                          fontFamily: 'var(--v5-font-body)',
+                          fontSize: '16px',
+                          fontWeight: 300,
+                          color: '#444444',
+                          lineHeight: 1.5,
+                        }}
+                      >
                         {item}
                       </span>
                     </li>
                   ))}
                 </ul>
-
-                <a
-                  href="mailto:hola@aetherlabs.es?subject=Reserva%20Sesión%20de%20Claridad"
-                  className="v5-btn-primary"
-                  style={{ display: 'flex', justifyContent: 'center', width: '100%', fontSize: '17px', padding: '16px', boxSizing: 'border-box' }}
-                >
-                  Reservar mi Sesión →
-                </a>
-
-                <p style={{
-                  textAlign: 'center',
-                  fontFamily: 'var(--v5-font-body)',
-                  fontSize: '13px',
-                  color: 'var(--v5-text-muted)',
-                  marginTop: '16px',
-                }}>
-                  Sin compromiso. Si no encajamos, te decimos.
-                </p>
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Profiles section */}
-      <section className="v5-section" style={{ backgroundColor: 'var(--v5-bg-surface)' }}>
-        <div className="v5-container">
-          <h2 className="v5-h2 v5-reveal" style={{ textAlign: 'center', marginBottom: '48px' }}>
-            ¿Para quién es?
-          </h2>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '24px' }}
-            className="v5-profiles-grid"
-          >
-            {profiles.map((profile, i) => (
-              <div
-                key={i}
-                className="v5-reveal"
+        {/* Section 3 — Para quién */}
+        <section className="v5-section" style={{ backgroundColor: '#F8F8F8' }}>
+          <div className="v5-container">
+            <div className="v5-reveal" style={{ marginBottom: '48px' }}>
+              <span
                 style={{
-                  backgroundColor: 'var(--v5-bg-base)',
-                  border: '1px solid var(--v5-border)',
-                  borderRadius: 'var(--v5-radius-lg)',
-                  padding: '32px',
+                  display: 'block',
+                  marginBottom: '16px',
+                  fontFamily: 'var(--v5-font-mono)',
+                  fontSize: '11px',
+                  fontWeight: 500,
+                  letterSpacing: '0.15em',
+                  textTransform: 'uppercase',
+                  color: '#999999',
                 }}
               >
-                <p style={{
+                Perfil
+              </span>
+              <h2
+                style={{
                   fontFamily: 'var(--v5-font-display)',
-                  fontStyle: 'italic',
-                  fontWeight: 600,
-                  fontSize: '18px',
-                  color: 'var(--v5-text-primary)',
+                  fontSize: 'clamp(28px, 3.5vw, 48px)',
+                  fontWeight: 300,
+                  letterSpacing: '-0.02em',
+                  lineHeight: 1.05,
+                  color: '#111111',
+                }}
+              >
+                ¿Para quién es?
+              </h2>
+            </div>
+
+            <div
+              className="sdc-cards-grid"
+              style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '24px' }}
+            >
+              {audienceCards.map((card, i) => (
+                <div
+                  key={i}
+                  className="v5-reveal"
+                  style={{
+                    backgroundColor: '#FFFFFF',
+                    border: '1px solid #EBEBEB',
+                    borderRadius: '16px',
+                    padding: '32px',
+                    transitionDelay: `${i * 80}ms`,
+                  }}
+                >
+                  <h3
+                    style={{
+                      fontFamily: 'var(--v5-font-display)',
+                      fontSize: '18px',
+                      fontWeight: 400,
+                      letterSpacing: '-0.01em',
+                      color: '#111111',
+                      marginBottom: '12px',
+                      lineHeight: 1.2,
+                    }}
+                  >
+                    {card.title}
+                  </h3>
+                  <p
+                    style={{
+                      fontFamily: 'var(--v5-font-body)',
+                      fontSize: '15px',
+                      fontWeight: 300,
+                      lineHeight: 1.8,
+                      color: '#666666',
+                    }}
+                  >
+                    {card.desc}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Section 4 — FAQ */}
+        <section className="v5-section" style={{ backgroundColor: '#FFFFFF' }}>
+          <div className="v5-container">
+            <div className="v5-reveal" style={{ marginBottom: '56px' }}>
+              <span
+                style={{
+                  display: 'block',
                   marginBottom: '16px',
-                  lineHeight: 1.3,
-                  letterSpacing: '-0.01em',
-                }}>
-                  {profile.quote}
-                </p>
-                <p style={{
+                  fontFamily: 'var(--v5-font-mono)',
+                  fontSize: '11px',
+                  fontWeight: 500,
+                  letterSpacing: '0.15em',
+                  textTransform: 'uppercase',
+                  color: '#999999',
+                }}
+              >
+                FAQ
+              </span>
+              <h2
+                style={{
+                  fontFamily: 'var(--v5-font-display)',
+                  fontSize: 'clamp(28px, 3.5vw, 48px)',
+                  fontWeight: 300,
+                  letterSpacing: '-0.02em',
+                  lineHeight: 1.05,
+                  color: '#111111',
+                }}
+              >
+                Preguntas frecuentes
+              </h2>
+            </div>
+
+            <div
+              className="sdc-faq-grid"
+              style={{
+                display: 'grid',
+                gridTemplateColumns: '1fr 1fr',
+                gap: '40px 80px',
+                maxWidth: '960px',
+              }}
+            >
+              {faqs.map((faq, i) => (
+                <div key={i} className="v5-reveal" style={{ transitionDelay: `${i * 60}ms` }}>
+                  <p
+                    style={{
+                      fontFamily: 'var(--v5-font-display)',
+                      fontSize: '17px',
+                      fontWeight: 400,
+                      letterSpacing: '-0.01em',
+                      color: '#111111',
+                      marginBottom: '10px',
+                      lineHeight: 1.3,
+                    }}
+                  >
+                    {faq.q}
+                  </p>
+                  <p
+                    style={{
+                      fontFamily: 'var(--v5-font-body)',
+                      fontSize: '15px',
+                      fontWeight: 300,
+                      lineHeight: 1.8,
+                      color: '#666666',
+                    }}
+                  >
+                    {faq.a}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Section 5 — CTA */}
+        <section
+          className="v5-section"
+          style={{ backgroundColor: '#080808', textAlign: 'center' }}
+        >
+          <div className="v5-container">
+            <div
+              className="v5-reveal"
+              style={{
+                maxWidth: '640px',
+                margin: '0 auto',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                gap: '24px',
+              }}
+            >
+              <h2
+                style={{
+                  fontFamily: 'var(--v5-font-display)',
+                  fontSize: 'clamp(28px, 4vw, 48px)',
+                  fontWeight: 300,
+                  letterSpacing: '-0.02em',
+                  lineHeight: 1.1,
+                  color: '#F5F5F0',
+                }}
+              >
+                ¿Listo para tenerlo todo claro?
+              </h2>
+
+              <p
+                style={{
+                  fontFamily: 'var(--v5-font-body)',
+                  fontSize: '17px',
+                  fontWeight: 300,
+                  lineHeight: 1.8,
+                  color: 'rgba(245,245,240,0.45)',
+                }}
+              >
+                Sin compromiso. Sin presentación de ventas.
+              </p>
+
+              <Link
+                href="/contacto"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  padding: '16px 40px',
+                  background: '#FFFFFF',
+                  color: '#080808',
                   fontFamily: 'var(--v5-font-body)',
                   fontSize: '15px',
-                  color: 'var(--v5-text-secondary)',
-                  lineHeight: 1.6,
-                }}>
-                  {profile.description}
-                </p>
-              </div>
-            ))}
+                  fontWeight: 400,
+                  textDecoration: 'none',
+                  borderRadius: '0px',
+                  transition: 'background 200ms ease',
+                }}
+                onMouseEnter={(e) => {
+                  (e.currentTarget as HTMLElement).style.background = '#E8E8E0';
+                }}
+                onMouseLeave={(e) => {
+                  (e.currentTarget as HTMLElement).style.background = '#FFFFFF';
+                }}
+              >
+                Reservar mi sesión →
+              </Link>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+
+      </main>
+      <Footer />
 
       <style>{`
+        @media (max-width: 900px) {
+          .sdc-two-col { grid-template-columns: 1fr !important; gap: 48px !important; }
+        }
         @media (max-width: 768px) {
-          .v5-clarity-page-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
-          .v5-profiles-grid { grid-template-columns: 1fr !important; }
+          .sdc-cards-grid { grid-template-columns: 1fr !important; }
+          .sdc-faq-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
         }
       `}</style>
-    </SystemsLabLayout>
+    </div>
   );
 }

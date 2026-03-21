@@ -1,104 +1,370 @@
-import type { Metadata } from 'next';
+'use client';
+
 import Link from 'next/link';
-import SystemsLabLayout from '@/components/v5/SystemsLabLayout';
+import Navbar from '@/components/v5/Navbar';
+import Footer from '@/components/v5/Footer';
+import ScrollAnimations from '@/components/v5/ScrollAnimations';
 
-export const metadata: Metadata = {
-  title: 'Apollo.io — Systems Lab | Aether Labs',
-  description: 'Encuentra a tu cliente ideal antes de que él te encuentre. 275M+ contactos, outreach automatizado, integración con Claude vía MCP.',
-};
+const features = [
+  {
+    title: 'Base de datos de leads',
+    desc: 'Acceso a más de 275 millones de contactos B2B. Filtra por cargo, industria, tamaño de empresa, ubicación y tecnologías que usan para encontrar exactamente a tu cliente ideal.',
+  },
+  {
+    title: 'Secuencias de email',
+    desc: 'Automatiza emails y llamadas de prospección en secuencias personalizadas. El sistema hace el seguimiento solo hasta que el lead responde o sale de la secuencia.',
+  },
+  {
+    title: 'Enriquecimiento de contactos',
+    desc: 'Completa automáticamente el perfil de cualquier contacto o empresa: email verificado, LinkedIn, número de teléfono, tamaño de empresa y datos firmográficos.',
+  },
+  {
+    title: 'Integración con CRM',
+    desc: 'Sincronización bidireccional con HubSpot, Salesforce y ClickUp. Los leads de Apollo llegan al CRM con todos los datos listos. Sin copiar ni pegar nada.',
+  },
+];
 
-const DBLUE = '#1D4ED8';
+const casos = [
+  {
+    num: '01',
+    title: 'Pipeline de ventas outbound desde cero',
+    desc: 'Una empresa SaaS sin proceso de prospección definido. Implementamos Apollo con ICP claro, secuencias de 5 pasos y conexión con HubSpot. En 30 días tenían 40 conversaciones activas con su cliente ideal.',
+  },
+  {
+    num: '02',
+    title: 'Enriquecimiento automático de base de datos',
+    desc: 'Una empresa con 3.000 contactos en el CRM sin datos completos. Conectamos Apollo para enriquecer todos los registros automáticamente. El equipo de ventas pasó de llamar a ciegas a llamar con contexto.',
+  },
+  {
+    num: '03',
+    title: 'Claude + Apollo para outreach personalizado',
+    desc: 'Vía MCP, Claude busca leads en Apollo según el perfil del cliente ideal, genera emails personalizados para cada uno y los carga en la secuencia de outreach. Prospección con IA real, no mensajes masivos.',
+  },
+];
 
 export default function ApolloPage() {
   return (
-    <SystemsLabLayout accentColor={DBLUE}>
-      <section className="v5-section" style={{ backgroundColor: 'var(--v5-bg-base)' }}>
-        <div className="v5-container">
-          <span className="v5-label v5-reveal" style={{ display: 'block', marginBottom: '20px', color: '#999999' }}>Apollo.io</span>
-          <h1 className="v5-h1 v5-reveal" style={{ maxWidth: '680px', marginBottom: '20px' }}>
-            Encuentra a tu cliente ideal{' '}
-            <span style={{ color: 'rgba(245,245,240,0.38)' }}>
-              antes de que él te encuentre
+    <div className="v5-page">
+      <ScrollAnimations />
+      <Navbar />
+      <main>
+
+        {/* Hero */}
+        <section
+          style={{ backgroundColor: '#080808', paddingTop: '160px', paddingBottom: '120px' }}
+        >
+          <div className="v5-container">
+            <span
+              className="v5-reveal"
+              style={{
+                display: 'block',
+                marginBottom: '24px',
+                fontFamily: 'var(--v5-font-mono)',
+                fontSize: '11px',
+                fontWeight: 500,
+                letterSpacing: '0.15em',
+                textTransform: 'uppercase',
+                color: '#999999',
+              }}
+            >
+              🎯 Apollo.io
             </span>
-          </h1>
-          <p className="v5-body-large v5-reveal" style={{ maxWidth: '540px', marginBottom: '32px' }}>
-            Apollo.io es la herramienta de prospecting con IA más usada del mercado.
-            Base de datos de 275M+ contactos + automatización de outreach.
-          </p>
-          <div className="v5-reveal" style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-            <Link href="/systems-lab/sesion-de-claridad" className="v5-btn-primary" style={{ fontSize: '16px' }}>
-              Implementar Apollo con Aether →
-            </Link>
+            <h1
+              className="v5-reveal"
+              style={{
+                fontFamily: 'var(--v5-font-display)',
+                fontSize: 'clamp(40px, 6vw, 80px)',
+                fontWeight: 300,
+                letterSpacing: '-0.03em',
+                lineHeight: 0.95,
+                color: '#F5F5F0',
+                maxWidth: '800px',
+                marginBottom: '28px',
+                transitionDelay: '80ms',
+              }}
+            >
+              Prospección de ventas con inteligencia real.<br />
+              <span style={{ color: 'rgba(245,245,240,0.38)' }}>Encuentra, contacta y cierra.</span>
+            </h1>
+            <p
+              className="v5-reveal"
+              style={{
+                fontFamily: 'var(--v5-font-body)',
+                fontSize: '17px',
+                fontWeight: 300,
+                lineHeight: 1.8,
+                color: 'rgba(245,245,240,0.45)',
+                maxWidth: '520px',
+                marginBottom: '40px',
+                transitionDelay: '160ms',
+              }}
+            >
+              Apollo.io es la herramienta de prospecting con IA más usada del mercado.
+              275M+ contactos B2B, secuencias automatizadas e integración con Claude vía MCP.
+            </p>
+            <div className="v5-reveal" style={{ transitionDelay: '240ms' }}>
+              <Link
+                href="/systems-lab/sesion-de-claridad"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  padding: '16px 32px',
+                  background: '#F5F5F0',
+                  color: '#080808',
+                  fontFamily: 'var(--v5-font-body)',
+                  fontSize: '15px',
+                  fontWeight: 400,
+                  textDecoration: 'none',
+                  transition: 'background 200ms ease',
+                }}
+                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = '#FFFFFF'; }}
+                onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = '#F5F5F0'; }}
+              >
+                Implementar Apollo con Aether →
+              </Link>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section className="v5-section" style={{ backgroundColor: 'var(--v5-bg-surface)' }}>
-        <div className="v5-container">
-          <h2 className="v5-h2 v5-reveal" style={{ marginBottom: '40px' }}>Qué hace Apollo</h2>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '16px' }}
-            className="v5-ap-grid"
-          >
-            {[
-              { title: 'Búsqueda de leads', desc: 'Filtra por cargo, industria, tamaño de empresa, ubicación, tecnologías que usan.' },
-              { title: 'Enriquecimiento', desc: 'Completa automáticamente el perfil de cualquier contacto o empresa.' },
-              { title: 'Secuencias de outreach', desc: 'Automatiza emails y llamadas de prospección.' },
-              { title: 'Integración con CRM', desc: 'Sincroniza con HubSpot, Salesforce, ClickUp.' },
-              { title: 'Integración con Claude', desc: 'Vía MCP oficial, Claude puede buscar leads y enriquecer datos directamente.' },
-              { title: 'Analytics', desc: 'Mide qué secuencias funcionan y optimiza el outreach continuamente.' },
-            ].map((item, i) => (
-              <div key={i} className="v5-reveal" style={{
-                backgroundColor: 'var(--v5-bg-base)',
-                border: `1px solid ${DBLUE}20`,
-                borderRadius: 'var(--v5-radius-lg)',
-                padding: '24px',
-              }}>
-                <h3 style={{ fontFamily: 'var(--v5-font-display)', fontWeight: 600, fontSize: '16px', color: DBLUE, marginBottom: '8px' }}>{item.title}</h3>
-                <p style={{ fontFamily: 'var(--v5-font-body)', fontSize: '14px', color: 'var(--v5-text-secondary)', lineHeight: 1.55 }}>{item.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="v5-section" style={{ backgroundColor: 'var(--v5-bg-base)' }}>
-        <div className="v5-container">
-          <h2 className="v5-h2 v5-reveal" style={{ marginBottom: '28px' }}>Lo que implementamos</h2>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-            {[
-              ['Setup de Apollo', 'Configuración de cuenta + conexión con CRM del cliente'],
-              ['ICP definition', 'Definimos juntos el perfil de cliente ideal en Apollo'],
-              ['Primeras secuencias', 'Creamos los primeros flujos de outreach personalizados'],
-              ['Integración Claude', 'Conectamos Apollo con Claude vía MCP para outreach personalizado con IA'],
-              ['Formación', 'El equipo de ventas aprende a prospectar con Apollo'],
-            ].map(([title, desc], i) => (
-              <div key={i} className="v5-reveal" style={{
-                backgroundColor: 'var(--v5-bg-surface)',
-                border: '1px solid var(--v5-border)',
-                borderRadius: 'var(--v5-radius-md)',
-                padding: '20px 28px',
-                display: 'flex',
+        {/* Qué implementamos */}
+        <section
+          style={{ backgroundColor: '#FFFFFF', paddingTop: '120px', paddingBottom: '120px' }}
+        >
+          <div className="v5-container">
+            <div className="v5-reveal" style={{ marginBottom: '64px' }}>
+              <span
+                style={{
+                  display: 'block',
+                  marginBottom: '20px',
+                  fontFamily: 'var(--v5-font-mono)',
+                  fontSize: '11px',
+                  fontWeight: 500,
+                  letterSpacing: '0.15em',
+                  textTransform: 'uppercase',
+                  color: '#999999',
+                }}
+              >
+                Qué implementamos
+              </span>
+              <h2
+                style={{
+                  fontFamily: 'var(--v5-font-display)',
+                  fontSize: 'clamp(28px, 4vw, 48px)',
+                  fontWeight: 300,
+                  letterSpacing: '-0.02em',
+                  lineHeight: 1.1,
+                  color: '#111111',
+                }}
+              >
+                Apollo configurado para tu proceso de ventas
+              </h2>
+            </div>
+            <div
+              style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
                 gap: '24px',
-              }}>
-                <span style={{ fontFamily: 'var(--v5-font-mono)', fontSize: '11px', fontWeight: 700, color: DBLUE, minWidth: '180px', letterSpacing: '0.05em', textTransform: 'uppercase' }}>{title}</span>
-                <span style={{ fontFamily: 'var(--v5-font-body)', fontSize: '15px', color: 'var(--v5-text-secondary)', lineHeight: 1.5 }}>{desc}</span>
-              </div>
-            ))}
+              }}
+            >
+              {features.map((f, i) => (
+                <div
+                  key={i}
+                  className="v5-reveal"
+                  style={{
+                    background: '#F8F8F8',
+                    border: '1px solid #EBEBEB',
+                    borderRadius: '16px',
+                    padding: '32px',
+                    transitionDelay: `${i * 80}ms`,
+                  }}
+                >
+                  <h3
+                    style={{
+                      fontFamily: 'var(--v5-font-display)',
+                      fontSize: '18px',
+                      fontWeight: 400,
+                      letterSpacing: '-0.02em',
+                      color: '#111111',
+                      marginBottom: '12px',
+                    }}
+                  >
+                    {f.title}
+                  </h3>
+                  <p
+                    style={{
+                      fontFamily: 'var(--v5-font-body)',
+                      fontSize: '15px',
+                      fontWeight: 300,
+                      lineHeight: 1.8,
+                      color: '#666666',
+                    }}
+                  >
+                    {f.desc}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section className="v5-section" style={{ backgroundColor: 'var(--v5-bg-surface)', textAlign: 'center' }}>
-        <div className="v5-container">
-          <h2 className="v5-h2 v5-reveal" style={{ marginBottom: '32px' }}>Implementar Apollo con Aether</h2>
-          <div className="v5-reveal">
-            <Link href="/systems-lab/sesion-de-claridad" className="v5-btn-primary" style={{ fontSize: '17px', padding: '16px 32px' }}>
-              Reservar Sesión de Claridad →
-            </Link>
+        {/* Casos de uso reales */}
+        <section
+          style={{
+            backgroundColor: '#F8F8F8',
+            borderTop: '1px solid #EBEBEB',
+            borderBottom: '1px solid #EBEBEB',
+            paddingTop: '120px',
+            paddingBottom: '120px',
+          }}
+        >
+          <div className="v5-container">
+            <div className="v5-reveal" style={{ marginBottom: '64px' }}>
+              <span
+                style={{
+                  display: 'block',
+                  marginBottom: '20px',
+                  fontFamily: 'var(--v5-font-mono)',
+                  fontSize: '11px',
+                  fontWeight: 500,
+                  letterSpacing: '0.15em',
+                  textTransform: 'uppercase',
+                  color: '#999999',
+                }}
+              >
+                Casos de uso reales
+              </span>
+              <h2
+                style={{
+                  fontFamily: 'var(--v5-font-display)',
+                  fontSize: 'clamp(28px, 4vw, 48px)',
+                  fontWeight: 300,
+                  letterSpacing: '-0.02em',
+                  lineHeight: 1.1,
+                  color: '#111111',
+                }}
+              >
+                Apollo en equipos de ventas reales
+              </h2>
+            </div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+              {casos.map((c, i) => (
+                <div
+                  key={i}
+                  className="v5-reveal"
+                  style={{
+                    background: '#FFFFFF',
+                    border: '1px solid #EBEBEB',
+                    borderTop: '2px solid #111111',
+                    borderRadius: '16px',
+                    padding: '32px 40px',
+                    display: 'flex',
+                    gap: '32px',
+                    alignItems: 'flex-start',
+                    transitionDelay: `${i * 80}ms`,
+                  }}
+                >
+                  <span
+                    style={{
+                      fontFamily: 'var(--v5-font-mono)',
+                      fontSize: '13px',
+                      fontWeight: 700,
+                      color: '#AAAAAA',
+                      minWidth: '28px',
+                      flexShrink: 0,
+                    }}
+                  >
+                    {c.num}
+                  </span>
+                  <div>
+                    <h3
+                      style={{
+                        fontFamily: 'var(--v5-font-display)',
+                        fontSize: '20px',
+                        fontWeight: 400,
+                        letterSpacing: '-0.02em',
+                        color: '#111111',
+                        marginBottom: '10px',
+                      }}
+                    >
+                      {c.title}
+                    </h3>
+                    <p
+                      style={{
+                        fontFamily: 'var(--v5-font-body)',
+                        fontSize: '15px',
+                        fontWeight: 300,
+                        lineHeight: 1.8,
+                        color: '#666666',
+                      }}
+                    >
+                      {c.desc}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
-      <style>{`@media (max-width: 768px) { .v5-ap-grid { grid-template-columns: 1fr !important; } }`}</style>
-    </SystemsLabLayout>
+        </section>
+
+        {/* CTA */}
+        <section
+          style={{ backgroundColor: '#080808', paddingTop: '120px', paddingBottom: '120px', textAlign: 'center' }}
+        >
+          <div className="v5-container">
+            <div
+              className="v5-reveal"
+              style={{ maxWidth: '640px', margin: '0 auto', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '24px' }}
+            >
+              <h2
+                style={{
+                  fontFamily: 'var(--v5-font-display)',
+                  fontSize: 'clamp(28px, 4vw, 48px)',
+                  fontWeight: 300,
+                  letterSpacing: '-0.02em',
+                  lineHeight: 1.1,
+                  color: '#F5F5F0',
+                }}
+              >
+                ¿Tu equipo de ventas podría prospectar mejor?
+              </h2>
+              <p
+                style={{
+                  fontFamily: 'var(--v5-font-body)',
+                  fontSize: '17px',
+                  fontWeight: 300,
+                  lineHeight: 1.8,
+                  color: 'rgba(245,245,240,0.45)',
+                }}
+              >
+                Empieza con una Sesión de Claridad de 90 minutos.
+              </p>
+              <Link
+                href="/systems-lab/sesion-de-claridad"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  padding: '16px 32px',
+                  background: '#F5F5F0',
+                  color: '#080808',
+                  fontFamily: 'var(--v5-font-body)',
+                  fontSize: '15px',
+                  fontWeight: 400,
+                  textDecoration: 'none',
+                  transition: 'background 200ms ease',
+                }}
+                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = '#FFFFFF'; }}
+                onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = '#F5F5F0'; }}
+              >
+                Reservar Sesión de Claridad →
+              </Link>
+            </div>
+          </div>
+        </section>
+
+      </main>
+      <Footer />
+    </div>
   );
 }

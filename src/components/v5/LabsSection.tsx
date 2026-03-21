@@ -1,7 +1,6 @@
 'use client';
 
 import Link from 'next/link';
-import Image from 'next/image';
 
 const labs = [
   {
@@ -11,13 +10,13 @@ const labs = [
     description: 'Implementamos IA como Claude y Copilot. Automatizamos flujos para que el trabajo tedioso desaparezca.',
     cta: 'Explorar Systems Lab',
     href: '/systems-lab',
-    image: '/images/aether-office.jpg',
+    image: '/quantum-sculpture.jpeg',
   },
   {
     key: 'creative',
     label: 'Creative Lab',
     title: 'Material de marketing que funciona',
-    description: 'Interfaces, landing pages, avatares 3D y diseño. Haz que te vean, te entiendan y te elijan.',
+    description: 'Vídeo, branding, web y contenido. Haz que te vean, te entiendan y te elijan.',
     cta: 'Explorar Creative Lab',
     href: '/creative-lab',
     image: '/images/3d/branding.jpeg',
@@ -38,7 +37,7 @@ export default function LabsSection() {
     <section id="servicios" className="v5-section" style={{ backgroundColor: '#FFFFFF' }}>
       <div className="v5-container">
         {/* Header */}
-        <div className="mb-20 lg:mb-48 v5-reveal flex flex-col items-center text-center gap-4">
+        <div className="v5-reveal flex flex-col items-center text-center gap-4" style={{ marginBottom: '120px' }}>
           <span
             style={{
               fontFamily: 'var(--v5-font-mono)',
@@ -76,8 +75,8 @@ export default function LabsSection() {
               className="v5-reveal flex flex-col"
               style={{
                 transitionDelay: `${i * 100}ms`,
-                background: '#F8F8F8',
-                border: '1px solid #EBEBEB',
+                background: '#FFFFFF',
+                border: '1px solid #E0E0E0',
                 borderRadius: '16px',
                 overflow: 'hidden',
                 textDecoration: 'none',
@@ -88,17 +87,21 @@ export default function LabsSection() {
                 style={{
                   position: 'relative',
                   width: '100%',
-                  aspectRatio: '1',
-                  backgroundColor: '#EDE8DF', // Warm card inner bg
+                  height: '260px',
+                  overflow: 'hidden',
+                  backgroundColor: '#EDE8DF',
+                  flexShrink: 0,
                 }}
               >
-                <Image
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
                   src={lab.image}
                   alt={lab.title}
-                  fill
-                  className="object-cover"
                   style={{
-                    filter: 'contrast(1.05) brightness(1.02)'
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                    filter: 'contrast(1.05) brightness(1.02)',
                   }}
                 />
               </div>

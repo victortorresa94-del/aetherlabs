@@ -24,7 +24,7 @@ export default function HowItWorksSection() {
       <div className="v5-container">
 
         {/* Heading */}
-        <div className="text-center mb-20 v5-reveal flex flex-col items-center">
+        <div className="text-center v5-reveal flex flex-col items-center" style={{ marginBottom: '80px' }}>
           <span
             style={{
               display: 'block',
@@ -54,43 +54,28 @@ export default function HowItWorksSection() {
         </div>
 
         {/* Steps */}
-        <div className="grid grid-cols-1 md:grid-cols-3 v5-section-gap">
+        <div className="grid grid-cols-1 md:grid-cols-3" style={{ gap: '24px' }}>
           {steps.map((step, i) => (
             <div
               key={i}
-              className="v5-reveal relative flex flex-col gap-5 p-10 md:p-12"
+              className="v5-reveal flex flex-col"
               style={{
-                background: '#F8F8F8',
-                border: '1px solid #EBEBEB',
+                background: '#FFFFFF',
+                border: '1px solid #E0E0E0',
+                borderTop: '2px solid #111111',
                 borderRadius: '16px',
+                padding: '40px',
+                gap: '20px',
                 transitionDelay: `${i * 80}ms`,
               }}
             >
-              {/* Large background number */}
-              <span
-                className="absolute top-6 right-8 select-none pointer-events-none"
-                style={{
-                  fontFamily: 'var(--v5-font-display)',
-                  fontSize: '72px',
-                  fontWeight: 300,
-                  letterSpacing: '-0.05em',
-                  lineHeight: 1,
-                  color: '#E0E0E0',
-                  opacity: 0.06,
-                }}
-              >
-                {step.number}
-              </span>
-
               <span
                 style={{
                   fontFamily: 'var(--v5-font-mono)',
                   fontSize: '11px',
                   fontWeight: 500,
-                  color: '#AAAAAA',
-                  letterSpacing: '0.10em',
-                  position: 'relative',
-                  zIndex: 1,
+                  color: '#BBBBBB',
+                  letterSpacing: '0.12em',
                   textTransform: 'uppercase',
                 }}
               >
@@ -100,12 +85,11 @@ export default function HowItWorksSection() {
               <h3
                 style={{
                   fontFamily: 'var(--v5-font-display)',
-                  fontSize: '24px',
-                  fontWeight: 400,
+                  fontSize: '22px',
+                  fontWeight: 600,
                   letterSpacing: '-0.02em',
                   color: '#111111',
-                  position: 'relative',
-                  zIndex: 1,
+                  lineHeight: 1.2,
                 }}
               >
                 {step.title}
@@ -114,12 +98,10 @@ export default function HowItWorksSection() {
               <p
                 style={{
                   fontFamily: 'var(--v5-font-body)',
-                  fontSize: '17px',
+                  fontSize: '16px',
                   fontWeight: 300,
                   lineHeight: 1.8,
                   color: '#666666',
-                  position: 'relative',
-                  zIndex: 1,
                 }}
               >
                 {step.description}

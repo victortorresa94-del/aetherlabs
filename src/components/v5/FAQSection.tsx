@@ -29,7 +29,7 @@ export default function FAQSection() {
       <div className="v5-container">
 
         {/* Header */}
-        <div className="mb-16 v5-reveal flex flex-col items-start gap-4">
+        <div className="mb-20 v5-reveal flex flex-col items-start gap-4">
           <span
             style={{
               fontFamily: 'var(--v5-font-mono)',

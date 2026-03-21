@@ -12,15 +12,17 @@ const casos = [
     sector: 'EDUCACIÓN ONLINE',
     title: 'Llenar un máster de composición musical en un mercado saturado de cursos.',
     desc: 'Estrategia de lanzamiento completa. Funnel con ManyChat, reels, lead magnets y cierre de ventas directo.',
-    resultado: '+20.000€ en ventas · ~200 alumnos inscritos · Objetivo cumplido.',
-    image: '/images/creative-lab/video.jpg',
+    resultado: '+20.000€',
+    resultadoLabel: 'en ventas · ~200 alumnos inscritos · Objetivo cumplido.',
+    image: '/images/creative/twojeys.jpg',
   },
   {
     badge: 'Systems Lab',
     sector: 'AGENCIA DE MARKETING',
     title: 'Una agencia creciendo rápido sin estructura para soportarlo.',
     desc: 'Implementamos ClickUp desde cero. Creamos +40 SOPs para que cada proceso estuviera documentado y delegable. Formamos al equipo para que lo usara.',
-    resultado: '+40 proyectos gestionados a la vez · Sistema propio que no depende de una persona.',
+    resultado: '+40 proyectos',
+    resultadoLabel: 'gestionados a la vez · Sistema propio que no depende de una persona.',
     image: '/images/aether-office.jpg',
   },
   {
@@ -28,16 +30,18 @@ const casos = [
     sector: 'LANZAMIENTO INTERNACIONAL',
     title: 'Lanzar una marca desde cero en el mercado americano.',
     desc: 'Go-to-market completo: estudio de mercado, definición de pricing, búsqueda de proveedores, branding y web.',
-    resultado: 'Marca operativa en EE.UU. desde cero · Base estratégica completa para escalar.',
-    image: '/images/creative-lab/web.jpg',
+    resultado: 'Marca operativa',
+    resultadoLabel: 'en EE.UU. desde cero · Base estratégica completa para escalar.',
+    image: '/images/skyflex/main.jpg',
   },
   {
     badge: 'School Lab',
     sector: 'INSTITUCIONAL',
     title: 'Llevar la IA a mujeres de 40-60 que nunca habían tocado una herramienta de IA.',
     desc: 'Talleres presenciales diseñados desde cero. Sin tecnicismos. Solo móvil. En colaboración con el Ajuntament de Badalona.',
-    resultado: 'Primer programa institucional validado · Base del catálogo actual de 9 programas.',
-    image: '/images/school-individual.png',
+    resultado: 'Primer programa',
+    resultadoLabel: 'institucional validado · Base del catálogo actual de 9 programas.',
+    image: '/images/learn/learning-session-elegant.png',
   },
 ];
 
@@ -113,113 +117,143 @@ export default function CasosPage() {
           </div>
         </section>
 
-        {/* Casos reales */}
+        {/* Casos reales — vertical cards */}
         <section className="v5-section" style={{ backgroundColor: '#FFFFFF' }}>
-          <div className="v5-container flex flex-col gap-8">
+          <div
+            className="v5-container"
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '32px',
+            }}
+          >
             {casos.map((caso, i) => (
               <div
                 key={i}
-                className="v5-reveal grid grid-cols-1 md:grid-cols-2 overflow-hidden"
+                className="v5-reveal"
                 style={{
-                  background: '#F8F8F8',
+                  background: '#FFFFFF',
                   border: '1px solid #EBEBEB',
                   borderRadius: '16px',
+                  overflow: 'hidden',
                   transitionDelay: `${i * 80}ms`,
                 }}
               >
-                {/* Image */}
-                <div
-                  style={{
-                    position: 'relative',
-                    minHeight: '280px',
-                    backgroundColor: '#EDE8DF',
-                  }}
-                >
-                  <Image
+                {/* Image — full width, top */}
+                <div style={{ width: '100%', height: '380px', overflow: 'hidden' }}>
+                  <img
                     src={caso.image}
                     alt={caso.title}
-                    fill
-                    className="object-cover"
-                    style={{ filter: 'contrast(1.05) brightness(1.02)' }}
+                    style={{
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'cover',
+                      display: 'block',
+                    }}
                   />
                 </div>
 
-                {/* Content */}
-                <div className="flex flex-col justify-between p-10 md:p-14 gap-6">
-                  <div className="flex flex-col gap-4">
-                    <div className="flex items-center gap-3">
-                      <span
-                        style={{
-                          fontFamily: 'var(--v5-font-mono)',
-                          fontSize: '10px',
-                          fontWeight: 500,
-                          letterSpacing: '0.12em',
-                          textTransform: 'uppercase',
-                          color: '#111111',
-                          background: '#DDDDD0',
-                          padding: '4px 10px',
-                          borderRadius: '100px',
-                        }}
-                      >
-                        {caso.badge}
-                      </span>
-                      <span
-                        style={{
-                          fontFamily: 'var(--v5-font-mono)',
-                          fontSize: '10px',
-                          fontWeight: 500,
-                          letterSpacing: '0.12em',
-                          textTransform: 'uppercase',
-                          color: '#AAAAAA',
-                        }}
-                      >
-                        {caso.sector}
-                      </span>
-                    </div>
-
-                    <h2
+                {/* Content — below image */}
+                <div
+                  style={{
+                    padding: '48px 56px',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '20px',
+                  }}
+                >
+                  {/* Badge row */}
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                    <span
                       style={{
-                        fontFamily: 'var(--v5-font-display)',
-                        fontSize: 'clamp(20px, 2vw, 26px)',
-                        fontWeight: 400,
-                        letterSpacing: '-0.02em',
-                        lineHeight: 1.2,
+                        fontFamily: 'var(--v5-font-mono)',
+                        fontSize: '10px',
+                        fontWeight: 500,
+                        letterSpacing: '0.12em',
+                        textTransform: 'uppercase',
                         color: '#111111',
+                        background: '#EBEBEB',
+                        padding: '4px 10px',
+                        borderRadius: '100px',
                       }}
                     >
-                      {caso.title}
-                    </h2>
-
-                    <p
+                      {caso.badge}
+                    </span>
+                    <span
                       style={{
-                        fontFamily: 'var(--v5-font-body)',
-                        fontSize: '15px',
-                        fontWeight: 300,
-                        lineHeight: 1.8,
-                        color: '#666666',
+                        fontFamily: 'var(--v5-font-mono)',
+                        fontSize: '10px',
+                        fontWeight: 500,
+                        letterSpacing: '0.12em',
+                        textTransform: 'uppercase',
+                        color: '#999999',
                       }}
                     >
-                      {caso.desc}
-                    </p>
+                      {caso.sector}
+                    </span>
                   </div>
 
+                  {/* Title */}
+                  <h2
+                    style={{
+                      fontFamily: 'var(--v5-font-display)',
+                      fontSize: 'clamp(22px, 2.2vw, 28px)',
+                      fontWeight: 300,
+                      letterSpacing: '-0.02em',
+                      lineHeight: 1.2,
+                      color: '#111111',
+                      margin: 0,
+                    }}
+                  >
+                    {caso.title}
+                  </h2>
+
+                  {/* Description */}
+                  <p
+                    style={{
+                      fontFamily: 'var(--v5-font-body)',
+                      fontSize: '16px',
+                      fontWeight: 300,
+                      lineHeight: 1.8,
+                      color: '#666666',
+                      margin: 0,
+                    }}
+                  >
+                    {caso.desc}
+                  </p>
+
+                  {/* Resultado block */}
                   <div
                     style={{
-                      paddingTop: '20px',
-                      borderTop: '1px solid #DDDDD0',
+                      borderTop: '1px solid #EBEBEB',
+                      paddingTop: '24px',
+                      marginTop: '4px',
                     }}
                   >
                     <p
                       style={{
                         fontFamily: 'var(--v5-font-display)',
-                        fontSize: 'clamp(16px, 1.8vw, 20px)',
-                        fontWeight: 400,
-                        letterSpacing: '-0.01em',
+                        fontSize: 'clamp(32px, 3.5vw, 40px)',
+                        fontWeight: 300,
+                        letterSpacing: '-0.03em',
+                        lineHeight: 1.05,
                         color: '#111111',
-                        lineHeight: 1.4,
+                        margin: '0 0 8px 0',
                       }}
                     >
                       {caso.resultado}
+                    </p>
+                    <p
+                      style={{
+                        fontFamily: 'var(--v5-font-body)',
+                        fontSize: '14px',
+                        fontWeight: 400,
+                        lineHeight: 1.6,
+                        color: '#999999',
+                        margin: 0,
+                      }}
+                    >
+                      {caso.resultadoLabel}
                     </p>
                   </div>
                 </div>
@@ -229,9 +263,16 @@ export default function CasosPage() {
         </section>
 
         {/* Casos de uso */}
-        <section className="v5-section" style={{ backgroundColor: '#F8F8F8' }}>
+        <section
+          className="v5-section"
+          style={{
+            backgroundColor: '#F8F8F8',
+            borderTop: '1px solid #EBEBEB',
+            borderBottom: '1px solid #EBEBEB',
+          }}
+        >
           <div className="v5-container">
-            <div className="mb-16 v5-reveal flex flex-col gap-4">
+            <div className="mb-16 v5-reveal" style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
               <span
                 style={{
                   fontFamily: 'var(--v5-font-mono)',
@@ -240,6 +281,7 @@ export default function CasosPage() {
                   letterSpacing: '0.15em',
                   textTransform: 'uppercase',
                   color: '#999999',
+                  marginBottom: '20px',
                 }}
               >
                 Casos de uso
@@ -262,32 +304,46 @@ export default function CasosPage() {
               {casosDeUso.map((cu, i) => (
                 <div
                   key={i}
-                  className="v5-reveal flex flex-col gap-4 p-10 md:p-12"
+                  className="v5-reveal"
                   style={{
+                    position: 'relative',
+                    overflow: 'hidden',
                     background: '#FFFFFF',
                     border: '1px solid #EBEBEB',
+                    borderTop: '2px solid #111111',
                     borderRadius: '16px',
+                    padding: '40px',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '16px',
                     transitionDelay: `${i * 80}ms`,
                   }}
                 >
+                  {/* Decorative background number */}
                   <span
                     style={{
+                      position: 'absolute',
+                      bottom: '12px',
+                      right: '20px',
                       fontFamily: 'var(--v5-font-mono)',
-                      fontSize: '11px',
-                      fontWeight: 500,
-                      color: '#CCCCCC',
-                      letterSpacing: '0.05em',
+                      fontSize: '100px',
+                      fontWeight: 700,
+                      color: 'rgba(0,0,0,0.04)',
+                      lineHeight: 1,
+                      userSelect: 'none',
+                      pointerEvents: 'none',
                     }}
                   >
-                    0{i + 1}
+                    {String(i + 1).padStart(2, '0')}
                   </span>
                   <h3
                     style={{
                       fontFamily: 'var(--v5-font-display)',
                       fontSize: '20px',
-                      fontWeight: 400,
+                      fontWeight: 600,
                       letterSpacing: '-0.02em',
                       color: '#111111',
+                      margin: 0,
                     }}
                   >
                     {cu.title}
@@ -299,6 +355,7 @@ export default function CasosPage() {
                       fontWeight: 300,
                       lineHeight: 1.8,
                       color: '#666666',
+                      margin: 0,
                     }}
                   >
                     {cu.desc}
@@ -312,7 +369,18 @@ export default function CasosPage() {
         {/* CTA */}
         <section className="v5-section" style={{ backgroundColor: '#080808', textAlign: 'center' }}>
           <div className="v5-container">
-            <div className="v5-reveal max-w-2xl mx-auto flex flex-col gap-8">
+            <div
+              className="v5-reveal"
+              style={{
+                maxWidth: '672px',
+                margin: '0 auto',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                gap: '32px',
+                textAlign: 'center',
+              }}
+            >
               <h2
                 style={{
                   fontFamily: 'var(--v5-font-display)',
@@ -321,6 +389,7 @@ export default function CasosPage() {
                   letterSpacing: '-0.02em',
                   lineHeight: 1.1,
                   color: '#F5F5F0',
+                  margin: 0,
                 }}
               >
                 ¿Tu empresa podría ser el próximo caso?
@@ -332,6 +401,7 @@ export default function CasosPage() {
                   fontWeight: 300,
                   lineHeight: 1.8,
                   color: 'rgba(245,245,240,0.45)',
+                  margin: 0,
                 }}
               >
                 Cuéntanos el reto.

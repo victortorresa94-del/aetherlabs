@@ -77,8 +77,8 @@ export default function Navbar() {
             <Image
               src="/aether-logo-white.png"
               alt="Aether Labs"
-              height={20}
-              width={78}
+              height={16}
+              width={62}
               style={{
                 objectFit: 'contain',
                 transition: 'filter 400ms ease',

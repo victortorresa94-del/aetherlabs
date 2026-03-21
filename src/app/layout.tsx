@@ -87,7 +87,7 @@ export default function RootLayout({
         })(window,document,'script','dataLayer','GTM-T2K2L3NQ');`}
       </Script>
       {/* Kill any stale service workers from previous Vite/Antigravity builds */}
-      <Script id="sw-cleanup" strategy="beforeInteractive">
+      <Script id="sw-cleanup" strategy="afterInteractive">
         {`if('serviceWorker' in navigator){navigator.serviceWorker.getRegistrations().then(function(regs){regs.forEach(function(r){r.unregister();});});}`}
       </Script>
       <body className="antialiased bg-[#0A0A0A] text-[#F5F5F5] overflow-x-hidden">

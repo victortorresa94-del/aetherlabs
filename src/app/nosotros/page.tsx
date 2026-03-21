@@ -159,7 +159,7 @@ export default function NosotrosPage() {
             </div>
 
             {/* Equipo */}
-            <div className="v5-reveal">
+            <div className="v5-reveal" style={{ marginTop: '80px' }}>
               <h2
                 style={{
                   fontFamily: 'var(--v5-font-display)',
@@ -177,7 +177,7 @@ export default function NosotrosPage() {
                 {/* Victor */}
                 <div className="flex flex-col gap-5 group">
                   <div className="relative aspect-[4/5] overflow-hidden bg-[#F0F0F0] rounded-xl border border-black/5">
-                    <img src="/images/Victor-CEO.png" alt="Víctor Torres" className="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-500" />
+                    <img src="/images/team/Víctor.png" alt="Víctor Torres" className="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-500" />
                   </div>
                   <div>
                     <h3 className="font-display text-xl text-[#111111] tracking-tight">Víctor Torres</h3>
@@ -188,7 +188,7 @@ export default function NosotrosPage() {
                 {/* David */}
                 <div className="flex flex-col gap-5 group">
                   <div className="relative aspect-[4/5] overflow-hidden bg-[#F0F0F0] rounded-xl border border-black/5">
-                    <img src="/images/david-montesinos.jpg" alt="David Montesinos" className="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-500" />
+                    <img src="/images/team/David.jpg" alt="David Montesinos" className="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-500" />
                   </div>
                   <div>
                     <h3 className="font-display text-xl text-[#111111] tracking-tight">David Montesinos</h3>

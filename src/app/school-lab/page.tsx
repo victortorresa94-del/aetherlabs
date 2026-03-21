@@ -7,14 +7,54 @@ import Footer from '@/components/v5/Footer';
 import ScrollAnimations from '@/components/v5/ScrollAnimations';
 
 const programs = [
-    { title: 'Empodérate con IA', target: 'Mujeres 40-60', desc: 'Salud, creatividad y comunicación sin tecnicismos. Desde tu móvil.', href: '/school-lab/empoderate-con-ia' },
-    { title: 'Conéctate con el mundo', target: 'Personas 65+', desc: 'IA como asistente diario para recordar, contactar y simplificar.', href: '/school-lab/conectate-con-el-mundo' },
-    { title: 'Aprende a crear', target: 'Niños 6-12', desc: 'Cuentos, mundos e historias potenciando la imaginación con IA.', href: '/school-lab/aprende-a-crear' },
-    { title: 'Descubre tu futuro', target: 'Jóvenes 13-18', desc: 'Explora profesiones del futuro y crea proyectos reales con tecnología.', href: '/school-lab/descubre-tu-futuro' },
-    { title: 'Monta tu negocio', target: 'Emprendedores', desc: 'Web, logo, contenido y ventas — sin saber programar.', href: '/school-lab/monta-tu-negocio' },
-    { title: 'Mejora tu material', target: 'Profesores', desc: 'Menos tiempo corrigiendo, más tiempo personalizando la enseñanza.', href: '/school-lab/mejora-tu-material' },
-    { title: 'Más tiempo en cocina', target: 'Hostelería', desc: 'Responde reseñas, gestiona reservas y atrae clientes automáticamente.', href: '/school-lab/mas-tiempo-para-cocina' },
-    { title: 'Dedícate a la medicina', target: 'Sanidad', desc: 'Delega la burocracia clínica y agiliza informes con IA.', href: '/school-lab/dedicate-a-la-medicina' },
+    {
+        title: 'Empodérate con IA', target: 'Mujeres 40-60',
+        desc: 'Salud, creatividad y comunicación sin tecnicismos. Desde tu móvil.',
+        href: '/school-lab/empoderate-con-ia',
+        iconPaths: ['M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z'],
+    },
+    {
+        title: 'Conéctate con el mundo', target: 'Personas 65+',
+        desc: 'IA como asistente diario para recordar, contactar y simplificar.',
+        href: '/school-lab/conectate-con-el-mundo',
+        iconPaths: ['M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z'],
+    },
+    {
+        title: 'Aprende a crear', target: 'Niños 6-12',
+        desc: 'Cuentos, mundos e historias potenciando la imaginación con IA.',
+        href: '/school-lab/aprende-a-crear',
+        iconPaths: ['M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z'],
+    },
+    {
+        title: 'Descubre tu futuro', target: 'Jóvenes 13-18',
+        desc: 'Explora profesiones del futuro y crea proyectos reales con tecnología.',
+        href: '/school-lab/descubre-tu-futuro',
+        iconPaths: ['M15.59 14.37a6 6 0 01-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 006.16-12.12A14.98 14.98 0 009.631 8.41m5.96 5.96a14.926 14.926 0 01-5.841 2.58m-.119-8.54a6 6 0 00-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 00-2.58 5.84m2.699 2.7c-.103.021-.207.041-.311.06a15.09 15.09 0 01-2.448-2.448 14.9 14.9 0 01.06-.312m-2.24 2.39a4.493 4.493 0 00-1.757 4.306 4.493 4.493 0 004.306-1.758M16.5 9a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z'],
+    },
+    {
+        title: 'Monta tu negocio', target: 'Emprendedores',
+        desc: 'Web, logo, contenido y ventas — sin saber programar.',
+        href: '/school-lab/monta-tu-negocio',
+        iconPaths: ['M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 3m8.5-3l1 3m0 0l.5 1.5m-.5-1.5h-9.5m0 0l-.5 1.5M9 11.25v1.5M12 9v3.75m3-6v6'],
+    },
+    {
+        title: 'Mejora tu material', target: 'Profesores',
+        desc: 'Menos tiempo corrigiendo, más tiempo personalizando la enseñanza.',
+        href: '/school-lab/mejora-tu-material',
+        iconPaths: ['M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5'],
+    },
+    {
+        title: 'Más tiempo en cocina', target: 'Hostelería',
+        desc: 'Responde reseñas, gestiona reservas y atrae clientes automáticamente.',
+        href: '/school-lab/mas-tiempo-para-cocina',
+        iconPaths: ['M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z'],
+    },
+    {
+        title: 'Dedícate a la medicina', target: 'Sanidad',
+        desc: 'Delega la burocracia clínica y agiliza informes con IA.',
+        href: '/school-lab/dedicate-a-la-medicina',
+        iconPaths: ['M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z'],
+    },
 ];
 
 export default function SchoolLabPage() {
@@ -295,7 +335,7 @@ export default function SchoolLabPage() {
                 <section id="programas" className="v5-section" style={{ backgroundColor: '#080808' }}>
                     <div className="v5-container">
 
-                        <div className="mb-20 v5-reveal flex flex-col items-start gap-4">
+                        <div className="v5-reveal flex flex-col items-start gap-4" style={{ marginBottom: '120px' }}>
                             <span
                                 style={{
                                     fontFamily: 'var(--v5-font-mono)', fontSize: '11px', fontWeight: 500,
@@ -380,6 +420,16 @@ export default function SchoolLabPage() {
                                     className="v5-lab-card v5-reveal group flex flex-col"
                                     style={{ transitionDelay: `${i * 50}ms`, textDecoration: 'none', color: 'inherit' }}
                                 >
+                                    {/* Icon */}
+                                    <div style={{ marginBottom: '24px' }}>
+                                        <svg
+                                            width="22" height="22" viewBox="0 0 24 24"
+                                            fill="none" stroke="rgba(245,245,240,0.55)"
+                                            strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"
+                                        >
+                                            {prog.iconPaths.map((d, idx) => <path key={idx} d={d} />)}
+                                        </svg>
+                                    </div>
                                     <span
                                         style={{
                                             fontFamily: 'var(--v5-font-mono)', fontSize: '10px', fontWeight: 500,
@@ -486,40 +536,45 @@ export default function SchoolLabPage() {
                         </div>
 
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                            {/* Taller */}
-                            <div
-                                className="v5-lab-card v5-reveal flex flex-col"
+                            {/* Talleres */}
+                            <Link
+                                href="/school-lab/talleres"
+                                className="v5-lab-card v5-reveal flex flex-col group"
+                                style={{ textDecoration: 'none', color: 'inherit' }}
                             >
                                 <span style={{ fontFamily: 'var(--v5-font-mono)', fontSize: '11px', fontWeight: 500, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.32)', marginBottom: '24px' }}>
-                                    90 min · Primer paso
+                                    2h · En vivo
                                 </span>
                                 <h3 style={{ fontFamily: 'var(--v5-font-display)', fontSize: '24px', fontWeight: 400, letterSpacing: '-0.02em', lineHeight: 1.2, color: '#F5F5F0', marginBottom: '16px' }}>
-                                    Taller de Descubrimiento
+                                    Talleres
                                 </h3>
                                 <p className="flex-1" style={{ fontFamily: 'var(--v5-font-body)', fontSize: '15px', fontWeight: 300, lineHeight: 1.8, color: 'rgba(245,245,240,0.40)', marginBottom: '32px' }}>
-                                    El primer paso seguro. Sales habiendo creado algo con IA directamente desde tu móvil o portátil. Sin agobios.
+                                    Talleres grupales en vivo de 2 horas. Un tema específico, práctica inmediata, preguntas en tiempo real.
                                 </p>
-                                <Link
-                                    href="/contacto"
-                                    className="group"
+                                <span
+                                    className="group-hover:opacity-60"
                                     style={{ fontFamily: 'var(--v5-font-body)', fontSize: '14px', color: 'rgba(245,245,240,0.55)', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '6px', transition: 'opacity 200ms ease' }}
-                                    onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.opacity = '0.7'; }}
-                                    onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.opacity = '1'; }}
                                 >
-                                    Ver fechas →
-                                </Link>
-                            </div>
+                                    Ver talleres →
+                                </span>
+                            </Link>
 
                             {/* Intensivo — Featured */}
-                            <div
-                                className="v5-reveal flex flex-col relative"
+                            <Link
+                                href="/school-lab/programa-intensivo"
+                                className="v5-reveal flex flex-col relative group"
                                 style={{
                                     background: 'rgba(255,255,255,0.06)',
                                     border: '1px solid rgba(255,255,255,0.18)',
                                     borderRadius: '20px',
                                     padding: '36px 40px',
                                     overflow: 'hidden',
+                                    textDecoration: 'none',
+                                    color: 'inherit',
+                                    transition: 'border-color 200ms ease',
                                 }}
+                                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.30)'; }}
+                                onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.18)'; }}
                             >
                                 <span
                                     style={{
@@ -533,54 +588,48 @@ export default function SchoolLabPage() {
                                     Más popular
                                 </span>
                                 <span style={{ fontFamily: 'var(--v5-font-mono)', fontSize: '11px', fontWeight: 500, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.50)', marginBottom: '24px' }}>
-                                    1 semana · Desde 60€
+                                    6 semanas · Desde 490€
                                 </span>
                                 <h3 style={{ fontFamily: 'var(--v5-font-display)', fontSize: '24px', fontWeight: 400, letterSpacing: '-0.02em', lineHeight: 1.2, color: '#F5F5F0', marginBottom: '16px' }}>
                                     Programa Intensivo
                                 </h3>
                                 <p className="flex-1" style={{ fontFamily: 'var(--v5-font-body)', fontSize: '15px', fontWeight: 300, lineHeight: 1.8, color: 'rgba(245,245,240,0.55)', marginBottom: '32px' }}>
-                                    5 sesiones de 2h donde vas en serio. Desarrollas un proyecto real terminado al final de la semana, guiado paso a paso.
+                                    Acompañamiento personalizado con sesiones 1:1, proyectos reales de tu empresa y un plan de implementación concreto.
                                 </p>
-                                <Link
-                                    href="/contacto"
+                                <span
                                     style={{
                                         display: 'flex', alignItems: 'center', justifyContent: 'center',
                                         width: '100%', padding: '14px 24px', background: '#F5F5F0',
                                         color: '#080808', borderRadius: '0px', fontFamily: 'var(--v5-font-body)',
                                         fontSize: '14px', fontWeight: 500, textDecoration: 'none',
-                                        transition: 'background 200ms ease',
                                     }}
-                                    onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = '#FFFFFF'; }}
-                                    onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = '#F5F5F0'; }}
                                 >
-                                    Matricularme →
-                                </Link>
-                            </div>
+                                    Solicitar plaza →
+                                </span>
+                            </Link>
 
                             {/* Comunidad */}
-                            <div
-                                className="v5-lab-card v5-reveal flex flex-col"
-                                style={{ transitionDelay: '100ms' }}
+                            <Link
+                                href="/school-lab/comunidad"
+                                className="v5-lab-card v5-reveal flex flex-col group"
+                                style={{ transitionDelay: '100ms', textDecoration: 'none', color: 'inherit' }}
                             >
                                 <span style={{ fontFamily: 'var(--v5-font-mono)', fontSize: '11px', fontWeight: 500, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.32)', marginBottom: '24px' }}>
-                                    Mensual · Alumni
+                                    Mensual · Desde 29€
                                 </span>
                                 <h3 style={{ fontFamily: 'var(--v5-font-display)', fontSize: '24px', fontWeight: 400, letterSpacing: '-0.02em', lineHeight: 1.2, color: '#F5F5F0', marginBottom: '16px' }}>
-                                    Comunidad Aether
+                                    Comunidad
                                 </h3>
                                 <p className="flex-1" style={{ fontFamily: 'var(--v5-font-body)', fontSize: '15px', fontWeight: 300, lineHeight: 1.8, color: 'rgba(245,245,240,0.40)', marginBottom: '32px' }}>
-                                    Novedades, soporte continuo, herramientas probadas y una red de personas aprendiendo igual que tú.
+                                    Recursos semanales, sesiones en vivo y una red de personas aprendiendo IA a tu ritmo. Sin presión.
                                 </p>
-                                <Link
-                                    href="/contacto"
-                                    className="group"
+                                <span
+                                    className="group-hover:opacity-60"
                                     style={{ fontFamily: 'var(--v5-font-body)', fontSize: '14px', color: 'rgba(245,245,240,0.55)', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '6px', transition: 'opacity 200ms ease' }}
-                                    onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.opacity = '0.7'; }}
-                                    onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.opacity = '1'; }}
                                 >
-                                    Acceso Alumni →
-                                </Link>
-                            </div>
+                                    Unirse →
+                                </span>
+                            </Link>
                         </div>
                     </div>
                 </section>

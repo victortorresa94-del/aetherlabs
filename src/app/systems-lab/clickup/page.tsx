@@ -1,110 +1,370 @@
-import type { Metadata } from 'next';
+'use client';
+
 import Link from 'next/link';
-import SystemsLabLayout from '@/components/v5/SystemsLabLayout';
+import Navbar from '@/components/v5/Navbar';
+import Footer from '@/components/v5/Footer';
+import ScrollAnimations from '@/components/v5/ScrollAnimations';
 
-export const metadata: Metadata = {
-  title: 'ClickUp — Systems Lab | Aether Labs',
-  description: 'Gestiona proyectos, equipos y procesos con IA integrada. El sistema operativo de tu empresa con ClickUp Brain y Claude via MCP.',
-};
+const features = [
+  {
+    title: 'Setup inicial completo',
+    desc: 'Configuramos ClickUp desde cero: espacios, listas, estados personalizados y permisos adaptados a la estructura real de tu empresa.',
+  },
+  {
+    title: 'Plantillas de proyecto',
+    desc: 'Creamos plantillas reutilizables para cada tipo de proyecto que gestionas. Cada nuevo proyecto arranca con la estructura correcta desde el primer día.',
+  },
+  {
+    title: 'SOPs documentados',
+    desc: 'Documentamos más de 40 procesos dentro de ClickUp Docs para que cada procedimiento esté escrito, accesible y delegable.',
+  },
+  {
+    title: 'Formación del equipo',
+    desc: 'Media jornada de formación práctica. El equipo sale sabiendo usar ClickUp en su día a día real, no en un tutorial genérico.',
+  },
+];
 
-const PURPLE = '#7B68EE';
-
-const cases = [
-  { title: 'Onboarding automático', desc: 'Lead entra → Claude analiza → Crea proyecto en ClickUp → Asigna tareas → Carpeta Drive → Email bienvenida' },
-  { title: 'Reportes semanales sin humanos', desc: 'ClickUp lee el estado de todos los proyectos → Claude genera resumen ejecutivo → PDF enviado al director cada lunes a las 8h' },
-  { title: 'Gestión de contenido', desc: 'Brief en ClickUp → Claude crea el contenido → Revisión → Publicación automática en web o redes' },
+const casos = [
+  {
+    num: '01',
+    title: 'Agencia con +40 proyectos simultáneos',
+    desc: 'Una agencia de marketing crecía rápido sin estructura para soportarlo. Implementamos ClickUp desde cero y creamos +40 SOPs. Resultado: gestionan todos los proyectos sin que nada dependa de una sola persona.',
+  },
+  {
+    num: '02',
+    title: 'Onboarding de cliente automatizado',
+    desc: 'Lead cierra → ClickUp crea el proyecto automáticamente → asigna tareas al equipo → genera carpeta en Drive → envía email de bienvenida. 30 minutos de trabajo manual convertidos en 2.',
+  },
+  {
+    num: '03',
+    title: 'Reporting semanal sin humanos',
+    desc: 'ClickUp lee el estado de todos los proyectos activos, Claude genera el resumen ejecutivo y el PDF llega al director cada lunes a las 8h sin que nadie toque nada.',
+  },
 ];
 
 export default function ClickUpPage() {
   return (
-    <SystemsLabLayout accentColor={PURPLE}>
-      <section className="v5-section" style={{ backgroundColor: 'var(--v5-bg-base)' }}>
-        <div className="v5-container">
-          <span className="v5-label v5-reveal" style={{ display: 'block', marginBottom: '20px', color: '#999999' }}>ClickUp</span>
-          <h1 className="v5-h1 v5-reveal" style={{ maxWidth: '680px', marginBottom: '20px' }}>
-            Gestiona proyectos, equipos y procesos{' '}
-            <span style={{ color: 'rgba(245,245,240,0.38)' }}>
-              con IA integrada
+    <div className="v5-page">
+      <ScrollAnimations />
+      <Navbar />
+      <main>
+
+        {/* Hero */}
+        <section
+          style={{ backgroundColor: '#080808', paddingTop: '160px', paddingBottom: '120px' }}
+        >
+          <div className="v5-container">
+            <span
+              className="v5-reveal"
+              style={{
+                display: 'block',
+                marginBottom: '24px',
+                fontFamily: 'var(--v5-font-mono)',
+                fontSize: '11px',
+                fontWeight: 500,
+                letterSpacing: '0.15em',
+                textTransform: 'uppercase',
+                color: '#999999',
+              }}
+            >
+              📋 ClickUp
             </span>
-          </h1>
-          <p className="v5-body-large v5-reveal" style={{ maxWidth: '540px', marginBottom: '32px' }}>
-            ClickUp no es solo un gestor de tareas. Es el sistema operativo de tu empresa,
-            con IA que automatiza el 40% del trabajo manual.
-          </p>
-          <div className="v5-reveal" style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-            <Link href="/systems-lab/sesion-de-claridad" className="v5-btn-primary" style={{ fontSize: '16px' }}>
-              Implementar ClickUp →
-            </Link>
+            <h1
+              className="v5-reveal"
+              style={{
+                fontFamily: 'var(--v5-font-display)',
+                fontSize: 'clamp(40px, 6vw, 80px)',
+                fontWeight: 300,
+                letterSpacing: '-0.03em',
+                lineHeight: 0.95,
+                color: '#F5F5F0',
+                maxWidth: '800px',
+                marginBottom: '28px',
+                transitionDelay: '80ms',
+              }}
+            >
+              El sistema operativo de tu empresa.<br />
+              <span style={{ color: 'rgba(245,245,240,0.38)' }}>Proyectos, SOPs, equipo y clientes.</span>
+            </h1>
+            <p
+              className="v5-reveal"
+              style={{
+                fontFamily: 'var(--v5-font-body)',
+                fontSize: '17px',
+                fontWeight: 300,
+                lineHeight: 1.8,
+                color: 'rgba(245,245,240,0.45)',
+                maxWidth: '520px',
+                marginBottom: '40px',
+                transitionDelay: '160ms',
+              }}
+            >
+              ClickUp no es solo un gestor de tareas. Es el centro de operaciones donde tu empresa
+              funciona de forma clara, documentada y delegable.
+            </p>
+            <div className="v5-reveal" style={{ transitionDelay: '240ms' }}>
+              <Link
+                href="/systems-lab/sesion-de-claridad"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  padding: '16px 32px',
+                  background: '#F5F5F0',
+                  color: '#080808',
+                  fontFamily: 'var(--v5-font-body)',
+                  fontSize: '15px',
+                  fontWeight: 400,
+                  textDecoration: 'none',
+                  transition: 'background 200ms ease',
+                }}
+                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = '#FFFFFF'; }}
+                onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = '#F5F5F0'; }}
+              >
+                Implementar ClickUp con Aether →
+              </Link>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section className="v5-section" style={{ backgroundColor: 'var(--v5-bg-surface)' }}>
-        <div className="v5-container">
-          <h2 className="v5-h2 v5-reveal" style={{ marginBottom: '40px' }}>Por qué ClickUp sobre otras herramientas</h2>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '16px' }}
-            className="v5-why-grid"
-          >
-            {[
-              { title: 'ClickUp Brain', desc: 'IA nativa que escribe, resume, crea y responde preguntas sobre tus proyectos' },
-              { title: 'Agentes ClickUp', desc: 'Agentes propios para automatizar workflows completos sin programar' },
-              { title: 'Integración con Claude', desc: 'Vía MCP, Claude puede actuar sobre ClickUp directamente en lenguaje natural' },
-              { title: 'Todo en uno', desc: 'Tareas, docs, tiempo, objetivos, chat — sin necesidad de 5 herramientas distintas' },
-            ].map((item, i) => (
-              <div key={i} className="v5-reveal" style={{
-                backgroundColor: 'var(--v5-bg-base)',
-                border: `1px solid ${PURPLE}25`,
-                borderRadius: 'var(--v5-radius-lg)',
-                padding: '28px',
-              }}>
-                <h3 style={{ fontFamily: 'var(--v5-font-display)', fontWeight: 600, fontSize: '18px', color: PURPLE, marginBottom: '10px', letterSpacing: '-0.01em' }}>
-                  {item.title}
-                </h3>
-                <p style={{ fontFamily: 'var(--v5-font-body)', fontSize: '15px', color: 'var(--v5-text-secondary)', lineHeight: 1.6 }}>
-                  {item.desc}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="v5-section" style={{ backgroundColor: 'var(--v5-bg-base)' }}>
-        <div className="v5-container">
-          <h2 className="v5-h2 v5-reveal" style={{ marginBottom: '40px' }}>Casos de uso que implementamos</h2>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-            {cases.map((c, i) => (
-              <div key={i} className="v5-reveal" style={{
-                backgroundColor: 'var(--v5-bg-surface)',
-                border: '1px solid var(--v5-border)',
-                borderRadius: 'var(--v5-radius-lg)',
-                padding: '28px 32px',
-                display: 'flex',
+        {/* Qué implementamos */}
+        <section
+          style={{ backgroundColor: '#FFFFFF', paddingTop: '120px', paddingBottom: '120px' }}
+        >
+          <div className="v5-container">
+            <div className="v5-reveal" style={{ marginBottom: '64px' }}>
+              <span
+                style={{
+                  display: 'block',
+                  marginBottom: '20px',
+                  fontFamily: 'var(--v5-font-mono)',
+                  fontSize: '11px',
+                  fontWeight: 500,
+                  letterSpacing: '0.15em',
+                  textTransform: 'uppercase',
+                  color: '#999999',
+                }}
+              >
+                Qué implementamos
+              </span>
+              <h2
+                style={{
+                  fontFamily: 'var(--v5-font-display)',
+                  fontSize: 'clamp(28px, 4vw, 48px)',
+                  fontWeight: 300,
+                  letterSpacing: '-0.02em',
+                  lineHeight: 1.1,
+                  color: '#111111',
+                }}
+              >
+                ClickUp configurado para tu operativa real
+              </h2>
+            </div>
+            <div
+              style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
                 gap: '24px',
-                alignItems: 'flex-start',
-              }}>
-                <span style={{ fontFamily: 'var(--v5-font-mono)', fontSize: '13px', fontWeight: 700, color: PURPLE, minWidth: '28px' }}>0{i + 1}</span>
-                <div>
-                  <h3 style={{ fontFamily: 'var(--v5-font-display)', fontWeight: 600, fontSize: '18px', color: 'var(--v5-text-primary)', marginBottom: '8px' }}>{c.title}</h3>
-                  <p style={{ fontFamily: 'var(--v5-font-body)', fontSize: '15px', color: 'var(--v5-text-secondary)', lineHeight: 1.6 }}>{c.desc}</p>
+              }}
+            >
+              {features.map((f, i) => (
+                <div
+                  key={i}
+                  className="v5-reveal"
+                  style={{
+                    background: '#F8F8F8',
+                    border: '1px solid #EBEBEB',
+                    borderRadius: '16px',
+                    padding: '32px',
+                    transitionDelay: `${i * 80}ms`,
+                  }}
+                >
+                  <h3
+                    style={{
+                      fontFamily: 'var(--v5-font-display)',
+                      fontSize: '18px',
+                      fontWeight: 400,
+                      letterSpacing: '-0.02em',
+                      color: '#111111',
+                      marginBottom: '12px',
+                    }}
+                  >
+                    {f.title}
+                  </h3>
+                  <p
+                    style={{
+                      fontFamily: 'var(--v5-font-body)',
+                      fontSize: '15px',
+                      fontWeight: 300,
+                      lineHeight: 1.8,
+                      color: '#666666',
+                    }}
+                  >
+                    {f.desc}
+                  </p>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section className="v5-section" style={{ backgroundColor: 'var(--v5-bg-surface)', textAlign: 'center' }}>
-        <div className="v5-container">
-          <h2 className="v5-h2 v5-reveal" style={{ marginBottom: '32px' }}>Implementar ClickUp con Aether</h2>
-          <div className="v5-reveal">
-            <Link href="/systems-lab/sesion-de-claridad" className="v5-btn-primary" style={{ fontSize: '17px', padding: '16px 32px' }}>
-              Reservar Sesión de Claridad →
-            </Link>
+        {/* Casos de uso reales */}
+        <section
+          style={{
+            backgroundColor: '#F8F8F8',
+            borderTop: '1px solid #EBEBEB',
+            borderBottom: '1px solid #EBEBEB',
+            paddingTop: '120px',
+            paddingBottom: '120px',
+          }}
+        >
+          <div className="v5-container">
+            <div className="v5-reveal" style={{ marginBottom: '64px' }}>
+              <span
+                style={{
+                  display: 'block',
+                  marginBottom: '20px',
+                  fontFamily: 'var(--v5-font-mono)',
+                  fontSize: '11px',
+                  fontWeight: 500,
+                  letterSpacing: '0.15em',
+                  textTransform: 'uppercase',
+                  color: '#999999',
+                }}
+              >
+                Casos de uso reales
+              </span>
+              <h2
+                style={{
+                  fontFamily: 'var(--v5-font-display)',
+                  fontSize: 'clamp(28px, 4vw, 48px)',
+                  fontWeight: 300,
+                  letterSpacing: '-0.02em',
+                  lineHeight: 1.1,
+                  color: '#111111',
+                }}
+              >
+                ClickUp en empresas reales
+              </h2>
+            </div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+              {casos.map((c, i) => (
+                <div
+                  key={i}
+                  className="v5-reveal"
+                  style={{
+                    background: '#FFFFFF',
+                    border: '1px solid #EBEBEB',
+                    borderTop: '2px solid #111111',
+                    borderRadius: '16px',
+                    padding: '32px 40px',
+                    display: 'flex',
+                    gap: '32px',
+                    alignItems: 'flex-start',
+                    transitionDelay: `${i * 80}ms`,
+                  }}
+                >
+                  <span
+                    style={{
+                      fontFamily: 'var(--v5-font-mono)',
+                      fontSize: '13px',
+                      fontWeight: 700,
+                      color: '#AAAAAA',
+                      minWidth: '28px',
+                      flexShrink: 0,
+                    }}
+                  >
+                    {c.num}
+                  </span>
+                  <div>
+                    <h3
+                      style={{
+                        fontFamily: 'var(--v5-font-display)',
+                        fontSize: '20px',
+                        fontWeight: 400,
+                        letterSpacing: '-0.02em',
+                        color: '#111111',
+                        marginBottom: '10px',
+                      }}
+                    >
+                      {c.title}
+                    </h3>
+                    <p
+                      style={{
+                        fontFamily: 'var(--v5-font-body)',
+                        fontSize: '15px',
+                        fontWeight: 300,
+                        lineHeight: 1.8,
+                        color: '#666666',
+                      }}
+                    >
+                      {c.desc}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
-      <style>{`@media (max-width: 768px) { .v5-why-grid { grid-template-columns: 1fr !important; } }`}</style>
-    </SystemsLabLayout>
+        </section>
+
+        {/* CTA */}
+        <section
+          style={{ backgroundColor: '#080808', paddingTop: '120px', paddingBottom: '120px', textAlign: 'center' }}
+        >
+          <div className="v5-container">
+            <div
+              className="v5-reveal"
+              style={{ maxWidth: '640px', margin: '0 auto', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '24px' }}
+            >
+              <h2
+                style={{
+                  fontFamily: 'var(--v5-font-display)',
+                  fontSize: 'clamp(28px, 4vw, 48px)',
+                  fontWeight: 300,
+                  letterSpacing: '-0.02em',
+                  lineHeight: 1.1,
+                  color: '#F5F5F0',
+                }}
+              >
+                ¿Tu empresa necesita estructura real?
+              </h2>
+              <p
+                style={{
+                  fontFamily: 'var(--v5-font-body)',
+                  fontSize: '17px',
+                  fontWeight: 300,
+                  lineHeight: 1.8,
+                  color: 'rgba(245,245,240,0.45)',
+                }}
+              >
+                Empieza con una Sesión de Claridad de 90 minutos.
+              </p>
+              <Link
+                href="/systems-lab/sesion-de-claridad"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  padding: '16px 32px',
+                  background: '#F5F5F0',
+                  color: '#080808',
+                  fontFamily: 'var(--v5-font-body)',
+                  fontSize: '15px',
+                  fontWeight: 400,
+                  textDecoration: 'none',
+                  transition: 'background 200ms ease',
+                }}
+                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = '#FFFFFF'; }}
+                onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = '#F5F5F0'; }}
+              >
+                Reservar Sesión de Claridad →
+              </Link>
+            </div>
+          </div>
+        </section>
+
+      </main>
+      <Footer />
+    </div>
   );
 }
