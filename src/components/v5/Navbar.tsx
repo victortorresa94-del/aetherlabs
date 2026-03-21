@@ -39,6 +39,7 @@ export default function Navbar() {
     { label: 'Systems Lab', href: '/systems-lab' },
     { label: 'Creative Lab', href: '/creative-lab' },
     { label: 'School Lab', href: '/school-lab' },
+    { label: 'Open Lab', href: '/open-lab' },
   ];
 
   const otherLinks = [

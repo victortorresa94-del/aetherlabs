@@ -30,6 +30,15 @@ const labs = [
     href: '/school-lab',
     image: '/images/school-workshop.png',
   },
+  {
+    key: 'open',
+    label: 'Open Lab',
+    title: 'Tu herramienta. Construida en días.',
+    description: 'Apps, dashboards, chatbots integrados y software a medida. Sin agencias. Sin meses de espera.',
+    cta: 'Explorar Open Lab',
+    href: '/open-lab',
+    image: '/crystal-sculpture.jpeg',
+  },
 ];
 
 export default function LabsSection() {
@@ -60,14 +69,14 @@ export default function LabsSection() {
               color: '#111111',
             }}
           >
-            Tres laboratorios.<br />
+            Cuatro laboratorios.<br />
             <span style={{ color: '#999999' }}>Un objetivo común.</span>
           </h2>
         </div>
 
         {/* 3 Equal Cards Grid */}
         <div
-          className="grid grid-cols-1 md:grid-cols-3 v5-section-gap"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 v5-section-gap"
         >
           {labs.map((lab, i) => (
             <div

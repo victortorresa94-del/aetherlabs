@@ -12,7 +12,11 @@
       "Bash(cmd //c \"tasklist /FI \"\"PID eq 32420\"\"\")",
       "Bash(cmd //c tasklist)",
       "Bash(python3 /c/Users/Usuario/.claude/skills/ui-ux-pro-max/src/ui-ux-pro-max/scripts/search.py 'editorial minimalist light weight typography' --domain typography -n 2)",
-      "Bash(python3 /c/Users/Usuario/.claude/skills/ui-ux-pro-max/src/ui-ux-pro-max/scripts/search.py \"white background editorial agency minimal spacing\" --domain style -n 2)"
+      "Bash(python3 /c/Users/Usuario/.claude/skills/ui-ux-pro-max/src/ui-ux-pro-max/scripts/search.py \"white background editorial agency minimal spacing\" --domain style -n 2)",
+      "Bash(rm -f .git/index.lock)",
+      "Bash(git add:*)",
+      "Bash(powershell -Command \"Remove-Item ''C:\\\\Users\\\\Usuario\\\\Desktop\\\\Dev\\\\Web-Aether-3.0\\\\.git\\\\index.lock'' -Force -ErrorAction SilentlyContinue; Start-Sleep -Milliseconds 500; git -C ''C:\\\\Users\\\\Usuario\\\\Desktop\\\\Dev\\\\Web-Aether-3.0'' status --short | Select-Object -First 5\")",
+      "mcp__4e47244b-9c93-43fb-b70f-0f04dcc281f1__clickup_get_document_pages"
     ]
   }
 }
