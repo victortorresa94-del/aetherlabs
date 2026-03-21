@@ -46,7 +46,7 @@ export default function LabsSection() {
     <section id="servicios" className="v5-section" style={{ backgroundColor: '#FFFFFF' }}>
       <div className="v5-container">
         {/* Header */}
-        <div className="v5-reveal flex flex-col items-center text-center gap-4" style={{ marginBottom: '120px' }}>
+        <div className="v5-reveal flex flex-col items-center text-center gap-4" style={{ marginBottom: '80px' }}>
           <span
             style={{
               fontFamily: 'var(--v5-font-mono)',

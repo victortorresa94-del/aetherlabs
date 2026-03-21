@@ -421,10 +421,21 @@ export default function SchoolLabPage() {
                                     style={{ transitionDelay: `${i * 50}ms`, textDecoration: 'none', color: 'inherit' }}
                                 >
                                     {/* Icon */}
-                                    <div style={{ marginBottom: '24px' }}>
+                                    <div
+                                        style={{
+                                            marginBottom: '24px',
+                                            width: '48px',
+                                            height: '48px',
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            justifyContent: 'center',
+                                            background: 'rgba(245,245,240,0.07)',
+                                            borderRadius: '12px',
+                                        }}
+                                    >
                                         <svg
-                                            width="22" height="22" viewBox="0 0 24 24"
-                                            fill="none" stroke="rgba(245,245,240,0.55)"
+                                            width="24" height="24" viewBox="0 0 24 24"
+                                            fill="none" stroke="rgba(245,245,240,0.80)"
                                             strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"
                                         >
                                             {prog.iconPaths.map((d, idx) => <path key={idx} d={d} />)}
