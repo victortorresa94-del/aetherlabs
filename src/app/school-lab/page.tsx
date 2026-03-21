@@ -331,6 +331,90 @@ export default function SchoolLabPage() {
                 </section>
 
 
+                {/* ── BANNER CLAUDE CORPORATIVO ── */}
+                <section style={{ backgroundColor: '#FFFFFF', padding: '0 0 0 0' }}>
+                    <div className="v5-container" style={{ paddingTop: '48px', paddingBottom: '0' }}>
+                        <Link
+                            href="/school-lab/prepara-tu-equipo"
+                            style={{
+                                display: 'flex',
+                                flexDirection: 'column',
+                                gap: '16px',
+                                background: '#0F172A',
+                                border: '1px solid rgba(217,119,6,0.3)',
+                                borderRadius: '16px',
+                                padding: 'clamp(24px,4vw,32px)',
+                                textDecoration: 'none',
+                                transition: 'border-color 200ms ease',
+                            }}
+                            onMouseEnter={e => (e.currentTarget as HTMLElement).style.borderColor = 'rgba(217,119,6,0.6)'}
+                            onMouseLeave={e => (e.currentTarget as HTMLElement).style.borderColor = 'rgba(217,119,6,0.3)'}
+                        >
+                            <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
+                                <div className="flex flex-col gap-4">
+                                    <span
+                                        style={{
+                                            fontFamily: 'var(--v5-font-mono)',
+                                            fontSize: '10px',
+                                            fontWeight: 600,
+                                            letterSpacing: '0.15em',
+                                            textTransform: 'uppercase',
+                                            color: '#D97706',
+                                        }}
+                                    >
+                                        ★ Nuevo
+                                    </span>
+                                    <h3
+                                        style={{
+                                            fontFamily: 'var(--v5-font-display)',
+                                            fontSize: 'clamp(20px, 2.5vw, 28px)',
+                                            fontWeight: 300,
+                                            letterSpacing: '-0.02em',
+                                            lineHeight: 1.1,
+                                            color: '#FFFFFF',
+                                            margin: 0,
+                                        }}
+                                    >
+                                        Forma a tu equipo en Claude.{' '}
+                                        <span style={{ color: '#94A3B8' }}>La IA más potente del mercado.</span>
+                                    </h3>
+                                    <p
+                                        style={{
+                                            fontFamily: 'var(--v5-font-body)',
+                                            fontSize: '15px',
+                                            fontWeight: 300,
+                                            lineHeight: 1.6,
+                                            color: '#64748B',
+                                            margin: 0,
+                                        }}
+                                    >
+                                        Talleres y programas intensivos diseñados para cada departamento de tu empresa.
+                                    </p>
+                                </div>
+                                <span
+                                    style={{
+                                        display: 'inline-flex',
+                                        alignItems: 'center',
+                                        gap: '8px',
+                                        padding: '12px 24px',
+                                        background: 'rgba(217,119,6,0.15)',
+                                        border: '1px solid rgba(217,119,6,0.4)',
+                                        borderRadius: '8px',
+                                        fontFamily: 'var(--v5-font-body)',
+                                        fontSize: '14px',
+                                        fontWeight: 500,
+                                        color: '#D97706',
+                                        whiteSpace: 'nowrap',
+                                        flexShrink: 0,
+                                    }}
+                                >
+                                    Ver formación corporativa →
+                                </span>
+                            </div>
+                        </Link>
+                    </div>
+                </section>
+
                 {/* ── PROGRAMS GRID ── */}
                 <section id="programas" className="v5-section" style={{ backgroundColor: '#080808' }}>
                     <div className="v5-container">
