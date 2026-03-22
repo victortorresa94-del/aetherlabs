@@ -2,76 +2,67 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { Check, PhoneCall, Settings, Users, BarChart2 } from 'lucide-react';
+import { ShoppingCart, Package, Calculator, FolderKanban } from 'lucide-react';
 import Navbar from '@/components/v5/Navbar';
 import Footer from '@/components/v5/Footer';
 import ScrollAnimations from '@/components/v5/ScrollAnimations';
 
 // ─── DATA ─────────────────────────────────────────────────────────────────────
 
-const metricas = [
-  { title: 'Ratio de habla', desc: 'Cuánto habla el comercial vs. cuánto escucha al prospecto.' },
-  { title: 'Manejo de objeciones', desc: 'Cómo responde a cada objeción y si la resuelve o la esquiva.' },
-  { title: 'Uso de preguntas', desc: 'Si hace preguntas que descubren el dolor real del prospecto.' },
-  { title: 'Mención de precio', desc: 'Cuándo introduce el precio y cómo lo contextualiza.' },
-  { title: 'Cierre', desc: 'Si hay un siguiente paso claro y acordado al final de la llamada.' },
-  { title: 'Sentiment del prospecto', desc: 'Evolución del estado emocional del interlocutor durante la llamada.' },
-];
-
-const loQueRecibe = [
-  'Score de 1 a 100 con desglose por categoría',
-  '3 cosas que hizo bien en esta llamada',
-  '3 aspectos concretos a mejorar',
-  'Transcripción completa con anotaciones en los momentos clave',
-  'Sugerencias de respuesta para las objeciones que no manejó bien',
-];
-
-const implementaciones = [
+const modulos = [
   {
-    num: '01',
-    icon: <PhoneCall size={20} strokeWidth={1.5} />,
-    title: 'Integración con herramienta de llamadas',
-    desc: 'Zoom, Teams, Google Meet o VoIP. Closius se conecta con la plataforma que ya usa tu equipo. No cambiamos el flujo de trabajo.',
+    icon: <ShoppingCart size={24} strokeWidth={1.5} />,
+    title: 'Ventas y CRM',
+    desc: 'Gestión de oportunidades, pedidos de venta, facturas y portal del cliente. Todo el ciclo comercial en un solo lugar con visibilidad completa del pipeline.',
   },
   {
-    num: '02',
-    icon: <Settings size={20} strokeWidth={1.5} />,
-    title: 'Configuración del perfil de evaluación',
-    desc: 'Definimos los criterios específicos para tu negocio: el guion ideal, las objeciones más frecuentes, los valores de tu empresa y el perfil de cliente objetivo.',
+    icon: <Package size={24} strokeWidth={1.5} />,
+    title: 'Inventario y almacén',
+    desc: 'Control de stock en tiempo real, alertas de stock mínimo, gestión de proveedores y movimientos de almacén. Nunca más quedarse sin producto sin saberlo.',
   },
   {
-    num: '03',
-    icon: <Users size={20} strokeWidth={1.5} />,
-    title: 'Onboarding del equipo comercial',
-    desc: 'Formación práctica para que cada comercial entienda cómo interpretar su score, leer las anotaciones y aplicar las sugerencias en la siguiente llamada.',
+    icon: <Calculator size={24} strokeWidth={1.5} />,
+    title: 'Contabilidad',
+    desc: 'Facturas de venta y compra, conciliación bancaria automática e informes financieros. Integrado con el módulo de ventas para eliminar la doble entrada de datos.',
   },
   {
-    num: '04',
-    icon: <BarChart2 size={20} strokeWidth={1.5} />,
-    title: 'Dashboard de manager',
-    desc: 'Visión agregada del rendimiento del equipo, ranking de comerciales, patrones de objeciones más frecuentes y alertas cuando alguien necesita atención.',
+    icon: <FolderKanban size={24} strokeWidth={1.5} />,
+    title: 'Proyectos',
+    desc: 'Gestión de tareas, seguimiento de horas y facturación por tiempo trabajado. Conectado al módulo de ventas para cerrar el ciclo desde presupuesto hasta cobro.',
   },
 ];
 
-const paraQuienEs = [
-  'Tienes un equipo comercial de 2 o más personas y no sabes exactamente qué pasa en sus llamadas.',
-  'El director de ventas no puede escuchar todas las llamadas y el coaching es esporádico o subjetivo.',
-  'Tienes comerciales nuevos que tardan demasiado en alcanzar el rendimiento de los veteranos.',
-  'Tu tasa de cierre lleva meses estancada y no tienes datos para saber por qué se pierden oportunidades.',
+const ejemplosClaude = [
+  {
+    pregunta: '"¿Cuál es el stock actual de [producto]?"',
+    respuesta: 'Claude consulta Odoo en tiempo real y responde en segundos con el stock disponible, reservado y en tránsito.',
+  },
+  {
+    pregunta: '"Genera el informe de ventas del mes."',
+    respuesta: 'Claude extrae los datos de Odoo, los formatea y entrega el informe listo para presentar en la reunión de dirección.',
+  },
+  {
+    pregunta: 'Alertas inteligentes automáticas',
+    respuesta: 'Claude detecta anomalías en los datos: facturas vencidas, caídas en ventas, márgenes fuera de rango. Sin esperar a que alguien lo vea.',
+  },
+  {
+    pregunta: 'Pedido de compra automático',
+    respuesta: 'Cuando el stock de un producto baja del mínimo, Claude crea el pedido de compra al proveedor habitual y avisa al responsable para que lo apruebe.',
+  },
 ];
 
 const faqs = [
   {
-    q: '¿Closius graba las llamadas sin que el cliente lo sepa?',
-    a: 'No. Las grabaciones se hacen con el consentimiento informado de los participantes, igual que cualquier herramienta de videoconferencia. Closius se configura con los avisos legales que correspondan a tu jurisdicción.',
+    q: '¿Odoo es adecuado para una empresa de 5-50 personas?',
+    a: 'Sí, es el ERP más adoptado por pymes europeas en ese rango. La versión Community es open source y gratuita. La versión Enterprise añade funcionalidades avanzadas y soporte oficial. En la Sesión de Claridad determinamos cuál tiene más sentido para tu caso.',
   },
   {
-    q: '¿Qué pasa si mi equipo se niega a ser evaluado por IA?',
-    a: 'El onboarding incluye una sesión de presentación al equipo donde explicamos cómo funciona el sistema y cómo les ayuda a ellos. La experiencia muestra que la resistencia inicial desaparece en cuanto reciben el primer feedback útil.',
+    q: '¿Cuánto tiempo lleva una implementación de Odoo?',
+    a: 'Depende de los módulos y la complejidad de los procesos. Una implementación de 2-3 módulos para una pyme suele estar operativa en 4-8 semanas. La integración con Claude se añade en la fase final del proyecto.',
   },
   {
-    q: '¿En qué idiomas funciona el análisis?',
-    a: 'Closius funciona en español, inglés, francés, portugués y alemán. Si tu equipo vende en varios idiomas, podemos configurar perfiles de evaluación distintos para cada uno.',
+    q: '¿Podéis migrar los datos de nuestro sistema actual?',
+    a: 'Sí. Hacemos la migración de datos desde Excel, hojas de cálculo u otros ERP. El proceso incluye limpieza de datos, mapeo de campos y validación antes de la puesta en marcha.',
   },
 ];
 
@@ -148,7 +139,7 @@ function FAQAccordion() {
 
 // ─── PAGE ──────────────────────────────────────────────────────────────────────
 
-export default function ClosiusPage() {
+export default function OdooPage() {
   return (
     <div className="v5-page">
       <ScrollAnimations />
@@ -171,7 +162,7 @@ export default function ClosiusPage() {
                 color: '#999999',
               }}
             >
-              SYSTEMS LAB · AI SALES COACHING · PARTNER
+              SYSTEMS LAB · ERP
             </span>
             <h1
               className="v5-reveal"
@@ -187,9 +178,9 @@ export default function ClosiusPage() {
                 transitionDelay: '80ms',
               }}
             >
-              Tu equipo de ventas<br />
-              mejora cada llamada.<br />
-              <span style={{ color: 'rgba(245,245,240,0.38)' }}>Sin contratar un coach.</span>
+              Todo tu negocio<br />
+              en un solo sistema.<br />
+              <span style={{ color: 'rgba(245,245,240,0.38)' }}>Sin fragmentación.</span>
             </h1>
             <p
               className="v5-reveal"
@@ -204,7 +195,7 @@ export default function ClosiusPage() {
                 transitionDelay: '160ms',
               }}
             >
-              Closius escucha cada llamada de ventas, la analiza con IA y le dice a cada comercial exactamente qué funcionó, qué no y qué decir diferente la próxima vez. Es el coach de ventas que está en todas las llamadas.
+              Odoo es el ERP open source más usado por pymes en Europa. Ventas, inventario, compras, contabilidad, proyectos y RRHH en una sola plataforma. Lo implementamos, lo adaptamos a tu negocio y lo conectamos con Claude.
             </p>
             <div className="v5-reveal" style={{ transitionDelay: '240ms' }}>
               <Link
@@ -225,16 +216,16 @@ export default function ClosiusPage() {
                 onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = '#FFFFFF'; }}
                 onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = '#F5F5F0'; }}
               >
-                Implementar Closius →
+                Implementar Odoo →
               </Link>
             </div>
           </div>
         </section>
 
-        {/* ── SECCIÓN 2 — QUÉ ANALIZA ── */}
+        {/* ── SECCIÓN 2 — MÓDULOS ── */}
         <section className="v5-section" style={{ backgroundColor: '#FFFFFF', paddingTop: '120px', paddingBottom: '120px' }}>
           <div className="v5-container">
-            <div className="v5-reveal" style={{ maxWidth: '680px', marginBottom: '16px' }}>
+            <div className="v5-reveal" style={{ marginBottom: '64px', maxWidth: '640px' }}>
               <h2
                 style={{
                   fontFamily: 'var(--v5-font-display)',
@@ -243,144 +234,19 @@ export default function ClosiusPage() {
                   letterSpacing: '-0.02em',
                   lineHeight: 1.1,
                   color: '#111111',
-                  marginBottom: '20px',
                 }}
               >
-                Lo que ningún manager puede ver en todas las llamadas a la vez.
-              </h2>
-              <p
-                style={{
-                  fontFamily: 'var(--v5-font-body)',
-                  fontSize: '17px',
-                  fontWeight: 300,
-                  lineHeight: 1.8,
-                  color: '#555555',
-                  marginBottom: '48px',
-                }}
-              >
-                Closius graba, transcribe y analiza las llamadas de ventas de tu equipo.
-              </p>
-            </div>
-
-            <div
-              style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))',
-                gap: '20px',
-                marginBottom: '48px',
-              }}
-            >
-              {metricas.map((m, i) => (
-                <div
-                  key={i}
-                  className="v5-reveal"
-                  style={{
-                    background: '#FFFFFF',
-                    border: '1px solid #E0E0E0',
-                    borderTop: '2px solid #111111',
-                    borderRadius: '16px',
-                    padding: '28px 32px',
-                    transitionDelay: `${i * 60}ms`,
-                  }}
-                >
-                  <h3
-                    style={{
-                      fontFamily: 'var(--v5-font-display)',
-                      fontSize: '17px',
-                      fontWeight: 400,
-                      letterSpacing: '-0.01em',
-                      color: '#111111',
-                      marginBottom: '8px',
-                    }}
-                  >
-                    {m.title}
-                  </h3>
-                  <p
-                    style={{
-                      fontFamily: 'var(--v5-font-body)',
-                      fontSize: '14px',
-                      fontWeight: 300,
-                      lineHeight: 1.7,
-                      color: '#777777',
-                    }}
-                  >
-                    {m.desc}
-                  </p>
-                </div>
-              ))}
-            </div>
-
-            <div
-              className="v5-reveal"
-              style={{
-                background: '#F7F7F5',
-                border: '1px solid #E0E0E0',
-                borderRadius: '16px',
-                padding: '40px',
-                maxWidth: '680px',
-              }}
-            >
-              <p
-                style={{
-                  fontFamily: 'var(--v5-font-mono)',
-                  fontSize: '11px',
-                  fontWeight: 600,
-                  letterSpacing: '0.12em',
-                  textTransform: 'uppercase',
-                  color: '#999999',
-                  marginBottom: '20px',
-                }}
-              >
-                Lo que recibe cada comercial
-              </p>
-              <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '12px' }}>
-                {loQueRecibe.map((item, i) => (
-                  <li key={i} style={{ display: 'flex', gap: '12px', alignItems: 'flex-start' }}>
-                    <Check size={16} strokeWidth={2} style={{ color: '#111111', marginTop: '4px', flexShrink: 0 }} />
-                    <span
-                      style={{
-                        fontFamily: 'var(--v5-font-body)',
-                        fontSize: '15px',
-                        fontWeight: 300,
-                        lineHeight: 1.6,
-                        color: '#333333',
-                      }}
-                    >
-                      {item}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </section>
-
-        {/* ── SECCIÓN 3 — QUÉ IMPLEMENTAMOS ── */}
-        <section className="v5-section" style={{ backgroundColor: '#F7F7F5', paddingTop: '120px', paddingBottom: '120px' }}>
-          <div className="v5-container">
-            <div className="v5-reveal" style={{ marginBottom: '64px' }}>
-              <h2
-                style={{
-                  fontFamily: 'var(--v5-font-display)',
-                  fontSize: 'clamp(28px, 4vw, 48px)',
-                  fontWeight: 300,
-                  letterSpacing: '-0.02em',
-                  lineHeight: 1.1,
-                  color: '#111111',
-                  maxWidth: '640px',
-                }}
-              >
-                De instalar Closius a tener un equipo que mejora cada semana.
+                Los módulos que más impacto tienen para pymes como la tuya.
               </h2>
             </div>
             <div
               style={{
                 display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
+                gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
                 gap: '24px',
               }}
             >
-              {implementaciones.map((item, i) => (
+              {modulos.map((m, i) => (
                 <div
                   key={i}
                   className="v5-reveal"
@@ -393,20 +259,7 @@ export default function ClosiusPage() {
                     transitionDelay: `${i * 80}ms`,
                   }}
                 >
-                  <span
-                    style={{
-                      display: 'block',
-                      fontFamily: 'var(--v5-font-mono)',
-                      fontSize: '11px',
-                      fontWeight: 600,
-                      letterSpacing: '0.12em',
-                      color: '#AAAAAA',
-                      marginBottom: '16px',
-                    }}
-                  >
-                    {item.num}
-                  </span>
-                  <div style={{ color: '#111111', marginBottom: '16px' }}>{item.icon}</div>
+                  <div style={{ color: '#111111', marginBottom: '20px' }}>{m.icon}</div>
                   <h3
                     style={{
                       fontFamily: 'var(--v5-font-display)',
@@ -417,7 +270,7 @@ export default function ClosiusPage() {
                       marginBottom: '12px',
                     }}
                   >
-                    {item.title}
+                    {m.title}
                   </h3>
                   <p
                     style={{
@@ -428,7 +281,7 @@ export default function ClosiusPage() {
                       color: '#666666',
                     }}
                   >
-                    {item.desc}
+                    {m.desc}
                   </p>
                 </div>
               ))}
@@ -436,10 +289,24 @@ export default function ClosiusPage() {
           </div>
         </section>
 
-        {/* ── SECCIÓN 4 — PARA QUIÉN ES ── */}
+        {/* ── SECCIÓN 3 — CLAUDE + ODOO ── */}
         <section className="v5-section" style={{ backgroundColor: '#080808', paddingTop: '120px', paddingBottom: '120px' }}>
           <div className="v5-container">
-            <div className="v5-reveal" style={{ marginBottom: '56px' }}>
+            <div className="v5-reveal" style={{ marginBottom: '16px' }}>
+              <span
+                style={{
+                  fontFamily: 'var(--v5-font-mono)',
+                  fontSize: '11px',
+                  fontWeight: 600,
+                  letterSpacing: '0.15em',
+                  textTransform: 'uppercase',
+                  color: '#D97706',
+                }}
+              >
+                ★ DIFERENCIAL AETHER LABS
+              </span>
+            </div>
+            <div className="v5-reveal" style={{ maxWidth: '680px', marginBottom: '64px' }}>
               <h2
                 style={{
                   fontFamily: 'var(--v5-font-display)',
@@ -448,14 +315,32 @@ export default function ClosiusPage() {
                   letterSpacing: '-0.02em',
                   lineHeight: 1.1,
                   color: '#F5F5F0',
-                  maxWidth: '680px',
+                  marginBottom: '20px',
                 }}
               >
-                Closius tiene sentido en estos contextos.
+                Odoo conectado a Claude. Tu ERP que responde en lenguaje natural.
               </h2>
+              <p
+                style={{
+                  fontFamily: 'var(--v5-font-body)',
+                  fontSize: '17px',
+                  fontWeight: 300,
+                  lineHeight: 1.8,
+                  color: 'rgba(245,245,240,0.5)',
+                }}
+              >
+                La integración de Claude con Odoo vía API es el diferencial de nuestra implementación. En lugar de navegar por menús, tu equipo puede preguntar directamente.
+              </p>
             </div>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', maxWidth: '720px' }}>
-              {paraQuienEs.map((item, i) => (
+
+            <div
+              style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
+                gap: '20px',
+              }}
+            >
+              {ejemplosClaude.map((e, i) => (
                 <div
                   key={i}
                   className="v5-reveal"
@@ -463,24 +348,32 @@ export default function ClosiusPage() {
                     background: 'rgba(255,255,255,0.04)',
                     border: '1px solid rgba(255,255,255,0.08)',
                     borderRadius: '16px',
-                    padding: '28px 32px',
-                    display: 'flex',
-                    gap: '16px',
-                    alignItems: 'flex-start',
+                    padding: '40px',
                     transitionDelay: `${i * 80}ms`,
                   }}
                 >
-                  <Check size={18} strokeWidth={2} style={{ color: '#F5F5F0', marginTop: '3px', flexShrink: 0 }} />
+                  <p
+                    style={{
+                      fontFamily: 'var(--v5-font-mono)',
+                      fontSize: '13px',
+                      fontWeight: 400,
+                      lineHeight: 1.5,
+                      color: 'rgba(245,245,240,0.9)',
+                      marginBottom: '16px',
+                    }}
+                  >
+                    {e.pregunta}
+                  </p>
                   <p
                     style={{
                       fontFamily: 'var(--v5-font-body)',
-                      fontSize: '16px',
+                      fontSize: '14px',
                       fontWeight: 300,
                       lineHeight: 1.7,
-                      color: 'rgba(245,245,240,0.7)',
+                      color: 'rgba(245,245,240,0.5)',
                     }}
                   >
-                    {item}
+                    {e.respuesta}
                   </p>
                 </div>
               ))}
@@ -488,7 +381,7 @@ export default function ClosiusPage() {
           </div>
         </section>
 
-        {/* ── SECCIÓN 5 — FAQ ── */}
+        {/* ── SECCIÓN 4 — FAQ ── */}
         <section className="v5-section" style={{ backgroundColor: '#F7F7F5', paddingTop: '120px', paddingBottom: '120px' }}>
           <div className="v5-container">
             <div className="v5-reveal" style={{ marginBottom: '56px' }}>
@@ -511,7 +404,7 @@ export default function ClosiusPage() {
           </div>
         </section>
 
-        {/* ── SECCIÓN 6 — CTA ── */}
+        {/* ── SECCIÓN 5 — CTA ── */}
         <section className="v5-section" style={{ backgroundColor: '#080808', paddingTop: '120px', paddingBottom: '120px', textAlign: 'center' }}>
           <div className="v5-container">
             <div
@@ -528,7 +421,7 @@ export default function ClosiusPage() {
                   color: '#F5F5F0',
                 }}
               >
-                ¿Sabes realmente qué pasa en las llamadas de tu equipo?
+                ¿Tu negocio necesita un ERP que trabaje solo?
               </h2>
               <p
                 style={{

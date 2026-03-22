@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { Target, Layers, Mail, GitMerge, Bot } from 'lucide-react';
+import { Shield, Workflow, PenLine, GitMerge, BarChart2 } from 'lucide-react';
 import Navbar from '@/components/v5/Navbar';
 import Footer from '@/components/v5/Footer';
 import ScrollAnimations from '@/components/v5/ScrollAnimations';
@@ -11,59 +11,44 @@ import ScrollAnimations from '@/components/v5/ScrollAnimations';
 
 const features = [
   {
-    icon: Target,
-    title: 'Definición del ICP con filtros en Apollo',
-    desc: 'Definimos el perfil de cliente ideal con criterios concretos: sector, tamaño de empresa, cargo del decisor, tecnologías que usan e intent signals. Las búsquedas en Apollo devuelven leads que encajan, no listas de 10.000 contactos sin filtrar.',
+    icon: Shield,
+    title: 'Configuración técnica del dominio',
+    desc: 'SPF, DKIM y DMARC configurados correctamente. Lemwarm activado para calentar el dominio de envío antes de la primera campaña. Sin esto, los emails llegan a spam antes de que alguien los lea.',
   },
   {
-    icon: Layers,
-    title: 'Enriquecimiento de base de datos existente',
-    desc: 'Conectamos Apollo a tu CRM actual para enriquecer automáticamente todos los contactos con email verificado, LinkedIn, cargo actualizado, tamaño de empresa y datos firmográficos. Sin copiar ni pegar nada a mano.',
+    icon: Workflow,
+    title: 'Diseño de secuencias por ICP',
+    desc: 'Secuencias de 3 a 5 pasos adaptadas a cada perfil de cliente. Variables dinámicas con nombre, empresa y contexto. Imágenes personalizadas generadas automáticamente. Condiciones de rama según comportamiento del prospecto.',
   },
   {
-    icon: Mail,
-    title: 'Apollo Sequences multicanal',
-    desc: 'Diseñamos secuencias de prospección de 4-6 pasos que combinan email, LinkedIn y llamada. Plantillas probadas, A/B testing activado y límites de envío diario configurados para proteger la reputación del dominio.',
+    icon: PenLine,
+    title: 'Generación de copy con Claude',
+    desc: 'Primer email, follow-up y break-up escritos con Claude según el sector y el cargo del prospecto. A/B testing de asuntos y primeras líneas. Personalización que va más allá del nombre: contexto real de la empresa.',
   },
   {
     icon: GitMerge,
-    title: 'Integración Apollo + HubSpot + Lemlist',
-    desc: 'El lead entra en Apollo, pasa a la secuencia de Lemlist para el outreach personalizado y aterriza en HubSpot con todos sus datos. El flujo completo es automático: sin exportar CSVs ni pasos manuales.',
+    title: 'Integración Lemlist + Apollo + HubSpot',
+    desc: 'Los leads entran desde Apollo con sus datos ya completos, pasan por Lemlist para el outreach personalizado y llegan a HubSpot cuando responden. El flujo es automático de extremo a extremo.',
   },
   {
-    icon: Bot,
-    title: 'Claude + Apollo',
-    desc: 'Vía MCP, Claude analiza las respuestas de los prospects, genera emails de seguimiento personalizados por sector y cargo, y resume el estado del pipeline cada semana en lenguaje natural. Prospección asistida por IA real.',
-  },
-];
-
-const casos = [
-  {
-    label: 'Empresa de software B2B sin pipeline outbound',
-    antes: 'El equipo de ventas dependía al 100% de inbound. Cuando el tráfico bajaba, bajaban los leads. Sin proceso de salida, sin previsibilidad.',
-    despues: 'ICP definido en Apollo, secuencias activas de 5 pasos conectadas con HubSpot. En 60 días: 80 conversaciones activas con decisores del perfil exacto.',
-    metrica: '80 conversaciones en 60 días',
-  },
-  {
-    label: 'Empresa con 5.000 contactos sin datos completos',
-    antes: 'Una base de datos acumulada durante años: emails sin verificar, cargos desactualizados y muchos duplicados. El equipo llamaba a ciegas.',
-    despues: 'Enriquecimiento masivo con Apollo: 78% de contactos actualizados, emails verificados y segmentación por ICP lista para campañas. El equipo ahora llama con contexto.',
-    metrica: '78% de contactos actualizados',
+    icon: BarChart2,
+    title: 'Reporting y optimización mensual',
+    desc: 'Dashboard de métricas: tasa de apertura, tasa de respuesta, reuniones generadas y coste por reunión. Revisión mensual de secuencias para ajustar copy, asuntos y timing según los datos reales.',
   },
 ];
 
 const faqs = [
   {
-    q: '¿Apollo.io es legal para prospección en Europa con el RGPD?',
-    a: 'Apollo opera bajo la base legal de interés legítimo para datos B2B, que es la base habitual en prospección comercial entre empresas. Configuramos la herramienta con las prácticas correctas: opt-out visible en cada email, no usamos datos de consumidores particulares y nos centramos en contactos de empresa. Para un uso correcto en Europa, te damos las pautas específicas.',
+    q: '¿Cuánto tiempo tarda en llegar la primera respuesta?',
+    a: 'Con el dominio correctamente calentado y una secuencia bien construida, las primeras respuestas llegan en la primera o segunda semana de campaña. El volumen se incrementa progresivamente a medida que el dominio gana reputación. No arrancar con 500 emails el primer día es una decisión técnica, no una limitación.',
   },
   {
-    q: '¿Cuántos leads puedo esperar al mes con Apollo?',
-    a: 'Depende del ICP, el mercado y la calidad de las secuencias. Una implementación correcta con un ICP bien definido genera entre 200 y 500 nuevos contactos cualificados al mes y entre 20 y 60 conversaciones activas. No prometemos números sin analizar tu caso primero.',
+    q: '¿Necesito un dominio separado para el cold outreach?',
+    a: 'Sí, es la práctica estándar. Usamos un dominio similar al principal (por ejemplo, aetherlabs.es para outreach vs aetherlabs.com para la web corporativa) para proteger la reputación del dominio principal. Configuramos el dominio secundario, el DNS y Lemwarm desde cero.',
   },
   {
-    q: '¿Necesito Apollo si ya tengo LinkedIn Sales Navigator?',
-    a: 'Son herramientas complementarias. LinkedIn Sales Navigator es mejor para prospección social y warm outreach. Apollo es mejor para encontrar emails verificados, hacer búsquedas por tecnología e intent signals, y automatizar secuencias. Muchas empresas usan los dos. En la Sesión de Claridad vemos qué necesitas.',
+    q: '¿Lemlist funciona bien para el mercado hispanohablante?',
+    a: 'Sí. El copy en español con personalización contextual funciona igual de bien o mejor que en inglés porque hay menos saturación de outreach en este idioma. La clave es el nivel de personalización: el nombre de la empresa, el sector y un contexto relevante en el primer email marcan la diferencia entre una respuesta y un bloqueo.',
   },
 ];
 
@@ -145,7 +130,7 @@ function FAQAccordion({ dark = false }: { dark?: boolean }) {
 
 // ─── PAGE ─────────────────────────────────────────────────────────────────────
 
-export default function ApolloPage() {
+export default function LemlistPage() {
   return (
     <div className="v5-page">
       <ScrollAnimations />
@@ -168,7 +153,7 @@ export default function ApolloPage() {
                 color: '#999999',
               }}
             >
-              Systems Lab · Prospecting
+              Systems Lab · Outreach
             </span>
             <h1
               className="v5-reveal"
@@ -184,9 +169,9 @@ export default function ApolloPage() {
                 transitionDelay: '80ms',
               }}
             >
-              275 millones de contactos.<br />
-              Tu cliente ideal está ahí.<br />
-              <span style={{ color: 'rgba(245,245,240,0.35)' }}>Solo tienes que saber buscarlo.</span>
+              Emails de prospecting<br />
+              que parecen escritos a mano.<br />
+              <span style={{ color: 'rgba(245,245,240,0.35)' }}>Enviados a escala.</span>
             </h1>
             <p
               className="v5-reveal"
@@ -197,13 +182,27 @@ export default function ApolloPage() {
                 lineHeight: 1.8,
                 color: 'rgba(245,245,240,0.45)',
                 maxWidth: '560px',
-                marginBottom: '40px',
+                marginBottom: '24px',
                 transitionDelay: '160ms',
               }}
             >
-              Apollo es la base de datos comercial más potente del mercado. Pero sin configuración correcta del ICP y los filtros, es un cañón apuntando al aire. Nosotros definimos a quién vas, construimos las búsquedas y lo conectamos con tu stack de ventas.
+              El problema del email frío no es el volumen. Es que todos parecen iguales. Lemlist personaliza cada email con el nombre, la empresa y el contexto del prospecto. La tasa de respuesta no tiene nada que ver con los emails genéricos.
             </p>
-            <div className="v5-reveal" style={{ transitionDelay: '240ms' }}>
+            <p
+              className="v5-reveal"
+              style={{
+                fontFamily: 'var(--v5-font-mono)',
+                fontSize: '13px',
+                fontWeight: 500,
+                letterSpacing: '0.08em',
+                color: 'rgba(245,245,240,0.6)',
+                marginBottom: '40px',
+                transitionDelay: '200ms',
+              }}
+            >
+              5-15% tasa de respuesta con una secuencia bien configurada
+            </p>
+            <div className="v5-reveal" style={{ transitionDelay: '280ms' }}>
               <Link
                 href="/systems-lab/sesion-de-claridad"
                 style={{
@@ -223,7 +222,7 @@ export default function ApolloPage() {
                 onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = '#FFFFFF'; }}
                 onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = '#F5F5F0'; }}
               >
-                Implementar Apollo →
+                Implementar Lemlist →
               </Link>
             </div>
           </div>
@@ -243,7 +242,7 @@ export default function ApolloPage() {
                   color: '#111111',
                 }}
               >
-                De tener acceso a 275M de contactos a tener leads cualificados cada semana.
+                De mandar emails genéricos a tener una máquina de outreach personalizado.
               </h2>
             </div>
             <div
@@ -297,125 +296,6 @@ export default function ApolloPage() {
                   </div>
                 );
               })}
-            </div>
-          </div>
-        </section>
-
-        {/* ── CASOS DE USO (dark) ── */}
-        <section className="v5-section" style={{ backgroundColor: '#080808', paddingTop: '120px', paddingBottom: '120px' }}>
-          <div className="v5-container">
-            <div className="v5-reveal" style={{ marginBottom: '64px', maxWidth: '640px' }}>
-              <h2
-                style={{
-                  fontFamily: 'var(--v5-font-display)',
-                  fontSize: 'clamp(28px, 4vw, 48px)',
-                  fontWeight: 300,
-                  letterSpacing: '-0.02em',
-                  lineHeight: 1.1,
-                  color: '#F5F5F0',
-                }}
-              >
-                Apollo en empresas B2B reales.
-              </h2>
-            </div>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-              {casos.map((c, i) => (
-                <div
-                  key={i}
-                  className="v5-reveal"
-                  style={{
-                    background: 'rgba(255,255,255,0.04)',
-                    border: '1px solid rgba(255,255,255,0.08)',
-                    borderRadius: '16px',
-                    padding: '40px',
-                    transitionDelay: `${i * 80}ms`,
-                  }}
-                >
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '24px', gap: '24px' }}>
-                    <p
-                      style={{
-                        fontFamily: 'var(--v5-font-mono)',
-                        fontSize: '11px',
-                        fontWeight: 500,
-                        letterSpacing: '0.12em',
-                        textTransform: 'uppercase',
-                        color: '#999999',
-                      }}
-                    >
-                      {c.label}
-                    </p>
-                    <span
-                      style={{
-                        fontFamily: 'var(--v5-font-mono)',
-                        fontSize: '12px',
-                        fontWeight: 500,
-                        color: '#F5F5F0',
-                        background: 'rgba(255,255,255,0.08)',
-                        padding: '6px 14px',
-                        borderRadius: '40px',
-                        whiteSpace: 'nowrap',
-                        flexShrink: 0,
-                      }}
-                    >
-                      {c.metrica}
-                    </span>
-                  </div>
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '32px' }}>
-                    <div>
-                      <p
-                        style={{
-                          fontFamily: 'var(--v5-font-mono)',
-                          fontSize: '11px',
-                          fontWeight: 500,
-                          letterSpacing: '0.1em',
-                          textTransform: 'uppercase',
-                          color: 'rgba(245,245,240,0.3)',
-                          marginBottom: '10px',
-                        }}
-                      >
-                        Antes
-                      </p>
-                      <p
-                        style={{
-                          fontFamily: 'var(--v5-font-body)',
-                          fontSize: '15px',
-                          fontWeight: 300,
-                          lineHeight: 1.8,
-                          color: 'rgba(245,245,240,0.4)',
-                        }}
-                      >
-                        {c.antes}
-                      </p>
-                    </div>
-                    <div>
-                      <p
-                        style={{
-                          fontFamily: 'var(--v5-font-mono)',
-                          fontSize: '11px',
-                          fontWeight: 500,
-                          letterSpacing: '0.1em',
-                          textTransform: 'uppercase',
-                          color: 'rgba(245,245,240,0.6)',
-                          marginBottom: '10px',
-                        }}
-                      >
-                        Despues
-                      </p>
-                      <p
-                        style={{
-                          fontFamily: 'var(--v5-font-body)',
-                          fontSize: '15px',
-                          fontWeight: 300,
-                          lineHeight: 1.8,
-                          color: 'rgba(245,245,240,0.7)',
-                        }}
-                      >
-                        {c.despues}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              ))}
             </div>
           </div>
         </section>
@@ -480,7 +360,7 @@ export default function ApolloPage() {
                   color: '#F5F5F0',
                 }}
               >
-                ¿Tu equipo de ventas tiene un proceso de prospección que funciona?
+                ¿Listo para tener outreach que funciona de verdad?
               </h2>
               <p
                 style={{
@@ -491,7 +371,7 @@ export default function ApolloPage() {
                   color: 'rgba(245,245,240,0.45)',
                 }}
               >
-                Empieza con una Sesión de Claridad de 90 minutos.
+                Empieza con una Sesión de Claridad de 90 minutos. Sin compromiso.
               </p>
               <Link
                 href="/systems-lab/sesion-de-claridad"

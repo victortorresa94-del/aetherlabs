@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { Target, Layers, Mail, GitMerge, Bot } from 'lucide-react';
+import { BookOpen, Database, Sparkles, Bot } from 'lucide-react';
 import Navbar from '@/components/v5/Navbar';
 import Footer from '@/components/v5/Footer';
 import ScrollAnimations from '@/components/v5/ScrollAnimations';
@@ -11,59 +11,57 @@ import ScrollAnimations from '@/components/v5/ScrollAnimations';
 
 const features = [
   {
-    icon: Target,
-    title: 'Definición del ICP con filtros en Apollo',
-    desc: 'Definimos el perfil de cliente ideal con criterios concretos: sector, tamaño de empresa, cargo del decisor, tecnologías que usan e intent signals. Las búsquedas en Apollo devuelven leads que encajan, no listas de 10.000 contactos sin filtrar.',
+    icon: BookOpen,
+    title: 'Wiki interna estructurada',
+    desc: 'Construimos la página principal de empresa, el área de Procesos/SOPs, la sección de Clientes, Proyectos y RRHH. Una estructura que cualquiera entiende el primer día sin que nadie se la explique.',
   },
   {
-    icon: Layers,
-    title: 'Enriquecimiento de base de datos existente',
-    desc: 'Conectamos Apollo a tu CRM actual para enriquecer automáticamente todos los contactos con email verificado, LinkedIn, cargo actualizado, tamaño de empresa y datos firmográficos. Sin copiar ni pegar nada a mano.',
+    icon: Database,
+    title: 'Bases de datos conectadas',
+    desc: 'Clientes vinculados a proyectos, proyectos vinculados a tareas. Pipeline de ventas, repositorio de recursos, directorio de proveedores. Todo conectado para que los datos no vivan aislados en tablas sin relación.',
   },
   {
-    icon: Mail,
-    title: 'Apollo Sequences multicanal',
-    desc: 'Diseñamos secuencias de prospección de 4-6 pasos que combinan email, LinkedIn y llamada. Plantillas probadas, A/B testing activado y límites de envío diario configurados para proteger la reputación del dominio.',
-  },
-  {
-    icon: GitMerge,
-    title: 'Integración Apollo + HubSpot + Lemlist',
-    desc: 'El lead entra en Apollo, pasa a la secuencia de Lemlist para el outreach personalizado y aterriza en HubSpot con todos sus datos. El flujo completo es automático: sin exportar CSVs ni pasos manuales.',
+    icon: Sparkles,
+    title: 'Notion AI activado',
+    desc: 'Activamos Notion AI y configuramos el flujo: resumen automático de reuniones, búsqueda en lenguaje natural por todo el workspace, generación de contenido desde plantillas y autocompletado en documentos.',
   },
   {
     icon: Bot,
-    title: 'Claude + Apollo',
-    desc: 'Vía MCP, Claude analiza las respuestas de los prospects, genera emails de seguimiento personalizados por sector y cargo, y resume el estado del pipeline cada semana en lenguaje natural. Prospección asistida por IA real.',
+    title: 'Claude + Notion MCP',
+    desc: 'Conectamos Claude vía MCP para que pueda crear páginas, actualizar bases de datos y buscar información en Notion usando lenguaje natural. La gestión del conocimiento por voz real, no por promesas de marketing.',
   },
 ];
 
 const casos = [
   {
-    label: 'Empresa de software B2B sin pipeline outbound',
-    antes: 'El equipo de ventas dependía al 100% de inbound. Cuando el tráfico bajaba, bajaban los leads. Sin proceso de salida, sin previsibilidad.',
-    despues: 'ICP definido en Apollo, secuencias activas de 5 pasos conectadas con HubSpot. En 60 días: 80 conversaciones activas con decisores del perfil exacto.',
-    metrica: '80 conversaciones en 60 días',
+    label: 'Onboarding de nuevas incorporaciones',
+    antes: 'El onboarding dependía de que alguien del equipo se sentara con el nuevo empleado varios días. Cada vez era distinto. Cosas importantes se olvidaban.',
+    despues: 'Una página de Onboarding en Notion con el día 1, semana 1 y mes 1 documentados. El nuevo entra, sigue el proceso y el equipo puede trabajar sin interrupciones.',
   },
   {
-    label: 'Empresa con 5.000 contactos sin datos completos',
-    antes: 'Una base de datos acumulada durante años: emails sin verificar, cargos desactualizados y muchos duplicados. El equipo llamaba a ciegas.',
-    despues: 'Enriquecimiento masivo con Apollo: 78% de contactos actualizados, emails verificados y segmentación por ICP lista para campañas. El equipo ahora llama con contexto.',
-    metrica: '78% de contactos actualizados',
+    label: 'Base de conocimiento de soporte',
+    antes: 'El equipo de soporte respondía las mismas preguntas una y otra vez. No había registro de soluciones. Cada caso se resolvía desde cero.',
+    despues: 'Una base de datos de casos resueltos en Notion. Cuando llega un caso nuevo, Claude busca en la base y sugiere la solución en segundos.',
+  },
+  {
+    label: 'Seguimiento de proyectos de cliente',
+    antes: 'El estado de los proyectos vivía en la cabeza del account manager. Los clientes preguntaban. El equipo no tenía visibilidad de lo que hacían los demás.',
+    despues: 'Una base de datos de proyectos en Notion conectada a tareas y a clientes. Todo el equipo ve el estado real sin preguntar a nadie.',
   },
 ];
 
 const faqs = [
   {
-    q: '¿Apollo.io es legal para prospección en Europa con el RGPD?',
-    a: 'Apollo opera bajo la base legal de interés legítimo para datos B2B, que es la base habitual en prospección comercial entre empresas. Configuramos la herramienta con las prácticas correctas: opt-out visible en cada email, no usamos datos de consumidores particulares y nos centramos en contactos de empresa. Para un uso correcto en Europa, te damos las pautas específicas.',
+    q: '¿Cuánto tiempo lleva implementar Notion?',
+    a: 'La implementación base toma entre 2 y 4 semanas dependiendo del tamaño de la empresa y la cantidad de procesos a documentar. La primera semana diseñamos la arquitectura, la segunda configuramos las bases de datos y los templates, y las siguientes semanas documentamos los SOPs y formamos al equipo.',
   },
   {
-    q: '¿Cuántos leads puedo esperar al mes con Apollo?',
-    a: 'Depende del ICP, el mercado y la calidad de las secuencias. Una implementación correcta con un ICP bien definido genera entre 200 y 500 nuevos contactos cualificados al mes y entre 20 y 60 conversaciones activas. No prometemos números sin analizar tu caso primero.',
+    q: '¿Qué pasa si el equipo ya tiene información en otras herramientas?',
+    a: 'Migramos la información existente: documentos de Google Drive o Notion mal estructurado, hojas de cálculo, Confluence o cualquier otra fuente. Parte del trabajo es consolidar y limpiar, no empezar desde cero con el caos que ya existe.',
   },
   {
-    q: '¿Necesito Apollo si ya tengo LinkedIn Sales Navigator?',
-    a: 'Son herramientas complementarias. LinkedIn Sales Navigator es mejor para prospección social y warm outreach. Apollo es mejor para encontrar emails verificados, hacer búsquedas por tecnología e intent signals, y automatizar secuencias. Muchas empresas usan los dos. En la Sesión de Claridad vemos qué necesitas.',
+    q: '¿Necesito el plan de pago de Notion para esto?',
+    a: 'Para una empresa de más de 5 personas, el plan Plus o Business de Notion es necesario para aprovechar las bases de datos relacionales, los permisos avanzados y Notion AI. Te ayudamos a elegir el plan correcto y a justificar el coste.',
   },
 ];
 
@@ -145,7 +143,7 @@ function FAQAccordion({ dark = false }: { dark?: boolean }) {
 
 // ─── PAGE ─────────────────────────────────────────────────────────────────────
 
-export default function ApolloPage() {
+export default function NotionPage() {
   return (
     <div className="v5-page">
       <ScrollAnimations />
@@ -168,7 +166,7 @@ export default function ApolloPage() {
                 color: '#999999',
               }}
             >
-              Systems Lab · Prospecting
+              Systems Lab · Documentación y Conocimiento
             </span>
             <h1
               className="v5-reveal"
@@ -184,9 +182,9 @@ export default function ApolloPage() {
                 transitionDelay: '80ms',
               }}
             >
-              275 millones de contactos.<br />
-              Tu cliente ideal está ahí.<br />
-              <span style={{ color: 'rgba(245,245,240,0.35)' }}>Solo tienes que saber buscarlo.</span>
+              El conocimiento de tu empresa<br />
+              no puede estar en la cabeza<br />
+              <span style={{ color: 'rgba(245,245,240,0.35)' }}>de una sola persona.</span>
             </h1>
             <p
               className="v5-reveal"
@@ -201,7 +199,7 @@ export default function ApolloPage() {
                 transitionDelay: '160ms',
               }}
             >
-              Apollo es la base de datos comercial más potente del mercado. Pero sin configuración correcta del ICP y los filtros, es un cañón apuntando al aire. Nosotros definimos a quién vas, construimos las búsquedas y lo conectamos con tu stack de ventas.
+              Notion es donde vive todo lo que tu empresa sabe: procesos, clientes, proyectos, onboarding, políticas. Pero sin una estructura bien diseñada, Notion se convierte en otro cajón de desorden digital. Nosotros lo construimos bien desde el principio.
             </p>
             <div className="v5-reveal" style={{ transitionDelay: '240ms' }}>
               <Link
@@ -223,7 +221,7 @@ export default function ApolloPage() {
                 onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = '#FFFFFF'; }}
                 onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = '#F5F5F0'; }}
               >
-                Implementar Apollo →
+                Implementar Notion →
               </Link>
             </div>
           </div>
@@ -243,7 +241,7 @@ export default function ApolloPage() {
                   color: '#111111',
                 }}
               >
-                De tener acceso a 275M de contactos a tener leads cualificados cada semana.
+                Un Notion que cualquiera del equipo puede usar sin formación previa.
               </h2>
             </div>
             <div
@@ -301,8 +299,8 @@ export default function ApolloPage() {
           </div>
         </section>
 
-        {/* ── CASOS DE USO (dark) ── */}
-        <section className="v5-section" style={{ backgroundColor: '#080808', paddingTop: '120px', paddingBottom: '120px' }}>
+        {/* ── CASOS DE USO ── */}
+        <section className="v5-section" style={{ backgroundColor: '#F7F7F5', paddingTop: '120px', paddingBottom: '120px' }}>
           <div className="v5-container">
             <div className="v5-reveal" style={{ marginBottom: '64px', maxWidth: '640px' }}>
               <h2
@@ -312,10 +310,10 @@ export default function ApolloPage() {
                   fontWeight: 300,
                   letterSpacing: '-0.02em',
                   lineHeight: 1.1,
-                  color: '#F5F5F0',
+                  color: '#111111',
                 }}
               >
-                Apollo en empresas B2B reales.
+                Notion en el trabajo real de cada empresa.
               </h2>
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
@@ -324,42 +322,27 @@ export default function ApolloPage() {
                   key={i}
                   className="v5-reveal"
                   style={{
-                    background: 'rgba(255,255,255,0.04)',
-                    border: '1px solid rgba(255,255,255,0.08)',
+                    background: '#FFFFFF',
+                    border: '1px solid #E0E0E0',
+                    borderTop: '2px solid #111111',
                     borderRadius: '16px',
                     padding: '40px',
                     transitionDelay: `${i * 80}ms`,
                   }}
                 >
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '24px', gap: '24px' }}>
-                    <p
-                      style={{
-                        fontFamily: 'var(--v5-font-mono)',
-                        fontSize: '11px',
-                        fontWeight: 500,
-                        letterSpacing: '0.12em',
-                        textTransform: 'uppercase',
-                        color: '#999999',
-                      }}
-                    >
-                      {c.label}
-                    </p>
-                    <span
-                      style={{
-                        fontFamily: 'var(--v5-font-mono)',
-                        fontSize: '12px',
-                        fontWeight: 500,
-                        color: '#F5F5F0',
-                        background: 'rgba(255,255,255,0.08)',
-                        padding: '6px 14px',
-                        borderRadius: '40px',
-                        whiteSpace: 'nowrap',
-                        flexShrink: 0,
-                      }}
-                    >
-                      {c.metrica}
-                    </span>
-                  </div>
+                  <p
+                    style={{
+                      fontFamily: 'var(--v5-font-mono)',
+                      fontSize: '11px',
+                      fontWeight: 500,
+                      letterSpacing: '0.12em',
+                      textTransform: 'uppercase',
+                      color: '#999999',
+                      marginBottom: '16px',
+                    }}
+                  >
+                    {c.label}
+                  </p>
                   <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '32px' }}>
                     <div>
                       <p
@@ -369,7 +352,7 @@ export default function ApolloPage() {
                           fontWeight: 500,
                           letterSpacing: '0.1em',
                           textTransform: 'uppercase',
-                          color: 'rgba(245,245,240,0.3)',
+                          color: '#BBBBBB',
                           marginBottom: '10px',
                         }}
                       >
@@ -381,7 +364,7 @@ export default function ApolloPage() {
                           fontSize: '15px',
                           fontWeight: 300,
                           lineHeight: 1.8,
-                          color: 'rgba(245,245,240,0.4)',
+                          color: '#888888',
                         }}
                       >
                         {c.antes}
@@ -395,7 +378,7 @@ export default function ApolloPage() {
                           fontWeight: 500,
                           letterSpacing: '0.1em',
                           textTransform: 'uppercase',
-                          color: 'rgba(245,245,240,0.6)',
+                          color: '#111111',
                           marginBottom: '10px',
                         }}
                       >
@@ -407,7 +390,7 @@ export default function ApolloPage() {
                           fontSize: '15px',
                           fontWeight: 300,
                           lineHeight: 1.8,
-                          color: 'rgba(245,245,240,0.7)',
+                          color: '#444444',
                         }}
                       >
                         {c.despues}
@@ -420,8 +403,8 @@ export default function ApolloPage() {
           </div>
         </section>
 
-        {/* ── FAQ ── */}
-        <section className="v5-section" style={{ backgroundColor: '#F7F7F5', paddingTop: '120px', paddingBottom: '120px' }}>
+        {/* ── FAQ (dark) ── */}
+        <section className="v5-section" style={{ backgroundColor: '#080808', paddingTop: '120px', paddingBottom: '120px' }}>
           <div className="v5-container">
             <div
               style={{
@@ -439,21 +422,21 @@ export default function ApolloPage() {
                     fontWeight: 300,
                     letterSpacing: '-0.02em',
                     lineHeight: 1.15,
-                    color: '#111111',
+                    color: '#F5F5F0',
                   }}
                 >
                   Preguntas frecuentes
                 </h2>
               </div>
               <div className="v5-reveal" style={{ transitionDelay: '80ms' }}>
-                <FAQAccordion />
+                <FAQAccordion dark={true} />
               </div>
             </div>
           </div>
         </section>
 
         {/* ── CTA ── */}
-        <section className="v5-section" style={{ backgroundColor: '#080808', paddingTop: '120px', paddingBottom: '120px', textAlign: 'center' }}>
+        <section className="v5-section" style={{ backgroundColor: '#080808', paddingTop: '80px', paddingBottom: '120px', textAlign: 'center' }}>
           <div className="v5-container">
             <div
               className="v5-reveal"
@@ -480,7 +463,7 @@ export default function ApolloPage() {
                   color: '#F5F5F0',
                 }}
               >
-                ¿Tu equipo de ventas tiene un proceso de prospección que funciona?
+                ¿Tu empresa tiene el conocimiento documentado?
               </h2>
               <p
                 style={{
@@ -491,7 +474,7 @@ export default function ApolloPage() {
                   color: 'rgba(245,245,240,0.45)',
                 }}
               >
-                Empieza con una Sesión de Claridad de 90 minutos.
+                Empieza con una Sesión de Claridad de 90 minutos. Sin compromiso.
               </p>
               <Link
                 href="/systems-lab/sesion-de-claridad"

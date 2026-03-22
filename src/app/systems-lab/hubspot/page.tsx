@@ -1,46 +1,149 @@
 'use client';
 
+import { useState } from 'react';
 import Link from 'next/link';
+import { Users, TrendingUp, Zap, GitMerge, BarChart2 } from 'lucide-react';
 import Navbar from '@/components/v5/Navbar';
 import Footer from '@/components/v5/Footer';
 import ScrollAnimations from '@/components/v5/ScrollAnimations';
 
+// ─── DATA ─────────────────────────────────────────────────────────────────────
+
 const features = [
   {
-    title: 'Configuración CRM',
-    desc: 'Setup completo de HubSpot: importación de contactos, propiedades personalizadas, pipeline de ventas y permisos de equipo desde el día 1.',
+    icon: Users,
+    title: 'CRM base bien configurado',
+    desc: 'Importación limpia de datos existentes, deduplicación y normalización. Propiedades custom adaptadas al proceso de ventas real. Segmentación por sector, tamaño y fase del ciclo. Permisos por rol para que cada persona vea lo que necesita.',
   },
   {
-    title: 'Automatización de emails',
-    desc: 'Secuencias de nurturing, lead routing automático y scoring predictivo para que el equipo de ventas solo hable con los leads listos para comprar.',
+    icon: TrendingUp,
+    title: 'Pipeline de ventas que refleja la realidad',
+    desc: 'Etapas del pipeline alineadas con el proceso real del equipo, no con el genérico de HubSpot. Probabilidades de cierre calibradas. Tareas automáticas en cada transición de etapa y alertas cuando un deal lleva demasiado tiempo sin movimiento.',
   },
   {
-    title: 'Pipeline de ventas',
-    desc: 'Diseñamos el pipeline con las etapas correctas para tu negocio. Con alertas, tareas automáticas y visibilidad total del estado de cada oportunidad.',
+    icon: Zap,
+    title: 'Marketing automation',
+    desc: 'Formularios conectados al CRM con segmentación automática. Lead scoring configurado según comportamiento e ICP. Secuencias de nurturing para leads que no están listos todavía. Notificación automática al comercial cuando el lead está listo para el cierre.',
   },
   {
-    title: 'Integraciones',
-    desc: 'Conectamos HubSpot con Claude vía MCP, con tu web para captura de leads, con ClickUp para gestión de proyectos y con las herramientas que ya usas.',
+    icon: GitMerge,
+    title: 'Integraciones con el stack completo',
+    desc: 'Apollo para importar leads cualificados directamente. ClickUp para sincronizar proyectos cuando el deal cierra. Claude vía MCP para operar el CRM por lenguaje natural. Web para captura de leads con formularios y chat.',
+  },
+  {
+    icon: BarChart2,
+    title: 'Reporting en tiempo real',
+    desc: 'Dashboard ejecutivo con pipeline por etapa, velocidad de ventas y forecast mensual. Informe semanal generado automáticamente por Claude con el resumen del estado de cada deal activo. Sin reuniones de pipeline que no sirven para nada.',
   },
 ];
 
 const casos = [
   {
-    num: '01',
-    title: 'Pipeline de ventas visible en 48 horas',
-    desc: 'Una empresa B2B llevaba años gestionando leads en hojas de Excel. Implementamos HubSpot con pipeline personalizado, importación de datos y formación del equipo. En 48 horas tenían visibilidad total de todas sus oportunidades.',
+    label: 'Equipo de ventas B2B sin proceso definido',
+    antes: 'El CRM existía pero nadie lo usaba de verdad. Los comerciales gestionaban sus deals en hojas de cálculo personales. El pipeline era ficción.',
+    despues: 'Pipeline redefinido con etapas reales, tareas automáticas y alertas de seguimiento. En 30 días el equipo usaba HubSpot como herramienta de trabajo, no como obligación.',
+    detalle: null,
   },
   {
-    num: '02',
-    title: 'Nurturing automático que cierra solo',
-    desc: 'Un lead entra por web → HubSpot lo puntúa automáticamente → si cumple el ICP, arranca una secuencia de 5 emails personalizada → si no responde, pasa a lead frío. Todo sin tocar nada.',
-  },
-  {
-    num: '03',
-    title: 'Claude + HubSpot en lenguaje natural',
-    desc: 'El equipo comercial le pide a Claude que cree contactos, actualice deals y genere reportes directamente en HubSpot vía MCP. Sin formularios, sin clics. Solo lenguaje natural.',
+    label: 'Claude + HubSpot: el caso más potente',
+    antes: 'El director de ventas necesitaba 2 horas cada lunes para preparar el informe de pipeline y distribuirlo al equipo.',
+    despues: 'Claude se conecta a HubSpot vía MCP. El director escribe: "Dame el resumen de los deals que no se han movido esta semana y envíalo al equipo." Claude lo hace en 30 segundos.',
+    detalle: 'Desde lenguaje natural: crear contactos, actualizar deals, buscar empresas por sector, generar informes. El CRM operado por voz, no por clics.',
   },
 ];
+
+const faqs = [
+  {
+    q: '¿Qué versión de HubSpot necesito para esto?',
+    a: 'Depende del alcance. Para CRM base y pipeline, el plan Starter de Sales Hub es suficiente. Para marketing automation completo y lead scoring avanzado, necesitas el plan Professional. Para reporting predictivo y objetos custom, Enterprise. En la Sesión de Claridad analizamos qué plan tiene sentido para tu caso sin pagar por funciones que no vas a usar.',
+  },
+  {
+    q: '¿Cuánto tiempo tarda la implementación?',
+    a: 'Una implementación completa de CRM + pipeline + marketing automation tarda entre 4 y 8 semanas. La primera semana es auditoría y diseño, las siguientes son configuración, integración con otras herramientas y formación del equipo. Después hay un mes de acompañamiento para ajustar según el uso real.',
+  },
+  {
+    q: '¿Podéis migrar desde otro CRM?',
+    a: 'Sí. Hemos migrado desde Salesforce, Pipedrive, Zoho y hojas de cálculo. El proceso incluye exportación, limpieza de datos, normalización y mapeo de campos antes de la importación. La migración es la parte más delicada: si los datos llegan sucios, el CRM nuevo empieza sucio.',
+  },
+];
+
+// ─── FAQ ACCORDION ────────────────────────────────────────────────────────────
+
+function FAQAccordion({ dark = false }: { dark?: boolean }) {
+  const [open, setOpen] = useState<number | null>(null);
+  const borderColor = dark ? 'rgba(255,255,255,0.12)' : '#E2E2DF';
+  const questionColor = dark ? '#F5F5F0' : '#111111';
+  const answerColor = dark ? 'rgba(245,245,240,0.55)' : '#666666';
+  const iconColor = dark ? 'rgba(245,245,240,0.4)' : '#AAAAAA';
+
+  return (
+    <div>
+      {faqs.map((faq, i) => (
+        <div key={i} style={{ borderTop: `1px solid ${borderColor}` }}>
+          <button
+            onClick={() => setOpen(open === i ? null : i)}
+            style={{
+              width: '100%',
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              paddingTop: '28px',
+              paddingBottom: '28px',
+              background: 'none',
+              border: 'none',
+              cursor: 'pointer',
+              textAlign: 'left',
+              gap: '16px',
+            }}
+          >
+            <span
+              style={{
+                fontFamily: 'var(--v5-font-display)',
+                fontSize: '18px',
+                fontWeight: 400,
+                letterSpacing: '-0.01em',
+                color: questionColor,
+                lineHeight: 1.3,
+              }}
+            >
+              {faq.q}
+            </span>
+            <span
+              style={{
+                fontFamily: 'var(--v5-font-mono)',
+                fontSize: '20px',
+                fontWeight: 300,
+                color: iconColor,
+                flexShrink: 0,
+                transition: 'transform 200ms ease',
+                transform: open === i ? 'rotate(45deg)' : 'none',
+              }}
+            >
+              +
+            </span>
+          </button>
+          {open === i && (
+            <p
+              style={{
+                fontFamily: 'var(--v5-font-body)',
+                fontSize: '16px',
+                fontWeight: 300,
+                lineHeight: 1.8,
+                color: answerColor,
+                paddingBottom: '24px',
+              }}
+            >
+              {faq.a}
+            </p>
+          )}
+        </div>
+      ))}
+      <div style={{ borderTop: `1px solid ${borderColor}` }} />
+    </div>
+  );
+}
+
+// ─── PAGE ─────────────────────────────────────────────────────────────────────
 
 export default function HubSpotPage() {
   return (
@@ -49,10 +152,8 @@ export default function HubSpotPage() {
       <Navbar />
       <main>
 
-        {/* Hero */}
-        <section
-          style={{ backgroundColor: '#080808', paddingTop: '160px', paddingBottom: '120px' }}
-        >
+        {/* ── HERO ── */}
+        <section className="v5-section" style={{ backgroundColor: '#080808', paddingTop: '160px', paddingBottom: '120px' }}>
           <div className="v5-container">
             <span
               className="v5-reveal"
@@ -67,7 +168,7 @@ export default function HubSpotPage() {
                 color: '#999999',
               }}
             >
-              🟠 HubSpot
+              Systems Lab · CRM y Marketing
             </span>
             <h1
               className="v5-reveal"
@@ -78,13 +179,14 @@ export default function HubSpotPage() {
                 letterSpacing: '-0.03em',
                 lineHeight: 0.95,
                 color: '#F5F5F0',
-                maxWidth: '800px',
-                marginBottom: '28px',
+                maxWidth: '860px',
+                marginBottom: '32px',
                 transitionDelay: '80ms',
               }}
             >
-              CRM, marketing y ventas en una sola plataforma.<br />
-              <span style={{ color: 'rgba(245,245,240,0.38)' }}>Configurado para funcionar desde el día 1.</span>
+              Tu CRM que trabaja.<br />
+              No el que llenas manualmente<br />
+              <span style={{ color: 'rgba(245,245,240,0.35)' }}>y nadie consulta.</span>
             </h1>
             <p
               className="v5-reveal"
@@ -94,13 +196,12 @@ export default function HubSpotPage() {
                 fontWeight: 300,
                 lineHeight: 1.8,
                 color: 'rgba(245,245,240,0.45)',
-                maxWidth: '520px',
+                maxWidth: '560px',
                 marginBottom: '40px',
                 transitionDelay: '160ms',
               }}
             >
-              La mayoría de empresas usa solo el 20% de lo que HubSpot ofrece.
-              Nosotros lo configuramos, lo conectamos con IA y formamos al equipo.
+              El problema con los CRM no es la herramienta. Es que nadie los configuró pensando en cómo trabaja el equipo de ventas real. Resultado: datos incompletos, pipeline que no refleja la realidad y un sistema que se usa como archivo, no como motor de ventas.
             </p>
             <div className="v5-reveal" style={{ transitionDelay: '240ms' }}>
               <Link
@@ -116,37 +217,22 @@ export default function HubSpotPage() {
                   fontSize: '15px',
                   fontWeight: 400,
                   textDecoration: 'none',
+                  borderRadius: '2px',
                   transition: 'background 200ms ease',
                 }}
                 onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = '#FFFFFF'; }}
                 onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = '#F5F5F0'; }}
               >
-                Implementar HubSpot con Aether →
+                Implementar HubSpot →
               </Link>
             </div>
           </div>
         </section>
 
-        {/* Qué implementamos */}
-        <section
-          style={{ backgroundColor: '#FFFFFF', paddingTop: '120px', paddingBottom: '120px' }}
-        >
+        {/* ── QUÉ IMPLEMENTAMOS ── */}
+        <section className="v5-section" style={{ backgroundColor: '#FFFFFF', paddingTop: '120px', paddingBottom: '120px' }}>
           <div className="v5-container">
-            <div className="v5-reveal" style={{ marginBottom: '64px' }}>
-              <span
-                style={{
-                  display: 'block',
-                  marginBottom: '20px',
-                  fontFamily: 'var(--v5-font-mono)',
-                  fontSize: '11px',
-                  fontWeight: 500,
-                  letterSpacing: '0.15em',
-                  textTransform: 'uppercase',
-                  color: '#999999',
-                }}
-              >
-                Qué implementamos
-              </span>
+            <div className="v5-reveal" style={{ marginBottom: '64px', maxWidth: '640px' }}>
               <h2
                 style={{
                   fontFamily: 'var(--v5-font-display)',
@@ -157,7 +243,7 @@ export default function HubSpotPage() {
                   color: '#111111',
                 }}
               >
-                HubSpot que trabaja solo, no contigo
+                HubSpot completo, conectado y usado de verdad.
               </h2>
             </div>
             <div
@@ -167,127 +253,35 @@ export default function HubSpotPage() {
                 gap: '24px',
               }}
             >
-              {features.map((f, i) => (
-                <div
-                  key={i}
-                  className="v5-reveal"
-                  style={{
-                    background: '#F8F8F8',
-                    border: '1px solid #EBEBEB',
-                    borderRadius: '16px',
-                    padding: '32px',
-                    transitionDelay: `${i * 80}ms`,
-                  }}
-                >
-                  <h3
+              {features.map((f, i) => {
+                const Icon = f.icon;
+                return (
+                  <div
+                    key={i}
+                    className="v5-reveal"
                     style={{
-                      fontFamily: 'var(--v5-font-display)',
-                      fontSize: '18px',
-                      fontWeight: 400,
-                      letterSpacing: '-0.02em',
-                      color: '#111111',
-                      marginBottom: '12px',
+                      background: '#FFFFFF',
+                      border: '1px solid #E0E0E0',
+                      borderTop: '2px solid #111111',
+                      borderRadius: '16px',
+                      padding: '40px',
+                      transitionDelay: `${i * 80}ms`,
                     }}
                   >
-                    {f.title}
-                  </h3>
-                  <p
-                    style={{
-                      fontFamily: 'var(--v5-font-body)',
-                      fontSize: '15px',
-                      fontWeight: 300,
-                      lineHeight: 1.8,
-                      color: '#666666',
-                    }}
-                  >
-                    {f.desc}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Casos de uso reales */}
-        <section
-          style={{
-            backgroundColor: '#F8F8F8',
-            borderTop: '1px solid #EBEBEB',
-            borderBottom: '1px solid #EBEBEB',
-            paddingTop: '120px',
-            paddingBottom: '120px',
-          }}
-        >
-          <div className="v5-container">
-            <div className="v5-reveal" style={{ marginBottom: '64px' }}>
-              <span
-                style={{
-                  display: 'block',
-                  marginBottom: '20px',
-                  fontFamily: 'var(--v5-font-mono)',
-                  fontSize: '11px',
-                  fontWeight: 500,
-                  letterSpacing: '0.15em',
-                  textTransform: 'uppercase',
-                  color: '#999999',
-                }}
-              >
-                Casos de uso reales
-              </span>
-              <h2
-                style={{
-                  fontFamily: 'var(--v5-font-display)',
-                  fontSize: 'clamp(28px, 4vw, 48px)',
-                  fontWeight: 300,
-                  letterSpacing: '-0.02em',
-                  lineHeight: 1.1,
-                  color: '#111111',
-                }}
-              >
-                HubSpot en empresas reales
-              </h2>
-            </div>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-              {casos.map((c, i) => (
-                <div
-                  key={i}
-                  className="v5-reveal"
-                  style={{
-                    background: '#FFFFFF',
-                    border: '1px solid #EBEBEB',
-                    borderTop: '2px solid #111111',
-                    borderRadius: '16px',
-                    padding: '32px 40px',
-                    display: 'flex',
-                    gap: '32px',
-                    alignItems: 'flex-start',
-                    transitionDelay: `${i * 80}ms`,
-                  }}
-                >
-                  <span
-                    style={{
-                      fontFamily: 'var(--v5-font-mono)',
-                      fontSize: '13px',
-                      fontWeight: 700,
-                      color: '#AAAAAA',
-                      minWidth: '28px',
-                      flexShrink: 0,
-                    }}
-                  >
-                    {c.num}
-                  </span>
-                  <div>
+                    <div style={{ marginBottom: '20px' }}>
+                      <Icon size={22} color="#111111" strokeWidth={1.5} />
+                    </div>
                     <h3
                       style={{
                         fontFamily: 'var(--v5-font-display)',
-                        fontSize: '20px',
+                        fontSize: '18px',
                         fontWeight: 400,
                         letterSpacing: '-0.02em',
                         color: '#111111',
-                        marginBottom: '10px',
+                        marginBottom: '12px',
                       }}
                     >
-                      {c.title}
+                      {f.title}
                     </h3>
                     <p
                       style={{
@@ -298,24 +292,19 @@ export default function HubSpotPage() {
                         color: '#666666',
                       }}
                     >
-                      {c.desc}
+                      {f.desc}
                     </p>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </section>
 
-        {/* CTA */}
-        <section
-          style={{ backgroundColor: '#080808', paddingTop: '120px', paddingBottom: '120px', textAlign: 'center' }}
-        >
+        {/* ── CASOS DE USO (dark) ── */}
+        <section className="v5-section" style={{ backgroundColor: '#080808', paddingTop: '120px', paddingBottom: '120px' }}>
           <div className="v5-container">
-            <div
-              className="v5-reveal"
-              style={{ maxWidth: '640px', margin: '0 auto', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '24px' }}
-            >
+            <div className="v5-reveal" style={{ marginBottom: '64px', maxWidth: '640px' }}>
               <h2
                 style={{
                   fontFamily: 'var(--v5-font-display)',
@@ -326,12 +315,176 @@ export default function HubSpotPage() {
                   color: '#F5F5F0',
                 }}
               >
-                ¿Tu CRM podría hacer más por ti?
+                HubSpot en el día a día de un equipo de ventas.
+              </h2>
+            </div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+              {casos.map((c, i) => (
+                <div
+                  key={i}
+                  className="v5-reveal"
+                  style={{
+                    background: 'rgba(255,255,255,0.04)',
+                    border: '1px solid rgba(255,255,255,0.08)',
+                    borderRadius: '16px',
+                    padding: '40px',
+                    transitionDelay: `${i * 80}ms`,
+                  }}
+                >
+                  <p
+                    style={{
+                      fontFamily: 'var(--v5-font-mono)',
+                      fontSize: '11px',
+                      fontWeight: 500,
+                      letterSpacing: '0.12em',
+                      textTransform: 'uppercase',
+                      color: '#999999',
+                      marginBottom: '24px',
+                    }}
+                  >
+                    {c.label}
+                  </p>
+                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '32px' }}>
+                    <div>
+                      <p
+                        style={{
+                          fontFamily: 'var(--v5-font-mono)',
+                          fontSize: '11px',
+                          fontWeight: 500,
+                          letterSpacing: '0.1em',
+                          textTransform: 'uppercase',
+                          color: 'rgba(245,245,240,0.3)',
+                          marginBottom: '10px',
+                        }}
+                      >
+                        Antes
+                      </p>
+                      <p
+                        style={{
+                          fontFamily: 'var(--v5-font-body)',
+                          fontSize: '15px',
+                          fontWeight: 300,
+                          lineHeight: 1.8,
+                          color: 'rgba(245,245,240,0.4)',
+                        }}
+                      >
+                        {c.antes}
+                      </p>
+                    </div>
+                    <div>
+                      <p
+                        style={{
+                          fontFamily: 'var(--v5-font-mono)',
+                          fontSize: '11px',
+                          fontWeight: 500,
+                          letterSpacing: '0.1em',
+                          textTransform: 'uppercase',
+                          color: 'rgba(245,245,240,0.6)',
+                          marginBottom: '10px',
+                        }}
+                      >
+                        Despues
+                      </p>
+                      <p
+                        style={{
+                          fontFamily: 'var(--v5-font-body)',
+                          fontSize: '15px',
+                          fontWeight: 300,
+                          lineHeight: 1.8,
+                          color: 'rgba(245,245,240,0.7)',
+                        }}
+                      >
+                        {c.despues}
+                      </p>
+                      {c.detalle && (
+                        <p
+                          style={{
+                            fontFamily: 'var(--v5-font-body)',
+                            fontSize: '14px',
+                            fontWeight: 300,
+                            lineHeight: 1.7,
+                            color: 'rgba(245,245,240,0.45)',
+                            marginTop: '12px',
+                            fontStyle: 'italic',
+                          }}
+                        >
+                          {c.detalle}
+                        </p>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── FAQ ── */}
+        <section className="v5-section" style={{ backgroundColor: '#F7F7F5', paddingTop: '120px', paddingBottom: '120px' }}>
+          <div className="v5-container">
+            <div
+              style={{
+                display: 'grid',
+                gridTemplateColumns: '1fr 2fr',
+                gap: '80px',
+                alignItems: 'start',
+              }}
+            >
+              <div className="v5-reveal">
+                <h2
+                  style={{
+                    fontFamily: 'var(--v5-font-display)',
+                    fontSize: 'clamp(24px, 3vw, 36px)',
+                    fontWeight: 300,
+                    letterSpacing: '-0.02em',
+                    lineHeight: 1.15,
+                    color: '#111111',
+                  }}
+                >
+                  Preguntas frecuentes
+                </h2>
+              </div>
+              <div className="v5-reveal" style={{ transitionDelay: '80ms' }}>
+                <FAQAccordion />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ── CTA ── */}
+        <section className="v5-section" style={{ backgroundColor: '#080808', paddingTop: '120px', paddingBottom: '120px', textAlign: 'center' }}>
+          <div className="v5-container">
+            <div
+              className="v5-reveal"
+              style={{
+                maxWidth: '640px',
+                margin: '0 auto',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                gap: '32px',
+                padding: '80px 40px',
+                background: 'rgba(255,255,255,0.04)',
+                border: '1px solid rgba(255,255,255,0.08)',
+                borderRadius: '16px',
+              }}
+            >
+              <h2
+                style={{
+                  fontFamily: 'var(--v5-font-display)',
+                  fontSize: 'clamp(24px, 3.5vw, 44px)',
+                  fontWeight: 300,
+                  letterSpacing: '-0.02em',
+                  lineHeight: 1.1,
+                  color: '#F5F5F0',
+                }}
+              >
+                ¿Tu pipeline refleja la realidad de tus ventas?
               </h2>
               <p
                 style={{
                   fontFamily: 'var(--v5-font-body)',
-                  fontSize: '17px',
+                  fontSize: '16px',
                   fontWeight: 300,
                   lineHeight: 1.8,
                   color: 'rgba(245,245,240,0.45)',
@@ -352,6 +505,7 @@ export default function HubSpotPage() {
                   fontSize: '15px',
                   fontWeight: 400,
                   textDecoration: 'none',
+                  borderRadius: '2px',
                   transition: 'background 200ms ease',
                 }}
                 onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = '#FFFFFF'; }}

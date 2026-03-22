@@ -83,46 +83,41 @@ interface ToolCardProps {
   logoLabel?: string;
   name: string;
   description: string;
+  href?: string;
 }
 
-function ToolCard({ logoSrc, logoBg, logoLabel, name, description }: ToolCardProps) {
-  return (
-    <div
-      style={{
-        background: '#FFFFFF',
-        border: '1px solid #E0E0E0',
-        borderRadius: '12px',
-        padding: '28px',
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '12px',
-      }}
-    >
-      {logoSrc ? (
-        <img
-          src={logoSrc}
-          alt={name}
-          style={{ height: '32px', width: 'auto', maxWidth: '120px', objectFit: 'contain' }}
-        />
-      ) : (
-        <div
-          style={{
-            width: '44px',
-            height: '32px',
-            background: logoBg,
-            borderRadius: '8px',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            color: '#FFFFFF',
-            fontFamily: 'var(--v5-font-mono)',
-            fontSize: '11px',
-            fontWeight: 700,
-          }}
-        >
-          {logoLabel}
-        </div>
-      )}
+function ToolCard({ logoSrc, logoBg, logoLabel, name, description, href }: ToolCardProps) {
+  const inner = (
+    <>
+      {/* Logo container — fixed height so all logos align visually */}
+      <div style={{ height: '48px', display: 'flex', alignItems: 'center' }}>
+        {logoSrc ? (
+          <img
+            src={logoSrc}
+            alt={name}
+            style={{ height: '32px', width: 'auto', maxWidth: '120px', objectFit: 'contain', display: 'block' }}
+          />
+        ) : (
+          <div
+            style={{
+              minWidth: '60px',
+              height: '36px',
+              background: logoBg,
+              borderRadius: '8px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              color: '#FFFFFF',
+              fontFamily: 'var(--v5-font-mono)',
+              fontSize: '11px',
+              fontWeight: 700,
+              padding: '0 12px',
+            }}
+          >
+            {logoLabel}
+          </div>
+        )}
+      </div>
       <span
         style={{
           fontFamily: 'var(--v5-font-display)',
@@ -144,8 +139,57 @@ function ToolCard({ logoSrc, logoBg, logoLabel, name, description }: ToolCardPro
       >
         {description}
       </span>
-    </div>
+      {href && (
+        <span
+          style={{
+            fontFamily: 'var(--v5-font-mono)',
+            fontSize: '11px',
+            fontWeight: 500,
+            color: '#999999',
+            letterSpacing: '0.05em',
+            marginTop: '4px',
+          }}
+        >
+          Ver más →
+        </span>
+      )}
+    </>
   );
+
+  const cardStyle: React.CSSProperties = {
+    background: '#FFFFFF',
+    border: '1px solid #E0E0E0',
+    borderRadius: '12px',
+    padding: '40px',
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '12px',
+    textDecoration: 'none',
+    transition: 'border-color 200ms ease, box-shadow 200ms ease',
+  };
+
+  if (href) {
+    return (
+      <Link
+        href={href}
+        style={cardStyle}
+        onMouseEnter={(e) => {
+          const el = e.currentTarget as HTMLElement;
+          el.style.borderColor = '#111111';
+          el.style.boxShadow = '0 4px 16px rgba(0,0,0,0.06)';
+        }}
+        onMouseLeave={(e) => {
+          const el = e.currentTarget as HTMLElement;
+          el.style.borderColor = '#E0E0E0';
+          el.style.boxShadow = 'none';
+        }}
+      >
+        {inner}
+      </Link>
+    );
+  }
+
+  return <div style={cardStyle}>{inner}</div>;
 }
 
 /* ─── Page ──────────────────────────────────────────────────────────────────── */
@@ -480,7 +524,7 @@ export default function SystemsLabPage() {
             </p>
 
             {/* Grupo 1 — Entornos de trabajo */}
-            <div className="v5-reveal mb-14">
+            <div className="v5-reveal" style={{ marginBottom: '64px' }}>
               <span
                 style={{
                   fontFamily: 'var(--v5-font-mono)',
@@ -499,22 +543,22 @@ export default function SystemsLabPage() {
               </span>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                 <ToolCard
-                  logoBg="#0078D4"
-                  logoLabel="M365"
+                  logoSrc="/images/logos/microsoft-365.svg"
                   name="Microsoft 365 + Copilot"
                   description="El ecosistema completo de productividad con IA integrada."
+                  href="/systems-lab/copilot"
                 />
                 <ToolCard
-                  logoBg="#4285F4"
-                  logoLabel="GW"
+                  logoSrc="/images/logos/google-workspace.svg"
                   name="Google Workspace + Gemini"
                   description="Gmail, Drive, Calendar y Sheets con IA nativa conectada."
+                  href="/systems-lab/google-workspace"
                 />
               </div>
             </div>
 
             {/* Grupo 2 — Operaciones y gestión */}
-            <div className="v5-reveal mb-14">
+            <div className="v5-reveal" style={{ marginBottom: '64px' }}>
               <span
                 style={{
                   fontFamily: 'var(--v5-font-mono)',
@@ -536,24 +580,25 @@ export default function SystemsLabPage() {
                   logoSrc="/images/logos/clickup.png"
                   name="ClickUp"
                   description="El sistema operativo de tu empresa. Proyectos, SOPs y operaciones ordenadas."
+                  href="/systems-lab/clickup"
                 />
                 <ToolCard
-                  logoBg="#000000"
-                  logoLabel="N"
+                  logoSrc="/images/logos/notion.png"
                   name="Notion"
                   description="Documentación, bases de conocimiento y wiki interna de la empresa."
+                  href="/systems-lab/notion"
                 />
                 <ToolCard
-                  logoBg="#714B67"
-                  logoLabel="OD"
+                  logoSrc="/images/logos/odoo.svg"
                   name="Odoo"
                   description="ERP modular para pymes. Ventas, inventario, contabilidad y más."
+                  href="/systems-lab/odoo"
                 />
               </div>
             </div>
 
             {/* Grupo 3 — Marketing y ventas */}
-            <div className="v5-reveal mb-14">
+            <div className="v5-reveal" style={{ marginBottom: '64px' }}>
               <span
                 style={{
                   fontFamily: 'var(--v5-font-mono)',
@@ -575,26 +620,31 @@ export default function SystemsLabPage() {
                   logoSrc="/images/logos/apollo.png"
                   name="Apollo"
                   description="Base de datos de 275M+ contactos. Encuentra a tu cliente ideal."
+                  href="/systems-lab/apollo"
                 />
                 <ToolCard
                   logoSrc="/images/logos/lemlist-logo.webp"
                   name="Lemlist"
                   description="Outreach de email automatizado y personalizado a escala."
+                  href="/systems-lab/lemlist"
                 />
                 <ToolCard
                   logoSrc="/images/logos/hubspot.png"
                   name="HubSpot"
                   description="CRM completo con automatización de marketing y pipeline de ventas."
+                  href="/systems-lab/hubspot"
                 />
                 <ToolCard
                   logoSrc="/images/Achieve Apex Logo.avif"
                   name="AchieveApex"
                   description="CRM omnicanal con IA. WhatsApp, email e Instagram en una bandeja."
+                  href="/systems-lab/achieveapex"
                 />
                 <ToolCard
                   logoSrc="/images/logos/closius.svg"
                   name="Closius"
                   description="IA que analiza tus llamadas de ventas y mejora a tu equipo comercial."
+                  href="/systems-lab/closius"
                 />
               </div>
             </div>
@@ -622,12 +672,13 @@ export default function SystemsLabPage() {
                   logoSrc="/images/logos/n8n.png"
                   name="n8n"
                   description="Flujos de trabajo automatizados. Conecta cualquier herramienta sin código."
+                  href="/systems-lab/automatizacion"
                 />
                 <ToolCard
-                  logoBg="#6D00CC"
-                  logoLabel="Make"
+                  logoSrc="/images/logos/make.svg"
                   name="Make"
                   description="Automatización visual para procesos complejos y multi-herramienta."
+                  href="/systems-lab/automatizacion"
                 />
               </div>
             </div>
@@ -766,40 +817,57 @@ export default function SystemsLabPage() {
               {[
                 {
                   stat: '4h → 15min',
+                  label: 'INFORME SEMANAL DE VENTAS · CLAUDE + N8N',
                   text: 'Tiempo en generar el informe semanal de ventas. Claude + n8n. Automático todos los lunes.',
                 },
                 {
                   stat: '+40',
+                  label: 'PROYECTOS SIMULTÁNEOS · CLICKUP + SOPS',
                   text: 'Proyectos gestionados simultáneamente en una agencia tras implementar ClickUp con SOPs documentados.',
                 },
                 {
                   stat: '×3',
+                  label: 'CONTENIDO GENERADO · CLAUDE COWORK',
                   text: 'Más contenido generado por el mismo equipo de marketing después de implementar Claude Cowork con Skills propios.',
                 },
               ].map((item, i) => (
                 <div
                   key={i}
-                  className="v5-reveal flex flex-col gap-4"
+                  className="v5-reveal"
                   style={{
                     background: 'rgba(255,255,255,0.04)',
-                    border: '1px solid rgba(255,255,255,0.08)',
+                    border: '1px solid rgba(255,255,255,0.1)',
                     borderRadius: '16px',
                     padding: '40px',
                     transitionDelay: `${i * 80}ms`,
                   }}
                 >
-                  <span
+                  <div
                     style={{
                       fontFamily: 'var(--v5-font-display)',
-                      fontSize: 'clamp(40px, 5vw, 64px)',
+                      fontSize: 'clamp(44px, 6vw, 72px)',
                       fontWeight: 300,
+                      color: '#FFFFFF',
                       letterSpacing: '-0.03em',
                       lineHeight: 1,
-                      color: '#FFFFFF',
+                      marginBottom: '16px',
                     }}
                   >
                     {item.stat}
-                  </span>
+                  </div>
+                  <p
+                    style={{
+                      fontFamily: 'var(--v5-font-mono)',
+                      fontSize: '10px',
+                      fontWeight: 500,
+                      letterSpacing: '0.15em',
+                      textTransform: 'uppercase',
+                      color: 'rgba(245,245,240,0.4)',
+                      marginBottom: '16px',
+                    }}
+                  >
+                    {item.label}
+                  </p>
                   <p
                     style={{
                       fontFamily: 'var(--v5-font-body)',
@@ -871,15 +939,19 @@ export default function SystemsLabPage() {
                     transitionDelay: `${i * 80}ms`,
                   }}
                 >
-                  <span
+                  {/* Large decorative number */}
+                  <div
                     style={{
-                      fontFamily: 'var(--v5-font-mono)',
-                      fontSize: '11px',
-                      color: 'rgba(255,255,255,0.25)',
+                      fontFamily: 'var(--v5-font-display)',
+                      fontSize: 'clamp(48px, 8vw, 80px)',
+                      fontWeight: 300,
+                      color: 'rgba(255,255,255,0.06)',
+                      marginBottom: '8px',
+                      lineHeight: 1,
                     }}
                   >
                     {step.num}
-                  </span>
+                  </div>
                   <h3
                     style={{
                       fontFamily: 'var(--v5-font-display)',

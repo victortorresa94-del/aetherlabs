@@ -1,46 +1,140 @@
 'use client';
 
+import { useState } from 'react';
 import Link from 'next/link';
+import { MessageSquare, Instagram, Facebook, Mail, Globe, Smartphone, Check, ChevronDown } from 'lucide-react';
 import Navbar from '@/components/v5/Navbar';
 import Footer from '@/components/v5/Footer';
 import ScrollAnimations from '@/components/v5/ScrollAnimations';
 
-const features = [
-  {
-    title: 'Omnicanalidad real',
-    desc: 'WhatsApp, email y web chat en una sola bandeja unificada. Nunca más perder un lead porque llegó por un canal que nadie estaba mirando.',
-  },
-  {
-    title: 'IA de respuesta automática',
-    desc: 'Responde preguntas frecuentes 24/7 con el tono de la empresa. La IA cualifica el lead, detecta su intención y lo mueve al paso correcto del funnel.',
-  },
-  {
-    title: 'Nurturing de leads',
-    desc: 'Pipeline automático que mueve los contactos en el funnel sin intervención manual. Seguimiento inteligente hasta que el lead está listo para hablar con ventas.',
-  },
-  {
-    title: 'Panel de control',
-    desc: 'Visibilidad total de todas las conversaciones, etapas del funnel y métricas de conversión por canal. Decisiones basadas en datos reales.',
-  },
+// ─── DATA ─────────────────────────────────────────────────────────────────────
+
+const canales = [
+  { icon: <Smartphone size={20} strokeWidth={1.5} />, label: 'WhatsApp Business' },
+  { icon: <Instagram size={20} strokeWidth={1.5} />, label: 'Instagram DMs' },
+  { icon: <Facebook size={20} strokeWidth={1.5} />, label: 'Facebook Messenger' },
+  { icon: <Mail size={20} strokeWidth={1.5} />, label: 'Email' },
+  { icon: <Globe size={20} strokeWidth={1.5} />, label: 'Chat web' },
+  { icon: <MessageSquare size={20} strokeWidth={1.5} />, label: 'SMS' },
 ];
 
-const casos = [
+const implementaciones = [
   {
     num: '01',
-    title: 'Empresa con 50+ mensajes diarios sin sistema',
-    desc: 'Una empresa de servicios recibía mensajes por WhatsApp, email e Instagram sin ningún sistema. Leads perdidos, respuestas tardías, equipo desbordado. AchieveApex unificó todo en una bandeja y automatizó la primera respuesta. Cero leads perdidos.',
+    title: 'Setup y conexión de canales',
+    desc: 'WhatsApp Business API, Instagram, Facebook Messenger, chat web y email. Todos conectados en una sola bandeja desde el primer día.',
   },
   {
     num: '02',
-    title: 'Respuesta automática que cualifica leads',
-    desc: 'Un negocio con alto volumen de consultas repetitivas. La IA de AchieveApex responde el 80% de los mensajes sin intervención humana, cualifica los leads con preguntas clave y pasa a ventas solo los que cumplen el perfil.',
+    title: 'Flujos de atención automática',
+    desc: 'Respuesta 24/7, cualificación de leads, asignación al agente correcto y seguimiento automático. Tu equipo solo interviene cuando la conversación lo requiere.',
   },
   {
     num: '03',
-    title: 'WhatsApp como canal principal de ventas',
-    desc: 'Una empresa con toda su captación por WhatsApp pero sin CRM. Implementamos AchieveApex como CRM conversacional nativo. Ahora cada conversación de WhatsApp es una oportunidad trazable con historial completo.',
+    title: 'Integración con CRM existente',
+    desc: 'Si ya usas HubSpot o ClickUp, AchieveApex se integra con ellos. No empezamos de cero: conectamos lo que ya tienes.',
+  },
+  {
+    num: '04',
+    title: 'IA conversacional personalizada',
+    desc: 'Entrenamos la IA con la información de tu empresa, tu tono de marca y las objeciones frecuentes. Escalado a humano cuando la conversación lo necesita.',
   },
 ];
+
+const paraQuienEs = [
+  'Recibes más de 20 mensajes diarios de clientes potenciales y no tienes sistema para gestionarlos.',
+  'Tu equipo atiende por WhatsApp personal y los leads se pierden entre conversaciones.',
+  'Hay leads que contactan por varios canales distintos y nadie los une en un solo perfil.',
+  'Tardas más de 4 horas en dar una primera respuesta y sabes que eso te cuesta ventas.',
+];
+
+const faqs = [
+  {
+    q: '¿Cuánto tiempo tarda la implementación?',
+    a: 'Entre 2 y 4 semanas según los canales a conectar y la complejidad de los flujos. La primera conexión operativa suele estar lista en la primera semana.',
+  },
+  {
+    q: '¿Necesito tener ya WhatsApp Business API?',
+    a: 'No. Gestionamos todo el proceso de alta y verificación de la API de Meta. Solo necesitas tener un número de teléfono dedicado para el negocio.',
+  },
+  {
+    q: '¿Qué pasa con las conversaciones que ya tengo en WhatsApp?',
+    a: 'Los historiales anteriores no se migran automáticamente, pero desde el día de activación todas las conversaciones nuevas quedan registradas y trazadas en AchieveApex.',
+  },
+];
+
+// ─── FAQ ACCORDION ─────────────────────────────────────────────────────────────
+
+function FAQAccordion() {
+  const [open, setOpen] = useState<number | null>(null);
+  return (
+    <div>
+      {faqs.map((faq, i) => (
+        <div key={i} style={{ borderTop: '1px solid #E0E0E0' }}>
+          <button
+            onClick={() => setOpen(open === i ? null : i)}
+            style={{
+              width: '100%',
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              paddingTop: '28px',
+              paddingBottom: '28px',
+              background: 'none',
+              border: 'none',
+              cursor: 'pointer',
+              textAlign: 'left',
+              gap: '16px',
+            }}
+          >
+            <span
+              style={{
+                fontFamily: 'var(--v5-font-display)',
+                fontSize: '18px',
+                fontWeight: 400,
+                letterSpacing: '-0.01em',
+                color: '#111111',
+                lineHeight: 1.3,
+              }}
+            >
+              {faq.q}
+            </span>
+            <span
+              style={{
+                fontFamily: 'var(--v5-font-mono)',
+                fontSize: '20px',
+                fontWeight: 300,
+                color: '#AAAAAA',
+                flexShrink: 0,
+                transition: 'transform 200ms ease',
+                transform: open === i ? 'rotate(45deg)' : 'none',
+              }}
+            >
+              +
+            </span>
+          </button>
+          {open === i && (
+            <p
+              style={{
+                fontFamily: 'var(--v5-font-body)',
+                fontSize: '16px',
+                fontWeight: 300,
+                lineHeight: 1.8,
+                color: '#666666',
+                paddingBottom: '24px',
+              }}
+            >
+              {faq.a}
+            </p>
+          )}
+        </div>
+      ))}
+      <div style={{ borderTop: '1px solid #E0E0E0' }} />
+    </div>
+  );
+}
+
+// ─── PAGE ──────────────────────────────────────────────────────────────────────
 
 export default function AchieveApexPage() {
   return (
@@ -49,40 +143,24 @@ export default function AchieveApexPage() {
       <Navbar />
       <main>
 
-        {/* Hero */}
-        <section
-          style={{ backgroundColor: '#080808', paddingTop: '160px', paddingBottom: '120px' }}
-        >
+        {/* ── HERO ── */}
+        <section className="v5-section" style={{ backgroundColor: '#080808', paddingTop: '160px', paddingBottom: '120px' }}>
           <div className="v5-container">
-            <div className="v5-reveal" style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '24px', flexWrap: 'wrap' }}>
-              <span
-                style={{
-                  fontFamily: 'var(--v5-font-mono)',
-                  fontSize: '11px',
-                  fontWeight: 500,
-                  letterSpacing: '0.15em',
-                  textTransform: 'uppercase',
-                  color: '#999999',
-                }}
-              >
-                💬 AchieveApex
-              </span>
-              <span
-                style={{
-                  padding: '3px 12px',
-                  borderRadius: '100px',
-                  border: '1px solid rgba(255,255,255,0.15)',
-                  fontFamily: 'var(--v5-font-mono)',
-                  fontSize: '9px',
-                  fontWeight: 600,
-                  letterSpacing: '0.1em',
-                  color: 'rgba(245,245,240,0.5)',
-                  textTransform: 'uppercase',
-                }}
-              >
-                Partner Oficial Aether Labs
-              </span>
-            </div>
+            <span
+              className="v5-reveal"
+              style={{
+                display: 'block',
+                marginBottom: '24px',
+                fontFamily: 'var(--v5-font-mono)',
+                fontSize: '11px',
+                fontWeight: 500,
+                letterSpacing: '0.15em',
+                textTransform: 'uppercase',
+                color: '#999999',
+              }}
+            >
+              SYSTEMS LAB · CRM CONVERSACIONAL · PARTNER
+            </span>
             <h1
               className="v5-reveal"
               style={{
@@ -92,13 +170,14 @@ export default function AchieveApexPage() {
                 letterSpacing: '-0.03em',
                 lineHeight: 0.95,
                 color: '#F5F5F0',
-                maxWidth: '800px',
+                maxWidth: '820px',
                 marginBottom: '28px',
                 transitionDelay: '80ms',
               }}
             >
-              CRM conversacional omnicanal.<br />
-              <span style={{ color: 'rgba(245,245,240,0.38)' }}>WhatsApp, email y web en un sistema unificado.</span>
+              Tus clientes escriben por<br />
+              WhatsApp, Instagram y email.<br />
+              <span style={{ color: 'rgba(245,245,240,0.38)' }}>Ninguno debe perderse.</span>
             </h1>
             <p
               className="v5-reveal"
@@ -108,13 +187,12 @@ export default function AchieveApexPage() {
                 fontWeight: 300,
                 lineHeight: 1.8,
                 color: 'rgba(245,245,240,0.45)',
-                maxWidth: '520px',
+                maxWidth: '540px',
                 marginBottom: '40px',
                 transitionDelay: '160ms',
               }}
             >
-              AchieveApex capta leads por todos los canales, los cualifica con IA y los mueve
-              en el funnel automáticamente. Sin perder ninguno.
+              AchieveApex centraliza todas las conversaciones con clientes en una sola bandeja. Con IA que responde, clasifica y hace seguimiento. Tu equipo solo interviene cuando la conversación lo requiere.
             </p>
             <div className="v5-reveal" style={{ transitionDelay: '240ms' }}>
               <Link
@@ -135,32 +213,16 @@ export default function AchieveApexPage() {
                 onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = '#FFFFFF'; }}
                 onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = '#F5F5F0'; }}
               >
-                Implementar AchieveApex con Aether →
+                Ver cómo funciona →
               </Link>
             </div>
           </div>
         </section>
 
-        {/* Qué implementamos */}
-        <section
-          style={{ backgroundColor: '#FFFFFF', paddingTop: '120px', paddingBottom: '120px' }}
-        >
+        {/* ── SECCIÓN 2 — QUÉ ES ACHIEVEAPEX ── */}
+        <section className="v5-section" style={{ backgroundColor: '#FFFFFF', paddingTop: '120px', paddingBottom: '120px' }}>
           <div className="v5-container">
-            <div className="v5-reveal" style={{ marginBottom: '64px' }}>
-              <span
-                style={{
-                  display: 'block',
-                  marginBottom: '20px',
-                  fontFamily: 'var(--v5-font-mono)',
-                  fontSize: '11px',
-                  fontWeight: 500,
-                  letterSpacing: '0.15em',
-                  textTransform: 'uppercase',
-                  color: '#999999',
-                }}
-              >
-                Qué implementamos
-              </span>
+            <div className="v5-reveal" style={{ maxWidth: '720px', marginBottom: '64px' }}>
               <h2
                 style={{
                   fontFamily: 'var(--v5-font-display)',
@@ -169,9 +231,99 @@ export default function AchieveApexPage() {
                   letterSpacing: '-0.02em',
                   lineHeight: 1.1,
                   color: '#111111',
+                  marginBottom: '20px',
                 }}
               >
-                Un CRM que habla con tus clientes por ti
+                Todos los canales. Una sola bandeja. IA que clasifica y responde.
+              </h2>
+              <p
+                style={{
+                  fontFamily: 'var(--v5-font-body)',
+                  fontSize: '17px',
+                  fontWeight: 300,
+                  lineHeight: 1.8,
+                  color: '#555555',
+                }}
+              >
+                AchieveApex es un CRM conversacional de nueva generación. No es HubSpot. No es un chatbot. Es el sistema que une todos los canales por donde entra un cliente potencial y los gestiona con IA.
+              </p>
+            </div>
+
+            <div
+              style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))',
+                gap: '16px',
+                marginBottom: '48px',
+              }}
+            >
+              {canales.map((c, i) => (
+                <div
+                  key={i}
+                  className="v5-reveal"
+                  style={{
+                    background: '#FFFFFF',
+                    border: '1px solid #E0E0E0',
+                    borderTop: '2px solid #111111',
+                    borderRadius: '16px',
+                    padding: '24px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '12px',
+                    transitionDelay: `${i * 60}ms`,
+                  }}
+                >
+                  <span style={{ color: '#111111' }}>{c.icon}</span>
+                  <span
+                    style={{
+                      fontFamily: 'var(--v5-font-body)',
+                      fontSize: '15px',
+                      fontWeight: 400,
+                      color: '#111111',
+                    }}
+                  >
+                    {c.label}
+                  </span>
+                </div>
+              ))}
+            </div>
+
+            <div className="v5-reveal" style={{ maxWidth: '680px' }}>
+              <p
+                style={{
+                  fontFamily: 'var(--v5-font-body)',
+                  fontSize: '16px',
+                  fontWeight: 300,
+                  lineHeight: 1.8,
+                  color: '#666666',
+                  padding: '24px 32px',
+                  background: '#F7F7F5',
+                  borderRadius: '12px',
+                  borderLeft: '3px solid #111111',
+                }}
+              >
+                Cada conversación entra en la bandeja unificada, se clasifica automáticamente por intención (lead nuevo / cliente / soporte / no interesado) y se asigna al agente correcto.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* ── SECCIÓN 3 — QUÉ IMPLEMENTAMOS ── */}
+        <section className="v5-section" style={{ backgroundColor: '#F7F7F5', paddingTop: '120px', paddingBottom: '120px' }}>
+          <div className="v5-container">
+            <div className="v5-reveal" style={{ marginBottom: '64px' }}>
+              <h2
+                style={{
+                  fontFamily: 'var(--v5-font-display)',
+                  fontSize: 'clamp(28px, 4vw, 48px)',
+                  fontWeight: 300,
+                  letterSpacing: '-0.02em',
+                  lineHeight: 1.1,
+                  color: '#111111',
+                  maxWidth: '640px',
+                }}
+              >
+                De tener conversaciones dispersas a tener un sistema que trabaja solo.
               </h2>
             </div>
             <div
@@ -181,29 +333,43 @@ export default function AchieveApexPage() {
                 gap: '24px',
               }}
             >
-              {features.map((f, i) => (
+              {implementaciones.map((item, i) => (
                 <div
                   key={i}
                   className="v5-reveal"
                   style={{
-                    background: '#F8F8F8',
-                    border: '1px solid #EBEBEB',
+                    background: '#FFFFFF',
+                    border: '1px solid #E0E0E0',
+                    borderTop: '2px solid #111111',
                     borderRadius: '16px',
-                    padding: '32px',
+                    padding: '40px',
                     transitionDelay: `${i * 80}ms`,
                   }}
                 >
+                  <span
+                    style={{
+                      display: 'block',
+                      fontFamily: 'var(--v5-font-mono)',
+                      fontSize: '11px',
+                      fontWeight: 600,
+                      letterSpacing: '0.12em',
+                      color: '#AAAAAA',
+                      marginBottom: '16px',
+                    }}
+                  >
+                    {item.num}
+                  </span>
                   <h3
                     style={{
                       fontFamily: 'var(--v5-font-display)',
-                      fontSize: '18px',
+                      fontSize: '20px',
                       fontWeight: 400,
                       letterSpacing: '-0.02em',
                       color: '#111111',
                       marginBottom: '12px',
                     }}
                   >
-                    {f.title}
+                    {item.title}
                   </h3>
                   <p
                     style={{
@@ -214,7 +380,7 @@ export default function AchieveApexPage() {
                       color: '#666666',
                     }}
                   >
-                    {f.desc}
+                    {item.desc}
                   </p>
                 </div>
               ))}
@@ -222,32 +388,62 @@ export default function AchieveApexPage() {
           </div>
         </section>
 
-        {/* Casos de uso reales */}
-        <section
-          style={{
-            backgroundColor: '#F8F8F8',
-            borderTop: '1px solid #EBEBEB',
-            borderBottom: '1px solid #EBEBEB',
-            paddingTop: '120px',
-            paddingBottom: '120px',
-          }}
-        >
+        {/* ── SECCIÓN 4 — PARA QUIÉN ES ── */}
+        <section className="v5-section" style={{ backgroundColor: '#080808', paddingTop: '120px', paddingBottom: '120px' }}>
           <div className="v5-container">
-            <div className="v5-reveal" style={{ marginBottom: '64px' }}>
-              <span
+            <div className="v5-reveal" style={{ marginBottom: '56px' }}>
+              <h2
                 style={{
-                  display: 'block',
-                  marginBottom: '20px',
-                  fontFamily: 'var(--v5-font-mono)',
-                  fontSize: '11px',
-                  fontWeight: 500,
-                  letterSpacing: '0.15em',
-                  textTransform: 'uppercase',
-                  color: '#999999',
+                  fontFamily: 'var(--v5-font-display)',
+                  fontSize: 'clamp(28px, 4vw, 48px)',
+                  fontWeight: 300,
+                  letterSpacing: '-0.02em',
+                  lineHeight: 1.1,
+                  color: '#F5F5F0',
+                  maxWidth: '680px',
                 }}
               >
-                Casos de uso reales
-              </span>
+                AchieveApex tiene sentido si te identificas con alguno de estos casos.
+              </h2>
+            </div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', maxWidth: '720px' }}>
+              {paraQuienEs.map((item, i) => (
+                <div
+                  key={i}
+                  className="v5-reveal"
+                  style={{
+                    background: 'rgba(255,255,255,0.04)',
+                    border: '1px solid rgba(255,255,255,0.08)',
+                    borderRadius: '16px',
+                    padding: '28px 32px',
+                    display: 'flex',
+                    gap: '16px',
+                    alignItems: 'flex-start',
+                    transitionDelay: `${i * 80}ms`,
+                  }}
+                >
+                  <Check size={18} strokeWidth={2} style={{ color: '#F5F5F0', marginTop: '3px', flexShrink: 0 }} />
+                  <p
+                    style={{
+                      fontFamily: 'var(--v5-font-body)',
+                      fontSize: '16px',
+                      fontWeight: 300,
+                      lineHeight: 1.7,
+                      color: 'rgba(245,245,240,0.7)',
+                    }}
+                  >
+                    {item}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── SECCIÓN 5 — FAQ ── */}
+        <section className="v5-section" style={{ backgroundColor: '#F7F7F5', paddingTop: '120px', paddingBottom: '120px' }}>
+          <div className="v5-container">
+            <div className="v5-reveal" style={{ marginBottom: '56px' }}>
               <h2
                 style={{
                   fontFamily: 'var(--v5-font-display)',
@@ -258,73 +454,17 @@ export default function AchieveApexPage() {
                   color: '#111111',
                 }}
               >
-                AchieveApex en negocios con volumen real
+                Preguntas frecuentes
               </h2>
             </div>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-              {casos.map((c, i) => (
-                <div
-                  key={i}
-                  className="v5-reveal"
-                  style={{
-                    background: '#FFFFFF',
-                    border: '1px solid #EBEBEB',
-                    borderTop: '2px solid #111111',
-                    borderRadius: '16px',
-                    padding: '32px 40px',
-                    display: 'flex',
-                    gap: '32px',
-                    alignItems: 'flex-start',
-                    transitionDelay: `${i * 80}ms`,
-                  }}
-                >
-                  <span
-                    style={{
-                      fontFamily: 'var(--v5-font-mono)',
-                      fontSize: '13px',
-                      fontWeight: 700,
-                      color: '#AAAAAA',
-                      minWidth: '28px',
-                      flexShrink: 0,
-                    }}
-                  >
-                    {c.num}
-                  </span>
-                  <div>
-                    <h3
-                      style={{
-                        fontFamily: 'var(--v5-font-display)',
-                        fontSize: '20px',
-                        fontWeight: 400,
-                        letterSpacing: '-0.02em',
-                        color: '#111111',
-                        marginBottom: '10px',
-                      }}
-                    >
-                      {c.title}
-                    </h3>
-                    <p
-                      style={{
-                        fontFamily: 'var(--v5-font-body)',
-                        fontSize: '15px',
-                        fontWeight: 300,
-                        lineHeight: 1.8,
-                        color: '#666666',
-                      }}
-                    >
-                      {c.desc}
-                    </p>
-                  </div>
-                </div>
-              ))}
+            <div style={{ maxWidth: '720px' }}>
+              <FAQAccordion />
             </div>
           </div>
         </section>
 
-        {/* CTA */}
-        <section
-          style={{ backgroundColor: '#080808', paddingTop: '120px', paddingBottom: '120px', textAlign: 'center' }}
-        >
+        {/* ── SECCIÓN 6 — CTA ── */}
+        <section className="v5-section" style={{ backgroundColor: '#080808', paddingTop: '120px', paddingBottom: '120px', textAlign: 'center' }}>
           <div className="v5-container">
             <div
               className="v5-reveal"
@@ -340,7 +480,7 @@ export default function AchieveApexPage() {
                   color: '#F5F5F0',
                 }}
               >
-                ¿Cuántos leads estás perdiendo por falta de seguimiento?
+                ¿Cuántos leads se pierden ahora mismo por no contestar a tiempo?
               </h2>
               <p
                 style={{
