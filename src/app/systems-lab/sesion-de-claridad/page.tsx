@@ -1,5 +1,6 @@
 'use client';
 import Link from 'next/link';
+import Script from 'next/script';
 import Navbar from '@/components/v5/Navbar';
 import Footer from '@/components/v5/Footer';
 import ScrollAnimations from '@/components/v5/ScrollAnimations';
@@ -132,7 +133,7 @@ export default function SesionDeClaridadPage() {
               </span>
 
               <Link
-                href="/contacto"
+                href="#reservar"
                 style={{
                   display: 'inline-flex',
                   alignItems: 'center',
@@ -422,7 +423,45 @@ export default function SesionDeClaridadPage() {
           </div>
         </section>
 
-        {/* Section 5 — CTA */}
+        {/* Section 5 — Calendly Embed */}
+        <section
+          id="reservar"
+          className="v5-section"
+          style={{ backgroundColor: '#F7F7F5' }}
+        >
+          <div className="v5-container">
+            <div className="v5-reveal flex flex-col items-center gap-4" style={{ marginBottom: '40px' }}>
+              <span style={{
+                fontFamily: 'var(--v5-font-mono)',
+                fontSize: '11px',
+                fontWeight: 500,
+                letterSpacing: '0.15em',
+                textTransform: 'uppercase',
+                color: '#999999',
+              }}>
+                Reserva tu sesión
+              </span>
+              <h2 style={{
+                fontFamily: 'var(--v5-font-display)',
+                fontSize: 'clamp(28px, 3.5vw, 48px)',
+                fontWeight: 300,
+                letterSpacing: '-0.02em',
+                lineHeight: 1.05,
+                color: '#111111',
+                textAlign: 'center',
+              }}>
+                Elige tu día y hora.
+              </h2>
+            </div>
+            <div
+              className="calendly-inline-widget"
+              data-url="https://calendly.com/aetherlabs1986/30min?hide_gdpr_banner=1&background_color=f7f7f5&text_color=111111&primary_color=111111"
+              style={{ minWidth: '320px', height: '700px', width: '100%' }}
+            />
+          </div>
+        </section>
+
+        {/* Section 6 — CTA */}
         <section
           className="v5-section"
           style={{ backgroundColor: '#080808', textAlign: 'center' }}
@@ -465,7 +504,7 @@ export default function SesionDeClaridadPage() {
               </p>
 
               <Link
-                href="/contacto"
+                href="#reservar"
                 style={{
                   display: 'inline-flex',
                   alignItems: 'center',
@@ -495,6 +534,10 @@ export default function SesionDeClaridadPage() {
 
       </main>
       <Footer />
+      <Script
+        src="https://assets.calendly.com/assets/external/widget.js"
+        strategy="lazyOnload"
+      />
 
       <style>{`
         @media (max-width: 900px) {
