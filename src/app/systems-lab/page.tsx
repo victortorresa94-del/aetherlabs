@@ -39,7 +39,7 @@ const tools = [
     href: '/systems-lab/automatizacion',
   },
   {
-    logoSrc: null,
+    logoSrc: '/images/logos/apollo.png',
     logoBg: '#3E54F5',
     logoLabel: 'AP',
     name: 'Apollo',
@@ -47,7 +47,7 @@ const tools = [
     href: '/systems-lab/apollo',
   },
   {
-    logoSrc: null,
+    logoSrc: '/images/logos/closius.svg',
     logoBg: '#4F46E5',
     logoLabel: 'CL',
     name: 'Closius',
