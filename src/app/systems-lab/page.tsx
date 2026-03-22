@@ -1,114 +1,164 @@
 'use client';
 
+import { useState } from 'react';
 import Link from 'next/link';
+import { Clock, Target, Users, ChevronDown, ChevronUp } from 'lucide-react';
 import Navbar from '@/components/v5/Navbar';
 import Footer from '@/components/v5/Footer';
 import ScrollAnimations from '@/components/v5/ScrollAnimations';
 
-const tools = [
+/* ─── FAQ data ─────────────────────────────────────────────────────────────── */
+const faqs = [
   {
-    logoSrc: '/images/logos/clickup.png',
-    logoBg: '#7B68EE',
-    logoLabel: 'CU',
-    name: 'ClickUp',
-    description: 'Gestión de proyectos, SOPs y operaciones. Tu empresa ordenada.',
-    href: '/systems-lab/clickup',
+    q: '¿Necesito saber de IA o tecnología para trabajar con vosotros?',
+    a: 'No. Nosotros somos los que sabemos de tecnología. Tú solo necesitas saber qué quieres conseguir. Nosotros te decimos qué herramientas tienen sentido y cómo implementarlas.',
   },
   {
-    logoSrc: '/images/logos/claude-ai-icon.webp',
-    logoBg: '#CF6330',
-    logoLabel: 'AI',
-    name: 'Claude',
-    description: 'IA conversacional integrada en tus procesos reales.',
-    href: '/systems-lab/claude',
+    q: '¿Cuánto tiempo tarda una implementación típica?',
+    a: 'Depende del alcance. Implementar ClickUp para un equipo de 10: 2-3 semanas. Automatizar un flujo de ventas completo: 3-4 semanas. Conectar Claude con tu stack actual: 1-2 semanas. Todo empieza con la Sesión de Claridad donde definimos el alcance y los plazos.',
   },
   {
-    logoSrc: '/images/logos/hubspot.png',
-    logoBg: '#FF7A59',
-    logoLabel: 'HS',
-    name: 'HubSpot',
-    description: 'CRM y automatización de marketing en un solo lugar.',
-    href: '/systems-lab/hubspot',
+    q: '¿Trabajáis solo con empresas de Barcelona?',
+    a: 'Trabajamos con empresas de toda España, principalmente en remoto. Si hay formaciones presenciales, las hacemos en Barcelona y área metropolitana.',
   },
   {
-    logoSrc: '/images/logos/n8n.png',
-    logoBg: '#EA4B48',
-    logoLabel: 'n8n',
-    name: 'Automatización',
-    description: 'Flujos que trabajan solos. Sin intervención manual.',
-    href: '/systems-lab/automatizacion',
+    q: '¿Qué pasa si ya tenemos algunas herramientas implementadas?',
+    a: 'Perfecto, es el punto de partida más común. Auditamos lo que ya tenéis, identificamos qué se puede optimizar y qué falta, y construimos encima de lo que ya funciona.',
   },
   {
-    logoSrc: '/images/logos/apollo.png',
-    logoBg: '#3E54F5',
-    logoLabel: 'AP',
-    name: 'Apollo',
-    description: 'Prospección de ventas e inteligencia comercial.',
-    href: '/systems-lab/apollo',
-  },
-  {
-    logoSrc: '/images/logos/closius.svg',
-    logoBg: '#4F46E5',
-    logoLabel: 'CL',
-    name: 'Closius',
-    description: 'IA que analiza tus llamadas de ventas y mejora tu equipo.',
-    href: '/systems-lab/closius',
-  },
-  {
-    logoSrc: '/images/Achieve Apex Logo.avif',
-    logoBg: '#111111',
-    logoLabel: 'AA',
-    name: 'AchieveApex',
-    description: 'CRM omnicanal con IA para captar y nutrir leads.',
-    href: '/systems-lab/achieveapex',
-  },
-  {
-    logoSrc: null,
-    logoBg: '#0078D4',
-    logoLabel: 'Co',
-    name: 'Microsoft Copilot',
-    description: 'IA dentro de Word, Excel, Teams y Outlook.',
-    href: '/systems-lab/copilot',
+    q: '¿Las herramientas que implementáis son las únicas que conocéis?',
+    a: 'Son las que dominamos y con las que garantizamos resultados. Si usas otra herramienta fuera de nuestro stack habitual, cuéntanoslo en la Sesión de Claridad y valoramos si tiene sentido trabajar con ella.',
   },
 ];
 
-const capabilities = [
-  'Implementación de herramientas IA en tus flujos de trabajo',
-  'Automatización de procesos repetitivos y tareas manuales',
-  'CRM, ventas y marketing conectados y funcionando solos',
-  'Documentación de procesos y creación de SOPs',
-  'Formación del equipo para adoptar las herramientas',
-];
+/* ─── Shared styles ─────────────────────────────────────────────────────────── */
+const monoLabel = {
+  fontFamily: 'var(--v5-font-mono)',
+  fontSize: '11px',
+  fontWeight: 500,
+  letterSpacing: '0.15em',
+  textTransform: 'uppercase' as const,
+  display: 'block',
+  marginBottom: '24px',
+};
 
-const steps = [
-  {
-    number: '01',
-    title: 'Sesión de Claridad',
-    description:
-      'Mapeamos tu empresa: cómo trabajas, dónde se pierde tiempo, qué procesos son delegables. Salimos con un diagnóstico claro.',
-  },
-  {
-    number: '02',
-    title: 'Plan de implementación',
-    description:
-      'Definimos qué herramientas tienen sentido real para tu negocio y en qué orden implementarlas para ver resultados rápido.',
-  },
-  {
-    number: '03',
-    title: 'Implementamos y formamos',
-    description:
-      'Configuramos las herramientas, creamos los flujos y formamos a tu equipo para que todo funcione sin depender de nosotros.',
-  },
-];
+const btnPrimary: React.CSSProperties = {
+  display: 'inline-flex',
+  alignItems: 'center',
+  gap: '8px',
+  padding: '16px 32px',
+  background: '#F5F5F0',
+  color: '#080808',
+  fontFamily: 'var(--v5-font-body)',
+  fontSize: '15px',
+  fontWeight: 400,
+  textDecoration: 'none',
+  borderRadius: '0px',
+  border: 'none',
+  cursor: 'pointer',
+  transition: 'background 200ms ease',
+};
 
+const btnSecondary: React.CSSProperties = {
+  display: 'inline-flex',
+  alignItems: 'center',
+  gap: '8px',
+  padding: '16px 32px',
+  background: 'transparent',
+  color: '#F5F5F0',
+  fontFamily: 'var(--v5-font-body)',
+  fontSize: '15px',
+  fontWeight: 400,
+  textDecoration: 'none',
+  borderRadius: '0px',
+  border: '1px solid rgba(255,255,255,0.15)',
+  cursor: 'pointer',
+  transition: 'border-color 200ms ease',
+};
+
+/* ─── Tool card ─────────────────────────────────────────────────────────────── */
+interface ToolCardProps {
+  logoSrc?: string;
+  logoBg?: string;
+  logoLabel?: string;
+  name: string;
+  description: string;
+}
+
+function ToolCard({ logoSrc, logoBg, logoLabel, name, description }: ToolCardProps) {
+  return (
+    <div
+      style={{
+        background: '#FFFFFF',
+        border: '1px solid #E0E0E0',
+        borderRadius: '12px',
+        padding: '28px',
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '12px',
+      }}
+    >
+      {logoSrc ? (
+        <img
+          src={logoSrc}
+          alt={name}
+          style={{ height: '32px', width: 'auto', maxWidth: '120px', objectFit: 'contain' }}
+        />
+      ) : (
+        <div
+          style={{
+            width: '44px',
+            height: '32px',
+            background: logoBg,
+            borderRadius: '8px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            color: '#FFFFFF',
+            fontFamily: 'var(--v5-font-mono)',
+            fontSize: '11px',
+            fontWeight: 700,
+          }}
+        >
+          {logoLabel}
+        </div>
+      )}
+      <span
+        style={{
+          fontFamily: 'var(--v5-font-display)',
+          fontSize: '16px',
+          fontWeight: 500,
+          color: '#111111',
+        }}
+      >
+        {name}
+      </span>
+      <span
+        style={{
+          fontFamily: 'var(--v5-font-body)',
+          fontSize: '13px',
+          fontWeight: 300,
+          color: '#777777',
+          lineHeight: 1.6,
+        }}
+      >
+        {description}
+      </span>
+    </div>
+  );
+}
+
+/* ─── Page ──────────────────────────────────────────────────────────────────── */
 export default function SystemsLabPage() {
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
+
   return (
     <div className="v5-page">
       <ScrollAnimations />
       <Navbar />
       <main>
 
-        {/* ── Section 1: Hero ── */}
+        {/* ── SECCIÓN 1 — HERO ─────────────────────────────────────────────── */}
         <section
           className="v5-section"
           style={{ backgroundColor: '#080808', paddingTop: '160px', paddingBottom: '100px' }}
@@ -116,16 +166,7 @@ export default function SystemsLabPage() {
           <div className="v5-container">
             <span
               className="v5-reveal"
-              style={{
-                display: 'block',
-                marginBottom: '24px',
-                fontFamily: 'var(--v5-font-mono)',
-                fontSize: '11px',
-                fontWeight: 500,
-                letterSpacing: '0.15em',
-                textTransform: 'uppercase',
-                color: 'rgba(255,255,255,0.35)',
-              }}
+              style={{ ...monoLabel, color: '#666666' }}
             >
               SYSTEMS LAB
             </span>
@@ -144,8 +185,9 @@ export default function SystemsLabPage() {
                 transitionDelay: '60ms',
               }}
             >
-              Automatiza cómo<br />
-              <span style={{ color: 'rgba(245,245,240,0.38)' }}>opera tu empresa.</span>
+              Las herramientas de IA<br />
+              que tu empresa debería<br />
+              estar usando. Ya funcionando.
             </h1>
 
             <p
@@ -156,146 +198,289 @@ export default function SystemsLabPage() {
                 fontWeight: 300,
                 lineHeight: 1.8,
                 color: 'rgba(245,245,240,0.45)',
-                maxWidth: '520px',
+                maxWidth: '560px',
                 marginBottom: '40px',
                 transitionDelay: '120ms',
               }}
             >
-              Implementamos las herramientas de IA y productividad que hacen que tu empresa funcione sin fricciones. Menos tiempo perdido. Más resultados.
+              Auditamos cómo trabajas, identificamos dónde se pierde tiempo y lo resolvemos con las herramientas correctas. Sin formación infinita. Sin proyectos de 6 meses. Con resultados desde el primer mes.
             </p>
 
-            <div className="v5-reveal" style={{ transitionDelay: '180ms' }}>
+            <div className="v5-reveal flex flex-wrap gap-4" style={{ transitionDelay: '180ms' }}>
               <Link
                 href="/systems-lab/sesion-de-claridad"
+                style={btnPrimary}
+                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = '#FFFFFF'; }}
+                onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = '#F5F5F0'; }}
+              >
+                Reservar Sesión de Claridad →
+              </Link>
+              <button
+                style={btnSecondary}
+                onClick={() => document.getElementById('herramientas')?.scrollIntoView({ behavior: 'smooth' })}
+                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.35)'; }}
+                onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.15)'; }}
+              >
+                Ver herramientas ↓
+              </button>
+            </div>
+          </div>
+        </section>
+
+        {/* ── SECCIÓN 2 — EL PROBLEMA ──────────────────────────────────────── */}
+        <section className="v5-section" style={{ backgroundColor: '#FFFFFF' }}>
+          <div className="v5-container">
+            <span
+              className="v5-reveal"
+              style={{ ...monoLabel, color: '#999999' }}
+            >
+              POR QUÉ AHORA
+            </span>
+
+            <h2
+              className="v5-reveal"
+              style={{
+                fontFamily: 'var(--v5-font-display)',
+                fontSize: 'clamp(28px, 4vw, 56px)',
+                fontWeight: 300,
+                letterSpacing: '-0.02em',
+                lineHeight: 1.05,
+                color: '#111111',
+                maxWidth: '680px',
+                marginBottom: '56px',
+                transitionDelay: '60ms',
+              }}
+            >
+              Tu empresa ya tiene herramientas. El problema es que no trabajan juntas.
+            </h2>
+
+            <div className="grid grid-cols-1 md:grid-cols-3">
+              {[
+                {
+                  num: '01',
+                  title: 'Todo está desconectado',
+                  text: 'CRM por un lado, proyectos por otro, emails por otro. Nadie sabe qué está pasando en tiempo real y siempre falta algo.',
+                },
+                {
+                  num: '02',
+                  title: 'Todo depende de una persona',
+                  text: 'Si para esa persona, para la empresa. Los procesos están en la cabeza de alguien, no en un sistema. Eso no escala.',
+                },
+                {
+                  num: '03',
+                  title: 'La IA no es una app más',
+                  text: 'ChatGPT está en el móvil de todos y nadie sabe cómo usarlo de verdad en su trabajo. Se queda en juguete, no en herramienta.',
+                },
+              ].map((item, i) => (
+                <div
+                  key={item.num}
+                  className="v5-reveal flex flex-col gap-4"
+                  style={{
+                    borderLeft: '1px solid #E0E0E0',
+                    padding: '32px',
+                    transitionDelay: `${i * 80}ms`,
+                  }}
+                >
+                  <span
+                    style={{
+                      fontFamily: 'var(--v5-font-mono)',
+                      fontSize: '11px',
+                      color: '#CCCCCC',
+                    }}
+                  >
+                    {item.num}
+                  </span>
+                  <h3
+                    style={{
+                      fontFamily: 'var(--v5-font-display)',
+                      fontSize: '20px',
+                      fontWeight: 400,
+                      letterSpacing: '-0.01em',
+                      color: '#111111',
+                      lineHeight: 1.2,
+                    }}
+                  >
+                    {item.title}
+                  </h3>
+                  <p
+                    style={{
+                      fontFamily: 'var(--v5-font-body)',
+                      fontSize: '15px',
+                      fontWeight: 300,
+                      lineHeight: 1.7,
+                      color: '#666666',
+                    }}
+                  >
+                    {item.text}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── SECCIÓN 3 — CLAUDE DESTACADO ─────────────────────────────────── */}
+        <section className="v5-section" style={{ backgroundColor: '#080808' }}>
+          <div className="v5-container">
+            <span
+              className="v5-reveal"
+              style={{ ...monoLabel, color: '#D97706' }}
+            >
+              &#9733; LA CORONA
+            </span>
+
+            <h2
+              className="v5-reveal"
+              style={{
+                fontFamily: 'var(--v5-font-display)',
+                fontSize: 'clamp(28px, 4vw, 56px)',
+                fontWeight: 300,
+                letterSpacing: '-0.02em',
+                lineHeight: 1.05,
+                color: '#F5F5F0',
+                maxWidth: '700px',
+                marginBottom: '24px',
+                transitionDelay: '60ms',
+              }}
+            >
+              Claude no es una herramienta más. Es la inteligencia que conecta todas las demás.
+            </h2>
+
+            <p
+              className="v5-reveal"
+              style={{
+                fontFamily: 'var(--v5-font-body)',
+                fontSize: '16px',
+                fontWeight: 300,
+                lineHeight: 1.8,
+                color: 'rgba(245,245,240,0.55)',
+                maxWidth: '640px',
+                marginBottom: '48px',
+                transitionDelay: '120ms',
+              }}
+            >
+              Copilot gestiona tu Microsoft 365. Gemini gestiona tu Google Workspace. ClickUp organiza tus proyectos. HubSpot gestiona tus leads. Claude los lee todos, razona sobre ellos y actúa. Es el cerebro por encima de todo tu stack.
+            </p>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-10">
+              {[
+                {
+                  name: 'Claude.ai',
+                  desc: 'Chat, análisis y proyectos con memoria permanente',
+                },
+                {
+                  name: 'Claude Cowork',
+                  desc: 'Agente de escritorio que trabaja con tus archivos locales',
+                },
+                {
+                  name: 'Claude via MCP',
+                  desc: 'Conectado a ClickUp, HubSpot, Gmail, Drive y más de 877 herramientas',
+                },
+              ].map((card, i) => (
+                <div
+                  key={card.name}
+                  className="v5-reveal flex flex-col gap-3"
+                  style={{
+                    background: 'rgba(255,255,255,0.04)',
+                    border: '1px solid rgba(255,255,255,0.08)',
+                    borderRadius: '12px',
+                    padding: '32px',
+                    transitionDelay: `${i * 80}ms`,
+                  }}
+                >
+                  <span
+                    style={{
+                      fontFamily: 'var(--v5-font-display)',
+                      fontSize: '18px',
+                      fontWeight: 400,
+                      color: '#F5F5F0',
+                      letterSpacing: '-0.01em',
+                    }}
+                  >
+                    {card.name}
+                  </span>
+                  <span
+                    style={{
+                      fontFamily: 'var(--v5-font-body)',
+                      fontSize: '14px',
+                      fontWeight: 300,
+                      color: 'rgba(245,245,240,0.5)',
+                      lineHeight: 1.6,
+                    }}
+                  >
+                    {card.desc}
+                  </span>
+                </div>
+              ))}
+            </div>
+
+            <div className="v5-reveal">
+              <Link
+                href="/systems-lab/claude"
                 style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '8px',
-                  padding: '16px 32px',
-                  background: '#F5F5F0',
-                  color: '#080808',
-                  borderRadius: '0px',
                   fontFamily: 'var(--v5-font-body)',
                   fontSize: '15px',
                   fontWeight: 400,
-                  textDecoration: 'none',
-                  transition: 'all 200ms ease',
-                }}
-                onMouseEnter={(e) => {
-                  (e.currentTarget as HTMLElement).style.background = '#FFFFFF';
-                }}
-                onMouseLeave={(e) => {
-                  (e.currentTarget as HTMLElement).style.background = '#F5F5F0';
+                  color: '#F5F5F0',
+                  textDecoration: 'underline',
+                  textUnderlineOffset: '4px',
                 }}
               >
-                Hablar con nosotros →
+                Ver cómo implementamos Claude →
               </Link>
             </div>
           </div>
         </section>
 
-        {/* ── Section 2: Qué es el Systems Lab ── */}
-        <section className="v5-section" style={{ backgroundColor: '#FFFFFF' }}>
+        {/* ── SECCIÓN 4 — STACK DE HERRAMIENTAS ───────────────────────────── */}
+        <section
+          id="herramientas"
+          className="v5-section"
+          style={{ backgroundColor: '#F7F7F5' }}
+        >
           <div className="v5-container">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
+            <span
+              className="v5-reveal"
+              style={{ ...monoLabel, color: '#999999' }}
+            >
+              NUESTRO STACK
+            </span>
 
-              {/* Left column */}
-              <div className="v5-reveal flex flex-col gap-6">
-                <h2
-                  style={{
-                    fontFamily: 'var(--v5-font-display)',
-                    fontSize: 'clamp(28px, 4vw, 56px)',
-                    fontWeight: 300,
-                    letterSpacing: '-0.02em',
-                    lineHeight: 1.05,
-                    color: '#111111',
-                  }}
-                >
-                  El lugar donde convertimos<br />
-                  <span style={{ color: 'rgba(17,17,17,0.35)' }}>cómo trabajas.</span>
-                </h2>
-                <p
-                  style={{
-                    fontFamily: 'var(--v5-font-body)',
-                    fontSize: '16px',
-                    fontWeight: 300,
-                    lineHeight: 1.8,
-                    color: '#666666',
-                  }}
-                >
-                  La mayoría de empresas trabajan con herramientas que no están conectadas entre sí, procesos que dependen de personas concretas y tareas que se repiten cada día sin que nadie las haya cuestionado.
-                </p>
-                <p
-                  style={{
-                    fontFamily: 'var(--v5-font-body)',
-                    fontSize: '16px',
-                    fontWeight: 300,
-                    lineHeight: 1.8,
-                    color: '#666666',
-                  }}
-                >
-                  En el Systems Lab auditamos cómo funciona tu empresa, identificamos los cuellos de botella y los resolvemos con las herramientas correctas. No implementamos tecnología por implementar: buscamos impacto real en tu operativa.
-                </p>
-              </div>
+            <h2
+              className="v5-reveal"
+              style={{
+                fontFamily: 'var(--v5-font-display)',
+                fontSize: 'clamp(28px, 4vw, 56px)',
+                fontWeight: 300,
+                letterSpacing: '-0.02em',
+                lineHeight: 1.05,
+                color: '#111111',
+                maxWidth: '560px',
+                marginBottom: '16px',
+                transitionDelay: '60ms',
+              }}
+            >
+              Las herramientas en las que somos expertos.
+            </h2>
 
-              {/* Right column — capabilities list */}
-              <div
-                className="v5-reveal flex flex-col gap-4"
-                style={{ transitionDelay: '80ms' }}
-              >
-                {capabilities.map((cap, i) => (
-                  <div
-                    key={i}
-                    className="flex items-start gap-4"
-                    style={{
-                      padding: '20px 24px',
-                      background: '#F8F8F8',
-                      border: '1px solid #EBEBEB',
-                      borderRadius: '12px',
-                    }}
-                  >
-                    {/* Checkmark SVG */}
-                    <svg
-                      width="18"
-                      height="18"
-                      viewBox="0 0 18 18"
-                      fill="none"
-                      style={{ flexShrink: 0, marginTop: '2px' }}
-                    >
-                      <circle cx="9" cy="9" r="9" fill="#111111" />
-                      <path
-                        d="M5.5 9L7.8 11.5L12.5 6.5"
-                        stroke="#FFFFFF"
-                        strokeWidth="1.4"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                    <span
-                      style={{
-                        fontFamily: 'var(--v5-font-body)',
-                        fontSize: '15px',
-                        fontWeight: 300,
-                        lineHeight: 1.6,
-                        color: '#333333',
-                      }}
-                    >
-                      {cap}
-                    </span>
-                  </div>
-                ))}
-              </div>
+            <p
+              className="v5-reveal"
+              style={{
+                fontFamily: 'var(--v5-font-body)',
+                fontSize: '16px',
+                fontWeight: 300,
+                color: '#777777',
+                lineHeight: 1.7,
+                maxWidth: '560px',
+                marginBottom: '64px',
+                transitionDelay: '80ms',
+              }}
+            >
+              ¿Usas otra herramienta? Trabajamos con cualquier stack. Lo que no cambia es nuestra forma de implementar.
+            </p>
 
-            </div>
-          </div>
-        </section>
-
-        {/* ── Section 3: Las herramientas ── */}
-        <section className="v5-section" style={{ backgroundColor: '#F8F8F8' }}>
-          <div className="v5-container">
-
-            {/* Header */}
-            <div className="v5-reveal flex flex-col gap-4 mb-14">
+            {/* Grupo 1 — Entornos de trabajo */}
+            <div className="v5-reveal mb-14">
               <span
                 style={{
                   fontFamily: 'var(--v5-font-mono)',
@@ -304,127 +489,32 @@ export default function SystemsLabPage() {
                   letterSpacing: '0.15em',
                   textTransform: 'uppercase',
                   color: '#999999',
+                  display: 'block',
+                  marginBottom: '24px',
+                  paddingBottom: '12px',
+                  borderBottom: '1px solid #E0E0E0',
                 }}
               >
-                Herramientas
+                Entornos de trabajo
               </span>
-              <h2
-                style={{
-                  fontFamily: 'var(--v5-font-display)',
-                  fontSize: 'clamp(28px, 4vw, 56px)',
-                  fontWeight: 300,
-                  letterSpacing: '-0.02em',
-                  lineHeight: 1.05,
-                  color: '#111111',
-                  maxWidth: '560px',
-                }}
-              >
-                Las herramientas<br />
-                <span style={{ color: 'rgba(17,17,17,0.35)' }}>que implementamos</span>
-              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                <ToolCard
+                  logoBg="#0078D4"
+                  logoLabel="M365"
+                  name="Microsoft 365 + Copilot"
+                  description="El ecosistema completo de productividad con IA integrada."
+                />
+                <ToolCard
+                  logoBg="#4285F4"
+                  logoLabel="GW"
+                  name="Google Workspace + Gemini"
+                  description="Gmail, Drive, Calendar y Sheets con IA nativa conectada."
+                />
+              </div>
             </div>
 
-            {/* Tools grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-              {tools.map((tool, i) => (
-                <div
-                  key={tool.name}
-                  className="v5-reveal flex flex-col gap-4"
-                  style={{
-                    padding: '32px',
-                    background: '#FFFFFF',
-                    border: '1px solid #EBEBEB',
-                    borderRadius: '16px',
-                    transitionDelay: `${i * 60}ms`,
-                  }}
-                >
-                  {/* Logo */}
-                  {tool.logoSrc ? (
-                    <img
-                      src={tool.logoSrc}
-                      alt={tool.name}
-                      style={{ height: '36px', width: 'auto', maxWidth: '120px', objectFit: 'contain' }}
-                    />
-                  ) : (
-                    <div style={{
-                      width: '44px',
-                      height: '36px',
-                      background: tool.logoBg,
-                      borderRadius: '8px',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      color: 'white',
-                      fontFamily: 'var(--v5-font-mono)',
-                      fontSize: '11px',
-                      fontWeight: 700,
-                      letterSpacing: '0.05em',
-                    }}>
-                      {tool.logoLabel}
-                    </div>
-                  )}
-
-                  <h3
-                    style={{
-                      fontFamily: 'var(--v5-font-display)',
-                      fontSize: '18px',
-                      fontWeight: 400,
-                      letterSpacing: '-0.02em',
-                      color: '#111111',
-                      lineHeight: 1.2,
-                    }}
-                  >
-                    {tool.name}
-                  </h3>
-
-                  <p
-                    style={{
-                      fontFamily: 'var(--v5-font-body)',
-                      fontSize: '14px',
-                      fontWeight: 300,
-                      lineHeight: 1.7,
-                      color: '#777777',
-                      flexGrow: 1,
-                    }}
-                  >
-                    {tool.description}
-                  </p>
-
-                  <Link
-                    href={tool.href}
-                    style={{
-                      fontFamily: 'var(--v5-font-body)',
-                      fontSize: '13px',
-                      fontWeight: 400,
-                      color: '#111111',
-                      textDecoration: 'none',
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      gap: '4px',
-                      transition: 'color 200ms ease',
-                    }}
-                    onMouseEnter={(e) => {
-                      (e.currentTarget as HTMLElement).style.color = '#555555';
-                    }}
-                    onMouseLeave={(e) => {
-                      (e.currentTarget as HTMLElement).style.color = '#111111';
-                    }}
-                  >
-                    Ver más →
-                  </Link>
-                </div>
-              ))}
-            </div>
-
-          </div>
-        </section>
-
-        {/* ── Section 4: Cómo funciona ── */}
-        <section className="v5-section" style={{ backgroundColor: '#080808' }}>
-          <div className="v5-container">
-
-            {/* Header */}
-            <div className="v5-reveal flex flex-col gap-4 mb-14">
+            {/* Grupo 2 — Operaciones y gestión */}
+            <div className="v5-reveal mb-14">
               <span
                 style={{
                   fontFamily: 'var(--v5-font-mono)',
@@ -432,73 +522,364 @@ export default function SystemsLabPage() {
                   fontWeight: 500,
                   letterSpacing: '0.15em',
                   textTransform: 'uppercase',
-                  color: 'rgba(255,255,255,0.35)',
+                  color: '#999999',
+                  display: 'block',
+                  marginBottom: '24px',
+                  paddingBottom: '12px',
+                  borderBottom: '1px solid #E0E0E0',
                 }}
               >
-                Proceso
+                Operaciones y gestión
               </span>
-              <h2
-                style={{
-                  fontFamily: 'var(--v5-font-display)',
-                  fontSize: 'clamp(28px, 4vw, 56px)',
-                  fontWeight: 300,
-                  letterSpacing: '-0.02em',
-                  lineHeight: 1.05,
-                  color: '#F5F5F0',
-                  maxWidth: '520px',
-                }}
-              >
-                Cómo lo hacemos<br />
-                <span style={{ color: 'rgba(245,245,240,0.28)' }}>paso a paso.</span>
-              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+                <ToolCard
+                  logoSrc="/images/logos/clickup.png"
+                  name="ClickUp"
+                  description="El sistema operativo de tu empresa. Proyectos, SOPs y operaciones ordenadas."
+                />
+                <ToolCard
+                  logoBg="#000000"
+                  logoLabel="N"
+                  name="Notion"
+                  description="Documentación, bases de conocimiento y wiki interna de la empresa."
+                />
+                <ToolCard
+                  logoBg="#714B67"
+                  logoLabel="OD"
+                  name="Odoo"
+                  description="ERP modular para pymes. Ventas, inventario, contabilidad y más."
+                />
+              </div>
             </div>
 
-            {/* Steps */}
-            <div className="grid grid-cols-1 md:grid-cols-3">
-              {steps.map((step, i) => (
+            {/* Grupo 3 — Marketing y ventas */}
+            <div className="v5-reveal mb-14">
+              <span
+                style={{
+                  fontFamily: 'var(--v5-font-mono)',
+                  fontSize: '11px',
+                  fontWeight: 500,
+                  letterSpacing: '0.15em',
+                  textTransform: 'uppercase',
+                  color: '#999999',
+                  display: 'block',
+                  marginBottom: '24px',
+                  paddingBottom: '12px',
+                  borderBottom: '1px solid #E0E0E0',
+                }}
+              >
+                Marketing y ventas
+              </span>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+                <ToolCard
+                  logoSrc="/images/logos/apollo.png"
+                  name="Apollo"
+                  description="Base de datos de 275M+ contactos. Encuentra a tu cliente ideal."
+                />
+                <ToolCard
+                  logoSrc="/images/logos/lemlist-logo.webp"
+                  name="Lemlist"
+                  description="Outreach de email automatizado y personalizado a escala."
+                />
+                <ToolCard
+                  logoSrc="/images/logos/hubspot.png"
+                  name="HubSpot"
+                  description="CRM completo con automatización de marketing y pipeline de ventas."
+                />
+                <ToolCard
+                  logoSrc="/images/Achieve Apex Logo.avif"
+                  name="AchieveApex"
+                  description="CRM omnicanal con IA. WhatsApp, email e Instagram en una bandeja."
+                />
+                <ToolCard
+                  logoSrc="/images/logos/closius.svg"
+                  name="Closius"
+                  description="IA que analiza tus llamadas de ventas y mejora a tu equipo comercial."
+                />
+              </div>
+            </div>
+
+            {/* Grupo 4 — Automatización */}
+            <div className="v5-reveal">
+              <span
+                style={{
+                  fontFamily: 'var(--v5-font-mono)',
+                  fontSize: '11px',
+                  fontWeight: 500,
+                  letterSpacing: '0.15em',
+                  textTransform: 'uppercase',
+                  color: '#999999',
+                  display: 'block',
+                  marginBottom: '24px',
+                  paddingBottom: '12px',
+                  borderBottom: '1px solid #E0E0E0',
+                }}
+              >
+                Automatización
+              </span>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                <ToolCard
+                  logoSrc="/images/logos/n8n.png"
+                  name="n8n"
+                  description="Flujos de trabajo automatizados. Conecta cualquier herramienta sin código."
+                />
+                <ToolCard
+                  logoBg="#6D00CC"
+                  logoLabel="Make"
+                  name="Make"
+                  description="Automatización visual para procesos complejos y multi-herramienta."
+                />
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        {/* ── SECCIÓN 5 — POR QUÉ NOSOTROS ────────────────────────────────── */}
+        <section className="v5-section" style={{ backgroundColor: '#FFFFFF' }}>
+          <div className="v5-container">
+            <span
+              className="v5-reveal"
+              style={{ ...monoLabel, color: '#999999' }}
+            >
+              POR QUÉ NOSOTROS
+            </span>
+
+            <h2
+              className="v5-reveal"
+              style={{
+                fontFamily: 'var(--v5-font-display)',
+                fontSize: 'clamp(28px, 4vw, 56px)',
+                fontWeight: 300,
+                letterSpacing: '-0.02em',
+                lineHeight: 1.05,
+                color: '#111111',
+                maxWidth: '480px',
+                marginBottom: '56px',
+                transitionDelay: '60ms',
+              }}
+            >
+              ¿Por qué no hacerlo solo?
+            </h2>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+              {[
+                {
+                  num: '01',
+                  icon: <Clock size={20} color="#111111" />,
+                  title: 'Ya cometimos los errores',
+                  text: 'El 70% de las implementaciones de IA fracasan en los primeros 3 meses por configuración incorrecta. Nosotros ya sabemos qué funciona y qué no. Tú te ahorras ese tiempo y ese dinero.',
+                },
+                {
+                  num: '02',
+                  icon: <Target size={20} color="#111111" />,
+                  title: 'Solo implementamos lo que tiene ROI',
+                  text: 'No te vendemos tecnología por vender. Si algo no tiene sentido para tu negocio concreto, te lo decimos. Empezamos siempre con un diagnóstico, no con una propuesta.',
+                },
+                {
+                  num: '03',
+                  icon: <Users size={20} color="#111111" />,
+                  title: 'Formamos al equipo de verdad',
+                  text: 'Una herramienta que nadie usa no sirve para nada. Cada implementación incluye formación hasta que el equipo la usa de forma autónoma en su trabajo diario.',
+                },
+              ].map((item, i) => (
                 <div
-                  key={step.number}
-                  className="v5-reveal flex flex-col gap-6 relative"
+                  key={item.num}
+                  className="v5-reveal flex flex-col gap-5"
                   style={{
-                    padding: '40px 40px 48px',
-                    borderLeft: i === 0 ? '1px solid rgba(255,255,255,0.08)' : 'none',
-                    borderRight: '1px solid rgba(255,255,255,0.08)',
-                    borderTop: '1px solid rgba(255,255,255,0.08)',
-                    borderBottom: '1px solid rgba(255,255,255,0.08)',
+                    padding: '40px',
+                    borderTop: '2px solid #111111',
+                    background: '#F7F7F5',
+                    borderRadius: '16px',
                     transitionDelay: `${i * 80}ms`,
                   }}
                 >
-                  {/* Giant background number */}
-                  <span
+                  <div className="flex items-center justify-between">
+                    {item.icon}
+                    <span
+                      style={{
+                        fontFamily: 'var(--v5-font-mono)',
+                        fontSize: '11px',
+                        color: '#CCCCCC',
+                      }}
+                    >
+                      {item.num}
+                    </span>
+                  </div>
+                  <h3
                     style={{
-                      position: 'absolute',
-                      top: '20px',
-                      right: '24px',
-                      fontFamily: 'var(--v5-font-mono)',
-                      fontSize: '80px',
-                      fontWeight: 300,
-                      color: 'rgba(255,255,255,0.04)',
-                      lineHeight: 1,
-                      userSelect: 'none',
-                      pointerEvents: 'none',
+                      fontFamily: 'var(--v5-font-display)',
+                      fontSize: '20px',
+                      fontWeight: 400,
+                      letterSpacing: '-0.01em',
+                      color: '#111111',
+                      lineHeight: 1.2,
                     }}
                   >
-                    {step.number}
-                  </span>
+                    {item.title}
+                  </h3>
+                  <p
+                    style={{
+                      fontFamily: 'var(--v5-font-body)',
+                      fontSize: '15px',
+                      fontWeight: 300,
+                      lineHeight: 1.7,
+                      color: '#666666',
+                    }}
+                  >
+                    {item.text}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
 
+        {/* ── SECCIÓN 6 — RESULTADOS ───────────────────────────────────────── */}
+        <section className="v5-section" style={{ backgroundColor: '#080808' }}>
+          <div className="v5-container">
+            <span
+              className="v5-reveal"
+              style={{ ...monoLabel, color: '#666666' }}
+            >
+              RESULTADOS REALES
+            </span>
+
+            <h2
+              className="v5-reveal"
+              style={{
+                fontFamily: 'var(--v5-font-display)',
+                fontSize: 'clamp(28px, 4vw, 56px)',
+                fontWeight: 300,
+                letterSpacing: '-0.02em',
+                lineHeight: 1.05,
+                color: '#F5F5F0',
+                maxWidth: '600px',
+                marginBottom: '56px',
+                transitionDelay: '60ms',
+              }}
+            >
+              Lo que cambia cuando las herramientas trabajan juntas.
+            </h2>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+              {[
+                {
+                  stat: '4h → 15min',
+                  text: 'Tiempo en generar el informe semanal de ventas. Claude + n8n. Automático todos los lunes.',
+                },
+                {
+                  stat: '+40',
+                  text: 'Proyectos gestionados simultáneamente en una agencia tras implementar ClickUp con SOPs documentados.',
+                },
+                {
+                  stat: '×3',
+                  text: 'Más contenido generado por el mismo equipo de marketing después de implementar Claude Cowork con Skills propios.',
+                },
+              ].map((item, i) => (
+                <div
+                  key={i}
+                  className="v5-reveal flex flex-col gap-4"
+                  style={{
+                    background: 'rgba(255,255,255,0.04)',
+                    border: '1px solid rgba(255,255,255,0.08)',
+                    borderRadius: '16px',
+                    padding: '40px',
+                    transitionDelay: `${i * 80}ms`,
+                  }}
+                >
+                  <span
+                    style={{
+                      fontFamily: 'var(--v5-font-display)',
+                      fontSize: 'clamp(40px, 5vw, 64px)',
+                      fontWeight: 300,
+                      letterSpacing: '-0.03em',
+                      lineHeight: 1,
+                      color: '#FFFFFF',
+                    }}
+                  >
+                    {item.stat}
+                  </span>
+                  <p
+                    style={{
+                      fontFamily: 'var(--v5-font-body)',
+                      fontSize: '14px',
+                      fontWeight: 300,
+                      lineHeight: 1.7,
+                      color: 'rgba(245,245,240,0.55)',
+                    }}
+                  >
+                    {item.text}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── SECCIÓN 7 — PROCESO ──────────────────────────────────────────── */}
+        <section className="v5-section" style={{ backgroundColor: '#080808' }}>
+          <div className="v5-container">
+            <span
+              className="v5-reveal"
+              style={{ ...monoLabel, color: '#666666' }}
+            >
+              CÓMO TRABAJAMOS
+            </span>
+
+            <h2
+              className="v5-reveal"
+              style={{
+                fontFamily: 'var(--v5-font-display)',
+                fontSize: 'clamp(28px, 4vw, 56px)',
+                fontWeight: 300,
+                letterSpacing: '-0.02em',
+                lineHeight: 1.05,
+                color: '#F5F5F0',
+                maxWidth: '560px',
+                marginBottom: '56px',
+                transitionDelay: '60ms',
+              }}
+            >
+              De la auditoría a las herramientas funcionando.
+            </h2>
+
+            <div className="grid grid-cols-1 md:grid-cols-3">
+              {[
+                {
+                  num: '01',
+                  title: 'Sesión de Claridad',
+                  text: '90 minutos mapeando tu empresa: cómo trabajas, dónde se pierde tiempo, qué procesos son automatizables. Salimos con un plan claro.',
+                },
+                {
+                  num: '02',
+                  title: 'Implementación por fases',
+                  text: 'Empezamos por lo que más impacto tiene. Cada herramienta se configura, se conecta con las demás y se prueba con datos reales de tu empresa antes de hacer onboarding.',
+                },
+                {
+                  num: '03',
+                  title: 'Formación y entrega',
+                  text: 'Formamos a tu equipo hasta que usa las herramientas de forma autónoma. Te entregamos la documentación completa. No dependes de nosotros para nada.',
+                },
+              ].map((step, i) => (
+                <div
+                  key={step.num}
+                  className="v5-reveal flex flex-col gap-6"
+                  style={{
+                    border: '1px solid rgba(255,255,255,0.08)',
+                    padding: '40px',
+                    transitionDelay: `${i * 80}ms`,
+                  }}
+                >
                   <span
                     style={{
                       fontFamily: 'var(--v5-font-mono)',
                       fontSize: '11px',
-                      fontWeight: 500,
-                      letterSpacing: '0.12em',
                       color: 'rgba(255,255,255,0.25)',
-                      textTransform: 'uppercase',
                     }}
                   >
-                    {step.number}
+                    {step.num}
                   </span>
-
                   <h3
                     style={{
                       fontFamily: 'var(--v5-font-display)',
@@ -511,7 +892,6 @@ export default function SystemsLabPage() {
                   >
                     {step.title}
                   </h3>
-
                   <p
                     style={{
                       fontFamily: 'var(--v5-font-body)',
@@ -521,25 +901,112 @@ export default function SystemsLabPage() {
                       color: 'rgba(245,245,240,0.45)',
                     }}
                   >
-                    {step.description}
+                    {step.text}
                   </p>
                 </div>
               ))}
             </div>
-
           </div>
         </section>
 
-        {/* ── Section 5: CTA ── */}
+        {/* ── SECCIÓN 8 — FAQ ──────────────────────────────────────────────── */}
+        <section className="v5-section" style={{ backgroundColor: '#F7F7F5' }}>
+          <div className="v5-container">
+            <span
+              className="v5-reveal"
+              style={{ ...monoLabel, color: '#999999' }}
+            >
+              PREGUNTAS FRECUENTES
+            </span>
+
+            <h2
+              className="v5-reveal"
+              style={{
+                fontFamily: 'var(--v5-font-display)',
+                fontSize: 'clamp(28px, 4vw, 56px)',
+                fontWeight: 300,
+                letterSpacing: '-0.02em',
+                lineHeight: 1.05,
+                color: '#111111',
+                maxWidth: '560px',
+                marginBottom: '56px',
+                transitionDelay: '60ms',
+              }}
+            >
+              Lo que nos preguntan antes de empezar
+            </h2>
+
+            <div className="v5-reveal max-w-3xl" style={{ transitionDelay: '80ms' }}>
+              {faqs.map((faq, i) => (
+                <div
+                  key={i}
+                  style={{
+                    borderBottom: '1px solid #E0E0E0',
+                    padding: '24px 0',
+                  }}
+                >
+                  <button
+                    onClick={() => setOpenFaq(openFaq === i ? null : i)}
+                    style={{
+                      width: '100%',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'space-between',
+                      gap: '16px',
+                      background: 'none',
+                      border: 'none',
+                      cursor: 'pointer',
+                      padding: 0,
+                      textAlign: 'left',
+                    }}
+                  >
+                    <span
+                      style={{
+                        fontFamily: 'var(--v5-font-display)',
+                        fontSize: '17px',
+                        fontWeight: 400,
+                        letterSpacing: '-0.01em',
+                        color: '#111111',
+                        lineHeight: 1.4,
+                      }}
+                    >
+                      {faq.q}
+                    </span>
+                    {openFaq === i ? (
+                      <ChevronUp size={18} color="#111111" style={{ flexShrink: 0 }} />
+                    ) : (
+                      <ChevronDown size={18} color="#111111" style={{ flexShrink: 0 }} />
+                    )}
+                  </button>
+
+                  {openFaq === i && (
+                    <p
+                      style={{
+                        fontFamily: 'var(--v5-font-body)',
+                        fontSize: '15px',
+                        fontWeight: 300,
+                        lineHeight: 1.8,
+                        color: '#555555',
+                        marginTop: '16px',
+                        maxWidth: '680px',
+                      }}
+                    >
+                      {faq.a}
+                    </p>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── SECCIÓN 9 — CTA FINAL ────────────────────────────────────────── */}
         <section
           className="v5-section"
           style={{ backgroundColor: '#080808', textAlign: 'center' }}
         >
           <div className="v5-container">
-            <div
-              className="v5-reveal max-w-2xl mx-auto flex flex-col gap-8"
-              style={{ alignItems: 'center' }}
-            >
+            <div className="v5-reveal max-w-2xl mx-auto flex flex-col gap-8" style={{ alignItems: 'center' }}>
               <h2
                 style={{
                   fontFamily: 'var(--v5-font-display)',
@@ -550,8 +1017,7 @@ export default function SystemsLabPage() {
                   color: '#F5F5F0',
                 }}
               >
-                ¿Tu empresa aún trabaja<br />
-                <span style={{ color: 'rgba(245,245,240,0.28)' }}>de forma manual?</span>
+                ¿Tu empresa aún trabaja de forma manual?
               </h2>
 
               <p
@@ -564,34 +1030,27 @@ export default function SystemsLabPage() {
                   maxWidth: '480px',
                 }}
               >
-                Empieza con una Sesión de Claridad gratuita. Mapeamos tu empresa y decidimos juntos qué tiene sentido automatizar primero.
+                Empieza con una Sesión de Claridad. 90 minutos para mapear tu empresa y decidir juntos qué tiene sentido automatizar primero.
               </p>
 
-              <div className="v5-reveal" style={{ transitionDelay: '80ms' }}>
+              <div className="flex flex-wrap gap-4 justify-center">
                 <Link
                   href="/systems-lab/sesion-de-claridad"
-                  style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: '8px',
-                    padding: '16px 32px',
-                    background: '#F5F5F0',
-                    color: '#080808',
-                    borderRadius: '0px',
-                    fontFamily: 'var(--v5-font-body)',
-                    fontSize: '15px',
-                    fontWeight: 400,
-                    textDecoration: 'none',
-                    transition: 'all 200ms ease',
-                  }}
-                  onMouseEnter={(e) => {
-                    (e.currentTarget as HTMLElement).style.background = '#FFFFFF';
-                  }}
-                  onMouseLeave={(e) => {
-                    (e.currentTarget as HTMLElement).style.background = '#F5F5F0';
-                  }}
+                  style={btnPrimary}
+                  onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = '#FFFFFF'; }}
+                  onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = '#F5F5F0'; }}
                 >
                   Reservar Sesión de Claridad →
+                </Link>
+                <Link
+                  href="https://wa.me/34627281459"
+                  style={btnSecondary}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.35)'; }}
+                  onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.15)'; }}
+                >
+                  Hablar por WhatsApp
                 </Link>
               </div>
             </div>
