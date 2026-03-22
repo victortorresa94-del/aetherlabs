@@ -7,19 +7,17 @@ import ScrollAnimations from '@/components/v5/ScrollAnimations';
 
 const tools = [
   {
-    logoSrc: null,
+    logoSrc: '/images/logos/clickup.png',
     logoBg: '#7B68EE',
     logoLabel: 'CU',
-    logoSvg: 'clickup',
     name: 'ClickUp',
     description: 'Gestión de proyectos, SOPs y operaciones. Tu empresa ordenada.',
     href: '/systems-lab/clickup',
   },
   {
-    logoSrc: null,
+    logoSrc: '/images/logos/claude-ai-icon.webp',
     logoBg: '#CF6330',
     logoLabel: 'AI',
-    logoSvg: 'claude',
     name: 'Claude',
     description: 'IA conversacional integrada en tus procesos reales.',
     href: '/systems-lab/claude',
@@ -28,16 +26,14 @@ const tools = [
     logoSrc: '/images/logos/hubspot.png',
     logoBg: '#FF7A59',
     logoLabel: 'HS',
-    logoSvg: null,
     name: 'HubSpot',
     description: 'CRM y automatización de marketing en un solo lugar.',
     href: '/systems-lab/hubspot',
   },
   {
-    logoSrc: null,
+    logoSrc: '/images/logos/n8n.png',
     logoBg: '#EA4B48',
     logoLabel: 'n8n',
-    logoSvg: 'n8n',
     name: 'Automatización',
     description: 'Flujos que trabajan solos. Sin intervención manual.',
     href: '/systems-lab/automatizacion',
@@ -46,7 +42,6 @@ const tools = [
     logoSrc: null,
     logoBg: '#3E54F5',
     logoLabel: 'AP',
-    logoSvg: null,
     name: 'Apollo',
     description: 'Prospección de ventas e inteligencia comercial.',
     href: '/systems-lab/apollo',
@@ -55,7 +50,6 @@ const tools = [
     logoSrc: null,
     logoBg: '#4F46E5',
     logoLabel: 'CL',
-    logoSvg: null,
     name: 'Closius',
     description: 'IA que analiza tus llamadas de ventas y mejora tu equipo.',
     href: '/systems-lab/closius',
@@ -64,7 +58,6 @@ const tools = [
     logoSrc: '/images/Achieve Apex Logo.avif',
     logoBg: '#111111',
     logoLabel: 'AA',
-    logoSvg: null,
     name: 'AchieveApex',
     description: 'CRM omnicanal con IA para captar y nutrir leads.',
     href: '/systems-lab/achieveapex',
@@ -73,7 +66,6 @@ const tools = [
     logoSrc: null,
     logoBg: '#0078D4',
     logoLabel: 'Co',
-    logoSvg: 'copilot',
     name: 'Microsoft Copilot',
     description: 'IA dentro de Word, Excel, Teams y Outlook.',
     href: '/systems-lab/copilot',
@@ -353,27 +345,6 @@ export default function SystemsLabPage() {
                       alt={tool.name}
                       style={{ height: '36px', width: 'auto', maxWidth: '120px', objectFit: 'contain' }}
                     />
-                  ) : tool.logoSvg === 'clickup' ? (
-                    <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <rect width="36" height="36" rx="8" fill="#7B68EE"/>
-                      <path d="M9 22.5L13.5 18l4.5 4.5 9-9" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                  ) : tool.logoSvg === 'claude' ? (
-                    <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <rect width="36" height="36" rx="8" fill="#CF6330"/>
-                      <text x="18" y="24" textAnchor="middle" fontSize="16" fontWeight="700" fontFamily="serif" fill="white">A</text>
-                    </svg>
-                  ) : tool.logoSvg === 'n8n' ? (
-                    <svg width="44" height="36" viewBox="0 0 44 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <rect width="44" height="36" rx="8" fill="#EA4B48"/>
-                      <text x="22" y="24" textAnchor="middle" fontSize="13" fontWeight="700" fontFamily="monospace" fill="white">n8n</text>
-                    </svg>
-                  ) : tool.logoSvg === 'copilot' ? (
-                    <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <rect width="36" height="36" rx="8" fill="#0078D4"/>
-                      <path d="M18 8 C18 8 10 14 10 20 C10 24.4 13.6 28 18 28 C22.4 28 26 24.4 26 20 C26 14 18 8 18 8Z" fill="white" fillOpacity="0.9"/>
-                      <circle cx="18" cy="20" r="4" fill="#0078D4"/>
-                    </svg>
                   ) : (
                     <div style={{
                       width: '44px',

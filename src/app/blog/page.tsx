@@ -1,12 +1,8 @@
-import type { Metadata } from 'next';
+'use client';
+
 import Link from 'next/link';
 import Navbar from '@/components/v5/Navbar';
 import Footer from '@/components/v5/Footer';
-
-export const metadata: Metadata = {
-  title: 'Learn — Guías y recursos sobre IA para empresas | Aether Labs',
-  description: 'Guías prácticas, comparativas y casos de uso reales de IA para empresas. Claude, automatización, formación corporativa y mucho más.',
-};
 
 const articulos = [
   {
