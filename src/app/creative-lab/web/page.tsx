@@ -60,14 +60,14 @@ export default function WebServicePage() {
   ];
 
   return (
-    <main style={{ backgroundColor: '#080808', color: '#F5F5F0', minHeight: '100vh' }}>
+    <main style={{ minHeight: '100vh' }}>
       <ScrollAnimations />
       <Navbar />
 
       {/* ===================== SECTION 1 — HERO ===================== */}
       <section
         className="v5-section"
-        style={{ paddingTop: 160, paddingBottom: 100 }}
+        style={{ paddingTop: 160, paddingBottom: 100, backgroundColor: '#080808', color: '#F5F5F0' }}
       >
         <div className="v5-container" style={{ textAlign: 'center' }}>
           <span
@@ -155,7 +155,7 @@ export default function WebServicePage() {
       </section>
 
       {/* ===================== SECTION 2 — EL PROBLEMA ===================== */}
-      <section className="v5-section" style={{ borderTop: '1px solid rgba(245,245,240,0.06)' }}>
+      <section className="v5-section" style={{ backgroundColor: '#FFFFFF', color: '#111111' }}>
         <div className="v5-container">
           <div className="v5-reveal" style={{ marginBottom: 56 }}>
             <span
@@ -178,7 +178,7 @@ export default function WebServicePage() {
                 fontSize: 'clamp(28px, 4vw, 44px)',
                 fontWeight: 700,
                 lineHeight: 1.15,
-                color: '#F5F5F0',
+                color: '#111111',
               }}
             >
               Tienes web. Pero no trabaja para ti.
@@ -209,7 +209,7 @@ export default function WebServicePage() {
                     fontFamily: 'var(--v5-font-display)',
                     fontSize: 20,
                     fontWeight: 700,
-                    color: '#F5F5F0',
+                    color: '#111111',
                     marginBottom: 12,
                   }}
                 >
@@ -220,7 +220,7 @@ export default function WebServicePage() {
                     fontFamily: 'var(--v5-font-body)',
                     fontSize: 15,
                     lineHeight: 1.7,
-                    color: 'rgba(245,245,240,0.5)',
+                    color: '#666666',
                   }}
                 >
                   {item.text}
@@ -232,7 +232,7 @@ export default function WebServicePage() {
       </section>
 
       {/* ===================== SECTION 3 — POR QUÉ CON IA ===================== */}
-      <section className="v5-section" style={{ borderTop: '1px solid rgba(245,245,240,0.06)' }}>
+      <section className="v5-section" style={{ backgroundColor: '#080808', color: '#F5F5F0' }}>
         <div className="v5-container">
           <div className="v5-reveal" style={{ marginBottom: 40 }}>
             <span
@@ -324,7 +324,7 @@ export default function WebServicePage() {
       <section
         id="packs"
         className="v5-section"
-        style={{ borderTop: '1px solid rgba(245,245,240,0.06)' }}
+        style={{ backgroundColor: '#080808', color: '#F5F5F0' }}
       >
         <div className="v5-container">
           <div className="v5-reveal" style={{ marginBottom: 56 }}>
@@ -662,7 +662,7 @@ export default function WebServicePage() {
       </section>
 
       {/* ===================== SECTION 5 — LO QUE INCLUYE SIEMPRE ===================== */}
-      <section className="v5-section" style={{ borderTop: '1px solid rgba(245,245,240,0.06)' }}>
+      <section className="v5-section" style={{ backgroundColor: '#F7F7F5', color: '#111111' }}>
         <div className="v5-container">
           <div className="v5-reveal" style={{ marginBottom: 56 }}>
             <span
@@ -685,7 +685,7 @@ export default function WebServicePage() {
                 fontSize: 'clamp(28px, 4vw, 44px)',
                 fontWeight: 700,
                 lineHeight: 1.15,
-                color: '#F5F5F0',
+                color: '#111111',
               }}
             >
               Cosas que otras agencias cobran aparte.
@@ -735,7 +735,8 @@ export default function WebServicePage() {
                 className="v5-reveal"
                 style={{
                   padding: 28,
-                  border: '1px solid rgba(245,245,240,0.08)',
+                  backgroundColor: '#FFFFFF',
+                  border: '1px solid #E0E0E0',
                   borderRadius: 12,
                   transitionDelay: `${i * 60}ms`,
                 }}
@@ -746,7 +747,7 @@ export default function WebServicePage() {
                       fontFamily: 'var(--v5-font-mono)',
                       fontSize: 11,
                       fontWeight: 500,
-                      color: 'rgba(245,245,240,0.3)',
+                      color: '#CCCCCC',
                     }}
                   >
                     {item.num}
@@ -758,7 +759,7 @@ export default function WebServicePage() {
                     fontFamily: 'var(--v5-font-display)',
                     fontSize: 17,
                     fontWeight: 700,
-                    color: '#F5F5F0',
+                    color: '#111111',
                     marginBottom: 8,
                   }}
                 >
@@ -769,7 +770,7 @@ export default function WebServicePage() {
                     fontFamily: 'var(--v5-font-body)',
                     fontSize: 14,
                     lineHeight: 1.6,
-                    color: 'rgba(245,245,240,0.5)',
+                    color: '#666666',
                   }}
                 >
                   {item.desc}
@@ -781,7 +782,7 @@ export default function WebServicePage() {
       </section>
 
       {/* ===================== SECTION 6 — TRABAJO REAL ===================== */}
-      <section className="v5-section" style={{ borderTop: '1px solid rgba(245,245,240,0.06)' }}>
+      <section className="v5-section" style={{ backgroundColor: '#080808', color: '#F5F5F0' }}>
         <div className="v5-container">
           <div className="v5-reveal" style={{ marginBottom: 56 }}>
             <span
@@ -889,7 +890,7 @@ export default function WebServicePage() {
       </section>
 
       {/* ===================== SECTION 7 — EL PROCESO ===================== */}
-      <section className="v5-section" style={{ borderTop: '1px solid rgba(245,245,240,0.06)' }}>
+      <section className="v5-section" style={{ backgroundColor: '#FFFFFF', color: '#111111' }}>
         <div className="v5-container">
           <div className="v5-reveal" style={{ marginBottom: 56 }}>
             <span
@@ -912,7 +913,7 @@ export default function WebServicePage() {
                 fontSize: 'clamp(28px, 4vw, 44px)',
                 fontWeight: 700,
                 lineHeight: 1.15,
-                color: '#F5F5F0',
+                color: '#111111',
               }}
             >
               De la idea al lanzamiento en 4 pasos.
@@ -950,7 +951,7 @@ export default function WebServicePage() {
                 className="v5-reveal flex gap-6"
                 style={{
                   padding: '24px 0',
-                  borderBottom: i < 3 ? '1px solid rgba(245,245,240,0.06)' : 'none',
+                  borderBottom: i < 3 ? '1px solid #E0E0E0' : 'none',
                   transitionDelay: `${i * 80}ms`,
                 }}
               >
@@ -959,7 +960,7 @@ export default function WebServicePage() {
                     fontFamily: 'var(--v5-font-mono)',
                     fontSize: 13,
                     fontWeight: 600,
-                    color: '#0891B2',
+                    color: '#CCCCCC',
                     minWidth: 28,
                     paddingTop: 2,
                   }}
@@ -973,7 +974,7 @@ export default function WebServicePage() {
                         fontFamily: 'var(--v5-font-display)',
                         fontSize: 18,
                         fontWeight: 700,
-                        color: '#F5F5F0',
+                        color: '#111111',
                       }}
                     >
                       {step.title}
@@ -982,7 +983,7 @@ export default function WebServicePage() {
                       style={{
                         fontFamily: 'var(--v5-font-mono)',
                         fontSize: 11,
-                        color: 'rgba(245,245,240,0.3)',
+                        color: '#999999',
                       }}
                     >
                       {step.time}
@@ -993,7 +994,7 @@ export default function WebServicePage() {
                       fontFamily: 'var(--v5-font-body)',
                       fontSize: 14,
                       lineHeight: 1.6,
-                      color: 'rgba(245,245,240,0.5)',
+                      color: '#666666',
                     }}
                   >
                     {step.desc}
@@ -1006,7 +1007,7 @@ export default function WebServicePage() {
       </section>
 
       {/* ===================== SECTION 8 — STACK TECNOLÓGICO ===================== */}
-      <section className="v5-section" style={{ borderTop: '1px solid rgba(245,245,240,0.06)' }}>
+      <section className="v5-section" style={{ backgroundColor: '#080808', color: '#F5F5F0' }}>
         <div className="v5-container">
           <div className="v5-reveal" style={{ marginBottom: 56 }}>
             <span
@@ -1092,7 +1093,7 @@ export default function WebServicePage() {
       </section>
 
       {/* ===================== SECTION 9 — PARA QUIÉN ===================== */}
-      <section className="v5-section" style={{ borderTop: '1px solid rgba(245,245,240,0.06)' }}>
+      <section className="v5-section" style={{ backgroundColor: '#F7F7F5', color: '#111111' }}>
         <div className="v5-container">
           <div className="v5-reveal" style={{ marginBottom: 56 }}>
             <span
@@ -1115,7 +1116,7 @@ export default function WebServicePage() {
                 fontSize: 'clamp(28px, 4vw, 44px)',
                 fontWeight: 700,
                 lineHeight: 1.15,
-                color: '#F5F5F0',
+                color: '#111111',
               }}
             >
               Tiene sentido trabajar juntos si...
@@ -1137,7 +1138,7 @@ export default function WebServicePage() {
                     className="flex gap-3"
                     style={{
                       padding: '12px 0',
-                      borderBottom: '1px solid rgba(245,245,240,0.06)',
+                      borderBottom: '1px solid #E0E0E0',
                     }}
                   >
                     <Check size={18} style={{ color: '#0891B2', flexShrink: 0, marginTop: 2 }} />
@@ -1146,7 +1147,7 @@ export default function WebServicePage() {
                         fontFamily: 'var(--v5-font-body)',
                         fontSize: 15,
                         lineHeight: 1.6,
-                        color: 'rgba(245,245,240,0.7)',
+                        color: '#444444',
                       }}
                     >
                       {item}
@@ -1161,7 +1162,7 @@ export default function WebServicePage() {
                   fontFamily: 'var(--v5-font-display)',
                   fontSize: 18,
                   fontWeight: 700,
-                  color: '#F5F5F0',
+                  color: '#111111',
                   marginBottom: 20,
                 }}
               >
@@ -1178,16 +1179,16 @@ export default function WebServicePage() {
                     className="flex gap-3"
                     style={{
                       padding: '12px 0',
-                      borderBottom: '1px solid rgba(245,245,240,0.06)',
+                      borderBottom: '1px solid #E0E0E0',
                     }}
                   >
-                    <X size={18} style={{ color: 'rgba(245,245,240,0.3)', flexShrink: 0, marginTop: 2 }} />
+                    <X size={18} style={{ color: '#CCCCCC', flexShrink: 0, marginTop: 2 }} />
                     <span
                       style={{
                         fontFamily: 'var(--v5-font-body)',
                         fontSize: 15,
                         lineHeight: 1.6,
-                        color: 'rgba(245,245,240,0.4)',
+                        color: '#999999',
                       }}
                     >
                       {item}
@@ -1201,7 +1202,7 @@ export default function WebServicePage() {
       </section>
 
       {/* ===================== SECTION 10 — FAQ ===================== */}
-      <section className="v5-section" style={{ borderTop: '1px solid rgba(245,245,240,0.06)' }}>
+      <section className="v5-section" style={{ backgroundColor: '#FFFFFF', color: '#111111' }}>
         <div className="v5-container">
           <div className="v5-reveal" style={{ marginBottom: 56 }}>
             <span
@@ -1224,7 +1225,7 @@ export default function WebServicePage() {
                 fontSize: 'clamp(28px, 4vw, 44px)',
                 fontWeight: 700,
                 lineHeight: 1.15,
-                color: '#F5F5F0',
+                color: '#111111',
               }}
             >
               Lo que nos preguntan siempre.
@@ -1236,7 +1237,7 @@ export default function WebServicePage() {
                 key={i}
                 className="v5-reveal"
                 style={{
-                  borderBottom: '1px solid rgba(245,245,240,0.08)',
+                  borderBottom: '1px solid #E0E0E0',
                   transitionDelay: `${i * 40}ms`,
                 }}
               >
@@ -1257,7 +1258,7 @@ export default function WebServicePage() {
                       fontFamily: 'var(--v5-font-body)',
                       fontSize: 16,
                       fontWeight: 600,
-                      color: '#F5F5F0',
+                      color: '#111111',
                     }}
                   >
                     {item.q}
@@ -1265,7 +1266,7 @@ export default function WebServicePage() {
                   <ChevronDown
                     size={18}
                     style={{
-                      color: 'rgba(245,245,240,0.4)',
+                      color: '#999999',
                       flexShrink: 0,
                       transition: 'transform 200ms',
                       transform: openFaq === i ? 'rotate(180deg)' : 'rotate(0deg)',
@@ -1284,7 +1285,7 @@ export default function WebServicePage() {
                       fontFamily: 'var(--v5-font-body)',
                       fontSize: 14,
                       lineHeight: 1.7,
-                      color: 'rgba(245,245,240,0.5)',
+                      color: '#666666',
                       paddingBottom: 20,
                     }}
                   >
@@ -1301,7 +1302,8 @@ export default function WebServicePage() {
       <section
         className="v5-section"
         style={{
-          borderTop: '1px solid rgba(245,245,240,0.06)',
+          backgroundColor: '#080808',
+          color: '#F5F5F0',
           textAlign: 'center',
         }}
       >

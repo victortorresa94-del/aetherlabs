@@ -79,6 +79,7 @@ const btnSecondary: React.CSSProperties = {
 /* ─── Tool card ─────────────────────────────────────────────────────────────── */
 interface ToolCardProps {
   logoSrc?: string;
+  logoSrc2?: string;
   logoBg?: string;
   logoLabel?: string;
   name: string;
@@ -86,17 +87,29 @@ interface ToolCardProps {
   href?: string;
 }
 
-function ToolCard({ logoSrc, logoBg, logoLabel, name, description, href }: ToolCardProps) {
+function ToolCard({ logoSrc, logoSrc2, logoBg, logoLabel, name, description, href }: ToolCardProps) {
   const inner = (
     <>
       {/* Logo container — fixed height so all logos align visually */}
-      <div style={{ height: '48px', display: 'flex', alignItems: 'center' }}>
+      <div style={{ height: '48px', display: 'flex', alignItems: 'center', gap: '10px' }}>
         {logoSrc ? (
-          <img
-            src={logoSrc}
-            alt={name}
-            style={{ height: '32px', width: 'auto', maxWidth: '120px', objectFit: 'contain', display: 'block' }}
-          />
+          <>
+            <img
+              src={logoSrc}
+              alt={name}
+              style={{ height: '36px', width: '36px', objectFit: 'contain', display: 'block' }}
+            />
+            {logoSrc2 && (
+              <>
+                <span style={{ color: '#CCCCCC', fontSize: '16px', fontWeight: 300 }}>+</span>
+                <img
+                  src={logoSrc2}
+                  alt={name}
+                  style={{ height: '36px', width: '36px', objectFit: 'contain', display: 'block' }}
+                />
+              </>
+            )}
+          </>
         ) : (
           <div
             style={{
@@ -544,12 +557,14 @@ export default function SystemsLabPage() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                 <ToolCard
                   logoSrc="/images/logos/microsoft-365.svg"
+                  logoSrc2="/images/logos/copilot.svg"
                   name="Microsoft 365 + Copilot"
                   description="El ecosistema completo de productividad con IA integrada."
                   href="/systems-lab/copilot"
                 />
                 <ToolCard
                   logoSrc="/images/logos/google-workspace.svg"
+                  logoSrc2="/images/logos/gemini.svg"
                   name="Google Workspace + Gemini"
                   description="Gmail, Drive, Calendar y Sheets con IA nativa conectada."
                   href="/systems-lab/google-workspace"
