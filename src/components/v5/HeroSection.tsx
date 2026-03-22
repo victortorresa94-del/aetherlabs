@@ -170,25 +170,25 @@ export default function HeroSection() {
               </span>
               <div className="flex gap-8 items-center flex-wrap">
                 {partners.map(({ name, type }) => (
-                  <div key={name} style={{ opacity: 0.35, display: 'flex', alignItems: 'center' }}>
+                  <div key={name} style={{ opacity: 0.5, display: 'flex', alignItems: 'center' }}>
                     {type === 'claude' ? (
-                      /* Anthropic / Claude wordmark */
-                      <svg width="80" height="20" viewBox="0 0 80 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <text x="0" y="15" fontFamily="Georgia, serif" fontSize="15" fontWeight="400" fill="#F5F5F0" letterSpacing="-0.3">Claude</text>
-                      </svg>
+                      <img
+                        src="/images/logos/claude-ai-icon.webp"
+                        alt="Claude"
+                        style={{ height: '28px', width: 'auto', filter: 'brightness(0) invert(1)' }}
+                      />
                     ) : type === 'artiverse' ? (
-                      /* Artiverse wordmark with geometric mark */
-                      <svg width="110" height="22" viewBox="0 0 110 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        {/* Geometric A mark - blue+yellow triangle shape */}
-                        <polygon points="0,18 9,2 18,18" fill="none" stroke="#F5F5F0" strokeWidth="1.5"/>
-                        <polygon points="9,2 14,10 18,2" fill="#F5F5F0" opacity="0.6"/>
-                        <text x="24" y="16" fontFamily="Arial, sans-serif" fontSize="13" fontWeight="700" fill="#F5F5F0" letterSpacing="0.02em">artiverse</text>
-                      </svg>
+                      <img
+                        src="/images/logos/Logo Artiverse - copia.jpg"
+                        alt="Artiverse"
+                        style={{ height: '28px', width: 'auto', filter: 'brightness(0) invert(1)' }}
+                      />
                     ) : (
-                      /* KMeleon text wordmark */
-                      <svg width="90" height="20" viewBox="0 0 90 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <text x="0" y="15" fontFamily="Arial, sans-serif" fontSize="13" fontWeight="700" fill="#F5F5F0" letterSpacing="0.05em">KMELEON</text>
-                      </svg>
+                      <img
+                        src="/images/logos/kmeleon.webp"
+                        alt="KMeleon"
+                        style={{ height: '24px', width: 'auto', filter: 'brightness(0) invert(1)' }}
+                      />
                     )}
                   </div>
                 ))}
