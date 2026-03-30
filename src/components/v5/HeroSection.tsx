@@ -152,48 +152,6 @@ export default function HeroSection() {
             </div>
 
             {/* Partner logos */}
-            <div
-              className="v5-reveal flex flex-col items-start gap-5"
-              style={{ transitionDelay: '300ms' }}
-            >
-              <span
-                style={{
-                  fontFamily: 'var(--v5-font-mono)',
-                  fontSize: '10px',
-                  fontWeight: 500,
-                  letterSpacing: '0.18em',
-                  textTransform: 'uppercase',
-                  color: 'rgba(255,255,255,0.18)',
-                }}
-              >
-                Con quienes trabajamos
-              </span>
-              <div className="flex gap-8 items-center flex-wrap">
-                {partners.map(({ name, type }) => (
-                  <div key={name} style={{ opacity: 0.5, display: 'flex', alignItems: 'center' }}>
-                    {type === 'claude' ? (
-                      <img
-                        src="/images/logos/claude-ai-icon.webp"
-                        alt="Claude"
-                        style={{ height: '28px', width: 'auto', filter: 'brightness(0) invert(1)' }}
-                      />
-                    ) : type === 'artiverse' ? (
-                      <img
-                        src="/images/logos/Logo Artiverse - copia.jpg"
-                        alt="Artiverse"
-                        style={{ height: '28px', width: 'auto', filter: 'brightness(0) invert(1)' }}
-                      />
-                    ) : (
-                      <img
-                        src="/images/logos/kmeleon.webp"
-                        alt="KMeleon"
-                        style={{ height: '24px', width: 'auto', filter: 'brightness(0) invert(1)' }}
-                      />
-                    )}
-                  </div>
-                ))}
-              </div>
-            </div>
 
           </div>
 
