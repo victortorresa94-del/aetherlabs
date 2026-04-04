@@ -6,7 +6,7 @@ const stats = [
   { value: 47, suffix: '+', label: 'Proyectos' },
   { value: 3, suffix: '', label: 'Continentes' },
   { value: 11, suffix: '+', label: 'Años exp.' },
-  { value: 100, suffix: '%', label: '1ª sesión free' },
+  { value: 98, suffix: '%', label: 'Repiten' },
 ];
 
 function CounterStat({ value, suffix, label }: { value: number; suffix: string; label: string }) {

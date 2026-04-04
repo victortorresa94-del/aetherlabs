@@ -116,7 +116,7 @@ export default function WebServicePage() {
           </p>
           <div className="flex justify-center gap-4 flex-wrap v5-reveal">
             <Link
-              href="/contacto"
+              href="/systems-lab/sesion-de-claridad"
               style={{
                 padding: '16px 32px',
                 borderRadius: 0,
@@ -442,7 +442,7 @@ export default function WebServicePage() {
                   Desde 1.500&euro;
                 </div>
                 <Link
-                  href="/contacto"
+                  href="/systems-lab/sesion-de-claridad"
                   style={{
                     display: 'block',
                     textAlign: 'center',
@@ -548,7 +548,7 @@ export default function WebServicePage() {
                   Desde 800&euro;
                 </div>
                 <Link
-                  href="/contacto"
+                  href="/systems-lab/sesion-de-claridad"
                   style={{
                     display: 'block',
                     textAlign: 'center',
@@ -638,7 +638,7 @@ export default function WebServicePage() {
                   Desde 500&euro;
                 </div>
                 <Link
-                  href="/contacto"
+                  href="/systems-lab/sesion-de-claridad"
                   style={{
                     display: 'block',
                     textAlign: 'center',
@@ -1338,7 +1338,7 @@ export default function WebServicePage() {
           </p>
           <div className="flex justify-center gap-4 flex-wrap v5-reveal">
             <Link
-              href="/contacto"
+              href="/systems-lab/sesion-de-claridad"
               style={{
                 padding: '16px 32px',
                 borderRadius: 0,

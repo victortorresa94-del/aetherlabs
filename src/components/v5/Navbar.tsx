@@ -48,11 +48,6 @@ export default function Navbar() {
     { label: 'Learn', href: '/blog' },
   ];
 
-  const getTextColor = (base: string, hovered: string) => {
-    // If not scrolled but white hover
-    return base;
-  };
-
   return (
     <>
       <nav

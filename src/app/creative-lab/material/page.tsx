@@ -131,7 +131,7 @@ export default function MaterialServicePage() {
               Ver packs <ArrowRight size={16} />
             </Link>
             <Link
-              href="/contacto"
+              href="/systems-lab/sesion-de-claridad"
               className="v5-reveal"
               style={{
                 display: 'inline-flex',
@@ -941,7 +941,7 @@ export default function MaterialServicePage() {
 
           <div className="flex gap-4" style={{ justifyContent: 'center', flexWrap: 'wrap' }}>
             <Link
-              href="/contacto"
+              href="/systems-lab/sesion-de-claridad"
               className="v5-reveal"
               style={{
                 display: 'inline-flex',

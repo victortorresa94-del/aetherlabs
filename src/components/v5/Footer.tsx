@@ -112,6 +112,7 @@ export default function Footer() {
               { label: 'Creative Lab', href: '/creative-lab' },
               { label: 'Systems Lab', href: '/systems-lab' },
               { label: 'School Lab', href: '/school-lab' },
+              { label: 'Open Lab', href: '/open-lab' },
             ].map(({ label, href }) => (
               <Link
                 key={href}
@@ -201,10 +202,10 @@ export default function Footer() {
           </span>
           <div style={{ display: 'flex', gap: '24px' }}>
             {[
-              { label: 'Privacidad', href: '/privacidad' },
-              { label: 'Términos', href: '/terminos' },
+              { label: 'Privacidad', href: 'mailto:hola@aetherlabs.es?subject=Política de privacidad' },
+              { label: 'Términos', href: 'mailto:hola@aetherlabs.es?subject=Términos y condiciones' },
             ].map(({ label, href }) => (
-              <Link
+              <a
                 key={href}
                 href={href}
                 style={{
@@ -219,7 +220,7 @@ export default function Footer() {
                 onMouseLeave={(e) => { (e.target as HTMLElement).style.color = 'rgba(255,255,255,0.16)'; }}
               >
                 {label}
-              </Link>
+              </a>
             ))}
           </div>
         </div>

@@ -3,12 +3,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-const partners = [
-  { name: 'KMeleon', type: 'text' },
-  { name: 'Claude', type: 'claude' },
-  { name: 'Artiverse', type: 'artiverse' },
-];
-
 export default function HeroSection() {
   return (
     <section
@@ -150,8 +144,6 @@ export default function HeroSection() {
                 Ver servicios
               </Link>
             </div>
-
-            {/* Partner logos */}
 
           </div>
 

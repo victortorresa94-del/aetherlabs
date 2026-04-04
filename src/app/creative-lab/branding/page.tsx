@@ -156,7 +156,7 @@ export default function BrandingPage() {
             </p>
             <div className="v5-reveal flex gap-4 flex-wrap" style={{ transitionDelay: '240ms' }}>
               <Link
-                href="/contacto"
+                href="/systems-lab/sesion-de-claridad"
                 style={{
                   display: 'inline-flex',
                   alignItems: 'center',
@@ -804,7 +804,7 @@ export default function BrandingPage() {
               </p>
               <div className="flex gap-4 flex-wrap" style={{ justifyContent: 'center' }}>
                 <Link
-                  href="/contacto"
+                  href="/systems-lab/sesion-de-claridad"
                   style={{
                     display: 'inline-flex',
                     alignItems: 'center',

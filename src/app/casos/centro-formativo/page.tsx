@@ -125,7 +125,7 @@ export default function CentroFormativoPage() {
                 <p className="text-lg md:text-xl font-medium mb-8 max-w-2xl mx-auto opacity-80">
                     Esta arquitectura escala desde academias locales hasta universidades privadas.
                 </p>
-                <Link href="/contacto" className="inline-block px-8 py-4 bg-black text-white font-bold rounded-full hover:scale-105 transition-transform">
+                <Link href="/systems-lab/sesion-de-claridad" className="inline-block px-8 py-4 bg-black text-white font-bold rounded-full hover:scale-105 transition-transform">
                     Solicitar Implementación Educativa
                 </Link>
             </section>

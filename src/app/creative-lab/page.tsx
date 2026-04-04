@@ -176,7 +176,7 @@ export default function CreativeLab() {
                 Ver servicios ↓
               </a>
               <Link
-                href="/contacto"
+                href="/systems-lab/sesion-de-claridad"
                 style={{
                   display: 'inline-flex',
                   alignItems: 'center',
@@ -609,7 +609,7 @@ export default function CreativeLab() {
               </p>
               <div className="flex gap-4" style={{ flexWrap: 'wrap', justifyContent: 'center', marginTop: '8px' }}>
                 <Link
-                  href="/contacto"
+                  href="/systems-lab/sesion-de-claridad"
                   style={{
                     display: 'inline-flex',
                     alignItems: 'center',

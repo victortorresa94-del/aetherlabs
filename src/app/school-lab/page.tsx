@@ -767,7 +767,7 @@ export default function SchoolLabPage() {
                                 ¿No sabes qué programa elegir? Cuéntanos tu situación y te orientamos en menos de 24h. Sin compromiso.
                             </p>
                             <Link
-                                href="/contacto"
+                                href="/systems-lab/sesion-de-claridad"
                                 style={{
                                     display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
                                     gap: '8px', padding: '16px 32px', background: '#F5F5F0', color: '#080808',

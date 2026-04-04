@@ -125,7 +125,7 @@ export default function ServiciosTecnicosPage() {
                 <p className="text-lg md:text-xl font-medium mb-8 max-w-2xl mx-auto opacity-80">
                     Esta arquitectura puede adaptarse a cualquier equipo técnico móvil.
                 </p>
-                <Link href="/contacto" className="inline-block px-8 py-4 bg-black text-white font-bold rounded-full hover:scale-105 transition-transform">
+                <Link href="/systems-lab/sesion-de-claridad" className="inline-block px-8 py-4 bg-black text-white font-bold rounded-full hover:scale-105 transition-transform">
                     Solicitar Implementación SAT
                 </Link>
             </section>

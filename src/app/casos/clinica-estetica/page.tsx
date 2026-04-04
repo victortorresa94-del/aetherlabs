@@ -128,7 +128,7 @@ export default function ClinicaEsteticaPage() {
                 <p className="text-lg md:text-xl font-medium mb-8 max-w-2xl mx-auto opacity-80">
                     Esta arquitectura puede adaptarse exactamente a tu volumen de pacientes y especialidades.
                 </p>
-                <Link href="/contacto" className="inline-block px-8 py-4 bg-black text-white font-bold rounded-full hover:scale-105 transition-transform">
+                <Link href="/systems-lab/sesion-de-claridad" className="inline-block px-8 py-4 bg-black text-white font-bold rounded-full hover:scale-105 transition-transform">
                     Solicitar Implementación Clínica
                 </Link>
             </section>

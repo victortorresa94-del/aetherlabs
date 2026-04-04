@@ -408,7 +408,7 @@ export default function CasosPage() {
               </p>
               <div>
                 <Link
-                  href="/contacto"
+                  href="/systems-lab/sesion-de-claridad"
                   style={{
                     display: 'inline-flex',
                     alignItems: 'center',

@@ -427,7 +427,7 @@ export default function ProgramaIntensivoPage() {
                 Solicita tu plaza. Te contactaremos en menos de 24 horas para hacer una primera llamada de diagnóstico sin compromiso.
               </p>
               <Link
-                href="/contacto"
+                href="/systems-lab/sesion-de-claridad"
                 style={{
                   display: 'inline-flex',
                   alignItems: 'center',

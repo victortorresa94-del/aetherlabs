@@ -140,7 +140,7 @@ export default function ClaudeSection() {
               }}
             >
               <Image
-                src="/chrome-sculpture.jpeg"
+                src="/crystal-sculpture.jpeg"
                 alt="Claude — IA avanzada implementada"
                 fill
                 className="object-cover"

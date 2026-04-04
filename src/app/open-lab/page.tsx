@@ -197,7 +197,7 @@ export default function OpenLab() {
                     Ver qué podemos construir →
                   </Link>
                   <Link
-                    href="/contacto"
+                    href="/systems-lab/sesion-de-claridad"
                     style={{
                       display: 'inline-flex',
                       alignItems: 'center',
@@ -912,7 +912,7 @@ export default function OpenLab() {
               </p>
               <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '12px' }}>
                 <Link
-                  href="/contacto"
+                  href="/systems-lab/sesion-de-claridad"
                   style={{
                     display: 'inline-flex',
                     alignItems: 'center',

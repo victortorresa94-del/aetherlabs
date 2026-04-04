@@ -11,7 +11,7 @@ const proyectos = [
     desc: 'Estrategia de lanzamiento, reels, lead magnets y funnel completo con ManyChat.',
     metrica: '+20.000€',
     metricaLabel: 'en ventas · ~200 alumnos inscritos',
-    image: '/images/creative/94music-bot.png',
+    image: '/images/projects/94music-bot.png',
   },
   {
     badge: 'Systems Lab',
@@ -20,13 +20,13 @@ const proyectos = [
     desc: 'ClickUp desde cero, +40 SOPs documentados, formación del equipo completo.',
     metrica: '+40 proyectos',
     metricaLabel: 'gestionados simultáneamente',
-    image: '/images/creative/business-consultant.png',
+    image: '/images/projects/business-consultant.png',
   },
 ];
 
 export default function ProyectosSection() {
   return (
-    <section className="v5-section" style={{ backgroundColor: '#FFFFFF' }}>
+    <section className="v5-section" style={{ backgroundColor: '#F7F7F5' }}>
       <div className="v5-container">
 
         {/* Header */}

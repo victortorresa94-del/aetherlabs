@@ -464,7 +464,7 @@ export default function TalleresPage() {
                 Consulta el calendario de talleres y reserva tu plaza antes de que se llene.
               </p>
               <Link
-                href="/contacto"
+                href="/systems-lab/sesion-de-claridad"
                 style={{
                   display: 'inline-flex',
                   alignItems: 'center',

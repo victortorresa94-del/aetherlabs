@@ -152,7 +152,7 @@ export default function PresentacionesServicePage() {
       </section>
 
       {/* ───────── 2. EL PROBLEMA ───────── */}
-      <section className="v5-section" style={{ background: '#080808', borderTop: '1px solid rgba(245,245,240,0.06)' }}>
+      <section className="v5-section" style={{ background: '#FFFFFF', color: '#111' }}>
         <div className="v5-container">
           <span
             className="v5-reveal"
@@ -160,7 +160,7 @@ export default function PresentacionesServicePage() {
               fontFamily: 'var(--v5-font-mono)',
               fontSize: 12,
               letterSpacing: 2,
-              color: '#0891B2',
+              color: '#999999',
               textTransform: 'uppercase',
               display: 'block',
               marginBottom: 16,
@@ -179,6 +179,7 @@ export default function PresentacionesServicePage() {
               maxWidth: 700,
               margin: '0 auto 64px',
               lineHeight: 1.15,
+              color: '#111',
             }}
           >
             Las presentaciones de tu empresa estan costando dinero. No ganandolo.
@@ -206,19 +207,20 @@ export default function PresentacionesServicePage() {
                 key={i}
                 className="v5-reveal"
                 style={{
-                  background: 'rgba(245,245,240,0.03)',
-                  border: '1px solid rgba(245,245,240,0.08)',
+                  background: '#FFFFFF',
+                  border: '1px solid #E0E0E0',
                   borderRadius: 12,
                   padding: 40,
                 }}
               >
-                <div style={{ color: '#0891B2', marginBottom: 20 }}>{item.icon}</div>
+                <div style={{ color: '#111', marginBottom: 20 }}>{item.icon}</div>
                 <h3
                   style={{
                     fontFamily: 'var(--v5-font-display)',
                     fontSize: 20,
                     fontWeight: 700,
                     marginBottom: 12,
+                    color: '#111',
                   }}
                 >
                   {item.title}
@@ -228,7 +230,7 @@ export default function PresentacionesServicePage() {
                     fontFamily: 'var(--v5-font-body)',
                     fontSize: 15,
                     lineHeight: 1.7,
-                    color: 'rgba(245,245,240,0.55)',
+                    color: '#666666',
                   }}
                 >
                   {item.text}
@@ -240,7 +242,7 @@ export default function PresentacionesServicePage() {
       </section>
 
       {/* ───────── 3. TIPOS ───────── */}
-      <section id="tipos" className="v5-section" style={{ background: '#FFFFFF', color: '#111' }}>
+      <section id="tipos" className="v5-section" style={{ background: '#F7F7F5', color: '#111' }}>
         <div className="v5-container">
           <span
             className="v5-reveal"
@@ -519,7 +521,7 @@ export default function PresentacionesServicePage() {
       </section>
 
       {/* ───────── 4. QUE INCLUYE SIEMPRE ───────── */}
-      <section className="v5-section" style={{ background: '#F7F7F5', color: '#111' }}>
+      <section className="v5-section" style={{ background: '#FFFFFF', color: '#111' }}>
         <div className="v5-container">
           <span
             className="v5-reveal"
@@ -693,7 +695,7 @@ export default function PresentacionesServicePage() {
       </section>
 
       {/* ───────── 6. EL PROCESO ───────── */}
-      <section className="v5-section" style={{ background: '#FFFFFF', color: '#111' }}>
+      <section className="v5-section" style={{ background: '#F7F7F5', color: '#111' }}>
         <div className="v5-container">
           <span
             className="v5-reveal"
@@ -812,7 +814,7 @@ export default function PresentacionesServicePage() {
       </section>
 
       {/* ───────── 7. FAQ ───────── */}
-      <section className="v5-section" style={{ background: '#080808' }}>
+      <section className="v5-section" style={{ background: '#FFFFFF', color: '#111' }}>
         <div className="v5-container" style={{ maxWidth: 760 }}>
           <span
             className="v5-reveal"
