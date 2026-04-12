@@ -132,7 +132,7 @@ export default function LabsBannerSection() {
             color: '#111',
             maxWidth: '640px',
           }}>
-            ¿Cuál es<br />tu problema?
+            ¿Qué es<br />lo que necesitas?
           </h2>
         </motion.div>
 
@@ -172,13 +172,21 @@ export default function LabsBannerSection() {
                   }}>08 · Flagship</span>
                 </div>
 
-                <h3 style={{
-                  fontFamily: "var(--v5-font-advercase, 'Playfair Display', Georgia, serif)",
-                  fontSize: 'clamp(24px, 3vw, 40px)', fontWeight: 400,
-                  color: '#F5F5F0', marginBottom: '12px', letterSpacing: '-0.02em',
-                }}>
-                  AI Team Lab
-                </h3>
+                <div style={{ marginBottom: '12px' }}>
+                  <h3 style={{
+                    fontFamily: "var(--v5-font-advercase, 'Playfair Display', Georgia, serif)",
+                    fontSize: 'clamp(24px, 3vw, 40px)', fontWeight: 400,
+                    color: '#F5F5F0', letterSpacing: '-0.02em', lineHeight: 1.05,
+                    marginBottom: '4px',
+                  }}>
+                    AI Team
+                  </h3>
+                  <span style={{
+                    fontFamily: 'var(--v5-font-mono)', fontSize: '10px',
+                    letterSpacing: '0.15em', textTransform: 'uppercase',
+                    color: '#6366F1', display: 'block',
+                  }}>Lab</span>
+                </div>
 
                 <p style={{
                   fontFamily: 'var(--v5-font-body)', fontSize: '15px', fontWeight: 300,
@@ -306,7 +314,7 @@ export default function LabsBannerSection() {
                     {/* Pain */}
                     <p style={{
                       fontFamily: 'var(--v5-font-body)', fontSize: '12px', fontWeight: 300,
-                      color: '#888', lineHeight: 1.6,
+                      color: '#999', lineHeight: 1.6,
                       flex: isWide ? undefined : 1,
                     }}>
                       {lab.pain}
@@ -315,8 +323,11 @@ export default function LabsBannerSection() {
                     {/* Desc */}
                     {'desc' in lab && !isWide && (
                       <p style={{
-                        fontFamily: 'var(--v5-font-body)', fontSize: '12px', fontWeight: 400,
-                        color: '#444', lineHeight: 1.5, marginTop: '6px',
+                        fontFamily: 'var(--v5-font-body)', fontSize: '13px', fontWeight: 600,
+                        color: '#111', lineHeight: 1.45,
+                        marginTop: '16px',
+                        paddingTop: '14px',
+                        borderTop: '1px solid #E8E8E5',
                       }}>
                         {lab.desc}
                       </p>

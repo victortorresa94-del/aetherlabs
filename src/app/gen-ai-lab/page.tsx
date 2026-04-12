@@ -765,6 +765,26 @@ export default function GenAILab() {
           .gal-featured-card {
             grid-column: span 1 !important;
           }
+          /* Hero H1 min 36px */
+          .v5-page section h1 {
+            font-size: clamp(36px, 9vw, 80px) !important;
+          }
+          /* Hero padding */
+          .v5-page section.relative {
+            padding-top: 120px !important;
+            padding-bottom: 80px !important;
+          }
+          /* Section padding */
+          .v5-page section {
+            padding-top: 80px !important;
+            padding-bottom: 80px !important;
+          }
+          /* Container padding */
+          .v5-page .v5-container,
+          .v5-page [style*="maxWidth: '1280px'"] {
+            padding-left: 20px !important;
+            padding-right: 20px !important;
+          }
         }
         @media (max-width: 1024px) {
           .gal-bento-grid {

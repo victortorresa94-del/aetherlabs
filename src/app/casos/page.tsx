@@ -118,6 +118,7 @@ export default function CasosPage() {
       <main>
         {/* ── Section 1: Hero (dark) ─────────────────────────────────────── */}
         <section
+          className="casos-hero-section"
           style={{
             backgroundColor: '#080808',
             paddingTop: '160px',
@@ -182,6 +183,7 @@ export default function CasosPage() {
 
         {/* ── Section 2: Casos reales (light) ───────────────────────────── */}
         <section
+          className="casos-light-section"
           style={{
             backgroundColor: '#F8F8F5',
             paddingTop: '100px',
@@ -205,6 +207,7 @@ export default function CasosPage() {
 
         {/* ── Section 3: Casos de uso (dark) ────────────────────────────── */}
         <section
+          className="casos-dark-section"
           style={{
             backgroundColor: '#080808',
             paddingTop: '100px',
@@ -257,6 +260,7 @@ export default function CasosPage() {
 
         {/* ── Section 4: CTA (dark continuation) ───────────────────────── */}
         <section
+          className="casos-cta-section"
           style={{
             backgroundColor: '#080808',
             borderTop: '1px solid #1a1a1a',
@@ -363,6 +367,55 @@ export default function CasosPage() {
         @media (max-width: 960px) {
           .caso-card-inner.reverse {
             direction: ltr;
+          }
+        }
+
+        @media (max-width: 768px) {
+          /* Hero padding */
+          .casos-hero-section {
+            padding-top: 100px !important;
+            padding-bottom: 60px !important;
+          }
+          .casos-hero-section h1 {
+            font-size: clamp(36px, 10vw, 96px) !important;
+          }
+
+          /* Container horizontal padding */
+          .v5-page .v5-container {
+            padding-left: 20px !important;
+            padding-right: 20px !important;
+          }
+
+          /* Section padding */
+          .casos-light-section,
+          .casos-dark-section,
+          .casos-cta-section {
+            padding-top: 80px !important;
+            padding-bottom: 80px !important;
+          }
+
+          /* Editorial cards: single column, no rtl */
+          .caso-card-inner {
+            grid-template-columns: 1fr !important;
+            direction: ltr !important;
+          }
+          .caso-card-inner > div:first-child {
+            padding: 32px 24px !important;
+          }
+          .caso-card-image {
+            height: 220px !important;
+            min-height: unset !important;
+            order: -1;
+          }
+
+          /* Resultado numbers: reduce */
+          .caso-resultado-num {
+            font-size: clamp(24px, 8vw, 42px) !important;
+          }
+
+          /* Casos de uso grid: 1 col */
+          .casos-uso-grid {
+            grid-template-columns: 1fr !important;
           }
         }
       `}</style>
@@ -504,6 +557,7 @@ function CasoCard({
             }}
           >
             <p
+              className="caso-resultado-num"
               style={{
                 fontFamily: "var(--v5-font-advercase, 'Playfair Display', Georgia, serif)",
                 fontWeight: 400,

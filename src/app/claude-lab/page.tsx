@@ -731,10 +731,14 @@ export default function ClaudeLabPage() {
             padding-right: 20px !important;
           }
 
-          /* Hero: cap paddingTop so content isn't pushed too far */
-          .v5-page section.relative.min-h-screen {
-            padding-top: 0 !important;
-            min-height: 100svh !important;
+          /* Hero: 120px top, 80px bottom */
+          .v5-page section.relative {
+            padding-top: 120px !important;
+            padding-bottom: 80px !important;
+          }
+          /* Ensure hero H1 min 36px */
+          .v5-page section.relative h1 {
+            font-size: clamp(36px, 9vw, 80px) !important;
           }
 
           /* Bento grid → 1 col */

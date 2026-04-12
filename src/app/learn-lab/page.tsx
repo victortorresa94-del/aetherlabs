@@ -767,6 +767,42 @@ export default function SchoolLabPage() {
             </main>
 
             <Footer />
+
+            <style>{`
+              @media (max-width: 768px) {
+                /* Hero padding */
+                .v5-page section.relative {
+                  padding-top: 120px !important;
+                  padding-bottom: 80px !important;
+                }
+                /* Hero H1 min 36px */
+                .v5-page section h1 {
+                  font-size: clamp(36px, 9vw, 72px) !important;
+                }
+                /* All sections padding reduced */
+                .v5-page .v5-section {
+                  padding-top: 80px !important;
+                  padding-bottom: 80px !important;
+                }
+                /* Container padding */
+                .v5-page .v5-container {
+                  padding-left: 20px !important;
+                  padding-right: 20px !important;
+                }
+                /* Programs grid: 1 col */
+                .v5-page .grid-cols-1.md\\:grid-cols-2.lg\\:grid-cols-4 {
+                  grid-template-columns: 1fr !important;
+                }
+                /* Method and formats grids: 1 col */
+                .v5-page .grid-cols-1.md\\:grid-cols-3 {
+                  grid-template-columns: 1fr !important;
+                }
+                /* B2C/B2B split: 1 col */
+                .v5-page .grid-cols-1.md\\:grid-cols-2 {
+                  grid-template-columns: 1fr !important;
+                }
+              }
+            `}</style>
         </div>
     );
 }

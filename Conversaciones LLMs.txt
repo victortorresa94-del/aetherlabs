@@ -4785,5 +4785,13 @@ Resumen de la subida final a GitHub: ✅ Alineaciones corregidas: En los Heroes,
 
 Todo el código, imágenes, componentes nuevos y reajustes ya están compilados, versionados y subidos satisfactoriamente a tu repositorio de GitHub. 🚀 Si abres tu entorno en remoto o actualizas en Vercel, todos los últimos cambios y peticiones se reflejarán sin problemas. ¡Gran sesión!
 
-
-
+### [Entrada Actualización Contínua]
+**Fecha:** 12 Abril 2026 (17:18 PM / Sesión Final)
+**Notas de la sesión:**
+Nuevos ajustes tras la última sesión:
+- **Hero Sections estandarizados al V5:** Se aplicó un alto consistente (`100svh`) a todos los labs y los botones CTA ahora se adaptan con la estructura "flex-col sm:flex-row". 
+- **Integración de Assets:** Cada laboratorio tiene ahora su imagen "definitiva" (ej: `/images/labs/claude-lab.png` - `/images/labs/open-lab.png`).
+- **Learn Lab Refactorizado:** Desestimado el diseño dual B2B/B2C para igualarse a la limpieza de los otros laboratorios. Las cajas y borders circulares (`16px/20px`) han pasado a bordes afilados (`0px`) propios del "V5", modificando colores (`#F8F8F5` y `#E5E5E0`), además de usar estrucutras de texto limpias con tipografía `advercase` general. Integrado logo `hero-classroom.jpg`.
+- **Contacto (Contacto y menú global):** Reparada la página de Contacto para incluir `<h1 class="advercase">` y estandarizar componentes. 
+- **Navbar CTAs:** TODOS los Call-to-actions de la navegación global han sido actualizados en masa para que su `href` apunte específicamente a `/contacto`, unificando el tráfico. Integración pura Calendly (Dark mode) aplicada.
+- **Git Push completado**: Todos los cambios de Labs y Menú ya están pusheados a GitHub.

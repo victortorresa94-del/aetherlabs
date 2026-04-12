@@ -210,12 +210,12 @@ export default function OpenLab() {
 
         {/* ── STATS STRIP ── */}
         <div style={{ background: '#111', borderTop: '1px solid #1a1a1a', borderBottom: '1px solid #1a1a1a' }}>
-          <div style={{
+          <div className="open-stats-strip" style={{
             maxWidth: '1280px', margin: '0 auto', padding: '0 32px',
             display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)',
           }}>
             {stats.map((s, i) => (
-              <div key={i} style={{
+              <div key={i} className="open-stats-item" style={{
                 padding: '40px 32px',
                 borderRight: i < 2 ? '1px solid #1a1a1a' : 'none',
               }}>
@@ -426,6 +426,34 @@ export default function OpenLab() {
         @media (max-width: 768px) {
           .open-grid-3 { grid-template-columns: 1fr !important; }
           .open-feat-grid { grid-template-columns: 1fr !important; }
+          /* Hero full-height maintained, but ensure padding for navbar */
+          .v5-page section.relative {
+            padding-top: 0 !important;
+          }
+          /* Hero H1 min 36px */
+          .v5-page section h1 {
+            font-size: clamp(36px, 9vw, 88px) !important;
+          }
+          /* Section padding */
+          .v5-page section {
+            padding-top: 80px !important;
+            padding-bottom: 80px !important;
+          }
+          /* Container padding */
+          .v5-page .v5-container,
+          .v5-page [style*="maxWidth: '1280px'"] {
+            padding-left: 20px !important;
+            padding-right: 20px !important;
+          }
+          /* Stats strip: 1 col */
+          .open-stats-strip {
+            grid-template-columns: 1fr !important;
+          }
+          .open-stats-item {
+            border-right: none !important;
+            border-bottom: 1px solid #1a1a1a;
+            padding: 32px 20px !important;
+          }
         }
         @media (min-width: 769px) and (max-width: 1024px) {
           .open-grid-3 { grid-template-columns: repeat(2, 1fr) !important; }

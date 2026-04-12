@@ -5,10 +5,10 @@ import Image from 'next/image';
 const clients: { name: string; logo: string; width: number }[] = [
   { name: 'Artiverse',             logo: '/images/logos/Logo Artiverse - copia.jpg', width: 130 },
   { name: 'Audio Hackers Academy', logo: '/images/customers/audio-hackers-academy.png', width: 150 },
-  { name: 'Bonito Sound',          logo: '/images/customers/bonito-sound.png',          width: 120 },
-  { name: 'Bramer Multiserveis',   logo: '/images/customers/bramer.png',                width: 130 },
-  { name: 'Suma Salut',            logo: '/images/customers/suma-salut.png',            width: 100 },
-  { name: 'Kmeleon',               logo: '/images/customers/kmeleon-horizontal.png',    width: 130 },
+  { name: 'Bonito Sound',          logo: '/images/customers/bonito-sound.png',          width: 160 },
+  { name: 'Bramer Multiserveis',   logo: '/images/customers/bramer.png',                width: 82  },
+  { name: 'Suma Salut',            logo: '/images/customers/suma-salut.png',            width: 148 },
+  { name: 'Kmeleon',               logo: '/images/customers/kmeleon-horizontal.png',    width: 108 },
 ];
 
 export default function TrustBandSection() {
@@ -53,8 +53,9 @@ export default function TrustBandSection() {
               title={client.name}
               style={{
                 flexShrink: 0,
-                opacity: 0.45,
+                opacity: 0.5,
                 filter: 'grayscale(1)',
+                mixBlendMode: 'multiply',
                 transition: 'opacity 0.2s ease, filter 0.2s ease',
                 display: 'flex',
                 alignItems: 'center',
@@ -67,7 +68,7 @@ export default function TrustBandSection() {
               }}
               onMouseLeave={(e) => {
                 const el = e.currentTarget as HTMLDivElement;
-                el.style.opacity = '0.45';
+                el.style.opacity = '0.5';
                 el.style.filter = 'grayscale(1)';
               }}
             >

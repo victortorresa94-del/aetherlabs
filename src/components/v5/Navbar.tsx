@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { MessageSquare, Code2, Bot, Sparkles, Megaphone, GraduationCap, Wrench, Users, ArrowUpRight } from 'lucide-react';
+import { MessageSquare, Code2, Bot, Sparkles, Megaphone, GraduationCap, Wrench } from 'lucide-react';
 
 const labsMenu = [
   { icon: MessageSquare, label: 'Claude Lab', tag: 'Implementación y formación', href: '/claude-lab' },
@@ -92,7 +92,12 @@ export default function Navbar() {
           {/* Desktop links */}
           <div className="hidden md:flex items-center gap-10">
             {/* Labs dropdown */}
-            <div className="relative" ref={dropdownRef}>
+            <div
+              className="relative"
+              ref={dropdownRef}
+              onMouseEnter={() => setLabsOpen(true)}
+              onMouseLeave={() => setLabsOpen(false)}
+            >
               <button
                 onClick={() => setLabsOpen(!labsOpen)}
                 style={{
@@ -109,10 +114,10 @@ export default function Navbar() {
                   transition: 'color 200ms ease',
                 }}
                 onMouseEnter={(e) => {
-                  (e.target as HTMLElement).style.color = scrolled ? '#111111' : '#FFFFFF';
+                  (e.currentTarget as HTMLElement).style.color = scrolled ? '#111111' : '#FFFFFF';
                 }}
                 onMouseLeave={(e) => {
-                  (e.target as HTMLElement).style.color = scrolled ? '#555555' : 'rgba(255,255,255,0.6)';
+                  (e.currentTarget as HTMLElement).style.color = scrolled ? '#555555' : 'rgba(255,255,255,0.6)';
                 }}
               >
                 Labs
@@ -121,135 +126,160 @@ export default function Navbar() {
                 </svg>
               </button>
 
-              {/* Mega menu */}
+              {/* Slim dropdown */}
               <div
                 style={{
                   position: 'absolute',
                   top: 'calc(100% + 12px)',
                   left: '50%',
                   transform: labsOpen ? 'translateX(-50%) translateY(0)' : 'translateX(-50%) translateY(-8px)',
-                  width: 'min(380px, 95vw)',
+                  width: '260px',
                   background: '#FFFFFF',
                   border: '1px solid #E8E8E5',
-                  borderRadius: '12px',
+                  borderRadius: '10px',
                   opacity: labsOpen ? 1 : 0,
                   visibility: labsOpen ? 'visible' : 'hidden',
                   transition: 'all 220ms cubic-bezier(0.16, 1, 0.3, 1)',
-                  boxShadow: '0 16px 40px rgba(0,0,0,0.10)',
+                  boxShadow: '0 8px 32px rgba(0,0,0,0.3)',
                   overflow: 'hidden',
-                  display: 'grid',
-                  gridTemplateColumns: '1fr 120px',
+                  padding: '6px',
                 }}
               >
-                {/* Left: labs list */}
-                <div style={{ padding: '6px' }}>
-                  <div style={{
-                    padding: '8px 12px 6px',
-                    fontFamily: 'var(--v5-font-mono)', fontSize: '8px',
-                    letterSpacing: '0.15em', textTransform: 'uppercase', color: '#bbb',
-                  }}>
-                    Laboratorios
-                  </div>
-                  {labsMenu.map((lab) => {
-                    const Icon = lab.icon;
-                    return (
-                      <Link
-                        key={lab.href}
-                        href={lab.href}
-                        onClick={() => setLabsOpen(false)}
-                        style={{ textDecoration: 'none', display: 'block' }}
+                {/* Labs list */}
+                {labsMenu.map((lab) => {
+                  const Icon = lab.icon;
+                  return (
+                    <Link
+                      key={lab.href}
+                      href={lab.href}
+                      onClick={() => setLabsOpen(false)}
+                      style={{ textDecoration: 'none', display: 'block' }}
+                    >
+                      <div
+                        className="dropdown-lab-item"
+                        style={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: '10px',
+                          padding: '8px 10px',
+                          borderRadius: '7px',
+                          transition: 'background 150ms ease',
+                          cursor: 'pointer',
+                        }}
                       >
-                        <div
-                          style={{
-                            display: 'flex', alignItems: 'center', gap: '10px',
-                            padding: '5px 8px', borderRadius: '7px',
-                            transition: 'background 150ms ease',
-                          }}
-                          className="mega-lab-item"
-                        >
-                          <div style={{
-                            width: '24px', height: '24px', borderRadius: '5px',
-                            background: '#F5F5F2', flexShrink: 0,
-                            display: 'flex', alignItems: 'center', justifyContent: 'center',
-                          }}>
-                            <Icon size={13} color="#555" />
-                          </div>
-                          <div style={{ flex: 1, minWidth: 0 }}>
-                            <div style={{
-                              fontFamily: 'var(--v5-font-body)', fontSize: '12px',
-                              fontWeight: 400, color: '#111', lineHeight: 1.2,
-                              display: 'flex', alignItems: 'center', gap: '6px',
-                            }}>
-                              {lab.label}
-                              {'hot' in lab && lab.hot && (
-                                <span style={{
-                                  fontFamily: 'var(--v5-font-mono)', fontSize: '7px',
-                                  letterSpacing: '0.1em', textTransform: 'uppercase',
-                                  background: '#111', color: '#fff',
-                                  padding: '2px 4px', borderRadius: '3px',
-                                }}>Hot</span>
-                              )}
-                            </div>
-                            <div style={{
-                              fontFamily: 'var(--v5-font-body)', fontSize: '10px',
-                              fontWeight: 300, color: '#aaa', lineHeight: 1.2,
-                            }}>{lab.tag}</div>
-                          </div>
-                          <ArrowUpRight size={11} color="#ccc" />
+                        <div style={{
+                          width: '20px',
+                          height: '20px',
+                          flexShrink: 0,
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                        }}>
+                          <Icon size={14} color="rgba(0,0,0,0.35)" />
                         </div>
-                      </Link>
-                    );
-                  })}
-                  <div style={{ height: '6px' }} />
-                </div>
+                        <div style={{ flex: 1, minWidth: 0 }}>
+                          <div style={{
+                            fontSize: '13px',
+                            lineHeight: 1.2,
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '6px',
+                          }}>
+                            <span>
+                              <span style={{
+                                fontFamily: "var(--v5-font-advercase, 'Playfair Display', Georgia, serif)",
+                                fontWeight: 400,
+                                fontStyle: 'normal',
+                                color: '#111111',
+                                letterSpacing: '-0.01em',
+                              }}>
+                                {lab.label.replace(' Lab', '')}
+                              </span>
+                              <span style={{
+                                fontFamily: 'var(--v5-font-body)',
+                                fontWeight: 300,
+                                color: 'rgba(0,0,0,0.35)',
+                              }}>
+                                {' Lab'}
+                              </span>
+                            </span>
+                            {'hot' in lab && lab.hot && (
+                              <span style={{
+                                fontFamily: 'var(--v5-font-mono)',
+                                fontSize: '7px',
+                                letterSpacing: '0.1em',
+                                textTransform: 'uppercase',
+                                background: 'rgba(0,0,0,0.08)',
+                                color: 'rgba(0,0,0,0.5)',
+                                padding: '2px 4px',
+                                borderRadius: '3px',
+                              }}>Hot</span>
+                            )}
+                          </div>
+                          <div style={{
+                            fontFamily: 'var(--v5-font-mono)',
+                            fontSize: '10px',
+                            color: '#999',
+                            lineHeight: 1.3,
+                            marginTop: '1px',
+                          }}>{lab.tag}</div>
+                        </div>
+                      </div>
+                    </Link>
+                  );
+                })}
 
-                {/* Right: AI Team Lab featured */}
+                {/* Divider + AI Team Lab */}
+                <div style={{
+                  height: '1px',
+                  background: '#E8E8E5',
+                  margin: '4px 10px 6px',
+                }} />
                 <Link
-                  href="/contacto"
+                  href="/systems-lab/sesion-de-claridad"
                   onClick={() => setLabsOpen(false)}
                   style={{ textDecoration: 'none', display: 'block' }}
                 >
-                  <div style={{
-                    background: '#080808', height: '100%',
-                    padding: '20px 16px',
-                    display: 'flex', flexDirection: 'column', justifyContent: 'space-between',
-                  }}
-                    className="mega-featured"
+                  <div
+                    className="dropdown-lab-item"
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'space-between',
+                      padding: '8px 10px',
+                      borderRadius: '7px',
+                      transition: 'background 150ms ease',
+                      cursor: 'pointer',
+                    }}
                   >
-                    <div>
-                      <div style={{
-                        width: '32px', height: '32px', borderRadius: '7px',
-                        background: 'rgba(255,255,255,0.08)',
-                        display: 'flex', alignItems: 'center', justifyContent: 'center',
-                        marginBottom: '16px',
-                      }}>
-                        <Users size={15} color="#F5F5F0" />
-                      </div>
-                      <div style={{
-                        fontFamily: 'var(--v5-font-mono)', fontSize: '8px',
-                        letterSpacing: '0.12em', textTransform: 'uppercase',
-                        color: 'rgba(255,255,255,0.3)', marginBottom: '8px',
-                      }}>08 · Flagship</div>
-                      <div style={{
+                    <span style={{ fontSize: '13px', lineHeight: 1.2 }}>
+                      <span style={{
                         fontFamily: "var(--v5-font-advercase, 'Playfair Display', Georgia, serif)",
-                        fontSize: '18px', fontWeight: 400,
-                        color: '#F5F5F0', lineHeight: 1.15, marginBottom: '10px',
+                        fontWeight: 400,
+                        fontStyle: 'normal',
+                        color: '#111111',
                         letterSpacing: '-0.01em',
-                      }}>AI Team Lab</div>
-                      <div style={{
-                        fontFamily: 'var(--v5-font-body)', fontSize: '11px',
-                        fontWeight: 300, color: 'rgba(245,245,240,0.45)', lineHeight: 1.5,
-                      }}>Tu equipo de IA dedicado, desde 1.200€/mes.</div>
-                    </div>
-                    <div style={{
-                      display: 'flex', alignItems: 'center', gap: '4px',
-                      fontFamily: 'var(--v5-font-body)', fontSize: '11px',
-                      color: 'rgba(255,255,255,0.5)', marginTop: '20px',
+                      }}>
+                        AI Team
+                      </span>
+                      <span style={{
+                        fontFamily: 'var(--v5-font-body)',
+                        fontWeight: 300,
+                        color: 'rgba(0,0,0,0.35)',
+                      }}>
+                        {' Lab'}
+                      </span>
+                    </span>
+                    <span style={{
+                      fontFamily: 'var(--v5-font-mono)',
+                      fontSize: '10px',
+                      color: '#999',
                     }}>
-                      Auditoría gratuita <ArrowUpRight size={11} />
-                    </div>
+                      Auditoría gratuita →
+                    </span>
                   </div>
                 </Link>
+                <div style={{ height: '2px' }} />
               </div>
             </div>
 
@@ -353,9 +383,7 @@ export default function Navbar() {
             href={lab.href}
             onClick={() => setMobileOpen(false)}
             style={{
-              fontFamily: 'var(--v5-font-body)',
               fontSize: '16px',
-              fontWeight: 300,
               color: '#555555',
               textDecoration: 'none',
               padding: '11px 0',
@@ -363,12 +391,49 @@ export default function Navbar() {
               display: 'flex', alignItems: 'center', gap: '8px',
             }}
           >
-            {lab.label}
+            <span style={{
+              fontFamily: "var(--v5-font-advercase, 'Playfair Display', Georgia, serif)",
+              fontWeight: 400,
+              fontStyle: 'normal',
+              color: '#111',
+              letterSpacing: '-0.01em',
+            }}>
+              {lab.label.replace(' Lab', '')}
+            </span>
+            <span style={{ fontFamily: 'var(--v5-font-body)', fontWeight: 300, color: '#888' }}>
+              Lab
+            </span>
             {'hot' in lab && lab.hot && (
               <span style={{ fontFamily: 'var(--v5-font-mono)', fontSize: '7px', letterSpacing: '0.1em', textTransform: 'uppercase', background: '#111', color: '#fff', padding: '2px 5px', borderRadius: '3px' }}>Hot</span>
             )}
           </Link>
         ))}
+        <Link
+          href="/systems-lab/sesion-de-claridad"
+          onClick={() => setMobileOpen(false)}
+          style={{
+            fontSize: '16px',
+            textDecoration: 'none',
+            padding: '11px 0',
+            borderBottom: '1px solid #E8E8E8',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '8px',
+          }}
+        >
+          <span style={{
+            fontFamily: "var(--v5-font-advercase, 'Playfair Display', Georgia, serif)",
+            fontWeight: 400,
+            fontStyle: 'normal',
+            color: '#111',
+            letterSpacing: '-0.01em',
+          }}>
+            AI Team
+          </span>
+          <span style={{ fontFamily: 'var(--v5-font-body)', fontWeight: 300, color: '#888' }}>
+            Lab
+          </span>
+        </Link>
 
         <div style={{ marginTop: '32px', marginBottom: '24px', fontFamily: 'var(--v5-font-mono)', fontSize: '11px', color: '#999', textTransform: 'uppercase', letterSpacing: '0.15em' }}>
           General
@@ -424,9 +489,7 @@ export default function Navbar() {
       )}
 
       <style>{`
-        .mega-lab-item:hover { background: #F5F5F2 !important; }
-        .mega-lab-item:hover svg { color: #555 !important; }
-        .mega-featured:hover { background: #0d0d0d !important; }
+        .dropdown-lab-item:hover { background: rgba(0,0,0,0.04) !important; }
       `}</style>
     </>
   );

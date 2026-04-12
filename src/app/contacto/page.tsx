@@ -13,7 +13,7 @@ export default function ContactoPage() {
       <style>{`.calendly-badge-widget { display: none !important; }`}</style>
 
       <main>
-        <section style={{ background: '#080808', paddingTop: '160px', paddingBottom: '120px' }}>
+        <section className="contacto-section" style={{ background: '#080808', paddingTop: '160px', paddingBottom: '120px' }}>
           <div className="v5-container">
 
             {/* Header */}
@@ -25,7 +25,7 @@ export default function ContactoPage() {
                 }}>Contacto</span>
                 <span style={{ width: '32px', height: '1px', background: '#333' }} />
               </div>
-              <h1 style={{
+              <h1 className="contacto-h1" style={{
                 fontFamily: "var(--v5-font-advercase, 'Playfair Display', Georgia, serif)",
                 fontSize: 'clamp(44px, 6vw, 80px)',
                 fontWeight: 400, fontStyle: 'normal',
@@ -51,7 +51,7 @@ export default function ContactoPage() {
             }} className="contacto-grid">
 
               {/* Calendly iframe — inline embed, sin badge widget */}
-              <div style={{
+              <div className="contacto-iframe-wrap" style={{
                 borderRadius: '0px',
                 overflow: 'hidden',
                 border: '1px solid rgba(255,255,255,0.1)',
@@ -160,6 +160,19 @@ export default function ContactoPage() {
       <style>{`
         @media (max-width: 900px) {
           .contacto-grid { grid-template-columns: 1fr !important; }
+        }
+        @media (max-width: 768px) {
+          .contacto-section {
+            padding-top: 100px !important;
+            padding-bottom: 80px !important;
+          }
+          .contacto-grid { grid-template-columns: 1fr !important; }
+          .contacto-iframe-wrap {
+            height: 560px !important;
+          }
+          .contacto-h1 {
+            font-size: clamp(36px, 9vw, 80px) !important;
+          }
         }
       `}</style>
     </div>

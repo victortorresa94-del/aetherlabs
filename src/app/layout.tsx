@@ -6,40 +6,51 @@ import type { Viewport } from "next";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://aetherlabs.es"),
-  title: "Aether Labs — Implementación de IA para empresas | Barcelona",
+  title: {
+    default: "Aether Labs — Implementación de IA para empresas | Barcelona",
+    template: "%s | Aether Labs",
+  },
   description:
-    "Ayudamos a empresas con buen producto a conseguir clientes con IA. Implementación, contenido y presencia digital. Primera sesión gratis.",
+    "Implementamos IA en empresas. Claude, automatizaciones, agentes, software a medida y formación. Resultados reales, sin humo. Barcelona.",
   keywords: [
-    "agencia IA empresas España",
     "implementar IA empresa",
-    "producción contenido IA",
-    "diseño web IA",
-    "consultoría inteligencia artificial Barcelona",
-    "Aether Labs",
-    "sistemas IA empresas",
+    "agencia inteligencia artificial Barcelona",
+    "automatización empresas IA",
+    "Claude implementación",
+    "agentes IA autónomos",
+    "formación IA equipos",
+    "software a medida IA",
+    "Aether Labs Barcelona",
   ],
+  authors: [{ name: "Aether Labs", url: "https://aetherlabs.es" }],
+  creator: "Aether Labs",
   openGraph: {
-    title: "Aether Labs — El puente entre personas y tecnología",
+    title: "Aether Labs — Implementación de IA para empresas",
     description:
-      "Implementamos IA, producimos contenido y construimos presencia digital.",
+      "Implementamos IA en empresas. Claude, automatizaciones, agentes, software a medida y formación. Resultados reales, sin humo.",
     images: [
       {
         url: "/og-image-black.png",
         width: 1200,
         height: 630,
-        alt: "Aether Labs — Barcelona 2025",
+        alt: "Aether Labs — Implementación de IA para empresas en Barcelona",
       },
     ],
     locale: "es_ES",
     type: "website",
     siteName: "Aether Labs",
+    url: "https://aetherlabs.es",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Aether Labs — El puente entre personas y tecnología",
+    title: "Aether Labs — Implementación de IA para empresas",
     description:
-      "Ayudamos a empresas con buen producto a conseguir clientes con IA. Implementación, contenido y presencia digital.",
+      "Implementamos IA en empresas. Claude, automatizaciones, agentes, software a medida y formación. Barcelona.",
     images: ["/og-image-black.png"],
+  },
+  alternates: {
+    canonical: "https://aetherlabs.es",
+    languages: { "es-ES": "https://aetherlabs.es" },
   },
   robots: {
     index: true,
@@ -47,6 +58,8 @@ export const metadata: Metadata = {
     googleBot: {
       index: true,
       follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
     },
   },
 };

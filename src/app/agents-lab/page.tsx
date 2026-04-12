@@ -825,6 +825,40 @@ export default function AgentsLab() {
             grid-template-columns: 1fr !important;
           }
         }
+        @media (max-width: 768px) {
+          /* Hero padding */
+          .v5-page section.relative {
+            padding-top: 120px !important;
+            padding-bottom: 80px !important;
+          }
+          /* Hero H1 min 36px */
+          .v5-page section h1 {
+            font-size: clamp(36px, 9vw, 84px) !important;
+          }
+          /* Section padding */
+          .v5-page section {
+            padding-top: 80px !important;
+            padding-bottom: 80px !important;
+          }
+          /* Container padding */
+          .v5-page .v5-container,
+          .v5-page [style*="maxWidth: '1280px'"] {
+            padding-left: 20px !important;
+            padding-right: 20px !important;
+          }
+          /* Stats: remove side borders, add top divider between items */
+          .agents-stats-grid > div {
+            border-left: none !important;
+            padding: 32px 20px !important;
+          }
+          .agents-stats-grid > div + div {
+            border-top: 1px solid #1e1e1e !important;
+          }
+          /* Steps: 1 col */
+          .agents-steps-grid {
+            grid-template-columns: 1fr !important;
+          }
+        }
       `}</style>
     </div>
   );

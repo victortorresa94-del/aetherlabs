@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 export default function FinalCtaSection() {
   return (
-    <section className="v5-section relative overflow-hidden" style={{ backgroundColor: '#080808' }}>
+    <section className="v5-section relative overflow-hidden v5-cta-section-mobile" style={{ backgroundColor: '#080808' }}>
       <div className="v5-container" style={{ textAlign: 'center', position: 'relative', zIndex: 1 }}>
         <div className="v5-reveal" style={{ maxWidth: '640px', margin: '0 auto' }}>
 
@@ -147,6 +147,24 @@ export default function FinalCtaSection() {
           pointerEvents: 'none',
         }}
       />
+      <style>{`
+        @media (max-width: 768px) {
+          .v5-cta-section-mobile {
+            padding: 80px 20px !important;
+          }
+          .v5-cta-section-mobile h2 {
+            font-size: clamp(28px, 8vw, 52px) !important;
+          }
+          .v5-cta-section-mobile .v5-cta-buttons {
+            width: 100%;
+            text-align: center;
+          }
+          .v5-cta-section-mobile .v5-cta-buttons a {
+            width: 100%;
+            justify-content: center;
+          }
+        }
+      `}</style>
     </section>
   );
 }

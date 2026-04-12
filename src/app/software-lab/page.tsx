@@ -738,7 +738,7 @@ export default function SoftwareLab() {
             grid-template-columns: 1fr !important;
           }
           .sw-steps-grid {
-            grid-template-columns: 1fr 1fr !important;
+            grid-template-columns: 1fr !important;
           }
           .sw-bento-outer {
             grid-template-columns: 1fr !important;
@@ -751,7 +751,7 @@ export default function SoftwareLab() {
             grid-template-columns: 1fr !important;
           }
           .sw-bento-right-bottom {
-            grid-template-columns: 1fr 1fr !important;
+            grid-template-columns: 1fr !important;
           }
           .sw-stats-grid {
             grid-template-columns: 1fr !important;
@@ -761,13 +761,25 @@ export default function SoftwareLab() {
             border-bottom: 1px solid #1a1a1a;
             padding: 36px 24px !important;
           }
-        }
-        @media (max-width: 480px) {
-          .sw-steps-grid {
-            grid-template-columns: 1fr !important;
+          /* Hero H1 min 36px */
+          .v5-page section h1 {
+            font-size: clamp(36px, 9vw, 88px) !important;
           }
-          .sw-bento-right-bottom {
-            grid-template-columns: 1fr !important;
+          /* Hero padding */
+          .v5-page section.relative {
+            padding-top: 120px !important;
+            padding-bottom: 80px !important;
+          }
+          /* Section padding */
+          .v5-page section {
+            padding-top: 80px !important;
+            padding-bottom: 80px !important;
+          }
+          /* Container padding */
+          .v5-page .v5-container,
+          .v5-page [style*="maxWidth: '1280px'"] {
+            padding-left: 20px !important;
+            padding-right: 20px !important;
           }
         }
         .sw-problem-card:hover,

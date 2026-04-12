@@ -51,6 +51,9 @@ export default function HeroSection() {
             padding-top: 120px !important;
             padding-bottom: 80px !important;
           }
+          .hero-section-mobile h1 {
+            font-size: clamp(36px, 9vw, 72px) !important;
+          }
         }
       `}</style>
     </section>

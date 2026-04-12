@@ -59,7 +59,7 @@ export default function NosotrosPage() {
 
         {/* Hero */}
         <section
-          className="v5-section relative min-h-screen flex items-center overflow-hidden"
+          className="v5-section relative min-h-screen flex items-center overflow-hidden nosotros-hero-section"
           style={{ backgroundColor: '#080808' }}
         >
           <Image
@@ -257,7 +257,7 @@ export default function NosotrosPage() {
                 Proyectos y experiencia
               </h2>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-0 v5-reveal">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-0 v5-reveal nosotros-trayectoria-grid">
               {trayectoria.map((item, i) => (
                 <div
                   key={i}
@@ -330,7 +330,7 @@ export default function NosotrosPage() {
                 Nuestra forma de trabajar
               </h2>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 nosotros-principios-grid">
               {principios.map((p, i) => (
                 <div
                   key={i}
@@ -434,7 +434,7 @@ export default function NosotrosPage() {
         </section >
 
         {/* Partners */}
-        < section className="v5-section" style={{ backgroundColor: '#050505', paddingBottom: '160px' }}>
+        < section className="v5-section nosotros-section-padded" style={{ backgroundColor: '#050505', paddingBottom: '160px' }}>
           <div className="v5-container">
             <div className="mb-16 v5-reveal">
               <h2
@@ -454,6 +454,7 @@ export default function NosotrosPage() {
               {partners.map((p, i) => (
                 <div
                   key={i}
+                  className="nosotros-partner-row"
                   style={{
                     padding: '32px 0',
                     borderTop: '1px solid #1A1A1A',
@@ -495,6 +496,49 @@ export default function NosotrosPage() {
 
       </main >
       <Footer />
+
+      <style>{`
+        @media (max-width: 768px) {
+          /* Hero section padding */
+          .nosotros-hero-section {
+            padding-top: 120px !important;
+            padding-bottom: 80px !important;
+          }
+          .nosotros-hero-section h1 {
+            font-size: clamp(36px, 9vw, 80px) !important;
+          }
+
+          /* All v5-section padding reduced */
+          .v5-page .v5-section {
+            padding-top: 80px !important;
+            padding-bottom: 80px !important;
+          }
+          .v5-page .v5-container {
+            padding-left: 20px !important;
+            padding-right: 20px !important;
+          }
+
+          /* Trayectoria grid: 1 col */
+          .nosotros-trayectoria-grid {
+            grid-template-columns: 1fr !important;
+          }
+
+          /* Principios grid: 1 col */
+          .nosotros-principios-grid {
+            grid-template-columns: 1fr !important;
+          }
+
+          /* Partners: stack label/desc vertically */
+          .nosotros-partner-row {
+            grid-template-columns: 1fr !important;
+          }
+
+          /* Section padding override */
+          .nosotros-section-padded {
+            padding-bottom: 80px !important;
+          }
+        }
+      `}</style>
     </div >
   );
 }
