@@ -118,10 +118,10 @@ export default function OpenLab() {
         {/* ── HERO ── */}
         <section
           ref={heroRef}
-          className="relative min-h-screen flex items-center overflow-hidden" style={{ background: '#080808' }}
+          className="relative min-h-[100svh] flex items-center overflow-hidden" style={{ background: '#080808' }}
         >
           <Image
-            src="/images/creative-lab/presentaciones.jpg"
+            src="/images/labs/open-lab.png"
             alt=""
             fill
             style={{ objectFit: 'cover', objectPosition: 'center' }}
@@ -177,7 +177,7 @@ export default function OpenLab() {
                 Antes hacerlo requería un equipo de desarrollo, 6 meses y decenas de miles de euros. Ahora lo construimos en días. Para ti. Exactamente como lo necesitas.
               </p>
 
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px' }}>
+              <div className="flex flex-col sm:flex-row" style={{ gap: '12px', flexWrap: 'wrap' }}>
                 <Link
                   href="#que-construimos"
                   style={{

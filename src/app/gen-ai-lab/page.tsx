@@ -124,9 +124,9 @@ export default function GenAILab() {
       <main>
 
         {/* ── 1. HERO (dark) ──────────────────────────────────────────────── */}
-        <section className="relative min-h-screen flex items-center overflow-hidden" style={{ backgroundColor: '#080808' }}>
+        <section className="relative min-h-[100svh] flex items-center overflow-hidden" style={{ backgroundColor: '#080808' }}>
           <Image
-            src="/images/creative-lab/video.jpg"
+            src="/images/labs/gen-ai-lab.png"
             alt=""
             fill
             style={{ objectFit: 'cover', objectPosition: 'center' }}

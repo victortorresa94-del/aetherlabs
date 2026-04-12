@@ -1,0 +1,25 @@
+﻿commit 29e791bdb81947f3018b4740b044b511e185e1e7
+Author: Victor Torres <victortorresa94@gmail.com>
+Date:   Sun Apr 12 16:53:57 2026 +0200
+
+    feat: optimize mobile experience for hero labs and update images
+
+A	public/images/labs/hero-classroom.jpg
+A	public/images/labs/hero-darkroom.jpg
+A	public/images/labs/hero-library.png
+A	public/images/labs/hero-office.jpg
+A	public/images/labs/hero-watch.jpg
+M	src/app/agents-lab/page.tsx
+M	src/app/casos/page.tsx
+M	src/app/claude-lab/page.tsx
+M	src/app/contacto/page.tsx
+M	src/app/creative-lab/page.tsx
+M	src/app/gen-ai-lab/page.tsx
+M	src/app/learn-lab/page.tsx
+M	src/app/marketing-lab/page.tsx
+M	src/app/nosotros/page.tsx
+M	src/app/school-lab/page.tsx
+M	src/app/software-lab/page.tsx
+M	src/app/systems-lab/page.tsx
+M	src/components/v5/HeroSection.tsx
+M	src/components/v5/LabsBannerSection.tsx

@@ -73,7 +73,7 @@ export default function SchoolLabPage() {
                     <div
                         className="absolute inset-0 z-0"
                         style={{
-                            backgroundImage: 'url("/images/labs/hero-library.png")',
+                            backgroundImage: 'url("/images/labs/learn-lab.png")',
                             backgroundSize: 'cover',
                             backgroundPosition: 'center',
                             opacity: 0.35,
@@ -104,7 +104,7 @@ export default function SchoolLabPage() {
                                     marginBottom: '28px',
                                 }}
                             >
-                                School Lab · Formación IA
+                                Learn Lab · Formación IA
                             </span>
 
                             <h1

@@ -149,7 +149,7 @@ export default function SoftwareLab() {
           className="relative min-h-[100svh] flex items-center overflow-hidden" style={{ background: '#080808' }}
         >
           <Image
-            src="/images/labs/hero-watch.jpg"
+            src="/images/labs/software-lab.png"
             alt=""
             fill
             style={{ objectFit: 'cover', objectPosition: 'center', opacity: 0.35 }}

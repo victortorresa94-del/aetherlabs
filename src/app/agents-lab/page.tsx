@@ -145,10 +145,10 @@ export default function AgentsLab() {
         {/* ── 1. HERO (dark) ── */}
         <section
           ref={heroRef}
-          className="relative min-h-screen flex items-center overflow-hidden" style={{ background: '#080808' }}
+          className="relative min-h-[100svh] flex items-center overflow-hidden" style={{ background: '#080808' }}
         >
           <Image
-            src="/images/services/ai-hub-real.png"
+            src="/images/labs/agents-lab.png"
             alt=""
             fill
             style={{ objectFit: 'cover', objectPosition: 'center' }}
@@ -216,7 +216,7 @@ export default function AgentsLab() {
               </p>
 
               {/* CTAs */}
-              <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
+              <div className="flex flex-col sm:flex-row" style={{ gap: '16px', flexWrap: 'wrap' }}>
                 <a href="#casos-de-uso" style={{
                   display: 'inline-flex',
                   alignItems: 'center',
@@ -464,56 +464,56 @@ export default function AgentsLab() {
             {useCases.map((c, i) => {
               const CaseIcon = c.icon;
               return (
-              <div
-                key={i}
-                className={c.featured ? 'agents-card-featured' : ''}
-                style={{
-                  gridColumn: c.featured ? 'span 2' : 'span 1',
-                  background: '#111',
-                  border: '1px solid #1e1e1e',
-                  borderRadius: '12px',
-                  padding: c.featured ? '48px' : '32px',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  justifyContent: 'space-between',
-                  minHeight: c.featured ? '280px' : '220px',
-                  transition: 'border-color 0.25s',
-                  cursor: 'default',
-                }}
-              >
-                <div>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '16px' }}>
-                    <div style={{ width: c.featured ? '36px' : '30px', height: c.featured ? '36px' : '30px', borderRadius: '7px', background: 'rgba(255,255,255,0.06)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                      <CaseIcon size={c.featured ? 16 : 13} color="#888" />
+                <div
+                  key={i}
+                  className={c.featured ? 'agents-card-featured' : ''}
+                  style={{
+                    gridColumn: c.featured ? 'span 2' : 'span 1',
+                    background: '#111',
+                    border: '1px solid #1e1e1e',
+                    borderRadius: '12px',
+                    padding: c.featured ? '48px' : '32px',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'space-between',
+                    minHeight: c.featured ? '280px' : '220px',
+                    transition: 'border-color 0.25s',
+                    cursor: 'default',
+                  }}
+                >
+                  <div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '16px' }}>
+                      <div style={{ width: c.featured ? '36px' : '30px', height: c.featured ? '36px' : '30px', borderRadius: '7px', background: 'rgba(255,255,255,0.06)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                        <CaseIcon size={c.featured ? 16 : 13} color="#888" />
+                      </div>
+                      <span style={{
+                        fontFamily: 'var(--v5-font-mono)',
+                        fontSize: '9px',
+                        letterSpacing: '0.22em',
+                        textTransform: 'uppercase',
+                        color: '#444',
+                      }}>{c.label}</span>
                     </div>
-                    <span style={{
-                      fontFamily: 'var(--v5-font-mono)',
-                      fontSize: '9px',
-                      letterSpacing: '0.22em',
-                      textTransform: 'uppercase',
-                      color: '#444',
-                    }}>{c.label}</span>
+                    <h3 style={{
+                      fontFamily: "var(--v5-font-advercase, 'Playfair Display', Georgia, serif)",
+                      fontSize: c.featured ? '30px' : '22px',
+                      fontWeight: 400,
+                      fontStyle: 'normal',
+                      letterSpacing: '-0.02em',
+                      color: '#F5F5F0',
+                      marginBottom: '16px',
+                      lineHeight: 1.15,
+                    }}>{c.title}</h3>
                   </div>
-                  <h3 style={{
-                    fontFamily: "var(--v5-font-advercase, 'Playfair Display', Georgia, serif)",
-                    fontSize: c.featured ? '30px' : '22px',
-                    fontWeight: 400,
-                    fontStyle: 'normal',
-                    letterSpacing: '-0.02em',
-                    color: '#F5F5F0',
-                    marginBottom: '16px',
-                    lineHeight: 1.15,
-                  }}>{c.title}</h3>
+                  <p style={{
+                    fontFamily: 'var(--v5-font-body)',
+                    fontWeight: 300,
+                    fontSize: c.featured ? '16px' : '14px',
+                    color: '#666',
+                    lineHeight: 1.65,
+                    margin: 0,
+                  }}>{c.desc}</p>
                 </div>
-                <p style={{
-                  fontFamily: 'var(--v5-font-body)',
-                  fontWeight: 300,
-                  fontSize: c.featured ? '16px' : '14px',
-                  color: '#666',
-                  lineHeight: 1.65,
-                  margin: 0,
-                }}>{c.desc}</p>
-              </div>
               );
             })}
           </div>
