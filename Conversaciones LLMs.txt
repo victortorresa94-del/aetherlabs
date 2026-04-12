@@ -1,0 +1,19 @@
+# Conversaciones LLMs
+
+Este documento está diseñado para almacenar el histórico de conversaciones, contexto continuo y decisiones importantes tomadas con Claude Code u otros agentes LLMs a lo largo del desarrollo de Aether Labs. 
+
+*Instrucción para agentes (Claude/Gemini/O1):* Antes de realizar cambios mayores en la arquitectura, leer este documento para entender las prioridades del usuario, iteraciones previas y decisiones de diseño establecidas en sesiones interiores.
+
+---
+
+### [Entrada 1]
+**Fecha:** 12 Abril 2026
+**Notas de la sesión:**
+Se ha establecido el nuevo "V5 Design System". 
+- Se utilizan diseños oscuros premium (`#080808` base) para los Heroes, y fondos claros/crema para el contenido interno.
+- La tipografía principal es Advercase (Otf), combinado con 'DM Sans' y 'Playfair Display' para elementos elegantes.
+- Todos los Hero sections se han estandarizado dentro de la clase `.v5-container` para igualar el límite de padding del Navbar, creando harmonía con el logo.
+- El CTA global se modificó de "Reservar sesión" a "Auditoría Gratuita". Esta página se centraliza en `src/app/contacto/page.tsx`, con incrustación directa del grid de Calendly y contacto por correo/whatsapp (con redirección target="_blank" en estilo V5 Ghost button).
+- Xavi y Juan tienen fotos corporativas en blanco y negro en la sección "Nosotros", acorde a la elegancia del resto de perfiles.
+
+**(Pega a partir de aquí tus nuevas conversaciones o registros cuando termines sesiones largas con otra IA/Claude).**
