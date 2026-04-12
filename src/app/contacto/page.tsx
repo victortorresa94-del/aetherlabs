@@ -7,8 +7,8 @@ import Footer from '@/components/v5/Footer';
 const contactMethods = [
   {
     label: 'EMAIL',
-    value: 'hola@aetherlabs.es',
-    href: 'mailto:hola@aetherlabs.es',
+    value: 'info@aetherlabs.es',
+    href: 'mailto:info@aetherlabs.es',
     desc: 'Para consultas generales, presupuestos o propuestas de colaboración.',
   },
   {
@@ -62,9 +62,9 @@ export default function ContactoPage() {
                 marginBottom: '32px',
               }}
             >
-              Hablemos.<br />
+              Auditoría gratuita.<br />
               <span style={{ color: 'rgba(245,245,240,0.38)' }}>
-                Sin compromiso, sin formularios eternos.
+                Diagnóstico sin compromiso.
               </span>
             </h1>
             <p
@@ -77,7 +77,7 @@ export default function ContactoPage() {
                 maxWidth: '560px',
               }}
             >
-              Cuéntanos tu reto por el canal que prefieras. Te respondemos siempre personalmente.
+              Cuéntanos tu reto y reserva fecha pulsando abajo. Te respondemos siempre personalmente.
             </p>
           </div>
         </section>
@@ -181,7 +181,7 @@ export default function ContactoPage() {
                   marginBottom: '24px',
                 }}
               >
-                Barcelona, España
+                Rambla Balmes 27, Mollet del Vallès, Barcelona
               </h2>
               <p
                 style={{
@@ -226,7 +226,7 @@ export default function ContactoPage() {
                 maxWidth: '420px',
               }}
             >
-              Reserva una sesión de claridad gratuita de 30 minutos. Sin compromiso.
+              Reserva una auditoría gratuita con nosotros. Sin ningún tipo de compromiso.
             </p>
             <Link
               href="/systems-lab/sesion-de-claridad"
@@ -247,7 +247,7 @@ export default function ContactoPage() {
               onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.opacity = '0.85'; }}
               onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.opacity = '1'; }}
             >
-              Reservar sesión gratuita →
+              Auditoría gratuita →
             </Link>
           </div>
         </section>

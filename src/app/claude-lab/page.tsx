@@ -167,7 +167,7 @@ export default function ClaudeLabPage() {
             background: 'linear-gradient(to bottom, rgba(8,8,8,0.3) 0%, rgba(8,8,8,0.65) 100%)',
             zIndex: 1,
           }} />
-          <div style={{ ...container, position: 'relative', zIndex: 2 }}>
+          <div className="v5-container w-full relative z-10">
 
             <FadeUp delay={0}>
               <span style={{ display: 'block', marginBottom: '24px', ...monoLabel(true) }}>

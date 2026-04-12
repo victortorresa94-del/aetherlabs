@@ -137,7 +137,7 @@ export default function MarketingLab() {
             background: 'linear-gradient(to bottom, rgba(8,8,8,0.3) 0%, rgba(8,8,8,0.65) 100%)',
             zIndex: 1,
           }} />
-          <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 32px', position: 'relative', zIndex: 2, width: '100%', boxSizing: 'border-box' }}>
+          <div className="v5-container w-full relative z-10">
 
             <FadeUp>
               <span

@@ -154,7 +154,7 @@ export default function SoftwareLab() {
             background: 'linear-gradient(to right, rgba(8,8,8,0.95) 0%, rgba(8,8,8,0.5) 40%, rgba(8,8,8,0.1) 100%)',
             zIndex: 1,
           }} />
-          <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 32px', position: 'relative', zIndex: 2, width: '100%', boxSizing: 'border-box' }}>
+          <div className="v5-container w-full relative z-10">
             <motion.div
               initial={{ opacity: 0, y: 24 }}
               animate={heroInView ? { opacity: 1, y: 0 } : {}}
