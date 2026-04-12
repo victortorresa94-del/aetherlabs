@@ -5,30 +5,30 @@ import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import {
   MessageSquare, Code2, Bot, Sparkles,
-  Megaphone, GraduationCap, Users, ArrowUpRight,
+  Megaphone, GraduationCap, Users, ArrowUpRight, Wrench,
 } from 'lucide-react';
 
 const labs = [
   {
     index: '01',
     name: 'Claude Lab',
-    pain: '¿Tu equipo sigue trabajando como en 2020 mientras la herramienta tecnológica más potente de la historia ya está disponible para todos?',
+    pain: 'Implementamos y formamos a tu equipo en la herramienta tecnológica más potente de la historia reciente.',
     icon: MessageSquare,
-    href: '/systems-lab',
+    href: '/claude-lab',
   },
   {
     index: '02',
     name: 'Software Lab',
     pain: '¿Necesitas una herramienta a medida pero cotizar software cuesta una fortuna?',
     icon: Code2,
-    href: '/systems-lab',
+    href: '/software-lab',
   },
   {
     index: '03',
     name: 'Agents Lab',
     pain: '¿Tienes procesos que dependen de una persona y se rompen en cuanto esa persona no está?',
     icon: Bot,
-    href: '/open-lab',
+    href: '/agents-lab',
     badge: 'Más demandado',
   },
   {
@@ -41,9 +41,9 @@ const labs = [
   {
     index: '05',
     name: 'Marketing Lab',
-    pain: '¿Inviertes en marketing y no sabes qué funciona, qué falla, ni por qué tu competencia crece más rápido?',
+    pain: '¿Inviertes en marketing sin saber qué funciona, qué falla, ni por qué tu competencia crece más rápido?',
     icon: Megaphone,
-    href: '/creative-lab',
+    href: '/marketing-lab',
   },
   {
     index: '06',
@@ -51,6 +51,14 @@ const labs = [
     pain: '¿Tu equipo sabe que la IA existe pero no sabe cómo aplicarla en su trabajo real?',
     icon: GraduationCap,
     href: '/school-lab',
+  },
+  {
+    index: '07',
+    name: 'Open Lab',
+    pain: '¿Necesitas algo a medida — un chatbot, una web con lógica, un dashboard, un documento con IA — pero sin meses de desarrollo ni presupuestos de agencia?',
+    icon: Wrench,
+    href: '/open-lab',
+    wide: true,
   },
 ];
 
@@ -96,7 +104,7 @@ export default function LabsBannerSection() {
             <span style={{
               fontFamily: 'var(--v5-font-mono)', fontSize: '10px', letterSpacing: '0.15em',
               textTransform: 'uppercase', color: '#aaa',
-            }}>7 capacidades</span>
+            }}>8 capacidades</span>
           </div>
 
           <h2 style={{
@@ -145,7 +153,7 @@ export default function LabsBannerSection() {
                     fontFamily: 'var(--v5-font-mono)', fontSize: '9px',
                     letterSpacing: '0.15em', textTransform: 'uppercase',
                     color: 'rgba(255,255,255,0.4)',
-                  }}>07 · Flagship</span>
+                  }}>08 · Flagship</span>
                 </div>
 
                 <h3 style={{
@@ -203,12 +211,14 @@ export default function LabsBannerSection() {
         >
           {labs.map((lab, i) => {
             const Icon = lab.icon;
+            const isWide = 'wide' in lab && lab.wide;
             return (
               <motion.div
                 key={lab.index}
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.55, ease, delay: 0.18 + i * 0.06 }}
+                style={isWide ? { gridColumn: '1 / -1' } : {}}
               >
                 <Link href={lab.href} style={{ textDecoration: 'none', display: 'block', height: '100%' }}>
                   <div
@@ -216,46 +226,59 @@ export default function LabsBannerSection() {
                       background: '#fff',
                       border: '1px solid #e8e8e5',
                       borderRadius: '12px',
-                      padding: '28px 28px 24px',
+                      padding: isWide ? '28px 36px' : '28px 28px 24px',
                       height: '100%',
                       display: 'flex',
-                      flexDirection: 'column',
+                      flexDirection: isWide ? 'row' : 'column',
+                      alignItems: isWide ? 'center' : undefined,
+                      gap: isWide ? '40px' : undefined,
                       cursor: 'pointer',
                       transition: 'all 220ms ease',
                     }}
                     className="lab-card"
                   >
                     {/* Header */}
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '20px' }}>
+                    <div style={{
+                      display: 'flex',
+                      justifyContent: isWide ? undefined : 'space-between',
+                      alignItems: isWide ? 'center' : 'flex-start',
+                      gap: isWide ? '16px' : undefined,
+                      marginBottom: isWide ? 0 : '20px',
+                      flexShrink: isWide ? 0 : undefined,
+                    }}>
                       <div style={{
                         width: '38px', height: '38px', borderRadius: '8px',
                         background: '#f0f0ec',
                         display: 'flex', alignItems: 'center', justifyContent: 'center',
+                        flexShrink: 0,
                       }}>
                         <Icon size={17} color="#555" />
                       </div>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                        {lab.badge && (
+                      {!isWide && (
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                          {lab.badge && (
+                            <span style={{
+                              fontFamily: 'var(--v5-font-mono)', fontSize: '8px',
+                              letterSpacing: '0.12em', textTransform: 'uppercase',
+                              color: '#888', border: '1px solid #ddd',
+                              padding: '3px 7px', borderRadius: '4px',
+                            }}>{lab.badge}</span>
+                          )}
                           <span style={{
-                            fontFamily: 'var(--v5-font-mono)', fontSize: '8px',
-                            letterSpacing: '0.12em', textTransform: 'uppercase',
-                            color: '#888', border: '1px solid #ddd',
-                            padding: '3px 7px', borderRadius: '4px',
-                          }}>{lab.badge}</span>
-                        )}
-                        <span style={{
-                          fontFamily: 'var(--v5-font-mono)', fontSize: '10px',
-                          color: '#bbb',
-                        }}>{lab.index}</span>
-                      </div>
+                            fontFamily: 'var(--v5-font-mono)', fontSize: '10px',
+                            color: '#bbb',
+                          }}>{lab.index}</span>
+                        </div>
+                      )}
                     </div>
 
                     {/* Lab name */}
                     <h3 style={{
                       fontFamily: "var(--v5-font-advercase, 'Playfair Display', Georgia, serif)",
-                      fontSize: 'clamp(20px, 2vw, 24px)', fontWeight: 400,
-                      color: '#111', marginBottom: '10px', letterSpacing: '-0.01em',
-                      lineHeight: 1.15,
+                      fontSize: isWide ? '22px' : 'clamp(20px, 2vw, 24px)', fontWeight: 400,
+                      color: '#111', marginBottom: isWide ? 0 : '10px', letterSpacing: '-0.01em',
+                      lineHeight: 1.15, flexShrink: isWide ? 0 : undefined,
+                      minWidth: isWide ? '160px' : undefined,
                     }}>
                       {lab.name}
                     </h3>
@@ -270,7 +293,7 @@ export default function LabsBannerSection() {
                     </p>
 
                     {/* Arrow */}
-                    <div style={{ marginTop: '20px', display: 'flex', justifyContent: 'flex-end' }}>
+                    <div style={{ marginTop: isWide ? 0 : '20px', display: 'flex', justifyContent: 'flex-end', flexShrink: 0 }}>
                       <ArrowUpRight size={15} color="#bbb" className="lab-arrow" />
                     </div>
                   </div>

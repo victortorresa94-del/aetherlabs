@@ -45,7 +45,7 @@ export default function Navbar() {
   const otherLinks = [
     { label: 'Nosotros', href: '/nosotros' },
     { label: 'Casos', href: '/casos' },
-    { label: 'Learn', href: '/blog' },
+    { label: 'Archivo', href: '/blog' },
   ];
 
   return (
@@ -74,8 +74,8 @@ export default function Navbar() {
             <Image
               src="/aether-logo-white.png"
               alt="Aether Labs"
-              height={29}
-              width={112}
+              height={23}
+              width={90}
               style={{
                 objectFit: 'contain',
                 transition: 'filter 400ms ease',
