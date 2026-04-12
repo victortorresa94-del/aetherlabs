@@ -51,7 +51,7 @@ export default function SolutionSection() {
               margin: '0 auto',
             }}
           >
-            Un equipo de IA que actúa como si fuera interno
+            Un <span className="v5-serif italic">equipo de IA</span> que actúa como si fuera interno
           </h2>
         </div>
 

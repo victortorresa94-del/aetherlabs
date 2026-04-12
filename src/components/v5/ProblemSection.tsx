@@ -51,7 +51,7 @@ export default function ProblemSection() {
               }}
             >
               Tienes un buen producto.<br />
-              <span style={{ color: '#999999' }}>El mercado no lo sabe.</span>
+              <span className="v5-serif italic" style={{ color: '#999999' }}>El mercado no lo sabe.</span>
             </h2>
           </div>
 

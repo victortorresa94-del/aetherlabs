@@ -37,6 +37,9 @@
     "**/*.mts"
   ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "_web3-archive",
+    "_web3-v4-archive",
+    "legacy"
   ]
 }

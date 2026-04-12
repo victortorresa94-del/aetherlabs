@@ -1,11 +1,36 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;1,9..40,300&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;1,9..40,300&family=JetBrains+Mono:wght@400;500&display=swap');
 
 @import "tailwindcss";
+
+/* Advercase */
+@font-face {
+  font-family: 'Advercase';
+  src: url('/fonts/Advercase.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Advercase';
+  src: url('/fonts/Advercase-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Advercase';
+  src: url('/fonts/Advercase-Italic.otf') format('opentype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
 
 @theme {
   --font-display: "Plus Jakarta Sans", sans-serif;
   --font-body: "DM Sans", sans-serif;
   --font-mono: "JetBrains Mono", monospace;
+  --font-serif: "Playfair Display", "Cormorant", Georgia, serif;
+  --font-advercase: 'Advercase', 'Playfair Display', Georgia, serif;
 
   --color-v5-bg-base: #080808;
   --color-v5-bg-card: #EDE8DF;
@@ -42,6 +67,8 @@
   --font-display: 'Plus Jakarta Sans', sans-serif;
   --font-body: 'DM Sans', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
+  --font-serif: 'Playfair Display', 'Cormorant', Georgia, serif;
+  --font-advercase: 'Advercase', 'Playfair Display', Georgia, serif;
 }
 
 /* ─────────────────────────────────────
@@ -119,6 +146,9 @@ body {
   --v5-font-display: 'Plus Jakarta Sans', sans-serif;
   --v5-font-body: 'DM Sans', sans-serif;
   --v5-font-mono: 'JetBrains Mono', monospace;
+  --v5-font-serif: 'Playfair Display', 'Cormorant', Georgia, serif;
+  --v5-font-advercase: 'Advercase', 'Playfair Display', Georgia, serif;
+  --font-advercase: 'Advercase', 'Playfair Display', Georgia, serif;
 }
 
 /* ─────────────────────────────────────
@@ -134,6 +164,11 @@ body {
 /* ─────────────────────────────────────
    V5 TYPOGRAPHY
 ───────────────────────────────────── */
+.v5-serif {
+  font-family: var(--v5-font-serif);
+  font-weight: 400;
+}
+
 .v5-label {
   font-family: var(--v5-font-mono);
   font-size: 11px;
@@ -371,7 +406,7 @@ body {
 }
 
 /* Stagger children — children start hidden and reveal sequentially */
-.v5-stagger-children > * {
+.v5-stagger-children>* {
   opacity: 0;
   transform: translateY(16px);
   filter: blur(2px);
@@ -380,7 +415,7 @@ body {
     filter 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.v5-stagger-children > .v5-child-revealed {
+.v5-stagger-children>.v5-child-revealed {
   opacity: 1;
   transform: translateY(0);
   filter: blur(0);
@@ -608,39 +643,78 @@ body {
 
 /* Floating gradient orb for hero backgrounds */
 @keyframes float-orb {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  33% { transform: translate(30px, -30px) scale(1.05); }
-  66% { transform: translate(-20px, 20px) scale(0.95); }
+
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  33% {
+    transform: translate(30px, -30px) scale(1.05);
+  }
+
+  66% {
+    transform: translate(-20px, 20px) scale(0.95);
+  }
 }
 
 /* Subtle pulse for CTA buttons */
 @keyframes subtle-pulse {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(255,255,255,0.1); }
-  50% { box-shadow: 0 0 0 12px rgba(255,255,255,0); }
+
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.1);
+  }
+
+  50% {
+    box-shadow: 0 0 0 12px rgba(255, 255, 255, 0);
+  }
 }
 
 /* Gradient text shimmer */
 @keyframes shimmer {
-  0% { background-position: -200% center; }
-  100% { background-position: 200% center; }
+  0% {
+    background-position: -200% center;
+  }
+
+  100% {
+    background-position: 200% center;
+  }
 }
 
 /* Counter number animation */
 @keyframes count-up {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Line draw effect for borders */
 @keyframes line-draw {
-  from { width: 0; }
-  to { width: 100%; }
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 100%;
+  }
 }
 
 /* Nav link underline slide */
 @keyframes underline-in {
-  from { transform: scaleX(0); }
-  to { transform: scaleX(1); }
+  from {
+    transform: scaleX(0);
+  }
+
+  to {
+    transform: scaleX(1);
+  }
 }
 
 /* ─────────────────────────────────────
@@ -728,7 +802,7 @@ body {
     filter: none;
   }
 
-  .v5-stagger-children > * {
+  .v5-stagger-children>* {
     opacity: 1;
     transform: none;
     filter: none;
