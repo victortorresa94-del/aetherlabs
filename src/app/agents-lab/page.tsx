@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { ArrowUpRight } from 'lucide-react';
@@ -138,9 +139,21 @@ export default function AgentsLab() {
         {/* ── 1. HERO (dark) ── */}
         <section
           ref={heroRef}
-          style={{ background: '#080808', paddingTop: '160px', paddingBottom: '120px' }}
+          style={{ background: '#080808', paddingTop: '160px', paddingBottom: '120px', position: 'relative', overflow: 'hidden' }}
         >
-          <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 32px' }}>
+          <Image
+            src="/crystal-sculpture.jpeg"
+            alt=""
+            fill
+            style={{ objectFit: 'cover', objectPosition: 'center' }}
+            priority
+          />
+          <div style={{
+            position: 'absolute', inset: 0,
+            background: 'linear-gradient(to bottom, rgba(8,8,8,0.3) 0%, rgba(8,8,8,0.65) 100%)',
+            zIndex: 1,
+          }} />
+          <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 32px', position: 'relative', zIndex: 2 }}>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={heroInView ? { opacity: 1, y: 0 } : {}}

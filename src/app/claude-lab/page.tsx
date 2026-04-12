@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
@@ -153,8 +154,20 @@ export default function ClaudeLabPage() {
         {/* ═══════════════════════════════════════════════════════════════
             SECTION 1 — HERO (dark)
         ═══════════════════════════════════════════════════════════════ */}
-        <section style={{ backgroundColor: '#080808', paddingTop: '160px', paddingBottom: '120px' }}>
-          <div style={container}>
+        <section style={{ backgroundColor: '#080808', paddingTop: '160px', paddingBottom: '120px', position: 'relative', overflow: 'hidden' }}>
+          <Image
+            src="/images/aether-office.jpg"
+            alt=""
+            fill
+            style={{ objectFit: 'cover', objectPosition: 'center' }}
+            priority
+          />
+          <div style={{
+            position: 'absolute', inset: 0,
+            background: 'linear-gradient(to bottom, rgba(8,8,8,0.3) 0%, rgba(8,8,8,0.65) 100%)',
+            zIndex: 1,
+          }} />
+          <div style={{ ...container, position: 'relative', zIndex: 2 }}>
 
             <FadeUp delay={0}>
               <span style={{ display: 'block', marginBottom: '24px', ...monoLabel(true) }}>
