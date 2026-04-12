@@ -57,7 +57,7 @@
     "@vercel/analytics": "^1.5.0",
     "atmn": "^0.0.28",
     "autumn-js": "^0.1.43",
-    "baseline-browser-mapping": "^2.9.19",
+    "baseline-browser-mapping": "^2.10.18",
     "bcrypt": "^6.0.0",
     "better-auth": "^1.4.3",
     "class-variance-authority": "^0.7.1",

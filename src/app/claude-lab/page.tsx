@@ -156,7 +156,7 @@ export default function ClaudeLabPage() {
         ═══════════════════════════════════════════════════════════════ */}
         <section className="relative min-h-screen flex items-center overflow-hidden" style={{ backgroundColor: '#080808' }}>
           <Image
-            src="/images/aether-office.jpg"
+            src="/images/heroes/claude.png"
             alt=""
             fill
             style={{ objectFit: 'cover', objectPosition: 'center' }}

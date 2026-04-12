@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
-import OpenAI from "openai";
+import { GoogleGenerativeAI } from "@google/generative-ai";
 
-const DEEPSEEK_API_KEY = process.env.DEEPSEEK_API_KEY;
+const GEMINI_API_KEY = process.env.GEMINI_API_KEY || process.env.GOOGLE_AI_API_KEY || process.env.GOOGLE_API_KEY;
 
 const JASON_SYSTEM_PROMPT = `
 [SYSTEM INSTRUCTION — SALVIA SALES STRATEGIST CORE]
@@ -597,28 +597,25 @@ export async function POST(req: Request) {
     try {
         const { message, history } = await req.json();
 
-        if (!DEEPSEEK_API_KEY) {
-            return NextResponse.json({ error: "DeepSeek API Key not configured" }, { status: 500 });
+        if (!GEMINI_API_KEY) {
+            return NextResponse.json({ error: "API Key not configured" }, { status: 500 });
         }
 
-        const openai = new OpenAI({
-            baseURL: 'https://api.deepseek.com',
-            apiKey: DEEPSEEK_API_KEY
+        const genAI = new GoogleGenerativeAI(GEMINI_API_KEY);
+        const model = genAI.getGenerativeModel({
+            model: "gemini-2.0-flash",
+            systemInstruction: JASON_SYSTEM_PROMPT,
         });
 
-        const messages = [
-            { role: "system", content: JASON_SYSTEM_PROMPT },
-            ...(history || []),
-            { role: "user", content: message }
-        ];
+        // Build chat history for Gemini (excludes the latest user message)
+        const chatHistory = (history || []).map((m: { role: string; content: string }) => ({
+            role: m.role === "assistant" ? "model" : "user",
+            parts: [{ text: m.content }],
+        }));
 
-        const completion = await openai.chat.completions.create({
-            messages: messages,
-            model: "deepseek-chat",
-            temperature: 0.7,
-        });
-
-        const reply = completion.choices[0].message.content;
+        const chat = model.startChat({ history: chatHistory });
+        const result = await chat.sendMessage(message);
+        const reply = result.response.text();
 
         return NextResponse.json({ reply });
 

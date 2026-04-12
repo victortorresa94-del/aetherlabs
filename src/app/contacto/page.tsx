@@ -1,6 +1,5 @@
 'use client';
 
-import Script from 'next/script';
 import Navbar from '@/components/v5/Navbar';
 import Footer from '@/components/v5/Footer';
 
@@ -9,11 +8,6 @@ export default function ContactoPage() {
     <div className="v5-page bg-[#080808]">
       <Navbar />
       <main>
-        <Script
-          src="https://assets.calendly.com/assets/external/widget.js"
-          strategy="lazyOnload"
-        />
-
         <section
           className="relative min-h-screen pt-32 pb-24 overflow-hidden"
           style={{ backgroundColor: '#080808' }}
@@ -79,15 +73,18 @@ export default function ContactoPage() {
             {/* Grid Layout: Calendly + Info */}
             <div className="grid grid-cols-1 lg:grid-cols-[1fr_360px] gap-8 lg:gap-16 items-start">
 
-              {/* Calendly Wrapper */}
+              {/* Calendly iframe — sin doble render, sin dependencias JS externas */}
               <div
-                className="w-full bg-white rounded-2xl overflow-hidden shadow-2xl relative"
-                style={{ height: '700px', border: '1px solid rgba(255,255,255,0.05)' }}
+                className="w-full rounded-2xl overflow-hidden"
+                style={{ height: '700px', border: '1px solid rgba(255,255,255,0.08)' }}
               >
-                <div
-                  className="calendly-inline-widget w-full h-full"
-                  data-url="https://calendly.com/aetherlabs1986/30min?hide_gdpr_banner=1&background_color=ffffff&text_color=111111&primary_color=111111"
-                  style={{ minWidth: '320px', height: '100%' }}
+                <iframe
+                  src="https://calendly.com/aetherlabs1986/30min?hide_gdpr_banner=1&background_color=ffffff&text_color=111111&primary_color=111111"
+                  width="100%"
+                  height="100%"
+                  frameBorder="0"
+                  title="Agenda una sesión con Aether Labs"
+                  style={{ display: 'block', minWidth: '320px' }}
                 />
               </div>
 

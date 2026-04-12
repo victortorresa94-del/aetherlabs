@@ -57,9 +57,9 @@ export default function Footer() {
             <div style={{ marginBottom: '20px' }}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/aether-logo-new.png"
+                src="/aether-logo-white.png"
                 alt="Aether Labs"
-                style={{ height: '32px', width: 'auto', objectFit: 'contain', filter: 'brightness(0) invert(1)', opacity: 0.5 }}
+                style={{ height: '24px', width: 'auto', objectFit: 'contain', opacity: 1 }}
               />
             </div>
             <p
