@@ -11,51 +11,65 @@ import {
 const labs = [
   {
     index: '01',
+    service: 'Claude',
     name: 'Claude Lab',
     pain: 'Implementamos y formamos a tu equipo en la herramienta tecnológica más potente de la historia reciente.',
+    desc: 'Implementamos Claude en tus procesos y formamos a tu equipo.',
     icon: MessageSquare,
     href: '/claude-lab',
   },
   {
     index: '02',
+    service: 'Software',
     name: 'Software Lab',
     pain: '¿Necesitas una herramienta a medida pero cotizar software cuesta una fortuna?',
+    desc: 'Construimos software a medida con IA, sin meses de espera.',
     icon: Code2,
     href: '/software-lab',
   },
   {
     index: '03',
+    service: 'Agents',
     name: 'Agents Lab',
     pain: '¿Tienes procesos que dependen de una persona y se rompen en cuanto esa persona no está?',
+    desc: 'Creamos agentes que ejecutan tareas completas de forma autónoma.',
     icon: Bot,
     href: '/agents-lab',
     badge: 'Más demandado',
   },
   {
     index: '04',
+    service: 'Gen AI',
     name: 'Gen AI Lab',
     pain: '¿Produces menos contenido visual del que necesitas porque es caro y lento?',
+    desc: 'Producimos imágenes, vídeos y creatividades con IA generativa.',
     icon: Sparkles,
-    href: '/creative-lab',
+    href: '/gen-ai-lab',
   },
   {
     index: '05',
+    service: 'Marketing',
     name: 'Marketing Lab',
     pain: '¿Inviertes en marketing sin saber qué funciona, qué falla, ni por qué tu competencia crece más rápido?',
+    desc: 'Construimos sistemas de captación y campañas con IA como motor.',
     icon: Megaphone,
     href: '/marketing-lab',
   },
   {
     index: '06',
+    service: 'Learn',
     name: 'Learn Lab',
     pain: '¿Tu equipo sabe que la IA existe pero no sabe cómo aplicarla en su trabajo real?',
+    desc: 'Formación práctica en IA para que tu equipo la use de verdad.',
     icon: GraduationCap,
-    href: '/school-lab',
+    href: '/learn-lab',
   },
   {
     index: '07',
+    service: 'Open',
     name: 'Open Lab',
     pain: '¿Necesitas algo a medida — un chatbot, una web con lógica, un dashboard, un documento con IA — pero sin meses de desarrollo ni presupuestos de agencia?',
+    desc: 'Chatbots, webs con lógica y dashboards. Sin agencias ni esperas.',
     icon: Wrench,
     href: '/open-lab',
     wide: true,
@@ -187,7 +201,7 @@ export default function LabsBannerSection() {
                   color: '#F5F5F0', fontFamily: 'var(--v5-font-body)',
                   fontSize: '13px', fontWeight: 400, marginBottom: '8px',
                 }}>
-                  Reservar sesión gratis
+                  Auditoría gratuita
                   <ArrowUpRight size={15} />
                 </div>
                 <p style={{
@@ -254,43 +268,57 @@ export default function LabsBannerSection() {
                       }}>
                         <Icon size={17} color="#555" />
                       </div>
-                      {!isWide && (
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                          {lab.badge && (
-                            <span style={{
-                              fontFamily: 'var(--v5-font-mono)', fontSize: '8px',
-                              letterSpacing: '0.12em', textTransform: 'uppercase',
-                              color: '#888', border: '1px solid #ddd',
-                              padding: '3px 7px', borderRadius: '4px',
-                            }}>{lab.badge}</span>
-                          )}
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                        {lab.badge && (
                           <span style={{
-                            fontFamily: 'var(--v5-font-mono)', fontSize: '10px',
-                            color: '#bbb',
-                          }}>{lab.index}</span>
-                        </div>
-                      )}
+                            fontFamily: 'var(--v5-font-mono)', fontSize: '8px',
+                            letterSpacing: '0.12em', textTransform: 'uppercase',
+                            color: '#888', border: '1px solid #ddd',
+                            padding: '3px 7px', borderRadius: '4px',
+                          }}>{lab.badge}</span>
+                        )}
+                        <span style={{
+                          fontFamily: 'var(--v5-font-mono)', fontSize: '10px',
+                          color: '#bbb',
+                        }}>{lab.index}</span>
+                      </div>
                     </div>
 
-                    {/* Lab name */}
-                    <h3 style={{
-                      fontFamily: "var(--v5-font-advercase, 'Playfair Display', Georgia, serif)",
-                      fontSize: isWide ? '22px' : 'clamp(20px, 2vw, 24px)', fontWeight: 400,
-                      color: '#111', marginBottom: isWide ? 0 : '10px', letterSpacing: '-0.01em',
-                      lineHeight: 1.15, flexShrink: isWide ? 0 : undefined,
-                      minWidth: isWide ? '160px' : undefined,
-                    }}>
-                      {lab.name}
-                    </h3>
+                    {/* Lab name — service large + "Lab" as mono label */}
+                    <div style={{ marginBottom: isWide ? 0 : '10px', flexShrink: isWide ? 0 : undefined, minWidth: isWide ? '140px' : undefined }}>
+                      <h3 style={{
+                        fontFamily: "var(--v5-font-advercase, 'Playfair Display', Georgia, serif)",
+                        fontSize: isWide ? '22px' : 'clamp(22px, 2.5vw, 28px)', fontWeight: 300,
+                        color: '#111', letterSpacing: '-0.02em',
+                        lineHeight: 1.1, marginBottom: '3px',
+                      }}>
+                        {'service' in lab ? lab.service : lab.name}
+                      </h3>
+                      <span style={{
+                        fontFamily: 'var(--v5-font-mono)', fontSize: '10px',
+                        letterSpacing: '0.15em', textTransform: 'uppercase',
+                        color: '#6366F1', display: 'block',
+                      }}>Lab</span>
+                    </div>
 
                     {/* Pain */}
                     <p style={{
-                      fontFamily: 'var(--v5-font-body)', fontSize: '13px', fontWeight: 300,
-                      color: '#888', lineHeight: 1.65,
-                      flex: 1,
+                      fontFamily: 'var(--v5-font-body)', fontSize: '12px', fontWeight: 300,
+                      color: '#888', lineHeight: 1.6,
+                      flex: isWide ? undefined : 1,
                     }}>
                       {lab.pain}
                     </p>
+
+                    {/* Desc */}
+                    {'desc' in lab && !isWide && (
+                      <p style={{
+                        fontFamily: 'var(--v5-font-body)', fontSize: '11px', fontWeight: 300,
+                        color: '#94A3B8', lineHeight: 1.5, marginTop: '6px',
+                      }}>
+                        {lab.desc}
+                      </p>
+                    )}
 
                     {/* Arrow */}
                     <div style={{ marginTop: isWide ? 0 : '20px', display: 'flex', justifyContent: 'flex-end', flexShrink: 0 }}>

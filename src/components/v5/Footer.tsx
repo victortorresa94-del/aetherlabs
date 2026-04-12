@@ -45,7 +45,7 @@ export default function Footer() {
           }}
             onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = 'rgba(255,255,255,0.12)'; }}
             onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = 'rgba(255,255,255,0.08)'; }}>
-            Reservar sesión →
+            Auditoría gratuita →
           </Link>
         </div>
 
@@ -109,9 +109,12 @@ export default function Footer() {
               Labs
             </h4>
             {[
-              { label: 'Creative Lab', href: '/creative-lab' },
-              { label: 'Systems Lab', href: '/systems-lab' },
-              { label: 'School Lab', href: '/school-lab' },
+              { label: 'Claude Lab', href: '/claude-lab' },
+              { label: 'Software Lab', href: '/software-lab' },
+              { label: 'Agents Lab', href: '/agents-lab' },
+              { label: 'Gen AI Lab', href: '/gen-ai-lab' },
+              { label: 'Marketing Lab', href: '/marketing-lab' },
+              { label: 'Learn Lab', href: '/learn-lab' },
               { label: 'Open Lab', href: '/open-lab' },
             ].map(({ label, href }) => (
               <Link

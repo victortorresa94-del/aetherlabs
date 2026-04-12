@@ -80,7 +80,7 @@ export default function FinalCtaSection() {
                 (e.currentTarget as HTMLElement).style.transform = 'translateY(0)';
               }}
             >
-              Reservar sesión gratuita
+              Auditoría gratuita
             </Link>
           </div>
 

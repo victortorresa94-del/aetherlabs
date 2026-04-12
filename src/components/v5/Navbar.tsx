@@ -10,9 +10,9 @@ const labsMenu = [
   { icon: MessageSquare, label: 'Claude Lab', tag: 'Implementación y formación', href: '/claude-lab' },
   { icon: Code2, label: 'Software Lab', tag: 'Software a medida', href: '/software-lab' },
   { icon: Bot, label: 'Agents Lab', tag: 'Automatización autónoma', href: '/agents-lab', hot: true },
-  { icon: Sparkles, label: 'Gen AI Lab', tag: 'Imágenes, vídeo y creatividades', href: '/creative-lab' },
+  { icon: Sparkles, label: 'Gen AI Lab', tag: 'Imágenes, vídeo y creatividades', href: '/gen-ai-lab' },
   { icon: Megaphone, label: 'Marketing Lab', tag: 'Captación y campañas', href: '/marketing-lab' },
-  { icon: GraduationCap, label: 'Learn Lab', tag: 'Formación práctica para equipos', href: '/school-lab' },
+  { icon: GraduationCap, label: 'Learn Lab', tag: 'Formación práctica para equipos', href: '/learn-lab' },
   { icon: Wrench, label: 'Open Lab', tag: 'Chatbots, webs y dashboards', href: '/open-lab' },
 ];
 
@@ -125,27 +125,27 @@ export default function Navbar() {
               <div
                 style={{
                   position: 'absolute',
-                  top: 'calc(100% + 16px)',
+                  top: 'calc(100% + 12px)',
                   left: '50%',
                   transform: labsOpen ? 'translateX(-50%) translateY(0)' : 'translateX(-50%) translateY(-8px)',
-                  width: 'min(460px, 95vw)',
+                  width: 'min(380px, 95vw)',
                   background: '#FFFFFF',
                   border: '1px solid #E8E8E5',
-                  borderRadius: '16px',
+                  borderRadius: '12px',
                   opacity: labsOpen ? 1 : 0,
                   visibility: labsOpen ? 'visible' : 'hidden',
                   transition: 'all 220ms cubic-bezier(0.16, 1, 0.3, 1)',
-                  boxShadow: '0 20px 60px rgba(0,0,0,0.10)',
+                  boxShadow: '0 16px 40px rgba(0,0,0,0.10)',
                   overflow: 'hidden',
                   display: 'grid',
-                  gridTemplateColumns: '1fr 140px',
+                  gridTemplateColumns: '1fr 120px',
                 }}
               >
                 {/* Left: labs list */}
-                <div style={{ padding: '8px' }}>
+                <div style={{ padding: '6px' }}>
                   <div style={{
-                    padding: '10px 16px 8px',
-                    fontFamily: 'var(--v5-font-mono)', fontSize: '9px',
+                    padding: '8px 12px 6px',
+                    fontFamily: 'var(--v5-font-mono)', fontSize: '8px',
                     letterSpacing: '0.15em', textTransform: 'uppercase', color: '#bbb',
                   }}>
                     Laboratorios
@@ -161,22 +161,22 @@ export default function Navbar() {
                       >
                         <div
                           style={{
-                            display: 'flex', alignItems: 'center', gap: '12px',
-                            padding: '6px 10px', borderRadius: '8px',
+                            display: 'flex', alignItems: 'center', gap: '10px',
+                            padding: '5px 8px', borderRadius: '7px',
                             transition: 'background 150ms ease',
                           }}
                           className="mega-lab-item"
                         >
                           <div style={{
-                            width: '28px', height: '28px', borderRadius: '6px',
+                            width: '24px', height: '24px', borderRadius: '5px',
                             background: '#F5F5F2', flexShrink: 0,
                             display: 'flex', alignItems: 'center', justifyContent: 'center',
                           }}>
-                            <Icon size={15} color="#555" />
+                            <Icon size={13} color="#555" />
                           </div>
                           <div style={{ flex: 1, minWidth: 0 }}>
                             <div style={{
-                              fontFamily: 'var(--v5-font-body)', fontSize: '13px',
+                              fontFamily: 'var(--v5-font-body)', fontSize: '12px',
                               fontWeight: 400, color: '#111', lineHeight: 1.2,
                               display: 'flex', alignItems: 'center', gap: '6px',
                             }}>
@@ -186,21 +186,21 @@ export default function Navbar() {
                                   fontFamily: 'var(--v5-font-mono)', fontSize: '7px',
                                   letterSpacing: '0.1em', textTransform: 'uppercase',
                                   background: '#111', color: '#fff',
-                                  padding: '2px 5px', borderRadius: '3px',
+                                  padding: '2px 4px', borderRadius: '3px',
                                 }}>Hot</span>
                               )}
                             </div>
                             <div style={{
-                              fontFamily: 'var(--v5-font-body)', fontSize: '11px',
-                              fontWeight: 300, color: '#999', lineHeight: 1.3, marginTop: '1px',
+                              fontFamily: 'var(--v5-font-body)', fontSize: '10px',
+                              fontWeight: 300, color: '#aaa', lineHeight: 1.2,
                             }}>{lab.tag}</div>
                           </div>
-                          <ArrowUpRight size={13} color="#ccc" />
+                          <ArrowUpRight size={11} color="#ccc" />
                         </div>
                       </Link>
                     );
                   })}
-                  <div style={{ height: '8px' }} />
+                  <div style={{ height: '6px' }} />
                 </div>
 
                 {/* Right: AI Team Lab featured */}
