@@ -52,14 +52,14 @@ export default function ContactoPage() {
 
               {/* Calendly iframe — inline embed, sin badge widget */}
               <div style={{
-                borderRadius: '12px',
+                borderRadius: '0px',
                 overflow: 'hidden',
-                border: '1px solid rgba(255,255,255,0.07)',
-                background: '#fff',
+                border: '1px solid rgba(255,255,255,0.1)',
+                background: '#080808',
                 height: '680px',
               }}>
                 <iframe
-                  src="https://calendly.com/aetherlabs1986/30min?hide_gdpr_banner=1&background_color=ffffff&text_color=111111&primary_color=111111&embed_type=Inline"
+                  src="https://calendly.com/aetherlabs1986/30min?hide_gdpr_banner=1&background_color=080808&text_color=F5F5F0&primary_color=F5F5F0&embed_type=Inline"
                   width="100%"
                   height="100%"
                   frameBorder="0"
@@ -133,7 +133,7 @@ export default function ContactoPage() {
                 {/* Sesion de claridad CTA */}
                 <div style={{
                   marginTop: '8px', padding: '24px', background: '#111',
-                  border: '1px solid rgba(255,255,255,0.07)', borderRadius: '12px',
+                  border: '1px solid rgba(255,255,255,0.07)', borderRadius: '0px',
                 }}>
                   <p style={{
                     fontFamily: 'var(--v5-font-body)', fontSize: '13px', fontWeight: 300,
