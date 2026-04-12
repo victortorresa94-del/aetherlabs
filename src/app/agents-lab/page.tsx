@@ -139,7 +139,7 @@ export default function AgentsLab() {
         {/* ── 1. HERO (dark) ── */}
         <section
           ref={heroRef}
-          style={{ background: '#080808', paddingTop: '160px', paddingBottom: '120px', position: 'relative', overflow: 'hidden' }}
+          className="relative min-h-screen flex items-center overflow-hidden" style={{ background: '#080808' }}
         >
           <Image
             src="/crystal-sculpture.jpeg"
@@ -245,7 +245,7 @@ export default function AgentsLab() {
                   textDecoration: 'none',
                   transition: 'border-color 0.2s, color 0.2s',
                 }}>
-                  Reservar sesión
+                  Auditoría gratuita
                 </Link>
               </div>
             </motion.div>
@@ -775,7 +775,7 @@ export default function AgentsLab() {
                   transition: 'opacity 0.2s',
                 }}
               >
-                Reservar sesión gratuita
+                Auditoría gratuita
                 <ArrowUpRight size={16} />
               </Link>
             </div>

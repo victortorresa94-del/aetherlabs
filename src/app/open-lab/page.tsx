@@ -118,7 +118,7 @@ export default function OpenLab() {
         {/* ── HERO ── */}
         <section
           ref={heroRef}
-          style={{ background: '#080808', paddingTop: '160px', paddingBottom: '120px', position: 'relative', overflow: 'hidden' }}
+          className="relative min-h-screen flex items-center overflow-hidden" style={{ background: '#080808' }}
         >
           <Image
             src="/quantum-sculpture.jpeg"
@@ -201,7 +201,7 @@ export default function OpenLab() {
                     border: '1px solid rgba(255,255,255,0.12)',
                   }}
                 >
-                  Reservar sesión de claridad
+                  Auditoría gratuita
                 </Link>
               </div>
             </motion.div>
@@ -413,7 +413,7 @@ export default function OpenLab() {
                 textDecoration: 'none',
               }}
             >
-              Reservar sesión gratuita <ArrowUpRight size={16} />
+              Auditoría gratuita <ArrowUpRight size={16} />
             </Link>
           </div>
         </section>

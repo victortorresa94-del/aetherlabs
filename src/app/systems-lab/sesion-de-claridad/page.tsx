@@ -32,18 +32,18 @@ const audienceCards = [
 const faqs = [
   {
     q: '¿Tengo que contratar algo después?',
-    a: 'No. La sesión es independiente. Si tiene sentido seguir trabajando juntos, lo proponemos. Si no, te vas con el informe.',
+    a: 'No. La sesión es independiente y 100% gratuita. Si tiene sentido seguir trabajando juntos, lo proponemos. Si no, te vas con tu diagnóstico.',
   },
   {
     q: '¿Cómo es el formato?',
-    a: 'Videollamada de 90 minutos. Te pedimos que vengas con información básica de tu empresa y tus principales dolores.',
+    a: 'Videollamada de 60-90 minutos. Te pedimos que vengas con información básica de tu empresa y tus principales cuellos de botella.',
   },
   {
-    q: '¿Los 150€ se descuentan si contrato?',
-    a: 'Sí. Si decides trabajar con nosotros, los 150€ se aplican al primer proyecto.',
+    q: '¿Es realmente gratuita?',
+    a: 'Sí. Ofrecemos estas sesiones de auditoría porque es la mejor manera de demostrar nuestro valor antes de pedirte un euro.',
   },
   {
-    q: '¿En cuánto tiempo tengo el informe?',
+    q: '¿En cuánto tiempo tengo el diagnóstico?',
     a: 'En menos de 48h después de la sesión.',
   },
 ];
@@ -129,7 +129,7 @@ export default function SesionDeClaridadPage() {
                   color: 'rgba(245,245,240,0.6)',
                 }}
               >
-                150€ · o gratis en sesiones de lanzamiento
+                Auditoría 100% gratuita
               </span>
 
               <Link
@@ -432,32 +432,85 @@ export default function SesionDeClaridadPage() {
           <div className="v5-container">
             <div className="v5-reveal flex flex-col items-center gap-4" style={{ marginBottom: '40px' }}>
               <span style={{
-                fontFamily: 'var(--v5-font-mono)',
-                fontSize: '11px',
-                fontWeight: 500,
-                letterSpacing: '0.15em',
-                textTransform: 'uppercase',
-                color: '#999999',
+                fontFamily: 'var(--v5-font-mono)', fontSize: '11px', fontWeight: 500,
+                letterSpacing: '0.15em', textTransform: 'uppercase', color: '#999999',
               }}>
-                Reserva tu sesión
+                Reserva tu sesión o ven a vernos
               </span>
               <h2 style={{
-                fontFamily: 'var(--v5-font-display)',
-                fontSize: 'clamp(28px, 3.5vw, 48px)',
-                fontWeight: 300,
-                letterSpacing: '-0.02em',
-                lineHeight: 1.05,
-                color: '#111111',
-                textAlign: 'center',
+                fontFamily: 'var(--v5-font-display)', fontSize: 'clamp(28px, 3.5vw, 48px)',
+                fontWeight: 300, letterSpacing: '-0.02em', lineHeight: 1.05,
+                color: '#111111', textAlign: 'center',
               }}>
-                Elige tu día y hora.
+                Hablemos de tu proyecto.
               </h2>
             </div>
-            <div
-              className="calendly-inline-widget"
-              data-url="https://calendly.com/aetherlabs1986/30min?hide_gdpr_banner=1&background_color=f7f7f5&text_color=111111&primary_color=111111"
-              style={{ minWidth: '320px', height: '700px', width: '100%' }}
-            />
+
+            <div style={{
+              display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) minmax(0, 1fr)', gap: '40px', alignItems: 'start',
+            }} className="contact-grid">
+              <div style={{ background: '#FFFFFF', borderRadius: '16px', border: '1px solid #EBEBEB', padding: '16px', overflow: 'hidden' }}>
+                <div
+                  className="calendly-inline-widget"
+                  data-url="https://calendly.com/aetherlabs1986/30min?hide_gdpr_banner=1&background_color=ffffff&text_color=111111&primary_color=111111"
+                  style={{ minWidth: '320px', height: '700px', width: '100%' }}
+                />
+              </div>
+
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', position: 'sticky', top: '100px' }}>
+                <div style={{ background: '#FFFFFF', borderRadius: '16px', border: '1px solid #EBEBEB', padding: '48px', display: 'flex', flexDirection: 'column', gap: '24px' }}>
+                  <span style={{
+                    fontFamily: 'var(--v5-font-mono)', fontSize: '11px', letterSpacing: '0.1em',
+                    textTransform: 'uppercase', color: '#888'
+                  }}>Headquarters</span>
+                  <p style={{
+                    fontFamily: 'var(--v5-font-body)', fontSize: '18px', fontWeight: 300,
+                    color: '#222', lineHeight: 1.6, margin: 0
+                  }}>
+                    Aether Labs<br />
+                    Rambla Balmes 27<br />
+                    Mollet del Vallès, Barcelona 08100
+                  </p>
+                  <p style={{
+                    fontFamily: 'var(--v5-font-body)', fontSize: '15px', fontWeight: 300,
+                    color: '#888', fontStyle: 'italic', margin: 0
+                  }}>
+                    Ven a conocernos. El café (o kombucha) corre de nuestra cuenta. Nuestro espacio está diseñado para enfocarnos en tu proyecto.
+                  </p>
+                </div>
+
+                <div style={{ background: '#080808', borderRadius: '16px', border: '1px solid #222', padding: '48px', display: 'flex', flexDirection: 'column', gap: '24px' }}>
+                  <span style={{
+                    fontFamily: 'var(--v5-font-mono)', fontSize: '11px', letterSpacing: '0.1em',
+                    textTransform: 'uppercase', color: '#666'
+                  }}>Contacto directo</span>
+                  <p style={{
+                    fontFamily: 'var(--v5-font-body)', fontSize: '16px', fontWeight: 300,
+                    color: '#AAA', lineHeight: 1.6, margin: 0
+                  }}>
+                    Escríbenos directamente y te contestaremos lo antes posible.
+                  </p>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                    <a href="mailto:info@aetherlabs.es" style={{
+                      fontFamily: 'var(--v5-font-mono)', fontSize: '14px', color: '#F5F5F0',
+                      textDecoration: 'none', borderBottom: '1px solid rgba(255,255,255,0.3)', paddingBottom: '4px',
+                      transition: 'border-color 0.2s', letterSpacing: '0.05em', width: 'fit-content'
+                    }} onMouseEnter={e => e.currentTarget.style.borderColor = 'rgba(255,255,255,0.8)'}
+                      onMouseLeave={e => e.currentTarget.style.borderColor = 'rgba(255,255,255,0.3)'}>
+                      info@aetherlabs.es
+                    </a>
+                    <a href="tel:+34627281491" style={{
+                      fontFamily: 'var(--v5-font-mono)', fontSize: '14px', color: '#F5F5F0',
+                      textDecoration: 'none', borderBottom: '1px solid rgba(255,255,255,0.3)', paddingBottom: '4px',
+                      transition: 'border-color 0.2s', letterSpacing: '0.05em', width: 'fit-content'
+                    }} onMouseEnter={e => e.currentTarget.style.borderColor = 'rgba(255,255,255,0.8)'}
+                      onMouseLeave={e => e.currentTarget.style.borderColor = 'rgba(255,255,255,0.3)'}>
+                      +34 627 28 14 91
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -542,6 +595,7 @@ export default function SesionDeClaridadPage() {
       <style>{`
         @media (max-width: 900px) {
           .sdc-two-col { grid-template-columns: 1fr !important; gap: 48px !important; }
+          .contact-grid { grid-template-columns: 1fr !important; }
         }
         @media (max-width: 768px) {
           .sdc-cards-grid { grid-template-columns: 1fr !important; }

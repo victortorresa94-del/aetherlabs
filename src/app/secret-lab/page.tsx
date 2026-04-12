@@ -35,8 +35,7 @@ export default function SecretLabPage() {
 
         {/* HERO */}
         <section
-          className="v5-section"
-          style={{ backgroundColor: '#080808', paddingTop: '160px', paddingBottom: '100px' }}
+          className="v5-section relative min-h-screen flex items-center justify-center overflow-hidden" style={{ backgroundColor: '#080808' }}
         >
           <div className="v5-container">
             <span

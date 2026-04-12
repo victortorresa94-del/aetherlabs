@@ -140,10 +140,10 @@ export default function SoftwareLab() {
         {/* ── HERO ── */}
         <section
           ref={heroRef}
-          style={{ background: '#080808', paddingTop: '160px', paddingBottom: '120px', position: 'relative', overflow: 'hidden' }}
+          className="relative min-h-screen flex items-center overflow-hidden" style={{ background: '#080808' }}
         >
           <Image
-            src="/chrome-sculpture.jpeg"
+            src="/images/heroes/software.png"
             alt=""
             fill
             style={{ objectFit: 'cover', objectPosition: 'center' }}
@@ -151,10 +151,10 @@ export default function SoftwareLab() {
           />
           <div style={{
             position: 'absolute', inset: 0,
-            background: 'linear-gradient(to bottom, rgba(8,8,8,0.3) 0%, rgba(8,8,8,0.65) 100%)',
+            background: 'linear-gradient(to right, rgba(8,8,8,0.95) 0%, rgba(8,8,8,0.5) 40%, rgba(8,8,8,0.1) 100%)',
             zIndex: 1,
           }} />
-          <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 32px', position: 'relative', zIndex: 2 }}>
+          <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 32px', position: 'relative', zIndex: 2, width: '100%', boxSizing: 'border-box' }}>
             <motion.div
               initial={{ opacity: 0, y: 24 }}
               animate={heroInView ? { opacity: 1, y: 0 } : {}}
@@ -192,7 +192,7 @@ export default function SoftwareLab() {
                 lineHeight: 1.0,
                 color: '#F5F5F0',
                 marginBottom: '32px',
-                maxWidth: '820px',
+                maxWidth: '1100px',
               }}>
                 Tu software.<br />
                 Exactamente como lo necesitas.
@@ -227,7 +227,7 @@ export default function SoftwareLab() {
                   borderRadius: '0px',
                 }}
               >
-                Reservar sesión gratuita <ArrowUpRight size={15} />
+                Auditoría gratuita <ArrowUpRight size={15} />
               </Link>
             </motion.div>
           </div>
@@ -702,7 +702,7 @@ export default function SoftwareLab() {
                 textDecoration: 'none',
               }}
             >
-              Reservar sesión gratuita <ArrowUpRight size={16} />
+              Auditoría gratuita <ArrowUpRight size={16} />
             </Link>
           </div>
         </Section>

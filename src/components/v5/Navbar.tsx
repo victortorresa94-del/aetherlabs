@@ -8,12 +8,12 @@ import { MessageSquare, Code2, Bot, Sparkles, Megaphone, GraduationCap, Wrench, 
 
 const labsMenu = [
   { icon: MessageSquare, label: 'Claude Lab', tag: 'Implementación y formación', href: '/claude-lab' },
-  { icon: Code2,         label: 'Software Lab', tag: 'Software a medida', href: '/software-lab' },
-  { icon: Bot,           label: 'Agents Lab', tag: 'Automatización autónoma', href: '/agents-lab', hot: true },
-  { icon: Sparkles,      label: 'Gen AI Lab', tag: 'Imágenes, vídeo y creatividades', href: '/creative-lab' },
-  { icon: Megaphone,     label: 'Marketing Lab', tag: 'Captación y campañas', href: '/marketing-lab' },
+  { icon: Code2, label: 'Software Lab', tag: 'Software a medida', href: '/software-lab' },
+  { icon: Bot, label: 'Agents Lab', tag: 'Automatización autónoma', href: '/agents-lab', hot: true },
+  { icon: Sparkles, label: 'Gen AI Lab', tag: 'Imágenes, vídeo y creatividades', href: '/creative-lab' },
+  { icon: Megaphone, label: 'Marketing Lab', tag: 'Captación y campañas', href: '/marketing-lab' },
   { icon: GraduationCap, label: 'Learn Lab', tag: 'Formación práctica para equipos', href: '/school-lab' },
-  { icon: Wrench,        label: 'Open Lab', tag: 'Chatbots, webs y dashboards', href: '/open-lab' },
+  { icon: Wrench, label: 'Open Lab', tag: 'Chatbots, webs y dashboards', href: '/open-lab' },
 ];
 
 export default function Navbar() {
@@ -128,7 +128,7 @@ export default function Navbar() {
                   top: 'calc(100% + 16px)',
                   left: '50%',
                   transform: labsOpen ? 'translateX(-50%) translateY(0)' : 'translateX(-50%) translateY(-8px)',
-                  width: 'min(680px, 95vw)',
+                  width: 'min(560px, 95vw)',
                   background: '#FFFFFF',
                   border: '1px solid #E8E8E5',
                   borderRadius: '16px',
@@ -138,7 +138,7 @@ export default function Navbar() {
                   boxShadow: '0 20px 60px rgba(0,0,0,0.10)',
                   overflow: 'hidden',
                   display: 'grid',
-                  gridTemplateColumns: '1fr 220px',
+                  gridTemplateColumns: '1fr 180px',
                 }}
               >
                 {/* Left: labs list */}
@@ -162,13 +162,13 @@ export default function Navbar() {
                         <div
                           style={{
                             display: 'flex', alignItems: 'center', gap: '12px',
-                            padding: '10px 12px', borderRadius: '8px',
+                            padding: '6px 10px', borderRadius: '8px',
                             transition: 'background 150ms ease',
                           }}
                           className="mega-lab-item"
                         >
                           <div style={{
-                            width: '32px', height: '32px', borderRadius: '7px',
+                            width: '28px', height: '28px', borderRadius: '6px',
                             background: '#F5F5F2', flexShrink: 0,
                             display: 'flex', alignItems: 'center', justifyContent: 'center',
                           }}>
@@ -211,7 +211,7 @@ export default function Navbar() {
                 >
                   <div style={{
                     background: '#080808', height: '100%',
-                    padding: '24px 20px',
+                    padding: '20px 16px',
                     display: 'flex', flexDirection: 'column', justifyContent: 'space-between',
                   }}
                     className="mega-featured"
@@ -246,7 +246,7 @@ export default function Navbar() {
                       fontFamily: 'var(--v5-font-body)', fontSize: '11px',
                       color: 'rgba(255,255,255,0.5)', marginTop: '20px',
                     }}>
-                      Sesión gratuita <ArrowUpRight size={11} />
+                      Auditoría gratuita <ArrowUpRight size={11} />
                     </div>
                   </div>
                 </Link>
@@ -303,7 +303,7 @@ export default function Navbar() {
                 el.style.background = scrolled ? '#111111' : '#FFFFFF';
               }}
             >
-              Reservar sesión →
+              Auditoría gratuita →
             </Link>
 
             <button
@@ -406,7 +406,7 @@ export default function Navbar() {
             padding: '16px 0',
           }}
         >
-          Sesión gratuita
+          Auditoría gratuita
         </Link>
       </div>
 

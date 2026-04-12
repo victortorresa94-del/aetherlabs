@@ -124,9 +124,9 @@ export default function MarketingLab() {
       <main>
 
         {/* ── 1. HERO (dark) ──────────────────────────────────────────────── */}
-        <section style={{ backgroundColor: '#080808', paddingTop: '160px', paddingBottom: '120px', position: 'relative', overflow: 'hidden' }}>
+        <section className="relative min-h-screen flex items-center overflow-hidden" style={{ backgroundColor: '#080808' }}>
           <Image
-            src="/images/creative-lab/branding.jpg"
+            src="/images/heroes/marketing.png"
             alt=""
             fill
             style={{ objectFit: 'cover', objectPosition: 'center' }}
@@ -137,7 +137,7 @@ export default function MarketingLab() {
             background: 'linear-gradient(to bottom, rgba(8,8,8,0.3) 0%, rgba(8,8,8,0.65) 100%)',
             zIndex: 1,
           }} />
-          <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 32px', position: 'relative', zIndex: 2 }}>
+          <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 32px', position: 'relative', zIndex: 2, width: '100%', boxSizing: 'border-box' }}>
 
             <FadeUp>
               <span
@@ -166,7 +166,7 @@ export default function MarketingLab() {
                   letterSpacing: '-0.02em',
                   lineHeight: 1.0,
                   color: '#F5F5F0',
-                  maxWidth: '820px',
+                  maxWidth: '1100px',
                   marginBottom: '32px',
                   whiteSpace: 'pre-line',
                 }}
@@ -215,7 +215,7 @@ export default function MarketingLab() {
                   (e.currentTarget as HTMLElement).style.background = '#F5F5F0';
                 }}
               >
-                Reservar sesión <ArrowUpRight size={16} />
+                Auditoría gratuita <ArrowUpRight size={16} />
               </Link>
             </FadeUp>
 
@@ -739,7 +739,7 @@ export default function MarketingLab() {
                     (e.currentTarget as HTMLElement).style.background = '#F5F5F0';
                   }}
                 >
-                  Reservar sesión gratuita <ArrowUpRight size={16} />
+                  Auditoría gratuita <ArrowUpRight size={16} />
                 </Link>
               </FadeUp>
 

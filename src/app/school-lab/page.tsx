@@ -67,8 +67,7 @@ export default function SchoolLabPage() {
 
                 {/* ── HERO ── */}
                 <section
-                    className="relative flex items-center overflow-hidden"
-                    style={{ backgroundColor: '#080808', paddingTop: '160px', paddingBottom: '120px' }}
+                    className="relative min-h-screen flex items-center overflow-hidden" style={{ backgroundColor: '#080808' }}
                 >
                     {/* Ambient glow */}
                     <div

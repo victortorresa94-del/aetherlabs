@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Navbar from '@/components/v5/Navbar';
 import Footer from '@/components/v5/Footer';
 import ScrollAnimations from '@/components/v5/ScrollAnimations';
+import Image from 'next/image';
 
 const trayectoria = [
   { cliente: 'SOMA / Audio Hackers', servicio: 'Funnel de lanzamiento', resultado: '200 alumnos, 20.000€ en ventas' },
@@ -58,10 +59,22 @@ export default function NosotrosPage() {
 
         {/* Hero */}
         <section
-          className="v5-section"
-          style={{ backgroundColor: '#080808', paddingTop: '160px', paddingBottom: '100px' }}
+          className="v5-section relative min-h-screen flex items-center overflow-hidden"
+          style={{ backgroundColor: '#080808' }}
         >
-          <div className="v5-container">
+          <Image
+            src="/images/heroes/nosotros.png"
+            alt=""
+            fill
+            style={{ objectFit: 'cover', objectPosition: 'center' }}
+            priority
+          />
+          <div style={{
+            position: 'absolute', inset: 0,
+            background: 'linear-gradient(to bottom, rgba(8,8,8,0.3) 0%, rgba(8,8,8,0.7) 100%)',
+            zIndex: 1,
+          }} />
+          <div className="v5-container" style={{ position: 'relative', zIndex: 2 }}>
             <span
               style={{
                 display: 'block',
@@ -110,7 +123,7 @@ export default function NosotrosPage() {
         </section>
 
         {/* El origen */}
-        <section className="v5-section" style={{ backgroundColor: '#FFFFFF' }}>
+        <section className="v5-section" style={{ backgroundColor: '#050505' }}>
           <div className="v5-container">
             <div className="v5-reveal max-w-3xl mb-24">
               <h2
@@ -120,7 +133,7 @@ export default function NosotrosPage() {
                   fontWeight: 300,
                   letterSpacing: '-0.02em',
                   lineHeight: 1.1,
-                  color: '#111111',
+                  color: '#F5F5F0',
                   marginBottom: '32px',
                 }}
               >
@@ -132,7 +145,7 @@ export default function NosotrosPage() {
                   fontSize: '17px',
                   fontWeight: 300,
                   lineHeight: 1.9,
-                  color: '#555555',
+                  color: '#AAAAAA',
                   display: 'flex',
                   flexDirection: 'column',
                   gap: '20px',
@@ -166,7 +179,7 @@ export default function NosotrosPage() {
                   fontSize: 'clamp(28px, 3vw, 44px)',
                   fontWeight: 300,
                   letterSpacing: '-0.02em',
-                  color: '#111111',
+                  color: '#F5F5F0',
                   marginBottom: '32px',
                 }}
               >
@@ -176,45 +189,45 @@ export default function NosotrosPage() {
 
                 {/* Victor */}
                 <div className="flex flex-col gap-5 group">
-                  <div className="relative aspect-[4/5] overflow-hidden bg-[#F0F0F0] rounded-xl border border-black/5">
+                  <div className="relative aspect-[4/5] overflow-hidden bg-[#111] rounded-xl border border-white/5">
                     <img src="/images/team/Víctor.png" alt="Víctor Torres" className="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-500" />
                   </div>
                   <div>
-                    <h3 className="font-display text-xl text-[#111111] tracking-tight">Víctor Torres</h3>
-                    <span className="font-mono text-[11px] text-[#888888] uppercase tracking-widest block mt-1">CEO & Founder</span>
+                    <h3 className="font-display text-xl text-[#F5F5F0] tracking-tight">Víctor Torres</h3>
+                    <span className="font-mono text-[11px] text-[#666666] uppercase tracking-widest block mt-1">CEO & Founder</span>
                   </div>
                 </div>
 
                 {/* David */}
                 <div className="flex flex-col gap-5 group">
-                  <div className="relative aspect-[4/5] overflow-hidden bg-[#F0F0F0] rounded-xl border border-black/5">
-                    <img src="/images/team/David.jpg" alt="David Montesinos" className="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-500" />
+                  <div className="relative aspect-[4/5] overflow-hidden bg-[#111] rounded-xl border border-white/5">
+                    <img src="/images/team/David.jpg" alt="David Montesinos" className="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-500 opacity-90" />
                   </div>
                   <div>
-                    <h3 className="font-display text-xl text-[#111111] tracking-tight">David Montesinos</h3>
-                    <span className="font-mono text-[11px] text-[#888888] uppercase tracking-widest block mt-1">Head of Institutional Relations</span>
+                    <h3 className="font-display text-xl text-[#F5F5F0] tracking-tight">David Montesinos</h3>
+                    <span className="font-mono text-[11px] text-[#666666] uppercase tracking-widest block mt-1">Head of Institutional Relations</span>
                   </div>
                 </div>
 
                 {/* Xavi */}
                 <div className="flex flex-col gap-5 group">
-                  <div className="relative aspect-[4/5] overflow-hidden bg-[#F0F0F0] rounded-xl border border-black/5">
-                    <img src="/images/team/xavi.png" alt="Xavi Rodriguez" className="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-500" />
+                  <div className="relative aspect-[4/5] overflow-hidden bg-[#111] rounded-xl border border-white/5">
+                    <img src="/images/team/xavi.png" alt="Xavi Rodriguez" className="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-500 opacity-90" />
                   </div>
                   <div>
-                    <h3 className="font-display text-xl text-[#111111] tracking-tight">Xavi Rodriguez</h3>
-                    <span className="font-mono text-[11px] text-[#888888] uppercase tracking-widest block mt-1">Business Development</span>
+                    <h3 className="font-display text-xl text-[#F5F5F0] tracking-tight">Xavi Rodriguez</h3>
+                    <span className="font-mono text-[11px] text-[#666666] uppercase tracking-widest block mt-1">Business Development</span>
                   </div>
                 </div>
 
                 {/* Juan Sebastian */}
                 <div className="flex flex-col gap-5 group">
-                  <div className="relative aspect-[4/5] overflow-hidden bg-[#F0F0F0] rounded-xl border border-black/5">
-                    <img src="/images/team/juan.png" alt="Juan Sebastian" className="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-500" />
+                  <div className="relative aspect-[4/5] overflow-hidden bg-[#111] rounded-xl border border-white/5">
+                    <img src="/images/team/juan.png" alt="Juan Sebastian" className="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-500 opacity-90" />
                   </div>
                   <div>
-                    <h3 className="font-display text-xl text-[#111111] tracking-tight">Juan Sebastian</h3>
-                    <span className="font-mono text-[11px] text-[#888888] uppercase tracking-widest block mt-1">AI Builder</span>
+                    <h3 className="font-display text-xl text-[#F5F5F0] tracking-tight">Juan Sebastian</h3>
+                    <span className="font-mono text-[11px] text-[#666666] uppercase tracking-widest block mt-1">AI Builder</span>
                   </div>
                 </div>
 
@@ -224,7 +237,7 @@ export default function NosotrosPage() {
         </section>
 
         {/* Trayectoria */}
-        <section className="v5-section" style={{ backgroundColor: '#F8F8F8' }}>
+        <section className="v5-section" style={{ backgroundColor: '#080808' }}>
           <div className="v5-container">
             <div className="mb-16 v5-reveal">
               <h2
@@ -233,7 +246,7 @@ export default function NosotrosPage() {
                   fontSize: 'clamp(28px, 3vw, 44px)',
                   fontWeight: 300,
                   letterSpacing: '-0.02em',
-                  color: '#111111',
+                  color: '#F5F5F0',
                 }}
               >
                 Proyectos y experiencia
@@ -245,20 +258,21 @@ export default function NosotrosPage() {
                   key={i}
                   style={{
                     padding: '20px 0',
-                    borderBottom: '1px solid #E8E8E8',
+                    borderBottom: '1px solid #1A1A1A',
                     display: 'grid',
                     gridTemplateColumns: '1fr',
                     gap: '8px',
                     alignItems: 'start',
+                    paddingRight: '32px',
                   }}
                 >
                   <div>
                     <span
                       style={{
                         fontFamily: 'var(--v5-font-display)',
-                        fontSize: '15px',
+                        fontSize: '16px',
                         fontWeight: 400,
-                        color: '#111111',
+                        color: '#F5F5F0',
                         letterSpacing: '-0.01em',
                       }}
                     >
@@ -270,7 +284,7 @@ export default function NosotrosPage() {
                         fontFamily: 'var(--v5-font-body)',
                         fontSize: '13px',
                         fontWeight: 300,
-                        color: '#888888',
+                        color: '#666666',
                         marginTop: '2px',
                       }}
                     >
@@ -280,7 +294,7 @@ export default function NosotrosPage() {
                   <span
                     style={{
                       fontFamily: 'var(--v5-font-body)',
-                      fontSize: '13px',
+                      fontSize: '14px',
                       fontWeight: 300,
                       color: '#888888',
                       lineHeight: 1.5,
@@ -295,7 +309,7 @@ export default function NosotrosPage() {
         </section>
 
         {/* Cómo trabajamos */}
-        <section className="v5-section" style={{ backgroundColor: '#FFFFFF' }}>
+        <section className="v5-section" style={{ backgroundColor: '#050505' }}>
           <div className="v5-container">
             <div className="mb-16 v5-reveal">
               <h2
@@ -304,13 +318,13 @@ export default function NosotrosPage() {
                   fontSize: 'clamp(28px, 3vw, 44px)',
                   fontWeight: 300,
                   letterSpacing: '-0.02em',
-                  color: '#111111',
+                  color: '#F5F5F0',
                 }}
               >
                 Nuestra forma de trabajar
               </h2>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 v5-section-gap">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
               {principios.map((p, i) => (
                 <div
                   key={i}
@@ -322,7 +336,7 @@ export default function NosotrosPage() {
                       fontFamily: 'var(--v5-font-mono)',
                       fontSize: '13px',
                       fontWeight: 500,
-                      color: '#CCCCCC',
+                      color: '#333333',
                       letterSpacing: '0.05em',
                     }}
                   >
@@ -334,7 +348,7 @@ export default function NosotrosPage() {
                       fontSize: '22px',
                       fontWeight: 400,
                       letterSpacing: '-0.02em',
-                      color: '#111111',
+                      color: '#F5F5F0',
                       lineHeight: 1.2,
                     }}
                   >
@@ -346,7 +360,7 @@ export default function NosotrosPage() {
                       fontSize: '16px',
                       fontWeight: 300,
                       lineHeight: 1.8,
-                      color: '#666666',
+                      color: '#AAAAAA',
                     }}
                   >
                     {p.desc}
@@ -358,7 +372,7 @@ export default function NosotrosPage() {
         </section>
 
         {/* Ecosistema */}
-        <section className="v5-section" style={{ backgroundColor: '#F8F8F8' }}>
+        <section className="v5-section" style={{ backgroundColor: '#080808' }}>
           <div className="v5-container">
             <div className="v5-reveal max-w-2xl">
               <h2
@@ -367,7 +381,7 @@ export default function NosotrosPage() {
                   fontSize: 'clamp(28px, 3vw, 44px)',
                   fontWeight: 300,
                   letterSpacing: '-0.02em',
-                  color: '#111111',
+                  color: '#F5F5F0',
                   marginBottom: '24px',
                 }}
               >
@@ -379,7 +393,7 @@ export default function NosotrosPage() {
                   fontSize: '17px',
                   fontWeight: 300,
                   lineHeight: 1.9,
-                  color: '#555555',
+                  color: '#AAAAAA',
                   marginBottom: '32px',
                 }}
               >
@@ -398,7 +412,7 @@ export default function NosotrosPage() {
                   fontFamily: 'var(--v5-font-body)',
                   fontSize: '15px',
                   fontWeight: 400,
-                  color: '#111111',
+                  color: '#F5F5F0',
                   textDecoration: 'none',
                   transition: 'opacity 200ms ease',
                 }}
@@ -412,7 +426,7 @@ export default function NosotrosPage() {
         </section>
 
         {/* Partners */}
-        <section className="v5-section" style={{ backgroundColor: '#FFFFFF' }}>
+        <section className="v5-section" style={{ backgroundColor: '#050505', paddingBottom: '160px' }}>
           <div className="v5-container">
             <div className="mb-16 v5-reveal">
               <h2
@@ -421,21 +435,21 @@ export default function NosotrosPage() {
                   fontSize: 'clamp(28px, 3vw, 44px)',
                   fontWeight: 300,
                   letterSpacing: '-0.02em',
-                  color: '#111111',
+                  color: '#F5F5F0',
                 }}
               >
                 Con quienes trabajamos
               </h2>
             </div>
-            <div className="flex flex-col v5-reveal">
+            <div className="flex flex-col v5-reveal max-w-4xl">
               {partners.map((p, i) => (
                 <div
                   key={i}
                   style={{
-                    padding: '24px 0',
-                    borderTop: '1px solid #E8E8E8',
+                    padding: '32px 0',
+                    borderTop: '1px solid #1A1A1A',
                     display: 'grid',
-                    gridTemplateColumns: '1fr 2fr',
+                    gridTemplateColumns: 'minmax(200px, 1fr) 2fr',
                     gap: '24px',
                     alignItems: 'start',
                   }}
@@ -443,11 +457,11 @@ export default function NosotrosPage() {
                   <span
                     style={{
                       fontFamily: 'var(--v5-font-mono)',
-                      fontSize: '11px',
+                      fontSize: '12px',
                       fontWeight: 500,
                       letterSpacing: '0.12em',
                       textTransform: 'uppercase',
-                      color: '#111111',
+                      color: '#F5F5F0',
                     }}
                   >
                     {p.nombre}
@@ -455,9 +469,9 @@ export default function NosotrosPage() {
                   <span
                     style={{
                       fontFamily: 'var(--v5-font-body)',
-                      fontSize: '15px',
+                      fontSize: '16px',
                       fontWeight: 300,
-                      color: '#666666',
+                      color: '#AAAAAA',
                       lineHeight: 1.7,
                     }}
                   >
@@ -465,7 +479,7 @@ export default function NosotrosPage() {
                   </span>
                 </div>
               ))}
-              <div style={{ borderTop: '1px solid #E8E8E8' }} />
+              <div style={{ borderTop: '1px solid #1A1A1A' }} />
             </div>
           </div>
         </section>

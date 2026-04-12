@@ -96,7 +96,7 @@ export default function CreativeLab() {
       <main>
 
         {/* ─── SECTION 1 — HERO ─── */}
-        <section style={{ backgroundColor: '#080808', paddingTop: '160px', paddingBottom: '120px' }}>
+        <section className="relative min-h-screen flex items-center overflow-hidden" style={{ backgroundColor: '#080808' }}>
           <div className="v5-container">
             <span
               className="v5-reveal"

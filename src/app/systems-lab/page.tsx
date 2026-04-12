@@ -217,8 +217,7 @@ export default function SystemsLabPage() {
 
         {/* ── SECCIÓN 1 — HERO ─────────────────────────────────────────────── */}
         <section
-          className="v5-section"
-          style={{ backgroundColor: '#080808', paddingTop: '160px', paddingBottom: '100px' }}
+          className="v5-section relative min-h-screen flex items-center overflow-hidden" style={{ backgroundColor: '#080808' }}
         >
           <div className="v5-container">
             <span
@@ -270,7 +269,7 @@ export default function SystemsLabPage() {
                 onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = '#FFFFFF'; }}
                 onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = '#F5F5F0'; }}
               >
-                Reservar Sesión de Claridad →
+                Auditoría gratuita →
               </Link>
               <button
                 style={btnSecondary}
@@ -1127,7 +1126,7 @@ export default function SystemsLabPage() {
                   onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = '#FFFFFF'; }}
                   onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = '#F5F5F0'; }}
                 >
-                  Reservar Sesión de Claridad →
+                  Auditoría gratuita →
                 </Link>
                 <Link
                   href="https://wa.me/34627281459"

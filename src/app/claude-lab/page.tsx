@@ -154,7 +154,7 @@ export default function ClaudeLabPage() {
         {/* ═══════════════════════════════════════════════════════════════
             SECTION 1 — HERO (dark)
         ═══════════════════════════════════════════════════════════════ */}
-        <section style={{ backgroundColor: '#080808', paddingTop: '160px', paddingBottom: '120px', position: 'relative', overflow: 'hidden' }}>
+        <section className="relative min-h-screen flex items-center overflow-hidden" style={{ backgroundColor: '#080808' }}>
           <Image
             src="/images/aether-office.jpg"
             alt=""
@@ -228,7 +228,7 @@ export default function ClaudeLabPage() {
                   (e.currentTarget as HTMLElement).style.background = '#F5F5F0';
                 }}
               >
-                Reservar sesión de claridad
+                Auditoría gratuita
                 <ArrowUpRight size={16} />
               </Link>
             </FadeUp>
@@ -644,7 +644,7 @@ export default function ClaudeLabPage() {
                     (e.currentTarget as HTMLElement).style.background = '#F5F5F0';
                   }}
                 >
-                  Reservar sesión
+                  Auditoría gratuita
                   <ArrowUpRight size={16} />
                 </Link>
               </FadeUp>
