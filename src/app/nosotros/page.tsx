@@ -212,7 +212,7 @@ export default function NosotrosPage() {
                 {/* Xavi */}
                 <div className="flex flex-col gap-5 group">
                   <div className="relative aspect-[4/5] overflow-hidden bg-[#111] rounded-xl border border-white/5">
-                    <img src="/images/team/xavi.png" alt="Xavi Rodriguez" className="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-500 opacity-90" />
+                    <img src="/images/xavi_portrait.png" alt="Xavi Rodriguez" className="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-500 opacity-90" />
                   </div>
                   <div>
                     <h3 className="font-display text-xl text-[#F5F5F0] tracking-tight">Xavi Rodriguez</h3>
@@ -223,7 +223,7 @@ export default function NosotrosPage() {
                 {/* Juan Sebastian */}
                 <div className="flex flex-col gap-5 group">
                   <div className="relative aspect-[4/5] overflow-hidden bg-[#111] rounded-xl border border-white/5">
-                    <img src="/images/team/juan.png" alt="Juan Sebastian" className="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-500 opacity-90" />
+                    <img src="/images/juan_portrait.png" alt="Juan Sebastian" className="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-500 opacity-90" />
                   </div>
                   <div>
                     <h3 className="font-display text-xl text-[#F5F5F0] tracking-tight">Juan Sebastian</h3>
@@ -237,7 +237,8 @@ export default function NosotrosPage() {
         </section>
 
         {/* Trayectoria */}
-        <section className="v5-section" style={{ backgroundColor: '#080808' }}>
+        < section className="v5-section" style={{ backgroundColor: '#080808' }
+        }>
           <div className="v5-container">
             <div className="mb-16 v5-reveal">
               <h2
@@ -306,10 +307,10 @@ export default function NosotrosPage() {
               ))}
             </div>
           </div>
-        </section>
+        </section >
 
         {/* Cómo trabajamos */}
-        <section className="v5-section" style={{ backgroundColor: '#050505' }}>
+        < section className="v5-section" style={{ backgroundColor: '#050505' }}>
           <div className="v5-container">
             <div className="mb-16 v5-reveal">
               <h2
@@ -369,10 +370,10 @@ export default function NosotrosPage() {
               ))}
             </div>
           </div>
-        </section>
+        </section >
 
         {/* Ecosistema */}
-        <section className="v5-section" style={{ backgroundColor: '#080808' }}>
+        < section className="v5-section" style={{ backgroundColor: '#080808' }}>
           <div className="v5-container">
             <div className="v5-reveal max-w-2xl">
               <h2
@@ -423,10 +424,10 @@ export default function NosotrosPage() {
               </Link>
             </div>
           </div>
-        </section>
+        </section >
 
         {/* Partners */}
-        <section className="v5-section" style={{ backgroundColor: '#050505', paddingBottom: '160px' }}>
+        < section className="v5-section" style={{ backgroundColor: '#050505', paddingBottom: '160px' }}>
           <div className="v5-container">
             <div className="mb-16 v5-reveal">
               <h2
@@ -482,10 +483,10 @@ export default function NosotrosPage() {
               <div style={{ borderTop: '1px solid #1A1A1A' }} />
             </div>
           </div>
-        </section>
+        </section >
 
-      </main>
+      </main >
       <Footer />
-    </div>
+    </div >
   );
 }
