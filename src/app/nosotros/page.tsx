@@ -190,7 +190,7 @@ export default function NosotrosPage() {
                 {/* Victor */}
                 <div className="flex flex-col gap-5 group">
                   <div className="relative aspect-[4/5] overflow-hidden bg-[#111] rounded-xl border border-white/5">
-                    <img src="/images/team/Víctor.png" alt="Víctor Torres" className="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-500" />
+                    <img src="/images/team/victor.png" alt="Víctor Torres" className="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-500" />
                   </div>
                   <div>
                     <h3 className="font-display text-xl text-[#F5F5F0] tracking-tight">Víctor Torres</h3>
