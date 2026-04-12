@@ -4,6 +4,17 @@ import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
+import { MessageSquare, Code2, Bot, Sparkles, Megaphone, GraduationCap, Wrench, Users, ArrowUpRight } from 'lucide-react';
+
+const labsMenu = [
+  { icon: MessageSquare, label: 'Claude Lab', tag: 'Implementación y formación', href: '/claude-lab' },
+  { icon: Code2,         label: 'Software Lab', tag: 'Software a medida', href: '/software-lab' },
+  { icon: Bot,           label: 'Agents Lab', tag: 'Automatización autónoma', href: '/agents-lab', hot: true },
+  { icon: Sparkles,      label: 'Gen AI Lab', tag: 'Imágenes, vídeo y creatividades', href: '/creative-lab' },
+  { icon: Megaphone,     label: 'Marketing Lab', tag: 'Captación y campañas', href: '/marketing-lab' },
+  { icon: GraduationCap, label: 'Learn Lab', tag: 'Formación práctica para equipos', href: '/school-lab' },
+  { icon: Wrench,        label: 'Open Lab', tag: 'Chatbots, webs y dashboards', href: '/open-lab' },
+];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -34,13 +45,6 @@ export default function Navbar() {
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
-
-  const labsLinks = [
-    { label: 'Systems Lab', href: '/systems-lab' },
-    { label: 'Creative Lab', href: '/creative-lab' },
-    { label: 'School Lab', href: '/school-lab' },
-    { label: 'Open Lab', href: '/open-lab' },
-  ];
 
   const otherLinks = [
     { label: 'Nosotros', href: '/nosotros' },
@@ -117,57 +121,135 @@ export default function Navbar() {
                 </svg>
               </button>
 
-              {/* Dropdown menu */}
+              {/* Mega menu */}
               <div
                 style={{
                   position: 'absolute',
-                  top: '100%',
+                  top: 'calc(100% + 16px)',
                   left: '50%',
-                  transform: 'translateX(-50%)',
-                  marginTop: '16px',
+                  transform: labsOpen ? 'translateX(-50%) translateY(0)' : 'translateX(-50%) translateY(-8px)',
+                  width: 'min(680px, 95vw)',
                   background: '#FFFFFF',
-                  border: '1px solid #E8E8E8',
-                  borderRadius: '12px',
-                  padding: '12px',
-                  minWidth: '180px',
+                  border: '1px solid #E8E8E5',
+                  borderRadius: '16px',
                   opacity: labsOpen ? 1 : 0,
                   visibility: labsOpen ? 'visible' : 'hidden',
-                  transition: 'all 200ms ease',
-                  boxShadow: '0 10px 30px rgba(0,0,0,0.05)',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  gap: '4px',
+                  transition: 'all 220ms cubic-bezier(0.16, 1, 0.3, 1)',
+                  boxShadow: '0 20px 60px rgba(0,0,0,0.10)',
+                  overflow: 'hidden',
+                  display: 'grid',
+                  gridTemplateColumns: '1fr 220px',
                 }}
               >
-                {labsLinks.map((link) => (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    onClick={() => setLabsOpen(false)}
-                    style={{
-                      fontFamily: 'var(--v5-font-body)',
-                      fontSize: '14px',
-                      fontWeight: 300,
-                      color: '#555555',
-                      textDecoration: 'none',
-                      padding: '8px 12px',
-                      borderRadius: '6px',
-                      transition: 'all 200ms ease',
-                    }}
-                    onMouseEnter={(e) => {
-                      const el = e.target as HTMLElement;
-                      el.style.color = '#111111';
-                      el.style.background = '#F8F8F8';
-                    }}
-                    onMouseLeave={(e) => {
-                      const el = e.target as HTMLElement;
-                      el.style.color = '#555555';
-                      el.style.background = 'transparent';
-                    }}
+                {/* Left: labs list */}
+                <div style={{ padding: '8px' }}>
+                  <div style={{
+                    padding: '10px 16px 8px',
+                    fontFamily: 'var(--v5-font-mono)', fontSize: '9px',
+                    letterSpacing: '0.15em', textTransform: 'uppercase', color: '#bbb',
+                  }}>
+                    Laboratorios
+                  </div>
+                  {labsMenu.map((lab) => {
+                    const Icon = lab.icon;
+                    return (
+                      <Link
+                        key={lab.href}
+                        href={lab.href}
+                        onClick={() => setLabsOpen(false)}
+                        style={{ textDecoration: 'none', display: 'block' }}
+                      >
+                        <div
+                          style={{
+                            display: 'flex', alignItems: 'center', gap: '12px',
+                            padding: '10px 12px', borderRadius: '8px',
+                            transition: 'background 150ms ease',
+                          }}
+                          className="mega-lab-item"
+                        >
+                          <div style={{
+                            width: '32px', height: '32px', borderRadius: '7px',
+                            background: '#F5F5F2', flexShrink: 0,
+                            display: 'flex', alignItems: 'center', justifyContent: 'center',
+                          }}>
+                            <Icon size={15} color="#555" />
+                          </div>
+                          <div style={{ flex: 1, minWidth: 0 }}>
+                            <div style={{
+                              fontFamily: 'var(--v5-font-body)', fontSize: '13px',
+                              fontWeight: 400, color: '#111', lineHeight: 1.2,
+                              display: 'flex', alignItems: 'center', gap: '6px',
+                            }}>
+                              {lab.label}
+                              {'hot' in lab && lab.hot && (
+                                <span style={{
+                                  fontFamily: 'var(--v5-font-mono)', fontSize: '7px',
+                                  letterSpacing: '0.1em', textTransform: 'uppercase',
+                                  background: '#111', color: '#fff',
+                                  padding: '2px 5px', borderRadius: '3px',
+                                }}>Hot</span>
+                              )}
+                            </div>
+                            <div style={{
+                              fontFamily: 'var(--v5-font-body)', fontSize: '11px',
+                              fontWeight: 300, color: '#999', lineHeight: 1.3, marginTop: '1px',
+                            }}>{lab.tag}</div>
+                          </div>
+                          <ArrowUpRight size={13} color="#ccc" />
+                        </div>
+                      </Link>
+                    );
+                  })}
+                  <div style={{ height: '8px' }} />
+                </div>
+
+                {/* Right: AI Team Lab featured */}
+                <Link
+                  href="/systems-lab/sesion-de-claridad"
+                  onClick={() => setLabsOpen(false)}
+                  style={{ textDecoration: 'none', display: 'block' }}
+                >
+                  <div style={{
+                    background: '#080808', height: '100%',
+                    padding: '24px 20px',
+                    display: 'flex', flexDirection: 'column', justifyContent: 'space-between',
+                  }}
+                    className="mega-featured"
                   >
-                    {link.label}
-                  </Link>
-                ))}
+                    <div>
+                      <div style={{
+                        width: '32px', height: '32px', borderRadius: '7px',
+                        background: 'rgba(255,255,255,0.08)',
+                        display: 'flex', alignItems: 'center', justifyContent: 'center',
+                        marginBottom: '16px',
+                      }}>
+                        <Users size={15} color="#F5F5F0" />
+                      </div>
+                      <div style={{
+                        fontFamily: 'var(--v5-font-mono)', fontSize: '8px',
+                        letterSpacing: '0.12em', textTransform: 'uppercase',
+                        color: 'rgba(255,255,255,0.3)', marginBottom: '8px',
+                      }}>08 · Flagship</div>
+                      <div style={{
+                        fontFamily: "var(--v5-font-advercase, 'Playfair Display', Georgia, serif)",
+                        fontSize: '18px', fontWeight: 400,
+                        color: '#F5F5F0', lineHeight: 1.15, marginBottom: '10px',
+                        letterSpacing: '-0.01em',
+                      }}>AI Team Lab</div>
+                      <div style={{
+                        fontFamily: 'var(--v5-font-body)', fontSize: '11px',
+                        fontWeight: 300, color: 'rgba(245,245,240,0.45)', lineHeight: 1.5,
+                      }}>Tu equipo de IA dedicado, desde 1.200€/mes.</div>
+                    </div>
+                    <div style={{
+                      display: 'flex', alignItems: 'center', gap: '4px',
+                      fontFamily: 'var(--v5-font-body)', fontSize: '11px',
+                      color: 'rgba(255,255,255,0.5)', marginTop: '20px',
+                    }}>
+                      Sesión gratuita <ArrowUpRight size={11} />
+                    </div>
+                  </div>
+                </Link>
               </div>
             </div>
 
@@ -265,22 +347,26 @@ export default function Navbar() {
         <div style={{ marginBottom: '24px', fontFamily: 'var(--v5-font-mono)', fontSize: '11px', color: '#999', textTransform: 'uppercase', letterSpacing: '0.15em' }}>
           Labs
         </div>
-        {labsLinks.map((link) => (
+        {labsMenu.map((lab) => (
           <Link
-            key={link.href}
-            href={link.href}
+            key={lab.href}
+            href={lab.href}
             onClick={() => setMobileOpen(false)}
             style={{
               fontFamily: 'var(--v5-font-body)',
-              fontSize: '18px',
+              fontSize: '16px',
               fontWeight: 300,
               color: '#555555',
               textDecoration: 'none',
-              padding: '12px 0',
+              padding: '11px 0',
               borderBottom: '1px solid #E8E8E8',
+              display: 'flex', alignItems: 'center', gap: '8px',
             }}
           >
-            {link.label}
+            {lab.label}
+            {'hot' in lab && lab.hot && (
+              <span style={{ fontFamily: 'var(--v5-font-mono)', fontSize: '7px', letterSpacing: '0.1em', textTransform: 'uppercase', background: '#111', color: '#fff', padding: '2px 5px', borderRadius: '3px' }}>Hot</span>
+            )}
           </Link>
         ))}
 
@@ -336,6 +422,12 @@ export default function Navbar() {
           }}
         />
       )}
+
+      <style>{`
+        .mega-lab-item:hover { background: #F5F5F2 !important; }
+        .mega-lab-item:hover svg { color: #555 !important; }
+        .mega-featured:hover { background: #0d0d0d !important; }
+      `}</style>
     </>
   );
 }

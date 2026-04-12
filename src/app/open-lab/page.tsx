@@ -36,27 +36,27 @@ const serviceCards = [
   {
     label: 'AI Chatbot',
     title: 'IA integrada en tu plataforma',
-    img: '/images/agents/voice-interface.png',
+    img: '/images/personal-trainer/chatbot-mockup.png',
   },
   {
     label: 'Web Funcional',
     title: 'Una web que hace cosas, no solo informa',
-    img: '/images/services/ai-hub-workspace.png',
+    img: '/images/personal-trainer/landing-mockup.png',
   },
   {
     label: 'Dashboard',
     title: 'Tus datos en tiempo real',
-    img: '/images/agents/pm-dashboard.png',
+    img: '/images/personal-trainer/payments-mockup.png',
   },
   {
     label: 'Document AI',
     title: 'IA que lee y procesa tus documentos',
-    img: '/images/agents/finance-security.png',
+    img: '/images/agents/legal-contract.png',
   },
   {
     label: 'Automation UI',
     title: 'Automatización que cualquier persona puede usar',
-    img: '/images/agents/automation-workflow.png',
+    img: '/images/agents/calendar-scheduler.png',
   },
 ];
 

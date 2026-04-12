@@ -20,7 +20,7 @@ export default function HeroSection() {
       <div
         className="absolute inset-0 z-0 pointer-events-none"
         style={{
-          background: 'linear-gradient(to bottom, rgba(8,8,8,0.2) 0%, rgba(8,8,8,0.55) 100%)'
+          background: 'linear-gradient(to bottom, rgba(8,8,8,0.05) 0%, rgba(8,8,8,0.38) 100%)'
         }}
       />
 
@@ -51,7 +51,7 @@ export default function HeroSection() {
           className="v5-reveal"
           style={{
             fontFamily: 'var(--v5-font-body)',
-            fontSize: 'clamp(15px, 4vw, 20px)',
+            fontSize: 'clamp(13px, 4vw, 17px)',
             fontWeight: 300,
             lineHeight: 1.65,
             color: 'rgba(245,245,240,0.65)',
