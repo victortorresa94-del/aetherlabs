@@ -205,7 +205,7 @@ export default function Navbar() {
 
                 {/* Right: AI Team Lab featured */}
                 <Link
-                  href="/systems-lab/sesion-de-claridad"
+                  href="/contacto"
                   onClick={() => setLabsOpen(false)}
                   style={{ textDecoration: 'none', display: 'block' }}
                 >
@@ -281,7 +281,7 @@ export default function Navbar() {
           {/* CTA + Hamburger */}
           <div className="flex items-center gap-5">
             <Link
-              href="/systems-lab/sesion-de-claridad"
+              href="/contacto"
               className="hidden lg:inline-flex items-center no-underline v5-btn-primary"
               style={{
                 background: scrolled ? '#111111' : '#FFFFFF',
@@ -393,7 +393,7 @@ export default function Navbar() {
         ))}
 
         <Link
-          href="/systems-lab/sesion-de-claridad"
+          href="/contacto"
           onClick={() => setMobileOpen(false)}
           className="v5-btn-primary"
           style={{
