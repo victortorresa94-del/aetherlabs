@@ -217,9 +217,19 @@ export default function SystemsLabPage() {
 
         {/* ── SECCIÓN 1 — HERO ─────────────────────────────────────────────── */}
         <section
-          className="v5-section relative min-h-screen flex items-center overflow-hidden" style={{ backgroundColor: '#080808' }}
+          className="v5-section relative min-h-[100svh] flex items-center overflow-hidden" style={{ backgroundColor: '#080808' }}
         >
-          <div className="v5-container">
+          {/* Background Image */}
+          <div
+            className="absolute inset-0 z-0"
+            style={{
+              backgroundImage: 'url("/images/labs/hero-office.jpg")',
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              opacity: 0.35,
+            }}
+          />
+          <div className="v5-container relative z-10 pt-20 pb-20 md:pt-0 md:pb-0">
             <span
               className="v5-reveal"
               style={{ ...monoLabel, color: '#666666' }}
@@ -231,7 +241,7 @@ export default function SystemsLabPage() {
               className="v5-reveal"
               style={{
                 fontFamily: 'var(--v5-font-display)',
-                fontSize: 'clamp(40px, 6vw, 80px)',
+                fontSize: 'clamp(36px, 8vw, 80px)',
                 fontWeight: 300,
                 letterSpacing: '-0.03em',
                 lineHeight: 0.95,
@@ -262,17 +272,17 @@ export default function SystemsLabPage() {
               Auditamos cómo trabajas, identificamos dónde se pierde tiempo y lo resolvemos con las herramientas correctas. Sin formación infinita. Sin proyectos de 6 meses. Con resultados desde el primer mes.
             </p>
 
-            <div className="v5-reveal flex flex-wrap gap-4" style={{ transitionDelay: '180ms' }}>
+            <div className="v5-reveal flex flex-col sm:flex-row gap-4" style={{ transitionDelay: '180ms' }}>
               <Link
                 href="/systems-lab/sesion-de-claridad"
-                style={btnPrimary}
+                style={{ ...btnPrimary, justifyContent: 'center' }}
                 onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = '#FFFFFF'; }}
                 onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = '#F5F5F0'; }}
               >
                 Auditoría gratuita →
               </Link>
               <button
-                style={btnSecondary}
+                style={{ ...btnSecondary, justifyContent: 'center' }}
                 onClick={() => document.getElementById('herramientas')?.scrollIntoView({ behavior: 'smooth' })}
                 onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.35)'; }}
                 onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.15)'; }}

@@ -399,35 +399,6 @@ export default function ClaudeLabPage() {
                 </div>
               </FadeUp>
 
-              {/* Bottom-left: spans 2 cols */}
-              <FadeUp delay={0.12} className="claude-lab-bento-wide">
-                <div
-                  style={{
-                    border: '1px solid rgba(255,255,255,0.08)',
-                    borderRadius: '12px',
-                    padding: '36px 32px',
-                    height: '100%',
-                    transition: 'border-color 300ms ease',
-                  }}
-                  onMouseEnter={(e) => {
-                    (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.18)';
-                  }}
-                  onMouseLeave={(e) => {
-                    (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.08)';
-                  }}
-                >
-                  <span style={{ display: 'block', marginBottom: '16px', fontFamily: 'var(--v5-font-mono)', fontSize: '11px', fontWeight: 500, letterSpacing: '0.05em', color: '#444444' }}>
-                    04
-                  </span>
-                  <h3 style={{ fontFamily: 'var(--v5-font-body)', fontSize: '20px', fontWeight: 500, letterSpacing: '-0.02em', color: '#F5F5F0', marginBottom: '12px' }}>
-                    Actualizaciones continuas
-                  </h3>
-                  <p style={{ ...bodyText(true), fontSize: '15px', maxWidth: '480px' }}>
-                    Cuando Claude saca una nueva capacidad relevante para ti, te la llevamos. Sin que tengas que enterarte tú.
-                  </p>
-                </div>
-              </FadeUp>
-
               {/* Right: tall card spanning 2 rows */}
               <FadeUp delay={0.06} className="claude-lab-bento-tall">
                 <div
@@ -464,6 +435,35 @@ export default function ClaudeLabPage() {
                       Formación continua — no un taller puntual
                     </p>
                   </div>
+                </div>
+              </FadeUp>
+
+              {/* Bottom-left: spans 2 cols */}
+              <FadeUp delay={0.12} className="claude-lab-bento-wide">
+                <div
+                  style={{
+                    border: '1px solid rgba(255,255,255,0.08)',
+                    borderRadius: '12px',
+                    padding: '36px 32px',
+                    height: '100%',
+                    transition: 'border-color 300ms ease',
+                  }}
+                  onMouseEnter={(e) => {
+                    (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.18)';
+                  }}
+                  onMouseLeave={(e) => {
+                    (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.08)';
+                  }}
+                >
+                  <span style={{ display: 'block', marginBottom: '16px', fontFamily: 'var(--v5-font-mono)', fontSize: '11px', fontWeight: 500, letterSpacing: '0.05em', color: '#444444' }}>
+                    04
+                  </span>
+                  <h3 style={{ fontFamily: 'var(--v5-font-body)', fontSize: '20px', fontWeight: 500, letterSpacing: '-0.02em', color: '#F5F5F0', marginBottom: '12px' }}>
+                    Actualizaciones continuas
+                  </h3>
+                  <p style={{ ...bodyText(true), fontSize: '15px', maxWidth: '480px' }}>
+                    Cuando Claude saca una nueva capacidad relevante para ti, te la llevamos. Sin que tengas que enterarte tú.
+                  </p>
                 </div>
               </FadeUp>
 
@@ -697,47 +697,94 @@ export default function ClaudeLabPage() {
           border-left: 1px solid rgba(255,255,255,0.08);
         }
 
-        /* ── Mobile ── */
-        @media (max-width: 768px) {
+        /* ── Tablet (769px – 1024px) ── */
+        @media (min-width: 769px) and (max-width: 1024px) {
           .claude-lab-bento-grid {
-            grid-template-columns: 1fr;
-            grid-template-rows: unset;
+            grid-template-columns: 1fr 1fr !important;
+            grid-template-rows: unset !important;
           }
           .claude-lab-bento-wide {
-            grid-column: 1 / 2;
+            grid-column: 1 / 3 !important;
           }
           .claude-lab-bento-tall {
-            grid-column: 1 / 2;
-            grid-row: unset;
+            grid-column: 1 / 3 !important;
+            grid-row: unset !important;
           }
-          .claude-lab-problems-grid {
-            grid-template-columns: 1fr;
-          }
+          .claude-lab-problems-grid,
           .claude-lab-steps-grid {
-            grid-template-columns: 1fr;
-          }
-          .claude-lab-stats-grid {
-            grid-template-columns: 1fr;
-          }
-          .claude-lab-stats-grid > div + div {
-            border-left: none;
-            border-top: 1px solid rgba(255,255,255,0.08);
-            padding-top: 40px;
-            margin-top: 40px;
+            grid-template-columns: repeat(2, 1fr) !important;
           }
         }
 
-        @media (max-width: 1024px) and (min-width: 769px) {
+        /* ── Mobile (≤ 768px) ── */
+        @media (max-width: 768px) {
+          /* Section padding */
+          .v5-page section {
+            padding: 80px 0 !important;
+          }
+
+          /* Container padding */
+          .v5-page .v5-container,
+          .v5-page [style*="maxWidth: '1280px'"],
+          .v5-page [style*="max-width: 1280px"] {
+            padding-left: 20px !important;
+            padding-right: 20px !important;
+          }
+
+          /* Hero: cap paddingTop so content isn't pushed too far */
+          .v5-page section.relative.min-h-screen {
+            padding-top: 0 !important;
+            min-height: 100svh !important;
+          }
+
+          /* Bento grid → 1 col */
           .claude-lab-bento-grid {
-            grid-template-columns: 1fr 1fr;
-            grid-template-rows: unset;
+            grid-template-columns: 1fr !important;
+            grid-template-rows: unset !important;
           }
           .claude-lab-bento-wide {
-            grid-column: 1 / 3;
+            grid-column: 1 / 2 !important;
           }
           .claude-lab-bento-tall {
-            grid-column: 1 / 3;
-            grid-row: unset;
+            grid-column: 1 / 2 !important;
+            grid-row: unset !important;
+          }
+
+          /* Problems grid → 1 col */
+          .claude-lab-problems-grid {
+            grid-template-columns: 1fr !important;
+          }
+
+          /* Steps grid → 1 col */
+          .claude-lab-steps-grid {
+            grid-template-columns: 1fr !important;
+          }
+
+          /* Stats grid → 1 col with top dividers */
+          .claude-lab-stats-grid {
+            grid-template-columns: 1fr !important;
+          }
+          .claude-lab-stats-grid > div + div {
+            border-left: none !important;
+            border-top: 1px solid rgba(255,255,255,0.08) !important;
+            padding-top: 40px !important;
+            margin-top: 0 !important;
+          }
+          .claude-lab-stats-grid > div {
+            text-align: left !important;
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+          }
+
+          /* No horizontal overflow */
+          .v5-page {
+            overflow-x: hidden !important;
+          }
+
+          /* Inline maxWidth constraints — relax on mobile */
+          .v5-page h1[style],
+          .v5-page p[style] {
+            max-width: 100% !important;
           }
         }
       `}</style>

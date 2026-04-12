@@ -67,11 +67,22 @@ export default function SchoolLabPage() {
 
                 {/* ── HERO ── */}
                 <section
-                    className="relative min-h-screen flex items-center overflow-hidden" style={{ backgroundColor: '#080808' }}
+                    className="relative min-h-[100svh] flex items-center overflow-hidden" style={{ backgroundColor: '#080808' }}
                 >
+                    {/* Background Image */}
+                    <div
+                        className="absolute inset-0 z-0"
+                        style={{
+                            backgroundImage: 'url("/images/labs/hero-classroom.jpg")',
+                            backgroundSize: 'cover',
+                            backgroundPosition: 'center',
+                            opacity: 0.35,
+                        }}
+                    />
+
                     {/* Ambient glow */}
                     <div
-                        className="absolute top-0 right-0 pointer-events-none"
+                        className="absolute top-0 right-0 pointer-events-none z-0"
                         style={{
                             width: '800px',
                             height: '800px',
@@ -79,114 +90,84 @@ export default function SchoolLabPage() {
                         }}
                     />
 
-                    <div className="v5-container relative z-10 w-full">
-                        <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_0.8fr] gap-12 lg:gap-24 items-center">
+                    <div className="v5-container relative z-10 w-full pt-20 pb-20 md:pt-0 md:pb-0">
+                        <div className="flex flex-col items-start text-left max-w-[800px]">
+                            <span
+                                className="v5-reveal"
+                                style={{
+                                    fontFamily: 'var(--v5-font-mono)',
+                                    fontSize: '11px',
+                                    fontWeight: 500,
+                                    letterSpacing: '0.15em',
+                                    textTransform: 'uppercase',
+                                    color: '#999999',
+                                    marginBottom: '28px',
+                                }}
+                            >
+                                School Lab · Formación IA
+                            </span>
 
-                            {/* Left — Text */}
-                            <div className="flex flex-col items-start text-left">
-                                <span
-                                    className="v5-reveal"
+                            <h1
+                                className="v5-reveal"
+                                style={{
+                                    fontFamily: 'var(--v5-font-display)',
+                                    fontSize: 'clamp(36px, 8vw, 80px)',
+                                    fontWeight: 300,
+                                    letterSpacing: '-0.03em',
+                                    lineHeight: 0.95,
+                                    color: '#F5F5F0',
+                                    transitionDelay: '60ms',
+                                    marginBottom: '32px',
+                                }}
+                            >
+                                Aprende a usar<br />
+                                la IA<br />
+                                <span style={{ color: 'rgba(245,245,240,0.35)' }}>antes de que sea tarde.</span>
+                            </h1>
+
+                            <p
+                                className="v5-reveal"
+                                style={{
+                                    fontFamily: 'var(--v5-font-body)',
+                                    fontSize: '17px',
+                                    fontWeight: 300,
+                                    lineHeight: 1.8,
+                                    color: 'rgba(245,245,240,0.45)',
+                                    maxWidth: '560px',
+                                    transitionDelay: '120ms',
+                                    marginBottom: '48px',
+                                }}
+                            >
+                                El 39% de las habilidades laborales actuales serán obsoletas antes de 2030.
+                                La IA no va a esperar. Nosotros tampoco.
+                            </p>
+
+                            <div
+                                className="v5-reveal flex flex-col sm:flex-row gap-4 w-full"
+                                style={{ transitionDelay: '180ms' }}
+                            >
+                                <Link
+                                    href="#programas"
                                     style={{
-                                        fontFamily: 'var(--v5-font-mono)',
-                                        fontSize: '11px',
-                                        fontWeight: 500,
-                                        letterSpacing: '0.15em',
-                                        textTransform: 'uppercase',
-                                        color: '#666666',
-                                        marginBottom: '28px',
+                                        display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '8px',
+                                        padding: '16px 36px', background: '#F5F5F0', color: '#080808',
+                                        borderRadius: '0px', fontFamily: 'var(--v5-font-body)',
+                                        fontSize: '15px', fontWeight: 500, textDecoration: 'none',
+                                        transition: 'all 200ms ease',
                                     }}
+                                    onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = '#FFFFFF'; (e.currentTarget as HTMLElement).style.transform = 'translateY(-1px)'; }}
+                                    onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = '#F5F5F0'; (e.currentTarget as HTMLElement).style.transform = 'translateY(0)'; }}
                                 >
-                                    School Lab · Formación IA
-                                </span>
-
-                                <h1
-                                    className="v5-reveal"
-                                    style={{
-                                        fontFamily: 'var(--v5-font-display)',
-                                        fontSize: 'clamp(40px, 5vw, 72px)',
-                                        fontWeight: 300,
-                                        letterSpacing: '-0.03em',
-                                        lineHeight: 1.08,
-                                        color: '#F5F5F0',
-                                        transitionDelay: '80ms',
-                                        marginBottom: '32px',
-                                    }}
+                                    Ver programas
+                                </Link>
+                                <Link
+                                    href="#b2b"
+                                    className="v5-btn-ghost flex items-center justify-center"
+                                    style={{ borderRadius: '0px', padding: '16px 36px' }}
                                 >
-                                    Aprende a usar<br />
-                                    la IA<br />
-                                    <span style={{ color: 'rgba(245,245,240,0.35)' }}>antes de que sea tarde.</span>
-                                </h1>
-
-                                <p
-                                    className="v5-reveal"
-                                    style={{
-                                        fontFamily: 'var(--v5-font-body)',
-                                        fontSize: '18px',
-                                        fontWeight: 300,
-                                        lineHeight: 1.8,
-                                        color: 'rgba(245,245,240,0.48)',
-                                        maxWidth: '480px',
-                                        transitionDelay: '160ms',
-                                        marginBottom: '48px',
-                                    }}
-                                >
-                                    El 39% de las habilidades laborales actuales serán obsoletas antes de 2030.
-                                    La IA no va a esperar. Nosotros tampoco.
-                                </p>
-
-                                <div
-                                    className="v5-reveal flex flex-col sm:flex-row gap-4"
-                                    style={{ transitionDelay: '220ms' }}
-                                >
-                                    <Link
-                                        href="#programas"
-                                        style={{
-                                            display: 'inline-flex', alignItems: 'center', gap: '8px',
-                                            padding: '16px 36px', background: '#F5F5F0', color: '#080808',
-                                            borderRadius: '0px', fontFamily: 'var(--v5-font-body)',
-                                            fontSize: '15px', fontWeight: 500, textDecoration: 'none',
-                                            transition: 'all 200ms ease',
-                                        }}
-                                        onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = '#FFFFFF'; (e.currentTarget as HTMLElement).style.transform = 'translateY(-1px)'; }}
-                                        onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = '#F5F5F0'; (e.currentTarget as HTMLElement).style.transform = 'translateY(0)'; }}
-                                    >
-                                        Ver programas
-                                    </Link>
-                                    <Link
-                                        href="#b2b"
-                                        className="v5-btn-ghost"
-                                        style={{ borderRadius: '0px', padding: '16px 36px' }}
-                                    >
-                                        Soy empresa
-                                    </Link>
-                                </div>
+                                    Soy empresa
+                                </Link>
                             </div>
-
-                            {/* Right — Image */}
-                            <div className="hidden lg:flex w-full justify-end">
-                                <div
-                                    className="v5-reveal relative w-full max-w-[460px]"
-                                    style={{ transitionDelay: '100ms' }}
-                                >
-                                    <div
-                                        className="card-3d-object card-3d-object-shadow"
-                                        style={{ aspectRatio: '4/5', position: 'relative', overflow: 'hidden' }}
-                                    >
-                                        <Image
-                                            src="/images/school-workshop.png"
-                                            alt="Formación IA — School Lab"
-                                            fill
-                                            className="object-cover"
-                                            style={{ filter: 'contrast(1.05) brightness(1.02)', mixBlendMode: 'luminosity' }}
-                                        />
-                                        <div
-                                            className="absolute inset-0 pointer-events-none"
-                                            style={{ background: 'rgba(237,232,223,0.20)', mixBlendMode: 'color' }}
-                                        />
-                                    </div>
-                                </div>
-                            </div>
-
                         </div>
                     </div>
                 </section>

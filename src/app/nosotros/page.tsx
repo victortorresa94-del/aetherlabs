@@ -91,11 +91,12 @@ export default function NosotrosPage() {
             </span>
             <h1
               style={{
-                fontFamily: 'var(--v5-font-display)',
+                fontFamily: "var(--v5-font-advercase, 'Playfair Display', Georgia, serif)",
                 fontSize: 'clamp(40px, 6vw, 80px)',
-                fontWeight: 300,
-                letterSpacing: '-0.03em',
-                lineHeight: 0.95,
+                fontWeight: 400,
+                fontStyle: 'normal',
+                letterSpacing: '-0.02em',
+                lineHeight: 1.0,
                 color: '#F5F5F0',
                 maxWidth: '840px',
                 marginBottom: '32px',
@@ -128,9 +129,10 @@ export default function NosotrosPage() {
             <div className="v5-reveal max-w-3xl mb-24">
               <h2
                 style={{
-                  fontFamily: 'var(--v5-font-display)',
+                  fontFamily: "var(--v5-font-advercase, 'Playfair Display', Georgia, serif)",
                   fontSize: 'clamp(28px, 3vw, 44px)',
-                  fontWeight: 300,
+                  fontWeight: 400,
+                  fontStyle: 'normal',
                   letterSpacing: '-0.02em',
                   lineHeight: 1.1,
                   color: '#F5F5F0',
@@ -175,9 +177,10 @@ export default function NosotrosPage() {
             <div className="v5-reveal" style={{ marginTop: '80px' }}>
               <h2
                 style={{
-                  fontFamily: 'var(--v5-font-display)',
+                  fontFamily: "var(--v5-font-advercase, 'Playfair Display', Georgia, serif)",
                   fontSize: 'clamp(28px, 3vw, 44px)',
-                  fontWeight: 300,
+                  fontWeight: 400,
+                  fontStyle: 'normal',
                   letterSpacing: '-0.02em',
                   color: '#F5F5F0',
                   marginBottom: '32px',
@@ -243,9 +246,10 @@ export default function NosotrosPage() {
             <div className="mb-16 v5-reveal">
               <h2
                 style={{
-                  fontFamily: 'var(--v5-font-display)',
+                  fontFamily: "var(--v5-font-advercase, 'Playfair Display', Georgia, serif)",
                   fontSize: 'clamp(28px, 3vw, 44px)',
-                  fontWeight: 300,
+                  fontWeight: 400,
+                  fontStyle: 'normal',
                   letterSpacing: '-0.02em',
                   color: '#F5F5F0',
                 }}
@@ -270,7 +274,7 @@ export default function NosotrosPage() {
                   <div>
                     <span
                       style={{
-                        fontFamily: 'var(--v5-font-display)',
+                        fontFamily: 'var(--v5-font-body)',
                         fontSize: '16px',
                         fontWeight: 400,
                         color: '#F5F5F0',
@@ -315,9 +319,10 @@ export default function NosotrosPage() {
             <div className="mb-16 v5-reveal">
               <h2
                 style={{
-                  fontFamily: 'var(--v5-font-display)',
+                  fontFamily: "var(--v5-font-advercase, 'Playfair Display', Georgia, serif)",
                   fontSize: 'clamp(28px, 3vw, 44px)',
-                  fontWeight: 300,
+                  fontWeight: 400,
+                  fontStyle: 'normal',
                   letterSpacing: '-0.02em',
                   color: '#F5F5F0',
                 }}
@@ -345,9 +350,10 @@ export default function NosotrosPage() {
                   </span>
                   <h3
                     style={{
-                      fontFamily: 'var(--v5-font-display)',
+                      fontFamily: "var(--v5-font-advercase, 'Playfair Display', Georgia, serif)",
                       fontSize: '22px',
                       fontWeight: 400,
+                      fontStyle: 'normal',
                       letterSpacing: '-0.02em',
                       color: '#F5F5F0',
                       lineHeight: 1.2,
@@ -378,9 +384,10 @@ export default function NosotrosPage() {
             <div className="v5-reveal max-w-2xl">
               <h2
                 style={{
-                  fontFamily: 'var(--v5-font-display)',
+                  fontFamily: "var(--v5-font-advercase, 'Playfair Display', Georgia, serif)",
                   fontSize: 'clamp(28px, 3vw, 44px)',
-                  fontWeight: 300,
+                  fontWeight: 400,
+                  fontStyle: 'normal',
                   letterSpacing: '-0.02em',
                   color: '#F5F5F0',
                   marginBottom: '24px',
@@ -432,9 +439,10 @@ export default function NosotrosPage() {
             <div className="mb-16 v5-reveal">
               <h2
                 style={{
-                  fontFamily: 'var(--v5-font-display)',
+                  fontFamily: "var(--v5-font-advercase, 'Playfair Display', Georgia, serif)",
                   fontSize: 'clamp(28px, 3vw, 44px)',
-                  fontWeight: 300,
+                  fontWeight: 400,
+                  fontStyle: 'normal',
                   letterSpacing: '-0.02em',
                   color: '#F5F5F0',
                 }}

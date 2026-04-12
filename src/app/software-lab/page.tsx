@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight, Database, Users, Eye, Settings2, Smartphone, Rocket } from 'lucide-react';
 import Navbar from '@/components/v5/Navbar';
 import Footer from '@/components/v5/Footer';
 import ScrollAnimations from '@/components/v5/ScrollAnimations';
@@ -37,36 +37,42 @@ const bentoItems = [
     title: 'ERP para servicio técnico',
     desc: 'Control de reparaciones, historial de clientes, gestión de piezas, facturación automática. El sistema completo para una empresa de servicio técnico.',
     featured: true,
+    icon: Database,
   },
   {
     label: 'CRM',
     title: 'CRM a medida',
     desc: 'No el CRM genérico — el que refleja exactamente tu proceso de ventas, tus etapas, tus alertas.',
     featured: false,
+    icon: Users,
   },
   {
     label: 'PORTAL',
     title: 'Portal de clientes',
     desc: 'Un acceso privado para que tus clientes vean el estado de sus pedidos, facturas o proyectos. Sin emails, sin llamadas.',
     featured: false,
+    icon: Eye,
   },
   {
     label: 'GESTIÓN INTERNA',
     title: 'Sistema de gestión interna',
     desc: 'Cualquier proceso repetitivo que hoy lleváis en Excel o en la cabeza — digitalizamos y automatizamos.',
     featured: false,
+    icon: Settings2,
   },
   {
     label: 'APP DE CAMPO',
     title: 'App de campo',
     desc: 'Para equipos que trabajan fuera de la oficina — registros, partes de trabajo, fotos, firmas digitales desde el móvil.',
     featured: false,
+    icon: Smartphone,
   },
   {
     label: 'SAAS',
     title: 'Plataforma SaaS',
     desc: 'Si tienes una idea de negocio digital, la construimos contigo desde cero hasta lanzamiento.',
     featured: false,
+    icon: Rocket,
   },
 ];
 
@@ -140,21 +146,22 @@ export default function SoftwareLab() {
         {/* ── HERO ── */}
         <section
           ref={heroRef}
-          className="relative min-h-screen flex items-center overflow-hidden" style={{ background: '#080808' }}
+          className="relative min-h-[100svh] flex items-center overflow-hidden" style={{ background: '#080808' }}
         >
           <Image
-            src="/images/creative-lab/web.jpg"
+            src="/images/labs/hero-watch.jpg"
             alt=""
             fill
-            style={{ objectFit: 'cover', objectPosition: 'center' }}
+            style={{ objectFit: 'cover', objectPosition: 'center', opacity: 0.35 }}
             priority
           />
           <div style={{
             position: 'absolute', inset: 0,
             background: 'linear-gradient(to right, rgba(8,8,8,0.95) 0%, rgba(8,8,8,0.5) 40%, rgba(8,8,8,0.1) 100%)',
             zIndex: 1,
+            pointerEvents: 'none'
           }} />
-          <div className="v5-container w-full relative z-10">
+          <div className="v5-container w-full relative z-10 pt-20 pb-20 md:pt-0 md:pb-0">
             <motion.div
               initial={{ opacity: 0, y: 24 }}
               animate={heroInView ? { opacity: 1, y: 0 } : {}}
@@ -376,17 +383,20 @@ export default function SoftwareLab() {
               className="sw-bento-featured"
             >
               <div>
-                <span style={{
-                  fontFamily: 'var(--v5-font-mono)',
-                  fontSize: '9px',
-                  letterSpacing: '0.18em',
-                  textTransform: 'uppercase',
-                  color: '#999',
-                  display: 'block',
-                  marginBottom: '24px',
-                }}>
-                  {bentoItems[0].label}
-                </span>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '24px' }}>
+                  <div style={{ width: '36px', height: '36px', borderRadius: '8px', background: '#f0f0ec', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                    <Database size={16} color="#555" />
+                  </div>
+                  <span style={{
+                    fontFamily: 'var(--v5-font-mono)',
+                    fontSize: '9px',
+                    letterSpacing: '0.18em',
+                    textTransform: 'uppercase',
+                    color: '#999',
+                  }}>
+                    {bentoItems[0].label}
+                  </span>
+                </div>
                 <h3 style={{
                   fontFamily: advercase,
                   fontSize: 'clamp(24px, 2.8vw, 36px)',
@@ -417,34 +427,95 @@ export default function SoftwareLab() {
 
             {/* Right column top — 2 cards side by side */}
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px' }} className="sw-bento-right-top">
-              {bentoItems.slice(1, 3).map((item) => (
-                <div
-                  key={item.label}
-                  style={{
-                    background: '#111',
-                    border: '1px solid #1e1e1e',
-                    borderRadius: '12px',
-                    padding: '28px 24px',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    justifyContent: 'space-between',
-                  }}
-                >
-                  <div>
-                    <span style={{
-                      fontFamily: 'var(--v5-font-mono)',
-                      fontSize: '9px',
-                      letterSpacing: '0.15em',
-                      textTransform: 'uppercase',
-                      color: '#555',
-                      display: 'block',
-                      marginBottom: '16px',
-                    }}>
-                      {item.label}
-                    </span>
+              {bentoItems.slice(1, 3).map((item) => {
+                const ItemIcon = item.icon;
+                return (
+                  <div
+                    key={item.label}
+                    style={{
+                      background: '#111',
+                      border: '1px solid #1e1e1e',
+                      borderRadius: '12px',
+                      padding: '28px 24px',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      justifyContent: 'space-between',
+                    }}
+                  >
+                    <div>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '16px' }}>
+                        <div style={{ width: '30px', height: '30px', borderRadius: '6px', background: 'rgba(255,255,255,0.06)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                          <ItemIcon size={14} color="#888" />
+                        </div>
+                        <span style={{
+                          fontFamily: 'var(--v5-font-mono)',
+                          fontSize: '9px',
+                          letterSpacing: '0.15em',
+                          textTransform: 'uppercase',
+                          color: '#555',
+                        }}>
+                          {item.label}
+                        </span>
+                      </div>
+                      <h3 style={{
+                        fontFamily: advercase,
+                        fontSize: '18px',
+                        fontWeight: 400,
+                        fontStyle: 'normal',
+                        color: '#F5F5F0',
+                        marginBottom: '10px',
+                        letterSpacing: '-0.01em',
+                      }}>
+                        {item.title}
+                      </h3>
+                      <p style={{
+                        fontFamily: 'var(--v5-font-body)',
+                        fontSize: '13px',
+                        fontWeight: 300,
+                        color: 'rgba(245,245,240,0.4)',
+                        lineHeight: 1.6,
+                      }}>
+                        {item.desc}
+                      </p>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* Right column bottom — 3 cards */}
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '8px' }} className="sw-bento-right-bottom">
+              {bentoItems.slice(3).map((item) => {
+                const ItemIcon = item.icon;
+                return (
+                  <div
+                    key={item.label}
+                    style={{
+                      background: '#111',
+                      border: '1px solid #1e1e1e',
+                      borderRadius: '12px',
+                      padding: '24px 20px',
+                      display: 'flex',
+                      flexDirection: 'column',
+                    }}
+                  >
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '14px' }}>
+                      <div style={{ width: '28px', height: '28px', borderRadius: '6px', background: 'rgba(255,255,255,0.06)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                        <ItemIcon size={13} color="#888" />
+                      </div>
+                      <span style={{
+                        fontFamily: 'var(--v5-font-mono)',
+                        fontSize: '9px',
+                        letterSpacing: '0.15em',
+                        textTransform: 'uppercase',
+                        color: '#555',
+                      }}>
+                        {item.label}
+                      </span>
+                    </div>
                     <h3 style={{
                       fontFamily: advercase,
-                      fontSize: '18px',
+                      fontSize: '17px',
                       fontWeight: 400,
                       fontStyle: 'normal',
                       color: '#F5F5F0',
@@ -463,57 +534,8 @@ export default function SoftwareLab() {
                       {item.desc}
                     </p>
                   </div>
-                </div>
-              ))}
-            </div>
-
-            {/* Right column bottom — 3 cards */}
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '8px' }} className="sw-bento-right-bottom">
-              {bentoItems.slice(3).map((item) => (
-                <div
-                  key={item.label}
-                  style={{
-                    background: '#111',
-                    border: '1px solid #1e1e1e',
-                    borderRadius: '12px',
-                    padding: '24px 20px',
-                    display: 'flex',
-                    flexDirection: 'column',
-                  }}
-                >
-                  <span style={{
-                    fontFamily: 'var(--v5-font-mono)',
-                    fontSize: '9px',
-                    letterSpacing: '0.15em',
-                    textTransform: 'uppercase',
-                    color: '#555',
-                    display: 'block',
-                    marginBottom: '14px',
-                  }}>
-                    {item.label}
-                  </span>
-                  <h3 style={{
-                    fontFamily: advercase,
-                    fontSize: '17px',
-                    fontWeight: 400,
-                    fontStyle: 'normal',
-                    color: '#F5F5F0',
-                    marginBottom: '10px',
-                    letterSpacing: '-0.01em',
-                  }}>
-                    {item.title}
-                  </h3>
-                  <p style={{
-                    fontFamily: 'var(--v5-font-body)',
-                    fontSize: '13px',
-                    fontWeight: 300,
-                    color: 'rgba(245,245,240,0.4)',
-                    lineHeight: 1.6,
-                  }}>
-                    {item.desc}
-                  </p>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </Section>

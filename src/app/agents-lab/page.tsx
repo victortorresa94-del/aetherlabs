@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight, Search, Headphones, PenLine, BarChart2, UserPlus, Receipt } from 'lucide-react';
 import Navbar from '@/components/v5/Navbar';
 import Footer from '@/components/v5/Footer';
 import ScrollAnimations from '@/components/v5/ScrollAnimations';
@@ -45,36 +45,42 @@ const useCases = [
     title: 'Agente de prospección',
     desc: 'Recibe una lista de empresas objetivo. Investiga cada una online. Redacta un email personalizado para cada contacto. Lo envía desde tu cuenta. Registra la respuesta en tu CRM. Solo.',
     featured: true,
+    icon: Search,
   },
   {
     label: 'ATENCIÓN',
     title: 'Agente de atención',
     desc: 'Lee el email de soporte. Busca la respuesta en tu documentación. Redacta y envía la respuesta. Escala lo que no puede resolver. Sin que nadie lo supervise.',
     featured: false,
+    icon: Headphones,
   },
   {
     label: 'CONTENIDO',
     title: 'Agente de contenido',
     desc: 'Monitoriza noticias del sector. Selecciona las relevantes. Genera un resumen editorial. Lo publica en tu LinkedIn. A las 8am, todos los días.',
     featured: false,
+    icon: PenLine,
   },
   {
     label: 'ANÁLISIS',
     title: 'Agente de análisis',
     desc: 'Descarga el informe semanal de ventas. Lo analiza. Detecta anomalías. Redacta un resumen ejecutivo y lo envía a dirección.',
     featured: false,
+    icon: BarChart2,
   },
   {
     label: 'ONBOARDING',
     title: 'Agente de onboarding',
     desc: 'Cuando entra un cliente nuevo, dispara el proceso completo: crea cuenta, envía bienvenida, programa reunión, notifica al equipo, crea el proyecto en Notion.',
     featured: false,
+    icon: UserPlus,
   },
   {
     label: 'FACTURACIÓN',
     title: 'Agente de facturación',
     desc: 'Detecta que se completó un proyecto. Genera la factura. La envía al cliente. Registra el pago pendiente. Te avisa si no pagan en el plazo acordado.',
     featured: false,
+    icon: Receipt,
   },
 ];
 
@@ -455,7 +461,9 @@ export default function AgentsLab() {
             gridTemplateColumns: 'repeat(3, 1fr)',
             gap: '12px',
           }}>
-            {useCases.map((c, i) => (
+            {useCases.map((c, i) => {
+              const CaseIcon = c.icon;
+              return (
               <div
                 key={i}
                 className={c.featured ? 'agents-card-featured' : ''}
@@ -474,15 +482,18 @@ export default function AgentsLab() {
                 }}
               >
                 <div>
-                  <span style={{
-                    fontFamily: 'var(--v5-font-mono)',
-                    fontSize: '9px',
-                    letterSpacing: '0.22em',
-                    textTransform: 'uppercase',
-                    color: '#444',
-                    display: 'block',
-                    marginBottom: '16px',
-                  }}>{c.label}</span>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '16px' }}>
+                    <div style={{ width: c.featured ? '36px' : '30px', height: c.featured ? '36px' : '30px', borderRadius: '7px', background: 'rgba(255,255,255,0.06)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                      <CaseIcon size={c.featured ? 16 : 13} color="#888" />
+                    </div>
+                    <span style={{
+                      fontFamily: 'var(--v5-font-mono)',
+                      fontSize: '9px',
+                      letterSpacing: '0.22em',
+                      textTransform: 'uppercase',
+                      color: '#444',
+                    }}>{c.label}</span>
+                  </div>
                   <h3 style={{
                     fontFamily: "var(--v5-font-advercase, 'Playfair Display', Georgia, serif)",
                     fontSize: c.featured ? '30px' : '22px',
@@ -503,7 +514,8 @@ export default function AgentsLab() {
                   margin: 0,
                 }}>{c.desc}</p>
               </div>
-            ))}
+              );
+            })}
           </div>
         </Section>
 

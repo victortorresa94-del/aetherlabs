@@ -96,8 +96,18 @@ export default function CreativeLab() {
       <main>
 
         {/* ─── SECTION 1 — HERO ─── */}
-        <section className="relative min-h-screen flex items-center overflow-hidden" style={{ backgroundColor: '#080808' }}>
-          <div className="v5-container">
+        <section className="relative min-h-[100svh] flex items-center overflow-hidden" style={{ backgroundColor: '#080808' }}>
+          {/* Background Image */}
+          <div
+            className="absolute inset-0 z-0"
+            style={{
+              backgroundImage: 'url("/images/labs/hero-darkroom.jpg")',
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              opacity: 0.35,
+            }}
+          />
+          <div className="v5-container relative z-10 pt-20 pb-20 md:pt-0 md:pb-0">
             <span
               className="v5-reveal"
               style={{
@@ -118,7 +128,7 @@ export default function CreativeLab() {
               className="v5-reveal"
               style={{
                 fontFamily: 'var(--v5-font-display)',
-                fontSize: 'clamp(40px, 6vw, 80px)',
+                fontSize: 'clamp(36px, 8vw, 80px)',
                 fontWeight: 300,
                 letterSpacing: '-0.03em',
                 lineHeight: 0.95,
@@ -148,12 +158,13 @@ export default function CreativeLab() {
               Todo el material creativo que tu empresa necesita para verse profesional y convertir. Video, branding, web, presentaciones, contenido y anuncios -- producido con IA, entregado en dias.
             </p>
 
-            <div className="v5-reveal flex gap-4" style={{ transitionDelay: '240ms', flexWrap: 'wrap' }}>
+            <div className="v5-reveal flex flex-col sm:flex-row gap-4 w-full" style={{ transitionDelay: '240ms' }}>
               <a
                 href="#servicios"
                 style={{
                   display: 'inline-flex',
                   alignItems: 'center',
+                  justifyContent: 'center',
                   gap: '8px',
                   padding: '16px 32px',
                   background: '#F5F5F0',
@@ -180,6 +191,7 @@ export default function CreativeLab() {
                 style={{
                   display: 'inline-flex',
                   alignItems: 'center',
+                  justifyContent: 'center',
                   gap: '8px',
                   padding: '16px 32px',
                   background: 'transparent',
@@ -607,12 +619,13 @@ export default function CreativeLab() {
               >
                 Cuentanos que necesitas. En 24h te decimos si podemos hacerlo, cuanto costaria y cuando estaria listo.
               </p>
-              <div className="flex gap-4" style={{ flexWrap: 'wrap', justifyContent: 'center', marginTop: '8px' }}>
+              <div className="flex flex-col sm:flex-row gap-4 w-full" style={{ justifyContent: 'center', marginTop: '8px' }}>
                 <Link
                   href="/systems-lab/sesion-de-claridad"
                   style={{
                     display: 'inline-flex',
                     alignItems: 'center',
+                    justifyContent: 'center',
                     gap: '8px',
                     padding: '16px 32px',
                     background: '#F5F5F0',
@@ -624,6 +637,8 @@ export default function CreativeLab() {
                     borderRadius: '0px',
                     border: 'none',
                     transition: 'background 200ms ease',
+                    width: '100%',
+                    maxWidth: '300px'
                   }}
                   onMouseEnter={(e) => {
                     (e.currentTarget as HTMLElement).style.background = '#FFFFFF';
@@ -641,6 +656,7 @@ export default function CreativeLab() {
                   style={{
                     display: 'inline-flex',
                     alignItems: 'center',
+                    justifyContent: 'center',
                     gap: '8px',
                     padding: '16px 32px',
                     background: 'transparent',
@@ -652,6 +668,8 @@ export default function CreativeLab() {
                     borderRadius: '0px',
                     border: '1px solid rgba(255,255,255,0.20)',
                     transition: 'border-color 200ms ease, color 200ms ease',
+                    width: '100%',
+                    maxWidth: '300px'
                   }}
                   onMouseEnter={(e) => {
                     (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.40)';

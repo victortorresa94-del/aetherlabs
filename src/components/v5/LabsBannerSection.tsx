@@ -13,7 +13,7 @@ const labs = [
     index: '01',
     service: 'Claude',
     name: 'Claude Lab',
-    pain: 'Implementamos y formamos a tu equipo en la herramienta tecnológica más potente de la historia reciente.',
+    pain: '¿Tu equipo tiene acceso a Claude pero nadie sabe realmente cómo usarlo en su trabajo del día a día?',
     desc: 'Implementamos Claude en tus procesos y formamos a tu equipo.',
     icon: MessageSquare,
     href: '/claude-lab',
@@ -94,19 +94,21 @@ export default function LabsBannerSection() {
   return (
     <section
       ref={sectionRef}
+      className="labs-section-inner"
       style={{
         background: '#F8F8F5',
         padding: '120px 0 120px',
         position: 'relative',
       }}
     >
-      <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 32px' }}>
+      <div className="labs-section-container" style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 32px' }}>
 
         {/* ── HEADER ── */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, ease }}
+          className="labs-header"
           style={{ marginBottom: '72px' }}
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '20px' }}>
@@ -313,8 +315,8 @@ export default function LabsBannerSection() {
                     {/* Desc */}
                     {'desc' in lab && !isWide && (
                       <p style={{
-                        fontFamily: 'var(--v5-font-body)', fontSize: '11px', fontWeight: 300,
-                        color: '#94A3B8', lineHeight: 1.5, marginTop: '6px',
+                        fontFamily: 'var(--v5-font-body)', fontSize: '12px', fontWeight: 400,
+                        color: '#444', lineHeight: 1.5, marginTop: '6px',
                       }}>
                         {lab.desc}
                       </p>
@@ -336,7 +338,13 @@ export default function LabsBannerSection() {
       <style>{`
         @media (max-width: 768px) {
           .labs-grid { grid-template-columns: 1fr !important; }
+          .labs-grid > * { grid-column: 1 !important; }
           .featured-card { grid-template-columns: 1fr !important; }
+          .labs-section-inner { padding: 80px 20px !important; }
+          .labs-section-container { padding: 0 !important; }
+          .labs-header { margin-bottom: 48px !important; }
+          .lab-card { padding: 20px !important; }
+          .featured-card-wrap { padding: 28px 24px !important; }
         }
         @media (min-width: 769px) and (max-width: 1024px) {
           .labs-grid { grid-template-columns: repeat(2, 1fr) !important; }

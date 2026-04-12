@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight, Target, Rocket, Mail, Sparkles, BarChart2 } from 'lucide-react';
 import Navbar from '@/components/v5/Navbar';
 import Footer from '@/components/v5/Footer';
 import ScrollAnimations from '@/components/v5/ScrollAnimations';
@@ -66,26 +66,31 @@ const services = [
     featured: true,
     title: 'Sistema de captación automático',
     desc: 'Construimos el embudo completo: anuncio → landing → lead magnet → email sequence → llamada. Automatizado, medido, optimizado con IA.',
+    icon: Target,
   },
   {
     featured: false,
     title: 'Campañas de lanzamiento',
     desc: 'Estrategia + contenido + ads + email para el lanzamiento de un producto o servicio. Con IA generando variantes y optimizando en tiempo real.',
+    icon: Rocket,
   },
   {
     featured: false,
     title: 'Lead nurturing con IA',
     desc: 'Secuencias de emails personalizadas según el comportamiento del lead. El mensaje correcto, en el momento correcto, sin trabajo manual.',
+    icon: Mail,
   },
   {
     featured: false,
     title: 'Ads con IA generativa',
     desc: 'Decenas de variantes de copy e imagen generadas y testadas automáticamente. Los mejores, escalados. Los peores, descartados solos.',
+    icon: Sparkles,
   },
   {
     featured: false,
     title: 'Análisis y optimización',
     desc: 'Dashboard de métricas en tiempo real. Sabemos qué funciona, qué falla y qué hacer — sin esperar al informe mensual de la agencia.',
+    icon: BarChart2,
   },
 ];
 
@@ -401,23 +406,26 @@ export default function MarketingLab() {
                     (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.08)';
                   }}
                 >
-                  <span
-                    style={{
-                      display: 'inline-block',
-                      marginBottom: '24px',
-                      fontFamily: 'var(--v5-font-mono)',
-                      fontSize: '10px',
-                      fontWeight: 500,
-                      letterSpacing: '0.15em',
-                      textTransform: 'uppercase',
-                      color: '#555555',
-                      border: '1px solid #333',
-                      borderRadius: '4px',
-                      padding: '4px 10px',
-                    }}
-                  >
-                    Servicio principal
-                  </span>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '24px' }}>
+                    <div style={{ width: '38px', height: '38px', borderRadius: '8px', background: 'rgba(255,255,255,0.07)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                      <Target size={17} color="#F5F5F0" />
+                    </div>
+                    <span
+                      style={{
+                        fontFamily: 'var(--v5-font-mono)',
+                        fontSize: '10px',
+                        fontWeight: 500,
+                        letterSpacing: '0.15em',
+                        textTransform: 'uppercase',
+                        color: '#555555',
+                        border: '1px solid #333',
+                        borderRadius: '4px',
+                        padding: '4px 10px',
+                      }}
+                    >
+                      Servicio principal
+                    </span>
+                  </div>
                   <h3
                     style={{
                       fontFamily: "var(--v5-font-advercase, 'Playfair Display', Georgia, serif)",
@@ -449,7 +457,9 @@ export default function MarketingLab() {
               </FadeUp>
 
               {/* Regular cards */}
-              {services.slice(1).map((s, i) => (
+              {services.slice(1).map((s, i) => {
+                const ServiceIcon = s.icon;
+                return (
                 <FadeUp key={i + 1} delay={(i + 1) * 0.08}>
                   <div
                     style={{
@@ -467,6 +477,9 @@ export default function MarketingLab() {
                       (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.08)';
                     }}
                   >
+                    <div style={{ width: '34px', height: '34px', borderRadius: '7px', background: 'rgba(255,255,255,0.06)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px' }}>
+                      <ServiceIcon size={15} color="#999" />
+                    </div>
                     <h3
                       style={{
                         fontFamily: "var(--v5-font-advercase, 'Playfair Display', Georgia, serif)",
@@ -495,7 +508,8 @@ export default function MarketingLab() {
                     </p>
                   </div>
                 </FadeUp>
-              ))}
+                );
+              })}
             </div>
 
           </div>

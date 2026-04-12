@@ -1,444 +1,689 @@
 'use client';
 
+import { useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { motion, useInView } from 'framer-motion';
+import { ArrowUpRight, Clock, Users, Zap } from 'lucide-react';
 import Navbar from '@/components/v5/Navbar';
 import Footer from '@/components/v5/Footer';
 import ScrollAnimations from '@/components/v5/ScrollAnimations';
 
+// ─── Data ────────────────────────────────────────────────────────────────────
+
 const casos = [
   {
-    badge: 'Creative Lab',
-    sector: 'EDUCACIÓN ONLINE',
+    index: '01',
+    sector: 'Educación online',
+    lab: 'Creative Lab',
+    client: 'SOMA / Audio Hackers',
     title: 'Llenar un máster de composición musical en un mercado saturado de cursos.',
-    desc: 'Estrategia de lanzamiento completa. Funnel con ManyChat, reels, lead magnets y cierre de ventas directo.',
+    desc: 'Estrategia de lanzamiento completa: ManyChat, reels, lead magnets y cierre de ventas directo.',
     resultado: '+20.000€',
-    resultadoLabel: 'en ventas · ~200 alumnos inscritos · Objetivo cumplido.',
+    resultadoSub: 'en ventas directas · ~200 alumnos · Objetivo superado.',
     image: '/images/creative/twojeys.jpg',
   },
   {
-    badge: 'Systems Lab',
-    sector: 'AGENCIA DE MARKETING',
+    index: '02',
+    sector: 'Agencia de marketing',
+    lab: 'Systems Lab',
+    client: 'EME Agency',
     title: 'Una agencia creciendo rápido sin estructura para soportarlo.',
-    desc: 'Implementamos ClickUp desde cero. Creamos +40 SOPs para que cada proceso estuviera documentado y delegable. Formamos al equipo para que lo usara.',
-    resultado: '+40 proyectos',
-    resultadoLabel: 'gestionados a la vez · Sistema propio que no depende de una persona.',
+    desc: 'ClickUp desde cero. +40 SOPs documentados. Formación completa al equipo.',
+    resultado: '40 proyectos',
+    resultadoSub: 'gestionados simultáneamente · Sistema que no depende de nadie.',
     image: '/images/aether-office.jpg',
   },
   {
-    badge: 'Creative Lab',
-    sector: 'LANZAMIENTO INTERNACIONAL',
+    index: '03',
+    sector: 'Lanzamiento internacional',
+    lab: 'Creative Lab',
+    client: 'Totemica (EE.UU.)',
     title: 'Lanzar una marca desde cero en el mercado americano.',
-    desc: 'Go-to-market completo: estudio de mercado, definición de pricing, búsqueda de proveedores, branding y web.',
-    resultado: 'Marca operativa',
-    resultadoLabel: 'en EE.UU. desde cero · Base estratégica completa para escalar.',
+    desc: 'Go-to-market completo: estudio de mercado, pricing, proveedores, branding y web.',
+    resultado: 'Operativa',
+    resultadoSub: 'en EE.UU. desde cero · Base estratégica completa para escalar.',
     image: '/images/skyflex/main.jpg',
   },
   {
-    badge: 'School Lab',
-    sector: 'INSTITUCIONAL',
-    title: 'Llevar la IA a mujeres de 40-60 que nunca habían tocado una herramienta de IA.',
-    desc: 'Talleres presenciales diseñados desde cero. Sin tecnicismos. Solo móvil. En colaboración con el Ajuntament de Badalona.',
-    resultado: 'Primer programa',
-    resultadoLabel: 'institucional validado · Base del catálogo actual de 9 programas.',
+    index: '04',
+    sector: 'Institucional',
+    lab: 'Learn Lab',
+    client: 'Ajuntament de Badalona',
+    title: 'IA para mujeres de 40-60 que nunca habían tocado una herramienta de IA.',
+    desc: 'Talleres presenciales sin tecnicismos. Solo móvil. En colaboración con el ayuntamiento.',
+    resultado: 'Programa validado',
+    resultadoSub: 'Primer caso institucional · Base del catálogo de 9 programas.',
     image: '/images/learn/learning-session-elegant.png',
   },
 ];
 
 const casosDeUso = [
   {
+    icon: Clock,
+    num: '01',
     title: 'Reporting automático',
-    desc: 'Una empresa de servicios B2B tardaba 4 horas cada lunes en preparar el informe de ventas. Implementamos Claude + n8n. Ahora el informe llega solo a las 8h del lunes, sin que nadie toque nada.',
+    desc: 'Una empresa B2B tardaba 4h cada lunes preparando informes de ventas. Claude + n8n lo hace solo a las 8h del lunes.',
   },
   {
-    title: 'Onboarding automático de clientes',
-    desc: 'Cada nuevo cliente generaba 30 minutos de trabajo manual: crear proyecto en ClickUp, carpeta en Drive, email de bienvenida. Ahora ese flujo se completa solo en 2 minutos.',
+    icon: Users,
+    num: '02',
+    title: 'Onboarding de clientes',
+    desc: 'Cada nuevo cliente generaba 30min de trabajo manual. Ahora: proyecto en ClickUp, Drive y email de bienvenida en 2 minutos.',
   },
   {
+    icon: Zap,
+    num: '03',
     title: 'Equipo de marketing con Claude',
-    desc: 'Un equipo de marketing de 4 personas generaba el triple de contenido en el mismo tiempo después de implementar Claude Cowork con Skills personalizados para su proceso de creación.',
+    desc: 'Un equipo de 4 personas generó el triple de contenido en el mismo tiempo con Skills personalizados.',
   },
 ];
+
+// ─── Animation helpers ───────────────────────────────────────────────────────
+
+const EASE = [0.16, 1, 0.3, 1] as const;
+
+function FadeUp({
+  children,
+  delay = 0,
+  className,
+}: {
+  children: React.ReactNode;
+  delay?: number;
+  className?: string;
+}) {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: '-80px' });
+  return (
+    <motion.div
+      ref={ref}
+      className={className}
+      initial={{ opacity: 0, y: 24 }}
+      animate={inView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.7, ease: EASE, delay }}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+// ─── Page ────────────────────────────────────────────────────────────────────
 
 export default function CasosPage() {
   return (
     <div className="v5-page">
       <ScrollAnimations />
       <Navbar />
+
       <main>
-
-        {/* Hero */}
+        {/* ── Section 1: Hero (dark) ─────────────────────────────────────── */}
         <section
-          className="v5-section"
-          style={{ backgroundColor: '#080808', paddingTop: '140px', paddingBottom: '80px' }}
-        >
-          <div className="v5-container">
-            <span
-              style={{
-                display: 'block',
-                marginBottom: '24px',
-                fontFamily: 'var(--v5-font-mono)',
-                fontSize: '11px',
-                fontWeight: 500,
-                letterSpacing: '0.15em',
-                textTransform: 'uppercase',
-                color: '#999999',
-              }}
-            >
-              Casos
-            </span>
-            <h1
-              style={{
-                fontFamily: 'var(--v5-font-display)',
-                fontSize: 'clamp(40px, 6vw, 80px)',
-                fontWeight: 300,
-                letterSpacing: '-0.03em',
-                lineHeight: 0.95,
-                color: '#F5F5F0',
-                maxWidth: '800px',
-                marginBottom: '24px',
-              }}
-            >
-              Proyectos que hablan<br />
-              <span style={{ color: 'rgba(245,245,240,0.38)' }}>por sí solos.</span>
-            </h1>
-            <p
-              style={{
-                fontFamily: 'var(--v5-font-body)',
-                fontSize: '17px',
-                fontWeight: 300,
-                lineHeight: 1.8,
-                color: 'rgba(245,245,240,0.45)',
-                maxWidth: '520px',
-              }}
-            >
-              Trabajo real. Resultados reales. Sin humo.
-            </p>
-          </div>
-        </section>
-
-        {/* Casos reales — vertical cards */}
-        <section className="v5-section" style={{ backgroundColor: '#FFFFFF' }}>
-          <div
-            className="v5-container"
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              gap: '32px',
-            }}
-          >
-            {casos.map((caso, i) => (
-              <div
-                key={i}
-                className="v5-reveal"
-                style={{
-                  background: '#FFFFFF',
-                  border: '1px solid #EBEBEB',
-                  borderRadius: '16px',
-                  overflow: 'hidden',
-                  transitionDelay: `${i * 80}ms`,
-                }}
-              >
-                {/* Image — full width, top */}
-                <div style={{ width: '100%', height: '380px', overflow: 'hidden' }}>
-                  <img
-                    src={caso.image}
-                    alt={caso.title}
-                    style={{
-                      width: '100%',
-                      height: '100%',
-                      objectFit: 'cover',
-                      display: 'block',
-                    }}
-                  />
-                </div>
-
-                {/* Content — below image */}
-                <div
-                  style={{
-                    padding: '48px 56px',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    gap: '20px',
-                  }}
-                >
-                  {/* Badge row */}
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                    <span
-                      style={{
-                        fontFamily: 'var(--v5-font-mono)',
-                        fontSize: '10px',
-                        fontWeight: 500,
-                        letterSpacing: '0.12em',
-                        textTransform: 'uppercase',
-                        color: '#111111',
-                        background: '#EBEBEB',
-                        padding: '4px 10px',
-                        borderRadius: '100px',
-                      }}
-                    >
-                      {caso.badge}
-                    </span>
-                    <span
-                      style={{
-                        fontFamily: 'var(--v5-font-mono)',
-                        fontSize: '10px',
-                        fontWeight: 500,
-                        letterSpacing: '0.12em',
-                        textTransform: 'uppercase',
-                        color: '#999999',
-                      }}
-                    >
-                      {caso.sector}
-                    </span>
-                  </div>
-
-                  {/* Title */}
-                  <h2
-                    style={{
-                      fontFamily: 'var(--v5-font-display)',
-                      fontSize: 'clamp(22px, 2.2vw, 28px)',
-                      fontWeight: 300,
-                      letterSpacing: '-0.02em',
-                      lineHeight: 1.2,
-                      color: '#111111',
-                      margin: 0,
-                    }}
-                  >
-                    {caso.title}
-                  </h2>
-
-                  {/* Description */}
-                  <p
-                    style={{
-                      fontFamily: 'var(--v5-font-body)',
-                      fontSize: '16px',
-                      fontWeight: 300,
-                      lineHeight: 1.8,
-                      color: '#666666',
-                      margin: 0,
-                    }}
-                  >
-                    {caso.desc}
-                  </p>
-
-                  {/* Resultado block */}
-                  <div
-                    style={{
-                      borderTop: '1px solid #EBEBEB',
-                      paddingTop: '24px',
-                      marginTop: '4px',
-                    }}
-                  >
-                    <p
-                      style={{
-                        fontFamily: 'var(--v5-font-display)',
-                        fontSize: 'clamp(32px, 3.5vw, 40px)',
-                        fontWeight: 300,
-                        letterSpacing: '-0.03em',
-                        lineHeight: 1.05,
-                        color: '#111111',
-                        margin: '0 0 8px 0',
-                      }}
-                    >
-                      {caso.resultado}
-                    </p>
-                    <p
-                      style={{
-                        fontFamily: 'var(--v5-font-body)',
-                        fontSize: '14px',
-                        fontWeight: 400,
-                        lineHeight: 1.6,
-                        color: '#999999',
-                        margin: 0,
-                      }}
-                    >
-                      {caso.resultadoLabel}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* Casos de uso */}
-        <section
-          className="v5-section"
           style={{
-            backgroundColor: '#F8F8F8',
-            borderTop: '1px solid #EBEBEB',
-            borderBottom: '1px solid #EBEBEB',
+            backgroundColor: '#080808',
+            paddingTop: '160px',
+            paddingBottom: '120px',
           }}
         >
           <div className="v5-container">
-            <div className="mb-16 v5-reveal" style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+            <FadeUp>
               <span
                 style={{
+                  display: 'block',
+                  marginBottom: '32px',
                   fontFamily: 'var(--v5-font-mono)',
                   fontSize: '11px',
                   fontWeight: 500,
                   letterSpacing: '0.15em',
                   textTransform: 'uppercase',
-                  color: '#999999',
-                  marginBottom: '20px',
+                  color: '#666666',
                 }}
               >
-                Casos de uso
+                Casos de éxito
               </span>
-              <h2
+            </FadeUp>
+
+            <FadeUp delay={0.05}>
+              <h1
                 style={{
-                  fontFamily: 'var(--v5-font-display)',
-                  fontSize: 'clamp(32px, 4vw, 56px)',
-                  fontWeight: 300,
+                  fontFamily: "var(--v5-font-advercase, 'Playfair Display', Georgia, serif)",
+                  fontWeight: 400,
+                  fontStyle: 'normal',
+                  fontSize: 'clamp(48px, 7vw, 96px)',
                   letterSpacing: '-0.02em',
-                  lineHeight: 1.05,
-                  color: '#111111',
+                  lineHeight: 1.0,
+                  color: '#F5F5F0',
+                  margin: '0 0 28px 0',
+                  maxWidth: '760px',
                 }}
               >
-                Lo que implementamos cada semana
-              </h2>
-            </div>
+                Resultados reales.
+                <br />
+                <span style={{ color: 'rgba(245,245,240,0.35)' }}>Nada más.</span>
+              </h1>
+            </FadeUp>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 v5-section-gap">
-              {casosDeUso.map((cu, i) => (
-                <div
-                  key={i}
-                  className="v5-reveal"
-                  style={{
-                    position: 'relative',
-                    overflow: 'hidden',
-                    background: '#FFFFFF',
-                    border: '1px solid #EBEBEB',
-                    borderTop: '2px solid #111111',
-                    borderRadius: '16px',
-                    padding: '40px',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    gap: '16px',
-                    transitionDelay: `${i * 80}ms`,
-                  }}
-                >
-                  {/* Decorative background number */}
-                  <span
-                    style={{
-                      position: 'absolute',
-                      bottom: '12px',
-                      right: '20px',
-                      fontFamily: 'var(--v5-font-mono)',
-                      fontSize: '100px',
-                      fontWeight: 700,
-                      color: 'rgba(0,0,0,0.04)',
-                      lineHeight: 1,
-                      userSelect: 'none',
-                      pointerEvents: 'none',
-                    }}
-                  >
-                    {String(i + 1).padStart(2, '0')}
-                  </span>
-                  <h3
-                    style={{
-                      fontFamily: 'var(--v5-font-display)',
-                      fontSize: '20px',
-                      fontWeight: 600,
-                      letterSpacing: '-0.02em',
-                      color: '#111111',
-                      margin: 0,
-                    }}
-                  >
-                    {cu.title}
-                  </h3>
-                  <p
-                    style={{
-                      fontFamily: 'var(--v5-font-body)',
-                      fontSize: '15px',
-                      fontWeight: 300,
-                      lineHeight: 1.8,
-                      color: '#666666',
-                      margin: 0,
-                    }}
-                  >
-                    {cu.desc}
-                  </p>
-                </div>
+            <FadeUp delay={0.1}>
+              <p
+                style={{
+                  fontFamily: 'var(--v5-font-body)',
+                  fontWeight: 300,
+                  fontSize: '18px',
+                  lineHeight: 1.7,
+                  color: 'rgba(245,245,240,0.45)',
+                  maxWidth: '480px',
+                  margin: 0,
+                }}
+              >
+                Proyectos concretos, números concretos. Sin presentaciones.
+              </p>
+            </FadeUp>
+          </div>
+        </section>
+
+        {/* ── Section 2: Casos reales (light) ───────────────────────────── */}
+        <section
+          style={{
+            backgroundColor: '#F8F8F5',
+            paddingTop: '100px',
+            paddingBottom: '120px',
+          }}
+        >
+          <div className="v5-container">
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '28px',
+              }}
+            >
+              {casos.map((caso, i) => (
+                <CasoCard key={caso.index} caso={caso} index={i} />
               ))}
             </div>
           </div>
         </section>
 
-        {/* CTA */}
-        <section className="v5-section" style={{ backgroundColor: '#080808', textAlign: 'center' }}>
+        {/* ── Section 3: Casos de uso (dark) ────────────────────────────── */}
+        <section
+          style={{
+            backgroundColor: '#080808',
+            paddingTop: '100px',
+            paddingBottom: '120px',
+          }}
+        >
           <div className="v5-container">
-            <div
-              className="v5-reveal"
-              style={{
-                maxWidth: '672px',
-                margin: '0 auto',
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                gap: '32px',
-                textAlign: 'center',
-              }}
-            >
+            <FadeUp>
+              <span
+                style={{
+                  display: 'block',
+                  marginBottom: '20px',
+                  fontFamily: 'var(--v5-font-mono)',
+                  fontSize: '11px',
+                  fontWeight: 500,
+                  letterSpacing: '0.15em',
+                  textTransform: 'uppercase',
+                  color: '#555555',
+                }}
+              >
+                En práctica
+              </span>
+            </FadeUp>
+
+            <FadeUp delay={0.05}>
               <h2
                 style={{
-                  fontFamily: 'var(--v5-font-display)',
-                  fontSize: 'clamp(28px, 4vw, 48px)',
-                  fontWeight: 300,
+                  fontFamily: "var(--v5-font-advercase, 'Playfair Display', Georgia, serif)",
+                  fontWeight: 400,
+                  fontStyle: 'normal',
+                  fontSize: 'clamp(32px, 4vw, 56px)',
                   letterSpacing: '-0.02em',
-                  lineHeight: 1.1,
+                  lineHeight: 1.05,
                   color: '#F5F5F0',
-                  margin: 0,
+                  margin: '0 0 64px 0',
+                  maxWidth: '600px',
                 }}
               >
-                ¿Tu empresa podría ser el próximo caso?
+                Lo que implementamos cada semana
               </h2>
-              <p
-                style={{
-                  fontFamily: 'var(--v5-font-body)',
-                  fontSize: '17px',
-                  fontWeight: 300,
-                  lineHeight: 1.8,
-                  color: 'rgba(245,245,240,0.45)',
-                  margin: 0,
-                }}
-              >
-                Cuéntanos el reto.
-              </p>
-              <div>
-                <Link
-                  href="/systems-lab/sesion-de-claridad"
-                  style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: '8px',
-                    padding: '16px 32px',
-                    background: '#F5F5F0',
-                    color: '#080808',
-                    borderRadius: '0px',
-                    fontFamily: 'var(--v5-font-body)',
-                    fontSize: '15px',
-                    fontWeight: 400,
-                    textDecoration: 'none',
-                    transition: 'all 200ms ease',
-                  }}
-                  onMouseEnter={(e) => {
-                    (e.currentTarget as HTMLElement).style.background = '#FFFFFF';
-                  }}
-                  onMouseLeave={(e) => {
-                    (e.currentTarget as HTMLElement).style.background = '#F5F5F0';
-                  }}
-                >
-                  Contactar →
-                </Link>
-              </div>
+            </FadeUp>
+
+            <div className="casos-uso-grid">
+              {casosDeUso.map((cu, i) => (
+                <UsoCasoCard key={cu.num} cu={cu} index={i} />
+              ))}
             </div>
           </div>
         </section>
 
+        {/* ── Section 4: CTA (dark continuation) ───────────────────────── */}
+        <section
+          style={{
+            backgroundColor: '#080808',
+            borderTop: '1px solid #1a1a1a',
+            paddingTop: '100px',
+            paddingBottom: '120px',
+          }}
+        >
+          <div className="v5-container">
+            <div
+              style={{
+                maxWidth: '680px',
+                margin: '0 auto',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                textAlign: 'center',
+                gap: '36px',
+              }}
+            >
+              <FadeUp>
+                <h2
+                  style={{
+                    fontFamily: "var(--v5-font-advercase, 'Playfair Display', Georgia, serif)",
+                    fontWeight: 400,
+                    fontStyle: 'normal',
+                    fontSize: 'clamp(30px, 4vw, 52px)',
+                    letterSpacing: '-0.02em',
+                    lineHeight: 1.1,
+                    color: '#F5F5F0',
+                    margin: 0,
+                  }}
+                >
+                  ¿Tu empresa podría ser el próximo caso?
+                </h2>
+              </FadeUp>
+
+              <FadeUp delay={0.05}>
+                <p
+                  style={{
+                    fontFamily: 'var(--v5-font-body)',
+                    fontWeight: 300,
+                    fontSize: '17px',
+                    lineHeight: 1.7,
+                    color: 'rgba(245,245,240,0.45)',
+                    margin: 0,
+                  }}
+                >
+                  Cuéntanos el reto. En 30 minutos sabes si podemos ayudarte.
+                </p>
+              </FadeUp>
+
+              <FadeUp delay={0.1}>
+                <CTAButton />
+              </FadeUp>
+            </div>
+          </div>
+        </section>
       </main>
+
       <Footer />
+
+      <style>{`
+        .casos-uso-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 20px;
+        }
+
+        @media (max-width: 900px) {
+          .casos-uso-grid {
+            grid-template-columns: repeat(2, 1fr);
+          }
+        }
+
+        @media (max-width: 600px) {
+          .casos-uso-grid {
+            grid-template-columns: 1fr;
+          }
+        }
+
+        .caso-card-inner {
+          display: grid;
+          grid-template-columns: 1fr 400px;
+          min-height: 340px;
+        }
+
+        @media (max-width: 960px) {
+          .caso-card-inner {
+            grid-template-columns: 1fr;
+          }
+          .caso-card-image {
+            height: 260px !important;
+            order: -1;
+          }
+        }
+
+        .caso-card-inner.reverse {
+          direction: rtl;
+        }
+        .caso-card-inner.reverse > * {
+          direction: ltr;
+        }
+
+        @media (max-width: 960px) {
+          .caso-card-inner.reverse {
+            direction: ltr;
+          }
+        }
+      `}</style>
     </div>
+  );
+}
+
+// ─── Sub-components ──────────────────────────────────────────────────────────
+
+function CasoCard({
+  caso,
+  index,
+}: {
+  caso: (typeof casos)[number];
+  index: number;
+}) {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: '-60px' });
+  const isEven = index % 2 === 1;
+
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 28 }}
+      animate={inView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.05 }}
+      style={{
+        background: '#FFFFFF',
+        border: '1px solid #e8e8e5',
+        borderRadius: '16px',
+        overflow: 'hidden',
+      }}
+    >
+      <div className={`caso-card-inner${isEven ? ' reverse' : ''}`}>
+        {/* Left: content */}
+        <div
+          style={{
+            padding: '52px 56px',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'space-between',
+            gap: '28px',
+          }}
+        >
+          {/* Top: meta row */}
+          <div>
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '12px',
+                marginBottom: '24px',
+                flexWrap: 'wrap',
+              }}
+            >
+              <span
+                style={{
+                  fontFamily: 'var(--v5-font-mono)',
+                  fontSize: '12px',
+                  fontWeight: 500,
+                  color: '#aaaaaa',
+                  letterSpacing: '0.04em',
+                }}
+              >
+                {caso.index}
+              </span>
+              <span
+                style={{
+                  width: '1px',
+                  height: '12px',
+                  background: '#d8d8d5',
+                  display: 'inline-block',
+                }}
+              />
+              <span
+                style={{
+                  fontFamily: 'var(--v5-font-mono)',
+                  fontSize: '10px',
+                  fontWeight: 500,
+                  letterSpacing: '0.12em',
+                  textTransform: 'uppercase',
+                  color: '#888888',
+                }}
+              >
+                {caso.sector}
+              </span>
+              <span
+                style={{
+                  fontFamily: 'var(--v5-font-mono)',
+                  fontSize: '10px',
+                  fontWeight: 500,
+                  letterSpacing: '0.08em',
+                  textTransform: 'uppercase',
+                  color: '#111111',
+                  background: '#f0f0ed',
+                  border: '1px solid #e0e0dd',
+                  padding: '3px 10px',
+                  borderRadius: '100px',
+                }}
+              >
+                {caso.lab}
+              </span>
+            </div>
+
+            <h2
+              style={{
+                fontFamily: "var(--v5-font-advercase, 'Playfair Display', Georgia, serif)",
+                fontWeight: 400,
+                fontStyle: 'normal',
+                fontSize: 'clamp(20px, 2vw, 26px)',
+                letterSpacing: '-0.02em',
+                lineHeight: 1.25,
+                color: '#111111',
+                margin: '0 0 16px 0',
+              }}
+            >
+              {caso.title}
+            </h2>
+
+            <p
+              style={{
+                fontFamily: 'var(--v5-font-body)',
+                fontWeight: 300,
+                fontSize: '15px',
+                lineHeight: 1.8,
+                color: '#666666',
+                margin: 0,
+              }}
+            >
+              {caso.desc}
+            </p>
+          </div>
+
+          {/* Bottom: resultado block */}
+          <div
+            style={{
+              borderTop: '1px solid #e8e8e5',
+              paddingTop: '24px',
+            }}
+          >
+            <p
+              style={{
+                fontFamily: "var(--v5-font-advercase, 'Playfair Display', Georgia, serif)",
+                fontWeight: 400,
+                fontStyle: 'normal',
+                fontSize: 'clamp(28px, 3vw, 42px)',
+                letterSpacing: '-0.02em',
+                lineHeight: 1.0,
+                color: '#111111',
+                margin: '0 0 8px 0',
+              }}
+            >
+              {caso.resultado}
+            </p>
+            <p
+              style={{
+                fontFamily: 'var(--v5-font-mono)',
+                fontSize: '11px',
+                fontWeight: 400,
+                letterSpacing: '0.02em',
+                lineHeight: 1.6,
+                color: '#999999',
+                margin: 0,
+              }}
+            >
+              {caso.resultadoSub}
+            </p>
+          </div>
+        </div>
+
+        {/* Right: image */}
+        <div
+          className="caso-card-image"
+          style={{
+            position: 'relative',
+            height: '100%',
+            minHeight: '320px',
+            overflow: 'hidden',
+          }}
+        >
+          <Image
+            src={caso.image}
+            alt={caso.client}
+            fill
+            style={{ objectFit: 'cover' }}
+            sizes="(max-width: 960px) 100vw, 400px"
+          />
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
+function UsoCasoCard({
+  cu,
+  index,
+}: {
+  cu: (typeof casosDeUso)[number];
+  index: number;
+}) {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: '-60px' });
+  const Icon = cu.icon;
+
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 24 }}
+      animate={inView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: index * 0.07 }}
+      style={{
+        background: '#111111',
+        border: '1px solid #222222',
+        borderRadius: '16px',
+        padding: '40px 36px',
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '20px',
+        position: 'relative',
+        overflow: 'hidden',
+      }}
+    >
+      {/* Decorative index */}
+      <span
+        style={{
+          position: 'absolute',
+          bottom: '16px',
+          right: '20px',
+          fontFamily: 'var(--v5-font-mono)',
+          fontSize: '80px',
+          fontWeight: 500,
+          color: 'rgba(255,255,255,0.03)',
+          lineHeight: 1,
+          userSelect: 'none',
+          pointerEvents: 'none',
+        }}
+      >
+        {cu.num}
+      </span>
+
+      {/* Icon */}
+      <div
+        style={{
+          width: '36px',
+          height: '36px',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          background: '#1a1a1a',
+          border: '1px solid #2a2a2a',
+          borderRadius: '8px',
+        }}
+      >
+        <Icon size={16} color="#888888" strokeWidth={1.5} />
+      </div>
+
+      {/* Title */}
+      <h3
+        style={{
+          fontFamily: "var(--v5-font-advercase, 'Playfair Display', Georgia, serif)",
+          fontWeight: 400,
+          fontStyle: 'normal',
+          fontSize: '20px',
+          letterSpacing: '-0.02em',
+          lineHeight: 1.2,
+          color: '#F5F5F0',
+          margin: 0,
+        }}
+      >
+        {cu.title}
+      </h3>
+
+      {/* Description */}
+      <p
+        style={{
+          fontFamily: 'var(--v5-font-body)',
+          fontWeight: 300,
+          fontSize: '14px',
+          lineHeight: 1.8,
+          color: 'rgba(245,245,240,0.5)',
+          margin: 0,
+        }}
+      >
+        {cu.desc}
+      </p>
+    </motion.div>
+  );
+}
+
+function CTAButton() {
+  const ref = useRef<HTMLAnchorElement>(null);
+
+  return (
+    <Link
+      href="/systems-lab/sesion-de-claridad"
+      ref={ref}
+      style={{
+        display: 'inline-flex',
+        alignItems: 'center',
+        gap: '10px',
+        padding: '16px 36px',
+        background: '#F5F5F0',
+        color: '#080808',
+        borderRadius: '4px',
+        fontFamily: 'var(--v5-font-body)',
+        fontSize: '15px',
+        fontWeight: 400,
+        textDecoration: 'none',
+        transition: 'background 200ms ease, transform 200ms ease',
+      }}
+      onMouseEnter={(e) => {
+        e.currentTarget.style.background = '#FFFFFF';
+        e.currentTarget.style.transform = 'translateY(-2px)';
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.background = '#F5F5F0';
+        e.currentTarget.style.transform = 'translateY(0)';
+      }}
+    >
+      Auditoría gratuita
+      <ArrowUpRight size={16} strokeWidth={1.5} />
+    </Link>
   );
 }
