@@ -74,7 +74,7 @@ export default function SesionDeClaridadPage() {
                 color: '#999999',
               }}
             >
-              Sesión de Claridad
+              Auditoría Gratuita
             </span>
 
             <h1
@@ -91,7 +91,7 @@ export default function SesionDeClaridadPage() {
                 whiteSpace: 'pre-line',
               }}
             >
-              {'90 minutos.\nTodo claro.'}
+              {'Diamante en bruto.\nDiagnóstico sin compromiso.'}
             </h1>
 
             <p

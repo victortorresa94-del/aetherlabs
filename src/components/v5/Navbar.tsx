@@ -128,7 +128,7 @@ export default function Navbar() {
                   top: 'calc(100% + 16px)',
                   left: '50%',
                   transform: labsOpen ? 'translateX(-50%) translateY(0)' : 'translateX(-50%) translateY(-8px)',
-                  width: 'min(560px, 95vw)',
+                  width: 'min(460px, 95vw)',
                   background: '#FFFFFF',
                   border: '1px solid #E8E8E5',
                   borderRadius: '16px',
@@ -138,7 +138,7 @@ export default function Navbar() {
                   boxShadow: '0 20px 60px rgba(0,0,0,0.10)',
                   overflow: 'hidden',
                   display: 'grid',
-                  gridTemplateColumns: '1fr 180px',
+                  gridTemplateColumns: '1fr 140px',
                 }}
               >
                 {/* Left: labs list */}
