@@ -143,7 +143,7 @@ export default function SoftwareLab() {
           className="relative min-h-screen flex items-center overflow-hidden" style={{ background: '#080808' }}
         >
           <Image
-            src="/images/heroes/software.png"
+            src="/images/heroes/software_hero_1775968118776.png"
             alt=""
             fill
             style={{ objectFit: 'cover', objectPosition: 'center' }}

@@ -126,7 +126,7 @@ export default function MarketingLab() {
         {/* ── 1. HERO (dark) ──────────────────────────────────────────────── */}
         <section className="relative min-h-screen flex items-center overflow-hidden" style={{ backgroundColor: '#080808' }}>
           <Image
-            src="/images/creative-lab/branding.jpg"
+            src="/images/heroes/marketing_hero_1775968132561.png"
             alt=""
             fill
             style={{ objectFit: 'cover', objectPosition: 'center' }}
