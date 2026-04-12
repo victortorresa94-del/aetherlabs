@@ -121,7 +121,7 @@ export default function OpenLab() {
           className="relative min-h-screen flex items-center overflow-hidden" style={{ background: '#080808' }}
         >
           <Image
-            src="/images/heroes/nosotros_hero_1775968104840.png"
+            src="/images/creative-lab/presentaciones.jpg"
             alt=""
             fill
             style={{ objectFit: 'cover', objectPosition: 'center' }}

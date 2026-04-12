@@ -142,7 +142,7 @@ export default function AgentsLab() {
           className="relative min-h-screen flex items-center overflow-hidden" style={{ background: '#080808' }}
         >
           <Image
-            src="/images/heroes/agents_hero_1775968174442.png"
+            src="/images/services/ai-hub-real.png"
             alt=""
             fill
             style={{ objectFit: 'cover', objectPosition: 'center' }}
