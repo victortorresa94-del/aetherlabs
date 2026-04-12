@@ -1,254 +1,133 @@
 'use client';
 
-import Link from 'next/link';
+import Script from 'next/script';
 import Navbar from '@/components/v5/Navbar';
 import Footer from '@/components/v5/Footer';
 
-const contactMethods = [
-  {
-    label: 'EMAIL',
-    value: 'info@aetherlabs.es',
-    href: 'mailto:info@aetherlabs.es',
-    desc: 'Para consultas generales, presupuestos o propuestas de colaboración.',
-  },
-  {
-    label: 'WHATSAPP',
-    value: '+34 627 281 459',
-    href: 'https://wa.me/34627281459',
-    desc: 'Respuesta rápida. Normalmente contestamos en menos de 2 horas.',
-  },
-  {
-    label: 'LINKEDIN',
-    value: 'Aether Labs',
-    href: 'https://www.linkedin.com/company/aether-labs-tech/?viewAsMember=true',
-    desc: 'Síguenos para novedades, casos de uso y contenido sobre IA.',
-  },
-];
-
 export default function ContactoPage() {
   return (
-    <div className="v5-page">
+    <div className="v5-page bg-[#080808]">
       <Navbar />
       <main>
+        <Script
+          src="https://assets.calendly.com/assets/external/widget.js"
+          strategy="lazyOnload"
+        />
 
-        {/* Hero */}
         <section
-          style={{ backgroundColor: '#080808', paddingTop: '160px', paddingBottom: '100px' }}
+          className="relative min-h-screen pt-32 pb-24 overflow-hidden"
+          style={{ backgroundColor: '#080808' }}
         >
-          <div className="v5-container">
-            <span
-              style={{
-                display: 'block',
-                marginBottom: '24px',
-                fontFamily: 'var(--v5-font-mono)',
-                fontSize: '11px',
-                fontWeight: 500,
-                letterSpacing: '0.15em',
-                textTransform: 'uppercase',
-                color: '#999999',
-              }}
-            >
-              Contacto
-            </span>
-            <h1
-              style={{
-                fontFamily: 'var(--v5-font-display)',
-                fontSize: 'clamp(40px, 6vw, 80px)',
-                fontWeight: 300,
-                letterSpacing: '-0.03em',
-                lineHeight: 0.95,
-                color: '#F5F5F0',
-                maxWidth: '840px',
-                marginBottom: '32px',
-              }}
-            >
-              Auditoría gratuita.<br />
-              <span style={{ color: 'rgba(245,245,240,0.38)' }}>
-                Diagnóstico sin compromiso.
-              </span>
-            </h1>
-            <p
-              style={{
-                fontFamily: 'var(--v5-font-body)',
-                fontSize: '17px',
-                fontWeight: 300,
-                lineHeight: 1.8,
-                color: 'rgba(245,245,240,0.45)',
-                maxWidth: '560px',
-              }}
-            >
-              Cuéntanos tu reto y reserva fecha pulsando abajo. Te respondemos siempre personalmente.
-            </p>
-          </div>
-        </section>
+          {/* Subtle Glow Overlay */}
+          <div
+            className="absolute top-0 right-0 pointer-events-none"
+            style={{
+              width: '800px',
+              height: '800px',
+              background: 'radial-gradient(circle at 70% 30%, rgba(255,255,255,0.03) 0%, transparent 60%)',
+            }}
+          />
 
-        {/* Contact methods */}
-        <section className="v5-section" style={{ backgroundColor: '#FFFFFF' }}>
-          <div className="v5-container">
-            <div style={{ display: 'flex', flexDirection: 'column' }}>
-              {contactMethods.map((method, i) => (
-                <a
-                  key={i}
-                  href={method.href}
-                  target={method.href.startsWith('http') ? '_blank' : undefined}
-                  rel={method.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                  style={{
-                    display: 'grid',
-                    gridTemplateColumns: '1fr 2fr',
-                    gap: '24px',
-                    alignItems: 'start',
-                    padding: '40px 0',
-                    borderTop: i === 0 ? 'none' : '1px solid #E0E0E0',
-                    textDecoration: 'none',
-                    transition: 'opacity 200ms ease',
-                  }}
-                  onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.opacity = '0.7'; }}
-                  onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.opacity = '1'; }}
-                >
-                  <div>
-                    <span
-                      style={{
-                        display: 'block',
-                        fontFamily: 'var(--v5-font-mono)',
-                        fontSize: '11px',
-                        fontWeight: 500,
-                        letterSpacing: '0.12em',
-                        textTransform: 'uppercase',
-                        color: '#999999',
-                        marginBottom: '8px',
-                      }}
-                    >
-                      {method.label}
-                    </span>
-                    <span
-                      style={{
-                        fontFamily: 'var(--v5-font-display)',
-                        fontSize: '20px',
-                        fontWeight: 400,
-                        letterSpacing: '-0.01em',
-                        color: '#111111',
-                      }}
-                    >
-                      {method.value}
-                    </span>
-                  </div>
-                  <p
-                    style={{
-                      fontFamily: 'var(--v5-font-body)',
-                      fontSize: '16px',
-                      fontWeight: 300,
-                      lineHeight: 1.8,
-                      color: '#666666',
-                      margin: 0,
-                      paddingTop: '4px',
-                    }}
-                  >
-                    {method.desc}
-                  </p>
-                </a>
-              ))}
-              <div style={{ borderTop: '1px solid #E0E0E0' }} />
-            </div>
-          </div>
-        </section>
+          <div className="v5-container relative z-10 w-full h-full flex flex-col justify-center">
 
-        {/* Location */}
-        <section className="v5-section" style={{ backgroundColor: '#F7F7F5' }}>
-          <div className="v5-container">
-            <div style={{ maxWidth: '560px' }}>
+            {/* Header Area */}
+            <div className="mb-16">
               <span
                 style={{
-                  display: 'block',
+                  display: 'inline-block',
+                  marginBottom: '24px',
                   fontFamily: 'var(--v5-font-mono)',
                   fontSize: '11px',
                   fontWeight: 500,
                   letterSpacing: '0.15em',
                   textTransform: 'uppercase',
                   color: '#999999',
-                  marginBottom: '24px',
                 }}
               >
-                Ubicación
+                AETHER LABS · CONTACTO
               </span>
-              <h2
+
+              <h1
                 style={{
                   fontFamily: 'var(--v5-font-display)',
-                  fontSize: 'clamp(28px, 3vw, 44px)',
+                  fontSize: 'clamp(48px, 6vw, 88px)',
                   fontWeight: 300,
-                  letterSpacing: '-0.02em',
-                  lineHeight: 1.1,
-                  color: '#111111',
+                  letterSpacing: '-0.03em',
+                  lineHeight: 1.05,
+                  color: '#F5F5F0',
+                  maxWidth: '800px',
                   marginBottom: '24px',
                 }}
               >
-                Rambla Balmes 27, Mollet del Vallès, Barcelona
-              </h2>
+                Hablemos de tu proyecto.
+              </h1>
+
               <p
                 style={{
                   fontFamily: 'var(--v5-font-body)',
-                  fontSize: '17px',
+                  fontSize: 'clamp(16px, 2vw, 18px)',
                   fontWeight: 300,
-                  lineHeight: 1.9,
-                  color: '#555555',
+                  lineHeight: 1.8,
+                  color: 'rgba(245,245,240,0.55)',
+                  maxWidth: '560px',
                 }}
               >
-                Trabajamos con empresas de toda España y en remoto. Si prefieres vernos en persona, estamos en Barcelona.
+                Puedes agendar una sesión automática en nuestro Calendly, o si lo prefieres, escribirnos por cualquiera de nuestros canales oficiales.
               </p>
             </div>
-          </div>
-        </section>
 
-        {/* CTA */}
-        <section className="v5-section" style={{ backgroundColor: '#080808', textAlign: 'center' }}>
-          <div className="v5-container" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-            <h2
-              style={{
-                fontFamily: 'var(--v5-font-display)',
-                fontSize: 'clamp(28px, 4vw, 48px)',
-                fontWeight: 300,
-                letterSpacing: '-0.02em',
-                lineHeight: 1.1,
-                color: '#F5F5F0',
-                marginBottom: '24px',
-                maxWidth: '560px',
-              }}
-            >
-              ¿Prefieres ir directo al grano?
-            </h2>
-            <p
-              style={{
-                fontFamily: 'var(--v5-font-body)',
-                fontSize: '17px',
-                fontWeight: 300,
-                lineHeight: 1.8,
-                color: 'rgba(245,245,240,0.45)',
-                marginBottom: '40px',
-                maxWidth: '420px',
-              }}
-            >
-              Reserva una auditoría gratuita con nosotros. Sin ningún tipo de compromiso.
-            </p>
-            <Link
-              href="/systems-lab/sesion-de-claridad"
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '8px',
-                padding: '16px 32px',
-                background: '#FFFFFF',
-                color: '#080808',
-                fontFamily: 'var(--v5-font-body)',
-                fontSize: '15px',
-                fontWeight: 500,
-                textDecoration: 'none',
-                borderRadius: '0px',
-                transition: 'opacity 200ms ease',
-              }}
-              onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.opacity = '0.85'; }}
-              onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.opacity = '1'; }}
-            >
-              Auditoría gratuita →
-            </Link>
+            {/* Grid Layout: Calendly + Info */}
+            <div className="grid grid-cols-1 lg:grid-cols-[1fr_360px] gap-8 lg:gap-16 items-start">
+
+              {/* Calendly Wrapper */}
+              <div
+                className="w-full bg-white rounded-2xl overflow-hidden shadow-2xl relative"
+                style={{ height: '700px', border: '1px solid rgba(255,255,255,0.05)' }}
+              >
+                <div
+                  className="calendly-inline-widget w-full h-full"
+                  data-url="https://calendly.com/aetherlabs1986/30min?hide_gdpr_banner=1&background_color=ffffff&text_color=111111&primary_color=111111"
+                  style={{ minWidth: '320px', height: '100%' }}
+                />
+              </div>
+
+              {/* Contact Information Sidebar */}
+              <div className="flex flex-col gap-10 pt-2 lg:pt-8">
+
+                <div>
+                  <span style={{ display: 'block', fontFamily: 'var(--v5-font-mono)', fontSize: '10px', color: '#666', letterSpacing: '0.15em', marginBottom: '10px', textTransform: 'uppercase' }}>Correo Directo</span>
+                  <a href="mailto:info@aetherlabs.es" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-between p-4 rounded-xl border border-white/5 bg-white/5 hover:bg-white/10 transition-all mt-2" style={{ textDecoration: 'none' }}>
+                    <span style={{ fontFamily: 'var(--v5-font-display)', fontSize: '18px', color: '#F5F5F0', letterSpacing: '-0.01em' }}>info@aetherlabs.es</span>
+                    <span style={{ color: 'rgba(245,245,240,0.4)' }}>↗</span>
+                  </a>
+                  <p style={{ marginTop: '8px', fontFamily: 'var(--v5-font-body)', fontSize: '13px', color: 'rgba(245,245,240,0.4)' }}>Para propuestas o dudas rápidas. Contestamos en menos de 12 horas.</p>
+                </div>
+
+                <div style={{ height: '1px', background: 'rgba(255,255,255,0.08)' }} />
+
+                <div>
+                  <span style={{ display: 'block', fontFamily: 'var(--v5-font-mono)', fontSize: '10px', color: '#666', letterSpacing: '0.15em', marginBottom: '10px', textTransform: 'uppercase' }}>WhatsApp / Teléfono</span>
+                  <a href="https://wa.me/34627281459" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-between p-4 rounded-xl border border-white/5 bg-[#00D95F]/10 hover:bg-[#00D95F]/20 border-[#00D95F]/20 transition-all mt-2" style={{ textDecoration: 'none' }}>
+                    <span style={{ fontFamily: 'var(--v5-font-display)', fontSize: '18px', color: '#00D95F', letterSpacing: '-0.01em', fontWeight: 500 }}>Abrir WhatsApp</span>
+                    <span style={{ color: '#00D95F' }}>↗</span>
+                  </a>
+                  <p style={{ marginTop: '8px', fontFamily: 'var(--v5-font-body)', fontSize: '13px', color: 'rgba(245,245,240,0.4)' }}>Si es urgente, escríbenos a WhatsApp. Trato directo en todo momento.</p>
+                </div>
+
+                <div style={{ height: '1px', background: 'rgba(255,255,255,0.08)' }} />
+
+                <div>
+                  <span style={{ display: 'block', fontFamily: 'var(--v5-font-mono)', fontSize: '10px', color: '#666', letterSpacing: '0.15em', marginBottom: '10px', textTransform: 'uppercase' }}>Ubicación Física</span>
+                  <div style={{ fontFamily: 'var(--v5-font-display)', fontSize: '20px', color: '#F5F5F0', letterSpacing: '-0.01em', lineHeight: 1.3 }}>
+                    Rambla Balmes 27<br />
+                    <span style={{ color: 'rgba(245,245,240,0.6)' }}>Mollet del Vallès, Barcelona</span>
+                  </div>
+                  <p style={{ marginTop: '12px', fontFamily: 'var(--v5-font-body)', fontSize: '13px', color: 'rgba(245,245,240,0.4)' }}>Trabajamos de forma global, pero nuestra sede principal está en Barcelona.</p>
+                </div>
+
+              </div>
+
+            </div>
           </div>
         </section>
 
