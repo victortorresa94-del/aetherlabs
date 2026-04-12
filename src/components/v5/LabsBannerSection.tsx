@@ -12,7 +12,7 @@ const labs = [
   {
     index: '01',
     name: 'Claude Lab',
-    pain: '¿Tu equipo pierde horas cada día en tareas que podría hacer la IA por ellos?',
+    pain: '¿Tu equipo sigue trabajando como en 2020 mientras la herramienta tecnológica más potente de la historia ya está disponible para todos?',
     icon: MessageSquare,
     href: '/systems-lab',
   },
@@ -26,7 +26,7 @@ const labs = [
   {
     index: '03',
     name: 'Agents Lab',
-    pain: '¿Hay procesos en tu empresa que solo funcionan si alguien está pendiente?',
+    pain: '¿Tienes procesos que dependen de una persona y se rompen en cuanto esa persona no está?',
     icon: Bot,
     href: '/open-lab',
     badge: 'Más demandado',
@@ -41,7 +41,7 @@ const labs = [
   {
     index: '05',
     name: 'Marketing Lab',
-    pain: '¿Tu marca existe, pero no aparece donde están tus clientes?',
+    pain: '¿Inviertes en marketing y no sabes qué funciona, qué falla, ni por qué tu competencia crece más rápido?',
     icon: Megaphone,
     href: '/creative-lab',
   },
