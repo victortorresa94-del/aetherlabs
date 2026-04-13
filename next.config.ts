@@ -8,6 +8,7 @@ const nextConfig: NextConfig = {
       { source: '/school-lab', destination: '/learn-lab', permanent: true },
       { source: '/school-lab/:path*', destination: '/learn-lab/:path*', permanent: true },
       { source: '/systems-lab', destination: '/claude-lab', permanent: false },
+      { source: '/casos', destination: '/experimentos', permanent: true },
     ];
   },
   images: {

@@ -48,7 +48,7 @@ export default function Navbar() {
 
   const otherLinks = [
     { label: 'Nosotros', href: '/nosotros' },
-    { label: 'Casos', href: '/casos' },
+    { label: 'Experimentos', href: '/experimentos' },
     { label: 'Archivo', href: '/blog' },
   ];
 
