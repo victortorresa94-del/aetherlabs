@@ -347,33 +347,30 @@ export default function CasosPage() {
           min-height: 340px;
         }
 
+        .caso-card-inner.reverse {
+          grid-template-columns: 400px 1fr;
+        }
+        .caso-card-inner.reverse .caso-card-image {
+          order: -1;
+        }
+
         @media (max-width: 960px) {
-          .caso-card-inner {
+          .caso-card-inner,
+          .caso-card-inner.reverse {
             grid-template-columns: 1fr;
           }
-          .caso-card-image {
-            height: 260px !important;
+          .caso-card-inner .caso-card-image,
+          .caso-card-inner.reverse .caso-card-image {
+            height: 240px !important;
+            min-height: unset !important;
             order: -1;
-          }
-        }
-
-        .caso-card-inner.reverse {
-          direction: rtl;
-        }
-        .caso-card-inner.reverse > * {
-          direction: ltr;
-        }
-
-        @media (max-width: 960px) {
-          .caso-card-inner.reverse {
-            direction: ltr;
           }
         }
 
         @media (max-width: 768px) {
           /* Hero padding */
           .casos-hero-section {
-            padding-top: 100px !important;
+            padding-top: 120px !important;
             padding-bottom: 60px !important;
           }
           .casos-hero-section h1 {

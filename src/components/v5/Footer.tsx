@@ -6,6 +6,7 @@ import Image from 'next/image';
 export default function Footer() {
   return (
     <footer
+      className="footer-outer"
       style={{
         backgroundColor: '#080808',
         borderTop: '1px solid rgba(255,255,255,0.06)',
@@ -15,19 +16,37 @@ export default function Footer() {
     >
       <style>{`
         @media (max-width: 768px) {
+          .footer-outer {
+            padding-top: 60px !important;
+            padding-bottom: 32px !important;
+          }
           .footer-cta-row {
             flex-direction: column !important;
             align-items: flex-start !important;
+            padding-bottom: 40px !important;
+            margin-bottom: 40px !important;
+            gap: 24px !important;
+          }
+          .footer-cta-row h2 {
+            font-size: clamp(24px, 7vw, 36px) !important;
           }
           .footer-cta-btn {
             width: 100% !important;
             justify-content: center !important;
+            text-align: center !important;
           }
           .footer-grid {
             grid-template-columns: 1fr !important;
+            gap: 40px !important;
+            margin-bottom: 40px !important;
           }
           .footer-labs-grid {
-            grid-template-columns: 1fr !important;
+            grid-template-columns: 1fr 1fr !important;
+          }
+          .footer-bottom-bar {
+            flex-direction: column !important;
+            align-items: flex-start !important;
+            gap: 12px !important;
           }
         }
       `}</style>
@@ -326,6 +345,7 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div
+          className="footer-bottom-bar"
           style={{
             borderTop: '1px solid rgba(255,255,255,0.05)',
             paddingTop: '24px',

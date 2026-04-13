@@ -38,13 +38,13 @@ export default function TrustBandSection() {
         </div>
 
         <div
+          className="trust-logos-row"
           style={{
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
             gap: '0 56px',
-            flexWrap: 'nowrap',
-            overflowX: 'auto',
+            flexWrap: 'wrap',
           }}
         >
           {clients.map((client) => (
@@ -88,6 +88,19 @@ export default function TrustBandSection() {
           ))}
         </div>
       </div>
+
+      <style>{`
+        @media (max-width: 768px) {
+          .trust-logos-row {
+            gap: 20px 32px !important;
+            justify-content: center !important;
+          }
+          .trust-logos-row img {
+            max-width: 100px !important;
+            height: 32px !important;
+          }
+        }
+      `}</style>
     </section>
   );
 }

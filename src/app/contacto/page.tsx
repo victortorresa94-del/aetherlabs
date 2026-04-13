@@ -163,7 +163,7 @@ export default function ContactoPage() {
         }
         @media (max-width: 768px) {
           .contacto-section {
-            padding-top: 100px !important;
+            padding-top: 120px !important;
             padding-bottom: 80px !important;
           }
           .contacto-grid { grid-template-columns: 1fr !important; }
