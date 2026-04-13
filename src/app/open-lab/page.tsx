@@ -454,6 +454,20 @@ export default function OpenLab() {
             border-bottom: 1px solid #1a1a1a;
             padding: 32px 20px !important;
           }
+
+          /* Service cards: auto height, reduced padding */
+          .open-feat-grid > div {
+            height: auto !important;
+            min-height: unset !important;
+          }
+          .open-feat-grid > div > div:first-child {
+            height: 200px !important;
+          }
+
+          /* Problem/step cards: reduced padding */
+          .open-grid-3 > div {
+            padding: 28px 24px !important;
+          }
         }
         @media (min-width: 769px) and (max-width: 1024px) {
           .open-grid-3 { grid-template-columns: repeat(2, 1fr) !important; }

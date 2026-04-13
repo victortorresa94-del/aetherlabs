@@ -785,6 +785,29 @@ export default function GenAILab() {
             padding-left: 20px !important;
             padding-right: 20px !important;
           }
+
+          /* Bento cards: auto height, reduced padding */
+          .gal-bento-grid > div {
+            height: auto !important;
+            min-height: unset !important;
+          }
+          .gal-featured-card > div,
+          .gal-bento-grid > div > div {
+            height: auto !important;
+            padding: 28px 24px !important;
+          }
+
+          /* Problems/Steps cards: reduced padding */
+          .gal-problems-grid > div,
+          .gal-steps-grid > div {
+            padding: 28px 24px !important;
+          }
+
+          /* Stats: top dividers */
+          .gal-stats-grid > div + div {
+            border-left: none !important;
+            border-top: 1px solid rgba(255,255,255,0.08) !important;
+          }
         }
         @media (max-width: 1024px) {
           .gal-bento-grid {

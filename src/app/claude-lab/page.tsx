@@ -790,6 +790,22 @@ export default function ClaudeLabPage() {
           .v5-page p[style] {
             max-width: 100% !important;
           }
+
+          /* Bento cards: auto height, reduced padding */
+          .claude-lab-bento-grid > div {
+            height: auto !important;
+            min-height: unset !important;
+          }
+          .claude-lab-bento-grid > div > div {
+            height: auto !important;
+            padding: 24px !important;
+          }
+
+          /* Problems/Steps cards: reduced padding */
+          .claude-lab-problems-grid > div,
+          .claude-lab-steps-grid > div {
+            padding: 28px 24px !important;
+          }
         }
       `}</style>
     </div>

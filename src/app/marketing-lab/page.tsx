@@ -799,6 +799,29 @@ export default function MarketingLab() {
             padding-left: 20px !important;
             padding-right: 20px !important;
           }
+
+          /* Bento cards: auto height, reduced padding */
+          .ml-bento-grid > div {
+            height: auto !important;
+            min-height: unset !important;
+          }
+          .ml-featured-card > div,
+          .ml-bento-grid > div > div {
+            height: auto !important;
+            padding: 28px 24px !important;
+          }
+
+          /* Problems/Steps cards: reduced padding */
+          .ml-problems-grid > div,
+          .ml-steps-grid > div {
+            padding: 28px 24px !important;
+          }
+
+          /* Stats: top dividers */
+          .ml-stats-grid > div + div {
+            border-left: none !important;
+            border-top: 1px solid rgba(255,255,255,0.08) !important;
+          }
         }
         @media (max-width: 1024px) {
           .ml-bento-grid {

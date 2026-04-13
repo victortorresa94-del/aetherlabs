@@ -374,7 +374,7 @@ export default function CasosPage() {
             padding-bottom: 60px !important;
           }
           .casos-hero-section h1 {
-            font-size: clamp(36px, 10vw, 96px) !important;
+            font-size: clamp(32px, 10vw, 96px) !important;
           }
 
           /* Container horizontal padding */
@@ -392,27 +392,41 @@ export default function CasosPage() {
           }
 
           /* Editorial cards: single column, no rtl */
-          .caso-card-inner {
+          .caso-card-inner,
+          .caso-card-inner.reverse {
             grid-template-columns: 1fr !important;
             direction: ltr !important;
           }
-          .caso-card-inner > div:first-child {
-            padding: 32px 24px !important;
+          /* Content area padding reduced for mobile */
+          .caso-card-inner > div:first-child,
+          .caso-card-inner.reverse > div:not(.caso-card-image) {
+            padding: 28px 24px !important;
           }
           .caso-card-image {
             height: 220px !important;
             min-height: unset !important;
-            order: -1;
+            order: -1 !important;
           }
 
           /* Resultado numbers: reduce */
           .caso-resultado-num {
-            font-size: clamp(24px, 8vw, 42px) !important;
+            font-size: clamp(22px, 8vw, 42px) !important;
+          }
+
+          /* UsoCaso cards: reduce padding */
+          .casos-uso-grid > div {
+            padding: 28px 24px !important;
           }
 
           /* Casos de uso grid: 1 col */
           .casos-uso-grid {
             grid-template-columns: 1fr !important;
+          }
+
+          /* CTA section: center text properly */
+          .casos-cta-section .v5-container > div {
+            padding-left: 0 !important;
+            padding-right: 0 !important;
           }
         }
       `}</style>

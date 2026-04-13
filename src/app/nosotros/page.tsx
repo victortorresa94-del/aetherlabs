@@ -188,7 +188,7 @@ export default function NosotrosPage() {
               >
                 El Equipo
               </h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 nosotros-team-grid">
 
                 {/* Victor */}
                 <div className="flex flex-col gap-5 group">
@@ -536,6 +536,31 @@ export default function NosotrosPage() {
           /* Section padding override */
           .nosotros-section-padded {
             padding-bottom: 80px !important;
+          }
+
+          /* Team grid: 2 cols on mobile, 1 col on very small */
+          .nosotros-team-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 20px !important;
+          }
+
+          /* Trayectoria card inner sub-grid: collapse */
+          .nosotros-trayectoria-grid > div > div[style*="gridTemplateColumns"] {
+            grid-template-columns: 1fr !important;
+          }
+
+          /* Partner row: tighter on mobile */
+          .nosotros-partner-row {
+            gap: 12px !important;
+          }
+          .nosotros-partner-row > div:first-child {
+            padding-right: 0 !important;
+          }
+        }
+
+        @media (max-width: 400px) {
+          .nosotros-team-grid {
+            grid-template-columns: 1fr !important;
           }
         }
       `}</style>

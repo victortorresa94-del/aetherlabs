@@ -205,7 +205,7 @@ export default function LabsBannerSection() {
                 </p>
               </div>
 
-              <div style={{ flexShrink: 0, textAlign: 'right' }}>
+              <div className="featured-card-cta" style={{ flexShrink: 0, textAlign: 'right' }}>
                 <div style={{
                   display: 'inline-flex', alignItems: 'center', gap: '6px',
                   color: '#F5F5F0', fontFamily: 'var(--v5-font-body)',
@@ -262,14 +262,17 @@ export default function LabsBannerSection() {
                     className="lab-card"
                   >
                     {/* Header */}
-                    <div style={{
-                      display: 'flex',
-                      justifyContent: isWide ? undefined : 'space-between',
-                      alignItems: isWide ? 'center' : 'flex-start',
-                      gap: isWide ? '16px' : undefined,
-                      marginBottom: isWide ? 0 : '20px',
-                      flexShrink: isWide ? 0 : undefined,
-                    }}>
+                    <div
+                      className={isWide ? 'lab-card-header-wide' : undefined}
+                      style={{
+                        display: 'flex',
+                        justifyContent: isWide ? undefined : 'space-between',
+                        alignItems: isWide ? 'center' : 'flex-start',
+                        gap: isWide ? '16px' : undefined,
+                        marginBottom: isWide ? 0 : '20px',
+                        flexShrink: isWide ? 0 : undefined,
+                      }}
+                    >
                       <div style={{
                         width: '38px', height: '38px', borderRadius: '8px',
                         background: '#f0f0ec',
@@ -295,7 +298,10 @@ export default function LabsBannerSection() {
                     </div>
 
                     {/* Lab name — service large + "Lab" as mono label */}
-                    <div style={{ marginBottom: isWide ? 0 : '10px', flexShrink: isWide ? 0 : undefined, minWidth: isWide ? '140px' : undefined }}>
+                    <div
+                      className={isWide ? 'lab-card-name-wide' : undefined}
+                      style={{ marginBottom: isWide ? 0 : '10px', flexShrink: isWide ? 0 : undefined, minWidth: isWide ? '140px' : undefined }}
+                    >
                       <h3 style={{
                         fontFamily: "var(--v5-font-advercase, 'Playfair Display', Georgia, serif)",
                         fontSize: isWide ? '22px' : 'clamp(22px, 2.5vw, 28px)', fontWeight: 300,
@@ -312,11 +318,14 @@ export default function LabsBannerSection() {
                     </div>
 
                     {/* Pain */}
-                    <p style={{
-                      fontFamily: 'var(--v5-font-body)', fontSize: '12px', fontWeight: 300,
-                      color: '#999', lineHeight: 1.6,
-                      flex: isWide ? undefined : 1,
-                    }}>
+                    <p
+                      className="lab-card-pain"
+                      style={{
+                        fontFamily: 'var(--v5-font-body)', fontSize: '12px', fontWeight: 300,
+                        color: '#999', lineHeight: 1.6,
+                        flex: isWide ? undefined : 1,
+                      }}
+                    >
                       {lab.pain}
                     </p>
 
@@ -348,29 +357,69 @@ export default function LabsBannerSection() {
 
       <style>{`
         @media (max-width: 768px) {
+          /* Grid: single column, no card spans */
           .labs-grid { grid-template-columns: 1fr !important; }
           .labs-grid > * { grid-column: 1 !important; }
-          .featured-card { grid-template-columns: 1fr !important; }
+
+          /* Section spacing */
           .labs-section-inner { padding: 80px 20px !important; }
           .labs-section-container { padding: 0 !important; }
-          .labs-header { margin-bottom: 48px !important; }
-          .lab-card { padding: 20px !important; }
-          .featured-card-wrap { padding: 28px 24px !important; }
+          .labs-header { margin-bottom: 40px !important; }
+
+          /* All lab cards: force vertical layout, auto height */
+          .lab-card {
+            padding: 20px !important;
+            height: auto !important;
+            min-height: unset !important;
+            flex-direction: column !important;
+            align-items: flex-start !important;
+            gap: 0 !important;
+          }
+
+          /* Pain: remove flex:1 so card heights are content-driven */
+          .lab-card-pain { flex: none !important; }
+
+          /* Wide card header: reset to normal vertical card header */
+          .lab-card-header-wide {
+            margin-bottom: 20px !important;
+            justify-content: space-between !important;
+            align-items: flex-start !important;
+            flex-shrink: unset !important;
+            gap: 0 !important;
+          }
+
+          /* Wide card name: remove min-width forcing */
+          .lab-card-name-wide {
+            margin-bottom: 10px !important;
+            flex-shrink: unset !important;
+            min-width: unset !important;
+          }
+
+          /* Featured card: 1 column, reduced padding */
+          .featured-card {
+            grid-template-columns: 1fr !important;
+            padding: 28px 24px !important;
+            gap: 20px !important;
+          }
+
+          /* Featured CTA column: left-align */
+          .featured-card-cta {
+            text-align: left !important;
+            flex-shrink: unset !important;
+          }
         }
+
         @media (min-width: 769px) and (max-width: 1024px) {
           .labs-grid { grid-template-columns: repeat(2, 1fr) !important; }
         }
+
         .lab-card:hover {
           border-color: #ccc !important;
           transform: translateY(-3px);
           box-shadow: 0 12px 32px rgba(0,0,0,0.07);
         }
-        .lab-card:hover .lab-arrow {
-          color: #333 !important;
-        }
-        .featured-card:hover {
-          transform: translateY(-2px);
-        }
+        .lab-card:hover .lab-arrow { color: #333 !important; }
+        .featured-card:hover { transform: translateY(-2px); }
       `}</style>
     </section>
   );

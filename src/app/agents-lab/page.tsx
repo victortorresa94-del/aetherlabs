@@ -858,6 +858,23 @@ export default function AgentsLab() {
           .agents-steps-grid {
             grid-template-columns: 1fr !important;
           }
+
+          /* Bento cards: auto height, reduced padding */
+          .agents-bento-grid > div {
+            height: auto !important;
+            min-height: unset !important;
+            padding: 28px 24px !important;
+          }
+          .agents-card-featured {
+            min-height: unset !important;
+          }
+
+          /* Comparison/capabilities cards: reduced padding */
+          .agents-comparison-grid > div,
+          .agents-capabilities-grid > div,
+          .agents-steps-grid > div {
+            padding: 28px 24px !important;
+          }
         }
       `}</style>
     </div>

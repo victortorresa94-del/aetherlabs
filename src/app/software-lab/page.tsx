@@ -781,6 +781,23 @@ export default function SoftwareLab() {
             padding-left: 20px !important;
             padding-right: 20px !important;
           }
+
+          /* Bento featured: auto height on mobile */
+          .sw-bento-featured {
+            height: auto !important;
+            min-height: 200px !important;
+          }
+          /* Bento right cards: auto height, reduced padding */
+          .sw-bento-right-top > div,
+          .sw-bento-right-bottom > div {
+            height: auto !important;
+            padding: 24px !important;
+          }
+
+          /* Problem/step cards: reduced padding */
+          .sw-grid-3 > div {
+            padding: 28px 24px !important;
+          }
         }
         .sw-problem-card:hover,
         .sw-step-card:hover {
