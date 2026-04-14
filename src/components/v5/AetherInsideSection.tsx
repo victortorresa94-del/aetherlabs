@@ -289,23 +289,35 @@ export default function AetherInsideSection() {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'flex-end',
-            userSelect: 'none',
-            pointerEvents: 'none',
+            position: 'relative',
           }}
         >
-          <span
+          <div
             style={{
-              fontFamily: 'var(--v5-font-advercase)',
-              fontSize: 'clamp(200px, 30vw, 420px)',
-              fontWeight: 700,
-              color: 'rgba(255,255,255,0.03)',
-              lineHeight: 1,
-              letterSpacing: '-0.04em',
-              transform: 'translateX(20%)',
+              position: 'relative',
+              width: '100%',
+              height: '100%',
+              minHeight: '400px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
             }}
           >
-            ∞
-          </span>
+            <img
+              src="/brain/f8138fa6-0303-4699-9825-983af6de8f2c/aether_inside_metaphor_1_1776162713902.png"
+              alt="Aether Inside Monolith Metaphor"
+              style={{
+                width: '120%',
+                height: 'auto',
+                maxWidth: '600px',
+                opacity: 0.15,
+                filter: 'grayscale(1) contrast(1.2)',
+                transform: 'translateX(10%) rotate(-5deg)',
+                userSelect: 'none',
+                pointerEvents: 'none',
+              }}
+            />
+          </div>
         </div>
       </div>
 

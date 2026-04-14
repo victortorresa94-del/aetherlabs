@@ -69,14 +69,15 @@ export default function SchoolLabPage() {
                 <section
                     className="relative min-h-[100svh] flex items-center overflow-hidden" style={{ backgroundColor: '#080808' }}
                 >
-                    {/* Background Image */}
+                    {/* Background Image — Monolith/Library Metaphor */}
                     <div
                         className="absolute inset-0 z-0"
                         style={{
-                            backgroundImage: 'url("/images/labs/hero-classroom.jpg")',
+                            backgroundImage: 'url("/brain/f8138fa6-0303-4699-9825-983af6de8f2c/learn_lab_metaphor_v4_1776162875010.png")',
                             backgroundSize: 'cover',
                             backgroundPosition: 'center',
-                            opacity: 0.35,
+                            opacity: 0.18,
+                            filter: 'grayscale(1) contrast(1.15)',
                         }}
                     />
 

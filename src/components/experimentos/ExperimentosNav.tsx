@@ -62,10 +62,11 @@ export default function ExperimentosNav() {
       aria-label="Navegación de experimentos"
       style={{
         position: 'fixed',
-        top: '60px',
+        top: '78px',
         left: '50%',
-        transform: `translateX(-50%) translateY(${visible ? '0' : '-100%'})`,
-        transition: 'transform 0.35s cubic-bezier(0.16,1,0.3,1)',
+        transform: `translateX(-50%) translateY(${visible ? '0' : '-120%'})`,
+        transition: 'transform 0.4s cubic-bezier(0.16,1,0.3,1), opacity 0.3s ease',
+        opacity: visible ? 1 : 0,
         zIndex: 900,
         maxWidth: 'calc(100vw - 32px)',
       }}
