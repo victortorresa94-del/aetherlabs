@@ -1,53 +1,7 @@
 'use client';
 
-import { useEffect, useRef, useState, Suspense } from 'react';
-import React from 'react';
-import { useInView } from 'react-intersection-observer';
+import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
-
-// ─── Lazy 3D TorusKnot ───────────────────────────────────────────────────────
-
-const LazyTorusKnot = React.lazy(() => import('./AetherInsideTorusKnot'));
-
-function TorusKnotWrapper() {
-  const { ref, inView } = useInView({ threshold: 0.05, triggerOnce: true });
-
-  return (
-    <div
-      ref={ref}
-      style={{
-        position: 'absolute',
-        inset: 0,
-        pointerEvents: 'none',
-        zIndex: 0,
-      }}
-      className="ai-sphere-canvas"
-    >
-      {inView ? (
-        <Suspense fallback={null}>
-          <LazyTorusKnot />
-        </Suspense>
-      ) : (
-        // CSS fallback — radial gradient atmosphere
-        <div
-          style={{
-            position: 'absolute',
-            inset: 0,
-            background: 'radial-gradient(ellipse at 70% 50%, rgba(0,229,255,0.06) 0%, transparent 60%)',
-          }}
-        />
-      )}
-    </div>
-  );
-}
-
-// ─── Stats ───────────────────────────────────────────────────────────────────
-
-const STATS = [
-  { value: '3–5 días',  label: 'de onboarding' },
-  { value: '100%',      label: 'implementado, no asesorado' },
-  { value: 'PMEs',      label: 'de cualquier sector' },
-];
 
 // ─── CTA Button ──────────────────────────────────────────────────────────────
 
@@ -61,49 +15,40 @@ function CTAButton() {
       onMouseLeave={() => setHovered(false)}
       style={{
         display: 'inline-block',
-        position: 'relative',
-        overflow: 'hidden',
-        padding: '18px 40px',
-        backgroundColor: 'transparent',
-        color: hovered ? '#00E5FF' : '#FFFFFF',
-        border: `1px solid ${hovered ? '#00E5FF' : 'rgba(255,255,255,0.3)'}`,
-        borderRadius: '2px',
-        fontFamily: "'Space Grotesk', 'DM Sans', sans-serif",
+        padding: '16px 36px',
+        backgroundColor: hovered ? 'rgba(255,255,255,0.05)' : 'transparent',
+        color: '#F5F0E8',
+        border: `1px solid ${hovered ? 'rgba(255,255,255,0.8)' : 'rgba(255,255,255,0.35)'}`,
+        borderRadius: '4px',
+        fontFamily: 'var(--v5-font-body)',
         fontSize: '16px',
         fontWeight: 500,
-        letterSpacing: '0.05em',
+        letterSpacing: '0.02em',
         textDecoration: 'none',
         cursor: 'pointer',
-        transition: 'color 0.3s ease, border-color 0.3s ease',
+        transition: 'all 0.25s ease',
       }}
     >
-      <span style={{ position: 'relative', zIndex: 1 }}>
-        Cuéntanos lo que necesitas
-      </span>
-      {/* Scan line */}
-      <span
-        aria-hidden
-        style={{
-          position: 'absolute',
-          top: 0,
-          left: hovered ? '100%' : '-100%',
-          width: '100%',
-          height: '100%',
-          background: 'linear-gradient(90deg, transparent, rgba(0,229,255,0.1), transparent)',
-          transition: 'left 0.4s ease',
-          pointerEvents: 'none',
-        }}
-      />
+      Cuéntanos lo que necesitas
     </Link>
   );
 }
 
-// ─── Main Section ─────────────────────────────────────────────────────────────
+// ─── Stats row ───────────────────────────────────────────────────────────────
+
+const STATS = [
+  { value: 'Semanas, no meses',        label: 'de onboarding' },
+  { value: 'Pymes de cualquier sector', label: 'atendidas' },
+  { value: 'Resultado garantizado',     label: 'o seguimos' },
+];
+
+// ─── Main ─────────────────────────────────────────────────────────────────────
 
 export default function AetherInsideSection() {
   const sectionRef = useRef<HTMLElement>(null);
-  const titleRef = useRef<HTMLHeadingElement>(null);
-  const claimRef = useRef<HTMLParagraphElement>(null);
+  const word1Ref = useRef<HTMLSpanElement>(null);
+  const word2Ref = useRef<HTMLSpanElement>(null);
+  const claimRef = useRef<HTMLDivElement>(null);
   const diffRef = useRef<HTMLParagraphElement>(null);
   const ctaRef = useRef<HTMLDivElement>(null);
   const statsRef = useRef<HTMLDivElement>(null);
@@ -113,7 +58,6 @@ export default function AetherInsideSection() {
     setMounted(true);
   }, []);
 
-  // GSAP ScrollTrigger — title letter stagger + content fade
   useEffect(() => {
     if (!mounted) return;
     let cleanup: (() => void) | undefined;
@@ -123,121 +67,74 @@ export default function AetherInsideSection() {
       const { ScrollTrigger } = await import('gsap/ScrollTrigger');
       gsap.registerPlugin(ScrollTrigger);
 
-      if (!sectionRef.current || !titleRef.current) return;
-
-      // Split title letters into spans
-      const titleEl = titleRef.current;
-      const letters = titleEl.textContent?.split('') ?? [];
-      titleEl.innerHTML = letters
-        .map((l) => `<span class="ai-letter" style="display:inline-block;will-change:transform,opacity">${l === ' ' ? '&nbsp;' : l}</span>`)
-        .join('');
-
-      const letterEls = titleEl.querySelectorAll('.ai-letter');
+      if (!sectionRef.current) return;
 
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: sectionRef.current,
-          start: 'top 70%',
+          start: 'top 75%',
           once: true,
         },
       });
 
-      // Letters stagger in
-      tl.fromTo(
-        letterEls,
-        { y: 80, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.6,
-          ease: 'power4.out',
-          stagger: 0.04,
-          onComplete: () => {
-            // Clean up will-change after animation
-            letterEls.forEach((el) => ((el as HTMLElement).style.willChange = 'auto'));
-            // Subtle glow pulse
-            gsap.to(titleEl, {
-              textShadow: '0 0 60px rgba(0,229,255,0.2)',
-              duration: 2,
-              repeat: -1,
-              yoyo: true,
-              ease: 'power1.inOut',
-            });
-          },
-        }
-      );
-
-      // Content fade-ups
-      if (claimRef.current) {
+      // Words slide up
+      [word1Ref.current, word2Ref.current].forEach((el, i) => {
+        if (!el) return;
         tl.fromTo(
-          claimRef.current,
-          { y: 30, opacity: 0, willChange: 'transform,opacity' },
+          el,
+          { y: 50, opacity: 0, willChange: 'transform,opacity' },
           {
-            y: 0, opacity: 1, duration: 0.7, ease: 'power3.out',
-            onComplete: () => { if (claimRef.current) claimRef.current.style.willChange = 'auto'; },
+            y: 0, opacity: 1,
+            duration: 0.75, ease: 'power4.out',
+            onComplete: () => { if (el) el.style.willChange = 'auto'; },
           },
-          '+=0'
+          i === 0 ? 0 : '-=0.55'
+        );
+      });
+
+      // Claim lines stagger
+      if (claimRef.current) {
+        const lines = claimRef.current.querySelectorAll('.ai-claim-line');
+        tl.fromTo(
+          lines,
+          { opacity: 0, y: 20, willChange: 'transform,opacity' },
+          {
+            opacity: 1, y: 0, duration: 0.6, ease: 'power3.out',
+            stagger: 0.1,
+            onComplete: () => {
+              lines.forEach((el) => { (el as HTMLElement).style.willChange = 'auto'; });
+            },
+          },
+          '-=0.3'
         );
       }
 
       if (diffRef.current) {
-        tl.fromTo(
-          diffRef.current,
-          { opacity: 0 },
-          { opacity: 1, duration: 0.6, ease: 'power2.out' },
-          '+=0.1'
-        );
+        tl.fromTo(diffRef.current, { opacity: 0 }, { opacity: 1, duration: 0.5 }, '-=0.1');
       }
-
       if (ctaRef.current) {
-        tl.fromTo(
-          ctaRef.current,
-          { opacity: 0, willChange: 'opacity' },
-          {
-            opacity: 1, duration: 0.6, ease: 'power2.out',
-            onComplete: () => { if (ctaRef.current) ctaRef.current.style.willChange = 'auto'; },
-          },
-          '+=0.1'
-        );
+        tl.fromTo(ctaRef.current, { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.5 }, '-=0.1');
       }
-
       if (statsRef.current) {
-        tl.fromTo(
-          statsRef.current,
-          { opacity: 0, y: 16 },
-          { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' },
-          '+=0.05'
-        );
+        tl.fromTo(statsRef.current, { opacity: 0 }, { opacity: 1, duration: 0.5 }, '-=0.1');
       }
 
-      // Section enter/exit parallax
-      const sectionTl = gsap.timeline({
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: 'top 90%',
-          end: 'top 10%',
-          scrub: 0.5,
-        },
-      });
-      sectionTl.fromTo(sectionRef.current, { opacity: 0.3, scale: 0.98 }, { opacity: 1, scale: 1 });
-
-      // Parallax on 3D canvas
-      const canvasEl = sectionRef.current.querySelector('.ai-sphere-canvas');
-      if (canvasEl) {
-        gsap.to(canvasEl, {
+      // Section parallax entry
+      gsap.fromTo(
+        sectionRef.current,
+        { opacity: 0.4, scale: 0.99 },
+        {
+          opacity: 1, scale: 1,
           scrollTrigger: {
             trigger: sectionRef.current,
-            start: 'top bottom',
-            end: 'bottom top',
-            scrub: true,
+            start: 'top 90%',
+            end: 'top 30%',
+            scrub: 0.5,
           },
-          y: -60,
-        });
-      }
+        }
+      );
 
-      cleanup = () => {
-        ScrollTrigger.getAll().forEach((t) => t.kill());
-      };
+      cleanup = () => { ScrollTrigger.getAll().forEach((t) => t.kill()); };
     })();
 
     return () => cleanup?.();
@@ -246,227 +143,260 @@ export default function AetherInsideSection() {
   return (
     <section
       ref={sectionRef}
-      className="aether-inside-section"
       style={{
         position: 'relative',
         width: '100%',
-        minHeight: '95vh',
-        backgroundColor: '#000000',
+        minHeight: '90vh',
+        backgroundColor: '#0D0B0A',
         display: 'flex',
-        flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
+        padding: '120px 80px',
         overflow: 'hidden',
-        padding: '120px 48px',
-        textAlign: 'center',
       }}
     >
-      {/* Top gradient blend */}
-      <div
-        aria-hidden
-        style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          right: 0,
-          height: '100px',
-          background: 'linear-gradient(to bottom, #0A0A0A, transparent)',
-          pointerEvents: 'none',
-          zIndex: 1,
-        }}
-      />
+      {/* Gradient blend top — from site's light bg */}
+      <div aria-hidden style={{
+        position: 'absolute', top: 0, left: 0, right: 0, height: '80px',
+        background: 'linear-gradient(to bottom, #F8F8F5, transparent)',
+        pointerEvents: 'none', zIndex: 1,
+      }} />
 
-      {/* Bottom gradient blend */}
-      <div
-        aria-hidden
-        style={{
-          position: 'absolute',
-          bottom: 0,
-          left: 0,
-          right: 0,
-          height: '100px',
-          background: 'linear-gradient(to top, #0A0A0A, transparent)',
-          pointerEvents: 'none',
-          zIndex: 1,
-        }}
-      />
+      {/* Gradient blend bottom — back to site's light bg */}
+      <div aria-hidden style={{
+        position: 'absolute', bottom: 0, left: 0, right: 0, height: '80px',
+        background: 'linear-gradient(to top, #F8F8F5, transparent)',
+        pointerEvents: 'none', zIndex: 1,
+      }} />
 
-      {/* 3D / CSS fallback atmosphere */}
-      <TorusKnotWrapper />
-
-      {/* Content */}
+      {/* Content grid */}
       <div
+        className="ai-grid"
         style={{
-          position: 'relative',
-          zIndex: 2,
-          maxWidth: '820px',
+          position: 'relative', zIndex: 2,
+          display: 'grid',
+          gridTemplateColumns: '55% 45%',
+          gap: '0',
           width: '100%',
+          maxWidth: '1280px',
         }}
-        className="ai-content"
       >
-        {/* Label row */}
-        <div
-          style={{
-            fontFamily: "'JetBrains Mono', monospace",
-            fontSize: '11px',
-            letterSpacing: '0.25em',
-            textTransform: 'uppercase',
-            color: '#00E5FF',
-            marginBottom: '24px',
-            animation: mounted ? 'aiFadeDown 0.6s ease 0.2s both' : 'none',
-          }}
-        >
-          SERVICIO PRINCIPAL
+        {/* ── LEFT COLUMN ── */}
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+          {/* Label */}
+          <div
+            style={{
+              fontFamily: 'var(--v5-font-mono)',
+              fontSize: '11px',
+              fontWeight: 500,
+              letterSpacing: '0.15em',
+              textTransform: 'uppercase',
+              color: 'rgba(255,255,255,0.4)',
+              marginBottom: '28px',
+              opacity: mounted ? 1 : 0,
+              transition: 'opacity 0.6s ease 0.2s',
+            }}
+          >
+            SERVICIO PRINCIPAL
+          </div>
+
+          {/* Title */}
+          <div
+            style={{
+              fontFamily: 'var(--v5-font-advercase)',
+              fontSize: 'clamp(80px, 12vw, 180px)',
+              fontWeight: 700,
+              color: '#FFFFFF',
+              letterSpacing: '-0.02em',
+              lineHeight: 0.92,
+              marginBottom: '48px',
+            }}
+            aria-label="AETHER INSIDE"
+          >
+            <span
+              ref={word1Ref}
+              style={{ display: 'block', opacity: mounted ? undefined : 0 }}
+            >
+              AETHER
+            </span>
+            <span
+              ref={word2Ref}
+              style={{ display: 'block', opacity: mounted ? undefined : 0 }}
+            >
+              INSIDE
+            </span>
+          </div>
+
+          {/* Claim lines */}
+          <div
+            ref={claimRef}
+            style={{ marginBottom: '40px' }}
+          >
+            {[
+              'Vamos a tu empresa.',
+              'Formamos a tu equipo.',
+              'Construimos los sistemas.',
+              'Nos aseguramos de que funcionen.',
+            ].map((line, i) => (
+              <p
+                key={i}
+                className="ai-claim-line"
+                style={{
+                  fontFamily: 'var(--v5-font-body)',
+                  fontSize: 'clamp(17px, 2vw, 24px)',
+                  fontWeight: 300,
+                  color: 'rgba(245,240,232,0.72)',
+                  lineHeight: 1.9,
+                  margin: 0,
+                  opacity: 0,
+                }}
+              >
+                {line}
+              </p>
+            ))}
+          </div>
+
+          {/* Differentiator */}
+          <p
+            ref={diffRef}
+            style={{
+              fontFamily: 'var(--v5-font-body)',
+              fontSize: 'clamp(14px, 1.5vw, 17px)',
+              fontWeight: 300,
+              fontStyle: 'italic',
+              color: 'rgba(245,240,232,0.35)',
+              lineHeight: 1.65,
+              marginBottom: '52px',
+              opacity: 0,
+              maxWidth: '460px',
+            }}
+          >
+            No mandamos informes. No damos consejos desde fuera.
+            <br />
+            Nos metemos dentro.
+          </p>
+
+          {/* CTA */}
+          <div ref={ctaRef} style={{ opacity: 0, marginBottom: '16px' }}>
+            <CTAButton />
+          </div>
+
+          {/* Reassurance */}
+          <p
+            style={{
+              fontFamily: 'var(--v5-font-mono)',
+              fontSize: '11px',
+              color: 'rgba(245,240,232,0.25)',
+              letterSpacing: '0.08em',
+              marginTop: '12px',
+            }}
+          >
+            Primera conversación sin coste · Sin compromiso
+          </p>
         </div>
 
-        {/* Main title */}
-        <h2
-          ref={titleRef}
-          style={{
-            fontFamily: "'Syne', 'Advercase', sans-serif",
-            fontSize: 'clamp(72px, 10vw, 160px)',
-            fontWeight: 900,
-            color: '#FFFFFF',
-            letterSpacing: '-0.02em',
-            lineHeight: 0.95,
-            marginBottom: '40px',
-            opacity: mounted ? undefined : 0,
-          }}
-        >
-          AETHER INSIDE
-        </h2>
-
-        {/* Claim */}
-        <p
-          ref={claimRef}
-          style={{
-            fontFamily: "'Space Grotesk', 'DM Sans', sans-serif",
-            fontSize: 'clamp(18px, 2.2vw, 28px)',
-            fontWeight: 400,
-            color: 'rgba(245,245,245,0.85)',
-            lineHeight: 1.6,
-            maxWidth: '680px',
-            margin: '0 auto 48px',
-            opacity: 0,
-          }}
-        >
-          Vamos a tu empresa. Formamos a tu equipo.
-          <br />
-          Construimos los sistemas. Nos aseguramos de que funcionen.
-        </p>
-
-        {/* Differentiator */}
-        <p
-          ref={diffRef}
-          style={{
-            fontFamily: "'Space Grotesk', 'DM Sans', sans-serif",
-            fontSize: 'clamp(14px, 1.5vw, 18px)',
-            fontWeight: 400,
-            fontStyle: 'italic',
-            color: 'rgba(245,245,245,0.45)',
-            maxWidth: '480px',
-            margin: '0 auto 56px',
-            lineHeight: 1.6,
-            opacity: 0,
-          }}
-        >
-          No mandamos informes. No damos consejos desde fuera.
-          <br />
-          Nos metemos dentro.
-        </p>
-
-        {/* CTA */}
-        <div ref={ctaRef} style={{ opacity: 0, marginBottom: '20px' }}>
-          <CTAButton />
-        </div>
-
-        {/* Reassurance */}
+        {/* ── RIGHT COLUMN — decorative ── */}
         <div
-          style={{
-            fontFamily: "'JetBrains Mono', monospace",
-            fontSize: '11px',
-            color: 'rgba(245,245,245,0.3)',
-            letterSpacing: '0.1em',
-            marginBottom: '72px',
-          }}
-        >
-          Primera conversación sin coste · Sin compromiso
-        </div>
-
-        {/* Stats row */}
-        <div
-          ref={statsRef}
-          className="ai-stats"
+          className="ai-right-col"
           style={{
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            gap: '0',
-            opacity: 0,
+            userSelect: 'none',
+            pointerEvents: 'none',
           }}
         >
-          {STATS.map((stat, i) => (
-            <div key={i} style={{ display: 'flex', alignItems: 'center' }}>
-              <div style={{ padding: '0 40px', textAlign: 'center' }}>
-                <div
-                  style={{
-                    fontFamily: "'Space Grotesk', 'DM Sans', sans-serif",
-                    fontSize: '32px',
-                    fontWeight: 700,
-                    color: '#FFFFFF',
-                    lineHeight: 1.1,
-                    marginBottom: '6px',
-                  }}
-                >
-                  {stat.value}
-                </div>
-                <div
-                  style={{
-                    fontFamily: "'Space Grotesk', 'DM Sans', sans-serif",
-                    fontSize: '13px',
-                    fontWeight: 400,
-                    color: 'rgba(245,245,245,0.4)',
-                    maxWidth: '140px',
-                    lineHeight: 1.3,
-                  }}
-                >
-                  {stat.label}
-                </div>
-              </div>
-              {i < STATS.length - 1 && (
-                <div
-                  style={{
-                    width: '1px',
-                    height: '40px',
-                    backgroundColor: 'rgba(255,255,255,0.1)',
-                    flexShrink: 0,
-                  }}
-                />
-              )}
-            </div>
-          ))}
+          <span
+            style={{
+              fontFamily: 'var(--v5-font-advercase)',
+              fontSize: 'clamp(200px, 28vw, 380px)',
+              fontWeight: 700,
+              color: 'rgba(255,255,255,0.04)',
+              lineHeight: 1,
+              letterSpacing: '-0.04em',
+            }}
+          >
+            ∞
+          </span>
         </div>
       </div>
 
+      {/* ── Stats row ── */}
+      <div
+        ref={statsRef}
+        className="ai-stats"
+        style={{
+          position: 'absolute',
+          bottom: '90px', // above gradient fade
+          left: '50%',
+          transform: 'translateX(-50%)',
+          width: '100%',
+          maxWidth: '1280px',
+          padding: '40px 80px 0',
+          borderTop: '1px solid rgba(255,255,255,0.07)',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          gap: '0',
+          opacity: 0,
+          zIndex: 2,
+        }}
+      >
+        {STATS.map((s, i) => (
+          <div key={i} style={{ display: 'flex', alignItems: 'center' }}>
+            <div style={{ textAlign: 'center', padding: '0 48px' }}>
+              <div style={{
+                fontFamily: 'var(--v5-font-body)',
+                fontSize: '13px',
+                fontWeight: 400,
+                color: 'rgba(245,240,232,0.55)',
+                letterSpacing: '0.02em',
+                lineHeight: 1.4,
+              }}>
+                {s.value}
+              </div>
+              <div style={{
+                fontFamily: 'var(--v5-font-mono)',
+                fontSize: '10px',
+                color: 'rgba(245,240,232,0.25)',
+                letterSpacing: '0.1em',
+                textTransform: 'uppercase',
+                marginTop: '4px',
+              }}>
+                {s.label}
+              </div>
+            </div>
+            {i < STATS.length - 1 && (
+              <div style={{
+                width: '1px', height: '32px',
+                backgroundColor: 'rgba(255,255,255,0.1)',
+                flexShrink: 0,
+              }} />
+            )}
+          </div>
+        ))}
+      </div>
+
       <style>{`
-        @keyframes aiFadeDown {
-          from { opacity: 0; transform: translateY(-10px); }
-          to   { opacity: 1; transform: translateY(0); }
-        }
-        @media (max-width: 768px) {
-          .aether-inside-section {
-            min-height: auto !important;
-            padding: 80px 24px !important;
+        @media (max-width: 900px) {
+          .ai-grid {
+            grid-template-columns: 1fr !important;
+            gap: 0 !important;
           }
+          .ai-right-col { display: none !important; }
           .ai-stats {
+            position: static !important;
+            transform: none !important;
+            margin-top: 48px;
             flex-direction: column !important;
+            padding: 32px 24px 0 !important;
             gap: 24px !important;
           }
-          .ai-stats > div > div:last-child {
-            display: none !important;
-          }
-          .ai-sphere-canvas canvas {
-            display: none;
+        }
+        @media (max-width: 768px) {
+          section[style*="0D0B0A"] {
+            padding: 80px 24px !important;
+            min-height: auto !important;
           }
         }
       `}</style>

@@ -12,108 +12,82 @@ export default function ExperimentosBanner() {
       style={{
         position: 'relative',
         width: '100%',
-        backgroundColor: hovered ? 'rgba(0,229,255,0.03)' : '#0D0D0D',
-        borderTop: '1px solid rgba(255,255,255,0.06)',
-        borderBottom: '1px solid rgba(255,255,255,0.06)',
+        backgroundColor: hovered ? '#221E1A' : '#1A1614',
+        borderTop: '1px solid rgba(255,255,255,0.08)',
         overflow: 'hidden',
         cursor: 'pointer',
-        transition: 'background-color 0.3s ease',
+        transition: 'background-color 0.25s ease',
       }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      onClick={() => window.location.href = '/experimentos'}
+      onClick={() => { window.location.href = '/experimentos'; }}
     >
-      {/* CSS shimmer line */}
       <div
-        aria-hidden
-        style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          right: 0,
-          height: '1px',
-          overflow: 'hidden',
-        }}
-      >
-        <div
-          style={{
-            position: 'absolute',
-            top: 0,
-            width: '60%',
-            height: '1px',
-            background: 'linear-gradient(90deg, transparent, rgba(0,229,255,0.3), transparent)',
-            animation: 'expBannerShimmer 4s ease-in-out infinite',
-          }}
-        />
-      </div>
-
-      {/* Content row */}
-      <div
-        className="exp-banner-inner"
+        className="exp-strip-inner"
         style={{
           maxWidth: '1280px',
           margin: '0 auto',
-          padding: '22px 32px',
+          padding: '18px 32px',
           display: 'flex',
           alignItems: 'center',
-          justifyContent: 'center',
-          gap: '20px',
-          flexWrap: 'wrap',
-          minHeight: '72px',
+          justifyContent: 'space-between',
+          gap: '24px',
+          minHeight: '64px',
         }}
       >
-        {/* NUEVO label */}
-        <span
-          style={{
-            fontFamily: "'JetBrains Mono', monospace",
-            fontSize: '10px',
-            fontWeight: 500,
-            letterSpacing: '0.2em',
-            textTransform: 'uppercase',
-            color: '#00E5FF',
-            backgroundColor: 'rgba(0,229,255,0.08)',
-            border: '1px solid rgba(0,229,255,0.2)',
-            padding: '4px 10px',
-            borderRadius: '2px',
-            flexShrink: 0,
-          }}
-        >
-          NUEVO
-        </span>
+        {/* Left: label + text */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '16px', flexWrap: 'wrap' }}>
+          <span
+            style={{
+              fontFamily: 'var(--v5-font-mono)',
+              fontSize: '10px',
+              fontWeight: 500,
+              letterSpacing: '0.2em',
+              textTransform: 'uppercase',
+              color: 'rgba(255,255,255,0.7)',
+              backgroundColor: 'rgba(255,255,255,0.08)',
+              border: '1px solid rgba(255,255,255,0.15)',
+              padding: '4px 12px',
+              borderRadius: '2px',
+              flexShrink: 0,
+            }}
+          >
+            NUEVO
+          </span>
+          <span
+            style={{
+              fontFamily: 'var(--v5-font-body)',
+              fontSize: '14px',
+              fontWeight: 300,
+              color: 'rgba(255,255,255,0.55)',
+              lineHeight: 1.4,
+            }}
+          >
+            Estamos publicando EXPERIMENTOS — mira lo que es posible.
+          </span>
+        </div>
 
-        {/* Text */}
-        <span
-          style={{
-            fontFamily: "'Space Grotesk', 'DM Sans', sans-serif",
-            fontSize: '14px',
-            fontWeight: 400,
-            color: 'rgba(245,245,245,0.7)',
-            lineHeight: 1.4,
-          }}
-        >
-          Estamos construyendo experimentos. Mira lo que es posible con IA.
-        </span>
-
-        {/* Link */}
+        {/* Right: link */}
         <Link
           href="/experimentos"
           onClick={(e) => e.stopPropagation()}
           onMouseEnter={() => setArrowHovered(true)}
           onMouseLeave={() => setArrowHovered(false)}
           style={{
-            fontFamily: "'Space Grotesk', 'DM Sans', sans-serif",
+            fontFamily: 'var(--v5-font-body)',
             fontSize: '14px',
             fontWeight: 500,
-            color: '#00E5FF',
+            color: arrowHovered ? '#FFFFFF' : 'rgba(255,255,255,0.85)',
             textDecoration: 'none',
             display: 'inline-flex',
             alignItems: 'center',
             gap: '6px',
             transition: 'color 0.2s ease',
             flexShrink: 0,
+            whiteSpace: 'nowrap',
           }}
         >
-          Ver EXPERIMENTOS
+          Ver Experimentos
           <span
             style={{
               display: 'inline-block',
@@ -127,16 +101,13 @@ export default function ExperimentosBanner() {
       </div>
 
       <style>{`
-        @keyframes expBannerShimmer {
-          0%   { left: -60%; }
-          100% { left: 160%; }
-        }
         @media (max-width: 640px) {
-          .exp-banner-inner {
+          .exp-strip-inner {
             flex-direction: column !important;
-            text-align: center;
-            gap: 12px !important;
+            text-align: center !important;
+            justify-content: center !important;
             padding: 20px 24px !important;
+            gap: 12px !important;
           }
         }
       `}</style>
