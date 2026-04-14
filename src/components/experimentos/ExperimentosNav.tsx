@@ -76,13 +76,13 @@ export default function ExperimentosNav() {
         style={{
           display: 'flex',
           alignItems: 'center',
-          gap: '4px',
-          backgroundColor: 'rgba(8,8,8,0.88)',
+          gap: '6px',
+          backgroundColor: 'rgba(10,10,10,0.92)',
           backdropFilter: 'blur(12px)',
           WebkitBackdropFilter: 'blur(12px)',
-          border: '1px solid rgba(255,255,255,0.08)',
-          borderRadius: '40px',
-          padding: '6px',
+          border: '1px solid rgba(255,255,255,0.06)',
+          borderRadius: '100px',
+          padding: '6px 14px',
         }}
       >
         {experiments.map((exp) => {
@@ -95,23 +95,17 @@ export default function ExperimentosNav() {
                 e.preventDefault();
                 document.getElementById(exp.id)?.scrollIntoView({ behavior: 'smooth' });
               }}
-              title={exp.name}
               style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                width: '36px',
-                height: '28px',
-                borderRadius: '30px',
-                backgroundColor: isActive ? exp.accentColor : 'transparent',
-                color: isActive ? '#080808' : '#555',
                 fontFamily: 'var(--v5-font-mono)',
-                fontSize: '10px',
-                fontWeight: isActive ? 600 : 400,
+                fontSize: '11px',
+                letterSpacing: '0.1em',
+                textTransform: 'uppercase',
+                color: isActive ? exp.accentColor : 'rgba(255,255,255,0.4)',
+                padding: '4px 8px',
                 textDecoration: 'none',
-                transition: 'background-color 0.2s, color 0.2s',
-                letterSpacing: '0.05em',
-                flexShrink: 0,
+                transition: 'all 0.2s ease',
+                cursor: 'pointer',
+                opacity: isActive ? 1 : 0.8,
               }}
             >
               {exp.number}
@@ -127,29 +121,20 @@ export default function ExperimentosNav() {
           display: 'none',
           alignItems: 'center',
           gap: '8px',
-          backgroundColor: 'rgba(8,8,8,0.88)',
+          backgroundColor: 'rgba(10,10,10,0.92)',
           backdropFilter: 'blur(12px)',
           WebkitBackdropFilter: 'blur(12px)',
-          border: '1px solid rgba(255,255,255,0.08)',
-          borderRadius: '40px',
+          border: '1px solid rgba(255,255,255,0.06)',
+          borderRadius: '100px',
           padding: '8px 16px',
         }}
       >
         <span
           style={{
-            width: '7px',
-            height: '7px',
-            borderRadius: '50%',
-            backgroundColor: activeExp.accentColor,
-            flexShrink: 0,
-          }}
-        />
-        <span
-          style={{
             fontFamily: 'var(--v5-font-mono)',
             fontSize: '11px',
             fontWeight: 500,
-            color: '#aaa',
+            color: activeExp.accentColor,
             letterSpacing: '0.1em',
           }}
         >
@@ -160,7 +145,7 @@ export default function ExperimentosNav() {
             fontFamily: 'var(--v5-font-body)',
             fontSize: '11px',
             fontWeight: 300,
-            color: '#555',
+            color: '#aaa',
             marginLeft: '4px',
           }}
         >

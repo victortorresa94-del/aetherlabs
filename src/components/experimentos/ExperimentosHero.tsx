@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState } from 'react';
 import { motion, useMotionValue, useTransform, animate } from 'framer-motion';
 
 const LETTERS = 'EXPERIMENTOS'.split('');
@@ -22,11 +22,9 @@ const containerVariants = {
 };
 
 export default function ExperimentosHero() {
-  const [particlesReady, setParticlesReady] = useState(false);
   const [showScroll, setShowScroll] = useState(true);
   const count = useMotionValue(0);
   const rounded = useTransform(count, (v) => Math.round(v));
-  const ParticlesComponent = useRef<React.ComponentType<any> | null>(null);
 
   useEffect(() => {
     // Hide scroll indicator after first scroll
@@ -35,19 +33,6 @@ export default function ExperimentosHero() {
 
     // Animate counter 0 → 10
     const controls = animate(count, 10, { duration: 1.8, delay: 0.8, ease: 'easeOut' });
-
-    // Load tsParticles lazily
-    (async () => {
-      const [{ default: Particles, initParticlesEngine }, { loadSlim }] = await Promise.all([
-        import('@tsparticles/react'),
-        import('@tsparticles/slim'),
-      ]);
-      await initParticlesEngine(async (engine: any) => {
-        await loadSlim(engine);
-      });
-      ParticlesComponent.current = Particles;
-      setParticlesReady(true);
-    })();
 
     return () => {
       window.removeEventListener('scroll', onScroll);
@@ -73,60 +58,31 @@ export default function ExperimentosHero() {
     return () => cleanup?.();
   }, [showScroll]);
 
-  const Particles = ParticlesComponent.current;
-
   return (
     <section
       style={{
         position: 'relative',
         height: '100vh',
         minHeight: '600px',
-        backgroundColor: '#080808',
+        backgroundColor: '#0A0A0A',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
         overflow: 'hidden',
       }}
     >
-      {/* White ambient particles */}
-      {particlesReady && Particles && (
-        <>
-          <Particles
-            id="exp-hero-particles-ambient"
-            options={{
-              fullScreen: false,
-              background: { color: { value: 'transparent' } },
-              particles: {
-                number: { value: 2000, density: { enable: true } },
-                color: { value: '#ffffff' },
-                opacity: { value: { min: 0.05, max: 0.25 }, animation: { enable: true, speed: 0.5 } },
-                size: { value: { min: 0.5, max: 1.5 } },
-                move: { enable: true, speed: 0.3, random: true, outModes: 'out' },
-              },
-              detectRetina: true,
-            }}
-            style={{ position: 'absolute', inset: 0, zIndex: 0 }}
-          />
-          {/* Cyan hot points */}
-          <Particles
-            id="exp-hero-particles-hot"
-            options={{
-              fullScreen: false,
-              background: { color: { value: 'transparent' } },
-              particles: {
-                number: { value: 5 },
-                color: { value: '#00E5FF' },
-                opacity: { value: { min: 0.4, max: 0.9 } },
-                size: { value: { min: 2, max: 4 } },
-                move: { enable: true, speed: 1.2, random: true, outModes: 'bounce' },
-                glow: { enable: true, color: '#00E5FF', radius: 6 },
-              },
-              detectRetina: true,
-            }}
-            style={{ position: 'absolute', inset: 0, zIndex: 0 }}
-          />
-        </>
-      )}
+      {/* CSS Starfield Background */}
+      <div
+        aria-hidden
+        style={{
+          position: 'absolute',
+          inset: 0,
+          zIndex: 0,
+          opacity: 0.15,
+        }}
+      >
+        <div className="starfield" />
+      </div>
 
       {/* Content */}
       <div
@@ -145,7 +101,7 @@ export default function ExperimentosHero() {
             fontWeight: 500,
             letterSpacing: '0.22em',
             textTransform: 'uppercase',
-            color: '#444',
+            color: 'rgba(255,255,255,0.4)',
             marginBottom: '32px',
           }}
         >
@@ -195,26 +151,14 @@ export default function ExperimentosHero() {
           <span
             style={{
               fontFamily: 'var(--v5-font-mono)',
-              fontSize: 'clamp(28px, 4vw, 48px)',
-              fontWeight: 600,
-              color: '#00E5FF',
-              letterSpacing: '-0.02em',
-            }}
-          >
-            <motion.span>{rounded}</motion.span>
-          </span>
-          <span
-            style={{
-              fontFamily: 'var(--v5-font-mono)',
               fontSize: '14px',
-              fontWeight: 400,
-              color: '#444',
-              marginLeft: '10px',
-              letterSpacing: '0.1em',
+              fontWeight: 700,
+              color: '#00E5FF',
+              letterSpacing: '0.15em',
               textTransform: 'uppercase',
             }}
           >
-            experimentos activos
+            <motion.span>{rounded}</motion.span> experimentos activos
           </span>
         </motion.div>
 
@@ -227,7 +171,7 @@ export default function ExperimentosHero() {
             fontFamily: 'var(--v5-font-body)',
             fontSize: 'clamp(14px, 1.8vw, 17px)',
             fontWeight: 300,
-            color: '#555',
+            color: 'rgba(255,255,255,0.4)',
             maxWidth: '520px',
             margin: '0 auto',
             lineHeight: 1.6,
@@ -256,7 +200,7 @@ export default function ExperimentosHero() {
             style={{
               fontFamily: 'var(--v5-font-mono)',
               fontSize: '9px',
-              color: '#333',
+              color: 'rgba(255,255,255,0.2)',
               letterSpacing: '0.12em',
               textTransform: 'uppercase',
             }}
@@ -264,11 +208,112 @@ export default function ExperimentosHero() {
             scroll
           </span>
           <svg width="14" height="20" viewBox="0 0 14 20" fill="none">
-            <rect x="1" y="1" width="12" height="18" rx="6" stroke="#333" strokeWidth="1.5" />
-            <rect x="6" y="5" width="2" height="4" rx="1" fill="#444" />
+            <rect x="1" y="1" width="12" height="18" rx="6" stroke="rgba(255,255,255,0.2)" strokeWidth="1.5" />
+            <rect x="6" y="5" width="2" height="4" rx="1" fill="rgba(255,255,255,0.3)" />
           </svg>
         </div>
       )}
+
+      <style jsx>{`
+        .starfield {
+          width: 1px;
+          height: 1px;
+          background: transparent;
+          box-shadow: 
+            24vw 15vh 1px 0px #fff,
+            88vw 42vh 0px 1px #fff,
+            15vw 68vh 1px 1px #fff,
+            55vw 22vh 0px 0px #fff,
+            33vw 85vh 1px 0px #fff,
+            72vw 12vh 0px 1px #fff,
+            91vw 77vh 1px 1px #fff,
+            44vw 48vh 0px 0px #fff,
+            6vw 33vh 1px 0px #fff,
+            82vw 92vh 0px 1px #fff,
+            27vw 55vh 1px 1px #fff,
+            64vw 2vh 0px 0px #fff,
+            12vw 19vh 1px 0px #fff,
+            95vw 61vh 0px 1px #fff,
+            48vw 89vh 1px 1px #fff,
+            3vw 72vh 0px 0px #fff,
+            77vw 25vh 1px 0px #fff,
+            59vw 53vh 0px 1px #fff,
+            18vw 41vh 1px 1px #fff,
+            85vw 8vh 0px 0px #fff,
+            39vw 65vh 1px 0px #fff,
+            71vw 94vh 0px 1px #fff,
+            22vw 4vh 1px 1px #fff,
+            98vw 38vh 0px 0px #fff,
+            52vw 76vh 1px 0px #fff,
+            9vw 12vh 0px 1px #fff,
+            67vw 82vh 1px 1px #fff,
+            41vw 28vh 0px 0px #fff,
+            8vw 96vh 1px 0px #fff,
+            93vw 15vh 0px 1px #fff,
+            36vw 59vh 1px 1px #fff,
+            81vw 48vh 0px 0px #fff,
+            57vw 11vh 1px 0px #fff,
+            14vw 44vh 0px 1px #fff,
+            76vw 67vh 1px 1px #fff,
+            45vw 2vh 0px 0px #fff,
+            2vw 52vh 1px 0px #fff,
+            89vw 88vh 0px 1px #fff,
+            25vw 25vh 1px 1px #fff,
+            66vw 74vh 0px 0px #fff,
+            19vw 9vh 1px 0px #fff,
+            97vw 54vh 0px 1px #fff,
+            51vw 32vh 1px 1px #fff,
+            31vw 61vh 0px 0px #fff,
+            84vw 18vh 1px 0px #fff,
+            43vw 93vh 0px 1px #fff,
+            11vw 79vh 1px 1px #fff,
+            74vw 41vh 0px 0px #fff,
+            5vw 21vh 1px 0px #fff,
+            92vw 69vh 0px 1px #fff,
+            38vw 84vh 1px 1px #fff,
+            79vw 33vh 0px 0px #fff,
+            62vw 58vh 1px 0px #fff,
+            13vw 47vh 0px 1px #fff,
+            87vw 2vh 1px 1px #fff,
+            49vw 14vh 0px 0px #fff,
+            28vw 71vh 1px 0px #fff,
+            96vw 86vh 0px 1px #fff,
+            53vw 44vh 1px 1px #fff,
+            7vw 9vh 0px 0px #fff,
+            80vw 65vh 1px 0px #fff,
+            34vw 12vh 0px 1px #fff,
+            73vw 87vh 1px 1px #fff,
+            46vw 39vh 0px 0px #fff,
+            21vw 52vh 1px 0px #fff,
+            94vw 25vh 0px 1px #fff,
+            55vw 61vh 1px 1px #fff,
+            10vw 81vh 0px 0px #fff,
+            86vw 42vh 1px 0px #fff,
+            40vw 18vh 0px 1px #fff,
+            69vw 73vh 1px 1px #fff,
+            32vw 29vh 0px 0px #fff,
+            16vw 95vh 1px 0px #fff,
+            90vw 51vh 0px 1px #fff,
+            58vw 84vh 1px 1px #fff,
+            26vw 11vh 0px 0px #fff,
+            83vw 37vh 1px 0px #fff,
+            47vw 64vh 0px 1px #fff,
+            15vw 41vh 1px 1px #fff,
+            75vw 8vh 0px 0px #fff,
+            61vw 92vh 1px 0px #fff,
+            23vw 56vh 0px 1px #fff,
+            99vw 19vh 1px 1px #fff,
+            50vw 88vh 0px 0px #fff,
+            30vw 3vh 1px 0px #fff,
+            87vw 72vh 0px 1px #fff,
+            44vw 46vh 1px 1px #fff,
+            12vw 61vh 0px 0px #fff,
+            78vw 98vh 1px 0px #fff,
+            35vw 22vh 0px 1px #fff,
+            70vw 54vh 1px 1px #fff,
+            56vw 4vh 0px 0px #fff;
+        }
+      `}</style>
     </section>
   );
 }

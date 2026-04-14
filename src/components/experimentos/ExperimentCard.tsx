@@ -15,7 +15,7 @@ interface ExperimentCardProps {
 }
 
 const INITIAL_MESSAGES: Record<string, string> = {
-  'suma-salut':    '¡Hola! Soy el asistente de Suma Salut. Estoy aquí para responder tus dudas sobre horarios, seguros, precios y especialidades. ¿En qué te puedo ayudar?',
+  'suma-salut': '¡Hola! Soy el asistente de Suma Salut. Estoy aquí para responder tus dudas sobre horarios, seguros, precios y especialidades. ¿En qué te puedo ayudar?',
   'restaurante-ia': '¡Hola! Bienvenido a La Taberna del Puerto. Puedo ayudarte con reservas, horarios, carta, alérgenos... ¿Qué necesitas?',
 };
 
@@ -73,24 +73,20 @@ export default function ExperimentCard({ experiment, index }: ExperimentCardProp
       aria-label={experiment.name}
       style={{
         position: 'relative',
-        backgroundColor: bgColor,
+        backgroundColor: experiment.id === 'suma-salut' ? '#061412' :
+          experiment.id === 'artiverse' ? '#080D1A' :
+            experiment.id === 'bamba-stock' ? '#1A0A08' :
+              experiment.id === 'bramer' ? '#1A1204' :
+                experiment.id === 'bonito-sound' ? '#100A1A' :
+                  experiment.id === 'restaurante-ia' ? '#1A0808' :
+                    experiment.id === 'asesoria-inteligente' ? '#0A0A1A' :
+                      experiment.id === 'cannabis-club' ? '#081A0D' :
+                        experiment.id === 'aura' ? '#00101A' :
+                          experiment.id === 'musikeo' ? '#1A0812' : '#0A0A0A',
         overflow: 'hidden',
-        padding: '80px 0',
+        padding: '100px 0',
       }}
     >
-      {/* Accent wash */}
-      <div
-        aria-hidden
-        style={{
-          position: 'absolute',
-          inset: 0,
-          background: experiment.accentColor,
-          opacity: accentWash ? 0.05 : 0,
-          transition: 'opacity 600ms ease',
-          pointerEvents: 'none',
-        }}
-      />
-
       <div
         className="v5-container exp-content"
         style={{ opacity: 0 }}
@@ -110,7 +106,7 @@ export default function ExperimentCard({ experiment, index }: ExperimentCardProp
               fontFamily: 'var(--v5-font-mono)',
               fontSize: '11px',
               fontWeight: 500,
-              color: hexToRgba(experiment.accentColor, 0.5),
+              color: 'rgba(255,255,255,0.3)',
               letterSpacing: '0.15em',
             }}
           >
@@ -135,7 +131,7 @@ export default function ExperimentCard({ experiment, index }: ExperimentCardProp
             style={{
               fontFamily: 'var(--v5-font-mono)',
               fontSize: '10px',
-              color: '#555',
+              color: 'rgba(255,255,255,0.25)',
               letterSpacing: '0.08em',
               textTransform: 'uppercase',
             }}
@@ -145,20 +141,42 @@ export default function ExperimentCard({ experiment, index }: ExperimentCardProp
         </div>
 
         {/* Main grid */}
-        <div
-          className={isEven ? 'exp-card-grid exp-card-grid--normal' : 'exp-card-grid exp-card-grid--reversed'}
-        >
+        <div className="exp-card-grid">
           {/* Text side */}
           <div className="exp-card-text">
-            <h2
+            {/* C6: Project Type */}
+            <div
+              className="experiment-type"
               style={{
                 fontFamily: 'var(--v5-font-advercase)',
-                fontSize: 'clamp(26px, 3.5vw, 48px)',
-                fontWeight: 400,
-                color: '#F5F5F0',
-                letterSpacing: '-0.02em',
-                lineHeight: 1.15,
-                marginBottom: '12px',
+                fontSize: 'clamp(28px, 5vw, 52px)',
+                fontWeight: 700,
+                color: experiment.accentColor,
+                lineHeight: 1.1,
+                marginBottom: '20px',
+              }}
+            >
+              {experiment.id === 'bamba-stock' ? 'App móvil a medida' :
+                experiment.id === 'artiverse' ? 'Sistema de outreach automatizado' :
+                  experiment.id === 'suma-salut' ? 'Chatbot conversacional con IA' :
+                    experiment.id === 'bramer' ? 'Software ERP a medida' :
+                      experiment.id === 'bonito-sound' ? 'Rediseño web + migración' :
+                        experiment.id === 'musikeo' ? 'Marketplace de músicos' :
+                          experiment.id === 'restaurante-ia' ? 'Agente WhatsApp Business' :
+                            experiment.id === 'asesoria-inteligente' ? 'Agente de gestión de expedientes' :
+                              experiment.id === 'cannabis-club' ? 'Suite de automatización' :
+                                experiment.id === 'aura' ? 'Marca personal digital' : 'Experimento IA'}
+            </div>
+
+            <h2
+              className="experiment-pain-headline"
+              style={{
+                fontFamily: 'var(--v5-font-advercase)',
+                fontSize: 'clamp(24px, 4vw, 44px)',
+                fontWeight: 700,
+                color: '#F5F0E8',
+                lineHeight: 1.2,
+                marginBottom: '16px',
               }}
             >
               {experiment.headline}
@@ -169,9 +187,10 @@ export default function ExperimentCard({ experiment, index }: ExperimentCardProp
                 fontFamily: 'var(--v5-font-body)',
                 fontSize: '15px',
                 fontWeight: 300,
-                color: hexToRgba(experiment.accentColor, 0.8),
+                color: experiment.accentColor,
                 marginBottom: '24px',
                 lineHeight: 1.5,
+                fontStyle: 'italic',
               }}
             >
               {experiment.subheadline}
@@ -182,24 +201,12 @@ export default function ExperimentCard({ experiment, index }: ExperimentCardProp
                 fontFamily: 'var(--v5-font-body)',
                 fontSize: '15px',
                 fontWeight: 300,
-                color: '#888',
-                lineHeight: 1.7,
-                marginBottom: '20px',
-              }}
-            >
-              {experiment.description}
-            </p>
-
-            <p
-              style={{
-                fontFamily: 'var(--v5-font-body)',
-                fontSize: '14px',
-                fontWeight: 300,
-                color: '#666',
+                color: 'rgba(255,255,255,0.5)',
                 lineHeight: 1.7,
                 marginBottom: '28px',
                 paddingLeft: '14px',
-                borderLeft: `2px solid ${hexToRgba(experiment.accentColor, 0.4)}`,
+                borderLeft: `2px solid ${experiment.accentColor}`,
+                maxWidth: '480px',
               }}
             >
               {experiment.solution}
@@ -207,7 +214,7 @@ export default function ExperimentCard({ experiment, index }: ExperimentCardProp
 
             {/* Tags */}
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginBottom: '28px' }}>
-              {experiment.tags.map((tag) => (
+              {experiment.tags.slice(0, 4).map((tag) => (
                 <ExperimentTag key={tag} label={tag} accentColor={experiment.accentColor} />
               ))}
             </div>
@@ -232,7 +239,7 @@ export default function ExperimentCard({ experiment, index }: ExperimentCardProp
 
           {/* Visual side */}
           <div className="exp-card-visual">
-            <div style={{ height: '400px' }} className="exp-scene-height">
+            <div style={{ height: '400px', display: 'flex', alignItems: 'center', justifyContent: 'center' }} className="exp-scene-height">
               {experiment.hasLiveDemo && experiment.demoContext ? (
                 <LiveDemoChat
                   experimentId={experiment.id}
@@ -240,12 +247,14 @@ export default function ExperimentCard({ experiment, index }: ExperimentCardProp
                   initialMessage={INITIAL_MESSAGES[experiment.id] ?? '¡Hola! ¿En qué puedo ayudarte?'}
                 />
               ) : (
-                <ExperimentScene3D
-                  geometry={experiment.geometry}
-                  animationType={experiment.animationType}
-                  accentColor={experiment.accentColor}
-                  particleCount={experiment.particleCount}
-                />
+                <div style={{ width: '100%', height: '100%', position: 'relative' }}>
+                  <ExperimentScene3D
+                    geometry={experiment.geometry}
+                    animationType={experiment.animationType}
+                    accentColor={experiment.accentColor}
+                    particleCount={experiment.particleCount}
+                  />
+                </div>
               )}
             </div>
           </div>

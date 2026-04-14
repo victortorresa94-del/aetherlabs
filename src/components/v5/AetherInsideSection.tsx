@@ -37,9 +37,9 @@ function CTAButton() {
 // ─── Stats row ───────────────────────────────────────────────────────────────
 
 const STATS = [
-  { value: 'Semanas, no meses',        label: 'de onboarding' },
+  { value: 'Semanas, no meses', label: 'de onboarding' },
   { value: 'Pymes de cualquier sector', label: 'atendidas' },
-  { value: 'Resultado garantizado',     label: 'o seguimos' },
+  { value: 'Resultado garantizado', label: 'o seguimos' },
 ];
 
 // ─── Main ─────────────────────────────────────────────────────────────────────
@@ -146,28 +146,15 @@ export default function AetherInsideSection() {
       style={{
         position: 'relative',
         width: '100%',
-        minHeight: '90vh',
-        backgroundColor: '#0D0B0A',
+        backgroundColor: '#0A0A0A',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        padding: '120px 80px',
+        padding: '100px 80px 120px',
         overflow: 'hidden',
       }}
     >
-      {/* Gradient blend top — from site's light bg */}
-      <div aria-hidden style={{
-        position: 'absolute', top: 0, left: 0, right: 0, height: '80px',
-        background: 'linear-gradient(to bottom, #F8F8F5, transparent)',
-        pointerEvents: 'none', zIndex: 1,
-      }} />
-
-      {/* Gradient blend bottom — back to site's light bg */}
-      <div aria-hidden style={{
-        position: 'absolute', bottom: 0, left: 0, right: 0, height: '80px',
-        background: 'linear-gradient(to top, #F8F8F5, transparent)',
-        pointerEvents: 'none', zIndex: 1,
-      }} />
+      {/* No gradients here — clean sharp edge preferred */}
 
       {/* Content grid */}
       <div
@@ -301,7 +288,7 @@ export default function AetherInsideSection() {
           style={{
             display: 'flex',
             alignItems: 'center',
-            justifyContent: 'center',
+            justifyContent: 'flex-end',
             userSelect: 'none',
             pointerEvents: 'none',
           }}
@@ -309,11 +296,12 @@ export default function AetherInsideSection() {
           <span
             style={{
               fontFamily: 'var(--v5-font-advercase)',
-              fontSize: 'clamp(200px, 28vw, 380px)',
+              fontSize: 'clamp(200px, 30vw, 420px)',
               fontWeight: 700,
-              color: 'rgba(255,255,255,0.04)',
+              color: 'rgba(255,255,255,0.03)',
               lineHeight: 1,
               letterSpacing: '-0.04em',
+              transform: 'translateX(20%)',
             }}
           >
             ∞
@@ -327,7 +315,7 @@ export default function AetherInsideSection() {
         className="ai-stats"
         style={{
           position: 'absolute',
-          bottom: '90px', // above gradient fade
+          bottom: '60px',
           left: '50%',
           transform: 'translateX(-50%)',
           width: '100%',
@@ -378,25 +366,33 @@ export default function AetherInsideSection() {
       </div>
 
       <style>{`
-        @media (max-width: 900px) {
+        @media (max-width: 768px) {
           .ai-grid {
             grid-template-columns: 1fr !important;
-            gap: 0 !important;
+            padding-bottom: 60px;
           }
           .ai-right-col { display: none !important; }
+          
           .ai-stats {
-            position: static !important;
+            position: relative !important;
+            bottom: auto !important;
+            left: auto !important;
             transform: none !important;
-            margin-top: 48px;
+            margin-top: 40px;
             flex-direction: column !important;
-            padding: 32px 24px 0 !important;
+            padding: 32px 0 0 !important;
             gap: 24px !important;
+            border-top: 1px solid rgba(255,255,255,0.07);
           }
-        }
-        @media (max-width: 768px) {
-          section[style*="0D0B0A"] {
-            padding: 80px 24px !important;
+
+          section[style*="backgroundColor: '#0A0A0A'"] {
+            padding: 64px 24px !important;
             min-height: auto !important;
+          }
+          
+          .ai-grid div div[style*="clamp(80px"] {
+             font-size: clamp(64px, 18vw, 96px) !important;
+             line-height: 0.9 !important;
           }
         }
       `}</style>
