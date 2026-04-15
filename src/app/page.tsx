@@ -19,10 +19,10 @@ export default function HomePage() {
         <HeroSection />
         <TrustBandSection />
 
-        {/* INSERTION POINT A — between VALUE PROPS and LABS */}
-        <AetherInsideSection />
-
         <LabsBannerSection />
+
+        {/* Aether Inside banner — after labs, before experiments */}
+        <AetherInsideSection />
 
         {/* INSERTION POINT B — between CASES TEASER and PRIMER PASO */}
         <ExperimentosBanner />
