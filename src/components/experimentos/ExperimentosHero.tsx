@@ -64,38 +64,6 @@ export default function ExperimentosHero() {
         overflow: 'hidden',
       }}
     >
-      {/* Background Video */}
-      <video
-        autoPlay
-        muted
-        loop
-        playsInline
-        aria-hidden
-        style={{
-          position: 'absolute',
-          inset: 0,
-          width: '100%',
-          height: '100%',
-          objectFit: 'cover',
-          opacity: 0.38,
-          filter: 'grayscale(0.4) contrast(1.05)',
-          zIndex: 0,
-        }}
-      >
-        <source src="/videos/video-hero-web-1.mp4" type="video/mp4" />
-      </video>
-
-      {/* Dark vignette overlay */}
-      <div
-        aria-hidden
-        style={{
-          position: 'absolute',
-          inset: 0,
-          zIndex: 1,
-          background: 'radial-gradient(ellipse at center, rgba(5,5,5,0.2) 0%, rgba(5,5,5,0.75) 100%)',
-        }}
-      />
-
       {/* Content */}
       <div
         style={{

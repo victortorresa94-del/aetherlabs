@@ -343,7 +343,7 @@ export default function ExperimentCard({ experiment, index }: ExperimentCardProp
           .exp-card-visual { order: -1; }
         }
         @media (max-width: 768px) {
-          .exp-card-visual { display: none; }
+          .exp-card-visual { max-height: 260px; }
         }
       `}</style>
     </section>
