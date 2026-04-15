@@ -2,9 +2,9 @@
 
 import { useRef, useEffect, useState } from 'react';
 import type { Experiment } from '@/data/experiments-page';
-import { hexToRgba } from '@/lib/colors';
 import StatusBadge from './StatusBadge';
 import LiveDemoChat from './LiveDemoChat';
+import Experiment3DScene from './Experiment3DScene';
 import {
   Camera, RefreshCw, ShoppingBag, Mail, Bot, BarChart2,
   MessageCircle, Clock, Mic, Image, Bell, Briefcase,
@@ -22,20 +22,6 @@ interface ExperimentCardProps {
 const INITIAL_MESSAGES: Record<string, string> = {
   'suma-salut': '¡Hola! Soy el asistente de Suma Salut. Estoy aquí para responder tus dudas sobre horarios, seguros, precios y especialidades. ¿En qué te puedo ayudar?',
   'restaurante-ia': '¡Hola! Bienvenido a La Taberna del Puerto. Puedo ayudarte con reservas, horarios, carta, alérgenos... ¿Qué necesitas?',
-};
-
-// All images served from /public — using real assets where available
-const METAPHOR_IMAGES: Record<string, string> = {
-  'suma-salut': '/images/customers/suma-salut.png',
-  'artiverse': '/images/experimentos/artiverse.png',
-  'bamba-stock': '/images/bronson/app-mockup.png',
-  'bramer': '/images/experimentos/bramer.png',
-  'bonito-sound': '/images/customers/bonito-sound.png',
-  'musikeo': '/images/experimentos/musikeo.png',
-  'restaurante-ia': '/images/experimentos/restaurante-ia.png',
-  'aura': '/images/experimentos/aura.png',
-  'cannabis-club': '/images/experimentos/cannabis-club.png',
-  'asesoria-inteligente': '/images/experimentos/asesoria-inteligente.png',
 };
 
 const BACKGROUND_IMAGES: Record<string, string> = {
@@ -107,10 +93,8 @@ const FEATURES: Record<string, { Icon: LucideIcon; text: string }[]> = {
 
 export default function ExperimentCard({ experiment, index }: ExperimentCardProps) {
   const containerRef = useRef<HTMLElement>(null);
-  const [imgHovered, setImgHovered] = useState(false);
 
   const bgImage = BACKGROUND_IMAGES[experiment.id] ?? '/images/labs/gen-ai-lab.png';
-  const metaphorImg = METAPHOR_IMAGES[experiment.id];
   const features = FEATURES[experiment.id] ?? [];
 
   // GSAP entrance + parallax — Awwwards-level scroll reveal
@@ -334,36 +318,15 @@ export default function ExperimentCard({ experiment, index }: ExperimentCardProp
                 accentColor="#EA580C"
                 initialMessage={INITIAL_MESSAGES[experiment.id] ?? '¡Hola! ¿En qué puedo ayudarte?'}
               />
-            ) : metaphorImg ? (
-              <div
-                onMouseEnter={() => setImgHovered(true)}
-                onMouseLeave={() => setImgHovered(false)}
-                style={{
-                  width: '100%',
-                  aspectRatio: '4/3',
-                  borderRadius: '12px',
-                  overflow: 'hidden',
-                  position: 'relative',
-                  border: `1px solid ${imgHovered ? 'rgba(255,255,255,0.14)' : 'rgba(255,255,255,0.07)'}`,
-                  transition: 'border-color 0.4s ease, box-shadow 0.4s ease',
-                  boxShadow: imgHovered ? '0 32px 80px rgba(0,0,0,0.6)' : '0 16px 40px rgba(0,0,0,0.35)',
-                }}
-              >
-                <img
-                  src={metaphorImg}
-                  alt={`${experiment.name} visual`}
-                  style={{
-                    width: '100%',
-                    height: '100%',
-                    objectFit: 'cover',
-                    display: 'block',
-                    filter: imgHovered ? 'grayscale(0) contrast(1.0) brightness(1.04)' : 'grayscale(0.1) contrast(1.02)',
-                    transition: 'filter 0.7s ease, transform 0.7s ease',
-                    transform: imgHovered ? 'scale(1.04)' : 'scale(1)',
-                  }}
-                />
-              </div>
-            ) : null}
+            ) : (
+              <Experiment3DScene
+                id={experiment.id}
+                geometry={experiment.geometry}
+                animationType={experiment.animationType}
+                accentColor={experiment.accentColor}
+                particleCount={experiment.particleCount}
+              />
+            )}
           </div>
         </div>
       </div>
