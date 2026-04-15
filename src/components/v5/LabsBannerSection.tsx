@@ -144,7 +144,7 @@ export default function LabsBannerSection() {
             marginTop: '20px',
             maxWidth: '520px',
           }}>
-            Estos son nuestros laboratorios. Aquí cogemos la última tecnología de IA
+            Estos son nuestros laboratorios. Aquí experimentamos con la última tecnología de IA
             y la hacemos funcionar en empresas reales, en procesos reales, con resultados medibles.
           </p>
         </motion.div>

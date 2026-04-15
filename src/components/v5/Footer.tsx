@@ -1,7 +1,6 @@
 'use client';
 
 import Link from 'next/link';
-import Image from 'next/image';
 
 export default function Footer() {
   return (
@@ -119,12 +118,13 @@ export default function Footer() {
           {/* Column 1 — Logo + tagline + social icons */}
           <div>
             <div style={{ marginBottom: '16px' }}>
-              <Image
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
                 src="/aether-logo-white.png"
                 alt="Aether Labs"
-                height={23}
                 width={90}
-                style={{ objectFit: 'contain', opacity: 1 }}
+                height={23}
+                style={{ objectFit: 'contain', display: 'block' }}
               />
             </div>
             <p

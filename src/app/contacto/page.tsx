@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Script from 'next/script';
 import Navbar from '@/components/v5/Navbar';
 import Footer from '@/components/v5/Footer';
 
@@ -8,6 +9,12 @@ export default function ContactoPage() {
   return (
     <div className="v5-page" style={{ background: '#080808' }}>
       <Navbar />
+
+      {/* Calendly widget script */}
+      <Script
+        src="https://assets.calendly.com/assets/external/widget.js"
+        strategy="lazyOnload"
+      />
 
       {/* Kill any stray Calendly badge injected by global script */}
       <style>{`.calendly-badge-widget { display: none !important; }`}</style>
@@ -50,23 +57,18 @@ export default function ContactoPage() {
               alignItems: 'start',
             }} className="contacto-grid">
 
-              {/* Calendly iframe — inline embed, sin badge widget */}
-              <div className="contacto-iframe-wrap" style={{
-                borderRadius: '0px',
-                overflow: 'hidden',
-                border: '1px solid rgba(255,255,255,0.1)',
-                background: '#080808',
-                height: '680px',
-              }}>
-                <iframe
-                  src="https://calendly.com/aetherlabs1986/30min?hide_gdpr_banner=1&background_color=080808&text_color=F5F5F0&primary_color=F5F5F0&embed_type=Inline"
-                  width="100%"
-                  height="100%"
-                  frameBorder="0"
-                  title="Reservar sesión con Aether Labs"
-                  style={{ display: 'block' }}
-                />
-              </div>
+              {/* Calendly inline widget — JS-based (más fiable que iframe directo) */}
+              <div
+                className="calendly-inline-widget contacto-iframe-wrap"
+                data-url="https://calendly.com/aetherlabs1986/30min?hide_gdpr_banner=1&background_color=080808&text_color=F5F5F0&primary_color=F5F5F0"
+                style={{
+                  minWidth: '320px',
+                  height: '680px',
+                  border: '1px solid rgba(255,255,255,0.1)',
+                  borderRadius: '0px',
+                  overflow: 'hidden',
+                }}
+              />
 
               {/* Sidebar */}
               <div style={{ display: 'flex', flexDirection: 'column', gap: '0' }}>
@@ -128,24 +130,6 @@ export default function ContactoPage() {
                   }}>Rambla Balmes 27<br />
                     <span style={{ color: 'rgba(245,245,240,0.5)' }}>Mollet del Vallès, Barcelona</span>
                   </p>
-                </div>
-
-                {/* Sesion de claridad CTA */}
-                <div style={{
-                  marginTop: '8px', padding: '24px', background: '#111',
-                  border: '1px solid rgba(255,255,255,0.07)', borderRadius: '0px',
-                }}>
-                  <p style={{
-                    fontFamily: 'var(--v5-font-body)', fontSize: '13px', fontWeight: 300,
-                    color: 'rgba(245,245,240,0.55)', lineHeight: 1.6, marginBottom: '16px',
-                  }}>¿Prefieres una sesión con agenda completa y contexto previo?</p>
-                  <Link href="/systems-lab/sesion-de-claridad" style={{
-                    display: 'inline-flex', alignItems: 'center', gap: '6px',
-                    fontFamily: 'var(--v5-font-body)', fontSize: '13px', fontWeight: 400,
-                    color: '#F5F5F0', textDecoration: 'none',
-                  }}>
-                    Sesión de claridad →
-                  </Link>
                 </div>
 
               </div>
