@@ -138,7 +138,7 @@ export default function Footer() {
                 margin: '0 0 20px 0',
               }}
             >
-              Implementamos IA en empresas. Resultados reales, sin humo.
+              Implementamos IA en empresas. Barcelona.
             </p>
             <div style={{ display: 'flex', gap: '8px' }}>
               {/* LinkedIn */}

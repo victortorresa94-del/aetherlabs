@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     template: "%s | Aether Labs",
   },
   description:
-    "Implementamos IA en empresas. Claude, automatizaciones, agentes, software a medida y formación. Resultados reales, sin humo. Barcelona.",
+    "Implementamos IA en empresas. Claude, automatizaciones, agentes, software a medida y formación. Barcelona.",
   keywords: [
     "implementar IA empresa",
     "agencia inteligencia artificial Barcelona",
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Aether Labs — Implementación de IA para empresas",
     description:
-      "Implementamos IA en empresas. Claude, automatizaciones, agentes, software a medida y formación. Resultados reales, sin humo.",
+      "Implementamos IA en empresas. Claude, automatizaciones, agentes, software a medida y formación.",
     images: [
       {
         url: "/og-image-black.png",
