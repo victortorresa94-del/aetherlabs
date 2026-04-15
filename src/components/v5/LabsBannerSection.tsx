@@ -134,6 +134,19 @@ export default function LabsBannerSection() {
           }}>
             ¿Qué es<br />lo que necesitas?
           </h2>
+
+          <p style={{
+            fontFamily: 'var(--v5-font-body)',
+            fontSize: 'clamp(15px, 1.6vw, 18px)',
+            fontWeight: 300,
+            color: '#555',
+            lineHeight: 1.65,
+            marginTop: '20px',
+            maxWidth: '520px',
+          }}>
+            Estos son nuestros laboratorios. Aquí cogemos la última tecnología de IA
+            y la hacemos funcionar en empresas reales, en procesos reales, con resultados medibles.
+          </p>
         </motion.div>
 
         {/* ── FEATURED LAB ── */}

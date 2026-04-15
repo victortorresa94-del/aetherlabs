@@ -39,7 +39,7 @@ export default function AetherInsideSection() {
             color: 'rgba(255,255,255,0.35)',
           }}
         >
-          SERVICIO PRINCIPAL
+          Y si lo quieres todo...
         </div>
 
         {/* Title */}
