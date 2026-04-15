@@ -37,7 +37,6 @@ const BACKGROUND_IMAGES: Record<string, string> = {
   'aura': '/images/labs/hero-library.png',
 };
 
-// Feature list per experiment: Lucide icon + short phrase
 const FEATURES: Record<string, { Icon: LucideIcon; text: string }[]> = {
   'bamba-stock': [
     { Icon: Camera, text: 'Foto → ficha completa generada por IA en 8 segundos' },
@@ -91,88 +90,160 @@ const FEATURES: Record<string, { Icon: LucideIcon; text: string }[]> = {
   ],
 };
 
+const CATEGORY_LABEL: Record<string, string> = {
+  'bamba-stock': 'App web a medida',
+  'artiverse': 'Sistema de outreach automatizado',
+  'suma-salut': 'Chatbot conversacional con IA',
+  'bramer': 'Software ERP a medida',
+  'bonito-sound': 'Rediseño web + migración',
+  'musikeo': 'Marketplace de músicos',
+  'restaurante-ia': 'Agente WhatsApp Business',
+  'asesoria-inteligente': 'Agente de gestión de expedientes',
+  'cannabis-club': 'Suite de automatización',
+  'aura': 'Marca personal digital',
+};
+
 export default function ExperimentCard({ experiment, index }: ExperimentCardProps) {
-  const containerRef = useRef<HTMLElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
+  const titleRef   = useRef<HTMLDivElement>(null);
 
-  const bgImage = BACKGROUND_IMAGES[experiment.id] ?? '/images/labs/gen-ai-lab.png';
+  const bgImage  = BACKGROUND_IMAGES[experiment.id] ?? '/images/labs/gen-ai-lab.png';
   const features = FEATURES[experiment.id] ?? [];
+  const label    = CATEGORY_LABEL[experiment.id] ?? experiment.name;
 
-  // GSAP entrance + parallax — Awwwards-level scroll reveal
   useEffect(() => {
     (async () => {
-      const { gsap } = await import('gsap');
+      const { gsap }         = await import('gsap');
       const { ScrollTrigger } = await import('gsap/ScrollTrigger');
       gsap.registerPlugin(ScrollTrigger);
-      if (!containerRef.current) return;
-      const el = containerRef.current;
+      const el = sectionRef.current;
+      if (!el) return;
 
-      // 1. Section clip-path wipe: sweeps in from the bottom edge
+      // ── 1. Section wipe-in (clip-path from bottom, scrubbed) ─────────────
       gsap.fromTo(
         el,
-        { clipPath: 'inset(8% 0 0 0 round 0px)', opacity: 0.6 },
+        { clipPath: 'inset(6% 0 0 0 round 0px)', opacity: 0.6 },
         {
           clipPath: 'inset(0% 0 0 0 round 0px)',
           opacity: 1,
           ease: 'power2.out',
           scrollTrigger: {
             trigger: el,
-            start: 'top 90%',
-            end: 'top 30%',
-            scrub: 0.6,
+            start: 'top 92%',
+            end: 'top 12%',
+            scrub: 0.7,
           },
         }
       );
 
-      // 2. Text content: staggered upward reveal
-      const textEls = el.querySelectorAll('.exp-stagger');
-      gsap.fromTo(
-        textEls,
-        { opacity: 0, y: 48 },
-        {
-          opacity: 1,
-          y: 0,
-          stagger: 0.08,
-          duration: 0.9,
-          ease: 'power3.out',
-          scrollTrigger: { trigger: el, start: 'top 78%' },
-        }
-      );
+      // ── 2. Scale-down exit (current section recedes as next enters) ───────
+      gsap.to(el, {
+        scale: 0.94,
+        filter: 'brightness(0.5)',
+        ease: 'none',
+        scrollTrigger: {
+          trigger: el,
+          start: 'bottom 65%',
+          end: 'bottom top',
+          scrub: 1.2,
+        },
+      });
 
-      // 3. Background parallax
+      // ── 3. Word-split title reveal ────────────────────────────────────────
+      const titleEl = titleRef.current;
+      if (titleEl) {
+        const words = label.split(' ');
+        titleEl.innerHTML = words
+          .map(w => `<span class="exp-word-wrap"><span class="exp-word">${w}</span></span>`)
+          .join(' ');
+
+        gsap.fromTo(
+          titleEl.querySelectorAll('.exp-word'),
+          { y: '105%' },
+          {
+            y: '0%',
+            stagger: 0.07,
+            duration: 0.9,
+            ease: 'power3.out',
+            scrollTrigger: { trigger: el, start: 'top 75%' },
+          }
+        );
+      }
+
+      // ── 4. Meta row fade-up ───────────────────────────────────────────────
+      const metaEl = el.querySelector('.exp-meta');
+      if (metaEl) {
+        gsap.fromTo(metaEl,
+          { opacity: 0, y: 20 },
+          {
+            opacity: 1, y: 0, duration: 0.7, ease: 'power3.out',
+            scrollTrigger: { trigger: el, start: 'top 72%' },
+          }
+        );
+      }
+
+      // ── 5. Feature rows stagger (slide from left) ─────────────────────────
+      const featureEls = el.querySelectorAll('.exp-feature-row');
+      if (featureEls.length) {
+        gsap.fromTo(featureEls,
+          { opacity: 0, x: -24 },
+          {
+            opacity: 1, x: 0,
+            stagger: 0.07,
+            duration: 0.65,
+            ease: 'power2.out',
+            scrollTrigger: { trigger: el, start: 'top 65%' },
+          }
+        );
+      }
+
+      // ── 6. Subheadline + CTA fade-up ──────────────────────────────────────
+      const subEls = el.querySelectorAll('.exp-sub, .exp-cta');
+      if (subEls.length) {
+        gsap.fromTo(subEls,
+          { opacity: 0, y: 18 },
+          {
+            opacity: 1, y: 0,
+            stagger: 0.1,
+            duration: 0.7,
+            ease: 'power2.out',
+            scrollTrigger: { trigger: el, start: 'top 68%' },
+          }
+        );
+      }
+
+      // ── 7. Background parallax ────────────────────────────────────────────
       const bgEl = el.querySelector('.exp-bg');
       if (bgEl) {
-        gsap.fromTo(
-          bgEl,
-          { backgroundPositionY: '25%' },
+        gsap.fromTo(bgEl,
+          { backgroundPositionY: '20%' },
           {
-            backgroundPositionY: '75%',
+            backgroundPositionY: '80%',
             ease: 'none',
             scrollTrigger: { trigger: el, scrub: true, start: 'top bottom', end: 'bottom top' },
           }
         );
       }
 
-      // 4. Right visual: subtle float in from right
+      // ── 8. Visual panel: float in from right ──────────────────────────────
       const visualEl = el.querySelector('.exp-card-visual');
       if (visualEl) {
-        gsap.fromTo(
-          visualEl,
-          { opacity: 0, x: 40 },
+        gsap.fromTo(visualEl,
+          { opacity: 0, x: 48, scale: 0.96 },
           {
-            opacity: 1,
-            x: 0,
-            duration: 1,
+            opacity: 1, x: 0, scale: 1,
+            duration: 1.1,
             ease: 'power3.out',
-            scrollTrigger: { trigger: el, start: 'top 75%' },
+            scrollTrigger: { trigger: el, start: 'top 72%' },
           }
         );
       }
     })();
-  }, []);
+  }, [label]);
 
   return (
     <section
-      ref={containerRef}
+      ref={sectionRef}
       id={experiment.id}
       aria-label={experiment.name}
       style={{
@@ -183,6 +254,8 @@ export default function ExperimentCard({ experiment, index }: ExperimentCardProp
         display: 'flex',
         alignItems: 'center',
         padding: '120px 0',
+        transformOrigin: 'center top',
+        willChange: 'transform',
       }}
     >
       {/* Parallax background */}
@@ -194,32 +267,57 @@ export default function ExperimentCard({ experiment, index }: ExperimentCardProp
           backgroundImage: `url('${bgImage}')`,
           backgroundSize: 'cover',
           backgroundPosition: 'center 40%',
-          opacity: 0.45,
-          filter: 'grayscale(0.25) contrast(1.05)',
+          opacity: 0.4,
+          filter: 'grayscale(0.3) contrast(1.05)',
         }}
       />
+
       {/* Left-heavy gradient veil */}
       <div
         aria-hidden
         style={{
           position: 'absolute', inset: 0, zIndex: 1,
-          background: 'linear-gradient(105deg, rgba(5,5,5,0.97) 0%, rgba(5,5,5,0.84) 50%, rgba(5,5,5,0.25) 100%)',
+          background: 'linear-gradient(105deg, rgba(5,5,5,0.97) 0%, rgba(5,5,5,0.82) 52%, rgba(5,5,5,0.2) 100%)',
         }}
       />
 
+      {/* Ghost index number */}
       <div
-        className="v5-container exp-content"
+        aria-hidden
+        style={{
+          position: 'absolute',
+          bottom: '-0.05em',
+          right: '-0.02em',
+          fontFamily: 'var(--v5-font-advercase)',
+          fontSize: 'clamp(180px, 26vw, 380px)',
+          fontWeight: 700,
+          color: 'rgba(255,255,255,0.022)',
+          lineHeight: 1,
+          zIndex: 1,
+          userSelect: 'none',
+          pointerEvents: 'none',
+          letterSpacing: '-0.05em',
+        }}
+      >
+        {experiment.number}
+      </div>
+
+      <div
+        className="v5-container"
         style={{ position: 'relative', zIndex: 2, width: '100%' }}
       >
-        {/* Metadata row */}
-        <div className="exp-stagger" style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '40px', flexWrap: 'wrap' }}>
-          <span style={{ fontFamily: 'var(--v5-font-mono)', fontSize: '11px', color: 'rgba(255,255,255,0.25)', letterSpacing: '0.15em' }}>
+        {/* Meta row */}
+        <div
+          className="exp-meta"
+          style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '40px', flexWrap: 'wrap' }}
+        >
+          <span style={{ fontFamily: 'var(--v5-font-mono)', fontSize: '11px', color: 'rgba(255,255,255,0.22)', letterSpacing: '0.15em' }}>
             {experiment.number}
           </span>
           <div style={{ width: '1px', height: '14px', background: 'rgba(255,255,255,0.1)' }} />
           <StatusBadge status={experiment.status} />
           <div style={{ width: '1px', height: '14px', background: 'rgba(255,255,255,0.1)' }} />
-          <span style={{ fontFamily: 'var(--v5-font-mono)', fontSize: '10px', color: 'rgba(255,255,255,0.22)', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
+          <span style={{ fontFamily: 'var(--v5-font-mono)', fontSize: '10px', color: 'rgba(255,255,255,0.2)', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
             {experiment.sector}
           </span>
         </div>
@@ -228,28 +326,25 @@ export default function ExperimentCard({ experiment, index }: ExperimentCardProp
         <div className="exp-card-grid">
           {/* LEFT: Text */}
           <div className="exp-card-text">
-            <div style={{
-              fontFamily: 'var(--v5-font-advercase)',
-              fontSize: 'clamp(30px, 5vw, 58px)',
-              fontWeight: 700,
-              color: '#FFFFFF',
-              lineHeight: 1.05,
-              marginBottom: '18px',
-              letterSpacing: '-0.01em',
-            }}>
-              {experiment.id === 'bamba-stock' ? 'App web a medida' :
-                experiment.id === 'artiverse' ? 'Sistema de outreach automatizado' :
-                  experiment.id === 'suma-salut' ? 'Chatbot conversacional con IA' :
-                    experiment.id === 'bramer' ? 'Software ERP a medida' :
-                      experiment.id === 'bonito-sound' ? 'Rediseño web + migración' :
-                        experiment.id === 'musikeo' ? 'Marketplace de músicos' :
-                          experiment.id === 'restaurante-ia' ? 'Agente WhatsApp Business' :
-                            experiment.id === 'asesoria-inteligente' ? 'Agente de gestión de expedientes' :
-                              experiment.id === 'cannabis-club' ? 'Suite de automatización' :
-                                experiment.id === 'aura' ? 'Marca personal digital' : experiment.name}
+
+            {/* Word-split title */}
+            <div
+              ref={titleRef}
+              style={{
+                fontFamily: 'var(--v5-font-advercase)',
+                fontSize: 'clamp(30px, 5vw, 58px)',
+                fontWeight: 700,
+                color: '#FFFFFF',
+                lineHeight: 1.05,
+                marginBottom: '18px',
+                letterSpacing: '-0.01em',
+                overflow: 'hidden',
+              }}
+            >
+              {label}
             </div>
 
-            <h2 style={{
+            <h2 className="exp-sub" style={{
               fontFamily: 'var(--v5-font-body)',
               fontSize: 'clamp(16px, 2vw, 20px)',
               fontWeight: 300,
@@ -261,8 +356,7 @@ export default function ExperimentCard({ experiment, index }: ExperimentCardProp
               {experiment.headline}
             </h2>
 
-            {/* Subheadline — orange, small */}
-            <p style={{
+            <p className="exp-sub" style={{
               fontFamily: 'var(--v5-font-body)',
               fontSize: '12.5px',
               fontWeight: 400,
@@ -275,11 +369,12 @@ export default function ExperimentCard({ experiment, index }: ExperimentCardProp
               {experiment.subheadline}
             </p>
 
-            {/* Feature list — Lucide icon + phrase */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0', marginBottom: '40px' }}>
+            {/* Feature list */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 0, marginBottom: '40px' }}>
               {features.map(({ Icon, text }, i) => (
                 <div
                   key={i}
+                  className="exp-feature-row"
                   style={{
                     display: 'flex',
                     alignItems: 'center',
@@ -288,16 +383,12 @@ export default function ExperimentCard({ experiment, index }: ExperimentCardProp
                     borderBottom: '1px solid rgba(255,255,255,0.05)',
                   }}
                 >
-                  <Icon
-                    size={13}
-                    strokeWidth={1.5}
-                    style={{ color: 'rgba(255,255,255,0.35)', flexShrink: 0 }}
-                  />
+                  <Icon size={13} strokeWidth={1.5} style={{ color: 'rgba(255,255,255,0.32)', flexShrink: 0 }} />
                   <span style={{
                     fontFamily: 'var(--v5-font-body)',
                     fontSize: '13px',
                     fontWeight: 300,
-                    color: 'rgba(255,255,255,0.55)',
+                    color: 'rgba(255,255,255,0.52)',
                     lineHeight: 1.4,
                     letterSpacing: '0.01em',
                   }}>
@@ -307,7 +398,9 @@ export default function ExperimentCard({ experiment, index }: ExperimentCardProp
               ))}
             </div>
 
-            <ExperimentCTA href={experiment.ctaHref} />
+            <div className="exp-cta">
+              <ExperimentCTA href={experiment.ctaHref} />
+            </div>
           </div>
 
           {/* RIGHT: Visual */}
@@ -332,6 +425,14 @@ export default function ExperimentCard({ experiment, index }: ExperimentCardProp
       </div>
 
       <style>{`
+        .exp-word-wrap {
+          display: inline-block;
+          overflow: hidden;
+          vertical-align: bottom;
+        }
+        .exp-word {
+          display: inline-block;
+        }
         .exp-card-grid {
           display: grid;
           grid-template-columns: 55% 45%;

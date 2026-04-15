@@ -4,6 +4,7 @@ import ScrollAnimations from '@/components/v5/ScrollAnimations';
 import ExperimentosHero from '@/components/experimentos/ExperimentosHero';
 import ExperimentosNav from '@/components/experimentos/ExperimentosNav';
 import ExperimentCard from '@/components/experimentos/ExperimentCard';
+import ExperimentScrollFX from '@/components/experimentos/ExperimentScrollFX';
 import { experiments } from '@/data/experiments-page';
 
 export default function ExperimentosPage() {
@@ -12,16 +13,22 @@ export default function ExperimentosPage() {
       <ScrollAnimations />
       <Navbar />
       <ExperimentosNav />
+
+      {/* Page-level scroll FX: progress bar, counter, dots, marquee, hero effects */}
+      <ExperimentScrollFX />
+
       <main>
-        {/* Hero with scroll anchor */}
+        {/* Hero */}
         <div id="exp-hero">
           <ExperimentosHero />
         </div>
 
         {/* Experiment sections */}
-        {experiments.map((experiment, index) => (
-          <ExperimentCard key={experiment.id} experiment={experiment} index={index} />
-        ))}
+        <div className="exp-sections-wrapper">
+          {experiments.map((experiment, index) => (
+            <ExperimentCard key={experiment.id} experiment={experiment} index={index} />
+          ))}
+        </div>
 
         {/* Final CTA */}
         <section
@@ -73,15 +80,13 @@ export default function ExperimentosPage() {
                 fontWeight: 600,
                 letterSpacing: '0.08em',
                 padding: '14px 28px',
-                borderRadius: '6px',
                 textDecoration: 'none',
-                marginBottom: '20px',
               }}
             >
               Cuéntanos tu experimento →
             </a>
 
-            <div>
+            <div style={{ marginTop: '20px' }}>
               <span
                 style={{
                   fontFamily: 'var(--v5-font-mono)',
