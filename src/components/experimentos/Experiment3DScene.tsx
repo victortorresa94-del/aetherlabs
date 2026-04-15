@@ -24,25 +24,33 @@ function Lights() {
 }
 
 // ─── 01 Bamba Stock ───────────────────────────────────────────────────────────
-// Cristal de vidrio. Precisión, óptica, escaneo limpio.
+// Cristal de vidrio con rotación visible. Precisión, óptica, escaneo.
 
 function BambaScene() {
+  const ref = useRef<THREE.Mesh>(null);
+
+  useFrame((_, d) => {
+    if (!ref.current) return;
+    ref.current.rotation.y += d * 0.3;
+    ref.current.rotation.x += d * 0.1;
+  });
+
   return (
     <>
       <Lights />
-      <Float speed={1.2} floatIntensity={0.35} rotationIntensity={0.08}>
-        <mesh>
+      <Float speed={1.4} floatIntensity={0.4} rotationIntensity={0}>
+        <mesh ref={ref}>
           <sphereGeometry args={[1.3, 128, 128]} />
           <MeshTransmissionMaterial
             backside
             samples={6}
-            transmission={1}
-            roughness={0}
-            thickness={0.6}
+            transmission={0.92}
+            roughness={0.02}
+            thickness={0.7}
             ior={1.55}
-            chromaticAberration={0.05}
-            distortion={0.12}
-            distortionScale={0.3}
+            chromaticAberration={0.06}
+            distortion={0.15}
+            distortionScale={0.4}
             color={ORANGE}
           />
         </mesh>
@@ -125,8 +133,8 @@ function BramerScene() {
 
   useFrame((_, d) => {
     if (!ref.current) return;
-    ref.current.rotation.y += d * 0.18;
-    ref.current.rotation.x += d * 0.07;
+    ref.current.rotation.y += d * 0.38;
+    ref.current.rotation.x += d * 0.14;
   });
 
   return (
@@ -156,8 +164,9 @@ function BonitoScene() {
 
   useFrame((_, d) => {
     if (!ref.current) return;
-    ref.current.rotation.y += d * 0.12;
-    ref.current.rotation.x += d * 0.04;
+    ref.current.rotation.y += d * 0.32;
+    ref.current.rotation.x += d * 0.12;
+    ref.current.rotation.z += d * 0.06;
   });
 
   return (
@@ -250,8 +259,8 @@ function CannabisScene() {
 
   useFrame((_, d) => {
     if (!ref.current) return;
-    ref.current.rotation.y += d * 0.15;
-    ref.current.rotation.x += d * 0.06;
+    ref.current.rotation.y += d * 0.34;
+    ref.current.rotation.x += d * 0.13;
   });
 
   return (

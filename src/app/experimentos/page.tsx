@@ -7,6 +7,48 @@ import ExperimentCard from '@/components/experimentos/ExperimentCard';
 import ExperimentScrollFX from '@/components/experimentos/ExperimentScrollFX';
 import { experiments } from '@/data/experiments-page';
 
+// Marquee strip rendered in-flow between hero and sections
+function ExperimentMarquee() {
+  return (
+    <div
+      aria-hidden
+      style={{
+        overflow: 'hidden',
+        backgroundColor: '#0A0A0A',
+        borderTop: '1px solid rgba(255,255,255,0.05)',
+        borderBottom: '1px solid rgba(255,255,255,0.05)',
+        padding: '18px 0',
+        userSelect: 'none',
+        pointerEvents: 'none',
+      }}
+    >
+      <div
+        className="exp-marquee-inner"
+        style={{ display: 'flex', whiteSpace: 'nowrap', gap: '72px', willChange: 'transform' }}
+      >
+        {[0, 1, 2].map(rep =>
+          experiments.map(exp => (
+            <span
+              key={`${rep}-${exp.id}`}
+              style={{
+                fontFamily: 'var(--v5-font-advercase)',
+                fontSize: 'clamp(12px, 1.3vw, 16px)',
+                fontWeight: 400,
+                color: 'rgba(255,255,255,0.09)',
+                letterSpacing: '0.1em',
+                textTransform: 'uppercase',
+              }}
+            >
+              {exp.number}&nbsp;{exp.name}
+              <span style={{ margin: '0 72px', color: 'rgba(255,107,53,0.2)' }}>·</span>
+            </span>
+          ))
+        )}
+      </div>
+    </div>
+  );
+}
+
 export default function ExperimentosPage() {
   return (
     <div className="v5-page" style={{ backgroundColor: '#080808' }}>
@@ -22,6 +64,9 @@ export default function ExperimentosPage() {
         <div id="exp-hero">
           <ExperimentosHero />
         </div>
+
+        {/* Marquee strip */}
+        <ExperimentMarquee />
 
         {/* Experiment sections */}
         <div className="exp-sections-wrapper">

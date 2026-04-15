@@ -9,7 +9,7 @@ import {
   Camera, RefreshCw, ShoppingBag, Mail, Bot, BarChart2,
   MessageCircle, Clock, Mic, Image, Bell, Briefcase,
   Globe, PenLine, TrendingUp, Search, Layers, Zap,
-  UserCheck, Link2, Video, FileText, Shield, Target,
+  UserCheck, Link2, FileText, Shield, Target,
   ScanLine, Sparkles, Newspaper,
 } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
@@ -22,19 +22,6 @@ interface ExperimentCardProps {
 const INITIAL_MESSAGES: Record<string, string> = {
   'suma-salut': '¡Hola! Soy el asistente de Suma Salut. Estoy aquí para responder tus dudas sobre horarios, seguros, precios y especialidades. ¿En qué te puedo ayudar?',
   'restaurante-ia': '¡Hola! Bienvenido a La Taberna del Puerto. Puedo ayudarte con reservas, horarios, carta, alérgenos... ¿Qué necesitas?',
-};
-
-const BACKGROUND_IMAGES: Record<string, string> = {
-  'bamba-stock': '/images/labs/software-lab.png',
-  'artiverse': '/images/labs/agents-lab.png',
-  'suma-salut': '/images/labs/hero-office.jpg',
-  'bramer': '/images/labs/hero-watch.jpg',
-  'bonito-sound': '/images/labs/hero-darkroom.jpg',
-  'musikeo': '/images/experimentos/bg-musikeo.png',
-  'restaurante-ia': '/images/experimentos/bg-restaurante-ia.png',
-  'asesoria-inteligente': '/images/experimentos/bg-asesoria-inteligente.png',
-  'cannabis-club': '/images/experimentos/bg-cannabis-club.png',
-  'aura': '/images/labs/hero-library.png',
 };
 
 const FEATURES: Record<string, { Icon: LucideIcon; text: string }[]> = {
@@ -107,139 +94,107 @@ export default function ExperimentCard({ experiment, index }: ExperimentCardProp
   const sectionRef = useRef<HTMLElement>(null);
   const titleRef   = useRef<HTMLDivElement>(null);
 
-  const bgImage  = BACKGROUND_IMAGES[experiment.id] ?? '/images/labs/gen-ai-lab.png';
+  // Alternating dark/light
+  const isDark = index % 2 === 0;
+
+  const bg             = isDark ? '#050505' : '#F5F5F0';
+  const titleColor     = isDark ? '#FFFFFF' : '#111111';
+  const headlineColor  = isDark ? 'rgba(245,240,232,0.82)' : 'rgba(0,0,0,0.72)';
+  const featureText    = isDark ? 'rgba(255,255,255,0.50)' : 'rgba(0,0,0,0.55)';
+  const featureIcon    = isDark ? 'rgba(255,255,255,0.28)' : 'rgba(0,0,0,0.28)';
+  const featureBorder  = isDark ? 'rgba(255,255,255,0.06)' : 'rgba(0,0,0,0.08)';
+  const metaColor      = isDark ? 'rgba(255,255,255,0.22)' : 'rgba(0,0,0,0.38)';
+  const dividerColor   = isDark ? 'rgba(255,255,255,0.08)' : 'rgba(0,0,0,0.1)';
+  const ghostNumColor  = isDark ? 'rgba(255,255,255,0.022)' : 'rgba(0,0,0,0.04)';
+
   const features = FEATURES[experiment.id] ?? [];
   const label    = CATEGORY_LABEL[experiment.id] ?? experiment.name;
 
   useEffect(() => {
     (async () => {
-      const { gsap }         = await import('gsap');
+      const { gsap }          = await import('gsap');
       const { ScrollTrigger } = await import('gsap/ScrollTrigger');
       gsap.registerPlugin(ScrollTrigger);
       const el = sectionRef.current;
       if (!el) return;
 
-      // ── 1. Section wipe-in (clip-path from bottom, scrubbed) ─────────────
-      gsap.fromTo(
-        el,
-        { clipPath: 'inset(6% 0 0 0 round 0px)', opacity: 0.6 },
+      // 1. Section wipe-in
+      gsap.fromTo(el,
+        { clipPath: 'inset(6% 0 0 0 round 0px)', opacity: 0.65 },
         {
           clipPath: 'inset(0% 0 0 0 round 0px)',
           opacity: 1,
           ease: 'power2.out',
-          scrollTrigger: {
-            trigger: el,
-            start: 'top 92%',
-            end: 'top 12%',
-            scrub: 0.7,
-          },
+          scrollTrigger: { trigger: el, start: 'top 92%', end: 'top 12%', scrub: 0.7 },
         }
       );
 
-      // ── 2. Scale-down exit (current section recedes as next enters) ───────
+      // 2. Scale-down exit
       gsap.to(el, {
         scale: 0.94,
-        filter: 'brightness(0.5)',
+        filter: isDark ? 'brightness(0.45)' : 'brightness(0.85)',
         ease: 'none',
-        scrollTrigger: {
-          trigger: el,
-          start: 'bottom 65%',
-          end: 'bottom top',
-          scrub: 1.2,
-        },
+        scrollTrigger: { trigger: el, start: 'bottom 65%', end: 'bottom top', scrub: 1.2 },
       });
 
-      // ── 3. Word-split title reveal ────────────────────────────────────────
+      // 3. Word-split title
       const titleEl = titleRef.current;
       if (titleEl) {
         const words = label.split(' ');
         titleEl.innerHTML = words
           .map(w => `<span class="exp-word-wrap"><span class="exp-word">${w}</span></span>`)
           .join(' ');
-
-        gsap.fromTo(
-          titleEl.querySelectorAll('.exp-word'),
+        gsap.fromTo(titleEl.querySelectorAll('.exp-word'),
           { y: '105%' },
           {
-            y: '0%',
-            stagger: 0.07,
-            duration: 0.9,
-            ease: 'power3.out',
+            y: '0%', stagger: 0.07, duration: 0.9, ease: 'power3.out',
             scrollTrigger: { trigger: el, start: 'top 75%' },
           }
         );
       }
 
-      // ── 4. Meta row fade-up ───────────────────────────────────────────────
+      // 4. Meta row
       const metaEl = el.querySelector('.exp-meta');
       if (metaEl) {
-        gsap.fromTo(metaEl,
-          { opacity: 0, y: 20 },
-          {
-            opacity: 1, y: 0, duration: 0.7, ease: 'power3.out',
-            scrollTrigger: { trigger: el, start: 'top 72%' },
-          }
+        gsap.fromTo(metaEl, { opacity: 0, y: 20 },
+          { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out', scrollTrigger: { trigger: el, start: 'top 72%' } }
         );
       }
 
-      // ── 5. Feature rows stagger (slide from left) ─────────────────────────
+      // 5. Feature rows from left
       const featureEls = el.querySelectorAll('.exp-feature-row');
       if (featureEls.length) {
-        gsap.fromTo(featureEls,
-          { opacity: 0, x: -24 },
+        gsap.fromTo(featureEls, { opacity: 0, x: -24 },
           {
-            opacity: 1, x: 0,
-            stagger: 0.07,
-            duration: 0.65,
-            ease: 'power2.out',
+            opacity: 1, x: 0, stagger: 0.07, duration: 0.65, ease: 'power2.out',
             scrollTrigger: { trigger: el, start: 'top 65%' },
           }
         );
       }
 
-      // ── 6. Subheadline + CTA fade-up ──────────────────────────────────────
+      // 6. Subheadline + CTA
       const subEls = el.querySelectorAll('.exp-sub, .exp-cta');
       if (subEls.length) {
-        gsap.fromTo(subEls,
-          { opacity: 0, y: 18 },
+        gsap.fromTo(subEls, { opacity: 0, y: 18 },
           {
-            opacity: 1, y: 0,
-            stagger: 0.1,
-            duration: 0.7,
-            ease: 'power2.out',
+            opacity: 1, y: 0, stagger: 0.1, duration: 0.7, ease: 'power2.out',
             scrollTrigger: { trigger: el, start: 'top 68%' },
           }
         );
       }
 
-      // ── 7. Background parallax ────────────────────────────────────────────
-      const bgEl = el.querySelector('.exp-bg');
-      if (bgEl) {
-        gsap.fromTo(bgEl,
-          { backgroundPositionY: '20%' },
-          {
-            backgroundPositionY: '80%',
-            ease: 'none',
-            scrollTrigger: { trigger: el, scrub: true, start: 'top bottom', end: 'bottom top' },
-          }
-        );
-      }
-
-      // ── 8. Visual panel: float in from right ──────────────────────────────
+      // 7. Visual float in
       const visualEl = el.querySelector('.exp-card-visual');
       if (visualEl) {
-        gsap.fromTo(visualEl,
-          { opacity: 0, x: 48, scale: 0.96 },
+        gsap.fromTo(visualEl, { opacity: 0, x: 48, scale: 0.96 },
           {
-            opacity: 1, x: 0, scale: 1,
-            duration: 1.1,
-            ease: 'power3.out',
+            opacity: 1, x: 0, scale: 1, duration: 1.1, ease: 'power3.out',
             scrollTrigger: { trigger: el, start: 'top 72%' },
           }
         );
       }
     })();
-  }, [label]);
+  }, [label, isDark]);
 
   return (
     <section
@@ -248,7 +203,7 @@ export default function ExperimentCard({ experiment, index }: ExperimentCardProp
       aria-label={experiment.name}
       style={{
         position: 'relative',
-        backgroundColor: '#050505',
+        backgroundColor: bg,
         overflow: 'hidden',
         minHeight: '100vh',
         display: 'flex',
@@ -258,29 +213,6 @@ export default function ExperimentCard({ experiment, index }: ExperimentCardProp
         willChange: 'transform',
       }}
     >
-      {/* Parallax background */}
-      <div
-        className="exp-bg"
-        aria-hidden
-        style={{
-          position: 'absolute', inset: 0, zIndex: 0,
-          backgroundImage: `url('${bgImage}')`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center 40%',
-          opacity: 0.4,
-          filter: 'grayscale(0.3) contrast(1.05)',
-        }}
-      />
-
-      {/* Left-heavy gradient veil */}
-      <div
-        aria-hidden
-        style={{
-          position: 'absolute', inset: 0, zIndex: 1,
-          background: 'linear-gradient(105deg, rgba(5,5,5,0.97) 0%, rgba(5,5,5,0.82) 52%, rgba(5,5,5,0.2) 100%)',
-        }}
-      />
-
       {/* Ghost index number */}
       <div
         aria-hidden
@@ -291,9 +223,9 @@ export default function ExperimentCard({ experiment, index }: ExperimentCardProp
           fontFamily: 'var(--v5-font-advercase)',
           fontSize: 'clamp(180px, 26vw, 380px)',
           fontWeight: 700,
-          color: 'rgba(255,255,255,0.022)',
+          color: ghostNumColor,
           lineHeight: 1,
-          zIndex: 1,
+          zIndex: 0,
           userSelect: 'none',
           pointerEvents: 'none',
           letterSpacing: '-0.05em',
@@ -302,31 +234,27 @@ export default function ExperimentCard({ experiment, index }: ExperimentCardProp
         {experiment.number}
       </div>
 
-      <div
-        className="v5-container"
-        style={{ position: 'relative', zIndex: 2, width: '100%' }}
-      >
+      <div className="v5-container" style={{ position: 'relative', zIndex: 1, width: '100%' }}>
         {/* Meta row */}
         <div
           className="exp-meta"
           style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '40px', flexWrap: 'wrap' }}
         >
-          <span style={{ fontFamily: 'var(--v5-font-mono)', fontSize: '11px', color: 'rgba(255,255,255,0.22)', letterSpacing: '0.15em' }}>
+          <span style={{ fontFamily: 'var(--v5-font-mono)', fontSize: '11px', color: metaColor, letterSpacing: '0.15em' }}>
             {experiment.number}
           </span>
-          <div style={{ width: '1px', height: '14px', background: 'rgba(255,255,255,0.1)' }} />
+          <div style={{ width: '1px', height: '14px', background: dividerColor }} />
           <StatusBadge status={experiment.status} />
-          <div style={{ width: '1px', height: '14px', background: 'rgba(255,255,255,0.1)' }} />
-          <span style={{ fontFamily: 'var(--v5-font-mono)', fontSize: '10px', color: 'rgba(255,255,255,0.2)', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
+          <div style={{ width: '1px', height: '14px', background: dividerColor }} />
+          <span style={{ fontFamily: 'var(--v5-font-mono)', fontSize: '10px', color: metaColor, letterSpacing: '0.08em', textTransform: 'uppercase' }}>
             {experiment.sector}
           </span>
         </div>
 
         {/* Two-column grid */}
         <div className="exp-card-grid">
-          {/* LEFT: Text */}
+          {/* LEFT */}
           <div className="exp-card-text">
-
             {/* Word-split title */}
             <div
               ref={titleRef}
@@ -334,7 +262,7 @@ export default function ExperimentCard({ experiment, index }: ExperimentCardProp
                 fontFamily: 'var(--v5-font-advercase)',
                 fontSize: 'clamp(30px, 5vw, 58px)',
                 fontWeight: 700,
-                color: '#FFFFFF',
+                color: titleColor,
                 lineHeight: 1.05,
                 marginBottom: '18px',
                 letterSpacing: '-0.01em',
@@ -348,7 +276,7 @@ export default function ExperimentCard({ experiment, index }: ExperimentCardProp
               fontFamily: 'var(--v5-font-body)',
               fontSize: 'clamp(16px, 2vw, 20px)',
               fontWeight: 300,
-              color: 'rgba(245,240,232,0.8)',
+              color: headlineColor,
               lineHeight: 1.5,
               marginBottom: '12px',
               maxWidth: '560px',
@@ -380,15 +308,15 @@ export default function ExperimentCard({ experiment, index }: ExperimentCardProp
                     alignItems: 'center',
                     gap: '12px',
                     padding: '11px 0',
-                    borderBottom: '1px solid rgba(255,255,255,0.05)',
+                    borderBottom: `1px solid ${featureBorder}`,
                   }}
                 >
-                  <Icon size={13} strokeWidth={1.5} style={{ color: 'rgba(255,255,255,0.32)', flexShrink: 0 }} />
+                  <Icon size={13} strokeWidth={1.5} style={{ color: featureIcon, flexShrink: 0 }} />
                   <span style={{
                     fontFamily: 'var(--v5-font-body)',
                     fontSize: '13px',
                     fontWeight: 300,
-                    color: 'rgba(255,255,255,0.52)',
+                    color: featureText,
                     lineHeight: 1.4,
                     letterSpacing: '0.01em',
                   }}>
@@ -399,7 +327,7 @@ export default function ExperimentCard({ experiment, index }: ExperimentCardProp
             </div>
 
             <div className="exp-cta">
-              <ExperimentCTA href={experiment.ctaHref} />
+              <ExperimentCTA href={experiment.ctaHref} isDark={isDark} />
             </div>
           </div>
 
@@ -430,9 +358,7 @@ export default function ExperimentCard({ experiment, index }: ExperimentCardProp
           overflow: hidden;
           vertical-align: bottom;
         }
-        .exp-word {
-          display: inline-block;
-        }
+        .exp-word { display: inline-block; }
         .exp-card-grid {
           display: grid;
           grid-template-columns: 55% 45%;
@@ -452,8 +378,15 @@ export default function ExperimentCard({ experiment, index }: ExperimentCardProp
 }
 
 // ─── CTA ──────────────────────────────────────────────────────────────────────
-function ExperimentCTA({ href }: { href: string }) {
+function ExperimentCTA({ href, isDark }: { href: string; isDark: boolean }) {
   const [hovered, setHovered] = useState(false);
+
+  const borderNormal  = isDark ? 'rgba(255,255,255,0.16)' : 'rgba(0,0,0,0.18)';
+  const borderHovered = isDark ? 'rgba(255,255,255,0.55)' : 'rgba(0,0,0,0.6)';
+  const bgHovered     = isDark ? '#F5F5F0' : '#111111';
+  const colorNormal   = isDark ? '#F5F5F0' : '#111111';
+  const colorHovered  = isDark ? '#080808' : '#F5F5F0';
+
   return (
     <a
       href={href}
@@ -464,9 +397,9 @@ function ExperimentCTA({ href }: { href: string }) {
         alignItems: 'center',
         gap: '8px',
         padding: '10px 20px',
-        border: `1px solid ${hovered ? 'rgba(255,255,255,0.55)' : 'rgba(255,255,255,0.16)'}`,
-        backgroundColor: hovered ? '#F5F5F0' : 'transparent',
-        color: hovered ? '#080808' : '#F5F5F0',
+        border: `1px solid ${hovered ? borderHovered : borderNormal}`,
+        backgroundColor: hovered ? bgHovered : 'transparent',
+        color: hovered ? colorHovered : colorNormal,
         fontFamily: 'var(--v5-font-body)',
         fontSize: '13px',
         fontWeight: 400,

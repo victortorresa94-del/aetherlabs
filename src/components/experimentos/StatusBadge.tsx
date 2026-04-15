@@ -1,10 +1,10 @@
 import type { ExperimentStatus } from '@/data/experiments-page';
 
 const STATUS_CONFIG: Record<ExperimentStatus, { label: string; color: string }> = {
-  live:        { label: 'Live',        color: '#10B981' },
-  deployed:    { label: 'Deployed',    color: '#2563EB' },
-  development: { label: 'En desarrollo', color: '#F59E0B' },
-  concept:     { label: 'Concepto',    color: '#888888' },
+  live:        { label: 'Live',           color: '#FF6B35' },
+  deployed:    { label: 'Deployed',       color: '#D97706' },
+  development: { label: 'En desarrollo',  color: '#F59E0B' },
+  concept:     { label: 'Concepto',       color: '#888888' },
 };
 
 export default function StatusBadge({ status }: { status: ExperimentStatus }) {

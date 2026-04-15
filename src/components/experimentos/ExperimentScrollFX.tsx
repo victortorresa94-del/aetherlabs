@@ -16,7 +16,7 @@ export default function ExperimentScrollFX() {
   const [mounted,  setMounted]  = useState(false);
   const [progress, setProgress] = useState(0);          // 0-1, total scroll through all experiments
   const [activeIdx, setActiveIdx] = useState(-1);       // -1 = hero, 0-9 = experiment index
-  const marqueeSectionRef = useRef<HTMLDivElement>(null);
+  // marqueeSectionRef removed — marquee lives in page.tsx between hero and sections
 
   useEffect(() => { setMounted(true); }, []);
 
@@ -245,50 +245,6 @@ export default function ExperimentScrollFX() {
         ))}
       </nav>
 
-      {/* ── Horizontal marquee strip ──────────────────────────────────────── */}
-      <div
-        ref={marqueeSectionRef}
-        aria-hidden
-        style={{
-          overflow: 'hidden',
-          backgroundColor: '#050505',
-          borderTop: '1px solid rgba(255,255,255,0.05)',
-          borderBottom: '1px solid rgba(255,255,255,0.05)',
-          padding: '20px 0',
-          userSelect: 'none',
-          pointerEvents: 'none',
-        }}
-      >
-        <div
-          className="exp-marquee-inner"
-          style={{
-            display: 'flex',
-            whiteSpace: 'nowrap',
-            gap: '80px',
-            willChange: 'transform',
-          }}
-        >
-          {/* Three repetitions for seamless scroll */}
-          {[0, 1, 2].map(rep =>
-            experiments.map(exp => (
-              <span
-                key={`${rep}-${exp.id}`}
-                style={{
-                  fontFamily: 'var(--v5-font-advercase)',
-                  fontSize: 'clamp(13px, 1.4vw, 17px)',
-                  fontWeight: 400,
-                  color: 'rgba(255,255,255,0.1)',
-                  letterSpacing: '0.08em',
-                  textTransform: 'uppercase',
-                }}
-              >
-                {exp.number} {exp.name}
-                <span style={{ marginLeft: '80px', color: 'rgba(255,107,53,0.25)' }}>·</span>
-              </span>
-            ))
-          )}
-        </div>
-      </div>
     </>
   );
 }
