@@ -3,7 +3,7 @@
 import { Suspense, useRef, useState, useEffect, useCallback } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import {
-  Float, Environment,
+  Float, Environment, RoundedBox,
   MeshDistortMaterial, MeshTransmissionMaterial,
 } from '@react-three/drei';
 import * as THREE from 'three';
@@ -24,36 +24,46 @@ function Lights() {
 }
 
 // ─── 01 Bamba Stock ───────────────────────────────────────────────────────────
-// Cristal de vidrio con rotación visible. Precisión, óptica, escaneo.
+// Phone mockup — polished metal. App web / móvil a medida.
 
 function BambaScene() {
-  const ref = useRef<THREE.Mesh>(null);
+  const groupRef = useRef<THREE.Group>(null);
 
-  useFrame((_, d) => {
-    if (!ref.current) return;
-    ref.current.rotation.y += d * 0.3;
-    ref.current.rotation.x += d * 0.1;
+  useFrame((s) => {
+    if (!groupRef.current) return;
+    groupRef.current.rotation.y = Math.sin(s.clock.elapsedTime * 0.45) * 0.55;
+    groupRef.current.rotation.x = Math.sin(s.clock.elapsedTime * 0.28) * 0.09;
   });
 
   return (
     <>
       <Lights />
-      <Float speed={1.4} floatIntensity={0.4} rotationIntensity={0}>
-        <mesh ref={ref}>
-          <sphereGeometry args={[1.3, 128, 128]} />
-          <MeshTransmissionMaterial
-            backside
-            samples={6}
-            transmission={0.92}
-            roughness={0.02}
-            thickness={0.7}
-            ior={1.55}
-            chromaticAberration={0.06}
-            distortion={0.15}
-            distortionScale={0.4}
-            color={ORANGE}
-          />
-        </mesh>
+      <Float speed={1.2} floatIntensity={0.35} rotationIntensity={0}>
+        <group ref={groupRef}>
+          {/* Phone body */}
+          <RoundedBox args={[1.35, 2.7, 0.18]} radius={0.14} smoothness={8}>
+            <meshPhysicalMaterial
+              color={ORANGE}
+              metalness={0.92}
+              roughness={0.04}
+              clearcoat={1}
+              clearcoatRoughness={0.01}
+            />
+          </RoundedBox>
+          {/* Screen (dark glass) */}
+          <RoundedBox args={[1.02, 2.22, 0.02]} radius={0.09} smoothness={6} position={[0, 0.06, 0.1]}>
+            <meshPhysicalMaterial color="#080808" roughness={0.08} metalness={0.15} />
+          </RoundedBox>
+          {/* Front camera dot */}
+          <mesh position={[0, 1.2, 0.11]}>
+            <circleGeometry args={[0.055, 20]} />
+            <meshStandardMaterial color="#1a1a1a" />
+          </mesh>
+          {/* Home indicator */}
+          <RoundedBox args={[0.38, 0.045, 0.01]} radius={0.02} smoothness={4} position={[0, -1.15, 0.11]}>
+            <meshStandardMaterial color="#2a2a2a" />
+          </RoundedBox>
+        </group>
       </Float>
       <Environment preset="studio" />
     </>
@@ -215,37 +225,53 @@ function MusiceoScene() {
 }
 
 // ─── 08 Asesoría Inteligente ──────────────────────────────────────────────────
-// Esfera de vidrio + anillo fino. Disponibilidad orbital, precisión.
+// Expedientes apilados — documentos de vidrio. Gestión, CRM, expedientes.
 
 function AsesoriaScene() {
-  const ringRef = useRef<THREE.Mesh>(null);
+  const groupRef = useRef<THREE.Group>(null);
 
-  useFrame((_, d) => {
-    if (ringRef.current) ringRef.current.rotation.z += d * 0.55;
+  useFrame((s) => {
+    if (!groupRef.current) return;
+    groupRef.current.rotation.y = Math.sin(s.clock.elapsedTime * 0.38) * 0.3;
   });
+
+  const lineOffsets = [0.72, 0.44, 0.16, -0.12, -0.40, -0.68];
 
   return (
     <>
       <Lights />
-      <Float speed={1.0} floatIntensity={0.3} rotationIntensity={0.1}>
-        <mesh>
-          <sphereGeometry args={[1.1, 128, 128]} />
-          <MeshTransmissionMaterial
-            backside
-            samples={6}
-            transmission={1}
-            roughness={0}
-            thickness={0.55}
-            ior={1.5}
-            chromaticAberration={0.04}
-            color={ORANGE}
-          />
-        </mesh>
+      <Float speed={1.1} floatIntensity={0.38} rotationIntensity={0}>
+        <group ref={groupRef}>
+          {/* Back doc — solid, translucent */}
+          <RoundedBox args={[1.65, 2.15, 0.06]} radius={0.06} smoothness={4} position={[0.22, -0.14, -0.28]} rotation={[0, -0.28, 0.07]}>
+            <meshPhysicalMaterial color={ORANGE} metalness={0.05} roughness={0.45} transparent opacity={0.45} />
+          </RoundedBox>
+          {/* Mid doc */}
+          <RoundedBox args={[1.65, 2.15, 0.06]} radius={0.06} smoothness={4} position={[0.1, -0.06, -0.13]} rotation={[0, -0.13, 0.035]}>
+            <meshPhysicalMaterial color={ORANGE} metalness={0.08} roughness={0.3} transparent opacity={0.68} />
+          </RoundedBox>
+          {/* Front doc — glass */}
+          <RoundedBox args={[1.65, 2.15, 0.06]} radius={0.06} smoothness={6}>
+            <MeshTransmissionMaterial
+              backside
+              samples={4}
+              transmission={0.88}
+              roughness={0.02}
+              thickness={0.1}
+              ior={1.45}
+              chromaticAberration={0.025}
+              color={ORANGE}
+            />
+          </RoundedBox>
+          {/* Text lines on front doc */}
+          {lineOffsets.map((y, i) => (
+            <mesh key={i} position={[i % 3 === 0 ? -0.1 : 0, y, 0.07]}>
+              <boxGeometry args={[i % 2 === 0 ? 1.1 : 0.65, 0.042, 0.005]} />
+              <meshBasicMaterial color={ORANGE} transparent opacity={0.22} />
+            </mesh>
+          ))}
+        </group>
       </Float>
-      <mesh ref={ringRef} rotation={[1.1, 0, 0]}>
-        <torusGeometry args={[1.78, 0.022, 12, 200]} />
-        <meshBasicMaterial color={ORANGE} transparent opacity={0.5} />
-      </mesh>
       <Environment preset="studio" />
     </>
   );

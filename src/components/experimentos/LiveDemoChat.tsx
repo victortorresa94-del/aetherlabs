@@ -27,8 +27,14 @@ export default function LiveDemoChat({
   const [isFallback, setIsFallback] = useState(false);
   const bottomRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const isFirstRender = useRef(true);
 
   useEffect(() => {
+    // Don't scrollIntoView on initial mount — only when new messages arrive
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
     bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages, loading]);
 

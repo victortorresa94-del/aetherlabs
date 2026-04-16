@@ -29,34 +29,35 @@ export default function ExperimentScrollFX() {
       const { ScrollTrigger } = await import('gsap/ScrollTrigger');
       gsap.registerPlugin(ScrollTrigger);
 
-      // ── Hero: letter-spacing expands + blur + opacity on scroll out ───────
+      // ── Hero: letters drift apart on scroll out (no opacity — always visible) ─
       const heroLetters = document.querySelectorAll('.exp-hero-letter');
       if (heroLetters.length) {
-        gsap.to(heroLetters, {
-          letterSpacing: '0.25em',
-          opacity: 0,
-          filter: 'blur(6px)',
-          ease: 'power1.in',
-          stagger: 0.015,
-          scrollTrigger: {
-            trigger: '#exp-hero',
-            start: 'top top',
-            end: 'bottom top',
-            scrub: 0.8,
-          },
-        });
+        gsap.fromTo(heroLetters,
+          { letterSpacing: '-0.02em' },
+          {
+            letterSpacing: '0.28em',
+            ease: 'none',
+            stagger: { each: 0.012, from: 'center' },
+            scrollTrigger: {
+              trigger: '#exp-hero',
+              start: 'top top',
+              end: 'bottom top',
+              scrub: 1,
+            },
+          }
+        );
       }
 
-      // ── Hero subtitle: parallax up ─────────────────────────────────────────
+      // ── Hero subtitle: slides up gently ────────────────────────────────────
       const heroSub = document.querySelector('.exp-hero-sub');
       if (heroSub) {
         gsap.to(heroSub, {
-          y: -60,
-          opacity: 0,
-          ease: 'power1.in',
+          y: -50,
+          opacity: 0.15,
+          ease: 'none',
           scrollTrigger: {
             trigger: '#exp-hero',
-            start: 'center top',
+            start: 'top top',
             end: 'bottom top',
             scrub: 1,
           },
