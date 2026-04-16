@@ -276,15 +276,14 @@ function BonitoScene() {
     <>
       <Lights />
       <mesh ref={ref}>
-        <torusKnotGeometry args={[0.9, 0.32, 200, 32]} />
+        <torusKnotGeometry args={[0.9, 0.32, 120, 24]} />
         <MeshTransmissionMaterial
-          backside
-          samples={6}
+          samples={3}
           transmission={1}
           roughness={0}
           thickness={0.5}
           ior={1.5}
-          chromaticAberration={0.06}
+          chromaticAberration={0.05}
           color={ORANGE}
         />
       </mesh>
@@ -458,13 +457,12 @@ function BriefcaseScene() {
           {/* Glass front panel */}
           <RoundedBox args={[1.85, 1.2, 0.04]} radius={0.07} smoothness={6} position={[0, 0, 0.32]}>
             <MeshTransmissionMaterial
-              backside={false}
-              samples={4}
+              samples={2}
               transmission={0.7}
               roughness={0.02}
               thickness={0.06}
               ior={1.45}
-              chromaticAberration={0.02}
+              chromaticAberration={0.018}
               color={ORANGE}
             />
           </RoundedBox>
@@ -510,13 +508,12 @@ function IDCardScene() {
           {/* Glass overlay */}
           <RoundedBox args={[2.55, 1.62, 0.04]} radius={0.1} smoothness={8} position={[0, 0, 0.08]}>
             <MeshTransmissionMaterial
-              backside={false}
-              samples={4}
+              samples={2}
               transmission={0.75}
               roughness={0.02}
               thickness={0.05}
               ior={1.45}
-              chromaticAberration={0.015}
+              chromaticAberration={0.012}
               color={ORANGE}
             />
           </RoundedBox>

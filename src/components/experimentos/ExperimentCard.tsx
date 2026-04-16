@@ -201,6 +201,7 @@ export default function ExperimentCard({ experiment, index }: ExperimentCardProp
       ref={sectionRef}
       id={experiment.id}
       aria-label={experiment.name}
+      className="exp-card-section"
       style={{
         position: 'relative',
         backgroundColor: bg,
@@ -366,11 +367,23 @@ export default function ExperimentCard({ experiment, index }: ExperimentCardProp
           align-items: center;
         }
         @media (max-width: 1024px) {
-          .exp-card-grid { grid-template-columns: 1fr; gap: 36px; }
+          .exp-card-grid { grid-template-columns: 1fr; gap: 28px; }
           .exp-card-visual { order: -1; }
         }
         @media (max-width: 768px) {
-          .exp-card-visual { max-height: 260px; }
+          .exp-card-section {
+            padding: 72px 0 60px !important;
+            min-height: auto !important;
+            min-height: 100svh !important;
+          }
+          .exp-card-visual { max-height: 280px; }
+          .exp-card-grid { gap: 20px; }
+        }
+        @media (max-width: 480px) {
+          .exp-card-section {
+            padding: 56px 0 48px !important;
+          }
+          .exp-card-visual { max-height: 240px; }
         }
       `}</style>
     </section>

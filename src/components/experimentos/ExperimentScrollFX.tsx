@@ -131,6 +131,13 @@ export default function ExperimentScrollFX() {
 
   return (
     <>
+      <style>{`
+        @media (max-width: 768px) {
+          .exp-scroll-counter { display: none !important; }
+          .exp-scroll-dots    { display: none !important; }
+        }
+      `}</style>
+
       {/* ── Fixed progress bar (right edge) ──────────────────────────────── */}
       <div
         aria-hidden
@@ -159,9 +166,10 @@ export default function ExperimentScrollFX() {
         />
       </div>
 
-      {/* ── Fixed experiment counter (bottom-left) ────────────────────────── */}
+      {/* ── Fixed experiment counter (bottom-left) — desktop only ─────────── */}
       <div
         aria-hidden
+        className="exp-scroll-counter"
         style={{
           position: 'fixed',
           left: '28px',
@@ -209,9 +217,10 @@ export default function ExperimentScrollFX() {
         </div>
       </div>
 
-      {/* ── Dot navigation (right, centered vertically) ───────────────────── */}
+      {/* ── Dot navigation — desktop only (≥769px) ───────────────────────── */}
       <nav
         aria-label="Progreso de experimentos"
+        className="exp-scroll-dots"
         style={{
           position: 'fixed',
           right: '20px',
