@@ -12,6 +12,7 @@ const SCENE_IMAGES: Record<string, string> = {
   'bamba-stock':          '/3D/3.jpeg',
   'artiverse':            '/3D/a-photorealistic-3d-render-of-a-vintage-_OF3bLKVCQ4KD5nu2IdUsqQ_6Kqc9bqmTWS93hXl6p3bxg.jpeg',
   'suma-salut':           '/3D/a-photorealistic-3d-render-of-a-vintage-_OqeWYbShQkuDurIimNbztA_S5kSc6lsRoGYa4xdsWEOSA_sd.jpeg',
+  'bramer':               '/3D/a-photorealistic-3d-render-of-a-vintage-_oCBFrMh1TKeItv7e9K1nqA_rKf0luboQuinoLFYZv4y8g.jpeg',
   'musikeo':              '/3D/a-photorealistic-3d-render-of-a-vintage-_2xc5DGkVRIms8aIWGa_lCA_6Kqc9bqmTWS93hXl6p3bxg.jpeg',
   'restaurante-ia':       '/3D/1.jpeg',
   'asesoria-inteligente': '/3D/a-photorealistic-3d-render-of-a-vintage-_n7Asepv6SCOo7Nt22-oVRg_rKf0luboQuinoLFYZv4y8g.jpeg',
@@ -120,26 +121,6 @@ export default function Experiment3DScene({ id }: Props) {
     observer.observe(el);
     return () => observer.disconnect();
   }, [mounted]);
-
-  // Bramer — Sketchfab embed interactivo
-  if (id === 'bramer') {
-    return (
-      <div
-        ref={containerRef}
-        style={{ width: '100%', aspectRatio: '1/1', maxHeight: 440, borderRadius: '8px', overflow: 'hidden' }}
-      >
-        {mounted && inView && (
-          <iframe
-            title="Retro Office Supplies"
-            src="https://sketchfab.com/models/a99c8989c7c147ee8ca9c7f4a552e9f5/embed?autostart=1&autospin=0.3&ui_theme=dark&transparent=1&ui_infos=0&ui_controls=0&ui_inspector=0&ui_watermark=0&ui_watermark_link=0&ui_ar=0&ui_help=0&ui_settings=0&ui_annotations=0&ui_stop=0&camera=0&preload=1"
-            style={{ width: '100%', height: '100%', border: 'none' }}
-            allow="autoplay; fullscreen; xr-spatial-tracking"
-            allowFullScreen
-          />
-        )}
-      </div>
-    );
-  }
 
   // Bonito Sound — glass torus knot R3F
   if (id === 'bonito-sound') {
