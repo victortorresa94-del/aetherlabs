@@ -52,58 +52,6 @@ export default function Footer() {
 
       <div className="v5-container">
 
-        {/* CTA row */}
-        <div
-          className="footer-cta-row"
-          style={{
-            borderBottom: '1px solid rgba(255,255,255,0.06)',
-            paddingBottom: '60px',
-            marginBottom: '60px',
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            gap: '32px',
-          }}
-        >
-          <h2
-            style={{
-              fontFamily: "var(--v5-font-advercase, 'Playfair Display', Georgia, serif)",
-              fontSize: 'clamp(28px, 3vw, 40px)',
-              fontWeight: 400,
-              color: 'rgba(255,255,255,0.85)',
-              letterSpacing: '-0.02em',
-              lineHeight: 1.15,
-              margin: 0,
-              maxWidth: '560px',
-            }}
-          >
-            ¿Listo para implementar IA en tu empresa?
-          </h2>
-          <Link
-            href="/systems-lab/sesion-de-claridad"
-            className="footer-cta-btn"
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '8px',
-              padding: '14px 28px',
-              background: '#F5F5F0',
-              color: '#080808',
-              fontFamily: 'var(--v5-font-body)',
-              fontSize: '14px',
-              fontWeight: 400,
-              textDecoration: 'none',
-              borderRadius: '0px',
-              flexShrink: 0,
-              transition: 'background 200ms ease',
-            }}
-            onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = '#E8E8E3'; }}
-            onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = '#F5F5F0'; }}
-          >
-            Auditoría gratuita →
-          </Link>
-        </div>
-
         {/* 3-column grid */}
         <div
           className="footer-grid"

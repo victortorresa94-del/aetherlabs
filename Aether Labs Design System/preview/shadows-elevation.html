@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400&family=DM+Sans:opsz,wght@9..40,300&display=swap" rel="stylesheet">
+<style>
+  body { margin:0; background:#F0F0EC; padding:24px; display:flex; gap:20px; align-items:flex-start; }
+  .lbl { font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:0.12em; text-transform:uppercase; color:#aaa; margin-top:8px; text-align:center; }
+</style>
+</head>
+<body>
+<div>
+  <div style="background:#fff;border:1px solid #E8E8E5;border-radius:12px;padding:20px;width:140px;box-shadow:none;">
+    <div style="font-family:'DM Sans',sans-serif;font-size:12px;font-weight:300;color:#888;">Default card</div>
+  </div>
+  <div class="lbl">No shadow</div>
+</div>
+<div>
+  <div style="background:#fff;border:1px solid #ccc;border-radius:12px;padding:20px;width:140px;box-shadow:0 12px 32px rgba(0,0,0,0.07);transform:translateY(-3px);">
+    <div style="font-family:'DM Sans',sans-serif;font-size:12px;font-weight:300;color:#555;">Hover state</div>
+  </div>
+  <div class="lbl">Card hover<br>shadow-card</div>
+</div>
+<div>
+  <div style="background:#111;border-radius:16px;padding:20px;width:140px;box-shadow:0 8px 32px rgba(0,0,0,0.30);">
+    <div style="font-family:'DM Sans',sans-serif;font-size:12px;font-weight:300;color:#F5F5F0;">Dropdown</div>
+  </div>
+  <div class="lbl">Dropdown<br>shadow</div>
+</div>
+<div>
+  <div style="background:#EDE8DF;border-radius:20px;padding:20px;width:140px;box-shadow:0 40px 80px rgba(0,0,0,0.40);">
+    <div style="font-family:'DM Sans',sans-serif;font-size:12px;font-weight:300;color:#1A1A18;">3D / Warm</div>
+  </div>
+  <div class="lbl">Warm card<br>shadow-dark</div>
+</div>
+</body>
+</html>

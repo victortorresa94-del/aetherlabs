@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  @font-face { font-family:'Advercase'; src:url('../fonts/Advercase.otf') format('opentype'); font-weight:400; }
+  body { margin:0; background:#333; }
+</style>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+</head>
+<body>
+<!-- Navbar on dark (pre-scroll) -->
+<div style="background:#080808;padding-bottom:2px;">
+  <nav style="height:60px;display:flex;align-items:center;padding:0 40px;justify-content:space-between;">
+    <img src="../assets/aether-logo-white.png" alt="Aether Labs" height="23" style="object-fit:contain;">
+    <div style="display:flex;align-items:center;gap:32px;">
+      <span style="font-family:'DM Sans',sans-serif;font-size:15px;font-weight:300;color:rgba(255,255,255,0.6);">Labs ↓</span>
+      <span style="font-family:'DM Sans',sans-serif;font-size:15px;font-weight:300;color:rgba(255,255,255,0.6);">Nosotros</span>
+      <span style="font-family:'DM Sans',sans-serif;font-size:15px;font-weight:300;color:rgba(255,255,255,0.6);">Experimentos</span>
+    </div>
+    <button style="padding:10px 24px;background:#FFFFFF;color:#111;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:400;border:none;border-radius:0;cursor:pointer;">Auditoría gratuita →</button>
+  </nav>
+  <div style="font-family:'JetBrains Mono',monospace;font-size:8px;text-align:center;color:#333;padding:4px 0;">PRE-SCROLL STATE</div>
+</div>
+
+<!-- Navbar on light (post-scroll) -->
+<div style="background:rgba(255,255,255,0.85);backdrop-filter:blur(20px);border-top:1px solid #eee;">
+  <nav style="height:60px;display:flex;align-items:center;padding:0 40px;justify-content:space-between;">
+    <img src="../assets/aether-logo-white.png" alt="Aether Labs" height="23" style="object-fit:contain;filter:invert(1);">
+    <div style="display:flex;align-items:center;gap:32px;">
+      <span style="font-family:'DM Sans',sans-serif;font-size:15px;font-weight:300;color:#555;">Labs ↓</span>
+      <span style="font-family:'DM Sans',sans-serif;font-size:15px;font-weight:300;color:#555;">Nosotros</span>
+      <span style="font-family:'DM Sans',sans-serif;font-size:15px;font-weight:300;color:#555;">Experimentos</span>
+    </div>
+    <button style="padding:10px 24px;background:#111;color:#FFF;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:400;border:none;border-radius:0;cursor:pointer;">Auditoría gratuita →</button>
+  </nav>
+  <div style="font-family:'JetBrains Mono',monospace;font-size:8px;text-align:center;color:#ccc;padding:4px 0;">POST-SCROLL STATE (frosted glass)</div>
+</div>
+</body>
+</html>

@@ -118,14 +118,14 @@ export default function ExperimentCard({ experiment, index }: ExperimentCardProp
       const el = sectionRef.current;
       if (!el) return;
 
-      // 1. Section wipe-in
+      // 1. Section enter — one-shot, no scrub (scrub caused reverse-scroll clipping)
       gsap.fromTo(el,
-        { clipPath: 'inset(6% 0 0 0 round 0px)', opacity: 0.65 },
+        { opacity: 0.55, y: 40 },
         {
-          clipPath: 'inset(0% 0 0 0 round 0px)',
-          opacity: 1,
+          opacity: 1, y: 0,
+          duration: 0.75,
           ease: 'power2.out',
-          scrollTrigger: { trigger: el, start: 'top 92%', end: 'top 12%', scrub: 0.7 },
+          scrollTrigger: { trigger: el, start: 'top 92%', once: true },
         }
       );
 
@@ -203,7 +203,9 @@ export default function ExperimentCard({ experiment, index }: ExperimentCardProp
       aria-label={experiment.name}
       className="exp-card-section"
       style={{
-        position: 'relative',
+        position: 'sticky',
+        top: 0,
+        zIndex: index + 1,
         backgroundColor: bg,
         overflow: 'hidden',
         minHeight: '100vh',

@@ -1,0 +1,331 @@
+/**
+ * Aether Labs — Design Tokens
+ * Source: Web-Aether-3.0/src/app/globals.css + CLAUDE.md
+ * Validated April 2026 by Victor Torres
+ */
+
+/* ─── WEBFONTS ─────────────────────────────────────────────── */
+@font-face {
+  font-family: 'Advercase';
+  src: url('./fonts/Advercase.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Advercase';
+  src: url('./fonts/Advercase-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Advercase';
+  src: url('./fonts/Advercase-Italic.otf') format('opentype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Google Fonts fallback import (used in web) */
+/* @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;1,9..40,300&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,700&family=JetBrains+Mono:wght@400;500&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap'); */
+
+/* ─── BASE COLOR TOKENS ────────────────────────────────────── */
+:root {
+  /* Backgrounds */
+  --al-bg-dark:       #080808;   /* Primary dark bg (hero, footer) */
+  --al-bg-dark-2:     #111111;   /* Slightly lighter dark (cards on dark) */
+  --al-bg-light:      #F8F8F5;   /* Primary light section bg */
+  --al-bg-white:      #FFFFFF;   /* Pure white (lab cards) */
+  --al-bg-warm:       #EDE8DF;   /* Warm cream (3D object cards) */
+  --al-bg-warm-dark:  #D9D4CB;   /* Warm cream hover state */
+
+  /* Text — on dark backgrounds */
+  --al-text-primary:        #F5F5F0;
+  --al-text-secondary:      rgba(245, 245, 240, 0.55);
+  --al-text-muted:          rgba(245, 245, 240, 0.32);
+
+  /* Text — on light backgrounds */
+  --al-text-on-light:       #111111;
+  --al-text-secondary-light:#555555;
+  --al-text-muted-light:    #888888;
+  --al-text-faint-light:    #BBBBBB;
+
+  /* Borders */
+  --al-border-dark:         rgba(255, 255, 255, 0.08);
+  --al-border-dark-hover:   rgba(255, 255, 255, 0.15);
+  --al-border-light:        #E8E8E5;
+  --al-border-light-hover:  #CCCCCC;
+
+  /* Accent */
+  --al-accent-indigo:   #6366F1;   /* "Lab" label accent */
+  --al-accent-green:    #00FF41;   /* Selection highlight (retro terminal) */
+
+  /* ─── TYPOGRAPHY TOKENS ─────────────────────────────────── */
+  --al-font-display:  'Plus Jakarta Sans', sans-serif;
+  --al-font-body:     'DM Sans', sans-serif;
+  --al-font-mono:     'JetBrains Mono', monospace;
+  --al-font-serif:    'Playfair Display', 'Cormorant', Georgia, serif;
+  --al-font-advercase:'Advercase', 'Playfair Display', Georgia, serif;
+
+  /* ─── SPACING / RADII ───────────────────────────────────── */
+  --al-radius-sm:   6px;
+  --al-radius-md:   12px;
+  --al-radius-lg:   16px;
+  --al-radius-xl:   20px;    /* Max — never exceed */
+
+  /* ─── TRANSITIONS ───────────────────────────────────────── */
+  --al-ease:        cubic-bezier(0.16, 1, 0.3, 1);  /* Spring premium */
+  --al-ease-fast:   200ms cubic-bezier(0.16, 1, 0.3, 1);
+  --al-ease-slow:   800ms cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* ─── SHADOWS ───────────────────────────────────────────── */
+  --al-shadow-card: 0 12px 32px rgba(0, 0, 0, 0.07);   /* Light bg card hover */
+  --al-shadow-dark: 0 40px 80px rgba(0, 0, 0, 0.40);   /* 3D / warm card */
+}
+
+/* ─── SEMANTIC TYPOGRAPHY CLASSES ──────────────────────────── */
+
+/* Display — Advercase, the brand voice */
+.al-h1 {
+  font-family: var(--al-font-advercase);
+  font-size: clamp(36px, 5.5vw, 72px);
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  color: var(--al-text-primary);
+}
+
+.al-h2 {
+  font-family: var(--al-font-advercase);
+  font-size: clamp(40px, 5vw, 72px);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  color: var(--al-text-on-light);
+}
+
+.al-h2-dark {
+  font-family: var(--al-font-advercase);
+  font-size: clamp(28px, 3vw, 40px);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  color: var(--al-text-primary);
+}
+
+.al-h3 {
+  font-family: var(--al-font-advercase);
+  font-size: clamp(22px, 2.5vw, 28px);
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  color: var(--al-text-on-light);
+}
+
+/* Body */
+.al-body {
+  font-family: var(--al-font-body);
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.75;
+  color: var(--al-text-secondary);
+}
+
+.al-body-sm {
+  font-family: var(--al-font-body);
+  font-size: 13px;
+  font-weight: 300;
+  line-height: 1.6;
+  color: var(--al-text-secondary-light);
+}
+
+/* Mono label — UI metadata, indexes, badges */
+.al-label {
+  font-family: var(--al-font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--al-text-muted-light);
+}
+
+.al-index {
+  font-family: var(--al-font-mono);
+  font-size: 10px;
+  color: #BBBBBB;
+}
+
+/* Gradient text (on dark) */
+.al-gradient-text {
+  background: linear-gradient(to right, #ffffff, rgba(255, 255, 255, 0.38));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ─── BUTTON STYLES ─────────────────────────────────────────── */
+
+/* Primary — square, minimal. Used on dark bg */
+.al-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  background: #F5F5F0;
+  color: #080808;
+  font-family: var(--al-font-body);
+  font-size: 14px;
+  font-weight: 400;
+  text-decoration: none;
+  border: none;
+  border-radius: 0;
+  cursor: pointer;
+  transition: background var(--al-ease-fast);
+}
+.al-btn-primary:hover { background: #E8E8E3; }
+
+/* Primary on light bg */
+.al-btn-primary-dark {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  background: #111111;
+  color: #FFFFFF;
+  font-family: var(--al-font-body);
+  font-size: 14px;
+  font-weight: 400;
+  text-decoration: none;
+  border: none;
+  border-radius: 0;
+  cursor: pointer;
+  transition: background var(--al-ease-fast);
+}
+.al-btn-primary-dark:hover { background: #333333; }
+
+/* Ghost (pill) — on dark bg */
+.al-btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 28px;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.55);
+  font-family: var(--al-font-body);
+  font-size: 14px;
+  font-weight: 400;
+  text-decoration: none;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 100px;
+  cursor: pointer;
+  transition: all var(--al-ease-fast);
+}
+.al-btn-ghost:hover {
+  color: #FFFFFF;
+  border-color: rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* ─── CARD PATTERNS ─────────────────────────────────────────── */
+
+/* Lab card — white, on light bg */
+.al-lab-card {
+  background: #FFFFFF;
+  border: 1px solid var(--al-border-light);
+  border-radius: var(--al-radius-md);
+  padding: 28px;
+  transition: all 220ms var(--al-ease);
+}
+.al-lab-card:hover {
+  border-color: var(--al-border-light-hover);
+  transform: translateY(-3px);
+  box-shadow: var(--al-shadow-card);
+}
+
+/* Glass card — on dark bg */
+.al-glass-card {
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid var(--al-border-dark);
+  border-radius: var(--al-radius-xl);
+  transition: border-color 300ms var(--al-ease), background 300ms var(--al-ease), transform 300ms var(--al-ease);
+}
+.al-glass-card:hover {
+  border-color: var(--al-border-dark-hover);
+  background: rgba(255, 255, 255, 0.035);
+  transform: translateY(-2px);
+}
+
+/* Warm card — editorial, cream bg */
+.al-warm-card {
+  background: var(--al-bg-warm);
+  border-radius: var(--al-radius-xl);
+  box-shadow: var(--al-shadow-dark);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Featured dark card */
+.al-featured-card {
+  background: #111111;
+  border-radius: var(--al-radius-lg);
+  transition: transform 250ms var(--al-ease);
+}
+.al-featured-card:hover { transform: translateY(-2px); }
+
+/* ─── LAYOUT TOKENS ─────────────────────────────────────────── */
+.al-section {
+  padding: 120px 0;
+}
+.al-section-light {
+  background: var(--al-bg-light);
+}
+.al-section-dark {
+  background: var(--al-bg-dark);
+}
+.al-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 clamp(24px, 6vw, 120px);
+}
+
+/* ─── REVEAL ANIMATIONS ─────────────────────────────────────── */
+.al-reveal {
+  opacity: 0;
+  transform: translateY(30px) scale(0.97);
+  filter: blur(4px);
+  transition:
+    opacity 0.8s var(--al-ease),
+    transform 0.8s var(--al-ease),
+    filter 0.8s var(--al-ease);
+}
+.al-reveal.revealed {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  filter: blur(0);
+}
+
+/* Floating pill — UI metadata overlays */
+.al-floating-pill {
+  background: rgba(12, 12, 12, 0.70);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+  padding: 8px 14px;
+  font-family: var(--al-font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.58);
+}
+
+/* ─── SCROLLBAR ─────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: var(--al-bg-dark); }
+::-webkit-scrollbar-thumb { background: #333; border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: #444; }
+
+/* ─── SELECTION ─────────────────────────────────────────────── */
+::selection { background: rgba(0, 255, 65, 0.2); color: #fff; }

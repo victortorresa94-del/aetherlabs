@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  body { margin: 0; background: #F8F8F5; font-family: 'JetBrains Mono', monospace; padding: 20px; }
+  .row { display: flex; gap: 8px; margin-bottom: 12px; }
+  .item { flex: 1; }
+  .swatch { border-radius: 8px; height: 48px; display: flex; align-items: center; padding: 0 12px; }
+  .label { font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: #888; margin-top: 4px; }
+  .val { font-size: 10px; color: #555; }
+</style>
+</head>
+<body>
+
+<!-- On dark -->
+<div style="background:#080808; border-radius:12px; padding:16px; margin-bottom:12px;">
+  <div style="font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:#555;margin-bottom:10px;">ON DARK</div>
+  <div class="row">
+    <div class="item"><div class="swatch" style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15)"><span style="font-size:10px;color:#999">border-dark</span></div></div>
+    <div class="item"><div class="swatch" style="background:rgba(255,255,255,0.025);border:1px solid rgba(255,255,255,0.08)"><span style="font-size:10px;color:#777">glass-card</span></div></div>
+    <div class="item"><div class="swatch" style="background:rgba(12,12,12,0.70);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,0.12)"><span style="font-size:10px;color:rgba(255,255,255,0.58)">floating-pill</span></div></div>
+  </div>
+</div>
+
+<!-- On light -->
+<div style="background:#FFFFFF; border:1px solid #E8E8E5; border-radius:12px; padding:16px;">
+  <div style="font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:#aaa;margin-bottom:10px;">ON LIGHT</div>
+  <div class="row">
+    <div class="item"><div class="swatch" style="background:#E8E8E5"><span style="font-size:10px;color:#888">border-light #E8E8E5</span></div></div>
+    <div class="item"><div class="swatch" style="background:#F0F0EC"><span style="font-size:10px;color:#888">icon-bg #F0F0EC</span></div></div>
+    <div class="item"><div class="swatch" style="background:rgba(0,0,0,0.04)"><span style="font-size:10px;color:#999">hover-overlay</span></div></div>
+  </div>
+</div>
+
+</body>
+</html>

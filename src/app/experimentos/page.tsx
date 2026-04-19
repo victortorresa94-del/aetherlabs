@@ -69,7 +69,7 @@ export default function ExperimentosPage() {
         <ExperimentMarquee />
 
         {/* Experiment sections */}
-        <div className="exp-sections-wrapper">
+        <div className="exp-sections-wrapper" style={{ position: 'relative', isolation: 'isolate' }}>
           {experiments.map((experiment, index) => (
             <ExperimentCard key={experiment.id} experiment={experiment} index={index} />
           ))}

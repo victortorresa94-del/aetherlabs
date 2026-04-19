@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aether Labs — Website UI Kit</title>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,600;1,9..40,300&family=JetBrains+Mono:wght@400;500&family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<style>
+  @font-face { font-family:'Advercase'; src:url('../../fonts/Advercase.otf') format('opentype'); font-weight:400; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Advercase'; src:url('../../fonts/Advercase-Bold.otf') format('opentype'); font-weight:700; font-style:normal; }
+  @font-face { font-family:'Advercase'; src:url('../../fonts/Advercase-Italic.otf') format('opentype'); font-style:italic; }
+
+  :root {
+    --al-font-advercase: 'Advercase','Playfair Display',Georgia,serif;
+    --al-font-display: 'Plus Jakarta Sans',sans-serif;
+    --al-font-body: 'DM Sans',sans-serif;
+    --al-font-mono: 'JetBrains Mono',monospace;
+    --al-bg-dark: #080808;
+    --al-bg-light: #F8F8F5;
+    --al-accent-indigo: #6366F1;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: #080808; color: #F5F5F0; font-family: var(--al-font-body); font-weight: 300; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  ::-webkit-scrollbar { width: 3px; }
+  ::-webkit-scrollbar-thumb { background: #333; border-radius: 10px; }
+  ::selection { background: rgba(0,255,65,0.2); color: #fff; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script type="text/babel" src="Navbar.jsx"></script>
+<script type="text/babel" src="HeroSection.jsx"></script>
+<script type="text/babel" src="LabsBannerSection.jsx"></script>
+<script type="text/babel" src="Footer.jsx"></script>
+
+<script type="text/babel">
+const { useState, useEffect, useRef } = React;
+
+// ── Lab detail page ──────────────────────────────────────────────────
+function LabPage({ onBack, onContact }) {
+  return (
+    <div style={{ minHeight: '100vh', background: '#080808' }}>
+      {/* Hero */}
+      <section style={{ minHeight: '60vh', display: 'flex', alignItems: 'center', padding: '100px 0 80px', position: 'relative', overflow: 'hidden' }}>
+        <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse 60% 50% at 70% 50%, rgba(99,102,241,0.07) 0%, transparent 60%)' }} />
+        <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 32px', position: 'relative', zIndex: 1 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 32 }}>
+            <button onClick={onBack} style={{ fontFamily: 'var(--al-font-mono)', fontSize: 10, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.4)', background: 'none', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 6, transition: 'color 200ms' }}
+              onMouseEnter={e => e.currentTarget.style.color = 'rgba(255,255,255,0.8)'}
+              onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.4)'}
+            >← Volver</button>
+            <span style={{ width: 24, height: 1, background: 'rgba(255,255,255,0.12)', display: 'inline-block' }} />
+            <span style={{ fontFamily: 'var(--al-font-mono)', fontSize: 10, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.3)' }}>03 · Más demandado</span>
+          </div>
+          <div style={{ fontFamily: 'var(--al-font-advercase)', fontSize: 'clamp(40px,6vw,84px)', fontWeight: 400, letterSpacing: '-0.02em', lineHeight: 1.05, color: '#F5F5F0', marginBottom: 4 }}>Agents</div>
+          <div style={{ fontFamily: 'var(--al-font-mono)', fontSize: 12, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#6366F1', marginBottom: 24 }}>Lab</div>
+          <p style={{ fontFamily: 'var(--al-font-body)', fontSize: 18, fontWeight: 300, lineHeight: 1.75, color: 'rgba(245,245,240,0.55)', maxWidth: 600, marginBottom: 40 }}>
+            Creamos agentes autónomos que ejecutan tareas completas sin intervención humana — para que tu equipo se centre en lo que importa.
+          </p>
+          <div style={{ display: 'flex', gap: 16 }}>
+            <button onClick={onContact} style={{ padding: '14px 32px', background: '#F5F5F0', color: '#080808', fontFamily: 'var(--al-font-body)', fontSize: 14, fontWeight: 400, border: 'none', borderRadius: 0, cursor: 'pointer', transition: 'background 200ms' }}
+              onMouseEnter={e => e.currentTarget.style.background = '#E8E8E3'}
+              onMouseLeave={e => e.currentTarget.style.background = '#F5F5F0'}
+            >Auditoría gratuita →</button>
+            <button style={{ padding: '13px 28px', background: 'transparent', color: 'rgba(255,255,255,0.55)', fontFamily: 'var(--al-font-body)', fontSize: 14, fontWeight: 400, border: '1px solid rgba(255,255,255,0.18)', borderRadius: 100, cursor: 'pointer' }}>Ver ejemplos</button>
+          </div>
+        </div>
+      </section>
+
+      {/* Value props */}
+      <section style={{ background: '#F8F8F5', padding: '80px 0' }}>
+        <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 32px' }}>
+          <div style={{ fontFamily: 'var(--al-font-mono)', fontSize: 10, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#888', marginBottom: 48 }}>Qué incluye</div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 8 }}>
+            {[
+              { n: '01', t: 'Análisis de procesos', d: 'Identificamos qué tareas repetitivas de tu equipo pueden automatizarse con agentes.' },
+              { n: '02', t: 'Diseño del agente', d: 'Construimos el agente a medida para tu flujo de trabajo, conectado a tus herramientas.' },
+              { n: '03', t: 'Formación y puesta en marcha', d: 'Tu equipo aprende a trabajar con el agente y a iterarlo con el tiempo.' },
+            ].map(item => (
+              <div key={item.n} style={{ background: '#FFF', border: '1px solid #E8E8E5', borderRadius: 12, padding: 28 }}>
+                <div style={{ fontFamily: 'var(--al-font-mono)', fontSize: 10, color: '#bbb', marginBottom: 16 }}>{item.n}</div>
+                <div style={{ fontFamily: 'var(--al-font-advercase)', fontSize: 22, fontWeight: 300, color: '#111', letterSpacing: '-0.02em', marginBottom: 10 }}>{item.t}</div>
+                <p style={{ fontFamily: 'var(--al-font-body)', fontSize: 13, fontWeight: 300, color: '#888', lineHeight: 1.65, margin: 0 }}>{item.d}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section style={{ background: '#080808', padding: '80px 0' }}>
+        <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 32px', textAlign: 'center' }}>
+          <div style={{ fontFamily: 'var(--al-font-advercase)', fontSize: 'clamp(32px,4vw,56px)', fontWeight: 400, color: '#F5F5F0', letterSpacing: '-0.02em', marginBottom: 24 }}>¿Listo para automatizar?</div>
+          <button onClick={onContact} style={{ padding: '14px 40px', background: '#F5F5F0', color: '#080808', fontFamily: 'var(--al-font-body)', fontSize: 14, fontWeight: 400, border: 'none', borderRadius: 0, cursor: 'pointer' }}>
+            Auditoría gratuita →
+          </button>
+        </div>
+      </section>
+
+      <ALFooter onContactClick={onContact} />
+    </div>
+  );
+}
+
+// ── Contact page ─────────────────────────────────────────────────────
+function ContactPage({ onBack }) {
+  const [sent, setSent] = useState(false);
+
+  return (
+    <div style={{ minHeight: '100vh', background: '#F8F8F5' }}>
+      <div style={{ maxWidth: 640, margin: '0 auto', padding: '140px 32px 80px' }}>
+        <button onClick={onBack} style={{ fontFamily: 'var(--al-font-mono)', fontSize: 10, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#bbb', background: 'none', border: 'none', cursor: 'pointer', marginBottom: 48, display: 'flex', alignItems: 'center', gap: 6 }}
+          onMouseEnter={e => e.currentTarget.style.color = '#555'}
+          onMouseLeave={e => e.currentTarget.style.color = '#bbb'}
+        >← Volver</button>
+
+        <div style={{ fontFamily: 'var(--al-font-mono)', fontSize: 10, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#aaa', marginBottom: 16 }}>Contacto</div>
+        <h1 style={{ fontFamily: 'var(--al-font-advercase)', fontSize: 'clamp(36px,5vw,64px)', fontWeight: 400, letterSpacing: '-0.02em', lineHeight: 1.05, color: '#111', marginBottom: 40 }}>
+          Auditoría gratuita
+        </h1>
+
+        {!sent ? (
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+            {['Nombre y empresa', 'Email', 'Teléfono (opcional)'].map(label => (
+              <div key={label}>
+                <div style={{ fontFamily: 'var(--al-font-mono)', fontSize: 9, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#aaa', marginBottom: 6 }}>{label}</div>
+                <input type="text" style={{ width: '100%', padding: '14px 16px', background: '#FFF', border: '1px solid #E8E8E5', borderRadius: 8, fontFamily: 'var(--al-font-body)', fontSize: 15, fontWeight: 300, color: '#111', outline: 'none', transition: 'border 200ms' }}
+                  onFocus={e => e.target.style.borderColor = '#999'}
+                  onBlur={e => e.target.style.borderColor = '#E8E8E5'}
+                />
+              </div>
+            ))}
+            <div>
+              <div style={{ fontFamily: 'var(--al-font-mono)', fontSize: 9, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#aaa', marginBottom: 6 }}>¿Cuál es tu principal reto con la IA?</div>
+              <textarea rows={4} style={{ width: '100%', padding: '14px 16px', background: '#FFF', border: '1px solid #E8E8E5', borderRadius: 8, fontFamily: 'var(--al-font-body)', fontSize: 15, fontWeight: 300, color: '#111', outline: 'none', resize: 'vertical', transition: 'border 200ms' }}
+                onFocus={e => e.target.style.borderColor = '#999'}
+                onBlur={e => e.target.style.borderColor = '#E8E8E5'}
+              />
+            </div>
+            <button onClick={() => setSent(true)} style={{ padding: '16px 40px', background: '#111', color: '#FFF', fontFamily: 'var(--al-font-body)', fontSize: 14, fontWeight: 400, border: 'none', borderRadius: 0, cursor: 'pointer', alignSelf: 'flex-start', transition: 'background 200ms', marginTop: 8 }}
+              onMouseEnter={e => e.currentTarget.style.background = '#333'}
+              onMouseLeave={e => e.currentTarget.style.background = '#111'}
+            >Enviar →</button>
+          </div>
+        ) : (
+          <div style={{ background: '#FFF', border: '1px solid #E8E8E5', borderRadius: 12, padding: 40, textAlign: 'center' }}>
+            <div style={{ fontFamily: 'var(--al-font-advercase)', fontSize: 28, fontWeight: 300, color: '#111', letterSpacing: '-0.02em', marginBottom: 12 }}>Recibido.</div>
+            <p style={{ fontFamily: 'var(--al-font-body)', fontSize: 14, fontWeight: 300, color: '#888', lineHeight: 1.7 }}>Te contactaremos en las próximas 24h para organizar una llamada de 30 minutos.</p>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
+// ── App shell ─────────────────────────────────────────────────────────
+function App() {
+  const [page, setPage] = useState(() => {
+    return localStorage.getItem('al-kit-page') || 'home';
+  });
+
+  useEffect(() => {
+    localStorage.setItem('al-kit-page', page);
+    window.scrollTo(0, 0);
+  }, [page]);
+
+  const goHome = () => setPage('home');
+  const goLab = () => setPage('lab');
+  const goContact = () => setPage('contact');
+
+  const scrollToLabs = () => {
+    const el = document.getElementById('labs');
+    if (el) el.scrollTop = 0;
+    setPage('home');
+    setTimeout(() => {
+      const el2 = document.getElementById('labs');
+      if (el2) el2.scrollIntoView({ behavior: 'smooth' });
+    }, 50);
+  };
+
+  return (
+    <div>
+      <ALNavbar onContactClick={goContact} currentPage={page} onPageChange={p => p === 'home' ? setPage('home') : goLab()} />
+
+      {page === 'home' && (
+        <>
+          <ALHeroSection onLabsClick={scrollToLabs} />
+          <ALLabsBannerSection onLabClick={goLab} />
+          <ALFooter onContactClick={goContact} />
+        </>
+      )}
+
+      {page === 'lab' && (
+        <LabPage onBack={goHome} onContact={goContact} />
+      )}
+
+      {page === 'contact' && (
+        <ContactPage onBack={goHome} />
+      )}
+    </div>
+  );
+}
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<App />);
+</script>
+</body>
+</html>
