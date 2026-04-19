@@ -2,7 +2,7 @@
 
 import { Suspense, useRef, useState, useEffect } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { Float, Environment, MeshTransmissionMaterial } from '@react-three/drei';
+import { Float, Environment, useGLTF } from '@react-three/drei';
 import * as THREE from 'three';
 import Image from 'next/image';
 
@@ -58,38 +58,42 @@ function SceneImage({ src, alt }: { src: string; alt: string }) {
   );
 }
 
-// ─── Bonito Sound — glass torus knot (única escena R3F mantenida) ─────────────
+// ─── Bonito Sound — GLB model ─────────────────────────────────────────────────
 
-function BonitoScene() {
-  const ref = useRef<THREE.Mesh>(null);
+function WeeboModel() {
+  const { scene } = useGLTF('/weebo-3d.glb');
+  const ref = useRef<THREE.Group>(null);
 
-  useFrame((_, d) => {
+  useFrame((s) => {
     if (!ref.current) return;
-    ref.current.rotation.y += d * 0.32;
-    ref.current.rotation.x += d * 0.12;
-    ref.current.rotation.z += d * 0.06;
+    ref.current.rotation.y += 0.004;
+    ref.current.position.y = Math.sin(s.clock.elapsedTime * 0.7) * 0.12;
   });
 
   return (
+    <primitive
+      ref={ref}
+      object={scene}
+      scale={1.4}
+      position={[0, -0.5, 0]}
+    />
+  );
+}
+useGLTF.preload('/weebo-3d.glb');
+
+function BonitoScene() {
+  return (
     <>
-      <ambientLight intensity={0.28} />
-      <directionalLight position={[4, 6, 4]}  intensity={2.4} color="#FFF0E0" />
-      <directionalLight position={[-4, 1, -3]} intensity={0.7} color="#D0DFFF" />
-      <Float speed={1.2} floatIntensity={0.35} rotationIntensity={0}>
-        <mesh ref={ref}>
-          <torusKnotGeometry args={[0.9, 0.32, 120, 24]} />
-          <MeshTransmissionMaterial
-            samples={3}
-            transmission={1}
-            roughness={0}
-            thickness={0.5}
-            ior={1.5}
-            chromaticAberration={0.05}
-            color="#FF6B35"
-          />
-        </mesh>
-      </Float>
-      <Environment preset="apartment" />
+      <ambientLight intensity={0.5} />
+      <directionalLight position={[4, 6, 4]}  intensity={2.2} color="#FFF0E0" />
+      <directionalLight position={[-4, 2, -3]} intensity={0.8} color="#FFE0D0" />
+      <pointLight position={[0, 2, 2]} intensity={1.2} color="#FF6B35" />
+      <Suspense fallback={null}>
+        <Float speed={1.0} floatIntensity={0.2} rotationIntensity={0}>
+          <WeeboModel />
+        </Float>
+      </Suspense>
+      <Environment preset="studio" />
     </>
   );
 }
