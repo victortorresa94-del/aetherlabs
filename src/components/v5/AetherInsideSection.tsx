@@ -72,7 +72,7 @@ export default function AetherInsideSection() {
             marginBottom: '36px',
           }}
         >
-          · Aether Inside ·
+          · Aether Team ·
         </div>
 
         {/* Subtitle */}
