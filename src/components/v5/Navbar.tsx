@@ -290,10 +290,10 @@ export default function Navbar() {
                     }}
                   >
                     <div>
-                      <div style={{ fontFamily: "var(--v5-font-advercase, 'Playfair Display', Georgia, serif)", fontSize: '13px', fontWeight: 400, fontStyle: 'normal', color: '#F5F5F0', letterSpacing: '-0.01em', lineHeight: 1.2 }}>
+                      <div style={{ fontFamily: 'var(--v5-font-mono)', fontSize: '9px', color: 'rgba(255,255,255,0.35)', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '3px' }}>
                         ¿Quieres todo?
                       </div>
-                      <div style={{ fontFamily: 'var(--v5-font-mono)', fontSize: '9px', color: 'rgba(255,255,255,0.35)', letterSpacing: '0.1em', marginTop: '3px' }}>
+                      <div style={{ fontFamily: "var(--v5-font-advercase, 'Playfair Display', Georgia, serif)", fontSize: '14px', fontWeight: 400, fontStyle: 'normal', color: '#F5F5F0', letterSpacing: '-0.01em', lineHeight: 1.2 }}>
                         Aether Team
                       </div>
                     </div>
@@ -455,10 +455,10 @@ export default function Navbar() {
           }}
         >
           <span>
+            <span style={{ fontFamily: 'var(--v5-font-mono)', fontWeight: 400, color: '#999', fontSize: '11px', letterSpacing: '0.08em', display: 'block', marginBottom: '2px' }}>¿Quieres todo?</span>
             <span style={{ fontFamily: "var(--v5-font-advercase, 'Playfair Display', Georgia, serif)", fontWeight: 400, fontStyle: 'normal', color: '#111', letterSpacing: '-0.01em' }}>
-              ¿Quieres todo?
+              Aether Team
             </span>
-            <span style={{ fontFamily: 'var(--v5-font-body)', fontWeight: 300, color: '#888', fontSize: '13px', display: 'block', marginTop: '1px' }}>Aether Team</span>
           </span>
           <ArrowUpRight size={14} color="#bbb" />
         </Link>
