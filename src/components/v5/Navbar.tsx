@@ -4,7 +4,10 @@ import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { MessageSquare, Code2, Bot, Sparkles, Megaphone, GraduationCap, Wrench } from 'lucide-react';
+import {
+  MessageSquare, Code2, Bot, Sparkles, Megaphone, GraduationCap, Wrench,
+  Compass, Wand2, Cpu, BookOpen, ArrowUpRight,
+} from 'lucide-react';
 
 const labsMenu = [
   { icon: MessageSquare, label: 'Claude Lab', tag: 'Implementación y formación', href: '/claude-lab' },
@@ -16,11 +19,20 @@ const labsMenu = [
   { icon: Wrench, label: 'Open Lab', tag: 'Chatbots, webs y dashboards', href: '/open-lab' },
 ];
 
+const serviciosMenu = [
+  { icon: Compass, label: 'Asesoramos', tag: 'Diagnóstico y estrategia de IA', href: '/asesoramos' },
+  { icon: Wand2, label: 'Creamos', tag: 'Contenido, software y soluciones', href: '/creamos' },
+  { icon: Cpu, label: 'Implementamos', tag: 'Sistemas de IA en tu operativa', href: '/implementamos' },
+  { icon: BookOpen, label: 'Formamos', tag: 'Tu equipo listo para usar IA', href: '/formamos' },
+];
+
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [labsOpen, setLabsOpen] = useState(false);
+  const [serviciosOpen, setServiciosOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const serviciosRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
 
   useEffect(() => {
@@ -41,6 +53,9 @@ export default function Navbar() {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
         setLabsOpen(false);
       }
+      if (serviciosRef.current && !serviciosRef.current.contains(event.target as Node)) {
+        setServiciosOpen(false);
+      }
     };
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
@@ -51,6 +66,37 @@ export default function Navbar() {
     { label: 'Experimentos', href: '/experimentos' },
     { label: 'Archivo', href: '/blog' },
   ];
+
+  const dropdownStyles = (open: boolean) => ({
+    position: 'absolute' as const,
+    top: 'calc(100% + 12px)',
+    left: '50%',
+    transform: open ? 'translateX(-50%) translateY(0)' : 'translateX(-50%) translateY(-8px)',
+    width: '260px',
+    background: '#FFFFFF',
+    border: '1px solid #E8E8E5',
+    borderRadius: '10px',
+    opacity: open ? 1 : 0,
+    visibility: open ? ('visible' as const) : ('hidden' as const),
+    transition: 'all 220ms cubic-bezier(0.16, 1, 0.3, 1)',
+    boxShadow: '0 8px 32px rgba(0,0,0,0.3)',
+    overflow: 'hidden',
+    padding: '6px',
+  });
+
+  const navBtnStyle = {
+    fontFamily: 'var(--v5-font-body)',
+    fontSize: '15px',
+    fontWeight: 300,
+    color: scrolled ? '#555555' : 'rgba(255,255,255,0.6)',
+    background: 'none',
+    border: 'none',
+    cursor: 'pointer',
+    display: 'flex',
+    alignItems: 'center',
+    gap: '4px',
+    transition: 'color 200ms ease',
+  } as const;
 
   return (
     <>
@@ -91,28 +137,17 @@ export default function Navbar() {
 
           {/* Desktop links */}
           <div className="hidden md:flex items-center gap-10">
+
             {/* Labs dropdown */}
             <div
               className="relative"
               ref={dropdownRef}
-              onMouseEnter={() => setLabsOpen(true)}
+              onMouseEnter={() => { setLabsOpen(true); setServiciosOpen(false); }}
               onMouseLeave={() => setLabsOpen(false)}
             >
               <button
                 onClick={() => setLabsOpen(!labsOpen)}
-                style={{
-                  fontFamily: 'var(--v5-font-body)',
-                  fontSize: '15px',
-                  fontWeight: 300,
-                  color: scrolled ? '#555555' : 'rgba(255,255,255,0.6)',
-                  background: 'none',
-                  border: 'none',
-                  cursor: 'pointer',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '4px',
-                  transition: 'color 200ms ease',
-                }}
+                style={navBtnStyle}
                 onMouseEnter={(e) => {
                   (e.currentTarget as HTMLElement).style.color = scrolled ? '#111111' : '#FFFFFF';
                 }}
@@ -126,26 +161,7 @@ export default function Navbar() {
                 </svg>
               </button>
 
-              {/* Slim dropdown */}
-              <div
-                style={{
-                  position: 'absolute',
-                  top: 'calc(100% + 12px)',
-                  left: '50%',
-                  transform: labsOpen ? 'translateX(-50%) translateY(0)' : 'translateX(-50%) translateY(-8px)',
-                  width: '260px',
-                  background: '#FFFFFF',
-                  border: '1px solid #E8E8E5',
-                  borderRadius: '10px',
-                  opacity: labsOpen ? 1 : 0,
-                  visibility: labsOpen ? 'visible' : 'hidden',
-                  transition: 'all 220ms cubic-bezier(0.16, 1, 0.3, 1)',
-                  boxShadow: '0 8px 32px rgba(0,0,0,0.3)',
-                  overflow: 'hidden',
-                  padding: '6px',
-                }}
-              >
-                {/* Labs list */}
+              <div style={dropdownStyles(labsOpen)}>
                 {labsMenu.map((lab) => {
                   const Icon = lab.icon;
                   return (
@@ -167,119 +183,123 @@ export default function Navbar() {
                           cursor: 'pointer',
                         }}
                       >
-                        <div style={{
-                          width: '20px',
-                          height: '20px',
-                          flexShrink: 0,
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                        }}>
+                        <div style={{ width: '20px', height: '20px', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                           <Icon size={14} color="rgba(0,0,0,0.35)" />
                         </div>
                         <div style={{ flex: 1, minWidth: 0 }}>
-                          <div style={{
-                            fontSize: '13px',
-                            lineHeight: 1.2,
-                            display: 'flex',
-                            alignItems: 'center',
-                            gap: '6px',
-                          }}>
+                          <div style={{ fontSize: '13px', lineHeight: 1.2, display: 'flex', alignItems: 'center', gap: '6px' }}>
                             <span>
-                              <span style={{
-                                fontFamily: "var(--v5-font-advercase, 'Playfair Display', Georgia, serif)",
-                                fontWeight: 400,
-                                fontStyle: 'normal',
-                                color: '#111111',
-                                letterSpacing: '-0.01em',
-                              }}>
+                              <span style={{ fontFamily: "var(--v5-font-advercase, 'Playfair Display', Georgia, serif)", fontWeight: 400, fontStyle: 'normal', color: '#111111', letterSpacing: '-0.01em' }}>
                                 {lab.label.replace(' Lab', '')}
                               </span>
-                              <span style={{
-                                fontFamily: 'var(--v5-font-body)',
-                                fontWeight: 300,
-                                color: 'rgba(0,0,0,0.35)',
-                              }}>
+                              <span style={{ fontFamily: 'var(--v5-font-body)', fontWeight: 300, color: 'rgba(0,0,0,0.35)' }}>
                                 {' Lab'}
                               </span>
                             </span>
                             {'hot' in lab && lab.hot && (
-                              <span style={{
-                                fontFamily: 'var(--v5-font-mono)',
-                                fontSize: '7px',
-                                letterSpacing: '0.1em',
-                                textTransform: 'uppercase',
-                                background: 'rgba(0,0,0,0.08)',
-                                color: 'rgba(0,0,0,0.5)',
-                                padding: '2px 4px',
-                                borderRadius: '3px',
-                              }}>Hot</span>
+                              <span style={{ fontFamily: 'var(--v5-font-mono)', fontSize: '7px', letterSpacing: '0.1em', textTransform: 'uppercase', background: 'rgba(0,0,0,0.08)', color: 'rgba(0,0,0,0.5)', padding: '2px 4px', borderRadius: '3px' }}>Hot</span>
                             )}
                           </div>
-                          <div style={{
-                            fontFamily: 'var(--v5-font-mono)',
-                            fontSize: '10px',
-                            color: '#999',
-                            lineHeight: 1.3,
-                            marginTop: '1px',
-                          }}>{lab.tag}</div>
+                          <div style={{ fontFamily: 'var(--v5-font-mono)', fontSize: '10px', color: '#999', lineHeight: 1.3, marginTop: '1px' }}>{lab.tag}</div>
+                        </div>
+                      </div>
+                    </Link>
+                  );
+                })}
+                <div style={{ height: '2px' }} />
+              </div>
+            </div>
+
+            {/* Servicios dropdown */}
+            <div
+              className="relative"
+              ref={serviciosRef}
+              onMouseEnter={() => { setServiciosOpen(true); setLabsOpen(false); }}
+              onMouseLeave={() => setServiciosOpen(false)}
+            >
+              <button
+                onClick={() => setServiciosOpen(!serviciosOpen)}
+                style={navBtnStyle}
+                onMouseEnter={(e) => {
+                  (e.currentTarget as HTMLElement).style.color = scrolled ? '#111111' : '#FFFFFF';
+                }}
+                onMouseLeave={(e) => {
+                  (e.currentTarget as HTMLElement).style.color = scrolled ? '#555555' : 'rgba(255,255,255,0.6)';
+                }}
+              >
+                Servicios
+                <svg width="10" height="6" viewBox="0 0 10 6" fill="none" style={{ transform: serviciosOpen ? 'rotate(180deg)' : 'none', transition: 'transform 200ms ease' }}>
+                  <path d="M1 1L5 5L9 1" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </button>
+
+              <div style={dropdownStyles(serviciosOpen)}>
+                {serviciosMenu.map((servicio) => {
+                  const Icon = servicio.icon;
+                  return (
+                    <Link
+                      key={servicio.href}
+                      href={servicio.href}
+                      onClick={() => setServiciosOpen(false)}
+                      style={{ textDecoration: 'none', display: 'block' }}
+                    >
+                      <div
+                        className="dropdown-lab-item"
+                        style={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: '10px',
+                          padding: '8px 10px',
+                          borderRadius: '7px',
+                          transition: 'background 150ms ease',
+                          cursor: 'pointer',
+                        }}
+                      >
+                        <div style={{ width: '20px', height: '20px', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                          <Icon size={14} color="rgba(0,0,0,0.35)" />
+                        </div>
+                        <div style={{ flex: 1, minWidth: 0 }}>
+                          <div style={{ fontFamily: "var(--v5-font-advercase, 'Playfair Display', Georgia, serif)", fontSize: '13px', fontWeight: 400, fontStyle: 'normal', color: '#111111', letterSpacing: '-0.01em', lineHeight: 1.2 }}>
+                            {servicio.label}
+                          </div>
+                          <div style={{ fontFamily: 'var(--v5-font-mono)', fontSize: '10px', color: '#999', lineHeight: 1.3, marginTop: '1px' }}>{servicio.tag}</div>
                         </div>
                       </div>
                     </Link>
                   );
                 })}
 
-                {/* Divider + AI Team Lab */}
-                <div style={{
-                  height: '1px',
-                  background: '#E8E8E5',
-                  margin: '4px 10px 6px',
-                }} />
+                {/* CTA: ¿Quieres todo? → Aether Team */}
+                <div style={{ height: '1px', background: '#E8E8E5', margin: '4px 10px 6px' }} />
                 <Link
-                  href="/systems-lab/sesion-de-claridad"
-                  onClick={() => setLabsOpen(false)}
-                  style={{ textDecoration: 'none', display: 'block' }}
+                  href="/aether-inside"
+                  onClick={() => setServiciosOpen(false)}
+                  style={{ textDecoration: 'none', display: 'block', padding: '0 0 2px' }}
                 >
                   <div
-                    className="dropdown-lab-item"
+                    className="dropdown-team-cta"
                     style={{
+                      background: '#111',
+                      borderRadius: '7px',
+                      padding: '10px 12px',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'space-between',
-                      padding: '8px 10px',
-                      borderRadius: '7px',
-                      transition: 'background 150ms ease',
                       cursor: 'pointer',
+                      transition: 'background 150ms ease',
                     }}
                   >
-                    <span style={{ fontSize: '13px', lineHeight: 1.2 }}>
-                      <span style={{
-                        fontFamily: "var(--v5-font-advercase, 'Playfair Display', Georgia, serif)",
-                        fontWeight: 400,
-                        fontStyle: 'normal',
-                        color: '#111111',
-                        letterSpacing: '-0.01em',
-                      }}>
-                        AI Team
-                      </span>
-                      <span style={{
-                        fontFamily: 'var(--v5-font-body)',
-                        fontWeight: 300,
-                        color: 'rgba(0,0,0,0.35)',
-                      }}>
-                        {' Lab'}
-                      </span>
-                    </span>
-                    <span style={{
-                      fontFamily: 'var(--v5-font-mono)',
-                      fontSize: '10px',
-                      color: '#999',
-                    }}>
-                      Auditoría gratuita →
-                    </span>
+                    <div>
+                      <div style={{ fontFamily: "var(--v5-font-advercase, 'Playfair Display', Georgia, serif)", fontSize: '13px', fontWeight: 400, fontStyle: 'normal', color: '#F5F5F0', letterSpacing: '-0.01em', lineHeight: 1.2 }}>
+                        ¿Quieres todo?
+                      </div>
+                      <div style={{ fontFamily: 'var(--v5-font-mono)', fontSize: '9px', color: 'rgba(255,255,255,0.35)', letterSpacing: '0.1em', marginTop: '3px' }}>
+                        Aether Team
+                      </div>
+                    </div>
+                    <ArrowUpRight size={13} color="rgba(255,255,255,0.35)" />
                   </div>
                 </Link>
-                <div style={{ height: '2px' }} />
               </div>
             </div>
 
@@ -322,11 +342,7 @@ export default function Navbar() {
               }}
               onMouseEnter={(e) => {
                 const el = e.currentTarget as HTMLElement;
-                if (scrolled) {
-                  el.style.background = '#333333';
-                } else {
-                  el.style.background = '#F0F0F0';
-                }
+                el.style.background = scrolled ? '#333333' : '#F0F0F0';
               }}
               onMouseLeave={(e) => {
                 const el = e.currentTarget as HTMLElement;
@@ -372,8 +388,10 @@ export default function Navbar() {
           display: 'flex',
           flexDirection: 'column',
           gap: 0,
+          overflowY: 'auto',
         }}
       >
+        {/* Labs section */}
         <div style={{ marginBottom: '24px', fontFamily: 'var(--v5-font-mono)', fontSize: '11px', color: '#999', textTransform: 'uppercase', letterSpacing: '0.15em' }}>
           Labs
         </div>
@@ -391,25 +409,40 @@ export default function Navbar() {
               display: 'flex', alignItems: 'center', gap: '8px',
             }}
           >
-            <span style={{
-              fontFamily: "var(--v5-font-advercase, 'Playfair Display', Georgia, serif)",
-              fontWeight: 400,
-              fontStyle: 'normal',
-              color: '#111',
-              letterSpacing: '-0.01em',
-            }}>
+            <span style={{ fontFamily: "var(--v5-font-advercase, 'Playfair Display', Georgia, serif)", fontWeight: 400, fontStyle: 'normal', color: '#111', letterSpacing: '-0.01em' }}>
               {lab.label.replace(' Lab', '')}
             </span>
-            <span style={{ fontFamily: 'var(--v5-font-body)', fontWeight: 300, color: '#888' }}>
-              Lab
-            </span>
+            <span style={{ fontFamily: 'var(--v5-font-body)', fontWeight: 300, color: '#888' }}>Lab</span>
             {'hot' in lab && lab.hot && (
               <span style={{ fontFamily: 'var(--v5-font-mono)', fontSize: '7px', letterSpacing: '0.1em', textTransform: 'uppercase', background: '#111', color: '#fff', padding: '2px 5px', borderRadius: '3px' }}>Hot</span>
             )}
           </Link>
         ))}
+
+        {/* Servicios section */}
+        <div style={{ marginTop: '32px', marginBottom: '24px', fontFamily: 'var(--v5-font-mono)', fontSize: '11px', color: '#999', textTransform: 'uppercase', letterSpacing: '0.15em' }}>
+          Servicios
+        </div>
+        {serviciosMenu.map((servicio) => (
+          <Link
+            key={servicio.href}
+            href={servicio.href}
+            onClick={() => setMobileOpen(false)}
+            style={{
+              fontSize: '16px',
+              textDecoration: 'none',
+              padding: '11px 0',
+              borderBottom: '1px solid #E8E8E8',
+              display: 'flex', alignItems: 'center', gap: '8px',
+            }}
+          >
+            <span style={{ fontFamily: "var(--v5-font-advercase, 'Playfair Display', Georgia, serif)", fontWeight: 400, fontStyle: 'normal', color: '#111', letterSpacing: '-0.01em' }}>
+              {servicio.label}
+            </span>
+          </Link>
+        ))}
         <Link
-          href="/systems-lab/sesion-de-claridad"
+          href="/aether-inside"
           onClick={() => setMobileOpen(false)}
           style={{
             fontSize: '16px',
@@ -418,23 +451,19 @@ export default function Navbar() {
             borderBottom: '1px solid #E8E8E8',
             display: 'flex',
             alignItems: 'center',
-            gap: '8px',
+            justifyContent: 'space-between',
           }}
         >
-          <span style={{
-            fontFamily: "var(--v5-font-advercase, 'Playfair Display', Georgia, serif)",
-            fontWeight: 400,
-            fontStyle: 'normal',
-            color: '#111',
-            letterSpacing: '-0.01em',
-          }}>
-            AI Team
+          <span>
+            <span style={{ fontFamily: "var(--v5-font-advercase, 'Playfair Display', Georgia, serif)", fontWeight: 400, fontStyle: 'normal', color: '#111', letterSpacing: '-0.01em' }}>
+              ¿Quieres todo?
+            </span>
+            <span style={{ fontFamily: 'var(--v5-font-body)', fontWeight: 300, color: '#888', fontSize: '13px', display: 'block', marginTop: '1px' }}>Aether Team</span>
           </span>
-          <span style={{ fontFamily: 'var(--v5-font-body)', fontWeight: 300, color: '#888' }}>
-            Lab
-          </span>
+          <ArrowUpRight size={14} color="#bbb" />
         </Link>
 
+        {/* General section */}
         <div style={{ marginTop: '32px', marginBottom: '24px', fontFamily: 'var(--v5-font-mono)', fontSize: '11px', color: '#999', textTransform: 'uppercase', letterSpacing: '0.15em' }}>
           General
         </div>
@@ -490,6 +519,7 @@ export default function Navbar() {
 
       <style>{`
         .dropdown-lab-item:hover { background: rgba(0,0,0,0.04) !important; }
+        .dropdown-team-cta:hover { background: #1a1a1a !important; }
       `}</style>
     </>
   );
