@@ -76,7 +76,7 @@ export default function AITruthSection() {
             lineHeight: 1.25,
             letterSpacing: '-0.01em',
           }}>
-            Aether Inside es la cuarta opción.
+            Aether Team es la cuarta opción.
             <br />
             Lo hacemos nosotros. Desde dentro.
           </h3>

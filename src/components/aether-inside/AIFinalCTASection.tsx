@@ -1,97 +1,120 @@
 'use client';
 
-import { useState } from 'react';
 import Link from 'next/link';
 
 export default function AIFinalCTASection() {
-  const [hovered, setHovered] = useState(false);
-
   return (
     <section style={{
-      backgroundColor: '#000000',
-      minHeight: '60vh',
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      justifyContent: 'center',
-      padding: '120px 48px',
-      textAlign: 'center',
-      backgroundImage: 'radial-gradient(ellipse at 50% 100%, rgba(0,229,255,0.06) 0%, transparent 60%)',
+      backgroundColor: '#080808',
+      padding: 'clamp(80px, 12vw, 140px) clamp(24px, 5vw, 80px)',
+      borderTop: '1px solid rgba(255,255,255,0.06)',
     }}>
-      <div className="v5-reveal">
-        <h2 style={{
-          fontFamily: 'var(--v5-font-advercase)',
-          fontSize: 'clamp(60px, 10vw, 140px)',
-          fontWeight: 700,
-          color: '#FFFFFF',
-          letterSpacing: '-0.03em',
-          lineHeight: 1,
-          marginBottom: '40px',
-        }}>
-          ¿Listo para entrar?
-        </h2>
-
-        <p style={{
-          fontFamily: 'var(--v5-font-body)',
-          fontSize: '18px',
-          fontWeight: 300,
-          color: 'rgba(245,245,245,0.6)',
-          maxWidth: '480px',
-          margin: '0 auto 56px',
-          lineHeight: 1.7,
-        }}>
-          Primera conversación: 30 minutos. Sin coste. Sin compromiso.
-          <br />
-          Te decimos si encajamos o no. Eso también tiene valor.
-        </p>
-
-        {/* Primary CTA */}
-        <Link
-          href="/contacto"
-          onMouseEnter={() => setHovered(true)}
-          onMouseLeave={() => setHovered(false)}
-          style={{
-            display: 'inline-block',
-            backgroundColor: hovered ? '#33EEFF' : '#00E5FF',
-            color: '#000000',
-            fontFamily: 'var(--v5-font-body)',
-            fontSize: '17px',
-            fontWeight: 600,
-            letterSpacing: '0.02em',
-            padding: '20px 48px',
-            borderRadius: '2px',
-            textDecoration: 'none',
-            transform: hovered ? 'translateY(-2px)' : 'none',
-            boxShadow: hovered ? '0 8px 40px rgba(0,229,255,0.3)' : 'none',
-            transition: 'all 0.25s ease',
-          }}
+      <div style={{ maxWidth: '1280px', margin: '0 auto' }} className="v5-reveal">
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: '1fr auto',
+          gap: '64px',
+          alignItems: 'end',
+        }}
+          className="final-cta-grid"
         >
-          Cuéntanos lo que necesitas
-        </Link>
+          {/* Left */}
+          <div>
+            <div style={{
+              fontFamily: 'var(--v5-font-mono)',
+              fontSize: '10px',
+              letterSpacing: '0.25em',
+              textTransform: 'uppercase',
+              color: 'rgba(245,240,232,0.28)',
+              marginBottom: '32px',
+            }}>
+              Siguiente paso
+            </div>
 
-        {/* Secondary */}
-        <div style={{ marginTop: '24px' }}>
-          <Link
-            href="/experimentos"
-            style={{
+            <h2 style={{
+              fontFamily: "var(--v5-font-advercase, 'Playfair Display', Georgia, serif)",
+              fontSize: 'clamp(36px, 5vw, 64px)',
+              fontWeight: 400,
+              color: '#F5F0E8',
+              letterSpacing: '-0.025em',
+              lineHeight: 1.05,
+              marginBottom: '24px',
+            }}>
+              30 minutos.
+              <br />
+              <span style={{ color: 'rgba(245,240,232,0.4)' }}>Sin coste. Sin compromiso.</span>
+            </h2>
+
+            <p style={{
               fontFamily: 'var(--v5-font-body)',
-              fontSize: '15px',
+              fontSize: 'clamp(15px, 1.6vw, 18px)',
               fontWeight: 300,
-              color: 'rgba(245,245,245,0.35)',
-              textDecoration: 'none',
-              transition: 'color 0.2s ease',
-            }}
-            onMouseEnter={(e) => { (e.target as HTMLElement).style.color = 'rgba(245,245,245,0.7)'; }}
-            onMouseLeave={(e) => { (e.target as HTMLElement).style.color = 'rgba(245,245,245,0.35)'; }}
-          >
-            ¿Prefieres ver ejemplos primero? → Ver Experimentos
-          </Link>
+              color: 'rgba(245,240,232,0.45)',
+              lineHeight: 1.7,
+              maxWidth: '480px',
+            }}>
+              Te decimos exactamente si encajamos — y si no,
+              te decimos por qué. Eso también tiene valor.
+            </p>
+          </div>
+
+          {/* Right */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', alignItems: 'flex-start' }}>
+            <Link
+              href="/systems-lab/sesion-de-claridad"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
+                padding: '16px 32px',
+                background: '#F5F0E8',
+                color: '#080808',
+                fontFamily: 'var(--v5-font-body)',
+                fontSize: '15px',
+                fontWeight: 400,
+                textDecoration: 'none',
+                whiteSpace: 'nowrap',
+                transition: 'background 200ms ease, transform 200ms ease',
+              }}
+              onMouseEnter={(e) => {
+                const el = e.currentTarget as HTMLElement;
+                el.style.background = '#FFFFFF';
+                el.style.transform = 'translateY(-1px)';
+              }}
+              onMouseLeave={(e) => {
+                const el = e.currentTarget as HTMLElement;
+                el.style.background = '#F5F0E8';
+                el.style.transform = 'translateY(0)';
+              }}
+            >
+              Reserva tu sesión gratuita →
+            </Link>
+            <Link
+              href="/experimentos"
+              style={{
+                fontFamily: 'var(--v5-font-body)',
+                fontSize: '13px',
+                fontWeight: 300,
+                color: 'rgba(245,240,232,0.28)',
+                textDecoration: 'none',
+                letterSpacing: '0.01em',
+                transition: 'color 200ms ease',
+              }}
+              onMouseEnter={(e) => { (e.target as HTMLElement).style.color = 'rgba(245,240,232,0.55)'; }}
+              onMouseLeave={(e) => { (e.target as HTMLElement).style.color = 'rgba(245,240,232,0.28)'; }}
+            >
+              Ver casos y experimentos →
+            </Link>
+          </div>
         </div>
       </div>
 
       <style>{`
-        @media (max-width: 640px) {
-          section[style*="60vh"] { padding: 80px 24px !important; }
+        @media (max-width: 768px) {
+          .final-cta-grid {
+            grid-template-columns: 1fr !important;
+            gap: 40px !important;
+          }
         }
       `}</style>
     </section>

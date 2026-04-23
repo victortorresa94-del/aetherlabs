@@ -138,7 +138,55 @@ export default function Navbar() {
           {/* Desktop links */}
           <div className="hidden md:flex items-center gap-10">
 
-            {/* Labs dropdown */}
+            {/* Servicios dropdown — FIRST */}
+            <div
+              className="relative"
+              ref={serviciosRef}
+              onMouseEnter={() => { setServiciosOpen(true); setLabsOpen(false); }}
+              onMouseLeave={() => setServiciosOpen(false)}
+            >
+              <button
+                onClick={() => setServiciosOpen(!serviciosOpen)}
+                style={navBtnStyle}
+                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = scrolled ? '#111111' : '#FFFFFF'; }}
+                onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = scrolled ? '#555555' : 'rgba(255,255,255,0.6)'; }}
+              >
+                Servicios
+                <svg width="10" height="6" viewBox="0 0 10 6" fill="none" style={{ transform: serviciosOpen ? 'rotate(180deg)' : 'none', transition: 'transform 200ms ease' }}>
+                  <path d="M1 1L5 5L9 1" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </button>
+              <div style={dropdownStyles(serviciosOpen)}>
+                {serviciosMenu.map((servicio) => {
+                  const Icon = servicio.icon;
+                  return (
+                    <Link key={servicio.href} href={servicio.href} onClick={() => setServiciosOpen(false)} style={{ textDecoration: 'none', display: 'block' }}>
+                      <div className="dropdown-lab-item" style={{ display: 'flex', alignItems: 'center', gap: '10px', padding: '8px 10px', borderRadius: '7px', transition: 'background 150ms ease', cursor: 'pointer' }}>
+                        <div style={{ width: '20px', height: '20px', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                          <Icon size={14} color="rgba(0,0,0,0.35)" />
+                        </div>
+                        <div style={{ flex: 1, minWidth: 0 }}>
+                          <div style={{ fontFamily: "var(--v5-font-advercase, 'Playfair Display', Georgia, serif)", fontSize: '13px', fontWeight: 400, fontStyle: 'normal', color: '#111111', letterSpacing: '-0.01em', lineHeight: 1.2 }}>{servicio.label}</div>
+                          <div style={{ fontFamily: 'var(--v5-font-mono)', fontSize: '10px', color: '#999', lineHeight: 1.3, marginTop: '1px' }}>{servicio.tag}</div>
+                        </div>
+                      </div>
+                    </Link>
+                  );
+                })}
+                <div style={{ height: '1px', background: '#E8E8E5', margin: '4px 10px 6px' }} />
+                <Link href="/aether-team" onClick={() => setServiciosOpen(false)} style={{ textDecoration: 'none', display: 'block', padding: '0 0 2px' }}>
+                  <div className="dropdown-team-cta" style={{ background: '#111', borderRadius: '7px', padding: '10px 12px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', cursor: 'pointer', transition: 'background 150ms ease' }}>
+                    <div>
+                      <div style={{ fontFamily: 'var(--v5-font-mono)', fontSize: '9px', color: 'rgba(255,255,255,0.35)', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '3px' }}>¿Quieres todo?</div>
+                      <div style={{ fontFamily: "var(--v5-font-advercase, 'Playfair Display', Georgia, serif)", fontSize: '14px', fontWeight: 400, fontStyle: 'normal', color: '#F5F5F0', letterSpacing: '-0.01em', lineHeight: 1.2 }}>Aether Team</div>
+                    </div>
+                    <ArrowUpRight size={13} color="rgba(255,255,255,0.35)" />
+                  </div>
+                </Link>
+              </div>
+            </div>
+
+            {/* Labs dropdown — SECOND */}
             <div
               className="relative"
               ref={dropdownRef}
@@ -148,53 +196,28 @@ export default function Navbar() {
               <button
                 onClick={() => setLabsOpen(!labsOpen)}
                 style={navBtnStyle}
-                onMouseEnter={(e) => {
-                  (e.currentTarget as HTMLElement).style.color = scrolled ? '#111111' : '#FFFFFF';
-                }}
-                onMouseLeave={(e) => {
-                  (e.currentTarget as HTMLElement).style.color = scrolled ? '#555555' : 'rgba(255,255,255,0.6)';
-                }}
+                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = scrolled ? '#111111' : '#FFFFFF'; }}
+                onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = scrolled ? '#555555' : 'rgba(255,255,255,0.6)'; }}
               >
                 Labs
                 <svg width="10" height="6" viewBox="0 0 10 6" fill="none" style={{ transform: labsOpen ? 'rotate(180deg)' : 'none', transition: 'transform 200ms ease' }}>
                   <path d="M1 1L5 5L9 1" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </button>
-
               <div style={dropdownStyles(labsOpen)}>
                 {labsMenu.map((lab) => {
                   const Icon = lab.icon;
                   return (
-                    <Link
-                      key={lab.href}
-                      href={lab.href}
-                      onClick={() => setLabsOpen(false)}
-                      style={{ textDecoration: 'none', display: 'block' }}
-                    >
-                      <div
-                        className="dropdown-lab-item"
-                        style={{
-                          display: 'flex',
-                          alignItems: 'center',
-                          gap: '10px',
-                          padding: '8px 10px',
-                          borderRadius: '7px',
-                          transition: 'background 150ms ease',
-                          cursor: 'pointer',
-                        }}
-                      >
+                    <Link key={lab.href} href={lab.href} onClick={() => setLabsOpen(false)} style={{ textDecoration: 'none', display: 'block' }}>
+                      <div className="dropdown-lab-item" style={{ display: 'flex', alignItems: 'center', gap: '10px', padding: '8px 10px', borderRadius: '7px', transition: 'background 150ms ease', cursor: 'pointer' }}>
                         <div style={{ width: '20px', height: '20px', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                           <Icon size={14} color="rgba(0,0,0,0.35)" />
                         </div>
                         <div style={{ flex: 1, minWidth: 0 }}>
                           <div style={{ fontSize: '13px', lineHeight: 1.2, display: 'flex', alignItems: 'center', gap: '6px' }}>
                             <span>
-                              <span style={{ fontFamily: "var(--v5-font-advercase, 'Playfair Display', Georgia, serif)", fontWeight: 400, fontStyle: 'normal', color: '#111111', letterSpacing: '-0.01em' }}>
-                                {lab.label.replace(' Lab', '')}
-                              </span>
-                              <span style={{ fontFamily: 'var(--v5-font-body)', fontWeight: 300, color: 'rgba(0,0,0,0.35)' }}>
-                                {' Lab'}
-                              </span>
+                              <span style={{ fontFamily: "var(--v5-font-advercase, 'Playfair Display', Georgia, serif)", fontWeight: 400, fontStyle: 'normal', color: '#111111', letterSpacing: '-0.01em' }}>{lab.label.replace(' Lab', '')}</span>
+                              <span style={{ fontFamily: 'var(--v5-font-body)', fontWeight: 300, color: 'rgba(0,0,0,0.35)' }}>{' Lab'}</span>
                             </span>
                             {'hot' in lab && lab.hot && (
                               <span style={{ fontFamily: 'var(--v5-font-mono)', fontSize: '7px', letterSpacing: '0.1em', textTransform: 'uppercase', background: 'rgba(0,0,0,0.08)', color: 'rgba(0,0,0,0.5)', padding: '2px 4px', borderRadius: '3px' }}>Hot</span>
@@ -207,99 +230,6 @@ export default function Navbar() {
                   );
                 })}
                 <div style={{ height: '2px' }} />
-              </div>
-            </div>
-
-            {/* Servicios dropdown */}
-            <div
-              className="relative"
-              ref={serviciosRef}
-              onMouseEnter={() => { setServiciosOpen(true); setLabsOpen(false); }}
-              onMouseLeave={() => setServiciosOpen(false)}
-            >
-              <button
-                onClick={() => setServiciosOpen(!serviciosOpen)}
-                style={navBtnStyle}
-                onMouseEnter={(e) => {
-                  (e.currentTarget as HTMLElement).style.color = scrolled ? '#111111' : '#FFFFFF';
-                }}
-                onMouseLeave={(e) => {
-                  (e.currentTarget as HTMLElement).style.color = scrolled ? '#555555' : 'rgba(255,255,255,0.6)';
-                }}
-              >
-                Servicios
-                <svg width="10" height="6" viewBox="0 0 10 6" fill="none" style={{ transform: serviciosOpen ? 'rotate(180deg)' : 'none', transition: 'transform 200ms ease' }}>
-                  <path d="M1 1L5 5L9 1" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </button>
-
-              <div style={dropdownStyles(serviciosOpen)}>
-                {serviciosMenu.map((servicio) => {
-                  const Icon = servicio.icon;
-                  return (
-                    <Link
-                      key={servicio.href}
-                      href={servicio.href}
-                      onClick={() => setServiciosOpen(false)}
-                      style={{ textDecoration: 'none', display: 'block' }}
-                    >
-                      <div
-                        className="dropdown-lab-item"
-                        style={{
-                          display: 'flex',
-                          alignItems: 'center',
-                          gap: '10px',
-                          padding: '8px 10px',
-                          borderRadius: '7px',
-                          transition: 'background 150ms ease',
-                          cursor: 'pointer',
-                        }}
-                      >
-                        <div style={{ width: '20px', height: '20px', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                          <Icon size={14} color="rgba(0,0,0,0.35)" />
-                        </div>
-                        <div style={{ flex: 1, minWidth: 0 }}>
-                          <div style={{ fontFamily: "var(--v5-font-advercase, 'Playfair Display', Georgia, serif)", fontSize: '13px', fontWeight: 400, fontStyle: 'normal', color: '#111111', letterSpacing: '-0.01em', lineHeight: 1.2 }}>
-                            {servicio.label}
-                          </div>
-                          <div style={{ fontFamily: 'var(--v5-font-mono)', fontSize: '10px', color: '#999', lineHeight: 1.3, marginTop: '1px' }}>{servicio.tag}</div>
-                        </div>
-                      </div>
-                    </Link>
-                  );
-                })}
-
-                {/* CTA: ¿Quieres todo? → Aether Team */}
-                <div style={{ height: '1px', background: '#E8E8E5', margin: '4px 10px 6px' }} />
-                <Link
-                  href="/aether-team"
-                  onClick={() => setServiciosOpen(false)}
-                  style={{ textDecoration: 'none', display: 'block', padding: '0 0 2px' }}
-                >
-                  <div
-                    className="dropdown-team-cta"
-                    style={{
-                      background: '#111',
-                      borderRadius: '7px',
-                      padding: '10px 12px',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'space-between',
-                      cursor: 'pointer',
-                      transition: 'background 150ms ease',
-                    }}
-                  >
-                    <div>
-                      <div style={{ fontFamily: 'var(--v5-font-mono)', fontSize: '9px', color: 'rgba(255,255,255,0.35)', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '3px' }}>
-                        ¿Quieres todo?
-                      </div>
-                      <div style={{ fontFamily: "var(--v5-font-advercase, 'Playfair Display', Georgia, serif)", fontSize: '14px', fontWeight: 400, fontStyle: 'normal', color: '#F5F5F0', letterSpacing: '-0.01em', lineHeight: 1.2 }}>
-                        Aether Team
-                      </div>
-                    </div>
-                    <ArrowUpRight size={13} color="rgba(255,255,255,0.35)" />
-                  </div>
-                </Link>
               </div>
             </div>
 
@@ -391,36 +321,8 @@ export default function Navbar() {
           overflowY: 'auto',
         }}
       >
-        {/* Labs section */}
+        {/* Servicios section — FIRST */}
         <div style={{ marginBottom: '24px', fontFamily: 'var(--v5-font-mono)', fontSize: '11px', color: '#999', textTransform: 'uppercase', letterSpacing: '0.15em' }}>
-          Labs
-        </div>
-        {labsMenu.map((lab) => (
-          <Link
-            key={lab.href}
-            href={lab.href}
-            onClick={() => setMobileOpen(false)}
-            style={{
-              fontSize: '16px',
-              color: '#555555',
-              textDecoration: 'none',
-              padding: '11px 0',
-              borderBottom: '1px solid #E8E8E8',
-              display: 'flex', alignItems: 'center', gap: '8px',
-            }}
-          >
-            <span style={{ fontFamily: "var(--v5-font-advercase, 'Playfair Display', Georgia, serif)", fontWeight: 400, fontStyle: 'normal', color: '#111', letterSpacing: '-0.01em' }}>
-              {lab.label.replace(' Lab', '')}
-            </span>
-            <span style={{ fontFamily: 'var(--v5-font-body)', fontWeight: 300, color: '#888' }}>Lab</span>
-            {'hot' in lab && lab.hot && (
-              <span style={{ fontFamily: 'var(--v5-font-mono)', fontSize: '7px', letterSpacing: '0.1em', textTransform: 'uppercase', background: '#111', color: '#fff', padding: '2px 5px', borderRadius: '3px' }}>Hot</span>
-            )}
-          </Link>
-        ))}
-
-        {/* Servicios section */}
-        <div style={{ marginTop: '32px', marginBottom: '24px', fontFamily: 'var(--v5-font-mono)', fontSize: '11px', color: '#999', textTransform: 'uppercase', letterSpacing: '0.15em' }}>
           Servicios
         </div>
         {serviciosMenu.map((servicio) => (
@@ -462,6 +364,25 @@ export default function Navbar() {
           </span>
           <ArrowUpRight size={14} color="#bbb" />
         </Link>
+
+        {/* Labs section — SECOND */}
+        <div style={{ marginTop: '32px', marginBottom: '24px', fontFamily: 'var(--v5-font-mono)', fontSize: '11px', color: '#999', textTransform: 'uppercase', letterSpacing: '0.15em' }}>
+          Labs
+        </div>
+        {labsMenu.map((lab) => (
+          <Link
+            key={lab.href}
+            href={lab.href}
+            onClick={() => setMobileOpen(false)}
+            style={{ fontSize: '16px', color: '#555555', textDecoration: 'none', padding: '11px 0', borderBottom: '1px solid #E8E8E8', display: 'flex', alignItems: 'center', gap: '8px' }}
+          >
+            <span style={{ fontFamily: "var(--v5-font-advercase, 'Playfair Display', Georgia, serif)", fontWeight: 400, fontStyle: 'normal', color: '#111', letterSpacing: '-0.01em' }}>{lab.label.replace(' Lab', '')}</span>
+            <span style={{ fontFamily: 'var(--v5-font-body)', fontWeight: 300, color: '#888' }}>Lab</span>
+            {'hot' in lab && lab.hot && (
+              <span style={{ fontFamily: 'var(--v5-font-mono)', fontSize: '7px', letterSpacing: '0.1em', textTransform: 'uppercase', background: '#111', color: '#fff', padding: '2px 5px', borderRadius: '3px' }}>Hot</span>
+            )}
+          </Link>
+        ))}
 
         {/* General section */}
         <div style={{ marginTop: '32px', marginBottom: '24px', fontFamily: 'var(--v5-font-mono)', fontSize: '11px', color: '#999', textTransform: 'uppercase', letterSpacing: '0.15em' }}>
