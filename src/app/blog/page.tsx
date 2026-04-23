@@ -54,6 +54,20 @@ const articulos = [
     desc: 'Licencias, formación, integración y ROI. Desglose completo sin letra pequeña. Con cálculo de amortización.',
     tiempo: '5 min',
   },
+  {
+    slug: 'claude-opus-47-empresas',
+    label: 'Novedades IA',
+    title: 'Claude Opus 4.7 para empresas: para qué sirve y si merece el cambio',
+    desc: 'Anthropic lanzó Opus 4.7. Analizamos qué cambia para empresas no técnicas: task budgets, visión mejorada, cuándo usarlo y arquitectura de coste recomendada.',
+    tiempo: '7 min',
+  },
+  {
+    slug: 'ai-act-agosto-2026',
+    label: 'Regulación IA',
+    title: 'AI Act agosto 2026: checklist para empresas españolas antes del 2 de agosto',
+    desc: 'El 2 de agosto entra en vigor el EU AI Act. Multas de hasta 35M€. Checklist práctico de 5 puntos para saber qué tienes que tener listo.',
+    tiempo: '9 min',
+  },
 ];
 
 export default function BlogPage() {
