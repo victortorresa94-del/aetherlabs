@@ -9,6 +9,8 @@ const nextConfig: NextConfig = {
       { source: '/school-lab/:path*', destination: '/learn-lab/:path*', permanent: true },
       { source: '/systems-lab', destination: '/claude-lab', permanent: false },
       { source: '/casos', destination: '/experimentos', permanent: true },
+      { source: '/aether-inside', destination: '/aether-team', permanent: true },
+      { source: '/aether-inside/:path*', destination: '/aether-team/:path*', permanent: true },
     ];
   },
   images: {

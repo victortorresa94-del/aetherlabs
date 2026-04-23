@@ -272,7 +272,7 @@ export default function Navbar() {
                 {/* CTA: ¿Quieres todo? → Aether Team */}
                 <div style={{ height: '1px', background: '#E8E8E5', margin: '4px 10px 6px' }} />
                 <Link
-                  href="/aether-inside"
+                  href="/aether-team"
                   onClick={() => setServiciosOpen(false)}
                   style={{ textDecoration: 'none', display: 'block', padding: '0 0 2px' }}
                 >
@@ -442,7 +442,7 @@ export default function Navbar() {
           </Link>
         ))}
         <Link
-          href="/aether-inside"
+          href="/aether-team"
           onClick={() => setMobileOpen(false)}
           style={{
             fontSize: '16px',

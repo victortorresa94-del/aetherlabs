@@ -93,7 +93,7 @@ export default function AetherInsideSection() {
 
         {/* CTA */}
         <Link
-          href="/aether-inside"
+          href="/aether-team"
           onMouseEnter={() => setHovered(true)}
           onMouseLeave={() => setHovered(false)}
           style={{
