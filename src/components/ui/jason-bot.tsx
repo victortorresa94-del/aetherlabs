@@ -47,7 +47,7 @@ export default function JasonBot() {
 
       const data = await response.json();
       const reply = data.reply || (data.error
-        ? 'Ahora mismo no puedo responder en tiempo real.\n\nEscríbenos a info@aetherlabs.es o reserva en aetherlabs.es/contacto — contestamos en menos de 12h.'
+        ? 'Ahora mismo no puedo responder en tiempo real.\n\nEscríbenos a hola@aetherlabs.es o reserva en aetherlabs.es/contacto — contestamos en menos de 12h.'
         : 'Lo siento, no he podido procesar tu mensaje.');
       setMessages((prev) => [
         ...prev,
@@ -56,7 +56,7 @@ export default function JasonBot() {
     } catch {
       setMessages((prev) => [
         ...prev,
-        { role: 'assistant', content: 'Ahora mismo no puedo responder en tiempo real.\n\nEscríbenos directamente a info@aetherlabs.es o reserva una sesión en aetherlabs.es/contacto — contestamos en menos de 12h.' },
+        { role: 'assistant', content: 'Ahora mismo no puedo responder en tiempo real.\n\nEscríbenos directamente a hola@aetherlabs.es o reserva una sesión en aetherlabs.es/contacto — contestamos en menos de 12h.' },
       ]);
     } finally {
       setIsLoading(false);

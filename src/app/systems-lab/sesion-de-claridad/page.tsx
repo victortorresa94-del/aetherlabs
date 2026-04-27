@@ -112,7 +112,7 @@ export default function SesionDeClaridadPage() {
               <div style={{ padding: '32px 0' }}>
                 <div style={{ marginBottom: '40px' }}>
                   <span style={{ display: 'block', fontFamily: 'var(--v5-font-mono)', fontSize: '11px', color: '#666', letterSpacing: '0.1em', marginBottom: '8px' }}>EMAIL</span>
-                  <a href="mailto:info@aetherlabs.es" style={{ fontFamily: 'var(--v5-font-body)', fontSize: '18px', color: '#F5F5F0', textDecoration: 'none' }}>info@aetherlabs.es</a>
+                  <a href="mailto:hola@aetherlabs.es" style={{ fontFamily: 'var(--v5-font-body)', fontSize: '18px', color: '#F5F5F0', textDecoration: 'none' }}>hola@aetherlabs.es</a>
                 </div>
 
                 <div style={{ marginBottom: '40px' }}>
@@ -459,13 +459,13 @@ export default function SesionDeClaridadPage() {
                     Escríbenos directamente y te contestaremos lo antes posible.
                   </p>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-                    <a href="mailto:info@aetherlabs.es" style={{
+                    <a href="mailto:hola@aetherlabs.es" style={{
                       fontFamily: 'var(--v5-font-mono)', fontSize: '14px', color: '#F5F5F0',
                       textDecoration: 'none', borderBottom: '1px solid rgba(255,255,255,0.3)', paddingBottom: '4px',
                       transition: 'border-color 0.2s', letterSpacing: '0.05em', width: 'fit-content'
                     }} onMouseEnter={e => e.currentTarget.style.borderColor = 'rgba(255,255,255,0.8)'}
                       onMouseLeave={e => e.currentTarget.style.borderColor = 'rgba(255,255,255,0.3)'}>
-                      info@aetherlabs.es
+                      hola@aetherlabs.es
                     </a>
                     <a href="tel:+34627281491" style={{
                       fontFamily: 'var(--v5-font-mono)', fontSize: '14px', color: '#F5F5F0',
